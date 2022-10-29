@@ -114,7 +114,7 @@ ul li:hover{
 .open .mobile-menu {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;    
+    align-items: center;    
     justify-content: flex-start;
 }
 
@@ -122,12 +122,11 @@ ul li:hover{
     background-color: white;
     display: none;
     position: absolute;
-    top: 75px;
-    left: 50%;
+    top: 80px;
+    left: 0;
     height: calc(100vh - 50px);
-    width: 250px;
-    height: 350px;
-    border-radius: 10px;
+    width: 100%;
+    
 }
 
 #loginmobile{
@@ -160,7 +159,7 @@ ul li:hover{
 } 
 
 
-@media screen and (max-width:750px){
+@media only screen and (max-width:750px){
     header nav{
         display: none;
     }

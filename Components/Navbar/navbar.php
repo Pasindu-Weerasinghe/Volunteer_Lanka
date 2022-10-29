@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="Components\Navbar\navbar.css">
     <title>Navbar</title>
-    <script defer src="navbar.js"></script>
+    <script defer src="Components\Navbar\navbar.js"></script>
 </head>
 <body>
     <header>
-        <div id="brand"><a href=""><img id="logo" src="images/logo_transparent.png" alt=""></a></div>
+        <div id="brand"><a href=""><img id="logo" src="Components\Navbar\images\logo_transparent.png" alt=""></a></div>
         <nav>
             <ul>
                 <li><a href="/home">Home</a></li>

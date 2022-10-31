@@ -35,7 +35,7 @@ header{
 }
 
 ul a{
-    color: black;
+    color: #6aa438;
     font-weight: bold;
 }
 
@@ -59,28 +59,35 @@ ul li:hover{
 
 #login{
     /* background-color: #3394CA; */
-    background-color: rgb(61, 60, 60);
-    border-radius: 10px;
-    padding: 5px 20px;
-    border: 2px solid blue;
+    background-color: #89afd6;
+    border-radius: 4px;
+    width: 110px;
+    height: 50px;
+    text-align: center;
+    display: inline-block;
+    align-items: center;
     
 }
 
 #signup{
-    /* background-color: #619141; */
-    background-color: rgb(61, 60, 60);
-    border-radius: 10px;
-    padding: 5px 10px;
-    border: 2px solid #E02D2D;
+    background-color: #84b464;
+    border-radius: 4px;
+    width: 110px;
+    height: 50px;
+    text-align: center;
+    display: inline-block;
+    align-items: center;
     
 }
 #signup a{
-    color: #E02D2D;
+    color: black;
+    font-size: 18px;
     
 }
 
 #login a{
-    color: blue;
+    color: Black;
+    font-size: 18px;
 }
 
 #hamburger-icon{
@@ -114,7 +121,7 @@ ul li:hover{
 .open .mobile-menu {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;    
+    align-items: center;    
     justify-content: flex-start;
 }
 
@@ -122,41 +129,43 @@ ul li:hover{
     background-color: white;
     display: none;
     position: absolute;
-    top: 75px;
-    left: 50%;
+    top: 80px;
+    left: 0;
     height: calc(100vh - 50px);
-    width: 250px;
-    height: 350px;
-    border-radius: 10px;
+    width: 100%;
 }
 
 #loginmobile{
-    /* background-color: #3394CA; */
-    background-color: rgb(61, 60, 60);
-    border-radius: 10px;
-    padding: 5px 20px;
-    border: 2px solid blue;
-    margin-right: 10px;
+    background-color: #89afd6;
+    border-radius: 4px;
+    width: 110px;
+    height: 50px;
+    text-align: center;
+    display: inline-block;
+    align-items: center;
     
 }
 
 #signupmobile{
-    /* background-color: #619141; */
-    background-color: rgb(61, 60, 60);
-    border-radius: 10px;
-    padding: 5px 12px;
-    border: 2px solid #E02D2D;
-    margin-right: 10px;
-    margin-top: 10px;
+    background-color: #84b464;
+    border-radius: 4px;
+    width: 110px;
+    height: 50px;
+    text-align: center;
+    display: inline-block;
+    align-items: center;
+    margin-top: 7px;
     
 }
 #signupmobile a{
-    color: #E02D2D;
+    color: black;
+    font-size: 18px;
     
 }
 
 #loginmobile a{
-    color: blue;
+    color:black;
+    font-size: 18px;
 } 
 
 

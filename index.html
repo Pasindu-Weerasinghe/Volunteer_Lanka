@@ -1,0 +1,1 @@
+<?php include 'Components/Navbar/navbar.php' ?>

@@ -57,7 +57,7 @@ p {
 }
 
 .card:hover {
-	background-color: red;
+	background-color: black;
 	color: white;
 	cursor: pointer;
 	transform: scale(1.05);

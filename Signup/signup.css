@@ -47,6 +47,7 @@ hr {
 
 /* Set a style for all buttons */
 button {
+  font-family: 'Poppins', sans-serif;
   background-color: #6aa438;
   color: #e0e0f0;
   padding: 14px 20px;

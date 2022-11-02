@@ -19,7 +19,7 @@
         <input type="password" name="psw" required>
         <span class="psw">Forgot <a href="#">password?</a></span>
 
-        <button type="submit">Login</button>
+        <button type="submit"><b>Login</b></button>
     </div><br/>
 
     <span class="signup">Don't have an account? <a href="#">Sign up</a></span>

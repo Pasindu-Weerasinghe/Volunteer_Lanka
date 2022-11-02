@@ -10,14 +10,14 @@
     <link rel="stylesheet" type="text/css" href="signup.css">
     <title>Signup</title>
     <body>
-    <form action="signup.php" method="post">
+    <form action="signup_volunteer.php" method="post">
     <div class="container">
     <h1>Signup</h1><br/><br/>
     <p>Passionate about volunteering? <b>Come join us</b></p><hr>
     
         <label for="role"><b>Role</b></label>
         <div class="select">
-        <select id="role" name="role" required>
+        <select id="role" name="role">
             <option value="organizer">Organizer</option>
             <option value="volunteer">Volunteer</option>
             <option value="sponsor">Sponsor</option>
@@ -25,17 +25,17 @@
         </div>
 
         <label for="email"><b>Email</b></label>
-        <input type="text" name="email" required>
+        <input type="text" name="email">
 
         <label for="psw"><b>Password</b></label>
-        <input type="password" name="psw" required>
+        <input type="password" name="psw">
 
         <label for="confirm-psw"><b>Confirm Password</b></label>
-        <input type="password" name="confirm-psw" required>
+        <input type="password" name="confirm-psw">
 
         <div class="clearfix">
-            <button class="cancel">Cancel</button>
-            <button class="next">Next</button>
+            <button class="cancel"><b>Cancel</b></button>
+            <button class="next"><b>Next</b></button>
         </div>
 
     </div>

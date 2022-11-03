@@ -17,8 +17,8 @@
                 <li><a href="/services">Services</a></li>
                 <li><a href="/about">About Us</a></li>
                 <li><a href="/contact">Contact Us</a></li>
-                <li id="login"><a href="Login/login.php">LOGIN</a></li>
-                <li id="signup"><a id="signup a" href="Signup/signup.php">SIGN UP</a></li>
+                <li id="login"><a href="login.php">LOGIN</a></li>
+                <li id="signup"><a id="signup a" href="signup.php">SIGN UP</a></li>
             </ul>
         </nav>
         <!-- mobile view -->

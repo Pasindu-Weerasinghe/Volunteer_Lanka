@@ -1,5 +1,4 @@
-<?php include ('../Navbar/navbar.php') ?>
-<style><?php include ('../Navbar/navbar.css') ?></style>
+<?php include ('Navbar/navbar.php') ?>
 
 <!DOCTYPE html>
 <html lang="en">

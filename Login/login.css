@@ -1,3 +1,12 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Lobster&family=Open+Sans:wght@300&family=Poppins:ital,wght@0,100;0,200;0,400;1,100&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body{
     background-color: #89afd6;
     font-family: 'Poppins', sans-serif;
@@ -30,7 +39,6 @@ h1{
   
   /* Set a style for all buttons */
   button {
-    font-family: 'Poppins', sans-serif;
     background-color: #6aa438;
     color: white;
     padding: 14px 20px;
@@ -38,6 +46,11 @@ h1{
     border: none;
     cursor: pointer;
     width: 100%;
+
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    font-size: 20px;
+
   }
   
   /* Add a hover effect for buttons */

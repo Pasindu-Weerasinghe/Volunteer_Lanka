@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="Signup/signup.css">
     <title>Signup</title>
     <body>
-    <form action="signup_volunteer.php" method="post">
+    <form action="signup_organizer.php" method="post">
     <div class="container">
     <h1>Signup</h1><br/><br/>
     <p>Passionate about volunteering? <b>Come join us</b></p><hr>

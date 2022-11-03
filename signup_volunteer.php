@@ -1,5 +1,4 @@
-<?php include ('../Navbar/navbar.php') ?>
-<style><?php include ('../Navbar/navbar.css') ?></style>
+<?php include ('Navbar/navbar.php') ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,10 +6,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="signup.css">
+    <link rel="stylesheet" type="text/css" href="Signup/signup.css">
     <title>Signup for Volunteer</title>
     <body>
-    <form action="signup.php" method="post">
+    <form action="signup_volunteer.php" method="post">
     <div class="container">
     <h1>Signup as a Volunteer</h1><br/><hr>
     

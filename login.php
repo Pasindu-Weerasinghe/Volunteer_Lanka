@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="Login/login.css">
     <title>Login</title>
     <body>
-    <form action="login.php" method="post">
+    <form action="home_volunteer.php" method="post">
     <div class="container">
         <h1>Login</h1>
         <label for="uname"><b>Username</b></label>

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="Signup/signup.css">
+    <link rel="stylesheet" type="text/css" href="styles/signup.css">
     <title>Signup</title>
     <body>
     <form action="signup_volunteer.php" method="post">

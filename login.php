@@ -1,5 +1,4 @@
 <?php include 'Navbar/navbar.php' ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="styles/login.css">
     <title>Login</title>
     <body>
-    <form action="home_volunteer.php" method="post">
+    <form action="HomePageSponsor.php" method="post">
     <div class="container">
         <h1>Login</h1>
         <label for="uname"><b>Username</b></label>

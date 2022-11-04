@@ -22,21 +22,19 @@
         <label for="address"><b>Address</b></label>
         <input type="text" name="address" required><br/>
 
-        <label for="branch"><b>Branch</b></label>
-        <input type="text" name="branch" required><br/>
-
-
-        <div class="select">
-        <label for="location"><b>Location</b></label>
-        <select id="role" name="role" required>
-            <option value="Colombo">Colombo</option>
-            <option value="Gampaha">Gampaha</option>
-            <option value="Galle">Galle</option>
-            <option value="Matara">Matara</option>
-            <option value="Kandy">Kandy</option>
-        </select>
-        </div>
-
+        <label for="type"><b>Select Your Type</b></label><br>
+        
+        
+        <input  type="radio"  name="individual"> 
+        <label for="individual">Individual</label><br>
+        <input type="radio" name="organization">
+        <label for="organization">Organization</label><br>
+        <input type="radio" name="company">
+        <label for="company">Company</label>
+       
+        
+        
+        <br><br>
         <input type="checkbox" name="area5">
         <label for="area1">I have read and understand the <a href="#">terms and conditions</a> and will add here to them</label><br/><br/>
         

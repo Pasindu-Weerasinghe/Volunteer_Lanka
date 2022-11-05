@@ -1,5 +1,4 @@
 <?php include 'Navbar/navbar.php' ?>
-<?php include 'sidenav/sidenav.php' ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="styles/login.css">
     <title>Login</title>
     <body>
-    <form action="sidenav.php" method="post">
+    <form action="home_volunteer.php" method="post">
     <div class="container">
         <h1>Login</h1>
         <label for="uname"><b>Username</b></label>

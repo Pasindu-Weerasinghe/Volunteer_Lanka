@@ -9,7 +9,7 @@
 
 .item{
     padding:10px;
-    border: 1px solid #ccc; 
+    /* border: 1px solid #ccc;  */
     margin: 5px;
 }
 
@@ -18,10 +18,33 @@ img {
     width: 300px;
 }
 
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
 h2{
     padding: 20px 0px 0px 30px;
 }
 
-body {
-    
+.btn1, .btn2 {
+    background-color: #84b464;
+    color: black;
+    border-radius: 15px;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    margin-left: 28%;
+    margin-right: 20px;
+}
+
+table {
+    margin-left: 28%;
+    padding-bottom: 40px;
+}
+
+td {
+    padding-right: 70px;
 }

@@ -15,8 +15,38 @@
         <div class="item"><img src="cards/img1.jpg"></div>    
         <div class="item"><img src="cards/img1.jpg"></div>    
         <div class="item"><img src="cards/img1.jpg"></div>    
-        <div class="item"><img src="cards/img1.jpg"></div>    
+        <!-- <div class="item"><img src="cards/img1.jpg"></div>     -->
     </div>
+    <table>
+        <tr>
+            <td>Date</td>
+            <td>:</td>
+            <td>20/09/2022</td>
+        </tr>
+        <tr>
+            <td>Time</td>
+            <td>:</td>
+            <td>09:00 AM</td>
+        </tr>
+        <tr>
+            <td>Venue</td>
+            <td>:</td>
+            <td>Mount Lavinia Beach</td>
+        </tr>
+        <tr>
+            <td>Number of Volunteers</td>
+            <td>:</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>:</td>
+            <td>bleh bleh bleh bleh bleh bleh bleh bleh bleh bleh bleh bleh</td>
+        </tr>
+    </table>
+
+    <button class="btn1" href="#"><b>Back</b></button>
+    <button class="btn2" href="#"><b>Join</b></button>
 
 </body>
 </html>

@@ -5,7 +5,7 @@
   z-index:1;
   top:0;
   left:0;
-  background-color:#111;
+  background-color:#e0e0f0;
   opacity:0.9;
   overflow-x:hidden;
   padding-top:80px;
@@ -16,13 +16,14 @@
   padding:10px 10px 10px 30px;
   text-decoration:none;
   font-size:22px;
-  color:#ccc;
+  color:black;
   display:block;
   transition:0.3s;
 }
 
 .side-nav a:hover{
-  color:#fff;
+  transform: scale(1.1);
+  transition: 00.3s;
 }
 
 .side-nav .btn-close{
@@ -32,6 +33,7 @@
   font-size:36px;
   margin-left:50px;
 }
+
 
 /* #main{
   transition:margin-left 0.5s;

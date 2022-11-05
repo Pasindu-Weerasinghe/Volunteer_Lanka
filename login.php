@@ -1,4 +1,5 @@
 <?php include 'Navbar/navbar.php' ?>
+<?php include 'sidenav/sidenav.php' ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="styles/login.css">
     <title>Login</title>
     <body>
+    <div id="main">
     <form action="home_volunteer.php" method="post">
     <div class="container">
         <h1>Login</h1>
@@ -21,8 +23,9 @@
 
         <button type="submit">Login</button>
     </div><br/>
-    <span class="signup">Don't have an account? <a href="#">Sign up</a></span>
+    <span class="signup">Don't have an account? <a href="signup.php">Sign up</a></span>
     </form>
+    </div>
     </body>
 </head>
 </html>

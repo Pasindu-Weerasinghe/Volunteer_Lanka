@@ -31,7 +31,7 @@
             </div>
             <h2>Project Name</h2>
             <p>Date</p>
-            <a class="btn" href="">View</a>
+            <a class="btn" href="view_project_volunteer.php">View</a>
         </div>
     </section><br/>
     <hr><br/>

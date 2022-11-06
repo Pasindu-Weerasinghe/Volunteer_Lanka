@@ -45,8 +45,8 @@
         </tr>
     </table>
 
-    <button class="btn1" href="#"><b>Back</b></button>
-    <button class="btn2" href="#"><b>Join</b></button>
+    <button class="btn1"><a href="login.php">Back</a></button>
+    <button class="btn2"><a href="#">Join</a></button>
 
 </body>
 </html>

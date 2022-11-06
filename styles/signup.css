@@ -1,5 +1,5 @@
 body{
-    background-color: #89afd6;
+    background-color: #b3cce1;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -9,7 +9,7 @@ form {
     margin: auto;  
     margin-top: 20px;
     padding: 75px;  
-    background: #b3cce1;  
+    background: #89afd6;  
     border-radius: 15px ;
   }
 

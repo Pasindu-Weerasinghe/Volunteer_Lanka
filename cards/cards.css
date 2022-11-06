@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #89afd6;
+    background-color: #b3cce1;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -57,9 +57,9 @@ h2, p{
 }
 
 .card:hover{
-    background-color: black;
+    background-color: gray;
     color: white;
     cursor: pointer;
     transform: scale(1.05);
-    transition: all 1s ease;
+    transition: all 0.4s ease;
 }

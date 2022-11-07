@@ -1,4 +1,11 @@
 <?php include 'Navbar/navbar.php' ?>
+<?php include 'conn.php' ?>
+
+<?php
+    $sql = "SELECT Name, Date FROM project";
+    $result = mysqli_query($conn, $sql);
+    $projects = mysqli_fetch_all($result, MYSQLI_ASSOC);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,52 +19,30 @@
 <body>
     <br/><h2>Upcoming Projects</h2><br/><br/>
     <section class="container">
-        <div class="card">
+        <?php foreach ($projects as $project){ ?>
+            <div class="card">
             <div class="card-image card1">
             </div>
-            <h2>Project Name</h2>
-            <p>Date</p>
-            <a class="btn" href="upcoming_volunteer.php">View</a>
-        </div>
-        <div class="card">
-            <div class="card-image card2">
-            </div>
-            <h2>Project Name</h2>
-            <p>Date</p>
-            <a class="btn" href="completed_volunteer.php">View</a>
-        </div>
-        <div class="card">
-            <div class="card-image card3">
-            </div>
-            <h2>Project Name</h2>
-            <p>Date</p>
+            <h2><?php echo htmlspecialchars($project["Name"]); ?></h2>
+            <p><?php echo htmlspecialchars($project["Date"]); ?></p>
             <a class="btn" href="view_project_volunteer.php">View</a>
-        </div>
-    </section><br/>
+            </div>
+        <?php } ?>
+    </section>
+    <br/>
     <hr><br/>
+        
     <h2>Suggested Projects</h2><br/><br/>
     <section class="container">
-        <div class="card">
+        <?php foreach ($projects as $project){ ?>
+            <div class="card">
             <div class="card-image card1">
             </div>
-            <h2>Project Name</h2>
-            <p>Date</p>
-            <a class="btn" href="">View</a>
-        </div>
-        <div class="card">
-            <div class="card-image card2">
+            <h2><?php echo htmlspecialchars($project["Name"]); ?></h2>
+            <p><?php echo htmlspecialchars($project["Date"]); ?></p>
+            <a class="btn" href="view_project_volunteer.php">View</a>
             </div>
-            <h2>Project Name</h2>
-            <p>Date</p>
-            <a class="btn" href="">View</a>
-        </div>
-        <div class="card">
-            <div class="card-image card3">
-            </div>
-            <h2>Project Name</h2>
-            <p>Date</p>
-            <a class="btn" href="">View</a>
-        </div>
+        <?php } ?>
     </section>
 
 </body>

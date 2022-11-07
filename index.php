@@ -1,14 +1,6 @@
 <?php include 'Navbar/navbar.php' ?>
 <style><?php include ('Navbar/navbar.css') ?></style>
-
-<?php 
-    //connect to database
-    $conn = mysqli_connect('localhost', 'volunteer_lanka', 'VolunteerLanka', 'volunteer_lanka');
-
-    if (!$conn) {
-        echo 'Connection error: '.mysqli_connect_error();
-    }
-?>
+<?php include 'conn.php' ?>
 
 <!DOCTYPE html>
 <html lang="en">

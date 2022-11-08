@@ -1,4 +1,7 @@
-<?php include ('Navbar/navbar.php') ?>
+<?php include ('Navbar/navbar.php') ;
+
+// echo "Password: " . $_SESSION['email'] . "<br>";
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="styles/signup.css">
     <title>Signup for Volunteer</title>
     <body>
-    <form action="signup_volunteer.php" method="post">
+    <form action="signup_auth.php" method="post">
     <div class="container">
     <h1>Signup as a Volunteer</h1><br/><hr>
     
@@ -48,7 +51,7 @@
         
         <div class="clearfix">
             <button class="cancel"><b>Cancel</b></button>
-            <button class="next"><b>Submit</b></button>
+            <button name="signup" class="next"><b>Submit</b></button>
         </div>
 
     </div>

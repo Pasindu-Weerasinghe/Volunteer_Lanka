@@ -1,8 +1,7 @@
-<?php include 'conn.php' ?>
-
 <?php 
+include 'conn.php';
 
-if (isset($_REQUEST["log"])){
+if (isset($_REQUEST["login"])){
     $uname = $_REQUEST["uname"];
     $psw = $_REQUEST["psw"];
 
@@ -23,11 +22,11 @@ if (isset($_REQUEST["log"])){
                 header('Location: home_volunteer.php'); 
                 exit; 
             }
-            else {
-                $_SESSION['uid'] = $uid;
-                header('Location: #.php'); 
-                exit;
-            }
+            // else {
+            //     $_SESSION['uid'] = $uid;
+            //     header('Location: #.php'); 
+            //     exit;
+            // }
         }
         else {
             echo "<script> alert ('Your account is restricted!'); window.location.href = 'login.php';</script>";

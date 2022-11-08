@@ -12,7 +12,7 @@
     <title>Login</title>
     <body>
     <div id="main">
-    <form action="auth.php" method="post">
+    <form action="login_auth.php" method="post">
     <div class="container">
         <h1>Login</h1>
         <label for="uname"><b>Username</b></label>
@@ -22,7 +22,7 @@
         <input type="password" name="psw" required>
         <span class="psw">Forgot <a href="#">password?</a></span>
 
-        <button name = "log" type="submit">Login</button>
+        <button name="login" type="submit">Login</button>
     </div><br/>
     <span class="signup">Don't have an account? <a href="signup.php">Sign up</a></span>
     </form>

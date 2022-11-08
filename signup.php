@@ -1,4 +1,4 @@
-<?php include ('Navbar/navbar.php') ?>
+<?php include ('Navbar/navbar.php')?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +36,13 @@
             <button class="cancel">Cancel</button>
             <button class="next">Next</button>
         </div>
+
+        <!-- <?php 
+            if (isset($_POST)) {
+                // collect value of input field
+                $_SESSION['email'] = $_POST['email'];
+            }
+        ?> -->
 
     </div>
     </form>

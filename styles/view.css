@@ -1,6 +1,10 @@
+.container {
+    /* display: flex; */
+    justify-content: center;
+    background-color: #ccdcb4;
+}
 
-
-.container{
+.container-image{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;

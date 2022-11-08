@@ -2,7 +2,7 @@
 <?php include 'conn.php' ?>
 
 <?php
-    $sql = "SELECT Name, Date FROM project";
+    $sql = "SELECT P_ID, Name, Date FROM project";
     $result = mysqli_query($conn, $sql);
     $projects = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
@@ -23,9 +23,9 @@
             <div class="card">
             <div class="card-image card1">
             </div>
-            <h2><?php echo htmlspecialchars($project["Name"]); ?></h2>
-            <p><?php echo htmlspecialchars($project["Date"]); ?></p>
-            <a class="btn" href="view_project_volunteer.php">View</a>
+            <h2><?php echo ($project["Name"]); ?></h2>
+            <p><?php echo ($project["Date"]); ?></p>
+            <a class="btn" href="view_project_volunteer.php?pid=<?php echo $project['P_ID']?>">View</a>
             </div>
         <?php } ?>
     </section>
@@ -40,7 +40,7 @@
             </div>
             <h2><?php echo htmlspecialchars($project["Name"]); ?></h2>
             <p><?php echo htmlspecialchars($project["Date"]); ?></p>
-            <a class="btn" href="view_project_volunteer.php">View</a>
+            <a class="btn" href="view_project_volunteer.php?pid=<?php echo $project['P_ID']?>">View</a>
             </div>
         <?php } ?>
     </section>

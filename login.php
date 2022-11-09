@@ -1,6 +1,7 @@
-<?php include 'Navbar/navbar.php' ?>
-<?php include 'sidenav/sidenav.php' ?>
-<?php include 'conn.php' ?>
+<?php 
+include 'Navbar/navbar.php'; 
+include 'conn.php'; 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +12,6 @@
     <link rel="stylesheet" type="text/css" href="styles/login.css">
     <title>Login</title>
     <body>
-    <div id="main">
     <form action="login_auth.php" method="post">
     <div class="container">
         <h1>Login</h1>
@@ -26,7 +26,6 @@
     </div><br/>
     <span class="signup">Don't have an account? <a href="signup.php">Sign up</a></span>
     </form>
-    </div>
     </body>
 </head>
 </html>

@@ -1,5 +1,10 @@
-<?php include 'Navbar/navbar.php' ?>
-<?php include 'conn.php' ?>
+<?php 
+include 'conn.php';
+if (!isset($_SESSION['uid'])) {
+    header("Location: login.php");
+}
+include 'Navbar/navbar_log.php';
+include 'sidenav/sidenav.php' ?>
 
 <?php
     $sql = "SELECT P_ID, Name, Date FROM project";
@@ -17,7 +22,8 @@
     <title>Home</title>
 </head>
 <body>
-    <br/><h2>Upcoming Projects</h2><br/><br/>
+<div id="main">
+    <h2>Upcoming Projects</h2><br/><br/>
     <section class="container">
         <?php foreach ($projects as $project){ ?>
             <div class="card">
@@ -44,6 +50,6 @@
             </div>
         <?php } ?>
     </section>
-
+</div>
 </body>
 </html>

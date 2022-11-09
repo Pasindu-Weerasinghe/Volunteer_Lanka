@@ -3,10 +3,6 @@
     $_SESSION['role'] = $_POST['role'];
     $_SESSION['email'] = $_POST['email'];
     $_SESSION['psw'] = $_POST['psw'];
-// print($role);
-// print($email);
-// print($psw);
-
 ?>
 
 <!DOCTYPE html>

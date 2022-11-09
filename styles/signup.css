@@ -85,7 +85,7 @@ p{
 }
 
 /* Clear floats */
-.clearfix::after {
+.buttons::after {
   content: "";
   clear: both;
   display: table;

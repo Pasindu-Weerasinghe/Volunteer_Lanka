@@ -1,6 +1,12 @@
-<?php include ('Navbar/navbar.php') ;
+<?php include ('Navbar/navbar.php') ?>
+<?php include 'conn.php';
+    $_SESSION['role'] = $_POST['role'];
+    $_SESSION['email'] = $_POST['email'];
+    $_SESSION['psw'] = $_POST['psw'];
+// print($role);
+// print($email);
+// print($psw);
 
-// echo "Password: " . $_SESSION['email'] . "<br>";
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="styles/signup.css">
     <title>Signup for Volunteer</title>
     <body>
-    <form action="signup_auth.php" method="post">
+    <form action="signup_auth.php" method="post" enctype="multipart/form-data">
     <div class="container">
     <h1>Signup as a Volunteer</h1><br/><hr>
     
@@ -25,31 +31,31 @@
         <input type="text" name="address" required><br/>
 
         <label><b>Select your interested areas for volunteering</b></label><br/>
-        <input type="checkbox" name="area1">
-        <label for="area1">Beach cleaning</label><br/>
-        <input type="checkbox" name="area2">
-        <label for="area1">Providing facilities to rural areas</label><br/>
-        <input type="checkbox" name="area3">
-        <label for="area1">Tree planting</label> <br/>
-        <input type="checkbox" name="area4">
-        <label for="area1">Helping child/adult orphanages</label><br/>
-        <input type="checkbox" name="area5">
-        <label for="area1">Animal rescuing/rehabilitation</label><br/><br/>
+        <input type="checkbox" name="area[]" value="Beach cleaning">
+        <label>Beach cleaning</label><br/>
+        <input type="checkbox" name="area[]" value="Providing facilities to rural areas">
+        <label>Providing facilities to rural areas</label><br/>
+        <input type="checkbox" name="area[]" value="Tree planting">
+        <label>Tree planting</label> <br/>
+        <input type="checkbox" name="area[]" value="Helping child/adult orphanages">
+        <label>Helping child/adult orphanages</label><br/>
+        <input type="checkbox" name="area[]" value="Animal rescuing/rehabilitation">
+        <label>Animal rescuing/rehabilitation</label><br/><br/>
 
 
         <label><b>Select organizations you have already joined</b></label><br/>
-        <input type="checkbox" name="area1">
-        <label for="area1">Rotaract Club</label><br/>
-        <input type="checkbox" name="area2">
-        <label for="area1">IEEE society</label><br/>
-        <input type="checkbox" name="area3">
-        <label for="area1">AIESEC</label> <br/>
-        <input type="checkbox" name="area4">
-        <label for="area1">Leo Club</label><br/>
-        <input type="checkbox" name="area5">
-        <label for="area1">Lions Club</label><br/><br/>
+        <input type="checkbox" name="org[]" value="Rotaract Club">
+        <label for="org1">Rotaract Club</label><br/>
+        <input type="checkbox" name="org[]" value="IEEE Society">
+        <label for="org2">IEEE society</label><br/>
+        <input type="checkbox" name="org[]" value="AIESEC">
+        <label for="org3">AIESEC</label> <br/>
+        <input type="checkbox" name="org[]" value="Leo Club">
+        <label for="org4">Leo Club</label><br/>
+        <input type="checkbox" name="org[]" value="Lions Club">
+        <label for="org5">Lions Club</label><br/><br/>
         
-        <div class="clearfix">
+        <div class="buttons">
             <button class="cancel"><b>Cancel</b></button>
             <button name="signup" class="next"><b>Submit</b></button>
         </div>

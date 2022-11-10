@@ -11,7 +11,7 @@
     <title>Login</title>
 
 <body>
-    <form action="login.php" method="post">
+    <form action="home_organizer.php" method="post">
         <div class="container">
             <h1>Login</h1>
             <label for="uname"><b>Username</b></label>

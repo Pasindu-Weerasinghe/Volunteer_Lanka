@@ -1,7 +1,3 @@
-<?php include 'sidenav/sidenav.php' ?>
-<?php include 'conn.php' ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +8,9 @@
     <link rel="stylesheet" href="styles/view.css">
 </head>
 <body>
-    <h2>Project Name</h2>
+<h2>Project Name</h2>
+<div class="item"><img src="cards/img1.jpg"> <img src="cards/img2.jpg"> </div>
+    
         <table>
             <tr>
                 <td>Date</td>

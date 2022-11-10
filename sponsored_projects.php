@@ -54,7 +54,7 @@
             </div>
             <p>Project Name</p>
             <p>Amount</p>
-            <a class="btn" href="">View</a>
+            <a class="btn" href="view_sponsor_notices.php">View</a>
         </div>
     </section>
 </body>

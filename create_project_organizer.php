@@ -57,8 +57,8 @@
         </table>
     </div>
 
-    <button class="btn1"><a href="">Cancel Project</a></button>
-    <button class="btn2"><a href="">Postpone Project</a></button>
+    <button class="btn1" href="">Cancel</button>
+    <button class="btn2" href="">Next</button>
 
 </body>
 

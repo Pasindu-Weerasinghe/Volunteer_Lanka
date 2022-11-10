@@ -5,7 +5,7 @@ if (!isset($_SESSION['uid'])) {
     header("Location: login.php");
 }
 include 'Navbar/navbar_log.php';
-include 'sidenav/sidenav.php';
+// include 'sidenav/sidenav.php';
 
     $sql = "SELECT P_ID, Name, Date FROM project";
     $result = mysqli_query($conn, $sql);

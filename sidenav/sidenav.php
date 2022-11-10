@@ -25,8 +25,8 @@
     <a href="completed_volunteer.php">Completed Projects</a>
     <a href="newideas_volunteer.php">Request to Organize Projects</a>
     <a href="calendar.php">Calendar</a>
-    <a href="#">Search Organizers</a>
-    <a href="#">My Profile</a>
+    <a href="search.php">Search Organizers</a>
+    <a href="profile.php">My Profile</a>
     <a href="complain.php">Complain</a>
   </div>
 </body>

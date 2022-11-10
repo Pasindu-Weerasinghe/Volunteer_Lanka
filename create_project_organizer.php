@@ -16,28 +16,44 @@
             <tr>
                 <td>Project Name</td>
                 <td>:</td>
-                <td><input type="text" name="name" required></td>
+                <td><input type="text" name="project-name" required></td>
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td>:</td>
+                <td><input type="date" name="date" required></td>
             </tr>
             <tr>
                 <td>Time</td>
                 <td>:</td>
-                <td></td>
+                <td><input type="time" name="time" required></td>
             </tr>
             <tr>
                 <td>Venue</td>
                 <td>:</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Number of Volunteers</td>
-                <td>:</td>
-                <td></td>
+                <td><input type="text" name="venue" required></td>
             </tr>
             <tr>
                 <td>Description</td>
                 <td>:</td>
+                <td><input type="text" name="description" required></td>
+            </tr>
+            <tr>
+                <td>Number of Volunteers</td>
+                <td>:</td>
+                <td><input type="number" name="no-of-members" min="1" required></td>
+            </tr>
+            <tr>
+                <td>Select partnership</td>
+                <td>:</td>
                 <td></td>
             </tr>
+            <tr>
+                <td>Select sponsorship</td>
+                <td>:</td>
+                <td></td>
+            </tr>
+
         </table>
     </div>
 

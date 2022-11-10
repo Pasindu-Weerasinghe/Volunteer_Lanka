@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <h2>Publish Sponsor Notice</h2><br /><br />
+    <h2>Publish Sponsor Notice</h2><br />
     <div class="container">
         <table>
             <tr>
@@ -54,7 +54,7 @@
         </table>
     </div>
 
-    <button class="btn1" href="">Cancel</button>
+    <button class="btn1" href="">Back</button>
     <button class="btn2" href="">Publish Notice</button>
 
 </body>

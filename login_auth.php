@@ -4,8 +4,7 @@ include 'conn.php';
 if (isset($_REQUEST["login"])){
     $uname = $_REQUEST["uname"];
     $psw = $_REQUEST["psw"];
-
-    $role_id = 0;
+    $_SESSION['uname'] = $uname;
 
     $sql = "SELECT * FROM user WHERE Email ='$uname' AND Password ='$psw'";
     $result = mysqli_query($conn, $sql);
@@ -13,6 +12,7 @@ if (isset($_REQUEST["login"])){
     if ($result -> num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             $uid = $row['U_ID'];
+            $email = $row['Email'];
             $role = $row['Role'];
             $status = $row['Status'];
         }
@@ -20,7 +20,6 @@ if (isset($_REQUEST["login"])){
             if ($role == 'volunteer') {
                 $_SESSION['uid'] = $uid;
                 header('Location: home_volunteer.php'); 
-                exit; 
             }
             // else {
             //     $_SESSION['uid'] = $uid;

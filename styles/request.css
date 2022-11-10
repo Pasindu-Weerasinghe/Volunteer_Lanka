@@ -1,0 +1,33 @@
+body{
+    background-color: #b3cce1;
+    font-family: 'Poppins', sans-serif;
+}
+
+button:hover {
+  opacity:1;
+}
+
+.new {
+    float:right;
+    background-color: #6aa438;
+    color: #e0e0f0;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 12%;
+    opacity: 0.9;
+    padding: 15px 10px 15px 10px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+}
+
+.container-body {
+  padding: 0 100px 0 100px;
+}
+
+

@@ -15,7 +15,7 @@
             <ul>
                 <!-- <li id="login"><a href="login.php">LOGIN</a></li>
                 <li id="signup"><a id="signup a" href="signup.php">SIGN UP</a></li> -->
-                <li><?php echo "Hey! ". $_SESSION['uid']; ?></li>
+                <li><?php echo "Hey! ". $_SESSION['uname']; ?></li>
                 <li id="signup"><a id="signup a" href="logout.php">Logout</a></li>
                 
             </ul>

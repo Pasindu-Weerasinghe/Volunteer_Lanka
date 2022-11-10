@@ -1,12 +1,12 @@
 <?php 
 include 'conn.php';
+session_start();
 if (!isset($_SESSION['uid'])) {
     header("Location: login.php");
 }
 include 'Navbar/navbar_log.php';
-include 'sidenav/sidenav.php' ?>
+include 'sidenav/sidenav.php';
 
-<?php
     $sql = "SELECT P_ID, Name, Date FROM project";
     $result = mysqli_query($conn, $sql);
     $projects = mysqli_fetch_all($result, MYSQLI_ASSOC);

@@ -10,8 +10,4 @@
         echo 'Connection error: '.mysqli_connect_error();
     }
 
-    if (!isset($_SESSION)) {
-        session_start();
-    }
-    
 ?>

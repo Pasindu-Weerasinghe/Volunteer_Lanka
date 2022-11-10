@@ -30,4 +30,27 @@ a {
   padding: 0 100px 0 100px;
 }
 
+.requests {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.requests td, .requests th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.requests tr:nth-child(even){background-color: #f2f2f2;}
+
+.requests tr:hover {background-color: #ddd;}
+
+.requests th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+
 

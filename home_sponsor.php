@@ -17,21 +17,21 @@
             </div>
             <h2>Project Name</h2>
             <h2>Amount:</h2>
-            <a class="btn" href="">View</a>
+            <a class="btn" href="sponsored_projects.php">View</a>
         </div>
         <div class="card">
             <div class="card-image card2">
             </div>
             <h2>Project Name:</h2>
             <h2>Amount:</h2>
-            <a class="btn" href="">View</a>
+            <a class="btn" href="sponsored_projects.php">View</a>
         </div>
         <div class="card">
             <div class="card-image card3">
             </div>
             <h2>Project Name</h2>
             <h2>Amount:</h2>
-            <a class="btn" href="">View</a>
+            <a class="btn" href="sponsored_projects.php">View</a>
 </div>
     </section>
 </body>

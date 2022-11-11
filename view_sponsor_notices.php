@@ -1,4 +1,5 @@
 <?php include 'Navbar/navbar.php' ?>
+<?php include 'sidenav/sidenav.php' ?>
 
 <head>
     <meta charset="UTF-8">

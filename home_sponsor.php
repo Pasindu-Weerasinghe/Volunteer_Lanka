@@ -1,4 +1,6 @@
 <?php include 'Navbar/navbar.php' ?>
+<?php include 'sidenav/sidenav.php' ?>
+
 <style><?php include ('Navbar/navbar.css') ?></style>
 <!DOCTYPE html>
 <html lang="en">

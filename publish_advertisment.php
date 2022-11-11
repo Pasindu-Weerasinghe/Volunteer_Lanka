@@ -19,14 +19,13 @@
     
         <p><strong>Upload Advertiesment</strong>  </p2><br />
 
-        <div class="body2">
             <div class="container-image">
                 <div class="vertically-center">
-                    <button class="btn3">Upload Here</button>
+                <button class="btn3"><a href="#">Upload Here</a></button>
                 </div>
                 <img src="cards/img1.jpg">
             </div>
-        </div>
+       
 
         <br>
         <p><strong>Description</strong>  </p2><br />

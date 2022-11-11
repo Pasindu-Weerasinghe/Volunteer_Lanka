@@ -9,6 +9,7 @@
 	justify-content: center;
 	flex-wrap: wrap;
 	padding-top: 20px;
+    padding-right: 450px;
 }
 
 .item {
@@ -45,8 +46,8 @@ p{
 .vertically-center {
 	margin: 0;
 	position: absolute;
-	top: 48%;
-	left: 30%;
+	top: 41%;
+	left: 16%;
 }
 
 .btn1,
@@ -68,14 +69,20 @@ p{
 	background-color: #84b464;
 	color: black;
 	font-weight: bold;
-	width: 100px;
-	height: 40px;
+	border: none;
+	border-radius: 15px;
+	padding: 10px 32px;
+	text-align: center;
+	display: inline-block;
+	font-family: "Poppins", sans-serif;
+	font-size: 14px;
+	margin-left: 28%;
 	margin-right: 20px;
+	width: 155px;
+	height: 45px;
 }
 
-.body2{
-    left: 10%;
-}
+
 .container2 {
 	/* display: flex; */
 	justify-content: 20px;

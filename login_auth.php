@@ -5,7 +5,7 @@ if (isset($_REQUEST["login"])){
     $uname = $_REQUEST["uname"];
     $psw = $_REQUEST["psw"];
 
-    $role_id = 0;
+    //$role_id = 0;
 
     $sql = "SELECT * FROM user WHERE Email ='$uname' AND Password ='$psw'";
     $result = mysqli_query($conn, $sql);
@@ -20,7 +20,7 @@ if (isset($_REQUEST["login"])){
             if ($role == 'sponsor') {
                 $_SESSION['uid'] = $uid;
                 header('Location: home_sponsor.php'); 
-                exit; 
+                //exit; 
             }
             // else {
             //     $_SESSION['uid'] = $uid;

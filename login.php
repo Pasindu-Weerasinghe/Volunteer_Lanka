@@ -25,7 +25,7 @@
         <button type="submit">Login</button>
     </div><br/>
 
-    <span class="signup">Don't have an account? <a href="#">Sign up</a></span>
+    <span class="signup">Don't have an account? <a href="signup,php">Sign up</a></span>
     </form>
     </body>
 </head>

@@ -4,7 +4,6 @@ session_start();
 if (isset($_REQUEST["login"])){
     $uname = $_REQUEST["uname"];
     $psw = $_REQUEST["psw"];
-    $_SESSION['uname'] = $uname;
 
     $sql = "SELECT * FROM user WHERE Email ='$uname' AND Password ='$psw'";
     $result = mysqli_query($conn, $sql);
@@ -19,6 +18,7 @@ if (isset($_REQUEST["login"])){
         if ($status != 'restricted') {
             if ($role == 'volunteer') {
                 $_SESSION['uid'] = $uid;
+                $_SESSION['uname'] = $uname;
                 header('Location: home_volunteer.php'); 
             }
             // else {

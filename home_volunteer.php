@@ -1,11 +1,10 @@
 <?php 
-include 'conn.php';
+require 'conn.php';
 session_start();
 if (!isset($_SESSION['uid'])) {
     header("Location: login.php");
 }
-include 'Navbar/navbar_log.php';
-// include 'sidenav/sidenav.php';
+require 'Navbar/navbar_log.php';
 
     $sql = "SELECT P_ID, Name, Date FROM project";
     $result = mysqli_query($conn, $sql);
@@ -22,7 +21,7 @@ include 'Navbar/navbar_log.php';
     <title>Home</title>
 </head>
 <body>
-<div id="main">
+<div id="main" class="main">
     <h2>Upcoming Projects</h2><br/><br/>
     <section class="container">
         <?php foreach ($projects as $project){ ?>

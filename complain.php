@@ -1,13 +1,10 @@
 <?php 
-include 'conn.php';
+require 'conn.php';
 session_start();
-if (isset($_SESSION['uid'])) {
-    include 'Navbar/navbar_log.php';
-}
-else {
+if (!isset($_SESSION['uid'])) {
     header("Location: login.php");
 }
-include 'sidenav/sidenav.php' ?>
+require 'Navbar/navbar_log.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,16 +13,16 @@ include 'sidenav/sidenav.php' ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/signup.css">
+    <link rel="stylesheet" href="cards/cards.css">
     <title>Complain</title>
 </head>
 <body>
-<div id="main">
-    <div class="container-body">
-    <h2>Complain to Admin</h2><br/>
+<div id="main" class="main">
+    <h2><br/>Complain to Admin</h2><br/>
     <h4>Your complaint will be considered by one of our admins. Do not provide false information in the below form.</h4>
     <form action="complain.php" method="post">
     <div class="container">
-    <p>Send us your complain about another user or any other general issue</p><hr>
+        <p>Send us your complain about another user or any other general issue</p><hr>
     
         <label for="uname"><b>Username</b></label>
         <input type="text" name="uname" value=<?php echo ($_SESSION['uname']) ?> readonly>
@@ -39,10 +36,8 @@ include 'sidenav/sidenav.php' ?>
         <button class="cancel">Cancel</button>
         <button class="next" name="complain">Complain</button>
         
-
     </div>
     </form>
-    </div>
 </div>
 </body>
 </html>

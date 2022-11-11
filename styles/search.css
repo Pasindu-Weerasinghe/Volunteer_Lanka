@@ -32,6 +32,7 @@ a {
 
 .search-container {
     padding-left: 35%;
+    padding-top: 30px;
 }
 
 input[type=text]{

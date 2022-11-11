@@ -1,13 +1,10 @@
 <?php 
-include 'conn.php';
+require 'conn.php';
 session_start();
-if (isset($_SESSION['uid'])) {
-    include 'Navbar/navbar_log.php';
-}
-else {
+if (!isset($_SESSION['uid'])) {
     header("Location: login.php");
 }
-include 'sidenav/sidenav.php' ?>
+require 'Navbar/navbar_log.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,11 +13,11 @@ include 'sidenav/sidenav.php' ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/request.css">
+    <link rel="stylesheet" href="cards/cards.css">
     <title>New Ideas</title>
 </head>
 <body>
-<div id="main">
-    <div class="container-body">
+<div id="main" class="main">
         <h2>Requests sent by you to organize projects</h2>
         <button class="new"><a href="request_projects.php"><b>New Request</b></a></button>
         <br/><br/><br/><br/>
@@ -41,7 +38,6 @@ include 'sidenav/sidenav.php' ?>
                 <td>Sweden</td>
             </tr>
         </table>
-    </div>
 </div>
 </body>
 </html>

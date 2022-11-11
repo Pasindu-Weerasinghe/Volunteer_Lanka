@@ -27,6 +27,9 @@ body{
 h2, p{
     margin: 10px 10px 0 10px;
 }
+h3, h4 {
+    margin: 0 0 10px 10px;
+}
 
 .card a{
     text-decoration: none;
@@ -41,19 +44,25 @@ h2, p{
 }
 .card-image{
     height: 170px;
+    width:100px;
+    display:inline-block;
     margin-bottom: 15px;
     background-size: cover;
+    border-radius: 20px;
+    position: relative;
+}
+
+#cards {
+    position: absolute;
+    object-fit: cover;
+    width: 270px;
+    height: 210px;
+    padding: 10px;
     border-radius: 20px 20px 0 0;
 }
 
-.card1{
-    background-image: url('img1.jpg');
-}
-.card2{
-    background-image: url('img2.jpg');
-}
-.card3{
-    background-image: url('img3.jpg');
+.main {
+    padding: 20px 150px 0 150px;   
 }
 
 .card:hover{

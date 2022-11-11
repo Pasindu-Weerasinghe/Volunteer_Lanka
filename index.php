@@ -1,10 +1,11 @@
 <?php include 'Navbar/navbar.php';
-include 'conn.php'; ?>
+require 'conn.php'; ?>
 
 <?php
     $sql = "SELECT P_ID, Name, Date FROM project";
     $result = mysqli_query($conn, $sql);
     $projects = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -18,15 +19,21 @@ include 'conn.php'; ?>
 </head>
 <body>
 <section class="container">
-        <?php foreach ($projects as $project){ ?>
+        <?php foreach ($projects as $project){ 
+            $pid = $project['P_ID']?>
             <div class="card">
-            <div class="card-image card1">
-            </div>
+            <?php $sql2 = "SELECT Image FROM pr_image WHERE $pid = P_ID";
+                $result2 = mysqli_query($conn, $sql2);
+                while($row = $result2->fetch_assoc()) { 
+                    $image = $row['Image'];?>
+                    <div class="card-image" ><img id="cards" src="images/<?= $image?>"></div>
+                <?php }?>
             <h2><?php echo ($project["Name"]); ?></h2>
             <p><?php echo ($project["Date"]); ?></p>
-            <a class="btn" href="view_project_volunteer.php?pid=<?php echo $project['P_ID']?>">View</a>
+            <a class="btn" href="view_project_volunteer.php?pid=<?php echo $pid?>">View</a>
             </div>
-        <?php } ?>
+        <?php } 
+        $conn->close();?>
     </section>
 </body>
 </html>

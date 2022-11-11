@@ -1,13 +1,11 @@
-<?php include 'conn.php';
-if (isset($_SESSION['uid'])) {
-    include 'Navbar/navbar_log.php';
-}
-else {
-    include 'Navbar/navbar.php';
-}
-include 'sidenav/sidenav.php' ?>
-
 <?php 
+require 'conn.php';
+session_start();
+if (!isset($_SESSION['uid'])) {
+    header("Location: login.php");
+}
+include 'Navbar/navbar_log.php';
+
     $pid = $_REQUEST["pid"];
     $sql1 = "SELECT Name, Date, Time, Venue, No_of_volunteers, Description FROM project WHERE $pid = P_ID";
     $result1 = mysqli_query($conn, $sql1);
@@ -37,6 +35,7 @@ include 'sidenav/sidenav.php' ?>
     <title><?php echo ($Name) ?></title>
 </head>
 <body>
+<div id="main">
     <h2><?php echo ($Name) ?></h2><br/><br/>
     <div class="container">
         <div class="container-image">    
@@ -44,7 +43,7 @@ include 'sidenav/sidenav.php' ?>
             if ($result2 -> num_rows>0) {
                 while($row2 = $result2->fetch_assoc()) { 
                     $image = $row2['Image']?>
-                    <div class="item"><img src="cards/<?php echo $image; ?>"></div>
+                    <div class="item"><img src="images/<?php echo $image; ?>"></div>
                 <?php }
             }?>    
         </div>
@@ -79,6 +78,8 @@ include 'sidenav/sidenav.php' ?>
     
     <button class="btn1"><a href="login.php">Back</a></button>
     <button class="btn2"><a href="#">Join</a></button>
+
+</div>
 
 </body>
 </html>

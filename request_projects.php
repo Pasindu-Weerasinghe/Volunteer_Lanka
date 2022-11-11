@@ -1,13 +1,10 @@
 <?php 
-include 'conn.php';
+require 'conn.php';
 session_start();
-if (isset($_SESSION['uid'])) {
-    include 'Navbar/navbar_log.php';
-}
-else {
+if (!isset($_SESSION['uid'])) {
     header("Location: login.php");
 }
-include 'sidenav/sidenav.php' ?>
+require 'Navbar/navbar_log.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,11 +13,11 @@ include 'sidenav/sidenav.php' ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/signup.css">
+    <link rel="stylesheet" href="cards/cards.css">
     <title>Request</title>
 </head>
 <body>
-<div id="main">
-    <div class="container-body">
+<div id="main" class="main">
     <h2>Request to Organize Projects</h2><br/>
     <h4>As a volunteer you are able to inform the organizers about your ideas to arrange a new volunteering project. You can send a request to all the organizers by submitting this form.
     <br/>Please provide reliable information.</h4>
@@ -42,10 +39,8 @@ include 'sidenav/sidenav.php' ?>
 
         <button class="cancel">Back</button>
         <button class="next" name="request">Request</button>
-
     </div>
     </form>
-    </div>
 </div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?php include ('Navbar/navbar.php') ?>
-<?php include 'sidenav/sidenav.php' ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

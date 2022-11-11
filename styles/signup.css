@@ -89,10 +89,6 @@ p{
   padding: 16px;
 }
 
-.container-body {
-  padding: 0 150px 0 150px;
-}
-
 /* Clear floats */
 .buttons::after {
   content: "";

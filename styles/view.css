@@ -17,6 +17,10 @@
     margin: 5px;
 }
 
+.main {
+    padding: 20px 150px 0 150px;   
+}
+
 img {
     height: 200px;
     width: 300px;
@@ -58,4 +62,11 @@ table {
 
 td {
     padding-right: 70px;
+}
+
+h2, p{
+    margin: 10px 10px 0 10px;
+}
+h3, h4 {
+    margin: 0 0 10px 10px;
 }

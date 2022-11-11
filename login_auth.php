@@ -2,8 +2,8 @@
 include 'conn.php';
 session_start();
 if (isset($_REQUEST["login"])){
-    $uname = $_REQUEST["uname"];
-    $psw = $_REQUEST["psw"];
+    $uname = $_POST["uname"];
+    $psw = $_POST["psw"];
 
     $sql = "SELECT * FROM user WHERE Email ='$uname' AND Password ='$psw'";
     $result = mysqli_query($conn, $sql);

@@ -17,9 +17,9 @@ if (isset($_REQUEST["login"])){
             $status = $row['Status'];
         }
         if ($status != 'restricted') {
-            if ($role == 'volunteer') {
+            if ($role == 'sponsor') {
                 $_SESSION['uid'] = $uid;
-                header('Location: home_volunteer.php'); 
+                header('Location: home_sponsor.php'); 
                 exit; 
             }
             // else {

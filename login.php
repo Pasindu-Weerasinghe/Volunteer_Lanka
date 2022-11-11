@@ -20,7 +20,7 @@
 
         <label for="psw"><b>Password</b></label>
         <input type="password" name="psw" required>
-        <span class="psw">Forgot <a href="#">password?</a></span>
+        <span class="psw"> <a href="#">Forgot password?</a></span>
 
         <button type="submit">Login</button>
     </div><br/>

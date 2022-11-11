@@ -20,20 +20,16 @@
                 <td>Volunteer Name</td>
             </tr>
             <tr>
+                <td><input type="checkbox" name="email"></td>
+                <td>E-mail address</td>
+            </tr>
+            <tr>
                 <td><input type="checkbox" name="contact-no"></td>
                 <td>Contact number</td>
             </tr>
             <tr>
-                <td><input type="checkbox" name="v-username"></td>
-                <td>Volunteer username</td>
-            </tr>
-            <tr>
                 <td><input type="checkbox" name="meal-pref"></td>
                 <td>Meal preference</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="email"></td>
-                <td>E-mail address</td>
             </tr>
             <tr>
                 <td><input type="checkbox" name="prior-participations"></td>

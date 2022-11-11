@@ -33,29 +33,6 @@
             <a class="btn" href="view_project_organizer.php">View</a>
         </div>
     </section><br />
-    <hr><br />
-    <h2>Completed Projects</h2><br /><br />
-    <section class="container">
-        <div class="card">
-            <div class="card-image card1">
-            </div>
-            <h2>Project Name</h2>
-            <a class="btn" href="">View</a>
-        </div>
-        <div class="card">
-            <div class="card-image card2">
-            </div>
-            <h2>Project Name</h2>
-            <a class="btn" href="">View</a>
-        </div>
-        <div class="card">
-            <div class="card-image card3">
-            </div>
-            <h2>Project Name</h2>
-            <a class="btn" href="">View</a>
-        </div>
-    </section>
-
 </body>
 
 </html>

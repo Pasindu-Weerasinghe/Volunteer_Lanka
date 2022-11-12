@@ -26,5 +26,5 @@ if (isset($_REQUEST["signup"])){
 
 session_destroy();
 $conn->close();
-
+header("Location:login.php")
 ?>

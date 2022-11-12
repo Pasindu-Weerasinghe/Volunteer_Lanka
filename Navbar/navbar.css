@@ -22,10 +22,9 @@ header{
     height: 80px;
     display: flex;
     justify-content: space-between;
-
 }
 
- #logo{
+#logo{
     width: 85px;
     height: 85px;
 } 

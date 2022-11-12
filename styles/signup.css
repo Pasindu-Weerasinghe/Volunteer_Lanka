@@ -1,5 +1,5 @@
 body{
-    background-color: #89afd6;
+    background-color: #b3cce1;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -9,7 +9,7 @@ form {
     margin: auto;  
     margin-top: 20px;
     padding: 75px;  
-    background: #b3cce1;  
+    background: #89afd6;  
     border-radius: 15px ;
   }
 
@@ -69,7 +69,6 @@ p{
     font-size: 18px;
 }
 
-
 /* Float cancel and signup buttons and add an equal width */
 .cancel {
   float: left;
@@ -79,13 +78,19 @@ p{
     float:right;
 }
 
+.new {
+    float:right;
+    margin:0;
+    padding: 0;
+}
+
 /* Add padding to container elements */
 .container {
   padding: 16px;
 }
 
 /* Clear floats */
-.clearfix::after {
+.buttons::after {
   content: "";
   clear: both;
   display: table;

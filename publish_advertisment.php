@@ -1,6 +1,6 @@
 <?php include 'Navbar/navbar.php';
 include 'conn.php';
-                    if(isset($_POST['submit'])){
+if(isset($_POST['submit'])){
                         $file=$_POST['filename'];
                         $sql="INSERT INTO image (image_1)
                         VALUES ($file)";
@@ -29,7 +29,7 @@ include 'conn.php';
             <div class="container-image">
                 <div class="vertically-center">
 
-                <form action="" method="post"> 
+                <form action="" method="post" enctype="multipart/form-data"> 
                     <input type="file" id="myFile" name="filename" value="Upload Here">
                     <button class="btn1" type="submit" name="submit">Upload</button>
 

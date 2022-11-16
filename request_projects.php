@@ -13,7 +13,6 @@ require 'Navbar/navbar_log.php'; ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/signup.css">
-    <!-- <link rel="stylesheet" href="cards/cards.css"> -->
     <title>Request</title>
 </head>
 <body>
@@ -21,7 +20,7 @@ require 'Navbar/navbar_log.php'; ?>
     <h2>Request to Organize Projects</h2><br/>
     <h4>As a volunteer you are able to inform the organizers about your ideas to arrange a new volunteering project. You can send a request to all the organizers by submitting this form.
     <br/>Please provide reliable information.</h4>
-    <form action="newideas_insert.php" method="post">
+    <form action="newideas_insert.php" method="post" enctype="multipart/form-data">
     <div class="container">
     <p>Let us know of the opportunities</p><hr>
     
@@ -35,7 +34,7 @@ require 'Navbar/navbar_log.php'; ?>
         <input type="text" name="des" required>
 
         <label for="photo"><b>Add Photos</b></label>
-        <input type="file" id="myFile" name="filename"><br/><br/>
+        <input type="file" id="myFile" name="file"><br/><br/>
 
         <button class="cancel">Back</button>
         <button class="next" name="request">Request</button>

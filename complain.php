@@ -18,7 +18,7 @@ require 'Navbar/navbar_log.php'; ?>
 </head>
 <body>
 <div id="main" class="main">
-    <h2><br/>Complain to Admin</h2><br/>
+    <h2>Complain to Admin</h2><br/>
     <h4>Your complaint will be considered by one of our admins. Do not provide false information in the below form.</h4>
     <form action="complain.php" method="post">
     <div class="container">

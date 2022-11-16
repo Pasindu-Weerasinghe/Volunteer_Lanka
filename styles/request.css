@@ -64,4 +64,21 @@ h3, h4 {
   margin: 0 0 10px 10px;
 }
 
+.card-image{
+  height: 170px;
+  width:100px;
+  display:inline-block;
+  margin-bottom: 15px;
+  background-size: cover;
+  border-radius: 20px;
+  position: relative;
+}
 
+img {
+  width: 200px;
+  position: relative;
+}
+
+.main {
+  padding: 100px 150px 0 150px;   
+}

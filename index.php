@@ -5,7 +5,6 @@ require 'conn.php'; ?>
     $sql = "SELECT P_ID, Name, Date FROM project";
     $result = mysqli_query($conn, $sql);
     $projects = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +26,7 @@ require 'conn.php'; ?>
                 while($row = $result2->fetch_assoc()) { 
                     $image = $row['Image'];?>
                     <div class="card-image" ><img id="cards" src="images/<?= $image?>"></div>
-                <?php }?>
+            <?php }?>
             <h2><?php echo ($project["Name"]); ?></h2>
             <p><?php echo ($project["Date"]); ?></p>
             <a class="btn" href="view_project_volunteer.php?pid=<?php echo $pid?>">View</a>

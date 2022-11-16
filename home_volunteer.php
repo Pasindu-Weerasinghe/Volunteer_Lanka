@@ -24,10 +24,15 @@ require 'Navbar/navbar_log.php';
 <div id="main" class="main">
     <h2>Upcoming Projects</h2><br/><br/>
     <section class="container">
-        <?php foreach ($projects as $project){ ?>
+        <?php foreach ($projects as $project){ 
+            $pid = $project['P_ID']?>
             <div class="card">
-            <div class="card-image card1">
-            </div>
+            <?php $sql2 = "SELECT Image FROM pr_image WHERE $pid = P_ID";
+                $result2 = mysqli_query($conn, $sql2);
+                while($row = $result2->fetch_assoc()) { 
+                    $image = $row['Image'];?>
+                    <div class="card-image" ><img id="cards" src="images/<?= $image?>"></div>
+            <?php }?>
             <h2><?php echo ($project["Name"]); ?></h2>
             <p><?php echo ($project["Date"]); ?></p>
             <a class="btn" href="view_project_volunteer.php?pid=<?php echo $project['P_ID']?>">View</a>
@@ -39,12 +44,17 @@ require 'Navbar/navbar_log.php';
         
     <h2>Suggested Projects</h2><br/><br/>
     <section class="container">
-        <?php foreach ($projects as $project){ ?>
+        <?php foreach ($projects as $project){ 
+            $pid = $project['P_ID']?>
             <div class="card">
-            <div class="card-image card1">
-            </div>
-            <h2><?php echo htmlspecialchars($project["Name"]); ?></h2>
-            <p><?php echo htmlspecialchars($project["Date"]); ?></p>
+            <?php $sql2 = "SELECT Image FROM pr_image WHERE $pid = P_ID";
+                $result2 = mysqli_query($conn, $sql2);
+                while($row = $result2->fetch_assoc()) { 
+                    $image = $row['Image'];?>
+                    <div class="card-image" ><img id="cards" src="images/<?= $image?>"></div>
+            <?php }?>
+            <h2><?php echo ($project["Name"]); ?></h2>
+            <p><?php echo ($project["Date"]); ?></p>
             <a class="btn" href="view_project_volunteer.php?pid=<?php echo $project['P_ID']?>">View</a>
             </div>
         <?php } ?>

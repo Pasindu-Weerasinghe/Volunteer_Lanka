@@ -4,7 +4,14 @@ session_start();
 if (!isset($_SESSION['uid'])) {
     header("Location: login.php");
 }
-require 'Navbar/navbar_log.php'; ?>
+
+$uid = $_SESSION['uid'];
+require 'Navbar/navbar_log.php'; 
+
+    $sql = "SELECT PI_ID, Location, Description FROM pr_ideas WHERE $uid = U_ID";
+    $result = mysqli_query($conn, $sql);
+    $requests = mysqli_fetch_all($result, MYSQLI_ASSOC);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +20,6 @@ require 'Navbar/navbar_log.php'; ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/request.css">
-    <!-- <link rel="stylesheet" href="cards/cards.css"> -->
     <title>New Ideas</title>
 </head>
 <body>
@@ -27,16 +33,22 @@ require 'Navbar/navbar_log.php'; ?>
                 <th>Description</th>
                 <th>Images</th>
             </tr>
-            <tr>
-                <td>Alfreds Futterkiste</td>
-                <td>Maria Anders</td>
-                <td>Germany</td>
-            </tr>
-            <tr>
-                <td>Berglunds snabbköp</td>
-                <td>Christina Berglund</td>
-                <td>Sweden</td>
-            </tr>
+            <?php foreach ($requests as $request){ ?>  
+                <tr>
+                    <td><?php echo ($request["Location"]); ?></td>
+                    <td><?php echo ($request["Description"]); ?></td>
+                    <td>
+                    <?php 
+                    $idea = $request["PI_ID"];
+                    $sql2 = "SELECT Image FROM idea_image WHERE $idea = PI_ID";
+                    $result2 = mysqli_query($conn, $sql2);
+                    while($row = $result2->fetch_assoc()) { 
+                        $image = $row['Image'];?>
+                        <img src="images/<?= $image?>">
+                    <?php } ?>
+                    </td>
+                </tr>
+            <?php } ?>
         </table>
 </div>
 </body>

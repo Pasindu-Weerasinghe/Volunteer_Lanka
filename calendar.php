@@ -13,8 +13,7 @@ require 'Navbar/navbar_log.php'; ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/calendar.css">
-    <!-- <link rel="stylesheet" href="cards/cards.css"> -->
-    <title>Complain</title>
+    <title>Calendar</title>
 </head>
 <body>
 <div id="main" class="main">
@@ -23,12 +22,6 @@ require 'Navbar/navbar_log.php'; ?>
     <div id="selected-month" class="calendar-month-header-selected-month">
       February 2020
     </div>
-
-    <!-- <div class="calendar-month-header-selectors">
-      <span id="previous-month-selector"><</span>
-      <span id="present-month-selector">Today</span>
-      <span id="next-month-selector">></span>
-    </div> -->
     </section>
   
     <ol id="days-of-week" class="day-of-week">

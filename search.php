@@ -6,6 +6,10 @@ if (!isset($_SESSION['uid'])) {
 }
 require 'Navbar/navbar_log.php';
 
+    $sql = "SELECT * FROM organizer";
+    $result = mysqli_query($conn, $sql);
+    $organizers = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +19,6 @@ require 'Navbar/navbar_log.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/search.css">
-    <!-- <link rel="stylesheet" href="cards/cards.css"> -->
     <title>Search</title>
 </head>
 <body>
@@ -30,16 +33,13 @@ require 'Navbar/navbar_log.php';
                 <th>Branch</th>
                 <th>Contact Number</th>
             </tr>
+            <?php foreach ($organizers as $organizer){ ?> 
             <tr>
-                <td>Alfreds Futterkiste</td>
-                <td>Maria Anders</td>
-                <td>Germany</td>
+                <td><?php echo ($organizer["Name"]); ?></td>
+                <td><?php echo ($organizer["Branch"]); ?></td>
+                <td><?php echo ($organizer["Contact"]); ?></td>
             </tr>
-            <tr>
-                <td>Berglunds snabbköp</td>
-                <td>Christina Berglund</td>
-                <td>Sweden</td>
-            </tr>
+            <?php }?>
         </table>
 </div>
 </body>

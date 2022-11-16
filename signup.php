@@ -6,11 +6,7 @@ if (isset($_POST["submit"])) {
 
     $role = $_SESSION['role'];
     $email = $_SESSION['email'];
-    $psw = $_SESSION['psw'];
-
-    $name = $_POST['name'];
-    $contact = $_POST['contact'];
-    $address = $_POST['address'];
+    $psw = $_POST['psw'];
     $confirm = $_POST['confirm-psw'];
 
     if ($confirm == $psw) {
@@ -24,6 +20,7 @@ if (isset($_POST["submit"])) {
 
         $query1 = "INSERT INTO sponsor (U_ID,Address, Contact, Type) values ('$uid','$address', '$contact', '$role')";
         $result1 = mysqli_query($conn, $query1);
+        header('location:signup_sponsor.php');
     } else {
         $error = "Password is not matched!";
     }
@@ -43,12 +40,11 @@ if (isset($_POST["submit"])) {
     <title>Signup</title>
 
 <body>
-    <form action="signup_sponsor.php" method="post">
+    <form action="" method="post">
         <div class="container">
             <h1>Signup</h1><br /><br />
             <p>Passionate about volunteering? <b>Come join us</b></p>
             <hr>
-            <form action="" method="Post">
             <label for="role"><b>Role</b></label>
             <div class="select">
                 <select id="role" name="role" required>
@@ -71,15 +67,14 @@ if (isset($_POST["submit"])) {
                 <button class="cancel">Cancel</button>
                 <button class="next" name="submit">Next</button>
             </div>
-            </form>
+
             <label class="error">
                 <?php echo $error ?>
             </label>
 
-            
-
         </div>
     </form>
+    
 </body>
 </head>
 

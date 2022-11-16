@@ -1,4 +1,11 @@
-<?php include 'Navbar/navbar.php' ?>
+<?php include 'Navbar/navbar.php';
+include 'conn.php';
+                    if(isset($_POST['submit'])){
+                        $file=$_POST['filename'];
+                        $sql="INSERT INTO image (image_1)
+                        VALUES ($file)";
+                    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,36 +28,29 @@
 
             <div class="container-image">
                 <div class="vertically-center">
-                <button class="btn3"><a href="#">Upload Here</a></button>
+
+                <form action="" method="post"> 
+                    <input type="file" id="myFile" name="filename" value="Upload Here">
+                    <button class="btn1" type="submit" name="submit">Upload</button>
+
+                </form>
+                
                 </div>
+
                 <img src="cards/img1.jpg">
             </div>
        
 
         <br>
-        <p><strong>Description</strong>  </p2><br />
+        <p><strong>Description</strong><textarea rows="10" cols="70" name="comment" placeholder="Enter here!"></textarea> </p2><br />
         <div class="silver">
-            <table class="table2">
-                <tr>
-                    <td>------------------------------------------------------------------------------------------</td>
-                </tr>
-                <tr>
-                    <td>------------------------------------------------------------------------------------------</td>
-                </tr>
-                <tr>
-                    <td>------------------------------------------------------------------------------------------</td>
-                </tr>
-                <tr>
-                    <td>------------------------------------------------------------------------------------------</td>
-                </tr>
-                <tr>
-                    <td>------------------------------------------------------------------------------------------</td>
-                </tr>
-                <tr>
-                    <td>------------------------------------------------------------------------------------------</td>
-                </tr>
-            </table>
+           
         </div>
+        <div>
+        <br><br><br><br><br>
+        <button class="btn1"><a href="publish_advertisment.php">Cancel</a></button>
+        <button class="btn2"><a href="publish_advertisment.php">Send Request</a></button>
+    </div>
     
 
 

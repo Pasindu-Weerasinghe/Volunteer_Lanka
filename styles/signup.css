@@ -90,4 +90,12 @@ p{
   clear: both;
   display: table;
 }
+.error{
+  text-align: center;
+  font-size: 24px;
+  color:red;
+  font-weight: bold;
+  padding-left: 120px;
+  padding-top: 20px;
 
+}

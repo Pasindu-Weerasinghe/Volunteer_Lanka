@@ -1,8 +1,13 @@
 <?php include('Navbar/navbar.php') ?>
 <?php include 'conn.php';
-$_SESSION['role'] = $_POST['role'];
-$_SESSION['email'] = $_POST['email'];
-$_SESSION['psw'] = $_POST['psw'];
+if(isset($_POST['signup'])){
+    $_SESSION['name'] = $_POST['name'];
+$_SESSION['contact'] = $_POST['contact'];
+$_SESSION['address'] = $_POST['address'];
+header('location:home_sponsor.php');
+
+}
+
 ?>
 
 
@@ -17,7 +22,7 @@ $_SESSION['psw'] = $_POST['psw'];
     <title>Signup for Sponsor</title>
 
 <body>
-    <form action="signup_auth.php" method="post" enctype="multipart/form-data">
+    <form action="" method="post" enctype="multipart/form-data">
         <div class="container">
             <h1>Signup as a Sponsor</h1><br />
             <hr>

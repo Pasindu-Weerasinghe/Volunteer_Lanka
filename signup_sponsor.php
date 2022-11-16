@@ -1,12 +1,21 @@
 <?php include('Navbar/navbar.php') ?>
 <?php include 'conn.php';
 if(isset($_POST['signup'])){
-    $_SESSION['name'] = $_POST['name'];
-$_SESSION['contact'] = $_POST['contact'];
-$_SESSION['address'] = $_POST['address'];
+    $name = $_POST['name'];
+$contact = $_POST['contact'];
+$address = $_POST['address'];
 header('location:home_sponsor.php');
+$query2 = "SELECT U_ID FROM user WHERE Email = '$email'";
+$result2 = mysqli_query($conn, $query2);
+$row = mysqli_fetch_array($result2);
+$uid = $row['U_ID'];
+
+$query1 = "INSERT INTO sponsor (U_ID,Address, Contact, Type) values ('$uid','$address', '$contact', '$role')";
+$result1 = mysqli_query($conn, $query1);
+header('location:signup_sponsor.php');
 
 }
+
 
 ?>
 

@@ -4,23 +4,17 @@ $error = null;
 
 if (isset($_POST["submit"])) {
 
-    $role = $_SESSION['role'];
-    $email = $_SESSION['email'];
+    $role = $_POST['role'];
+    $email = $_POST['email'];
     $psw = $_POST['psw'];
     $confirm = $_POST['confirm-psw'];
 
     if ($confirm == $psw) {
-        $query1 = "INSERT INTO user (Name, Email, Password, Role, Status, Restricted) values ('$name', '$email', '$psw', '$role','active', '0')";
+        $query1 = "INSERT INTO user (Email, Password, Role, Status, Restricted) values ( '$email', '$psw', '$role','active', '0')";
         $result1 = mysqli_query($conn, $query1);
+        header("Location:signup_sponsor.php");
 
-        $query2 = "SELECT U_ID FROM user WHERE Email = '$email'";
-        $result2 = mysqli_query($conn, $query2);
-        $row = mysqli_fetch_array($result2);
-        $uid = $row['U_ID'];
-
-        $query1 = "INSERT INTO sponsor (U_ID,Address, Contact, Type) values ('$uid','$address', '$contact', '$role')";
-        $result1 = mysqli_query($conn, $query1);
-        header('location:signup_sponsor.php');
+       
     } else {
         $error = "Password is not matched!";
     }

@@ -10,7 +10,7 @@ if (isset($_REQUEST["signup"])){
     $contact = $_POST['contact'];
     $address = $_POST['address'];
 
-    $query1 = "INSERT INTO user (Name, Email, Password, Role, Status, Restricted) values ('$name', '$email', '$psw', '$role','active', '0')";
+    $query1 = "INSERT INTO user (Email, Password, Role, Status, Restricted) values ('$email', '$psw', '$role','active', '0')";
     $result1 = mysqli_query($conn, $query1);
 
     $query2 = "SELECT U_ID FROM user WHERE Email = '$email'";
@@ -18,7 +18,7 @@ if (isset($_REQUEST["signup"])){
     $row = mysqli_fetch_array($result2);
     $uid = $row['U_ID'];
 
-    $query3 = "INSERT INTO volunteer (U_ID, Address, Contact) values ('$uid', '$address', '$contact')";
+    $query3 = "INSERT INTO volunteer (U_ID, Name, Address, Contact) values ('$uid', '$name', '$address', '$contact')";
     $result3 = mysqli_query($conn, $query3);
 
     $interest = $_POST['area'];  
@@ -36,6 +36,7 @@ if (isset($_REQUEST["signup"])){
     }
 }   
 
+session_destroy();
 $conn->close();
 
 ?>

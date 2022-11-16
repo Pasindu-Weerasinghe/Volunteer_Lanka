@@ -9,9 +9,7 @@ if (isset($_REQUEST["request"])){
     $description = $_POST['des'];
  
     $targetDir = "images/";
-    $fileName = basename($_FILES["file"]["name"]);
-    $targetFilePath = $targetDir . $fileName;
-    $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+    $allowTypes = array('jpg','png','jpeg','gif');
 
     $query = "INSERT INTO pr_ideas (Description, Location, U_ID) VALUES ('$description', '$location', '$uid')";
     $result = mysqli_query($conn, $query);
@@ -24,28 +22,33 @@ if (isset($_REQUEST["request"])){
 
     if (!empty($_FILES["file"]["name"])) {
 
-        $allowTypes = array('jpg','png','jpeg','gif');
-        if(in_array($fileType, $allowTypes)){
-            
-            if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
-                
-                $query3 = "INSERT into idea_image (PI_ID, Image) VALUES ('".$idea."','".$fileName."')";
-                $result3 = mysqli_query($conn, $query3);
-                if($result3){
-                    $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
-                }else{
-                    $statusMsg = "File upload failed, please try again.";
-                } 
+        $total = count($_FILES['file']['name']);
+        for ($i = 0; $i < $total; $i++) {
+            $fileName = $_FILES['file']['name'][$i];
+            $targetFilePath = $targetDir . $fileName;
+            $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+
+            if(in_array($fileType, $allowTypes)){
+                if(move_uploaded_file($_FILES["file"]["tmp_name"][$i], $targetFilePath)){
+                    
+                    $query3 = "INSERT into idea_image (PI_ID, Image) VALUES ('".$idea."','".$fileName."')";
+                    $result3 = mysqli_query($conn, $query3);
+                    if($result3){
+                        $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
+                    }else{
+                        $statusMsg = "File upload failed, please try again.";
+                    } 
+                }
+            }else{
+                $statusMsg = 'Only JPG, JPEG, PNG & GIF files are allowed to upload.';
             }
-        }else{
-            $statusMsg = 'Only JPG, JPEG, PNG & GIF files are allowed to upload.';
         }
     }
     echo $statusMsg;
-    // if ($result) {
-    //         echo "<script> alert ('Request Sent!');</script>";
-    //         header ("Location: newideas_volunteer.php");
-    //     }
+    if ($result) {
+            echo "<script> alert ('Request Sent!');</script>";
+            header ("Location: newideas_volunteer.php");
+    }
     
 }
 ?>

@@ -16,6 +16,12 @@ if (isset($_REQUEST["request"])){
     $query = "INSERT INTO pr_ideas (Description, Location, U_ID) VALUES ('$description', '$location', '$uid')";
     $result = mysqli_query($conn, $query);
 
+    $query2 = "SELECT PI_ID FROM pr_ideas WHERE U_ID = '$uid' && Location = '$location'";
+    $result2 = mysqli_query($conn, $query2);
+    $row = mysqli_fetch_array($result2);
+    $idea = $row['PI_ID'];
+    print($idea);
+
     if (!empty($_FILES["file"]["name"])) {
 
         $allowTypes = array('jpg','png','jpeg','gif');
@@ -23,9 +29,9 @@ if (isset($_REQUEST["request"])){
             
             if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
                 
-                $query2 = "INSERT into idea_image (PI_ID, Image) VALUES ('1','".$fileName."')";
-                $result2 = mysqli_query($conn, $query2);
-                if($result2){
+                $query3 = "INSERT into idea_image (PI_ID, Image) VALUES ('".$idea."','".$fileName."')";
+                $result3 = mysqli_query($conn, $query3);
+                if($result3){
                     $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
                 }else{
                     $statusMsg = "File upload failed, please try again.";

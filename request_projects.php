@@ -34,7 +34,7 @@ require 'Navbar/navbar_log.php'; ?>
         <input type="text" name="des" required>
 
         <label for="photo"><b>Add Photos</b></label>
-        <input type="file" id="myFile" name="file"><br/><br/>
+        <input type="file" name="file" multiple="multiple"><br/><br/>
 
         <button class="cancel">Back</button>
         <button class="next" name="request">Request</button>

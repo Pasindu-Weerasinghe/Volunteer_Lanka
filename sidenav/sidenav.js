@@ -1,7 +1,6 @@
-
 function openSideMenu(){
-  document.getElementById('side-menu').style.width = '250px';
-  document.getElementById('main').style.marginLeft = '250px';
+  document.getElementById('side-menu').style.width = '300px';
+  document.getElementById('main').style.marginLeft = '300px';
 }
 
 function closeSideMenu(){

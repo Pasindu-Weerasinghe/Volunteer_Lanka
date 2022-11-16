@@ -1,8 +1,9 @@
 <?php 
 include 'conn.php';
+session_start();
 
 if (isset($_REQUEST["login"])){
-    $uname = $_REQUEST["uname"];
+    $uname = $_POST["uname"];
     $psw = $_REQUEST["psw"];
 
     //$role_id = 0;
@@ -19,6 +20,7 @@ if (isset($_REQUEST["login"])){
         if ($status != 'restricted') {
             if ($role == 'sponsor') {
                 $_SESSION['uid'] = $uid;
+                $_SESSION['uname'] = $uname;
                 header('Location: home_sponsor.php'); 
                 //exit; 
             }

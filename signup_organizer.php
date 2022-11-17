@@ -1,3 +1,12 @@
+<?php
+require('inc/conn.php');
+session_start();
+if (!isset($_SESSION['uid'])) {
+    header('Location: login.php');
+}
+require 'Navbar/navbar_log.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

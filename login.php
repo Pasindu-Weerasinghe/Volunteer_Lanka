@@ -1,4 +1,6 @@
-<?php include 'Navbar/navbar.php' ?>
+<?php
+require_once('inc/conn.php');
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +13,8 @@
     <title>Login</title>
 
 <body>
-    <form action="home_organizer.php" method="post">
+    <?php include 'Navbar/navbar.php' ?>
+    <form action="login_auth.php" method="post">
         <div class="container">
             <h1>Login</h1>
             <label for="uname"><b>Username</b></label>
@@ -21,7 +24,7 @@
             <input type="password" name="psw" required>
             <span class="psw">Forgot <a href="#">password?</a></span>
 
-            <button type="submit">Login</button>
+            <button type="submit" name="login">Login</button>
         </div><br />
 
         <span class="signup">Don't have an account? <a href="#">Sign up</a></span>

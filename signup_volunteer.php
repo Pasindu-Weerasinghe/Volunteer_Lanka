@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="styles/signup.css">
     <title>Signup for Volunteer</title>
     <body>
+    <div class="main">
     <form action="signup_auth.php" method="post" enctype="multipart/form-data">
     <div class="container">
     <h1>Signup as a Volunteer</h1><br/><hr>
@@ -58,6 +59,7 @@
 
     </div>
     </form>
+    </div>
     </body>
 </head>
 </html>

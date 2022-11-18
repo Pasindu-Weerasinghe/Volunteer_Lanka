@@ -17,6 +17,7 @@ require 'conn.php'; ?>
     <title>Volunteer Lanka</title>
 </head>
 <body>
+<div class="main">
 <section class="container">
         <?php foreach ($projects as $project){ 
             $pid = $project['P_ID']?>
@@ -34,5 +35,6 @@ require 'conn.php'; ?>
         <?php } 
         $conn->close();?>
     </section>
+</div>
 </body>
 </html>

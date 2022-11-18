@@ -12,6 +12,7 @@ include 'conn.php';
     <link rel="stylesheet" type="text/css" href="styles/login.css">
     <title>Login</title>
     <body>
+    <div class="main">
     <form action="login_auth.php" method="post">
     <div class="container">
         <h1>Login</h1>
@@ -26,6 +27,7 @@ include 'conn.php';
     </div><br/>
     <span class="signup">Don't have an account? <a href="signup.php">Sign up</a></span>
     </form>
+    </div>
     </body>
 </head>
 </html>

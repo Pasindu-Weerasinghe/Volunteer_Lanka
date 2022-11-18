@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="styles/signup.css">
     <title>Signup</title>
     <body>
+    <div class="main">
     <form action="signup_volunteer.php" method="post">
     <div class="container">
     <h1>Signup</h1><br/><br/>
@@ -37,9 +38,9 @@
             <button class="cancel">Cancel</button>
             <button class="next" name="next">Next</button>
         </div>
-
     </div>
     </form>
+    </div>
     </body>
 </head>
 </html>

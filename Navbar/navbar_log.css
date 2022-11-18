@@ -17,10 +17,11 @@ header a{
 }
 
 header{
-    padding: 25px 30px;
+    padding: 25px 20px;
     background-color: #FFFFFF;
     height: 80px;
     display: flex;
+    justify-content: space-between;
     width: 100%;
     position: fixed; 
     top: 0; 
@@ -30,10 +31,12 @@ header{
     width: 85px;
     height: 85px;
 } 
+
 #brand{
     align-items: center;
     display: flex;
     margin-left: 10px;
+    margin-right: 70%;
 }
 
 ul a{
@@ -46,11 +49,12 @@ ul{
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-around;
 }
 
 ul li{
     padding: 15px;
-    margin-left: 860px;
+    margin-left: 10px;
 }
 
 ul li:hover{

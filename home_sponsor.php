@@ -7,7 +7,6 @@ if (!isset($_SESSION['uid'])) {
 require 'Navbar/navbar_log.php';
 ?>
 
-<style><?php include ('Navbar/navbar.css') ?></style>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +17,7 @@ require 'Navbar/navbar_log.php';
     <title>Document</title>
 </head>
 <body>
+    <div class="main">
     <h2>Sponsor Notices</h2>
     <section class="container">
         <div class="card">
@@ -40,7 +40,9 @@ require 'Navbar/navbar_log.php';
             <h2>Project Name</h2>
             <h2>Amount:</h2>
             <a class="btn" href="sponsored_projects.php">View</a>
-</div>
+        </div>
     </section>
+    </div>
+    
 </body>
 </html>

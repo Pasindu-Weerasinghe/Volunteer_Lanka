@@ -63,3 +63,6 @@ h2, p{
     transform: scale(1.05);
     transition: all 1s ease;
 }
+.main{
+    padding: 100px 150px 0px 150px;
+}

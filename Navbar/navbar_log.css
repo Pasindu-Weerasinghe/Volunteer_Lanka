@@ -24,6 +24,7 @@ header{
     width: 100%;
     position: fixed; 
     top: 0; 
+    justify-content: space-between;
 }
 
 #logo{
@@ -34,6 +35,7 @@ header{
     align-items: center;
     display: flex;
     margin-left: 10px;
+   /* margin-right: 700px;*/
 }
 
 ul a{
@@ -46,12 +48,13 @@ ul{
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-around;
 }
-
 ul li{
     padding: 15px;
-    margin-left: 860px;
+    margin-left: 10px;
 }
+
 
 ul li:hover{
     transform: scale(1.1);
@@ -68,6 +71,7 @@ ul li:hover{
     align-items: center;  
     margin-left: 0;
 }
+
 
 #logout a{
     color: black;

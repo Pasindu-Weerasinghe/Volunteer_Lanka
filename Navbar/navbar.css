@@ -17,7 +17,7 @@ header a{
 }
 
 header{
-    padding: 0 20px;
+    padding: 0px 20px;
     background-color: #FFFFFF;
     height: 80px;
     display: flex;
@@ -30,6 +30,7 @@ header{
 #logo{
     width: 85px;
     height: 85px;
+    
 } 
 #brand{
     align-items: center;

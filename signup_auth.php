@@ -1,5 +1,7 @@
+<?php include 'conn.php'; ?>
+
 <?php 
-include 'conn.php';
+
 
 if (isset($_REQUEST["signup"])){
 

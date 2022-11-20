@@ -1,6 +1,5 @@
 <?php 
 include 'conn.php';
-session_start();
 if (isset($_REQUEST["login"])){
     $uname = $_POST["uname"];
     $psw = $_POST["psw"];

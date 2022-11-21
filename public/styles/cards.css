@@ -47,13 +47,13 @@ h2, p{
 }
 
 .card1{
-    background-image: url('img1.jpg');
+    background-image: url('../images/card-img1.jpg');
 }
 .card2{
-    background-image: url('img2.jpg');
+    background-image: url('../images/card-img2.jpg');
 }
 .card3{
-    background-image: url('img3.jpg');
+    background-image: url('../images/card-img3.jpg');
 }
 
 .card:hover{

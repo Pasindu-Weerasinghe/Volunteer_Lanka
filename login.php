@@ -56,7 +56,7 @@ if (isset($_POST['login'])) {
     <form action="login.php" method="post">
         <div class="container">
             <h1>Login</h1>
-            
+
             <?php
             if ($error == 'incorrect') {
                 echo '<p id="error">Incorrect Username/Password</p>';
@@ -64,7 +64,7 @@ if (isset($_POST['login'])) {
             if ($error == 'restricted') {
                 echo '<p id="error">Your account is restricted!</p>';
             }
-            ?>
+        ?>
 
             <label for="uname"><b>Username</b></label>
             <input type="email" name="uname" placeholder="Email" required>

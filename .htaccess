@@ -2,7 +2,7 @@ Options -MultiViews
 RewriteEngine on
 Options -Indexes
 
-RewriteBase /mvc/
+RewriteBase /Volunteer_Lanka/
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f

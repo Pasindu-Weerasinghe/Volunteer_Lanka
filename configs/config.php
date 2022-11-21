@@ -1,7 +1,7 @@
 <?php
 
 // base url
-define('BASE_URL', 'http://localhost/mvc/');
+define('BASE_URL', 'http://localhost/Volunteer_Lanka/');
 
 // database
 define('DB_HOST', 'localhost');

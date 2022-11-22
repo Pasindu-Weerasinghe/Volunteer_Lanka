@@ -1,4 +1,4 @@
-<?php include 'Navbar/navbar.php';?>
+<?php include ('Navbar/navbar.php');?>
 <?php include 'conn.php';?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles/admin_home.css">
 </head>
 <body>
+    <br><br><br>
     <div class="main">
         <h2>Advertiesment Request</h2>
 

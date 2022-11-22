@@ -1,5 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Lobster&family=Open+Sans:wght@300&family=Poppins:ital,wght@0,100;0,200;0,400;1,100&display=swap');
 
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #CEDAE7;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+}
+
+header a{
+    text-decoration: none;
+}
+
+header{
+    padding: 0 20px;
+    background-color: #FFFFFF;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    position: fixed; 
+    top: 0; 
+    width: 100%;
+}
 
 #logo{
     width: 85px;
@@ -8,6 +34,29 @@
 #brand{
     align-items: center;
     display: flex;
+}
+
+ul a{
+    color: #6aa438;
+    font-weight: bold;
+}
+
+ul{
+    list-style: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+ul li{
+    padding: 15px;
+    margin-left: 10px;
+}
+
+ul li:hover{
+    transform: scale(1.1);
+    transition: 00.3s;
 }
 
 #login{

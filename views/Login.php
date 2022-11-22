@@ -11,7 +11,7 @@
 
 <body>
     <?php include 'views/includes/navbar.php' ?>
-    <form action="<?php echo BASE_URL; ?>login/login_auth" method="post">
+    <form action="<?php echo BASE_URL; ?>index/login_auth" method="post">
         <div class="container">
             <h1>Login</h1>
 

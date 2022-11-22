@@ -12,17 +12,23 @@
 <body>
     <!-- Navbar start -->
     <header>
-        <div id="brand"><a href="/mvc/Index"><img id="logo" src="<?php echo BASE_URL; ?>public/images/logo_transparent.png" alt=""></a></div>
+        <div id="brand">
+            <a href="<?php echo BASE_URL; ?>">
+                <img id="logo" src="<?php echo BASE_URL; ?>public/images/logo_transparent.png" alt="">
+            </a>
+        </div>
+
         <nav>
             <ul>
                 <li><a href="">Home</a></li>
                 <li><a href="">Services</a></li>
                 <li><a href="">About Us</a></li>
                 <li><a href="/">Contact Us</a></li>
-                <li id="login"><a href="<?php echo BASE_URL; ?>login">LOGIN</a></li>
-                <li id="signup"><a id="signup a" href="<?php echo BASE_URL; ?>signup">SIGN UP</a></li>
+                <li id="login"><a href="<?php echo BASE_URL; ?>index/login">LOGIN</a></li>
+                <li id="signup"><a id="signup a" href="<?php echo BASE_URL; ?>index/signup">SIGN UP</a></li>
             </ul>
         </nav>
+        
         <!-- mobile view -->
         <div id="hamburger-icon" onclick="toggleMobileMenu(this)">
             <div class="bar1"></div>

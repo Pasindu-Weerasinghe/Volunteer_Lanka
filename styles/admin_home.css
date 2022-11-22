@@ -5,19 +5,13 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    
-    
 }
 
-/* body{
-    font-family: 'Poppins', sans-serif;
-} */
 
 .main{
     background-color: #89AFD6;
     margin: 50px;
     border-radius: 4px;
-    width: 1250px;
 }
 h2,h3{
     padding: 30px 50px;
@@ -25,10 +19,8 @@ h2,h3{
 
 #c-box{
     background-color: #B3CCE1;
-    width: 1050px;
     margin: 0 100px;
     border-radius: 4px;
-
 }
 
 #view-btn{

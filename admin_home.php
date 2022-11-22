@@ -1,4 +1,4 @@
-<?php include ('Navbar/navbar.php');?>
+<?php include ('Navbar/navbar.php'); ?>
 <?php include 'conn.php';?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/admin_home.css">
+    <title>Admin Home Page</title>
 </head>
 <body>
     <br><br><br>

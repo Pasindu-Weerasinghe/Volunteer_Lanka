@@ -35,6 +35,7 @@ class Index extends Controller
                     session_start();
                     $_SESSION['uid'] = $user['U_ID'];
                     $_SESSION['uname'] = $uname;
+                    $_SESSION['role'] = $user['Role'];
                     switch ($user['Role']) {
                         case 'admin':
                             header('Location: ' . BASE_URL . 'admin');

@@ -1,3 +1,5 @@
+<?php $role = $_SESSION['role']; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,11 +14,10 @@
 <body>
     <!-- Navbar start -->
     <header>
-        <?php include 'views/includes/sidenav.php' ?>
+        <?php include 'views/includes/sidenav_' . $role . '.php' ?>
 
         <div id="brand">
-            <!-- set href here!!! -->
-            <a href="">
+            <a href="<?php echo BASE_URL . $role; ?>">
                 <img id="logo" src="<?php echo BASE_URL; ?>public/images/logo_transparent.png" alt="">
             </a>
         </div>

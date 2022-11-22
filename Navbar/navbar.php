@@ -30,7 +30,7 @@
                     <li><a href="/about">About Us</a></li>
                     <li><a href="/contact">Contact Us</a></li>
                     <li id="loginmobile"><a href="/login">LOGIN</a></li>
-                    <li id="signupmobile"><a id="signup a" href="/signup">SIGN UP</a></li>
+                    <li id="signupmobile"><a id="signup a" href="signup.php">SIGN UP</a></li>
                 </ul>
             </div>
         <!-- mobile view end-->

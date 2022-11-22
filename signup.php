@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="styles/signup.css">
     <title>Signup</title>
     <body>
+        <br><br><br>
     <form action="signup_auth.php" method="post">
     <div class="container">
     <h1>Signup</h1><br/><br/>

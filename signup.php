@@ -1,5 +1,5 @@
-<?php include ('Navbar/navbar.php')?>
-<?php include 'conn.php'?>
+<?php include ('Navbar/navbar.php');?>
+<?php include 'conn.php';?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="styles/signup.css">
     <title>Signup</title>
     <body>
-    <form action="signup_volunteer.php" method="post">
+    <form action="signup_auth.php" method="post">
     <div class="container">
     <h1>Signup</h1><br/><br/>
     <p>Passionate about volunteering? <b>Come join us</b></p><hr>
@@ -36,7 +36,7 @@
 
         <div class="clearfix">
             <button class="cancel">Cancel</button>
-            <button class="next" name="next">Next</button>
+            <button class="next" name="signup">Submit</button>
         </div>
 
     </div>

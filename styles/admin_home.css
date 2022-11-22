@@ -1,8 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Lobster&family=Open+Sans:wght@300&family=Poppins:ital,wght@0,100;0,200;0,400;1,100&display=swap');
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    
+    
 }
+
+/* body{
+    font-family: 'Poppins', sans-serif;
+} */
 
 .main{
     background-color: #89AFD6;
@@ -14,9 +23,40 @@ h2,h3{
     padding: 30px 50px;
 }
 
-.c-box{
+#c-box{
     background-color: #B3CCE1;
     width: 1050px;
     margin: 0 100px;
+    border-radius: 4px;
+
+}
+
+#view-btn{
+    padding: 15px;
+    margin-right: 50px;
+    margin-top: 30px;
+    text-align: center;
+    background-color: #84B464;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 4px;
+    width: 100px;
+}
+
+#view-btn:hover{
+    transform: scale(1.1);
+    transition: 00.3s;
+}
+
+#c-box-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+#c-box-des{
+    margin: 10px 50px 10px 50px;
 }
 

@@ -30,6 +30,28 @@
             display: flex;
             justify-content: space-between;
         }
+        ul a{
+            color: #6aa438;
+            font-weight: bold;
+        }
+
+        ul{
+            list-style: none;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        ul li{
+            padding: 15px;
+            margin-left: 10px;
+        }
+
+        ul li:hover{
+            transform: scale(1.1);
+            transition: 00.3s;
+        }
     </style>
 </head>
 <body>
@@ -39,7 +61,6 @@
         <nav>
             <ul id="navitem">
                 <li id="navitem_li"><a href="/home">Home</a></li>
-                <li id="navitem_li"><a href="/services">Services</a></li>
                 <li id="navitem_li"><a href="/about">About Us</a></li>
                 <li id="navitem_li"><a href="/contact">Contact Us</a></li>
                 <li id="login"><a href="login.php">LOGIN</a></li>
@@ -53,7 +74,6 @@
                 <div class="bar3"></div>
                 <ul id="navitem" class="mobile-menu">
                     <li id="navitem_li"><a href="/home">Home</a></li>
-                    <li id="navitem_li"><a href="/services">Services</a></li>
                     <li id="navitem_li"><a href="/about">About Us</a></li>
                     <li id="navitem_li"><a href="/contact">Contact Us</a></li>
                     <li id="loginmobile"><a href="/login">LOGIN</a></li>

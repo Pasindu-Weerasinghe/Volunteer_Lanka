@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Lobster&family=Open+Sans:wght@300&family=Poppins:ital,wght@0,100;0,200;0,400;1,100&display=swap');
 
+
 #logo{
     width: 85px;
     height: 85px;
@@ -7,29 +8,6 @@
 #brand{
     align-items: center;
     display: flex;
-}
-
-#navitem a{
-    color: #6aa438;
-    font-weight: bold;
-}
-
-#navitem{
-    list-style: none;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-#navitem #navitem_li{
-    padding: 15px;
-    margin-left: 10px;
-}
-
-#navitem #navitem_li:hover{
-    transform: scale(1.1);
-    transition: 00.3s;
 }
 
 #login{

@@ -17,17 +17,15 @@
     <div class="main">
         <h2>Complaints</h2>
         <!-- Complaints box -->
-            <div class="c-box">
-                <div>
-                    <ul>
-                        <li><h3>User Name</h3></li>
-                        <li><button>View</button></li>
-                    </ul>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam, 
-                        facilis architecto! Soluta quam corrupti sint cupiditate, ipsam sequi 
-                        eos aliquam eius magni cumque quae non quo harum minus illum fugiat!</p>
-                    
+            <div id="c-box">
+                <div id="c-box-item">
+                        <h3>User Name</h3>
+                        <button id="view-btn">View</button>
                 </div>
+                <p id="c-box-des"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, beatae quidem. 
+                    Accusantium voluptatem ipsam dolor, vel officiis, adipisci molestias ea voluptatum iure id 
+                    voluptatibus libero quam labore, animi odit. In!</p>
+                <br>
                 
             </div>
         <br>

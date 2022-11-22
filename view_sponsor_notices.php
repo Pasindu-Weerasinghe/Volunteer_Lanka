@@ -1,7 +1,13 @@
-<?php include 'Navbar/navbar.php' ?>
-<?php include 'sidenav/sidenav.php' 
-
+<?php 
+require 'conn.php';
+session_start();
+if (!isset($_SESSION['uid'])) {
+    header("Location: login.php");
+}
+require 'Navbar/navbar_log.php';
+include 'sidenav/sidenav.php' 
 ?>
+
 
 
 <head>

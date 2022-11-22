@@ -25,6 +25,9 @@ class Login extends Controller
                 // if password is correct
                 if ($user['Status'] != 'restricted') {
                     //if user is not restricted
+                    session_start();
+                    $_SESSION['uid'] = $user['U_ID'];
+                    $_SESSION['uname'] = $user[$uname];
                     switch ($user['Role']) {
                         case 'admin':
                             header('Location: ' . BASE_URL . 'test');

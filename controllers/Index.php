@@ -73,4 +73,8 @@ class Index extends Controller
         session_destroy();
         header('Location: ' . BASE_URL . 'index');
     }
+
+    function signup() {
+        $this->render('Signup');
+    }
 }

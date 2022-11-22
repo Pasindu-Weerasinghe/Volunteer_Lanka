@@ -28,7 +28,7 @@
                 <li id="signup"><a id="signup a" href="<?php echo BASE_URL; ?>index/signup">SIGN UP</a></li>
             </ul>
         </nav>
-        
+
         <!-- mobile view -->
         <div id="hamburger-icon" onclick="toggleMobileMenu(this)">
             <div class="bar1"></div>
@@ -39,8 +39,8 @@
                 <li><a href="/services">Services</a></li>
                 <li><a href="/about">About Us</a></li>
                 <li><a href="/contact">Contact Us</a></li>
-                <li id="loginmobile"><a href="<?php echo BASE_URL; ?>login">LOGIN</a></li>
-                <li id="signupmobile"><a id="signup a" href="<?php echo BASE_URL; ?>signup">SIGN UP</a></li>
+                <li id="loginmobile"><a href="<?php echo BASE_URL; ?>index/login">LOGIN</a></li>
+                <li id="signupmobile"><a id="signup a" href="<?php echo BASE_URL; ?>index/login">SIGN UP</a></li>
             </ul>
         </div>
         <!-- mobile view end-->

@@ -15,7 +15,7 @@ class App
             return false;
         }
         if ($this->_loadController()) {
-            // if controller loaded load controller method
+            // if controller loaded, then load controller method
             $this->_loadControllerMethod();
         }
     }

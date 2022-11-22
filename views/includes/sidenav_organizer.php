@@ -11,7 +11,7 @@
 
 <body>
     <span class="open-slide">
-        <a href="#" onclick="openSideMenu()">
+        <a onclick="openSideMenu()">
             <svg width="30" height="30">
                 <path d="M0,5 30,5" stroke="#000" stroke-width="5" />
                 <path d="M0,14 30,14" stroke="#000" stroke-width="5" />
@@ -21,17 +21,17 @@
     </span>
 
     <div id="side-menu" class="side-nav">
-        <a href="#" class="btn-close" onclick="closeSideMenu()">&times;</a>
-        <a href="set">Home</a>
-        <a href="set">Create New Projects</a>
-        <a href="set">Upcoming Projects</a>
-        <a href="set">Completed Projects</a>
-        <a href="set">Requests from Volunteers</a>
-        <a href="set">Payments</a>
-        <a href="set">Calendar</a>
-        <a href="set">My Blog</a>
-        <a href="set">Search Users</a>
-        <a href="set">Complain</a>
+        <a class="btn-close" onclick="closeSideMenu()">&times;</a>
+        <a href="<?php echo BASE_URL; ?>organizer">Home</a>
+        <a href="<?php echo BASE_URL; ?>organizer/create_project">Create New Projects</a>
+        <a href="<?php echo BASE_URL; ?>organizer/upcoming_projects">Upcoming Projects</a>
+        <a href="<?php echo BASE_URL; ?>organizer/completed_projects">Completed Projects</a>
+        <a href="<?php echo BASE_URL; ?>organizer/requests">Requests from Volunteers</a>
+        <a href="<?php echo BASE_URL; ?>organizer/payments">Payments</a>
+        <a href="<?php echo BASE_URL; ?>organizer/calendar">Calendar</a>
+        <a href="<?php echo BASE_URL; ?>organizer/blog">My Blog</a>
+        <a href="<?php echo BASE_URL; ?>organizer/search_user">Search Users</a>
+        <a href="<?php echo BASE_URL; ?>organizer/complain">Complain</a>
     </div>
 </body>
 

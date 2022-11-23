@@ -8,17 +8,10 @@ class OrganizerModel extends Model
         parent::__construct();
     }
 
-    // function getUserData($uname)
-    // {
-    //     $query = "SELECT * FROM user WHERE Email='$uname' LIMIT 1";
-    //     $statement = $this->db->prepare($query);
-
-    //     if ($statement->execute()) {
-    //         // if query successful
-    //         return $statement->fetch(PDO::FETCH_ASSOC);
-    //     } else {
-    //         // if query failed
-    //         return null;
-    //     }
-    // }
+    function setOrganizer($uid, $name, $no_of_members, $branch, $address, $contact)
+    {
+        $query = "INSERT INTO organizer (U_ID, Name, No_of_members, Branch, Address, Contact) VALUES ('$uid', '$name', '$no_of_members', '$branch', '$address', '$contact')";
+        $statement = $this->db->prepare($query);
+        return $statement->execute();
+    }
 }

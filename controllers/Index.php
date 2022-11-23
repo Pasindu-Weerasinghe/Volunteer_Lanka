@@ -75,9 +75,13 @@ class Index extends Controller
         header('Location: ' . BASE_URL . 'index');
     }
 
-    function signup()
+    function signup($role = null)
     {
-        $this->render('Signup');
+        if ($role) {
+            $this->render('Signup' . ucfirst($role));
+        } else {
+            $this->render('Signup');
+        }
     }
 
     function signup_auth()
@@ -97,15 +101,60 @@ class Index extends Controller
                     session_start();
                     $_SESSION['role'] = $role;
                     $_SESSION['email'] = $email;
-                    $_SESSION['psw'] = $psw;
+                    $_SESSION['hash-psw'] = password_hash($psw, PASSWORD_BCRYPT);
                     header('Location: ' . BASE_URL . 'index/signup/' . $role);
                 } else {
                     // if email exists
                     $this->error = 'email exists';
+                    $this->render('Signup');
                 }
             } else {
                 // if password and confirm password are not matching
                 $this->error = 'password does not match';
+                $this->render('Signup');
+            }
+        }
+    }
+
+    function signup_finish($role)
+    {
+        if (isset($_POST['submit'])) {
+            // if signup form submitted
+            session_start();
+            $email = $_SESSION['email'];
+            $hash_psw = $_SESSION['hash-psw'];
+
+            // input user data to user table
+            $this->loadModel('User');
+            if ($this->model->setUser($email, $hash_psw, $role)) {
+                // if user data insert successfull
+                $uid = $this->model->getUserId($email);
+
+                switch ($role) {
+                    case 'organizer':
+                        $name = $_POST['name'];
+                        $no_of_members = $_POST['no-of-members'];
+                        $branch = $_POST['branch'];
+                        $address = $_POST['address'];
+                        $contact = $_POST['contact'];
+                        $this->loadModel('Organizer');
+                        if ($this->model->setOrganizer($uid, $name, $no_of_members, $branch, $address, $contact)) {
+                            // if organizer data insert successfull
+                            session_destroy();
+                            header('Location: ' . BASE_URL . 'index/login');
+                        } else {
+                            // if organizer data insert failed
+                        }
+                        break;
+
+                    case 'volunteer':
+                        break;
+
+                    case 'sponsor':
+                        break;
+                }
+            } else {
+                // if user data insert failed
             }
         }
     }

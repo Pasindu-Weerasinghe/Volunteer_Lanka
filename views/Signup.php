@@ -18,7 +18,14 @@
             <h1>Signup</h1><br /><br />
             <p>Passionate about volunteering? <b>Come join us</b></p>
             <hr>
-
+            <?php
+            if ($this->error == 'email exists') {
+                echo '<p id="error">Email exists!</p>';
+            }
+            if ($this->error == 'password does not match') {
+                echo '<p id="error">Password does not match!</p>';
+            }
+            ?>
             <label for="role"><b>Role</b></label>
             <div class="select">
                 <select id="role" name="role" required>

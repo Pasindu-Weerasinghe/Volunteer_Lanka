@@ -75,7 +75,38 @@ class Index extends Controller
         header('Location: ' . BASE_URL . 'index');
     }
 
-    function signup() {
+    function signup()
+    {
         $this->render('Signup');
+    }
+
+    function signup_auth()
+    {
+        if (isset($_POST['next'])) {
+            $role = $_POST['role'];
+            $email = $_POST['email'];
+            $psw = $_POST['psw'];
+            $confrim_psw = $_POST['confirm-psw'];
+
+            if ($psw == $confrim_psw) {
+                // if password and confirm password are matching
+                $this->loadModel('User');
+                $this->model->checkEmailExist($email);
+                if (!$this->model->checkEmailExist($email)) {
+                    // if email does not exist
+                    session_start();
+                    $_SESSION['role'] = $role;
+                    $_SESSION['email'] = $email;
+                    $_SESSION['psw'] = $psw;
+                    header('Location: ' . BASE_URL . 'index/signup/' . $role);
+                } else {
+                    // if email exists
+                    $this->error = 'email exists';
+                }
+            } else {
+                // if password and confirm password are not matching
+                $this->error = 'password does not match';
+            }
+        }
     }
 }

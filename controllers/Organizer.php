@@ -1,6 +1,6 @@
 <?php
 
-class Organizer extends Controller
+class Organizer extends User
 {
     function __construct() {
         parent::__construct();
@@ -9,5 +9,9 @@ class Organizer extends Controller
     function index() {
         $this->loadModel('Organizer');
         $this->render('Organizer/Home');
+    }
+
+    function create_project() {
+        $this->render('Organizer/CreateProject');
     }
 }

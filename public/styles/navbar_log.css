@@ -6,12 +6,6 @@
 	box-sizing: border-box;
 }
 
-body {
-	background-color: #cedae7;
-	color: black;
-	font-family: "Poppins", sans-serif;
-}
-
 header a {
 	text-decoration: none;
 }

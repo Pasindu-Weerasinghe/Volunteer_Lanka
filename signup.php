@@ -1,3 +1,5 @@
+<?php include 'Navbar/navbar.php' ?>
+<?php include 'sidenav/sidenav.php' ?>
 <?php
 include 'conn.php';
 $error = null;
@@ -35,8 +37,7 @@ if (isset($_POST["submit"])) {
 <body>
     <form action="signup.php" method="post">
         <div class="container">
-            <h1>Signup</h1><br /><br />
-            <p>Passionate about volunteering? <b>Come join us</b></p>
+            <h1>Signup</h1><br/>
             <hr>
             <label for="role"><b>Role</b></label>
             <div class="select">

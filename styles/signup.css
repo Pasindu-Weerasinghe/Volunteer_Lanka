@@ -4,10 +4,12 @@ body{
 }
 
 form {
-    border: 2px solid #f1f1f1;
-    width: 600px;   
+    border: 2px solid black;
+    width: 750px;   
+    height: 700px;
     margin: auto;  
-    margin-top: 20px;
+    margin-top: 80px;
+    /*margin-right: 100px;*/
     padding: 75px;  
     background: #b3cce1;  
     border-radius: 15px ;
@@ -62,7 +64,8 @@ button:hover {
 }
 
 h1{
-    text-align: center;
+  margin-top: -50px;
+  text-align: center;
 }
 
 p{

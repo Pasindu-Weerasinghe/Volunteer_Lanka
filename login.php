@@ -12,13 +12,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles/login.css">
     <title>Login</title>
+   
 
 <body>
-    <br><br>
+  <div class="back">
+  <br><br>
     <br><br>
     <form action="login_auth.php" method="post">
         <div class="container">
-            <h1>Login</h1>
+            <h1>Login</h1><br>
             <label for="uname"><b>Username</b></label>
             <input type="text" name="uname" required>
 
@@ -31,6 +33,8 @@
 
         <span class="signup">Don't have an account? <a href="signup.php">Sign up</a></span>
     </form>
+  </div>
+    
 </body>
 </head>
 

@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #CEDAE7;
+    /*background-color: #CEDAE7;*/
     color: black;
     font-family: 'Poppins', sans-serif;
 }
@@ -18,7 +18,7 @@ header a{
 
 header{
     padding: 0px 20px;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     height: 80px;
     display: flex;
     justify-content: space-between;

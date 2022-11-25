@@ -12,6 +12,7 @@ if (isset($_REQUEST["signup"])){
     $address = $_POST['address'];
     $type = $_POST['type'];
     $confirm = $_POST['confirm-psw'];
+    $uid = $row['U_ID'];
 
     if($confirm==$psw)
     {
@@ -21,7 +22,7 @@ if (isset($_REQUEST["signup"])){
     $query2 = "SELECT U_ID FROM user WHERE Email = '$email'";
     $result2 = mysqli_query($conn, $query2);
     $row = mysqli_fetch_array($result2);
-    $uid = $row['U_ID'];
+    
 
     $query1 = "INSERT INTO sponsor (U_ID, Name, Address, Contact, Type ) values ('$uid','$name','$address', '$contact', '$type')";
     $result1 = mysqli_query($conn, $query1);

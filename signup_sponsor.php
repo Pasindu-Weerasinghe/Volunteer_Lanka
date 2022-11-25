@@ -31,7 +31,7 @@ header('location:signup_sponsor.php');
     <title>Signup for Sponsor</title>
 
 <body>
-    <form action="home_sponsor.php" method="post" enctype="multipart/form-data">
+    <form action="signup_auth.php" method="post" enctype="multipart/form-data">
         <div class="container">
             <h1>Signup as a Sponsor</h1><br />
             <hr>
@@ -49,11 +49,11 @@ header('location:signup_sponsor.php');
 
 
             <input type="radio" name="type[]" value="Individual">
-            <label for="type1">Individual</label><br>
+            <label >Individual</label><br>
             <input type="radio" name="type[]" value="Organization">
-            <label for="type2">Organization</label><br>
+            <label >Organization</label><br>
             <input type="radio" name="type[]" value="company">
-            <label for="type3">Company</label><br>
+            <label >Company</label><br>
             
 
             <br><br>

@@ -16,7 +16,7 @@ if (isset($_REQUEST["signup"])){
 
     if($confirm==$psw)
     {
-        $query1 = "INSERT INTO user (Name, Email, Password, Role, Status, Restricted) values ('$name', '$email', '$psw', '$role','active', '0')";
+        $query1 = "INSERT INTO user (U_ID, Email, Password, Role, Status, Restricted) values ('$uid', '$email', '$psw', '$role','active', '0')";
     $result1 = mysqli_query($conn, $query1);
 
     $query2 = "SELECT U_ID FROM user WHERE Email = '$email'";

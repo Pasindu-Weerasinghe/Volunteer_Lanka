@@ -1,18 +1,20 @@
 body{
-    background-color: #89afd6;
+    background-image: url("https://www.asvabprogram.com/media-center-content/thumbnails/social-share/Volunteer_facebook.jpg");
     font-family: 'Poppins', sans-serif;
+    background-repeat: no-repeat;
+    background-size:cover;
 }
 
 form {
-    border: 2px solid black;
-    width: 750px;   
-    height: 700px;
-    margin: auto;  
-    margin-top: 80px;
-    /*margin-right: 100px;*/
-    padding: 75px;  
-    background: #b3cce1;  
-    border-radius: 15px ;
+  border: 2px solid #ffffff;
+  width: 500px;   
+  height: 650px;
+  margin: auto;  
+  padding: 80px 80px;  
+  background: #c1baba;  
+  border-radius: 15px ;
+  margin-right: 150px;
+  margin-top: 95px;
   }
 
 select {
@@ -95,10 +97,10 @@ p{
 }
 .error{
   text-align: center;
-  font-size: 24px;
+  font-size: 18px;
   color:red;
   font-weight: bold;
-  padding-left: 120px;
-  padding-top: 20px;
+  padding-left: 30px;
+  padding-top: 30px;
 
 }

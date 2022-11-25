@@ -21,6 +21,7 @@
     <form action="login_auth.php" method="post">
         <div class="container">
             <h1>Login</h1><br>
+            <hr>
             <label for="uname"><b>Username</b></label>
             <input type="text" name="uname" required>
 

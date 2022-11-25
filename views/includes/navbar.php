@@ -12,8 +12,6 @@
 
     <nav>
         <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">Services</a></li>
             <li><a href="">About Us</a></li>
             <li><a href="/">Contact Us</a></li>
             <li id="login"><a href="<?php echo BASE_URL; ?>index/login">LOGIN</a></li>
@@ -27,8 +25,6 @@
         <div class="bar2"></div>
         <div class="bar3"></div>
         <ul class="mobile-menu">
-            <li><a href="/home">Home</a></li>
-            <li><a href="/services">Services</a></li>
             <li><a href="/about">About Us</a></li>
             <li><a href="/contact">Contact Us</a></li>
             <li id="loginmobile"><a href="<?php echo BASE_URL; ?>index/login">LOGIN</a></li>

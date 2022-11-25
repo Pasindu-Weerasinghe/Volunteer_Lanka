@@ -63,7 +63,7 @@ header('location:signup_sponsor.php');
 
             <div class="clearfix">
                 <button class="cancel"><b>Cancel</b></button>
-                <button name="signup" class="next"><b>Submit</b></button>
+                <button name="signup" class="next"><b><a href="home_sponsor.php"></a>Submit</b></button>
             </div>
 
         </div>

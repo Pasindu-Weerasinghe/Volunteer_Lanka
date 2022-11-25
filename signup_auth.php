@@ -23,7 +23,7 @@ if (isset($_REQUEST["signup"])){
     $row = mysqli_fetch_array($result2);
     $uid = $row['U_ID'];
 
-    $query1 = "INSERT INTO sponsor (U_ID,Address, Contact, Type) values ('$uid','$address', '$contact', '$role')";
+    $query1 = "INSERT INTO sponsor (U_ID,Name,Address, Contact, Type) values ('$uid','$name','$address', '$contact', '$role')";
     $result1 = mysqli_query($conn, $query1);
     }
     else

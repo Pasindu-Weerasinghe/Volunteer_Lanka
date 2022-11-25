@@ -20,7 +20,7 @@
 
   <div id="side-menu" class="side-nav">
     <a href="#" class="btn-close" onclick="closeSideMenu()">&times;</a>
-    <a href="home_volunteer.php">Home</a>
+    <a href="home_sponsor.php">Home</a>
     <a href="upcoming_volunteer.php">Upcoming Projects</a>
     <a href="completed_volunteer.php">Completed Projects</a>
     <a href="newideas_volunteer.php">Request to Organize Projects</a>

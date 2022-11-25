@@ -7,10 +7,10 @@ if (isset($_REQUEST["signup"])){
     $role = $_SESSION['role'];
     $email = $_SESSION['email'];
     $psw = $_SESSION['psw'];
-
     $name = $_POST['name'];
     $contact = $_POST['contact'];
     $address = $_POST['address'];
+    $type = $_POST['type'];
     $confirm = $_POST['confirm-psw'];
 
     if($confirm==$psw)
@@ -23,7 +23,7 @@ if (isset($_REQUEST["signup"])){
     $row = mysqli_fetch_array($result2);
     $uid = $row['U_ID'];
 
-    $query1 = "INSERT INTO sponsor (U_ID,Name,Address, Contact, Type) values ('$uid','$name','$address', '$contact', '$role')";
+    $query1 = "INSERT INTO sponsor (U_ID, Name, Address, Contact, Type ) values ('$uid','$name','$address', '$contact', '$type')";
     $result1 = mysqli_query($conn, $query1);
     }
     else

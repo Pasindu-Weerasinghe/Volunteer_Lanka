@@ -10,17 +10,16 @@ if (isset($_POST["submit"])) {
     $confirm = $_POST['confirm-psw'];
 
     if ($confirm == $psw) {
-        $query1 = "INSERT INTO user (Email, Password, Role, Status, Restricted) values ( '$email', '$psw', '$role','active', '0')";
-        $result1 = mysqli_query($conn, $query1);
+        session_start();
+        $_SESSION["role"]=$role;
+        $_SESSION["email"]=$email;
+        $_SESSION["psw"]=$psw;
         header("Location:signup_sponsor.php");
-
-       
     } else {
         $error = "Password is not matched!";
     }
 }
 ?>
-
 
 
 <!DOCTYPE html>
@@ -34,7 +33,7 @@ if (isset($_POST["submit"])) {
     <title>Signup</title>
 
 <body>
-    <form action="" method="post">
+    <form action="signup.php" method="post">
         <div class="container">
             <h1>Signup</h1><br /><br />
             <p>Passionate about volunteering? <b>Come join us</b></p>
@@ -59,7 +58,7 @@ if (isset($_POST["submit"])) {
             
             <div class="clearfix">
                 <button class="cancel">Cancel</button>
-                <button class="next" name="submit">Next</button>
+                <button class="next" type="submit" name="submit">Next</button>
             </div>
 
             <label class="error">

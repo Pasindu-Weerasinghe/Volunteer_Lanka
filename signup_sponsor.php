@@ -1,22 +1,5 @@
 <?php include('Navbar/navbar.php') ?>
 <?php include 'conn.php';
-if(isset($_POST['signup'])){
-    $name = $_POST['name'];
-$contact = $_POST['contact'];
-$address = $_POST['address'];
-header('location:home_sponsor.php');
-$query2 = "SELECT U_ID FROM user WHERE Email = '$email'";
-$result2 = mysqli_query($conn, $query2);
-$row = mysqli_fetch_array($result2);
-$uid = $row['U_ID'];
-
-$query1 = "INSERT INTO sponsor (U_ID,Address, Contact, Type) values ('$uid','$address', '$contact', '$role')";
-$result1 = mysqli_query($conn, $query1);
-header('location:signup_sponsor.php');
-
-}
-
-
 ?>
 
 
@@ -48,11 +31,11 @@ header('location:signup_sponsor.php');
             <label for="type"><b>Select Your Type</b></label><br>
 
 
-            <input type="radio" name="type[]" value="Individual">
+            <input type="radio" name="type" value="individual">
             <label >Individual</label><br>
-            <input type="radio" name="type[]" value="Organization">
+            <input type="radio" name="type" value="organization">
             <label >Organization</label><br>
-            <input type="radio" name="type[]" value="company">
+            <input type="radio" name="type" value="company">
             <label >Company</label><br>
             
 
@@ -62,7 +45,7 @@ header('location:signup_sponsor.php');
 
             <div class="clearfix">
                 <button class="cancel"><b>Cancel</b></button>
-                <button name="signup" class="next"><b><a href="home_sponsor.php"></a>Submit</b></button>
+                <button name="signup" type="submit" class="next"><b>Submit</b></button>
             </div>
 
         </div>

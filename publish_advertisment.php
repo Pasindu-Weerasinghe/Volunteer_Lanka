@@ -1,5 +1,12 @@
-<?php include 'Navbar/navbar.php';
-include 'conn.php';
+<?php 
+require 'conn.php';
+session_start();
+if (!isset($_SESSION['uid'])) {
+    header("Location: login.php");
+}
+require 'Navbar/navbar_log.php'; ?>
+
+<?php 
 if (isset($_FILES['upload_file'])) {
     move_uploaded_file($_FILES["upload_file"]["tmp_name"], $_FILES["upload_file"]["name"]);
 }

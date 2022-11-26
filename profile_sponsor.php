@@ -2,7 +2,7 @@
 include 'conn.php';
 session_start();
 $uid=$_SESSION['uid'];
-$sql1 = "select * from sponsor where U_ID='".$uid."'";
+$sql1 = "SELECT * FROM sponsor WHERE U_ID='.$uid.'";
 
 $result=mysqli_query($conn,$sql1);
 

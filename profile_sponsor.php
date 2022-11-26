@@ -1,10 +1,13 @@
 <?php
 include 'conn.php';
 session_start();
-$pump_id=$_SESSION['pump_id'];
-$sql = "select * from user where U_ID='47'";
-$result=mysqli_query($conn,$sql);
-if(mysqli_num_rows($result)>0){
+$uid=$_SESSION['uid'];
+$sql1 = "select * from sponsor where U_ID='".$uid."'";
+
+$result=mysqli_query($conn,$sql1);
+
+
+if(mysqli_num_rows($result)>0 ){
 }
 ?>
 
@@ -20,26 +23,27 @@ if(mysqli_num_rows($result)>0){
   
     <body>
         <?php
-                while($row = mysqli_fetch_assoc($result))
+                while($row1 = mysqli_fetch_assoc($result))
             {
         ?>
 
-            <h1 class="head1"><img src="./petro.jpg" height="60" width="140"><label class="sub2">Hi <?php echo $row['U_ID'];?></label></h1>
+            <h1 class="head1"><img src="./petro.jpg" height="60" width="140"><label class="sub2">Hi <?php echo $row1['U_ID'];?></label></h1>
             <div class="sub">
                 <div class="row">
                     <div class="column1">
                     <img class="image"src="./profile1.jpg" alt="a cat staring at you" height="190" width="190"/><br><br>
                     <div class="but1">
-                        <button type="submit"><a href="working.php" class="same">Pumping History</a></button><br><br><br>
                         <button type="submit"><a href="change_password.php" class="same">Change Password</a></button><br><br>
                     </div>
                     </div>
                     <div class="column">
                             <label>User Account Details</label><br><br>
-                            <label class="textarea">Pumper ID:<?php echo $row['U_ID'];?></label><br><br>
-                            <label class="textarea">Name:<?php echo $row['Email'];?> <?php echo $row['Last_name'];?></label><br><br>
-                            <label class="textarea">Email:<?php echo $row['Role'];?></label><br><br>
-                            <label class="textarea">Password:<input type="password" value="<?php echo $row['password']; ?>" id="myInput" readonly="readonly" style="width:25%">&nbsp;<input type="checkbox" onclick="myFunction()"></label>
+                            <label class="textarea">User ID:<?php echo $row1['U_ID'];?></label><br><br>
+                            <label class="textarea">Name:<?php echo $row1['Name'];?> </label><br><br>
+                            <label class="textarea">Contact No:<?php echo $row1['Contact'];?> </label><br><br>
+                            <label class="textarea">Email:<?php echo $row1['Email'];?></label><br><br>
+                            <label class="textarea">Role:<?php echo $row1['Role'];?></label><br><br>
+                            <label class="textarea">Password:<input type="password" value="<?php echo $row1['password']; ?>" id="myInput" readonly="readonly" style="width:25%">&nbsp;<input type="checkbox" onclick="myFunction()"></label>
                 </div>
             </div>
                 <?php

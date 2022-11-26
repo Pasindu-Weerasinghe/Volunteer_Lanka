@@ -24,11 +24,7 @@ if (isset($_REQUEST["login"])){
                 header('Location: home_sponsor.php'); 
                 //exit; 
             }
-            // else {
-            //     $_SESSION['uid'] = $uid;
-            //     header('Location: #.php'); 
-            //     exit;
-            // }
+            
         }
         else {
             echo "<script> alert ('Your account is restricted!'); window.location.href = 'login.php';</script>";

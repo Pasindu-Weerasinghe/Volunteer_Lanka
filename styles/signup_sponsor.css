@@ -7,14 +7,14 @@ body{
 
 form {
   border: 2px solid #ffffff;
-  width: 500px;   
-  height: 650px;
+  width: 550px;   
+  height: 680px;
   margin: auto;  
   padding: 80px 80px;  
   background: #c1baba;  
   border-radius: 15px ;
   margin-right: 150px;
-  margin-top: 135px;
+  margin-top: 120px;
 }
 
 
@@ -67,7 +67,7 @@ button:hover {
 }
 
 h1{
-  margin-top: -50px;
+  margin-top: -90px;
   text-align: center;
 }
 

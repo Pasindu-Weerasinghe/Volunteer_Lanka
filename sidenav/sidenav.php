@@ -21,11 +21,10 @@
   <div id="side-menu" class="side-nav">
     <a href="#" class="btn-close" onclick="closeSideMenu()">&times;</a>
     <a href="home_sponsor.php">Home</a>
-    <a href="upcoming_volunteer.php">Upcoming Projects</a>
-    <a href="completed_volunteer.php">Completed Projects</a>
-    <a href="newideas_volunteer.php">Request to Organize Projects</a>
+    <a href="view_sponsor_notices.php">Sponsor Notices</a>
+    <a href="sponsored_projects.php">Projects</a>
+    <a href="publish_advertisment.php">Publish Advertisment</a>
     <a href="calendar.php">Calendar</a>
-    <a href="search.php">Search Organizers</a>
     <a href="profile.php">My Profile</a>
     <a href="complain.php">Complain</a>
   </div>

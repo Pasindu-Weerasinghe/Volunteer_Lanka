@@ -30,12 +30,14 @@ header{
 #logo{
     width: 85px;
     height: 85px;
+    margin-top: -70px;
+    margin-left: 30px;
 } 
 #brand{
     align-items: center;
     display: flex;
     margin-left: 10px;
-   /* margin-right: 700px;*/
+   /*margin-right: 150%;*/
 }
 
 ul a{

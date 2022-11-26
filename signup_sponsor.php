@@ -10,10 +10,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles/signup.css">
+    <link rel="stylesheet" type="text/css" href="styles/signup_sponsor.css">
     <title>Signup for Sponsor</title>
 
 <body>
+    <div class="form2">
     <form action="signup_auth.php" method="post" enctype="multipart/form-data">
         <div class="container">
             <h1>Signup as a Sponsor</h1><br />
@@ -39,7 +40,7 @@
             <label >Company</label><br>
             
 
-            <br><br>
+            <br>
             <input type="checkbox" name="area5">
             <label for="area1">I have read and understand the <a href="#">terms and conditions</a> and will add here to them</label><br /><br />
 
@@ -50,6 +51,8 @@
 
         </div>
     </form>
+    </div>
+    
 </body>
 </head>
 

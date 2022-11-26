@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles/signup.css">
     <title>Signup</title>
-    <body>
-        <br><br><br>
+</head>
+<body>
     <form action="signup_auth.php" method="post">
     <div class="container">
     <h1>Signup</h1><br/><br/>
@@ -43,5 +43,4 @@
     </div>
     </form>
     </body>
-</head>
 </html>

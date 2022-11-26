@@ -13,6 +13,27 @@
     <br><br><br>
     <div class="main">
         <h2>Advertiesment Request</h2>
+            <section class="ar-container">
+                <div class="ar-card">
+                    <div class="ar-img ar-card1"></div>
+                    <button>View</button>
+                </div>
+                <div class="ar-card">
+                    <div class="ar-img ar-card1"></div>
+                    <button>View</button>
+                </div>
+                <div class="ar-card">
+                    <div class="ar-img ar-card1"></div>
+                    <button>View</button>
+                </div>
+                <div class="ar-card">
+                    <div class="ar-img ar-card1"></div>
+                    <button>View</button>
+                </div>
+                
+
+            </section>
+            
 
         <br>
     </div>
@@ -22,7 +43,7 @@
             <div id="c-box">
                 <div id="c-box-item">
                         <h3>User Name</h3>
-                        <button id="view-btn">View</button>
+                        <button id="c-view-btn">View</button>
                 </div>
                 <p id="c-box-des"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, beatae quidem. 
                     Accusantium voluptatem ipsam dolor, vel officiis, adipisci molestias ea voluptatum iure id 
@@ -33,7 +54,7 @@
             <div id="c-box">
                 <div id="c-box-item">
                         <h3>User Name</h3>
-                        <button id="view-btn">View</button>
+                        <button id="c-view-btn">View</button>
                 </div>
                 <p id="c-box-des"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, beatae quidem. 
                     Accusantium voluptatem ipsam dolor, vel officiis, adipisci molestias ea voluptatum iure id 
@@ -44,7 +65,7 @@
             <div id="c-box">
                 <div id="c-box-item">
                         <h3>User Name</h3>
-                        <button id="view-btn">View</button>
+                        <button id="c-view-btn">View</button>
                 </div>
                 <p id="c-box-des"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, beatae quidem. 
                     Accusantium voluptatem ipsam dolor, vel officiis, adipisci molestias ea voluptatum iure id 

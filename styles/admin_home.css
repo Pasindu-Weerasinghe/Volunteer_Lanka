@@ -23,7 +23,7 @@ h2,h3{
     border-radius: 4px;
 }
 
-#view-btn{
+#c-view-btn{
     padding: 15px;
     margin-right: 50px;
     margin-top: 30px;
@@ -38,7 +38,7 @@ h2,h3{
     cursor: pointer;
 }
 
-#view-btn:hover{
+#c-view-btn:hover{
     transform: scale(1.1);
     transition: 00.3s;
 }
@@ -53,3 +53,52 @@ h2,h3{
     margin: 10px 50px 10px 50px;
 }
 
+.ar-container{
+    display: flex;
+    justify-content: center;
+}
+
+.ar-card{
+    background-color: #B3CCE1;
+    width: 250px;
+    height: 250px;
+    margin: 15px;
+    border-radius: 4px;
+}
+ .ar-img{
+    height: 170px;
+    margin-bottom: 15px;
+    background-size: cover;
+    border-radius: 4px 4px 0 0;
+
+ }
+
+.ar-card1{
+    background-image: url('../cards/img1.jpg');
+}
+.ar-card2{
+    background-image: url('../cards/img1.jpg');
+}
+.ar-card3{
+    background-image: url('../cards/img1.jpg');
+}
+.ar-card4{
+    background-image: url('../cards/img1.jpg');
+}
+
+.ar-card button{
+    background-color: #84B464;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 15px 20px;
+    width: 100px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 130px;
+}
+
+.ar-card button:hover{
+    transform: scale(1.1);
+    transition: 00.3s;
+}

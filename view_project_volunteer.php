@@ -78,8 +78,6 @@ include 'Navbar/navbar_log.php';
     
     <button class="btn1"><a href="login.php">Back</a></button>
     <button class="btn2"><a href="#">Join</a></button>
-
 </div>
-
 </body>
 </html>

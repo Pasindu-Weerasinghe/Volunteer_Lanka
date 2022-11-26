@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles/signup.css">
     <title>Signup</title>
+</head>
     <body>
     <div class="main">
     <form action="signup_volunteer.php" method="post">
@@ -42,5 +43,4 @@
     </form>
     </div>
     </body>
-</head>
 </html>

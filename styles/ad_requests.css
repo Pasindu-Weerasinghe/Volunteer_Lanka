@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Lobster&family=Open+Sans:wght@300&family=Poppins:ital,wght@0,100;0,200;0,400;1,100&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.main{
+    background-color: #89AFD6;
+    margin: 50px;
+    border-radius: 4px;
+}
+
+h2,h3{
+    padding: 30px 50px;
+}

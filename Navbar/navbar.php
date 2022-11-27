@@ -10,6 +10,7 @@
 <body>
     <!-- Navbar start -->
     <header>
+        <?php // include './sidenav/sidenav.php'?>
         <div id="brand"><a href=""><img id="logo" src="Navbar/images/logo_transparent.png" alt=""></a></div>
         <nav>
             <ul>

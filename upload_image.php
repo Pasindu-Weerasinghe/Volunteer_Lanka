@@ -48,7 +48,7 @@ if (isset($_REQUEST["request"])){
     echo $statusMsg;
     if ($result) {
             echo "<script> alert ('Request Sent!');</script>";
-            header ("Location: newideas_volunteer.php");
+            header ("Location: upload_image.php");
     }
     
 }

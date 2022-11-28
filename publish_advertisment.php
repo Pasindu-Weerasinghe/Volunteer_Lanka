@@ -4,12 +4,12 @@ session_start();
 if (!isset($_SESSION['uid'])) {
     header("Location: login.php");
 }
-require 'Navbar/navbar_log.php'; ?>
+$uid = $_SESSION['uid'];
+require 'Navbar/navbar_log.php'; 
 
-<?php 
-if (isset($_FILES['upload_file'])) {
-    move_uploaded_file($_FILES["upload_file"]["tmp_name"], $_FILES["upload_file"]["name"]);
-}
+    $sql = "SELECT AD_ID, Location, Description FROM pr_ideas WHERE $uid = U_ID";
+    $result = mysqli_query($conn, $sql);
+    $requests = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
 
 

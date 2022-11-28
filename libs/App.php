@@ -69,25 +69,3 @@ class App
         }
     }
 }
-
-// switch ($urlIndexCount) {
-//         // case 6:
-//         //     $this->_controller->{$this->_url[1]}($this->_url[2], $this->_url[3], $this->_url[4], $this->_url[5]);
-//         //     break;
-//         // case 5:
-//         //     $this->_controller->{$this->_url[1]}($this->_url[2], $this->_url[3], $this->_url[4]);
-//         //     break;
-//         // case 4:
-//         //     $this->_controller->{$this->_url[1]}($this->_url[2], $this->_url[3]);
-//         //     break;
-//         // case 3:
-//         //     $this->_controller->{$this->_url[1]}($this->_url[2]);
-//         //     break;
-//         // case 2:
-//         //     $this->_controller->{$this->_url[1]}();
-//         //     break;
-//     default:
-//         $params = array_slice($this->_url, 2);
-//         call_user_func_array([$this->_controller, $this->_url[1]], $params);
-//         break;
-// }

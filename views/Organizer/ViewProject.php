@@ -17,49 +17,47 @@ if (!isset($_SESSION['uid'])) {
 </head>
 
 <body>
-
+    <!-- navigationb bar -->
     <?php include 'views/includes/navbar_log.php'; ?>
 
-    <br />
-    <br />
-    <br />
-    <br />
-    <h2>Project Name</h2><br /><br />
-    <div class="container">
-        <div class="container-image">
-            <image src="<?php echo BASE_URL ?>public/images/card-img1.jpg">
+    <div class="main">
+        <h2>Project Name</h2><br /><br />
+        <div class="container">
+            <div class="container-image">
+                <image src="<?php echo BASE_URL ?>public/images/card-img1.jpg">
+            </div>
+            <table>
+                <tr>
+                    <td>Date</td>
+                    <td>:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Time</td>
+                    <td>:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Venue</td>
+                    <td>:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Number of Volunteers</td>
+                    <td>:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    <td>:</td>
+                    <td></td>
+                </tr>
+            </table>
         </div>
-        <table>
-            <tr>
-                <td>Date</td>
-                <td>:</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Time</td>
-                <td>:</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Venue</td>
-                <td>:</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Number of Volunteers</td>
-                <td>:</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Description</td>
-                <td>:</td>
-                <td></td>
-            </tr>
-        </table>
-    </div>
 
-    <button class="btn1"><a href="">Cancel Project</a></button>
-    <button class="btn2"><a href="">Postpone Project</a></button>
+        <button class="btn1"><a href="">Cancel Project</a></button>
+        <button class="btn2"><a href="">Postpone Project</a></button>
+    </div>
 
 </body>
 

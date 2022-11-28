@@ -18,34 +18,33 @@ $pid = 1;
 </head>
 
 <body>
-
+    <!-- navigationb bar -->
     <?php include 'views/includes/navbar_log.php'; ?>
 
-    <br />
-    <br />
-    <br />
-    <br />
-    <h2>Upcoming Projects</h2><br /><br />
-    <section class="container">
-        <div class="card">
-            <div class="card-image card1">
+    <div class="main">
+        <h2>Upcoming Projects</h2><br /><br />
+        <section class="container">
+            <div class="card">
+                <div class="card-image card1">
+                </div>
+                <h2>Project Name</h2>
+                <a class="btn" href="<?php echo BASE_URL . 'project/view_project/'  . $pid . '/' . $_SESSION['role']; ?>">View</a>
             </div>
-            <h2>Project Name</h2>
-            <a class="btn" href="<?php echo BASE_URL . 'project/view_project/'  . $pid . '/' . $_SESSION['role']; ?>">View</a>
-        </div>
-        <div class="card">
-            <div class="card-image card2">
+            <div class="card">
+                <div class="card-image card2">
+                </div>
+                <h2>Project Name</h2>
+                <a class="btn" href="<?php echo BASE_URL . 'project/view_project/'  . $pid . '/' . $_SESSION['role']; ?>">View</a>
             </div>
-            <h2>Project Name</h2>
-            <a class="btn" href="<?php echo BASE_URL . 'project/view_project/'  . $pid . '/' . $_SESSION['role']; ?>">View</a>
-        </div>
-        <div class="card">
-            <div class="card-image card3">
+            <div class="card">
+                <div class="card-image card3">
+                </div>
+                <h2>Project Name</h2>
+                <a class="btn" href="<?php echo BASE_URL . 'project/view_project/'  . $pid . '/' . $_SESSION['role']; ?>">View</a>
             </div>
-            <h2>Project Name</h2>
-            <a class="btn" href="<?php echo BASE_URL . 'project/view_project/'  . $pid . '/' . $_SESSION['role']; ?>">View</a>
-        </div>
-    </section>
+        </section>
+    </div>
+
 </body>
 
 </html>

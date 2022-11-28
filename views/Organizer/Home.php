@@ -17,6 +17,7 @@ if (!isset($_SESSION['uid'])) {
 </head>
 
 <body>
+    
     <?php include 'views/includes/navbar_log.php'; ?>
 
     <div class="main">
@@ -64,7 +65,7 @@ if (!isset($_SESSION['uid'])) {
                 <a class="btn" href="">View</a>
             </div>
         </section>
-        
+
     </div>
 
 </body>

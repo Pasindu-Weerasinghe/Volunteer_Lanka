@@ -17,7 +17,7 @@ if (!isset($_SESSION['uid'])) {
 </head>
 
 <body>
-
+    <!-- navigationb bar -->
     <?php include 'views/includes/navbar_log.php'; ?>
 
     <br />

@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Lobster&family=Open+Sans:wght@300&family=Poppins:ital,wght@0,100;0,200;0,400;1,100&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.main{
+    background-color: #89AFD6;
+    margin: 50px;
+    border-radius: 4px;
+}
+
+h2{
+    padding: 30px 50px;
+}
+
+#ad-req-box{
+    background-color: #B3CCE1;
+    margin: 10px 100px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.name{
+    display: flex;
+}
+
+.name-item{
+    padding: 30px 60px;
+    /* width: 100%; */
+}
+
+
+#btn-area{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 100px 0 100px;
+}
+
+.btn{
+    padding: 15px 20px;
+    text-align: center;
+    background-color: #84B464;
+    border: 1px solid;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 4px;
+    width: 100px;
+    cursor: pointer;
+}
+
+.btn:hover{
+    transform: scale(1.1);
+    transition: 00.3s;
+}
+
+#ad-box-img{
+    width: 300px;
+    height: 200px;
+}
+
+#ad-box-item{
+    display: flex;
+    align-items: flex-start;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+#ad-box-item p{
+    width: 100%;
+    margin: 40px;
+}

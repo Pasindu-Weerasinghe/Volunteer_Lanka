@@ -37,20 +37,9 @@ class Index extends Controller
                     $_SESSION['uid'] = $user['U_ID'];
                     $_SESSION['uname'] = $uname;
                     $_SESSION['role'] = $user['Role'];
-                    switch ($user['Role']) {
-                        case 'admin':
-                            header('Location: ' . BASE_URL . 'admin');
-                            break;
-                        case 'organizer':
-                            header('Location: ' . BASE_URL . 'organizer');
-                            break;
-                        case 'volunteer':
-                            header('Location: ' . BASE_URL . 'volunteer');
-                            break;
-                        case 'sponsor':
-                            header('Location: ' . BASE_URL . 'sponsor');
-                            break;
-                    }
+
+                    // send the user to the relevant home page of the role
+                    header('Location: ' . BASE_URL . $user['Role']);
                 } else {
                     // if user is restricted
                     $this->error = 'restricted';

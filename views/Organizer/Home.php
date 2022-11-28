@@ -19,53 +19,53 @@ if (!isset($_SESSION['uid'])) {
 <body>
     <?php include 'views/includes/navbar_log.php'; ?>
 
-    <br />
-    <br />
-    <br />
-    <br />
-    <h2>Upcoming Projects</h2><br /><br />
-    <section class="container">
-        <div class="card">
-            <div class="card-image card1">
+    <div class="main">
+
+        <h2>Upcoming Projects</h2><br /><br />
+        <section class="container">
+            <div class="card">
+                <div class="card-image card1">
+                </div>
+                <h2>Project Name</h2>
+                <a class="btn" href="">View</a>
             </div>
-            <h2>Project Name</h2>
-            <a class="btn" href="">View</a>
-        </div>
-        <div class="card">
-            <div class="card-image card2">
+            <div class="card">
+                <div class="card-image card2">
+                </div>
+                <h2>Project Name</h2>
+                <a class="btn" href="">View</a>
             </div>
-            <h2>Project Name</h2>
-            <a class="btn" href="">View</a>
-        </div>
-        <div class="card">
-            <div class="card-image card3">
+            <div class="card">
+                <div class="card-image card3">
+                </div>
+                <h2>Project Name</h2>
+                <a class="btn" href="">View</a>
             </div>
-            <h2>Project Name</h2>
-            <a class="btn" href="">View</a>
-        </div>
-    </section><br />
-    <hr><br />
-    <h2>Completed Projects</h2><br /><br />
-    <section class="container">
-        <div class="card">
-            <div class="card-image card1">
+        </section><br />
+        <hr><br />
+        <h2>Completed Projects</h2><br /><br />
+        <section class="container">
+            <div class="card">
+                <div class="card-image card1">
+                </div>
+                <h2>Project Name</h2>
+                <a class="btn" href="">View</a>
             </div>
-            <h2>Project Name</h2>
-            <a class="btn" href="">View</a>
-        </div>
-        <div class="card">
-            <div class="card-image card2">
+            <div class="card">
+                <div class="card-image card2">
+                </div>
+                <h2>Project Name</h2>
+                <a class="btn" href="">View</a>
             </div>
-            <h2>Project Name</h2>
-            <a class="btn" href="">View</a>
-        </div>
-        <div class="card">
-            <div class="card-image card3">
+            <div class="card">
+                <div class="card-image card3">
+                </div>
+                <h2>Project Name</h2>
+                <a class="btn" href="">View</a>
             </div>
-            <h2>Project Name</h2>
-            <a class="btn" href="">View</a>
-        </div>
-    </section>
+        </section>
+        
+    </div>
 
 </body>
 

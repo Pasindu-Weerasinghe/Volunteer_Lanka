@@ -34,8 +34,8 @@ session_start();
             <label><b>Number of members</b></label>
             <input type="number" name="no-of-members" id="no-of-members" min="1" required><br />
 
-            <input type="checkbox" name="agree" id="chkbox">
-            <label ">I have read and understand the <a href="">terms and conditions</a> and will adhere to them.</label><br />
+            <input type="checkbox" name="agree" id="chkbox" required>
+            <label>I have read and understand the <a href="">terms and conditions</a> and will adhere to them.</label><br />
 
             <div class=" clearfix">
                 <button class="cancel"><b>Cancel</b></button>
@@ -43,13 +43,5 @@ session_start();
         </div>
     </form>
 </body>
-<script>
-    let chkbox = document.getElementById("chkbox").addEventListener("click", function() {
-        let subbtn = document.getElementById("submit");
-        if (chkbox.checked) {
-            subbtn.color = "red";
-        }
-    })
-</script>
-
+    
 </html>

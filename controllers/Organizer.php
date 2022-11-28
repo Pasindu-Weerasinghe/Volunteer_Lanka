@@ -13,9 +13,16 @@ class Organizer extends User
         $this->render('Organizer/Home');
     }
 
-    function create_project()
+    function create_project($param = null)
     {
-        $this->render('Organizer/CreateProject');
+        switch ($param) {
+            case null:
+                $this->render('Organizer/CP1_CreateProject');
+                break;
+            case 'publish_sponsor_notice':
+                $this->render('Organizer/CP3_PublishSponsorNotice');
+                break;
+        }
     }
 
     function upcoming_projects()

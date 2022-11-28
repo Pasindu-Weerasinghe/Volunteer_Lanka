@@ -5,9 +5,14 @@
     margin: 0;
     box-sizing: border-box;
 }
+
 body{
     background-color: #89afd6;
     font-family: 'Poppins', sans-serif;
+}
+
+.main {
+    padding: 100px 150px 0px 150px;
 }
 
 .container{

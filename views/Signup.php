@@ -12,7 +12,10 @@
 <body>
 
     <?php include 'views/includes/navbar.php'; ?>
-
+    <br>
+    <br>
+    <br>
+    <br>
     <form action="<?php echo BASE_URL; ?>index/signup_auth" method="post">
         <div class="container">
             <h1>Signup</h1><br /><br />

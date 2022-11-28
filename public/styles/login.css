@@ -11,19 +11,38 @@ body {
 	font-family: "Poppins", sans-serif;
 }
 
+.bg-img {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	/* filter: blur(5px); */
+}
+
 h1 {
 	text-align: center;
+	padding: 5px;
 }
 
 /* Bordered form */
 form {
-	border: 2px solid #f1f1f1;
+	/* border: 2px solid #f1f1f1; */
 	width: 500px;
 	margin: auto;
 	margin-top: 20px;
-	padding: 80px 80px;
-	background: #b3cce1;
-	border-radius: 15px;
+	padding: 30px 70px;
+	background: #66a3d6;
+	border-radius: 20px;
+	position: absolute;
+	top: 53%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+label {
+	padding-top: 30px;
 }
 
 /* Full-width inputs */
@@ -34,6 +53,7 @@ input[type="password"] {
 	margin: 8px 0;
 	display: inline-block;
 	border: 1px solid #ccc;
+	border-radius: 10px;
 	box-sizing: border-box;
 }
 
@@ -44,6 +64,7 @@ button {
 	padding: 14px 20px;
 	margin: 8px 0;
 	border: none;
+	border-radius: 10px;
 	cursor: pointer;
 	width: 100%;
 
@@ -69,8 +90,9 @@ span.psw {
 }
 
 #error {
-  background: rgb(219, 140, 140);
-  padding: 10px;
-  border-radius: 10px;
-  text-align: center;
+	color: white;
+	background: rgb(201, 61, 61);
+	padding: 10px;
+	border-radius: 10px;
+	text-align: center;
 }

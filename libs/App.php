@@ -59,7 +59,6 @@ class App
                 // if method exists calla a callback function of the controller method
                 $params = array_slice($this->_url, 2);
                 call_user_func_array([$this->_controller, $this->_url[1]], $params);
-
             } else {
                 echo 'Requested method not found';
                 exit;

@@ -16,7 +16,12 @@ header{
     height: 80px;
     display: flex;
     justify-content: space-between;
+    width: 100%;
+    position: fixed;
+	top: 0;
+	z-index: 100;
 }
+
 
 #logo{
     width: 85px;

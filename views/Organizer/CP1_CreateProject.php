@@ -64,8 +64,8 @@ if (!isset($_SESSION['uid'])) {
         </table>
     </div>
 
-    <button class="btn1" href="">Cancel</button>
-    <button class="btn2" href="">Next</button>
+    <button class="btn1">Cancel</button>
+    <button class="btn2"><a href="<?php echo BASE_URL; ?>organizer/create_project/publish_sponsor_notice">Next</a></button>
 
 </body>
 

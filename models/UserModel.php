@@ -29,7 +29,8 @@ class UserModel extends Model
         }
     }
 
-    function getUserId($email) {
+    function getUserId($email)
+    {
         $query = "SELECT U_ID FROM user WHERE Email = '$email' LIMIT 1";
         $statement = $this->db->prepare($query);
 

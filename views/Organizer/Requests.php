@@ -28,19 +28,19 @@ $pid = 1;
                 <div class="card-image card1">
                 </div>
                 <h2>Project Name</h2>
-                <a class="btn" href="<?php echo BASE_URL . 'organizer/view_project/' . $pid; ?>">View</a>
+                <a class="btn" href="<?php echo BASE_URL . 'project/view_project/'  . $_SESSION['role'] .  '/' . $pid; ?>">View</a>
             </div>
             <div class="card">
                 <div class="card-image card2">
                 </div>
                 <h2>Project Name</h2>
-                <a class="btn" href="<?php echo BASE_URL . 'organizer/view_project/' . $pid; ?>">View</a>
+                <a class="btn" href="<?php echo BASE_URL . 'project/view_project/'  . $_SESSION['role'] .  '/' . $pid; ?>">View</a>
             </div>
             <div class="card">
                 <div class="card-image card3">
                 </div>
                 <h2>Project Name</h2>
-                <a class="btn" href="<?php echo BASE_URL . 'organizer/view_project/' . $pid; ?>">View</a>
+                <a class="btn" href="<?php echo BASE_URL . 'project/view_project/'  . $_SESSION['role'] .  '/' . $pid; ?>">View</a>
             </div>
         </section>
     </div>

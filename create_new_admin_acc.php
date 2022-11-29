@@ -1,7 +1,8 @@
-<?php include ('Navbar/navbar.php');?>
-<?php include 'conn.php';?>
+<?php include('Navbar/navbar.php'); ?>
+<?php include 'conn.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,13 +10,14 @@
     <title>Create New Admin Accounts</title>
     <link rel="stylesheet" href="styles/create_new_admin_acc.css">
 </head>
+
 <body>
 
     <br><br><br>
+    <form action="">
     <div class="main">
         <h2>Create New Admin Accounts</h2>
         <div id="com-box">
-            <form action="">
                 <div id="box-item">
                     <div class="box-item-cus">
                         <label for="">Name :</label>
@@ -39,21 +41,23 @@
 
                     <div class="box-item-cus">
                         <label for="">Role :</label>
-                            <select>
-                                <option value="organizer">Organizer</option>
-                                <option value="volunteer">Volunteer</option>
-                                <option value="sponsor">Sponsor</option>
-                                <option value="sponsor">Admin</option>
-                            </select>
+                        <select>
+                            <option value="organizer">Organizer</option>
+                            <option value="volunteer">Volunteer</option>
+                            <option value="sponsor">Sponsor</option>
+                            <option value="sponsor">Admin</option>
+                        </select>
                     </div>
-                        
-                        
-                        
-                        
-                        
                 </div>
-            </form>
         </div>
+        <br>
     </div>
+    <div id="btn-area">
+                <button class="btn">Cancel</button>
+                <button class="btn">Create</button>
+    </div>
+    <br>
+    </form>
 </body>
+
 </html>

@@ -1,18 +1,18 @@
 <?php 
 require 'conn.php';
 session_start();
+
 if (!isset($_SESSION['uid'])) {
     header("Location: login.php");
 }
 include 'Navbar/navbar_log.php';
-
+    session_start();
     $u_id = $_SESSION['uid'];
     $sql="select *from project where U_ID='".$u_id."'";
     $result=mysqli_query($conn,$sql);
     while($row=$result->fetch_assoc()){
         $P_ID=$row['P_ID'];
     }
-    
     $sql1 = "SELECT Name, Date, Time, Venue, Description, No_of_volunteers FROM project WHERE P_ID='".$P_ID."'";
     $result1 = mysqli_query($conn, $sql1);
         // output data of each row

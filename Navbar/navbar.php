@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="Navbar/navbar.css">
     <script defer src="Navbar/navbar.js"></script>
 </head>
-<body>
     <!-- Navbar start -->
     <header>
         <div id="brand"><a href=""><img id="logo" src="Navbar/images/logo_transparent.png" alt=""></a></div>
@@ -35,6 +34,4 @@
     </header>
     <!-- Navbar end -->
     
-
-</body>
 </html>

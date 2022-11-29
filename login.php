@@ -2,7 +2,6 @@
 <?php include 'sidenav/sidenav.php' ?>
 <?php include 'conn.php' ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 

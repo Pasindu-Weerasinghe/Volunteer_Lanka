@@ -6,15 +6,10 @@ if (!isset($_SESSION['uid'])) {
 }
 include 'Navbar/navbar_log.php';
 
-    $u_id = $_SESSION['uid'];
-    $sql="select *from project where U_ID='".$u_id."'";
-    $result=mysqli_query($conn,$sql);
-    while($row=$result->fetch_assoc()){
-        $P_ID=$row['P_ID'];
-    }
-    
-    $sql1 = "SELECT Name, Date, Time, Venue, Description, No_of_volunteers FROM project WHERE P_ID='".$P_ID."'";
+    $pid = $_REQUEST["pid"];
+    $sql1 = "SELECT Name, Date, Time, Venue, No_of_volunteers, Description FROM project WHERE $pid = P_ID";
     $result1 = mysqli_query($conn, $sql1);
+    if ($result1 -> num_rows > 0) {
         // output data of each row
         while($row1 = $result1->fetch_assoc()) {
             $Name = $row1['Name'];
@@ -24,11 +19,11 @@ include 'Navbar/navbar_log.php';
             $No_of_volunteers = $row1['No_of_volunteers'];
             $Description = $row1['Description'];
         }
+    }
 
-    $sql2 = "SELECT Image FROM pr_image WHERE P_ID=3";
+    $sql2 = "SELECT Image FROM pr_image WHERE $pid = P_ID";
     $result2 = mysqli_query($conn, $sql2);
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,17 +34,16 @@ include 'Navbar/navbar_log.php';
     <link rel="stylesheet" href="styles/view.css">
     <title><?php echo ($Name) ?></title>
 </head>
-
 <body>
 <div id="main">
     <h2><?php echo ($Name) ?></h2><br/><br/>
     <div class="container">
         <div class="container-image">    
         <?php 
-            if (mysqli_num_rows($result2)>0) {
+            if ($result2 -> num_rows>0) {
                 while($row2 = $result2->fetch_assoc()) { 
                     $image = $row2['Image']?>
-                    <div class="item"><img src="images/<?php echo $image ?>"></div>
+                    <div class="item"><img src="images/<?php echo $image; ?>"></div>
                 <?php }
             }?>    
         </div>
@@ -88,5 +82,4 @@ include 'Navbar/navbar_log.php';
 </div>
 
 </body>
-
 </html>

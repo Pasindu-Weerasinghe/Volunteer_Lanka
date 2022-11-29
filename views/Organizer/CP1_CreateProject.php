@@ -20,7 +20,7 @@ if (!isset($_SESSION['uid'])) {
 
     <?php include 'views/includes/navbar_log.php'; ?>
 
-    <div class="main">
+    <div class="main" id="main">
         <h2>Create a new project</h2><br /><br />
         <form action="<?php echo BASE_URL; ?>organizer/create_project/" method="post">
             <div class="container">
@@ -85,7 +85,7 @@ if (!isset($_SESSION['uid'])) {
             </div>
 
             <button class="btn1" onclick="history.back()">Cancel</button>
-            <button type="submit" name="next"class="btn2">Next</button>
+            <button type="submit" name="next" class="btn2">Next</button>
         </form>
 
     </div>

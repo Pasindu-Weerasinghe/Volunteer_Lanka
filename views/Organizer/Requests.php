@@ -21,7 +21,7 @@ $pid = 1;
     <!-- navigationb bar -->
     <?php include 'views/includes/navbar_log.php'; ?>
 
-    <div class="main">
+    <div class="main" id="main">
         <h2>Upcoming Projects</h2><br /><br />
         <section class="container">
             <div class="card">

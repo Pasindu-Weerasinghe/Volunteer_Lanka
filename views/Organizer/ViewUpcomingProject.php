@@ -20,7 +20,7 @@ if (!isset($_SESSION['uid'])) {
     <!-- navigationb bar -->
     <?php include 'views/includes/navbar_log.php'; ?>
 
-    <div class="main">
+    <div class="main" id="main">
         <h2>Project Name</h2><br /><br />
         <div class="container">
             <div class="container-image">

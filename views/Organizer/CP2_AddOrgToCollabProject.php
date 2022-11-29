@@ -20,7 +20,7 @@ if (!isset($_SESSION['uid'])) {
 
     <?php include 'views/includes/navbar_log.php'; ?>
 
-    <div class="main">
+    <div class="main" id="main">
         <h2>Add Organizers to Collaborate Project</h2><br /><br />
         <div class="container">
             <table>

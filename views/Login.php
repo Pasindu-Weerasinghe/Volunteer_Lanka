@@ -11,7 +11,7 @@
 
 <body>
     <?php include 'views/includes/navbar.php' ?>
-    <!-- <img src="<?php echo BASE_URL; ?>public/images/bg-img1.jpg" class="bg-img"> -->
+    <img src="<?php echo BASE_URL; ?>public/images/bg-img1.jpg" class="bg-img">
     <form action="<?php echo BASE_URL; ?>index/login_auth" method="post">
         <div class="container">
             <h1>Login</h1>

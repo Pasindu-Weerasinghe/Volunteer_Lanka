@@ -4,8 +4,11 @@ session_start();
 if (!isset($_SESSION['uid'])) {
     header("Location: login.php");
 }
-require 'Navbar/navbar_log.php'; ?>
-
+require 'Navbar/navbar_log.php'; 
+    $sql = "SELECT P_ID, Name, Date FROM project";
+    $result = mysqli_query($conn, $sql);
+    $projects = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +21,10 @@ require 'Navbar/navbar_log.php'; ?>
 <body>
     <br/><h2>Sponserd Projects</h2><br/><br/>
     <section class="container">
+    <?php foreach ($projects as $project)
+            $pid = $project['P_ID'];
+            $_SESSION['pid']=$pid;
+            ?>
         <div class="card">
             <div class="card-image card1">
             </div>
@@ -60,7 +67,7 @@ require 'Navbar/navbar_log.php'; ?>
             </div>
             <p>Project Name</p>
             <p>Amount</p>
-            <a class="btn" href="view_sponsor_notices.php">View</a>
+            <a class="btn"  href="view_project_sponsor.php">View</a>
         </div>
     </section>
 </body>

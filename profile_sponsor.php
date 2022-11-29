@@ -2,12 +2,19 @@
 include 'conn.php';
 session_start();
 $uid=$_SESSION['uid'];
-$sql1 = "SELECT * FROM sponsor WHERE U_ID='.$uid.'";
 
-$result=mysqli_query($conn,$sql1);
+$sql="select *from user where U_ID='".$uid."'";
+$result=mysqli_query($conn,$sql);
+while($row = $result->fetch_assoc()){
+    $Role = $row['Role'];
+    $Email = $row['Email'];
+    $password = $row['Password'];
+}
+$sql1 = "SELECT * FROM sponsor WHERE U_ID='".$uid."'";
+$result1=mysqli_query($conn,$sql1);
 
 
-if(mysqli_num_rows($result)>0 ){
+if(mysqli_num_rows($result1)>0 ){
 }
 ?>
 
@@ -20,10 +27,21 @@ if(mysqli_num_rows($result)>0 ){
         <link rel="stylesheet" href="" text="text/css">
         <title>Sponsor</title>
     </head>
+    <script>
+        function myFunction(){
+            var y = document.getElementById("myInput");
+            if(y.type=="password"){
+                y.type = "text";
+            }
+            else{
+                y.type="password";
+            }
+        }
+    </script>
   
     <body>
         <?php
-                while($row1 = mysqli_fetch_assoc($result))
+                while($row1 = $result1->fetch_assoc())
             {
         ?>
 
@@ -41,9 +59,10 @@ if(mysqli_num_rows($result)>0 ){
                             <label class="textarea">User ID:<?php echo $row1['U_ID'];?></label><br><br>
                             <label class="textarea">Name:<?php echo $row1['Name'];?> </label><br><br>
                             <label class="textarea">Contact No:<?php echo $row1['Contact'];?> </label><br><br>
-                            <label class="textarea">Email:<?php echo $row1['Email'];?></label><br><br>
-                            <label class="textarea">Role:<?php echo $row1['Role'];?></label><br><br>
-                            <label class="textarea">Password:<input type="password" value="<?php echo $row1['password']; ?>" id="myInput" readonly="readonly" style="width:25%">&nbsp;<input type="checkbox" onclick="myFunction()"></label>
+                            <label class="textarea">Email:<?php echo $Email?></label><br><br>
+                            <label class="textarea">Role:<?php echo $Role?></label><br><br>
+                            <label class="textarea">Password:<input type="password" value="<?php echo $password?>" id="myInput" readonly="readonly" style="width:25%">&nbsp;<input type="checkbox" onclick="myFunction()"></label>
+                            
                 </div>
             </div>
                 <?php

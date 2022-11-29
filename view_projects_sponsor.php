@@ -6,8 +6,9 @@ if (!isset($_SESSION['uid'])) {
     header("Location: login.php");
 }
 include 'Navbar/navbar_log.php';
-    $P_ID= $_REQUEST['P_ID'];
-    $sql1 = "SELECT Name, Date, Time, Venue, Description, No_of_volunteers FROM project WHERE P_ID=3";
+session_start();
+    $P_ID= $_SESSION['pid'];
+    $sql1 = "SELECT Name, Date, Time, Venue, Description, No_of_volunteers FROM project WHERE P_ID='".$P_ID."'";
     $result1 = mysqli_query($conn, $sql1);
         // output data of each row
         while($row1 = $result1->fetch_assoc()) {
@@ -19,7 +20,7 @@ include 'Navbar/navbar_log.php';
             $Description = $row1['Description'];
         }
 
-    $sql2 = "SELECT Image FROM pr_image WHERE P_ID=3";
+    $sql2 = "SELECT Image FROM pr_image WHERE P_ID='".$P_ID."'";
     $result2 = mysqli_query($conn, $sql2);
 ?>
 

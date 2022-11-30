@@ -36,7 +36,7 @@ session_start();
 </head>
 
 <body>
-<div id="main">
+<div class="main" id="main">
     <h2><?php echo ($Name) ?></h2><br/><br/>
     <div class="container">
         <div class="container-image">    

@@ -7,9 +7,9 @@ if (!isset($_SESSION['uid'])) {
 $uid = $_SESSION['uid'];
 require 'Navbar/navbar_log.php'; 
 
-    $sql = "SELECT AD_ID, Location, Description FROM pr_ideas WHERE $uid = U_ID";
-    $result = mysqli_query($conn, $sql);
-    $requests = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    // $sql = "SELECT AD_ID, Location, Description FROM pr_ideas WHERE $uid = U_ID";
+    // $result = mysqli_query($conn, $sql);
+    // $requests = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
 
 
@@ -29,7 +29,7 @@ require 'Navbar/navbar_log.php';
 <body>
     <br />
     <h2>Published Advertiesment</h2><br />
-    <p>You can publish your company’s adverisement from here. It will be sent to our admins and get published after they accept</p> <br />
+    <p>You can publish your company's adverisement from here. It will be sent to our admins and get published after they accept</p> <br />
 
 
     <p><strong>Upload Advertiesment</strong> </p2><br />
@@ -60,8 +60,6 @@ require 'Navbar/navbar_log.php';
         <button class="btn1"><a href="publish_advertisment.php">Cancel</a></button>
         <button class="btn2"><a href="publish_advertisment.php">Send Request</a></button>
     </div>
-
-
 
 
 

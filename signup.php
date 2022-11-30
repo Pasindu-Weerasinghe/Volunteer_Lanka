@@ -12,9 +12,9 @@ if (isset($_POST["submit"])) {
 
     if ($confirm == $psw) {
         session_start();
-        $_SESSION["role"]=$role;
-        $_SESSION["email"]=$email;
-        $_SESSION["psw"]=$psw;
+        $_SESSION["role"] = $role;
+        $_SESSION["email"] = $email;
+        $_SESSION["psw"] = password_hash($psw, PASSWORD_BCRYPT);
         header("Location:signup_sponsor.php");
     } else {
         $error = "Password is not matched!";
@@ -36,7 +36,7 @@ if (isset($_POST["submit"])) {
 <body>
     <form action="signup.php" method="post">
         <div class="container">
-            <h1>Signup</h1><br/>
+            <h1>Signup</h1><br />
             <hr>
             <label for="role"><b>Role</b></label>
             <div class="select">
@@ -55,7 +55,7 @@ if (isset($_POST["submit"])) {
 
             <label for="confirm-psw"><b>Confirm Password</b></label>
             <input type="password" name="confirm-psw" required>
-            
+
             <div class="clearfix">
                 <button class="cancel">Cancel</button>
                 <button class="next" type="submit" name="submit">Next</button>
@@ -67,7 +67,7 @@ if (isset($_POST["submit"])) {
 
         </div>
     </form>
-    
+
 </body>
 </head>
 

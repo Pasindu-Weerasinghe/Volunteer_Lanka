@@ -1,5 +1,6 @@
 <?php include ('Navbar/navbar.php') ?>
 <?php include 'conn.php';
+session_start();
     $_SESSION['role'] = $_POST['role'];
     $_SESSION['email'] = $_POST['email'];
     $_SESSION['psw'] = $_POST['psw'];

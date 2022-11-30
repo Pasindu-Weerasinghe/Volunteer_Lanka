@@ -1,13 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Lobster&family=Open+Sans:wght@300&family=Poppins:ital,wght@0,100;0,200;0,400;1,100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
 
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-}
-body{
-    background-color: #b3cce1;
-    font-family: 'Poppins', sans-serif;
 }
 
 .container{
@@ -17,16 +13,17 @@ body{
 }
 
 .card{
-    background-color: white;
+    background-color: rgb(13, 16, 66);
+    color: white;
     width: 270px;
     margin: 10px;
     border-radius: 20px;
-    
 }
 
 h2, p{
-    margin: 10px 10px 0 10px;
+    margin: 20px 10px 0 10px;
 }
+
 h3, h4 {
     margin: 0 0 10px 10px;
 }
@@ -37,11 +34,12 @@ h3, h4 {
     text-align: center;
     margin: 15px 20px;
     background-color: #6aa438;
-    color: black;
+    color: white;
     padding: 10px 10px;
-    border-radius: 5px;
+    border-radius: 8px;
     font-weight: bold;
 }
+
 .card-image{
     height: 170px;
     width:100px;
@@ -66,8 +64,9 @@ h3, h4 {
 }
 
 .card:hover{
-    background-color: gray;
-    color: white;
+    background-color: white;
+    color: black;
+    border: 4px outset rgba(0, 0, 255, 0.253);
     cursor: pointer;
     transform: scale(1.05);
     transition: all 0.4s ease;

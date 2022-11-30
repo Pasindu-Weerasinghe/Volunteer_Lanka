@@ -1,5 +1,6 @@
 <?php 
 include 'conn.php';
+session_start();
 
 if (isset($_REQUEST["signup"])){
 
@@ -10,7 +11,9 @@ if (isset($_REQUEST["signup"])){
     $contact = $_POST['contact'];
     $address = $_POST['address'];
 
-    $query1 = "INSERT INTO user (Email, Password, Role, Status, Restricted) values ('$email', '$psw', '$role','active', '0')";
+    $hash_psw = password_hash($psw, PASSWORD_BCRYPT);
+
+    $query1 = "INSERT INTO user (Email, Password, Role, Status, Restricted) values ('$email', '$hash_psw', '$role','active', '0')";
     $result1 = mysqli_query($conn, $query1);
 
     $query2 = "SELECT U_ID FROM user WHERE Email = '$email'";

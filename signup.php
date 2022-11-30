@@ -30,7 +30,8 @@
         <input type="email" name="email" required>
 
         <label for="psw"><b>Password</b></label>
-        <input type="password" name="psw" required>
+        <input type="password" name="psw" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+        title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters">
 
         <label for="confirm-psw"><b>Confirm Password</b></label>
         <input type="password" name="confirm-psw" required>

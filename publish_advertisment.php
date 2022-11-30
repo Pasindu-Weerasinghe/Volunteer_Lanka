@@ -51,7 +51,7 @@ require 'Navbar/navbar_log.php';
 
 
     <br>
-    <p><strong>Description</strong><textarea rows="10" cols="70" name="comment" placeholder="Enter here!"></textarea> </p2><br />
+    <p><strong>Description</strong><input rows="10" cols="70" name="comment" placeholder="Enter here!"></input> </p2><br />
     <div class="silver">
 
     </div>

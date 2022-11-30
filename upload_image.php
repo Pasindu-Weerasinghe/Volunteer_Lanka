@@ -1,22 +1,26 @@
 <?php 
+
 require 'conn.php';
 session_start();
+if (!isset($_SESSION['uid'])) {
+    header("Location: login.php");
+}
+include 'Navbar/navbar_log.php';
 
 if (isset($_REQUEST["request"])){
 
     $uid = $_SESSION['uid'];
     $description = $_POST['des'];
-    $status = $_POST['status'];
-    $sponsor = $_POST['sponsor'];
  
     $targetDir = "images/";
     $allowTypes = array('jpg','png','jpeg','gif');
 
-    $query = "INSERT INTO advertisment (Description, status, sponsor) VALUES ('$description', '$status', '$sponsor')";
+    $query = "INSERT INTO advertisement (Description, status, Sponsor) VALUES ('$description', 'pending', '$uid')";
     $result = mysqli_query($conn, $query);
 
-    $query2 = "SELECT AD_ID FROM advertisment WHERE U_ID = '$uid'";
+    $query2 = "SELECT AD_ID FROM advertisement WHERE U_ID = '$uid'";
     $result2 = mysqli_query($conn, $query2);
+
     $row = mysqli_fetch_array($result2);
     $idea = $row['AD_ID'];
     print($idea);
@@ -48,7 +52,7 @@ if (isset($_REQUEST["request"])){
     echo $statusMsg;
     if ($result) {
             echo "<script> alert ('Request Sent!');</script>";
-            header ("Location: upload_image.php");
+            header ("Location: publish_advertisment.php");
     }
     
 }

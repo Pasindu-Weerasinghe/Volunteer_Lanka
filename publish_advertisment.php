@@ -27,7 +27,7 @@ require 'Navbar/navbar_log.php';
 </head>
 
 <body>
-    <br />
+    <div class="main" id="main">
     <h2>Published Advertiesment</h2><br />
     <p>You can publish your company's adverisement from here. It will be sent to our admins and get published after they accept</p> <br />
 
@@ -38,10 +38,9 @@ require 'Navbar/navbar_log.php';
         <div class="vertically-center">
 
             <form name="from_file_upload" action="upload.php" method="post" enctype="multipart/form-data">
-                <div class="input-row">
+                <div class="">
                     <input type="file" name="upload_file">
                 </div>
-                <input type="submit" name="upload" value="Upload File">
             </form>
 
         </div>
@@ -51,7 +50,7 @@ require 'Navbar/navbar_log.php';
 
 
     <br>
-    <p><strong>Description</strong><input rows="10" cols="70" name="comment" placeholder="Enter here!"></input> </p2><br />
+    <p><strong>Description</strong><textarea rows="10" cols="70" name="comment" placeholder="Enter here!"></textarea> </p2><br />
     <div class="silver">
 
     </div>
@@ -62,7 +61,7 @@ require 'Navbar/navbar_log.php';
     </div>
 
 
-
+    </div>
 </body>
 
 </html>

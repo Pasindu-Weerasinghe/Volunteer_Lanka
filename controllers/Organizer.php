@@ -45,6 +45,10 @@ class Organizer extends User
             case 'form_for_volunteers':
                 $this->render('Organizer/CP4_FormForVolunteers');
                 break;
+            case 'create':
+                $this->loadModel('Project');
+                
+                break;
         }
     }
 

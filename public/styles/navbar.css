@@ -1,44 +1,52 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Lobster&family=Open+Sans:wght@300&family=Poppins:ital,wght@0,100;0,200;0,400;1,100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
 
 * {
+    font-family: 'Source Sans Pro', sans-serif;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-header a{
+header a {
     text-decoration: none;
 }
 
-header{
+header {
     padding: 0 20px;
-    background-color: #FFFFFF;
+    background-color: #D9EEF5; 
+    backdrop-filter: blur(16px);
     height: 80px;
     display: flex;
     justify-content: space-between;
     width: 100%;
     position: fixed;
-	top: 0;
-	z-index: 100;
+    top: 0;
+    z-index: 100;
 }
 
 
-#logo{
-    width: 85px;
-    height: 85px;
-} 
+#logo {
+    /* background-color: white;
+    border-radius: 30%; */
+    width: 60px;
+    height: 60px;
+}
 
-#brand{
+#logo:hover {
+    opacity: 0.8;
+}
+
+#brand {
     align-items: center;
     display: flex;
 }
 
-ul a{
-    color: #6aa438;
+ul a {
+    color: black;
     font-weight: bold;
 }
 
-ul{
+ul {
     list-style: none;
     height: 100%;
     display: flex;
@@ -46,55 +54,44 @@ ul{
     justify-content: space-around;
 }
 
-ul li{
-    padding: 15px;
-    margin-left: 10px;
+ul li {
+    padding: 10px;
+    margin-left: 5px;
 }
 
-ul li:hover{
+ul li:hover {
     transform: scale(1.1);
     transition: 00.3s;
 }
 
-#login{
-    background-color: #89afd6;
-    border-radius: 4px;
-    width: 110px;
-    height: 50px;
-    text-align: center;
-    display: inline-block;
-    align-items: center;
-    
-}
-
-#signup{
-    background-color: #84b464;
-    border-radius: 4px;
-    width: 110px;
-    height: 50px;
-    text-align: center;
-    display: inline-block;
-    align-items: center;
-    
-}
-#signup a{
+.btn {
     color: black;
+    font-weight: bold;
     font-size: 18px;
-    
+    border: none;
+    border-radius: 8px;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    display: inline-block;
+    align-items: center;
 }
 
-#login a{
-    color: Black;
-    font-size: 18px;
+#login {
+    background-color: #89afd6;
 }
 
-#hamburger-icon{
+#signup {
+    background-color: #84b464;
+}
+
+#hamburger-icon {
     margin: auto 0;
     display: none;
     cursor: pointer;
 }
 
-#hamburger-icon div{
+#hamburger-icon div {
     width: 35px;
     height: 3px;
     background-color: black;
@@ -106,11 +103,11 @@ ul li:hover{
     -webkit-transform: rotate(-45deg) translate(-6px, 6px);
     transform: rotate(-45deg) translate(-6px, 6px);
 }
-  
+
 .open .bar2 {
     opacity: 0;
-  }
-  
+}
+
 .open .bar3 {
     -webkit-transform: rotate(45deg) translate(-6px, -8px);
     transform: rotate(45deg) translate(-6px, -8px);
@@ -119,7 +116,7 @@ ul li:hover{
 .open .mobile-menu {
     display: flex;
     flex-direction: column;
-    align-items: center;    
+    align-items: center;
     justify-content: flex-start;
 }
 
@@ -134,7 +131,7 @@ ul li:hover{
     height: 50%;
 }
 
-#loginmobile{
+#loginmobile {
     background-color: #89afd6;
     border-radius: 4px;
     width: 110px;
@@ -142,10 +139,10 @@ ul li:hover{
     text-align: center;
     display: inline-block;
     align-items: center;
-    
+
 }
 
-#signupmobile{
+#signupmobile {
     background-color: #84b464;
     border-radius: 4px;
     width: 110px;
@@ -154,25 +151,26 @@ ul li:hover{
     display: inline-block;
     align-items: center;
     margin-top: 7px;
-    
+
 }
-#signupmobile a{
+
+#signupmobile a {
     color: black;
     font-size: 18px;
 }
 
-#loginmobile a{
-    color:black;
+#loginmobile a {
+    color: black;
     font-size: 18px;
-} 
+}
 
 
-@media only screen and (max-width:750px){
-    header nav{
+@media only screen and (max-width:750px) {
+    header nav {
         display: none;
     }
 
     #hamburger-icon {
         display: block;
-      }
+    }
 }

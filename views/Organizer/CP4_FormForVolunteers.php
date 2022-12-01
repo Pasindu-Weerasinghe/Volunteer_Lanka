@@ -22,37 +22,38 @@ if (!isset($_SESSION['uid'])) {
 
     <div class="main" id="main">
         <h2>Create a Form for Volunteers</h2><br />
+        <form action="<?php echo BASE_URL; ?>organizer/create_project/create" method="post">
 
-        <div class="container">
-            <p>The form you create here will be displayed to volunteers when joining
-                select necessary fields you would like to have in your form.</p>
-            <table>
-                <tr>
-                    <td><input type="checkbox" name="v-name"></td>
-                    <td>Volunteer Name</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="email"></td>
-                    <td>E-mail address</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="contact-no"></td>
-                    <td>Contact number</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="meal-pref"></td>
-                    <td>Meal preference</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="prior-participations"></td>
-                    <td>Prior partcipation in volunteer projects</td>
-                </tr>
-            </table>
-        </div>
+            <div class="container">
+                <p>The form you create here will be displayed to volunteers when joining
+                    select necessary fields you would like to have in your form.</p>
+                <table>
+                    <tr>
+                        <td><input type="checkbox" name="v-name"></td>
+                        <td>Volunteer Name</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="email"></td>
+                        <td>E-mail address</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="contact-no"></td>
+                        <td>Contact number</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="meal-pref"></td>
+                        <td>Meal preference</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="prior-participations"></td>
+                        <td>Prior partcipation in volunteer projects</td>
+                    </tr>
+                </table>
+            </div>
 
-        <button class="btn1">Back</button>
-        <button class="btn2">Create</button>
-
+            <button class="btn1" onclick="history.back()">Back</button>
+            <button type="submit" name="create" class="btn2" >Create</button>
+        </form>
     </div>
 
 </body>

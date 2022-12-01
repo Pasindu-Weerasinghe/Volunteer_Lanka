@@ -14,8 +14,16 @@
         <ul>
             <li><a href="">About Us</a></li>
             <li><a href="/">Contact Us</a></li>
-            <li id="login"><a href="<?php echo BASE_URL; ?>index/login">LOGIN</a></li>
-            <li id="signup"><a id="signup a" href="<?php echo BASE_URL; ?>index/signup">SIGN UP</a></li>
+            <li>
+                <a href="<?php echo BASE_URL; ?>index/login">
+                    <button class="btn" id="login">Log in</button>
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo BASE_URL; ?>index/signup">
+                    <button class="btn" id="signup">Sign up</button>
+                </a>
+            </li>
         </ul>
     </nav>
 
@@ -27,8 +35,8 @@
         <ul class="mobile-menu">
             <li><a href="/about">About Us</a></li>
             <li><a href="/contact">Contact Us</a></li>
-            <li id="loginmobile"><a href="<?php echo BASE_URL; ?>index/login">LOGIN</a></li>
-            <li id="signupmobile"><a id="signup a" href="<?php echo BASE_URL; ?>index/login">SIGN UP</a></li>
+            <li id="loginmobile"><a href="<?php echo BASE_URL; ?>index/login"><button>Log in</button></a></li>
+            <li id="signupmobile"><a id="signup a" href="<?php echo BASE_URL; ?>index/signup">Sign up</a></li>
         </ul>
     </div>
     <!-- mobile view end-->

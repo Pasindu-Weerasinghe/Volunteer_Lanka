@@ -15,7 +15,8 @@ header a {
 header {
 	font-family: "Montserrat";
 	padding: 25px 20px;
-	background-color: #ffffff;
+	background-color: rgba(0, 0, 0, 0.75);
+	backdrop-filter: blur(16px);
 	height: 80px;
 	display: flex;
 	justify-content: space-between;
@@ -32,6 +33,10 @@ header {
 #logo {
 	width: 85px;
 	height: 85px;
+}
+
+#logo:hover {
+	opacity: 0.8;
 }
 
 #brand {

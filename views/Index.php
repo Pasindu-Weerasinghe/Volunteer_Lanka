@@ -10,9 +10,13 @@
 
 <body>
     <?php include 'views/includes/navbar.php' ?>
-    <?php include 'views/includes/cards.php' ?>
-    <?php include 'views/includes/cards.php' ?>
-    <?php include 'views/includes/cards.php' ?>
+
+    <div class="main" id="main">
+        <?php include 'views/includes/cards.php' ?>
+        <?php include 'views/includes/cards.php' ?>
+        <?php include 'views/includes/cards.php' ?>
+    </div>
+
 </body>
 
 </html>

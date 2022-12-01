@@ -11,11 +11,13 @@
 
 <body>
     <?php include 'views/includes/navbar.php' ?>
-    <img src="<?php echo BASE_URL; ?>public/images/bg-img1.jpg" class="bg-img">
+
+    <!-- <img src="<?php echo BASE_URL; ?>public/images/bg-img2.jpg" class="bg-img"> -->
+
     <form action="<?php echo BASE_URL; ?>index/login_auth" method="post">
         <div class="container">
             <h1>Login</h1>
-
+<br>
             <?php
             if ($this->error == 'incorrect email') {
                 echo '<p id="error">Incorrect Username</p>';
@@ -36,9 +38,9 @@
             <span class="psw"><a href="#">Forgot password?</a></span>
 
             <button type="submit" name="login">Login</button>
-        </div><br />
+        </div>
 
-        <span class="signup">Don't have an account? <a href="#">Sign up</a></span>
+        <p class="signup">Don't have an account? <a href="#">Sign up</a></p>
     </form>
 </body>
 

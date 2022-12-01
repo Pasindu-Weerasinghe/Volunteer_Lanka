@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" href="public/styles/cards.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>public/styles/cards.css">
 </head>
 
 <section class="container">

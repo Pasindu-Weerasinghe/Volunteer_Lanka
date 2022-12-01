@@ -19,7 +19,7 @@ if (!isset($_SESSION['uid'])) {
 <body>
 
     <?php include 'views/includes/navbar_log.php'; ?>
-
+    
     <div class="main" id="main">
 
         <h2>Upcoming Projects</h2><br /><br />

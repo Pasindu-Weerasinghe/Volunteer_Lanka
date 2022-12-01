@@ -16,12 +16,14 @@ session_start();
 <body>
 
     <?php include 'views/includes/navbar.php'; ?>
-
+    <br>
+    <br>
+    <br>
+    <br>
     <form action="<?php echo BASE_URL . 'index/signup_finish/' . $_SESSION['role']; ?>" method="post">
 
         <div class="container">
-            <h1>Signup as a Organizer</h1><br />
-            <hr>
+            <h1>Signup as an Organizer</h1><br />
 
             <label><b>Name</b></label>
             <input type="text" name="name" required>
@@ -40,8 +42,8 @@ session_start();
             <div class=" clearfix">
                 <button class="cancel"><b>Cancel</b></button>
                 <button type="submit" id="submit" name="submit" class="next"><b>Submit</b></button>
-        </div>
+            </div>
     </form>
 </body>
-    
+
 </html>

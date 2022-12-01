@@ -14,6 +14,8 @@ if (isset($_POST["submit"])) {
         session_start();
         $_SESSION["role"] = $role;
         $_SESSION["email"] = $email;
+        // $_SESSION["psw"] = $psw;
+
         $_SESSION["psw"] = password_hash($psw, PASSWORD_BCRYPT);
         header("Location:signup_sponsor.php");
     } else {

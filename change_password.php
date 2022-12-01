@@ -1,6 +1,7 @@
 <?php
 require 'conn.php';
 session_start();
+$error=NULL;
 $uid = $_SESSION['uid'];
 ?>
 
@@ -34,13 +35,19 @@ $uid = $_SESSION['uid'];
     while ($row = $result->fetch_assoc())
         $cu_pw = $row['Password'];
 
+   
+
     if (isset($_POST['submit'])) {
         $password = $_POST['current'];
         $new = $_POST['new'];
         $confirm = $_POST['confirm'];
+        $verify = password_verify($password, $cu_pw);
 
-        if ($password == $cu_pw) {
+        if ($password == $verify) {
             if ($new == $confirm) {
+                $new1 = password_hash($new, PASSWORD_BCRYPT);
+                $sql="UPDATE user SET Password='".$new1."' WHERE U_ID='".$uid."'";
+                $result=mysqli_query($conn,$sql);
                 $error = "Password Updated Successfully";
             } else {
                 $error = "password did not match";

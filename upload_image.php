@@ -1,11 +1,7 @@
-<?php 
 
+<?php 
 require 'conn.php';
 session_start();
-if (!isset($_SESSION['uid'])) {
-    header("Location: login.php");
-}
-include 'Navbar/navbar_log.php';
 
 if (isset($_REQUEST["request"])){
 
@@ -15,15 +11,13 @@ if (isset($_REQUEST["request"])){
     $targetDir = "images/";
     $allowTypes = array('jpg','png','jpeg','gif');
 
-    $query = "INSERT INTO advertisement (Description, status, Sponsor) VALUES ('$description', 'pending', '$uid')";
+    $query = "INSERT INTO advertisement (Description, Status, Sponsor) VALUES ('$description', 'Pending', '$uid')";
     $result = mysqli_query($conn, $query);
 
-    $query2 = "SELECT AD_ID FROM advertisement WHERE U_ID = '$uid'";
+    $query2 = "SELECT AD_ID FROM advertisement WHERE Sponsor = '".$uid."'";
     $result2 = mysqli_query($conn, $query2);
-
     $row = mysqli_fetch_array($result2);
-    $idea = $row['AD_ID'];
-    print($idea);
+    $add = $row['AD_ID'];
 
     if (!empty($_FILES["file"]["name"])) {
 
@@ -36,7 +30,7 @@ if (isset($_REQUEST["request"])){
             if(in_array($fileType, $allowTypes)){
                 if(move_uploaded_file($_FILES["file"]["tmp_name"][$i], $targetFilePath)){
                     
-                    $query3 = "INSERT into ad_image (AD_ID, Image) VALUES ('".$idea."','".$fileName."')";
+                    $query3 = " INSERT INTO ad_image (AD_ID, Image) VALUES ('".$add."','".$fileName."')";
                     $result3 = mysqli_query($conn, $query3);
                     if($result3){
                         $statusMsg = "The file ".$fileName. " has been uploaded successfully.";

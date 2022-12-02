@@ -7,8 +7,10 @@
     font-family: 'Poppins', sans-serif;
 }
 
-
-.main{
+.main {
+    padding: 20px 150px 0 150px;   
+}
+.main_container{
     background-color: #89AFD6;
     margin: 50px;
     border-radius: 4px;

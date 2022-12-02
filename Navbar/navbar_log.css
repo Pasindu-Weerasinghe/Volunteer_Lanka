@@ -48,12 +48,20 @@ ul{
 
 ul li{
     padding: 15px;
-    margin-left: 860px;
+    
 }
 
 ul li:hover{
     transform: scale(1.1);
     transition: 00.3s;
+}
+
+/* .H_item1{
+    align-self: ;
+} */
+.H_item2{
+    align-self: center;
+    margin-left: auto;
 }
 
 #logout{

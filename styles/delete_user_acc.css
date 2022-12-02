@@ -9,7 +9,9 @@
 
 .main {
     background-color: #89AFD6;
-    margin: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 130px;
     border-radius: 4px;
 }
 

@@ -20,14 +20,12 @@
 
   <div id="side-menu" class="side-nav">
     <a href="#" class="btn-close" onclick="closeSideMenu()">&times;</a>
-    <a href="home_volunteer.php">Home</a>
-    <a href="upcoming_volunteer.php">Upcoming Projects</a>
-    <a href="completed_volunteer.php">Completed Projects</a>
-    <a href="newideas_volunteer.php">Request to Organize Projects</a>
-    <a href="calendar.php">Calendar</a>
-    <a href="search.php">Search Organizers</a>
-    <a href="profile.php">My Profile</a>
-    <a href="complain.php">Complain</a>
+    <a href="admin_home.php">Home</a>
+    <a href="advertiesment_requests.php">Sponsor Advertiesment Requests</a>
+    <a href="complaints.php">Complaints</a>
+    <a href="create_new_admin_acc.php">Create New Account</a>
+    <a href="view_payments.php">Payments</a>
+    <a href="delete_user_acc.php">Search Users</a>
   </div>
 </body>
 </html>

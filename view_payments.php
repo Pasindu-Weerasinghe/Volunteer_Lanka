@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="styles/delete_user_acc.css">
 </head>
 <body>
-    <br><br><br>
     <div class="main">
         <div id="tb_area">
             <table>

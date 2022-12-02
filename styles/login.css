@@ -12,12 +12,15 @@ body{
     font-family: 'Poppins', sans-serif;
 }
 
+.main{
+  margin-top: 130px;
+}
 h1{
     text-align: center;
 }
  
  /* Bordered form */
- form {
+form {
     border: 2px solid #f1f1f1;
     width: 500px;   
     margin: auto;  

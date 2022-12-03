@@ -1,8 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Lobster&family=Open+Sans:wght@300&family=Poppins:ital,wght@0,100;0,200;0,400;1,100&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Quicksand:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Patrick+Hand&family=Quicksand:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
 
 * {
+	font-family: 'Source Sans Pro', sans-serif;
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
@@ -15,8 +14,7 @@ header a {
 header {
 	font-family: "Montserrat";
 	padding: 25px 20px;
-	background-color: rgba(0, 0, 0, 0.75);
-	backdrop-filter: blur(16px);
+	background-color: #D9EEF5;
 	height: 80px;
 	display: flex;
 	justify-content: space-between;

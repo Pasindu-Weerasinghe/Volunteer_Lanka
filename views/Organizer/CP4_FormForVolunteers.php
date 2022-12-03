@@ -29,10 +29,6 @@ if (!isset($_SESSION['uid'])) {
                     select necessary fields you would like to have in your form.</p>
                 <table>
                     <tr>
-                        <td><input type="checkbox" name="v-name"></td>
-                        <td>Volunteer Name</td>
-                    </tr>
-                    <tr>
                         <td><input type="checkbox" name="email"></td>
                         <td>E-mail address</td>
                     </tr>

@@ -59,7 +59,7 @@ input[type="password"]:focus {
 }
 
 /* Set a style for all buttons */
-button {
+#login-btn {
 	background-color: #6aa438;
 	color: white;
 	padding: 14px 20px;
@@ -68,14 +68,12 @@ button {
 	border-radius: 10px;
 	cursor: pointer;
 	width: 100%;
-
-	font-family: "Poppins", sans-serif;
 	text-decoration: none;
 	font-size: 20px;
 }
 
 /* Add a hover effect for buttons */
-button:hover {
+#login-btn:hover {
 	opacity: 0.8;
 }
 

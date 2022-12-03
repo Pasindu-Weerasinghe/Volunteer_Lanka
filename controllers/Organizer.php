@@ -30,7 +30,7 @@ class Organizer extends User
                     $_SESSION['sponsorship'] = $_POST['sponsorship'];
 
                     if ($_POST['partnership'] == 'single') {
-                        header('Location: '. BASE_URL. 'organizer/create_project/form_for_volunteers');
+                        header('Location: ' . BASE_URL . 'organizer/create_project/form_for_volunteers');
                     }
                 } else {
                     $this->render('Organizer/CP1_CreateProject');
@@ -46,8 +46,31 @@ class Organizer extends User
                 $this->render('Organizer/CP4_FormForVolunteers');
                 break;
             case 'create':
-                $this->loadModel('Project');
-                
+                if (isset($_POST['create'])) {
+                    $this->loadModel('Project');
+                    session_start();
+                    $pname = $_SESSION['project-name'];
+                    $date = $_SESSION['date'];
+                    $time = $_SESSION['time'];
+                    $venue = $_SESSION['venue'];
+                    $description = $_SESSION['description'];
+                    $no_of_volunteers = $_SESSION['no-of-members'];
+                    $sponsorship = $_SESSION['sponsorship'] == 'publish-sn' ? 1 : 0;
+                    $uid = $_SESSION['uid'];
+
+                    if ($this->model->setProject($pname, $date, $time, $venue, $description, $no_of_volunteers, $sponsorship, $uid)) {
+                        if (($pid = $this->model->getProjectId($pname, $uid)) != 'query failed') {
+                        }
+                    }
+
+                    $email = $_POST['email'] ? 1 : 0;
+                    $contact = $_POST['contact-no'] ? 1 : 0;
+                    $meal_pref = $_POST['meal-pref'] ? 1 : 0;
+                    $prior_part = $_POST['prior-participations'] ? 1 : 0;
+                    $this->model->setVolunteerForm($pid, $email, $contact, $meal_pref, $prior_part);
+                    unset($_SESSION['project-name'], $_SESSION['date'], $_SESSION['time'], $_SESSION['venue'], $_SESSION['description'], $_SESSION['no-of-members'], $_SESSION['sponsorship']);
+                    header('Location: ' . BASE_URL);
+                }
                 break;
         }
     }

@@ -30,10 +30,11 @@ header {
     border-radius: 30%; */
     width: 60px;
     height: 60px;
+    opacity: 0.8;
 }
 
 #logo:hover {
-    opacity: 0.8;
+    opacity: 1;
 }
 
 #brand {

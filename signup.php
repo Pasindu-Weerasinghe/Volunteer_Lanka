@@ -1,5 +1,27 @@
-<?php include ('Navbar/navbar.php')?>
-<?php include 'conn.php'?>
+<?php include ('Navbar/navbar.php');
+include 'conn.php';
+session_start();
+$error = null;
+
+if (isset($_REQUEST["next"])) {
+
+    $role = $_POST['role'];
+    $email = $_POST['email'];
+    $psw = $_POST['psw'];
+    $confirm = $_POST['confirm-psw'];
+
+    if ($confirm == $psw) {
+        $_SESSION["role"] = $role;
+        $_SESSION["email"] = $email;
+
+        $_SESSION["psw"] = password_hash($psw, PASSWORD_BCRYPT);
+        header("Location:signup_volunteer.php");
+    } else {
+        $error = "Password is not matched!";
+    }
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,11 +34,14 @@
 </head>
     <body>
     <div class="main">
-    <form action="signup_volunteer.php" method="post">
+    <form action="signup.php" method="post">
     <div class="container">
     <h1>Signup</h1><br/><br/>
     <p>Passionate about volunteering? <b>Come join us</b></p><hr>
     
+        <label class="error" id="error">
+            <?php echo $error ?>
+        </label><br/><br/>
         <label for="role"><b>Role</b></label>
         <div class="select">
         <select id="role" name="role" required>
@@ -41,6 +66,7 @@
             <button class="cancel">Cancel</button>
             <button class="next" name="next">Next</button>
         </div>
+
     </div>
     </form>
     </div>

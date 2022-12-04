@@ -14,10 +14,10 @@ body {
 
 form {
 	width: 500px;
-  height: 800px;
+  	/* height: 800px; */
 	margin: auto;
 	margin-top: 20px;
-  margin-bottom: 20px;
+  	margin-bottom: 20px;
 	padding: 20px 50px 10px 50px;
 	background: rgba(255, 255, 255, 0.75);
 	backdrop-filter: blur(16px);
@@ -131,4 +131,5 @@ p {
 	padding: 10px;
 	border-radius: 10px;
 	text-align: center;
+	margin-left: 100px;
 }

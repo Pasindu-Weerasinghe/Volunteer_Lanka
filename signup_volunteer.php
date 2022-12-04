@@ -29,7 +29,7 @@ session_start();
         <label for="address"><b>Address</b></label>
         <input type="text" name="address" required><br/>
 
-        <label><b>Select your interested areas for volunteering</b></label><br/>
+        <label><b>Select your interested areas for volunteering</b></label><br/><br/>
         <input type="checkbox" name="area[]" value="Beach cleaning">
         <label>Beach cleaning</label><br/>
         <input type="checkbox" name="area[]" value="Providing facilities to rural areas">
@@ -42,7 +42,7 @@ session_start();
         <label>Animal rescuing/rehabilitation</label><br/><br/>
 
 
-        <label><b>Select organizations you have already joined</b></label><br/>
+        <label><b>Select organizations you have already joined</b></label><br/><br/>
         <input type="checkbox" name="org[]" value="Rotaract Club">
         <label for="org1">Rotaract Club</label><br/>
         <input type="checkbox" name="org[]" value="IEEE Society">

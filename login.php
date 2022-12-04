@@ -17,13 +17,13 @@ include 'conn.php';
     <div class="container">
         <h1>Login</h1>
         <label for="uname"><b>Username</b></label>
-        <input type="text" name="uname" required>
+        <input type="email" name="uname" required>
 
         <label for="psw"><b>Password</b></label>
         <input type="password" name="psw" required>
         <span class="psw">Forgot <a href="#">password?</a></span>
 
-        <button name="login" type="submit">Login</button>
+        <button name="login" type="submit" id="login-btn">Login</button>
     </div><br/>
     <span class="signup">Don't have an account? <a href="signup.php">Sign up</a></span>
     </form>

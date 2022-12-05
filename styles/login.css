@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Lobster&family=Open+Sans:wght@300&family=Poppins:ital,wght@0,100;0,200;0,400;1,100&display=swap');
+
 * {
   padding: 0;
   margin: 0;
@@ -6,23 +8,41 @@
 }
 
 body{
-    background-color: white;
+   
+    background-image: url("https://www.asvabprogram.com/media-center-content/thumbnails/social-share/Volunteer_facebook.jpg");
+    font-family: 'Poppins', sans-serif;
+    background-repeat: no-repeat;
+    background-size:cover;
 }
 
 h1{
     text-align: center;
+    margin-top: -90px;
+}
+.tex{
+  margin-left: 30%;
+  margin-top: 20%;
 }
  
  /* Bordered form */
  form {
-    border: 2px solid #f1f1f1;
+    border: 2px solid #ffffff;
     width: 500px;   
     margin: auto;  
-    margin-top: 20px;
     padding: 80px 80px;  
-    background: #89afd6;  
+    background: #c1baba;  
     border-radius: 15px ;
+    margin-right: 150px;
+    margin-top: 60px;
+
   }
+
+  hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+    width: 100%;
+  }
+
   
   /* Full-width inputs */
   input[type=text], input[type=password] {
@@ -43,6 +63,8 @@ h1{
     border: none;
     cursor: pointer;
     width: 100%;
+
+    font-family: 'Poppins', sans-serif;
     text-decoration: none;
     font-size: 20px;
 
@@ -62,8 +84,11 @@ h1{
   span.psw {
     float: right;
     padding-top: 16px;
+  
   }
   
-  .main {
-    padding: 100px 150px 0 150px;   
-}
+  
+
+
+
+  

@@ -35,7 +35,7 @@ $result1 = mysqli_query($conn, $sql2);
 <script>
     function myFunction() {
         var y = document.getElementById("myInput");
-        if (y.type == "password") {
+        if (y.type == "password"){
             y.type = "text";
         } else {
             y.type = "password";

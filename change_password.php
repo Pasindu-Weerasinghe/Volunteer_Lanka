@@ -17,13 +17,15 @@ include 'Navbar/navbar_log.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
+    <link rel="stylesheet" href="styles/password.css">
+    <title>Change Password</title>
 </head>
 
 <body>
     <div class="main" id="main">
-        <form action="change_password.php" method="POST">
-
+        <form class="main1" action="change_password.php" method="POST">
+            <!-- <br><br> <br><br> -->
+            <h2>Changed Password</h2><br><br>
             <lable>Current Password</lable><br>
             <input type="text" name="current"><br>
             <lable>New Password</lable><br>
@@ -33,7 +35,7 @@ include 'Navbar/navbar_log.php';
             <button type="submit" name="submit">Save Password</button>
             <button type="submit"> <a href="profile_sponsor.php">Back</a> </button>
 
-        </form>
+        
 
         <?php
         $sql = "SELECT * FROM user WHERE U_ID='" . $uid . "'";
@@ -62,7 +64,9 @@ include 'Navbar/navbar_log.php';
         ?>
 
         <label class="error"><?php echo $error ?></label>
-    </div>
+
+        </form>
+    <!-- </div> -->
 </body>
 
 </html>

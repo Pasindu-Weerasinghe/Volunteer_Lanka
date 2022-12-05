@@ -29,7 +29,7 @@ select {
 	display: inline-block;
 	width: 100%;
 	cursor: pointer;
-	border: none;
+	border: 2px solid rgb(169, 216, 250);
 	border-radius: 10px;
 }
 
@@ -47,6 +47,7 @@ input[type="number"] {
 }
 
 input[type="text"]:focus,
+select:focus,
 input[type="password"]:focus {
 	border: 4px solid rgb(169, 216, 250);
 	outline: none;

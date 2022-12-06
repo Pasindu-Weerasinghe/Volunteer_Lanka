@@ -19,8 +19,8 @@
       <div class="container">
         <h1>Login</h1><br>
         <hr>
-        <label for="uname"><br>Email</label><br>
-        <input type="text" name="uname" required>
+        <label for="email"><br>Email</label><br>
+        <input type="email" name="email" required>
 
         <label for="psw"><br>Password</label><br>
         <input type="password" name="psw" required>
@@ -28,7 +28,8 @@
         <span class="psw"> <a href="#">Forgot password?</a></span>
 
         <button name="login" type="submit">Login</button>
-      </div><br />
+    
+      </div><br/>
 
       <span class="signup">Don't have an account? <a href="signup.php">Sign up</a></span>
     </form>

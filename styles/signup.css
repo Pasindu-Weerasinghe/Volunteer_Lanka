@@ -5,6 +5,7 @@
 }
 
 body {
+	/* background: url("../images/bg-img-signup.png") fixed center; */
 	background-image: url("../images/bg-img-signup.png");
 	background-size: cover;
 	background-attachment: fixed;
@@ -13,10 +14,8 @@ body {
 
 form {
 	width: 500px;
-  	/* height: 800px; */
 	margin: auto;
-	margin-top: 20px;
-  	margin-bottom: 20px;
+	margin-top:10% ;
 	padding: 20px 50px 10px 50px;
 	background: rgba(255, 255, 255, 0.75);
 	backdrop-filter: blur(16px);
@@ -28,35 +27,30 @@ select {
 	padding: 10px;
 	margin: 5px 0 15px 0;
 	display: inline-block;
-  border: 2px solid rgb(169, 216, 250);
 	width: 100%;
 	cursor: pointer;
-  font-size: 15px;
+	border: 2px solid rgb(169, 216, 250);
 	border-radius: 10px;
 }
 
 /* Full-width input fields */
 input[type="text"],
-input[type="email"],
-input[type="password"]{
+input[type="password"],
+input[type="number"],
+input[type="email"] {
 	width: 100%;
 	padding: 10px;
 	margin: 5px 0 15px 0;
 	display: inline-block;
 	border: 2px solid rgb(169, 216, 250);
 	border-radius: 10px;
-  font-size: 15px;
 	background: white;
 }
 
 input[type="text"]:focus,
-input[type="password"]:focus, input[type="email"]:focus {
+select:focus,
+input[type="password"]:focus {
 	border: 4px solid rgb(169, 216, 250);
-	outline: none;
-}
-
-select:focus {
-  border: 4px solid rgb(169, 216, 250);
 	outline: none;
 }
 
@@ -89,10 +83,6 @@ h1 {
 	text-align: center;
 }
 
-label {
-  font-weight: bold;
-}
-
 p {
 	text-align: center;
 	font-size: 18px;
@@ -121,14 +111,10 @@ p {
 	display: table;
 }
 
-.main {
-  padding: 100px 150px 0 150px;   
-}
-
-#error {
-	background: rgb(219, 140, 140);
+.error {
+	background: rgba(230, 170, 170, 0.834);
 	padding: 10px;
 	border-radius: 10px;
 	text-align: center;
-	margin-left: 100px;
+  margin-left: 25%;
 }

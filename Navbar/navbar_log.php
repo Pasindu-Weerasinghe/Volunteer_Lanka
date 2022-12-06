@@ -18,7 +18,7 @@
         <nav>
             <ul>
                 
-                <li><?php echo $_SESSION['uname']; ?></li>
+                <li><?php echo $_SESSION['email']; ?></li>
                 <li id="logout"><a id="logout a" href="logout.php">Logout</a></li>
                 
             </ul>

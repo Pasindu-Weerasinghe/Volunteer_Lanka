@@ -40,6 +40,10 @@ if (isset($_POST["submit"])) {
         <div class="container">
             <h1>Signup</h1><br />
             <hr>
+            <label class="error">
+                <?php echo $error ?>
+            </label><br><br>
+
             <label for="role"><b>Role</b></label>
             <div class="select">
                 <select id="role" name="role" required>
@@ -62,11 +66,6 @@ if (isset($_POST["submit"])) {
                 <button class="cancel">Cancel</button>
                 <button class="next" type="submit" name="submit">Next</button>
             </div>
-
-            <label class="error">
-                <?php echo $error ?>
-            </label>
-
         </div>
     </form>
 

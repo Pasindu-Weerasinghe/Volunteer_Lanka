@@ -1,25 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Lobster&family=Open+Sans:wght@300&family=Poppins:ital,wght@0,100;0,200;0,400;1,100&display=swap");
 
-* {
+*{
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
 }
 
-body {
+body{
+	/* background: url("../images/bg-img-signup.png") fixed center; */
 	background-image: url("../images/bg-img-signup.png");
 	background-size: cover;
 	background-attachment: fixed;
 	background-position: center;
 }
 
-h1 {
+h1{
 	/* color: white; */
 	text-align: center;
 	padding: 5px;
 }
 
 /* Bordered form */
-form {
+form{
 	/* color: white; */
 	width: 400px;
 	margin: auto;
@@ -34,7 +36,7 @@ form {
 	transform: translate(-50%, -50%);
 }
 
-label {
+label{
 	padding-top: 30px;
 }
 
@@ -48,7 +50,6 @@ input[type="password"] {
 	border: 2px solid rgb(169, 216, 250);
 	border-radius: 10px;
 	background: white;
-	font-size: 15px;
 }
 
 input[type="email"]:focus,
@@ -58,7 +59,7 @@ input[type="password"]:focus {
 }
 
 /* Set a style for all buttons */
-#login-btn {
+button{
 	background-color: #6aa438;
 	color: white;
 	padding: 14px 20px;
@@ -72,27 +73,28 @@ input[type="password"]:focus {
 }
 
 /* Add a hover effect for buttons */
-#login-btn:hover {
+button:hover{
 	opacity: 0.8;
 }
 
 /* Add padding to containers */
-.container {
+.container{
 	padding: 16px;
 }
 
 /* The "Forgot password" text */
-span.psw {
-	float: right;
+span.psw{
+    float: right;
+    padding-top: 16px;
 }
 
-span.signup {
+.signup{
 	text-align: center;
 }
 
-#error {
+.error{
 	color: white;
-	background: rgb(201, 61, 61);
+	background: rgba(232, 178, 178, 0.834);
 	padding: 10px;
 	border-radius: 10px;
 	text-align: center;

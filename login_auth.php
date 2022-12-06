@@ -3,12 +3,12 @@ include 'conn.php';
 session_start();
 
 if (isset($_REQUEST["login"])) {
-    $uname = $_POST["uname"];
+    $email = $_POST["email"];
     $psw = $_REQUEST["psw"];
 
     //$role_id = 0;
 
-    $sql = "SELECT * FROM user WHERE Email ='$uname'";
+    $sql = "SELECT * FROM user WHERE Email ='$email'";
     $result = mysqli_query($conn, $sql);
 
     if ($result->num_rows == 1) {
@@ -22,7 +22,7 @@ if (isset($_REQUEST["login"])) {
             if ($status != 'restricted') {
                 if ($role == 'sponsor') {
                     $_SESSION['uid'] = $uid;
-                    $_SESSION['uname'] = $uname;
+                    $_SESSION['email'] = $email;
                     header('Location: home_sponsor.php');
                     //exit; 
                 }

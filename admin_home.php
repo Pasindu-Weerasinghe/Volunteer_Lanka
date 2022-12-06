@@ -33,12 +33,6 @@ require 'Navbar/navbar_log.php';
                     <div class="ar-img ar-card1"></div>
                     <button>View</button>
                 </div>
-                <div class="ar-card">
-                    <div class="ar-img ar-card1"></div>
-                    <button>View</button>
-                </div>
-
-
             </section>
 
 

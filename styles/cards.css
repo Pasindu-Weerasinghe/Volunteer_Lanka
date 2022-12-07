@@ -14,13 +14,15 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    border-radius: 10px;
+    background-color: #96c7d6;
 }
 
 .card{
     background-color: rgb(13, 16, 66);
     color: white;
     width: 270px;
-    margin: 10px;
+    margin: 20px;
     border-radius: 20px;
 }
 
@@ -60,7 +62,7 @@ h3, h4 {
     width: 270px;
     height: 210px;
     padding: 10px;
-    border-radius: 20px 20px 0 0;
+    border-radius: 20px;
 }
 
 .main {
@@ -70,7 +72,7 @@ h3, h4 {
 .card:hover{
     background-color: white;
     color: black;
-    border: 4px outset rgba(0, 0, 255, 0.253);
+    /* border: 4px outset rgba(0, 0, 255, 0.253); */
     cursor: pointer;
     transform: scale(1.05);
     transition: all 0.4s ease;

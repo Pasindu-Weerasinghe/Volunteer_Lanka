@@ -11,9 +11,7 @@ if (isset($_REQUEST["signup"])){
     $contact = $_POST['contact'];
     $address = $_POST['address'];
 
-    $hash_psw = password_hash($psw, PASSWORD_BCRYPT);
-
-    $query1 = "INSERT INTO user (Email, Password, Role, Status, Restricted) values ('$email', '$hash_psw', '$role','active', '0')";
+    $query1 = "INSERT INTO user (Email, Password, Role, Status, Restricted) values ('$email', '$psw', '$role','active', '0')";
     $result1 = mysqli_query($conn, $query1);
 
     $query2 = "SELECT U_ID FROM user WHERE Email = '$email'";
@@ -37,6 +35,13 @@ if (isset($_REQUEST["signup"])){
         $query5 = "INSERT INTO vol_organization (U_ID, Organization) values ('$uid', '$organise')";
         $result5 = mysqli_query($conn, $query5);
     }
+
+    if ($result1) {
+        echo "<script> alert ('Account created successfully');
+        window.location.href = 'login.php'; </script>";
+    }
+    else {
+        echo "Error: " .$query1. "<br>". $conn->error;    }
 }   
 
 session_destroy();

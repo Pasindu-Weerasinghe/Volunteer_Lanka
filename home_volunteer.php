@@ -22,7 +22,7 @@ require 'Navbar/navbar_log.php';
 </head>
 <body>
 <div id="main" class="main">
-    <h2>Upcoming Projects</h2><br/><br/>
+<h2>Upcoming Projects</h2><br/><br/>
     <section class="container">
         <?php foreach ($projects as $project){ 
             $pid = $project['P_ID']?>
@@ -40,7 +40,7 @@ require 'Navbar/navbar_log.php';
         <?php } ?>
     </section>
     <br/>
-    <hr><br/>
+
         
     <h2>Suggested Projects</h2><br/><br/>
     <section class="container">

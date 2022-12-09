@@ -1,6 +1,6 @@
-<?php include 'Navbar/navbar.php' ?>
-<?php
+<?php include 'Navbar/navbar.php' ;
 include 'conn.php';
+include './footer/footer.php';
 $error = null;
 
 if (isset($_POST["submit"])) {

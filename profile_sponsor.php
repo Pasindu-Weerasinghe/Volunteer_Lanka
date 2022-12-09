@@ -1,5 +1,6 @@
 <?php
 include 'conn.php';
+include './footer/footer.php';
 session_start();
 if (!isset($_SESSION['uid'])) {
     header("Location: login.php");

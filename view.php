@@ -5,6 +5,7 @@ if (!isset($_SESSION['uid'])) {
     header("Location: login.php");
 }
 include 'Navbar/navbar_log.php';
+include './footer/footer.php';
 
     $pid = $_REQUEST["pid"];
     $sql1 = "SELECT Name, Date, Time, Venue, No_of_volunteers, Description FROM project WHERE $pid = P_ID";

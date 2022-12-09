@@ -1,4 +1,5 @@
-<?php include('Navbar/navbar.php') ?>
+<?php include('Navbar/navbar.php');
+include './footer/footer.php'; ?>
 <?php include 'conn.php';
 ?>
 

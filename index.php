@@ -1,11 +1,14 @@
 <?php include 'Navbar/navbar.php';
+include './footer/footer.php';
 require 'conn.php'; ?>
+
 
 <?php
     $sql = "SELECT P_ID, Name, Date FROM project";
     $result = mysqli_query($conn, $sql);
     $projects = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

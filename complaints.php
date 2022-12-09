@@ -1,5 +1,10 @@
-<?php include ('Navbar/navbar.php');?>
+
 <?php include 'conn.php';?>
+<?php if (!isset($_SESSION['uid'])) {
+    header("Location: login.php");
+}
+require 'Navbar/navbar_log.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +37,7 @@
                 </div>
             </div>
             <br>
-            <button id="back-btn">Back</button>
+            <button onclick="history.back()" id="back-btn">Back</button>
             <br><br>
     </div>
 </body>

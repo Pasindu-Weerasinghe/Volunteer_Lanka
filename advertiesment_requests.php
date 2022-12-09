@@ -1,4 +1,4 @@
-<?php include ('Navbar/navbar.php'); ?>
+<?php include ('Navbar/navbar_log.php'); ?>
 <?php include 'conn.php';?>
 <!DOCTYPE html>
 <html lang="en">

@@ -6,12 +6,12 @@ if (isset($_REQUEST["signup"])) {
 
   $role = $_REQUEST["role"];
   $email = $_REQUEST["email"];
-  $psw = $_REQUEST["psw"];
+  $psw = password_hash( $_REQUEST["psw"],PASSWORD_BCRYPT);
 
   $sql = "INSERT INTO user (Email, Password, Role, Status, Restricted) values ('$email', '$psw', '$role','active', '0')";
-  $result1 = mysqli_query($conn, $sql);
+  $result = mysqli_query($conn, $sql);
 
-  if ($conn->query($sql) === TRUE) {
+  if ($result) {
     echo "<script> alert ('Account Created Sucessfully. Please Login');
                        window.location.href = 'login.php';
               </script>";

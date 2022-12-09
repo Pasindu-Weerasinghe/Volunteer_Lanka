@@ -1,22 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Lobster&family=Open+Sans:wght@300&family=Poppins:ital,wght@0,100;0,200;0,400;1,100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
 
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 body {
     background-color: #CEDAE7;
     color: black;
-    font-family: 'Poppins', sans-serif;
+    
 }
 
-header a{
+header a {
     text-decoration: none;
 }
 
-header{
+header {
     padding: 25px 30px;
     background-color: #FFFFFF;
     height: 80px;
@@ -24,71 +25,68 @@ header{
     width: 100%;
 }
 
-#logo{
+#logo {
     width: 85px;
     height: 85px;
-} 
-#brand{
+}
+
+#brand {
     align-items: center;
     display: flex;
     margin-left: 10px;
 }
 
-ul a{
+ul a {
     color: #6aa438;
     font-weight: bold;
 }
 
-ul{
+ul {
     list-style: none;
     height: 100%;
     display: flex;
     align-items: center;
 }
 
-ul li{
+ul li {
     padding: 15px;
-    
+
 }
 
-ul li:hover{
+ul li:hover {
     transform: scale(1.1);
     transition: 00.3s;
 }
 
-/* .H_item1{
-    align-self: ;
-} */
-.H_item2{
+.H_item2 {
     align-self: center;
     margin-left: auto;
 }
 
-#logout{
+#logout {
     background-color: #84b464;
     border-radius: 4px;
     width: 110px;
     height: 50px;
     text-align: center;
     display: inline-block;
-    align-items: center;  
+    align-items: center;
     margin-left: 0;
 }
 
-#logout a{
+#logout a {
     color: black;
     font-size: 18px;
-    
+
 }
 
 
-@media only screen and (max-width:750px){
-    header nav{
+@media only screen and (max-width:750px) {
+    header nav {
         display: none;
     }
 
     #hamburger-icon {
         display: block;
-      }
+    }
 }
-

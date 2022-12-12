@@ -14,6 +14,16 @@ if (isset($_REQUEST["next"])) {
         $_SESSION["role"] = $role;
         $_SESSION["email"] = $email;
         $_SESSION["psw"] = password_hash($psw, PASSWORD_BCRYPT);
+
+        // switch ($role) {
+        //     case 'volunteer':
+        //         header('Location: signup_volunteer.php');
+        //         break;
+
+        //     case 'sponsor':
+        //         header('Location: #');
+        //         break;
+        // }
         header("Location:signup_volunteer.php");
     } else {
         $error = "Password is not matched!";

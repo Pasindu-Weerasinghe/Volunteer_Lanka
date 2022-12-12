@@ -18,17 +18,25 @@ if (isset($_REQUEST["login"])){
 
         if (password_verify($psw, $hash_psw)) {
             if ($status != 'restricted') {
-                if ($role == 'volunteer') {
-                    $_SESSION['uid'] = $uid;
-                    $_SESSION['uname'] = $uname;
-                    header('Location: home_volunteer.php'); 
+                
+                $_SESSION['uid'] = $uid;
+                $_SESSION['uname'] = $uname;
+                    
+                switch ($role) {
+                    case 'volunteer':
+                        header('Location: home_volunteer.php');
+                        break;
+                    
+                    case 'admin':
+                        header('Location: #');
+                        break;
+
+                    case 'sponsor':
+                        header('Location: #');
+                        break;
                 }
-                // else {
-                //     $_SESSION['uid'] = $uid;
-                //     header('Location: #.php'); 
-                //     exit;
-                // }
             }
+            
             else {
                 echo "<script> alert ('Your account is restricted!'); window.location.href = 'login.php';</script>";
             }

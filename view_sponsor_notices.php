@@ -6,7 +6,6 @@ if (!isset($_SESSION['uid'])) {
     header("Location: login.php");
 }
 include 'Navbar/navbar_log.php';
-include './footer/footer.php';
 ?>
 
 
@@ -20,6 +19,7 @@ include './footer/footer.php';
 
 <body>
     <div class="main" id="main">
+        <div class="container">
         <h2>Sponsor Notices</h2><br>
         <div>
             <div class="slider">
@@ -67,7 +67,7 @@ include './footer/footer.php';
             </table>
         </div>
 
-        <p>Select sponsor package bellow</p><br><br>
+        <p class="para">Select sponsor package bellow</p><br><br>
 
         <div class="silver">
             <input type="radio" name="individual">
@@ -93,6 +93,7 @@ include './footer/footer.php';
             <button class="btn2"><a href="#">Confirm</a></button>
         </div>
 
+        </div>
     </div>
 
 

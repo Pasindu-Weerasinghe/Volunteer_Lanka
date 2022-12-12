@@ -1,6 +1,7 @@
-<?php include 'Navbar/navbar.php' ;
+<?php include 'Navbar/navbar.php' ?>
+<?php
 include 'conn.php';
-include './footer/footer.php';
+include './footer/footer.php'; 
 $error = null;
 
 if (isset($_POST["submit"])) {
@@ -42,8 +43,7 @@ if (isset($_POST["submit"])) {
             <hr>
             <label class="error">
                 <?php echo $error ?>
-            </label><br><br>
-
+            </label><br>
             <label for="role"><b>Role</b></label>
             <div class="select">
                 <select id="role" name="role" required>

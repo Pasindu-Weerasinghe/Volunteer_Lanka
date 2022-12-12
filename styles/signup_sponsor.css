@@ -1,3 +1,8 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
 body{
     background-image: url("https://www.asvabprogram.com/media-center-content/thumbnails/social-share/Volunteer_facebook.jpg");
     font-family: 'Poppins', sans-serif;

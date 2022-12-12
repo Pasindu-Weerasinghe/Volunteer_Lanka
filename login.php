@@ -1,6 +1,4 @@
 <?php include 'Navbar/navbar.php' ?>
-<?php include 'sidenav/sidenav.php' ?>
-<?php include './footer/footer.php'; ?>
 <?php include 'conn.php' ?>
 
 <!DOCTYPE html>
@@ -20,10 +18,10 @@
       <div class="container">
         <h1>Login</h1><br>
         <hr>
-        <label for="email"><br>Email</label><br>
+        <label for="email"><br><strong>Email</strong></label><br>
         <input type="email" name="email" required>
 
-        <label for="psw"><br>Password</label><br>
+        <label for="psw"><br><strong>Password</strong></label><br>
         <input type="password" name="psw" required>
 
         <span class="psw"> <a href="#">Forgot password?</a></span>

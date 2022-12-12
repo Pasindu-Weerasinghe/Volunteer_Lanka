@@ -1,28 +1,37 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 .container {
-	/* display: flex; */
-	justify-content: center;
-	background-color: #ccdcb4;
+	border: solid;
+	border-radius: 50px;
+	width: 80%;
+	font-size: 16pt;
+	padding-bottom: 20px;
+	background-color: rgb(202, 201, 201);
 }
 
 .container-image {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	padding-top: 20px;
-    padding-right: 450px;
+	display: block;
+  margin-right: 10%;
 }
 
 form{
 	border: solid;
+	border-radius: 30px;
 	width: 70%;
 	height: 80%;
 	padding: 30px;
-	background-color: rgba(164, 213, 221, 0.709);
+	background-color: rgba(157, 156, 156, 0.709);
 }
 
 .item {
 	padding: 10px;
 	margin: auto;
+	width: 250px;
+	height: 250px;
 }
 
 .item1 {
@@ -36,18 +45,22 @@ img {
 
 body {
 	font-family: "Poppins", sans-serif;
-	background-color: #b3cce1;
+	background-color: #ffffff;
 }
 
-h2 {
-	padding: 20px 0px 0px 30px;
+h1 {
+	padding: -100px 10px 20px 0px;
+	font-size: 24pt;
+}
+h2{
+	font-size: 22pt;
 }
 
 p{
     padding: 0px 0px 0px 45px;
 }
-.para{
-	font-size: larger;
+.p1{
+	font-size: 16pt;
 }
 
 .p2{
@@ -108,7 +121,6 @@ p{
 	height: 45px;
 }
 
-
 .container2 {
 	/* display: flex; */
 	justify-content: 20px;
@@ -118,15 +130,17 @@ p{
 a {
 	color: black;
 	text-decoration: none;
-}
-.des{
-	height: 80%;
+} 
+
+.des1{
+	height: 150%;
 	width: 80%;
 }
 
 table {
-	margin-left: 28%;
+	margin-left: 15%;
 	padding-bottom: 40px;
+	font-weight: bold;
 }
 
 .table2 {
@@ -137,6 +151,7 @@ table {
 td {
 	padding-right: 70px;
 }
+
 .main{
     padding: 100px 150px 0px 150px;
 

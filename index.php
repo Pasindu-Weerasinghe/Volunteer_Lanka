@@ -1,5 +1,4 @@
 <?php include 'Navbar/navbar.php';
-include './footer/footer.php';
 require 'conn.php'; ?>
 
 

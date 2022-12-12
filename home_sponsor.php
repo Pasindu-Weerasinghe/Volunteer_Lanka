@@ -5,7 +5,6 @@ if (!isset($_SESSION['uid'])) {
     header("Location: login.php");
 }
 require 'Navbar/navbar_log.php';
-include './footer/footer.php';
 $sql = "SELECT P_ID, Name, Date FROM project";
     $result = mysqli_query($conn, $sql);
     $projects = mysqli_fetch_all($result, MYSQLI_ASSOC);

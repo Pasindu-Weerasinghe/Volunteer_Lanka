@@ -8,7 +8,6 @@ if (!isset($_SESSION['uid'])) {
     header("Location: login.php");
 }
 include 'Navbar/navbar_log.php';
-include './footer/footer.php';
 ?>
 
 <!DOCTYPE html>

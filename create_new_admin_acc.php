@@ -1,5 +1,11 @@
-<?php include('Navbar/navbar.php'); ?>
+
 <?php include 'conn.php'; ?>
+<?php
+if (!isset($_SESSION['uid'])) {
+    header("Location: login.php");
+}
+require 'Navbar/navbar_log.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,38 +20,38 @@
 <body>
 
     <br><br><br>
-    <form action="">
+    <form action="n_acc.php" method="POST">
     <div class="main">
         <h2>Create New Admin Accounts</h2>
         <div id="com-box">
                 <div id="box-item">
-                    <div class="box-item-cus">
+                    <!-- <div class="box-item-cus">
                         <label for="">Name :</label>
                         <input type="text"><br>
-                    </div>
+                    </div> -->
 
                     <div class="box-item-cus">
                         <label for="">email :</label>
-                        <input type="text"><br>
+                        <input type="text" name="email"><br>
                     </div>
 
                     <div class="box-item-cus">
                         <label for="">Password :</label>
-                        <input type="password"><br>
+                        <input type="password" name="psw"><br>
                     </div>
 
                     <div class="box-item-cus">
                         <label for="">Confirm Password :</label>
-                        <input type="password"><br>
+                        <input type="password" name="confirm-psw"><br>
                     </div>
 
                     <div class="box-item-cus">
                         <label for="">Role :</label>
-                        <select>
+                        <select name="role">
                             <option value="organizer">Organizer</option>
                             <option value="volunteer">Volunteer</option>
                             <option value="sponsor">Sponsor</option>
-                            <option value="sponsor">Admin</option>
+                            <option value="admin">Admin</option>
                         </select>
                     </div>
                 </div>
@@ -53,8 +59,8 @@
         <br>
     </div>
     <div id="btn-area">
-                <button class="btn">Cancel</button>
-                <button class="btn">Create</button>
+                <button class="btn" onclick="history.back()">Cancel</button>
+                <button class="btn" name="create" type="submit">Create</button>
     </div>
     <br>
     </form>

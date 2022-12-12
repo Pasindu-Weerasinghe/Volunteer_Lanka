@@ -4,7 +4,7 @@
 if (isset($_REQUEST["login"])) {
     $uname = $_POST["uname"];
     $psw = $_POST["psw"];
-
+ 
     $sql = "SELECT * FROM user WHERE Email ='$uname'";
     $result = mysqli_query($conn, $sql);
 

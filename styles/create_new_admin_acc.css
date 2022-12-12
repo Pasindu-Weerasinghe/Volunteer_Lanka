@@ -43,6 +43,7 @@ select {
     box-shadow: none;
     border: none;
     padding: 3px;
+    padding-left: 10px;
 }
 
 #box-item label {

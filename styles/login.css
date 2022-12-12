@@ -92,8 +92,9 @@ span.signup {
 
 #error {
 	color: white;
-	background: rgb(201, 61, 61);
+	background: rgba(201, 61, 61, 0.75);
 	padding: 10px;
+	margin: 10px;
 	border-radius: 10px;
 	text-align: center;
 }

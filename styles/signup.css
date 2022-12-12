@@ -22,6 +22,7 @@ form {
 	background: rgba(255, 255, 255, 0.75);
 	backdrop-filter: blur(16px);
 	border-radius: 15px;
+	z-index: 1;
 }
 
 select {

@@ -1,0 +1,135 @@
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-image: url("../images/bg-img-signup.png");
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: center;
+}
+
+form {
+	width: 500px;
+  	/* height: 800px; */
+	margin: auto;
+	margin-top: 20px;
+  	margin-bottom: 20px;
+	padding: 20px 50px 10px 50px;
+	background: rgba(255, 255, 255, 0.75);
+	backdrop-filter: blur(16px);
+	border-radius: 15px;
+}
+
+select {
+	background: white;
+	padding: 10px;
+	margin: 5px 0 15px 0;
+	display: inline-block;
+  border: 2px solid rgb(169, 216, 250);
+	width: 100%;
+	cursor: pointer;
+  font-size: 15px;
+	border-radius: 10px;
+}
+
+/* Full-width input fields */
+input[type="text"],
+input[type="email"],
+input[type="password"]{
+	width: 100%;
+	padding: 10px;
+	margin: 5px 0 15px 0;
+	display: inline-block;
+	border: 2px solid rgb(169, 216, 250);
+	border-radius: 10px;
+  font-size: 15px;
+	background: white;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus, input[type="email"]:focus {
+	border: 4px solid rgb(169, 216, 250);
+	outline: none;
+}
+
+select:focus {
+  border: 4px solid rgb(169, 216, 250);
+	outline: none;
+}
+
+hr {
+	background-color: gray;
+	margin-bottom: 25px;
+	width: 100%;
+}
+
+/* Set a style for all buttons */
+button {
+	background-color: #6aa438;
+	color: white;
+	padding: 10px 15px;
+	margin: 20px 0;
+	border: none;
+	border-radius: 10px;
+	font-size: 18px;
+	font-weight: bold;
+	cursor: pointer;
+	width: 40%;
+	opacity: 0.9;
+}
+
+button:hover {
+	opacity: 1;
+}
+
+h1 {
+	text-align: center;
+}
+
+label {
+  font-weight: bold;
+}
+
+p {
+	text-align: center;
+	font-size: 18px;
+	margin-bottom: 15px;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancel {
+	float: left;
+	/* width: 40%; */
+}
+
+.next {
+	float: right;
+}
+
+/* Add padding to container elements */
+.container {
+	padding: 16px;
+}
+
+/* Clear floats */
+.clearfix::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+.main {
+  padding: 100px 150px 0 150px;   
+}
+
+#error {
+	background: rgb(219, 140, 140);
+	padding: 10px;
+	border-radius: 10px;
+	text-align: center;
+	margin-left: 100px;
+}

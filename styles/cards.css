@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    background-color: #96c7d6;
+}
+
+.card{
+    background-color: rgb(13, 16, 66);
+    color: white;
+    width: 270px;
+    margin: 20px;
+    border-radius: 20px;
+}
+
+h2, p{
+    margin: 20px 10px 0 10px;
+}
+
+h3, h4 {
+    margin: 0 0 10px 10px;
+}
+
+.card a{
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    margin: 15px 20px;
+    background-color: #6aa438;
+    color: white;
+    padding: 10px 10px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.card-image{
+    height: 170px;
+    width:100px;
+    display:inline-block;
+    margin-bottom: 15px;
+    background-size: cover;
+    border-radius: 20px;
+    position: relative;
+}
+
+#cards {
+    position: absolute;
+    object-fit: cover;
+    width: 270px;
+    height: 210px;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.main {
+    padding: 100px 150px 0 150px;   
+}
+
+.card:hover{
+    background-color: white;
+    color: black;
+    /* border: 4px outset rgba(0, 0, 255, 0.253); */
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: all 0.4s ease;
+}

@@ -107,6 +107,18 @@ p {
 .container {
 	padding: 16px;
 }
+.container1 {
+	padding: 16px;
+	padding-bottom: 75px;
+}
+
+#add_input{
+	height: 75px;
+}
+
+.checkbox_container{
+	padding-left: 12%;
+}
 
 /* Clear floats */
 .clearfix::after {

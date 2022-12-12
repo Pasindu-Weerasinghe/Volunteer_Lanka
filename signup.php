@@ -36,14 +36,13 @@ if (isset($_POST["submit"])) {
     <title>Signup</title>
 
 <body>
+    <br>
+    <br>
     <form action="signup.php" method="post">
         <div class="container">
             <h1>Signup</h1><br />
             <p>come join with us</p>
             <hr>
-            <label class="error">
-                <?php echo $error ?>
-            </label><br>
             <label for="role"><b>Role</b></label>
             <div class="select">
                 <select id="role" name="role" required>

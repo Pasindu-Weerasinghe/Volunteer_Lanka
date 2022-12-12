@@ -1,7 +1,6 @@
 <?php include 'Navbar/navbar.php' ?>
 <?php
 include 'conn.php';
-include './footer/footer.php'; 
 $error = null;
 
 if (isset($_POST["submit"])) {
@@ -40,6 +39,7 @@ if (isset($_POST["submit"])) {
     <form action="signup.php" method="post">
         <div class="container">
             <h1>Signup</h1><br />
+            <p>come join with us</p>
             <hr>
             <label class="error">
                 <?php echo $error ?>

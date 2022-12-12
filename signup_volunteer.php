@@ -25,8 +25,7 @@
                 <label for="contact"><b>Contact Number</b></label>
                 <input type="text" name="contact" required>
                 <label for="address"><b>Address</b></label>
-                <textarea></textarea>
-                <!-- <input type="text" name="address" required id="add_input"><br /> -->
+                <textarea rows="4" name="address"  style="resize: none;"></textarea> 
 
                 <label><b>Select your interested areas for volunteering</b></label><br /><br />
                 <div class="checkbox_container ">

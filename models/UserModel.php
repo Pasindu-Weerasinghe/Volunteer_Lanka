@@ -62,4 +62,10 @@ class UserModel extends Model
             return 'query failed';
         }
     }
+
+    function changePassword($email, $password) {
+        $query = "UPDATE user SET Password = '$password' WHERE Email = '$email'";
+        $statement = $this->db->prepare($query);
+        return $statement->execute();
+    }
 }

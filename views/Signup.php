@@ -38,7 +38,7 @@
             </div>
 
             <label for="email"><b>Email</b></label>
-            <input type="text" name="email" required>
+            <input type="email" name="email" required>
 
             <label for="psw"><b>Password</b></label>
             <input type="password" name="psw" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" required>

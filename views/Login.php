@@ -12,8 +12,6 @@
 <body>
     <?php include 'views/includes/navbar.php' ?>
 
-    <!-- <img src="<?php echo BASE_URL; ?>public/images/bg-img2.jpg" class="bg-img"> -->
-
     <form action="<?php echo BASE_URL; ?>index/login_auth" method="post">
         <div class="container">
             <h1>Login</h1>
@@ -35,7 +33,7 @@
 
             <label for="psw"><b>Password</b></label>
             <input type="password" name="psw" placeholder="Password" required>
-            <span class="psw"><a href="#">Forgot password?</a></span>
+            <span class="psw"><a href="<?php echo BASE_URL; ?>index/forgot_password">Forgot password?</a></span>
 
             <button type="submit" name="login" id="login-btn">Login</button>
         </div>

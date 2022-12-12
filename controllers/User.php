@@ -1,8 +1,10 @@
-<?php 
+<?php
 
-class User extends Controller {
-     
-    function __construct() {
+class User extends Controller
+{
+
+    function __construct()
+    {
         parent::__construct();
         $this->role = null;
     }

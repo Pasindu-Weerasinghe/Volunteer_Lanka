@@ -147,4 +147,70 @@ class Index extends Controller
             }
         }
     }
+
+    function forgot_password($param = null)
+    {
+        switch ($param) {
+            case null:
+                $this->render('ForgotPassword');
+                break;
+
+            case 'send-otp':
+                if (isset($_POST['send-otp'])) {
+                    $otp = sprintf("%06d", mt_rand(0, 999999));
+                    session_start();
+                    $_SESSION['otp'] = password_hash($otp, PASSWORD_BCRYPT);
+                    $email = $_POST['email'];
+                    $_SESSION['email'] = $email;
+
+                    if (sendmail($email, 'OTP', $otp)) {
+                        /*** if mail sent successfully ***/
+                        header('Location: ' . BASE_URL . 'index/forgot_password/otp-view');
+                    } else {
+                        /*** if mail not sent***/
+                        echo 'Mail not sent';
+                    }
+                }
+                break;
+            
+            case 'otp-view':
+                $this->render('ForgotPasswordOTP');
+                break;
+
+            case 'confirm-otp':
+                if (isset($_POST['confirm-otp'])) {
+                    session_start();
+                    if (password_verify($_POST['otp'], $_SESSION['otp'])) {
+                        /*** if otp is correct ***/
+                        unset($_SESSION['otp']);
+                        $this->render('ChangePassword');
+                    } else {
+                        echo 'OTP does not match';
+                    }
+                }
+                break;
+
+            case 'change-password':
+                if (isset($_POST['change-password'])) {
+                    if ($_POST['psw'] === $_POST['confirm-psw']) {
+                        // if password is confirmed
+                        $this->loadModel('User');
+                        session_start();
+                        if ($this->model->changePassword($_SESSION['email'], password_hash($_POST['psw'], PASSWORD_BCRYPT))) {
+                            // if password changed successfully
+                            echo $_SESSION['email'];
+                            session_destroy();
+                            header('Location: ' . BASE_URL . 'index/login');
+                        } else {
+                            // if password change failed
+                            echo 'Error';
+                        }
+                    } else {
+                        // password does not match
+                        echo 'Password mismatch';
+                    }
+                }
+                break;
+        }
+    }
 }

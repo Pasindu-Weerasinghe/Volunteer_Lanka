@@ -90,21 +90,20 @@ button {
     height: 40px;
     opacity: 0.9;
     padding: 6px 10px 6px 10px;
-    font-size: 16pt;
-    padding-bottom: 38px;
+    font-size: 16px;
 }
 
 .search-container {
-    padding-left: 25%;
+    padding-left: 30%;
     padding-top: 20px;
 }
 
 input[type=text]{
-    width:500px;
+    width: 400px;
     border: solid;
     border-color: rgb(102, 100, 100);
     border-width: 2px;
-    height:40px;
+    height: 40px;
     border-radius: 20px;
     background-color: rgb(255, 255, 255);
 }

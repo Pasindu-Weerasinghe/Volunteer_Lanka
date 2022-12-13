@@ -7,7 +7,14 @@
     display: flex;
     border: solid;
     border-radius: 10px;
-    background-color: rgb(176, 185, 187);
+    background-color:#89AFD6;
+	width: 75%;
+	height: 60%;
+	margin:auto;
+
+}
+.image{
+	border-radius: 50%;
 }
   
 /* Create two equal columns that sits next to each other */
@@ -16,8 +23,6 @@
     padding: 20px;
     height: 400px; /* Should be removed. Only for demonstration */
 }
-
-
 
 .btn {
 	background-color: #84b464;
@@ -37,8 +42,9 @@
 .btnpw{
     border: solid;
     border-radius: 4px;
-    width: 20%;
+    width: 30%;
     height: 7%;
+	margin-left: 15px;
     background-color: blanchedalmond;
     font-size: medium;
 }
@@ -50,12 +56,15 @@ a {
 
 .row2{
     margin-top: 100px;
+	
 }
+
 .column2 {
 	float: left;
 	width: 25%;
 	padding: 10px;
-	height: 300px; /* Should be removed. Only for demonstration */
+	height: 300px;
+	 
 }
 
 label{
@@ -65,12 +74,12 @@ label{
 p{
     color: blue;
 }
-
-/* .head{
-    text-align: right;
-    font-size: larger;
-} */
-
-body{
-	background-color: rgb(116, 173, 211);
+td{
+	padding: 14px;
+	font-size: 14pt;
+	font-weight: bolder;
 }
+
+
+
+

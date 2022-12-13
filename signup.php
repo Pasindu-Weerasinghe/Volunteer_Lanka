@@ -15,16 +15,19 @@ if (isset($_REQUEST["next"])) {
         $_SESSION["email"] = $email;
         $_SESSION["psw"] = password_hash($psw, PASSWORD_BCRYPT);
 
-        // switch ($role) {
-        //     case 'volunteer':
-        //         header('Location: signup_volunteer.php');
-        //         break;
+        switch ($role) {
+            case 'volunteer':
+                header('Location: signup_volunteer.php');
+                break;
 
-        //     case 'sponsor':
-        //         header('Location: #');
-        //         break;
-        // }
-        header("Location:signup_volunteer.php");
+            case 'sponsor':
+                header('Location: signup_sponsor.php');
+                break;
+            
+            case 'admin':
+                header('Location: signup_auth.php');
+                break;
+        }
     } else {
         $error = "Password is not matched!";
     }
@@ -77,7 +80,7 @@ if (isset($_REQUEST["next"])) {
                 <input type="password" name="confirm-psw" required>
 
                 <div class="clearfix">
-                    <button class="cancel">Cancel</a></button>
+                    <button class="cancel">Cancel</button>
                     <button class="next" name="next">Next</button>
                 </div>
 

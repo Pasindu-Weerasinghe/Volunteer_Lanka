@@ -25,7 +25,7 @@
                 <label for="contact"><b>Contact Number</b></label>
                 <input type="text" name="contact" required>
                 <label for="address"><b>Address</b></label>
-                <textarea rows="4" name="address"  style="resize: none;"></textarea> 
+                <textarea rows="4" name="address" style="resize: none;"></textarea>
 
                 <label><b>Select your interested areas for volunteering</b></label><br /><br />
                 <div class="checkbox_container ">
@@ -55,6 +55,10 @@
                     <input type="checkbox" name="org[]" value="Lions Club">
                     <label for="org5">Lions Club</label><br /><br />
                 </div>
+
+                <input type="checkbox" required>
+                <label for="area1">I have read and understand the <a href="#">terms and conditions</a> and will add here to them</label><br /><br />
+
 
                 <div class="buttons">
                     <button class="cancel"><b>Cancel</b></button>

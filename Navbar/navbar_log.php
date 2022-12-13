@@ -4,10 +4,10 @@
 </head>
 <!-- Navbar start -->
 <header>
-<div id="navbar-left">
-    <?php include './sidenav/sidenav.php' ?>
-    <div id="brand"><img id="logo" src="Navbar/images/logo_transparent.png" alt=""></div>
-</div>
+    <div id="navbar-left">
+        <?php include './sidenav/sidenav_' . $_SESSION['role'] . '.php' ?>
+        <div id="brand"><img id="logo" src="Navbar/images/logo_transparent.png" alt=""></div>
+    </div>
     <nav>
         <ul>
             <li><?php echo $_SESSION['uname']; ?></li>

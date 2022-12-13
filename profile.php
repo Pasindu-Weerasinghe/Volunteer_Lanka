@@ -47,9 +47,9 @@ $result1 = mysqli_query($conn, $sql2);
     while ($row1 = $result1->fetch_assoc()) {
     ?>
         <div class="main" id="main">
-            <strong><u>
+            <strong>
                     <h2>User Account Details</h2>
-                </u></strong><br><br>
+                </strong><br><br>
             <div class="row">
                 <div class="column">
                     <img class="image" src="./images/profile.jpg" alt="a cat staring at you" height="190" width="190" /><br><br>

@@ -29,19 +29,19 @@ if (isset($_REQUEST["request"])){
                     $result = mysqli_query($conn, $query);
 
                     if($result){
-                        $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
-                        header("Location: publish_advertisement.php");
+                        $statusMsg = "The file ".$fileName." has been uploaded successfully.";
+                        header("Location: publish_advertisment.php");
                     }else{
                         $statusMsg = "File upload failed, please try again.";
-                        header("Location: publish_advertisement.php");
+                        header("Location: publish_advertisment.php");
                     } 
                 }
-            }else{
+            }
+            else{
                 $statusMsg = 'File upload failed, Only JPG, JPEG, PNG & GIF files are allowed to upload.';
-                header("Location: publish_advertisement.php");
+                header("Location: publish_advertisment.php");
             }
         }
     }
     echo $statusMsg;
 }
-?>

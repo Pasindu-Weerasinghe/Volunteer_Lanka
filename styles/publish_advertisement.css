@@ -9,6 +9,7 @@
 .container-image {
 	display: block;
   margin-right: 10%;
+  margin: auto;
 }
 
 form{
@@ -105,7 +106,8 @@ label{
 	width: 550px;
 	height: 150px;
 	margin-left: 30px;
-	border-radius: 10px;
+	border-radius: 8px;
+	font-size: 13pt;
 
 }
 .file{

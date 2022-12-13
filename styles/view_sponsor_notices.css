@@ -2,7 +2,7 @@
     width: 400px;
     height: 300px;
     background-color: yellow;
-    margin-left: 100px;
+    margin-left: 60px;
     text-align: center;
     overflow: hidden;
     display: inline-block;
@@ -31,7 +31,7 @@
     margin-bottom: 0;
     font-size: 15pt;
     font-weight: bolder;
-    padding-left: 50px;
+    padding-left: 120px;
 
   }
   #slide-1:target ~ .image-container {
@@ -126,8 +126,8 @@ a {
 }
 
 .container{
-  border:solid;
-  border-radius: 40px;
+  border:none;
+  border-radius: 20px;
   padding: 20px 20px 20px 20px;
-  background-color:rgb(177, 177, 177);
+  background-color:#89AFD6;
 }

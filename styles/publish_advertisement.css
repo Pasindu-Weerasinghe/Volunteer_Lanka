@@ -1,0 +1,168 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+	border: solid;
+	border-radius: 50px;
+	width: 80%;
+	font-size: 16pt;
+	padding-bottom: 20px;
+	background-color: rgb(202, 201, 201);
+}
+
+.container-image {
+	display: block;
+  margin-right: 10%;
+}
+
+form{
+	border: solid;
+	border-radius: 30px;
+	width: 70%;
+	height: 80%;
+	padding: 30px;
+	background-color: rgba(157, 156, 156, 0.709);
+}
+
+.item {
+	padding: 10px;
+	margin: auto;
+	width: 250px;
+	height: 250px;
+}
+
+.item1 {
+	text-align: center;
+}
+
+img {
+	height: 200px;
+	width: 300px;
+}
+
+body {
+	font-family: "Poppins", sans-serif;
+	background-color: #ffffff;
+}
+
+h1 {
+	padding: -100px 10px 20px 0px;
+	font-size: 24pt;
+}
+h2{
+	font-size: 22pt;
+}
+
+p{
+    padding: 0px 0px 0px 45px;
+}
+.p1{
+	font-size: 16pt;
+}
+
+.p2{
+    padding: 50px 40px 20px 50px;
+}
+
+.vertically-center {
+	margin: 0;
+	position: absolute;
+	top: 41%;
+	left: 16%;
+}
+
+.btn1,
+.btn2 {
+	background-color: #84b464;
+	color: black;
+	font-weight: bold;
+	border: none;
+	border-radius: 15px;
+	padding: 10px 32px;
+	text-align: center;
+	display: inline-block;
+	font-family: "Poppins", sans-serif;
+	font-size: 16px;
+	margin-left: 28%;
+	margin-right: 20px;
+}
+.btn3 {
+	background-color: #84b464;
+	color: black;
+	font-weight: bold;
+	border: none;
+	border-radius: 15px;
+	padding: 10px 32px;
+	text-align: center;
+	display: inline-block;
+	font-family: "Poppins", sans-serif;
+	font-size: 14px;
+	margin-left: 28%;
+	margin-right: 20px;
+	width: 155px;
+	height: 45px;
+}
+.btn4{
+	background-color: #84b464;
+	color: black;
+	font-weight: bold;
+	border: none;
+	border-radius: 10px;
+	padding: 5px 10px;
+	text-align: center;
+	display: inline-block;
+	font-family: "Poppins", sans-serif;
+	font-size: 14px;
+	margin: auto;
+	width: 155px;
+	height: 45px;
+}
+
+.container2 {
+	/* display: flex; */
+	justify-content: 20px;
+	background-color: #ccdcb4;
+}
+
+a {
+	color: black;
+	text-decoration: none;
+} 
+
+.des1{
+	height: 150%;
+	width: 80%;
+}
+
+table {
+	margin-left: 15%;
+	padding-bottom: 40px;
+	font-weight: bold;
+}
+
+.table2 {
+	margin-left: 10%;
+	padding-bottom: 40px;
+}
+
+td {
+	padding-right: 70px;
+}
+
+.main{
+    padding: 100px 150px 0px 150px;
+
+}
+
+label{
+	font-weight: 400;
+	font-size: larger;
+}
+.image2{
+	width: 50%;
+	height: 50%;
+	margin-left: 18%;
+}

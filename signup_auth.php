@@ -17,7 +17,6 @@ if (isset($_REQUEST["signup"])) {
     $query2 = "SELECT U_ID FROM user WHERE Email = '$email'";
     $result2 = mysqli_query($conn, $query2);
     $row = $result2->fetch_assoc();
-    // echo ($row['U_ID']);
     $uid = $row['U_ID'];
 
     switch ($role) {
@@ -49,6 +48,7 @@ if (isset($_REQUEST["signup"])) {
             $result3 = mysqli_query($conn, $query3);
             break;
     }
+    header('Location: login.php');
 }
 session_destroy();
 $conn->close();

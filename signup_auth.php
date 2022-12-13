@@ -2,7 +2,7 @@
 include 'conn.php';
 session_start();
 
-if (isset($_REQUEST["signup"])) {
+if (isset($_REQUEST["signup"]) || $_SESSION['role'] == 'admin') {
 
     $role = $_SESSION['role'];
     $email = $_SESSION['email'];

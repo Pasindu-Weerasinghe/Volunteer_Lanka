@@ -8,19 +8,14 @@ button:hover {
 
 button {
     background-color: #6aa438;
-    color: black;
+    color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 20px;
     cursor: pointer;
-    width: 80px;
+    width: 110px;
+    height: 40px;
     opacity: 0.9;
-    padding: 6px 10px 6px 10px;
-}
-
-a {
-    text-decoration: none;
-    color: black;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 .container-body {
@@ -28,16 +23,18 @@ a {
 }
 
 .search-container {
-    padding-left: 35%;
-    padding-top: 30px;
+    padding-left: 30%;
+    padding-top: 20px;
 }
 
 input[type=text]{
-    width:300px;
-    height:30px;
+    width: 400px;
+    border: solid;
+    border-color: rgb(102, 100, 100);
+    border-width: 2px;
+    height: 40px;
     border-radius: 20px;
-    border: none;
-    background-color: rgb(173, 169, 169);
+    background-color: rgb(255, 255, 255);
 }
 
 table {

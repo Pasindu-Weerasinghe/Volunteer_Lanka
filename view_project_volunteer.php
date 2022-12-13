@@ -35,7 +35,7 @@ include 'Navbar/navbar_log.php';
     <title><?php echo ($Name) ?></title>
 </head>
 <body>
-<div id="main">
+<div class="main" id="main">
     <h2><?php echo ($Name) ?></h2><br/><br/>
     <div class="container">
         <div class="container-image">    
@@ -47,7 +47,35 @@ include 'Navbar/navbar_log.php';
                 <?php }
             }?>    
         </div>
-        <table>
+        <div class="wrapper">
+                <div class="row">
+                    <label for="">Date</label>
+                    <label id="data"><?php echo ($Date) ?></label>
+                </div>
+                <div class="row">
+                    <label for="">Time</label>
+                    <label id="data"><?php echo ($Time) ?></label>
+                </div>
+                <div class="row">
+                    <label for="">Venue</label>
+                    <label id="data"><?php echo ($Venue) ?></label>
+                </div>
+                <div class="row">
+                    <label for="">Number of Volunteers</label>
+                    <label id="data"><?php echo ($No_of_volunteers) ?></label>
+                </div>
+                <div class="row">
+                    <label for="">Description</label>
+                    <label id="data"><?php echo ($Description) ?></label>
+                </div>         
+        </div>
+        <div class="btn-area">
+                    <button onclick="history.back()" class="btn" id="cancel">Cancel</button>
+                    <button type="submit" name="next" class="btn" id="next">Next</button>
+        </div>
+        
+        </div>
+        <!-- <table>
             <tr>
                 <td>Date</td>
                 <td>:</td>
@@ -73,11 +101,10 @@ include 'Navbar/navbar_log.php';
                 <td>:</td>
                 <td><?php echo ($Description) ?></td>
             </tr>
-        </table>
-    </div>
+        </table> -->
     
-    <button class="btn1"><a href="login.php">Back</a></button>
-    <button class="btn2"><a href="#">Join</a></button>
+    <!-- <button class="btn" href="login.php">Back</a></button>
+    <button class="btn" href="#">Join</a></button> -->
 </div>
 </body>
 </html>

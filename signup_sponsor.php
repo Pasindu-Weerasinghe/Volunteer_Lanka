@@ -1,5 +1,6 @@
 <?php include('Navbar/navbar.php');
- include 'conn.php';
+include 'conn.php';
+
 ?>
 
 
@@ -14,45 +15,48 @@
     <title>Signup for Sponsor</title>
 
 <body>
-    <div class="form2">
-    <form action="signup_auth.php" method="post" enctype="multipart/form-data">
-        <div class="container">
-            <h1>Signup as a Sponsor</h1><br />
-            <hr>
+    <div class="main" id="main">
+        <div class="form2">
+            <form action="signup_auth.php" method="post" enctype="multipart/form-data">
+                <div class="container">
+                    <h1>Signup as a Sponsor</h1><br />
+                    <hr>
 
-            <label for="name"><b>Name</b></label>
-            <input type="text" name="name" required>
+                    <label for="name"><b>Name</b></label>
+                    <input type="text" name="name" required>
 
-            <label for="contact"><b>Contact Number</b></label>
-            <input type="text" name="contact" required>
+                    <label for="contact"><b>Contact Number</b></label>
+                    <input type="text" name="contact" required>
 
-            <label for="address"><b>Address</b></label>
-            <input type="text" name="address" required><br />
+                    <label for="address"><b>Address</b></label>
+                    <textarea rows="4" name="address" style="resize: none;"></textarea>
 
-            <label for="type"><b>Select Your Type</b></label><br>
+                    <label for="type"><b>Select Your Type</b></label><br>
 
-            <div class="checkbox_container">
-            <input type="radio" name="type" value="individual">
-            <label >Individual</label><br>
-            <input type="radio" name="type" value="organization">
-            <label >Organization</label><br>
-            <input type="radio" name="type" value="company">
-            <label >Company</label><br>
-            </div>
+                    <div class="checkbox_container">
+                        <input type="radio" name="type" value="individual">
+                        <label>Individual</label><br>
+                        <input type="radio" name="type" value="organization">
+                        <label>Organization</label><br>
+                        <input type="radio" name="type" value="company">
+                        <label>Company</label><br>
+                    </div>
 
-            <br>
-            <input type="checkbox" required>
-            <label for="area1">I have read and understand the <a href="#">terms and conditions</a> and will add here to them</label><br /><br />
+                    <br>
+                    <input type="checkbox" required>
+                    <label for="area1">I have read and understand the <a href="#">terms and conditions</a> and will add here to them</label><br /><br />
 
-            <div class="clearfix">
-                <button class="cancel"><b>Cancel</b></button>
-                <button name="signup" type="submit" class="next"><b>Submit</b></button>
-            </div>
+                    <div class="clearfix">
+                        <button class="cancel"><b>Cancel</b></button>
+                        <button name="signup" type="submit" class="next"><b>Submit</b></button>
+                    </div>
 
+                </div>
+            </form>
         </div>
-    </form>
     </div>
-    
+
+
 </body>
 </head>
 

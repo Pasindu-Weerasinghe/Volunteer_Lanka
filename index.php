@@ -1,5 +1,6 @@
 <?php include 'Navbar/navbar.php';
-require 'conn.php'; ?>
+require 'conn.php';
+?>
 
 <?php
     $sql = "SELECT P_ID, Name, Date FROM project";

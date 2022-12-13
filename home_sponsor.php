@@ -25,8 +25,11 @@ $projects = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 <body>
     <div class="main" id="main">
-
-        <h2>Sponsor Notices</h2>
+    <div class="search-container">
+                <br/><input type="text" name="search">
+                <button name="search"><b>Search<b></button>
+        </div><br><br><br>
+        <h2>Sponsor Notices</h2><br><br>
         <section class="container">
             <?php foreach ($projects as $project) {
                 $pid = $project['P_ID'] ?>

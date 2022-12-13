@@ -22,6 +22,10 @@ require 'Navbar/navbar_log.php';
 </head>
 <body>
 <div id="main" class="main">
+<div class="search-container">
+                <br/><input type="text" name="search">
+                <button name="search"><b>Search<b></button>
+        </div><br><br><br>
 <h2>Upcoming Projects</h2><br/><br/>
     <section class="container">
         <?php foreach ($projects as $project){ 

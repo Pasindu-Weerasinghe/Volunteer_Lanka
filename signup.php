@@ -65,6 +65,7 @@ if (isset($_REQUEST["next"])) {
                         <option value="organizer">Organizer</option>
                         <option value="volunteer">Volunteer</option>
                         <option value="sponsor">Sponsor</option>
+                        <option value="sponsor">Admin</option>
                     </select>
                 </div>
 

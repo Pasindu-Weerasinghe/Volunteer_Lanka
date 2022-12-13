@@ -21,7 +21,7 @@
   <div id="side-menu" class="side-nav">
     <a href="#" class="btn-close" onclick="closeSideMenu()">&times;</a>
     <a href="home_sponsor.php">Home</a>
-    <a href="sponsored_projects.php">MY Sponsored Projects</a>
+    <a href="sponsored_projects.php">My Sponsored Projects</a>
     <a href="publish_advertisment.php">Publish Advertisment</a>
     <a href="calender.php">Calendar</a>
     <a href="profile_sponsor.php">My Profile</a>

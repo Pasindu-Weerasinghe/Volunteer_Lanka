@@ -52,7 +52,7 @@ $result1 = mysqli_query($conn, $sql2);
 
             <div class="row">
                 <div class="column">
-                    <img class="image" src="./profile.jpg" alt="a cat staring at you" height="190" width="190" /><br><br>
+                    <img class="image" src="./images/profile.jpg" alt="a cat staring at you" height="190" width="190" /><br><br>
                     <h1 class="head1"><label class="sub2"> <?php echo $row1['Name']; ?></label></h1>
                 </div>
                 <div class="column">

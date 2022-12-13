@@ -31,14 +31,14 @@
 
             <label for="type"><b>Select Your Type</b></label><br>
 
-
+            <div class="checkbox_container">
             <input type="radio" name="type" value="individual">
             <label >Individual</label><br>
             <input type="radio" name="type" value="organization">
             <label >Organization</label><br>
             <input type="radio" name="type" value="company">
             <label >Company</label><br>
-            
+            </div>
 
             <br>
             <input type="checkbox" required>

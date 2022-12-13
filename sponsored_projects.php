@@ -4,11 +4,13 @@ session_start();
 if (!isset($_SESSION['uid'])) {
     header("Location: login.php");
 }
+$uid=$_SESSION['uid'];
 require 'Navbar/navbar_log.php';
 
     $sql = "SELECT P_ID, Name, Date FROM project";
     $result = mysqli_query($conn, $sql);
     $projects = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,82 +25,26 @@ require 'Navbar/navbar_log.php';
     <div class="main" id="main">
     <br/><h2>Sponserd Projects</h2><br/><br/>
     <section class="container">
-    <?php foreach ($projects as $project)
-            $pid = $project['P_ID'];
-            $_SESSION['pid']=$pid;
-            ?>
-        <div class="card">
-            <div class="card-image card1">
-            </div>
-            <p>Project Name</p>
-            <p>Amount</p>
-            <a class="btn" href="view_projects_sponsor.php">View</a>
-        </div>
-        <div class="card">
-            <div class="card-image card2">
-            </div>
-            <p>Project Name</p>
-            <p>Amount</p>
-            <a class="btn" href="view_projects_sponsor.php">View</a>
-        </div>
-        <div class="card">
-            <div class="card-image card3">
-            </div>
-            <p>Project Name</p>
-            <p>Amount</p>
-            <a class="btn" href="view_projects_sponsor.php">View</a>
-        </div>
-    </section>
-    <section class="container">
-    <?php foreach ($projects as $project)
-            $pid = $project['P_ID'];
-            $_SESSION['pid']=$pid;
-            ?>
-        <div class="card">
-            <div class="card-image card1">
-            </div>
-            <p>Project Name</p>
-            <p>Amount</p>
-            <a class="btn" href="view_projects_sponsor.php">View</a>
-        </div>
-        <div class="card">
-            <div class="card-image card2">
-            </div>
-            <p>Project Name</p>
-            <p>Amount</p>
-            <a class="btn" href="view_projects_sponsor.php">View</a>
-        </div>
-        <div class="card">
-            <div class="card-image card3">
-            </div>
-            <p>Project Name</p>
-            <p>Amount</p>
-            <a class="btn" href="view_projects_sponsor.php">View</a>
-        </div>
-    </section>
-    <section class="container">
-        <div class="card">
-            <div class="card-image card1">
-            </div>
-            <p>Project Name</p>
-            <p>Amount</p>
-            <a class="btn" href="">View</a>
-        </div>
-        <div class="card">
-            <div class="card-image card2">
-            </div>
-            <p>Project Name</p>
-            <p>Amount</p>
-            <a class="btn" href="">View</a>
-        </div>
-        <div class="card">
-            <div class="card-image card3">
-            </div>
-            <p>Project Name</p>
-            <p>Amount</p>
-            <a class="btn"  href="view_project_sponsor.php">View</a>
-        </div>
-    </section>
+            <?php foreach ($projects as $project) {
+                $pid = $project['P_ID'] ?>
+                <div class="card">
+                    <?php $sql2 = "SELECT Image FROM pr_image WHERE $pid = P_ID";
+                    $result2 = mysqli_query($conn, $sql2);
+
+                    $sql3 ="SELECT Amount FROM sponsor_pr WHERE $pid=P_ID && $uid=U_ID ";
+                    $result3=mysqli_query($conn, $sql3);
+                    $amount=$result3->fetch_assoc();
+
+                    while ($row = $result2->fetch_assoc()) {
+                        $image = $row['Image']; ?>
+                        <div class="card-image"><img id="cards" src="images/<?= $image ?>"></div>
+                    <?php } ?>
+                    <h2><?php echo ($project["Name"]); ?></h2>
+                    <p>Amount:<?php echo ($amount['Amount']); ?></p>
+                    <a class="btn" href="view_projects_sponsor.php?pid=<?php echo $project['P_ID'] ?>">View</a>
+                </div>
+            <?php } ?>
+        </section>
     </div>
 </body>
 </html>

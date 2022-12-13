@@ -82,7 +82,7 @@ h3, h4 {
 
 button {
     background-color: #6aa438;
-    color: black;
+    color: white;
     border: none;
     border-radius: 20px;
     cursor: pointer;
@@ -96,15 +96,15 @@ button {
 
 .search-container {
     padding-left: 25%;
-    padding-top: 30px;
+    padding-top: 20px;
 }
 
 input[type=text]{
     width:500px;
     border: solid;
-    border-color: black;
+    border-color: rgb(102, 100, 100);
     border-width: 2px;
-    height:45px;
+    height:40px;
     border-radius: 20px;
     background-color: rgb(255, 255, 255);
 }

@@ -18,6 +18,20 @@ class ProjectModel extends Model
         return $statement->execute();
     }
 
+    function getProject($uid)
+    {
+        $query = "SELECT * FROM project WHERE U_ID = '$uid'";
+        $statement = $this->db->prepare($query);
+
+        if ($statement->execute()) {
+            // if query successful
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            // if query failed
+            return 'query failed';
+        }
+    }
+
     function getProjectId($pname, $uid)
     {
         $query  =  "SELECT P_ID FROM project WHERE Name = '$pname' AND U_ID = '$uid'";

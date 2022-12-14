@@ -87,6 +87,22 @@ class Organizer extends User
 
     function requests()
     {
+        $this->loadModel('ProjectIdea');
+        $this->pr_ideas = $this->model->getProjectIdeas();
+        
+        foreach ($this->pr_ideas as $idea) {
+            $pi_id = $idea['PI_ID'];
+            $this->pr_idea_images[$pi_id] = $this->model->getPI_Image($pi_id);
+        }
+
+        $this->loadModel('Volunteer');
+        foreach ($this->pr_ideas as $idea) {
+            $pi_id = $idea['PI_ID'];
+            $vol_id = $idea['U_ID'];
+            $volunteer = $this->model->getVolunteerById($vol_id);
+            $this->pi_vol_name[$pi_id] = $volunteer['Name'];
+        }
+
         $this->render('Organizer/Requests');
     }
 

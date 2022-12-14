@@ -65,7 +65,7 @@ ul li:hover {
     transition: 00.3s;
 }
 
-.btn {
+header .btn {
     color: black;
     font-weight: bold;
     font-size: 18px;

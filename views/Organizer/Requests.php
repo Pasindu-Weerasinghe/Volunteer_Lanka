@@ -21,31 +21,35 @@ if (!isset($_SESSION['uid'])) {
     <!-- navigation bar -->
     <?php include 'views/includes/navbar_log.php'; ?>
 
-    <div class="main" id="main">
-        <h2>Requests from Volunteers</h2><br /><br />
-        <div class="request">
 
-            <div id="volunteer">
-                <img src="<?php echo BASE_URL; ?>public/images/org_image.png">
-                <div>
-                    <h3>Volunteer Name</h3>
+
+    <?php foreach ($this->pr_ideas as $idea) { ?>
+        <div class="main" id="main">
+            <h2>Requests from Volunteers</h2><br /><br />
+            <div class="request">
+
+                <div id="volunteer">
+                    <img src="<?php echo BASE_URL; ?>public/images/org_image.png">
+                    <div>
+                        <h3><?php echo $this->pi_vol_name[$idea['PI_ID']]; ?></h3>
+                    </div>
                 </div>
-            </div>
 
-            <div class="images-container">
-                <img src="<?php echo BASE_URL; ?>public/images/card-img1.jpg">
-                <img src="<?php echo BASE_URL; ?>public/images/card-img2.jpg">
-                <img src="<?php echo BASE_URL; ?>public/images/card-img3.jpg">
+                <div class="images-container">
+                    <?php foreach ($this->pr_idea_images[$idea['PI_ID']] as $images) { ?>
+                        <img src="<?php echo BASE_URL; ?>public/images/pi_images/<?php echo $images['Image']; ?>">
+                    <?php } ?>
+                </div>
+                <p>
+                <h3><?php echo $idea['Location'] ?></h3>
+                </p>
+                <p id="description"><?php echo $idea['Description'] ?></p>
+
             </div>
-            <p>
-            <h3>Location</h3>
-            </p>
-            <p id="description">Description</p>
+        <?php } ?>
+
 
         </div>
-
-
-    </div>
 
 </body>
 

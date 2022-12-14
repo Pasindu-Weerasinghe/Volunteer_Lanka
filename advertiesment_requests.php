@@ -18,13 +18,12 @@ require 'Navbar/navbar_log.php';
 </head>
 
 <body>
-    <br><br><br>
-    <div class="main">
-        <h2>Advertiesment Request</h2>
+    <div class="main" id="main">
+        <h2>Advertisement Request</h2>
         <div id="ar-box">
             <div id="ar-box-item">
                 <img id="user-img" src="images/icons8-user-32.png" alt="">
-                <h3 id="ar-box-item-sname">Sponser Name</h3>
+                <h3 id="ar-box-item-sname">Sponsor Name</h3>
                 <p id="des">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                     Nobis facilis commodi unde, eius ipsum illum iste consequatur quos sapiente magni,
                     architecto ratione rem, labore aut quo molestias quis non incidunt.</p>
@@ -37,7 +36,7 @@ require 'Navbar/navbar_log.php';
         <div id="ar-box">
             <div id="ar-box-item">
                 <img id="user-img" src="images/icons8-user-32.png" alt="">
-                <h3 id="ar-box-item-sname">Sponser Name</h3>
+                <h3 id="ar-box-item-sname">Sponsor Name</h3>
                 <p id="des">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                     Nobis facilis commodi unde, eius ipsum illum iste consequatur quos sapiente magni,
                     architecto ratione rem, labore aut quo molestias quis non incidunt. Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, porro? Beatae explicabo, itaque est hic nulla odio placeat, cumque fugiat natus, ratione facilis. Illum odit porro, enim non architecto suscipit!</p>
@@ -50,7 +49,7 @@ require 'Navbar/navbar_log.php';
         <div id="ar-box">
             <div id="ar-box-item">
                 <img id="user-img" src="images/icons8-user-32.png" alt="">
-                <h3 id="ar-box-item-sname">Sponser Name</h3>
+                <h3 id="ar-box-item-sname">Sponsor Name</h3>
                 <p id="des">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                     Nobis facilis commodi unde, eius ipsum illum iste consequatur quos sapiente magni,
                     architecto ratione rem, labore aut quo molestias quis non incidunt.</p>

@@ -22,7 +22,7 @@ include 'Navbar/navbar_log.php';
     <h2>Sponsor Notices</h2><br><br>
         <div class="container">
         
-        <div>
+        <div class ="content">
             <div class="slider">
                 <span id="slide-1"></span>
                 <span id="slide-2"></span>

@@ -42,7 +42,7 @@ if (!isset($_SESSION['uid'])) {
                 </div>
                 <div class="row">
                     <label for="">Description</label>
-                    <textarea name="description" required class="input"></textarea>
+                    <textarea name="description" required class="input input-textarea"></textarea>
                 </div>
                 <div class="row">
                     <label for="">Number of Volunteers</label>

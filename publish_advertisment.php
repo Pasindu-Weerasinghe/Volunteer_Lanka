@@ -23,7 +23,7 @@ include 'Navbar/navbar_log.php';
     <div class="main" id="main">
         <h1>Publish Advertiesment</h1><br />
         <p class="p1">You can publish your company's adverisement from here. It will be sent to our admins and get published after they accept</p> <br><br>
-        <div class="container-image">
+        <div class="container">
             <form action="upload_image.php" method="post" enctype="multipart/form-data">
 
                 <label for="photo"><b>Add Photos: <br></label>
@@ -32,7 +32,7 @@ include 'Navbar/navbar_log.php';
                 <!-- <img class="image2" src="images/tree planting.jpg"> <br><br> -->
                 
                 <label for="des"><b>Description: <br></label>
-                <textarea  class="des" name="comment" required></textarea> </p2><br/>
+                <textarea class="des" name="comment" required></textarea><br/>
                 <br><br><br>
                 
                 <button class="btn1"><a href="home_sponsor.php">Cancel</a></button>

@@ -23,7 +23,7 @@
     <a href="home_sponsor.php">Home</a>
     <a href="sponsored_projects.php">My Sponsored Projects</a>
     <a href="publish_advertisment.php">Publish Advertisment</a>
-    <a href="calender.php">Calendar</a>
+    <a href="calendar.php">Calendar</a>
     <a href="profile.php">My Profile</a>
     <a href="complaints.php">Complain</a>
   </div>

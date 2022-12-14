@@ -23,23 +23,14 @@ include 'Navbar/navbar_log.php';
     <div class="main" id="main">
         <h1>Publish Advertiesment</h1><br />
         <p class="p1">You can publish your company's adverisement from here. It will be sent to our admins and get published after they accept</p> <br><br>
-<<<<<<< HEAD
-        <div class="content">
-            <form action="publish_advertisment.php" method="post" enctype="multipart/form-data">
-=======
         <div class="container">
             <form action="upload_image.php" method="post" enctype="multipart/form-data">
 
->>>>>>> f3a24957d5ea45d0ae99431785d5a8ccb9edfbdf
                 <label for="photo"><b>Add Photos: <br></label>
                 <input class="file1" type="file" name="file[]" multiple="multiple"><br><br><br><br>
 
                 <label for="des"><b>Description: <br></label>
-<<<<<<< HEAD
-                <textarea class="des" name="comment" required></textarea> </p2><br />
-=======
                 <textarea class="des" name="comment" required></textarea><br/>
->>>>>>> f3a24957d5ea45d0ae99431785d5a8ccb9edfbdf
                 <br><br><br>
 
                 <button class="btn1"><a href="home_sponsor.php">Cancel</a></button>

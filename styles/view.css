@@ -6,9 +6,10 @@
 
 .wrapper {
     border: 1px solid black;
-    padding-left: 130px;
     width: 50%;
     margin: auto;
+    padding-left: 100px;
+    display: flex;
 }
 
 .container-image{
@@ -49,23 +50,30 @@ img {
 /* #cancel {
     float: left;
 } */
-  
-#next {
+
+.left-div {
+    float: left;
+    border: 1px solid black;
+}
+.right-div {
+    float: right;
+    margin-left: 50px;
+    border: 1px solid black;
+}
+
+#join {
     float: right;
 }
 
-#data {
-    padding-left: 200px;
-    text-align: left;
-}
 
-h2, p{
+/* h2, p{
     margin: 10px 10px 0 10px;
 }
 h3, h4 {
     margin: 0 0 10px 10px;
-}
+} */
 
 .main {
     padding: 100px 150px 0 150px;   
 }
+

@@ -3,7 +3,7 @@
   <script defer src="sidenav/sidenav.js"></script>
 </head>
 <span class="open-slide">
-  <a href="#" onclick="openSideMenu()">
+  <a href="" onclick="openSideMenu()">
     <svg width="30" height="30">
       <path d="M0,5 30,5" stroke="#000" stroke-width="5" />
       <path d="M0,14 30,14" stroke="#000" stroke-width="5" />

@@ -4,27 +4,25 @@
     box-sizing: border-box;
 }
 
-.content {
-	width: 80%;
-	display: flex;
-	justify-content: center;
-	flex-direction: row;
-	margin-left: 10%;
+
+
+.container-image {
+	display: block;
+  margin-right: 10%;
+  margin: auto;
 }
 
 form{
-	flex-direction: column;
 	border-radius: 20px;
-	/* width: 70%;
-	height: 65%; */
+	width: 60%;
+	height: 65%;
 	padding: 30px;
 	background-color: #89AFD6;
 	margin: center;
-	display: flex;
+	margin-left: 20%;
 }
 
 body {
-	font-family: "Poppins", sans-serif;
 	background-color: #ffffff;
 }
 
@@ -47,7 +45,7 @@ h2{
 	left: 16%;
 }
 
-.btn1,.btn2{
+.btn1{
 	background-color: #84b464;
 	color: black;
 	font-weight: bold;
@@ -55,13 +53,23 @@ h2{
 	border-radius: 15px;
 	padding: 10px 32px;
 	text-align: center;
+	display: inline-block;
 	font-family: "Poppins", sans-serif;
 	font-size: 16px;
-
+	margin-right: 40px;
 }
-
 .btn2{
-	margin-left: 300px;
+	background-color: #84b464;
+	color: black;
+	font-weight: bold;
+	border: none;
+	border-radius: 15px;
+	padding: 10px 32px;
+	text-align: center;
+	display: inline-block;
+	font-family: "Poppins", sans-serif;
+	font-size: 16px;
+	margin-left: 40%;
 }
 
 
@@ -71,7 +79,7 @@ h2{
 }
 
 a {
-	color: black;
+	color: white;
 	text-decoration: none;
 } 
 
@@ -96,7 +104,6 @@ label{
 	margin:auto;
 	border-radius: 8px;
 	font-size: 13pt;
-
 }
 .file1{
 	margin-left: 30px;

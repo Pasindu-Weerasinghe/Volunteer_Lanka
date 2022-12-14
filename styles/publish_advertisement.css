@@ -4,43 +4,22 @@
     box-sizing: border-box;
 }
 
-.container {
-	border: solid;
-	border-radius: 50px;
-	width: 80%;
-	font-size: 16pt;
-	padding-bottom: 20px;
-	background-color: rgb(202, 201, 201);
-}
+
 
 .container-image {
 	display: block;
   margin-right: 10%;
+  margin: auto;
 }
 
 form{
-	border: solid;
-	border-radius: 30px;
-	width: 70%;
-	height: 80%;
+	border-radius: 20px;
+	width: 60%;
+	height: 65%;
 	padding: 30px;
-	background-color: rgba(157, 156, 156, 0.709);
-}
-
-.item {
-	padding: 10px;
-	margin: auto;
-	width: 250px;
-	height: 250px;
-}
-
-.item1 {
-	text-align: center;
-}
-
-img {
-	height: 200px;
-	width: 300px;
+	background-color: #89AFD6;
+	margin: center;
+	margin-left: 20%;
 }
 
 body {
@@ -53,19 +32,14 @@ h1 {
 	font-size: 24pt;
 }
 h2{
-	font-size: 22pt;
+	padding-left: 45px;
 }
 
-p{
-    padding: 0px 0px 0px 45px;
-}
 .p1{
 	font-size: 16pt;
 }
 
-.p2{
-    padding: 50px 40px 20px 50px;
-}
+
 
 .vertically-center {
 	margin: 0;
@@ -74,8 +48,7 @@ p{
 	left: 16%;
 }
 
-.btn1,
-.btn2 {
+.btn1{
 	background-color: #84b464;
 	color: black;
 	font-weight: bold;
@@ -86,10 +59,9 @@ p{
 	display: inline-block;
 	font-family: "Poppins", sans-serif;
 	font-size: 16px;
-	margin-left: 28%;
-	margin-right: 20px;
+	margin-right: 40px;
 }
-.btn3 {
+.btn2{
 	background-color: #84b464;
 	color: black;
 	font-weight: bold;
@@ -99,27 +71,10 @@ p{
 	text-align: center;
 	display: inline-block;
 	font-family: "Poppins", sans-serif;
-	font-size: 14px;
-	margin-left: 28%;
-	margin-right: 20px;
-	width: 155px;
-	height: 45px;
+	font-size: 16px;
+	margin-left: 40%;
 }
-.btn4{
-	background-color: #84b464;
-	color: black;
-	font-weight: bold;
-	border: none;
-	border-radius: 10px;
-	padding: 5px 10px;
-	text-align: center;
-	display: inline-block;
-	font-family: "Poppins", sans-serif;
-	font-size: 14px;
-	margin: auto;
-	width: 155px;
-	height: 45px;
-}
+
 
 .container2 {
 	/* display: flex; */
@@ -132,25 +87,6 @@ a {
 	text-decoration: none;
 } 
 
-.des1{
-	height: 150%;
-	width: 80%;
-}
-
-table {
-	margin-left: 15%;
-	padding-bottom: 40px;
-	font-weight: bold;
-}
-
-.table2 {
-	margin-left: 10%;
-	padding-bottom: 40px;
-}
-
-td {
-	padding-right: 70px;
-}
 
 .main{
     padding: 100px 150px 0px 150px;
@@ -162,7 +98,19 @@ label{
 	font-size: larger;
 }
 .image2{
-	width: 50%;
-	height: 50%;
+	width: 40%;
+	height: 32%;
 	margin-left: 18%;
+}
+.des{
+	width: 550px;
+	height: 150px;
+	margin-left: 30px;
+	border-radius: 8px;
+	font-size: 13pt;
+
+}
+.file{
+	margin-left: 30px;
+	font-size: 12pt;
 }

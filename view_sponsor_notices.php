@@ -19,17 +19,18 @@ include 'Navbar/navbar_log.php';
 
 <body>
     <div class="main" id="main">
+    <h2>Sponsor Notices</h2><br><br>
         <div class="container">
-        <h2>Sponsor Notices</h2><br>
+        
         <div>
             <div class="slider">
                 <span id="slide-1"></span>
                 <span id="slide-2"></span>
                 <span id="slide-3"></span>
                 <div class="image-container">
-                    <img src="cards/img1.jpg" class="slide" width="500" height="300" />
-                    <img src="cards/img2.jpg" class="slide" width="500" height="300" />
-                    <img src="cards/img3.jpg" class="slide" width="500" height="300" />
+                    <img src="images/img1.jpg" class="slide" width="500" height="300" />
+                    <img src="images/img2.jpg" class="slide" width="500" height="300" />
+                    <img src="images/img3.jpg" class="slide" width="500" height="300" />
                 </div>
                 <div class="buttons">
                     <a href="#slide-1"></a>

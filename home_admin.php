@@ -51,7 +51,7 @@ $ads = mysqli_fetch_all($result, MYSQLI_ASSOC);
                     <?php } ?>
 
                     
-                    <a class="btn" href="view_advertisement_admin.php?pid=<?php echo $adid ?>">View</a>
+                    <a class="btn" href="view_ad_req.php">View</a>
                 </div>
             <?php }
             $conn->close(); ?>

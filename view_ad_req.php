@@ -18,8 +18,7 @@ require 'Navbar/navbar_log.php';
 </head>
 
 <body>
-    <br><br><br>
-    <div class="main">
+    <div class="main" id="main">
         <h2>View Advertiesment Requests</h2>
         <div id="ad-req-box">
             <div class="name">
@@ -35,13 +34,14 @@ require 'Navbar/navbar_log.php';
                         dolorum natus itaque. Rerum facere facilis molestias minus similique quasi veritatis.</p>
                 </div>
             </div>
+            <div id="btn-area">
+                <button class="btn">Reject</button>
+                <button class="btn">Accept</button>
+            </div>
 
         </div>
         <br>
-        <div id="btn-area">
-            <button class="btn">Reject</button>
-            <button class="btn">Accept</button>
-        </div>
+
         <br>
     </div>
 </body>

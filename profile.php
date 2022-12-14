@@ -54,7 +54,7 @@ $result1 = mysqli_query($conn, $sql2);
                 <div class="column">
                     <img class="image" src="./images/profile.jpg" alt="a cat staring at you" height="190" width="190" /><br><br>
                     <h1 class="head1"><label class="sub2"> <?php echo $row1['Name']; ?></label></h1><br><br><br>
-                    <button class="btn"><a href="home.php" class="same">Back</a></button>
+                    <!-- <button class="btn1"><a href="home.php" class="same">Back</a></button> -->
                 </div>
                 <div class="column">
                     <strong>
@@ -87,7 +87,7 @@ $result1 = mysqli_query($conn, $sql2);
                         </table>
                         <button class="btnpw"> <a href="change_password.php" class="same">Change Password</a></button><br><br>
                     </strong>
-                    <button class="btn"> <a href="login.php" class="same">Logout</a></button>
+                    <button class="btn1"> <a href="home_sponsor.php" class="same">Back</a></button>
                 </div>
 
             </div>

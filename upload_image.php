@@ -10,11 +10,6 @@ if (isset($_REQUEST["request"])){
     $targetDir = "images/";
     $allowTypes = array('jpg','png','jpeg','gif');
 
-    // $query2 = "SELECT AD_ID FROM advertisement WHERE Sponsor = '".$uid."'";
-    // $result2 = mysqli_query($conn, $query2);
-    // $row = mysqli_fetch_array($result2);
-    // $add = $row['AD_ID'];
-
     if (!empty($_FILES["file"]["name"])) {
 
         $total = count($_FILES['file']['name']);
@@ -25,23 +20,28 @@ if (isset($_REQUEST["request"])){
 
             if(in_array($fileType, $allowTypes)){
                 if(move_uploaded_file($_FILES["file"]["tmp_name"][$i], $targetFilePath)){
-                    $query = "INSERT INTO advertisement (Description, Image, Status, Sponsor) VALUES ('$description', '$fileName','Pending', '$uid')";
+                    $query = "INSERT INTO advertisement (Description, Image, Status, Sponsor) VALUES ('".$description."', '".$fileName."','Pending', '".$uid."')";
                     $result = mysqli_query($conn, $query);
 
                     if($result){
-                        $statusMsg = "The file ".$fileName." has been uploaded successfully.";
+                        // $statusMsg = "The file ".$fileName." has been uploaded successfully.";
+                        echo "<script> alert('The file ".$fileName." has been uploaded successfully.'); </script>";
                         header("Location: publish_advertisment.php");
                     }else{
-                        $statusMsg = "File upload failed, please try again.";
+                        // $statusMsg = "File upload failed, please try again.";
+                        echo "<script> alert('File upload failed, please try again.'); </script>";
                         header("Location: publish_advertisment.php");
                     } 
                 }
             }
             else{
-                $statusMsg = 'File upload failed, Only JPG, JPEG, PNG & GIF files are allowed to upload.';
-                header("Location: publish_advertisment.php");
+                // $statusMsg = 'File upload failed, Only JPG, JPEG, PNG & GIF files are allowed to upload.';
+                echo "<script> alert('File upload failed, Only JPG, JPEG, PNG & GIF files are allowed to upload.'); </script>";
+                //header("Location: publish_advertisment.php");
             }
         }
     }
-    echo $statusMsg;
+    //echo $statusMsg;
+    
 }
+?>

@@ -1,4 +1,3 @@
-
 <?php include 'conn.php'; ?>
 <?php
 session_start();
@@ -20,11 +19,10 @@ require 'Navbar/navbar_log.php';
 
 <body>
 
-    <br><br><br>
     <form action="n_acc.php" method="POST">
-    <div class="main">
-        <h2>Create New Admin Accounts</h2>
-        <div id="com-box">
+        <div class="main" id="main">
+            <h2>Create New Admin Accounts</h2>
+            <div id="com-box">
                 <div id="box-item">
                     <!-- <div class="box-item-cus">
                         <label for="">Name :</label>
@@ -32,7 +30,7 @@ require 'Navbar/navbar_log.php';
                     </div> -->
 
                     <div class="box-item-cus">
-                        <label for="">email :</label>
+                        <label for="">Email :</label>
                         <input type="text" name="email"><br>
                     </div>
 
@@ -49,21 +47,19 @@ require 'Navbar/navbar_log.php';
                     <div class="box-item-cus">
                         <label for="">Role :</label>
                         <select name="role">
-                            <option value="organizer">Organizer</option>
-                            <option value="volunteer">Volunteer</option>
-                            <option value="sponsor">Sponsor</option>
                             <option value="admin">Admin</option>
                         </select>
                     </div>
                 </div>
+                <div id="btn-area">
+                    <button class="btn" onclick="history.back()">Cancel</button>
+                    <button class="btn" name="create" type="submit">Create</button>
+                </div>
+            </div>
+            <br>
         </div>
+
         <br>
-    </div>
-    <div id="btn-area">
-                <button class="btn" onclick="history.back()">Cancel</button>
-                <button class="btn" name="create" type="submit">Create</button>
-    </div>
-    <br>
     </form>
 </body>
 

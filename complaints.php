@@ -19,7 +19,7 @@ require 'Navbar/navbar_log.php';
 
 <body>
     <br><br><br>
-    <div class="main">
+    <div class="main" id="main">
         <h2>Complaints</h2>
         <div id="com-box">
             <div id="com-box-item">

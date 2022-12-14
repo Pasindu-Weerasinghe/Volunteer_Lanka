@@ -6,6 +6,15 @@ if (!isset($_SESSION['uid'])) {
 }
 require 'Navbar/navbar_log.php';
 ?>
+<?php
+$sql = "SELECT Ad_ID, Name, Date FROM advertisement";
+$result = mysqli_query($conn, $sql);
+$projects = mysqli_fetch_all($result, MYSQLI_ASSOC);
+//images tika ad_image table eken
+//advertiesment eken ganna wisthara tika
+//sponsor name eka sponsor table eken ganna
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,11 +23,39 @@ require 'Navbar/navbar_log.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/admin_home.css">
+    <link rel="stylesheet" href="styles/cards.css">
     <title>Admin Home Page</title>
 </head>
 
 <body>
     <div class="main" id="main">
+        <!-- Advertiesment Reqests area -->
+        <h2>Advertiesment Requests</h2><br /><br />
+        <section class="container">
+            <?php foreach ($projects as $project) {
+                $pid = $project['P_ID'] ?>
+                <div class="card">
+                    <?php $sql2 = "SELECT Image FROM pr_image WHERE $pid = P_ID";
+                    $result2 = mysqli_query($conn, $sql2);
+                    while ($row = $result2->fetch_assoc()) {
+                        $image = $row['Image']; ?>
+                        <div class="card-image"><img id="cards" src="images/<?= $image ?>"></div>
+                    <?php } ?>
+                    <h2><?php echo ($project["Name"]); ?></h2>
+                    <p><?php echo ($project["Date"]); ?></p>
+                    <a class="btn" href="view_project_volunteer.php?pid=<?php echo $pid ?>">View</a>
+                </div>
+            <?php }
+            $conn->close(); ?>
+        </section>
+        <!-- Advertiesment Reqests area end-->
+        <!-- Complains Area -->
+        <h2>Complains</h2><br /><br />
+        
+        <!-- Complains Area end-->
+    </div>
+    </div>
+    <!-- <div class="main" id="main">
         <div class="main_container">
             <h2>Advertiesment Request</h2>
             <section class="ar-container">
@@ -38,10 +75,9 @@ require 'Navbar/navbar_log.php';
 
 
             <br>
-        </div>
+            </div>
         <div class="main_container">
             <h2>Complaints</h2>
-            <!-- Complaints box -->
             <div id="c-box">
                 <div id="c-box-item">
                     <h3>User Name</h3>
@@ -77,7 +113,7 @@ require 'Navbar/navbar_log.php';
             </div>
             <br>
         </div>
-    </div>
+    </div> -->
 
 </body>
 

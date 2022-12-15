@@ -28,7 +28,7 @@ $organizers = mysqli_fetch_all($result, MYSQLI_ASSOC);
         <div class="search-container">
             <input type="text" name="search">
             <button name="search"><b>Search<b></button>
-        </div><br>
+        </div><br><br>
         <table>
             <tr>
                 <th>Organizer</th>

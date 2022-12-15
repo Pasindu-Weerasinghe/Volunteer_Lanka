@@ -1,4 +1,4 @@
-<?php include 'Navbar/navbar.php';?>
+<?php include 'Navbar/navbar.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -68,17 +68,19 @@
     <div class="text" id="contact">Contact Us</div>
     <div class="text" id="con-details">Emails : </div>
     <div class="text" id="email"><a href="">nethimanya2000@gmail.com</a>
-  <br><a href="">binularasanjith@gmail.com</a>
-  <br><a href="">hasindukarunathilaka@gmail.com</a>
-  <br><a href="">pasinduweerasinghe@gmail.com</a></div>
+      <br><a href="">binularasanjith@gmail.com</a>
+      <br><a href="">hasindukarunathilaka@gmail.com</a>
+      <br><a href="">pasinduweerasinghe@gmail.com</a>
+    </div>
 
-  <div class="text" id="numbers">Contact Numbers : </div>
+    <div class="text" id="numbers">Contact Numbers : </div>
     <div class="text" id="email"><a href="">+94 711503122</a>
-  <br><a href="">+94 778765345</a>
-  <br><a href="">+94 782321456</a>
-  <br><a href="">+94 719006785</a></div>
+      <br><a href="">+94 778765345</a>
+      <br><a href="">+94 782321456</a>
+      <br><a href="">+94 719006785</a>
+    </div>
   </div>
-  
+
   <br><br><br>
 
 </body>

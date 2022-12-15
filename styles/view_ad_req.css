@@ -7,7 +7,7 @@
 }
 
 .main{
-    margin: 100px 150px 0 150px;
+    padding: 100px 150px 0 150px;
 }
 
 h2{
@@ -15,7 +15,7 @@ h2{
 }
 
 #ad-req-box{
-    background-color: #96C7D6;
+    background-color: #B3CCE1;
     margin: 10px 100px;
     border-radius: 4px;
     margin-bottom: 15px;

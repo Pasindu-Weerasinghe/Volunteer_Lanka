@@ -1,5 +1,4 @@
 
-
 * {
     padding: 0;
     margin: 0;
@@ -9,14 +8,7 @@
 .main {
     padding: 100px 150px 0 150px;   
 }
-.main_container{
-    background-color: #89AFD6;
-    margin: 50px;
-    border-radius: 4px;
-}
-/* h2,h3{
-    padding: 30px 50px;
-} */
+
 h2, p{
     margin: 20px 10px 0 10px;
 }
@@ -26,9 +18,12 @@ h3, h4 {
 }
 
 #c-box{
-    background-color: #89AFD6;
-    margin: 10px 100px;
+    background-color: #96C7D6;
+    margin: auto;
     border-radius: 4px;
+    width: 1050px;
+    margin-top: 10px;
+    height: 150px;
 }
 
 #c-view-btn{
@@ -59,59 +54,8 @@ h3, h4 {
 }
 
 #c-box-des{
-    margin: 10px 50px 10px 50px;
-    padding: 10px 50px 0 0;
-}
-
-.ar-container{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.ar-card{
-    background-color: #B3CCE1;
-    width: 250px;
-    height: 250px;
-    margin: 15px;
-    border-radius: 4px;
-}
- .ar-img{
-    height: 170px;
-    margin-bottom: 15px;
-    background-size: cover;
-    border-radius: 4px 4px 0 0;
-
- }
-
-.ar-card1{
-    background-image: url('../cards/img1.jpg');
-}
-.ar-card2{
-    background-image: url('../cards/img1.jpg');
-}
-.ar-card3{
-    background-image: url('../cards/img1.jpg');
-}
-.ar-card4{
-    background-image: url('../cards/img1.jpg');
-}
-
-.ar-card button{
-    background-color: #84B464;
-    border: none;
-    font-weight: bold;
-    font-size: 16px;
-    padding: 15px 20px;
-    width: 100px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-left: 130px;
-}
-
-.ar-card button:hover{
-    transform: scale(1.1);
-    transition: 00.3s;
+    margin: 0 50px 10px 50px;
+    padding: 0 50px 0 0;
 }
 
 #uname{

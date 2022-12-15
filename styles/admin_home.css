@@ -26,7 +26,7 @@ h3, h4 {
 }
 
 #c-box{
-    background-color: #B3CCE1;
+    background-color: #89AFD6;
     margin: 10px 100px;
     border-radius: 4px;
 }
@@ -35,8 +35,7 @@ h3, h4 {
     padding: 15px;
     margin-right: 50px;
     margin-top: 30px;
-    text-align: center;
-    background-color: #84B464;
+    background-color: #6AA438;
     border: none;
     font-size: 16px;
     font-weight: bold;
@@ -44,6 +43,7 @@ h3, h4 {
     border-radius: 4px;
     width: 100px;
     cursor: pointer;
+    padding: 10px;
 }
 
 #c-view-btn:hover{
@@ -55,10 +55,12 @@ h3, h4 {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+    
 }
 
 #c-box-des{
     margin: 10px 50px 10px 50px;
+    padding: 10px 50px 0 0;
 }
 
 .ar-container{
@@ -110,4 +112,8 @@ h3, h4 {
 .ar-card button:hover{
     transform: scale(1.1);
     transition: 00.3s;
+}
+
+#uname{
+    padding: 30px 50px;
 }

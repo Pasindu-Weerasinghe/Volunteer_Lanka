@@ -17,9 +17,9 @@ require 'Navbar/navbar_log.php'; ?>
 </head>
 <body>
 <div id="main" class="main">
-    <h2>Request to Organize Projects</h2><br/>
-    <h4>As a volunteer you are able to inform the organizers about your ideas to arrange a new volunteering project. You can send a request to all the organizers by submitting this form.
-    <br/>Please provide reliable information.</h4>
+    <label id="head">Request to Organize Projects</label><br/><br/><br/>
+    <lable id="text">As a volunteer you are able to inform the organizers about your ideas to arrange new volunteering projects. You can send a request to all the organizers by submitting this form.
+    <br/><br/>Please provide reliable information.</label>
     <form action="newideas_insert.php" method="post" enctype="multipart/form-data">
     <div class="container">
     <p>Let us know of the opportunities</p><hr>
@@ -31,13 +31,13 @@ require 'Navbar/navbar_log.php'; ?>
         <input type="text" name="location" required>
 
         <label for="des"><b>Description</b></label>
-        <input type="text" name="des" required>
+        <textarea name="des" class="des" required></textarea><br/><br/>
 
         <label for="photo"><b>Add Photos</b></label>
         <input type="file" name="file[]" multiple="multiple"><br/><br/>
 
-        <button class="cancel">Back</button>
-        <button class="next" name="request">Request</button>
+        <button class="back">Back</button>
+        <button class="request" name="request">Request</button>
     </div>
     </form>
 </div>

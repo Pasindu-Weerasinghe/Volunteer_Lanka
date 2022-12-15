@@ -16,26 +16,27 @@ include 'Navbar/navbar_log.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/publish_advertisement.css">
-    <title>Publish Advertiesment</title>
+    <title>Publish Advertisement</title>
 </head>
 
 <body>
     <div class="main" id="main">
-        <h1>Publish Advertiesment</h1><br />
-        <p class="p1">You can publish your company's adverisement from here. It will be sent to our admins and get published after they accept</p> <br><br>
+        <h1>Publish Advertisement</h1><br />
+        <p class="p1">You can publish your company's advertisement from here. It will be sent to our admins and get published after they accept</p> <br><br>
         <div class="container">
             <form action="publish_advertisment.php" method="post" enctype="multipart/form-data">
 
-                <label for="photo"><b>Add Photos: <br></label>
+                <label for="photo"><b>Add Photos: <br></label><br>
                 <input class="file1" type="file" name="file[]" multiple="multiple"><br><br><br><br>
 
-                <label for="des"><b>Description: <br></label>
+                <label for="des"><b>Description: <br></label><br>
                 <textarea class="des" name="comment" required></textarea><br/>
                 <br><br><br>
 
-                <button class="btn1"><a href="home_sponsor.php">Cancel</a></button>
+               <div class="btn-area">
+               <button class="btn1"><a href="home_sponsor.php">Cancel</a></button>
                 <button class="btn2" name="request"><a href="publish_advertisment.php"></a>Publish</button>
-                
+               </div>
             </form>
         </div>
     </div>

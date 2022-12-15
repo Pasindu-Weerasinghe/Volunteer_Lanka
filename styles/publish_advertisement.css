@@ -61,8 +61,13 @@ h2{
 
 }
 
-.btn2{
-	margin-left: 300px;
+/* .btn2{
+	margin-left: 400px;
+} */
+.btn-area{
+	margin: auto;
+	justify-content: space-around;
+	display: flex;
 }
 
 

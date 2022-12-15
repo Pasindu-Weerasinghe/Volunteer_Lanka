@@ -74,10 +74,11 @@
     </div>
 
     <div class="text" id="numbers">Contact Numbers : </div>
-    <div class="text" id="email"><a href="">+94 711503122</a>
-      <br><a href="">+94 778765345</a>
-      <br><a href="">+94 782321456</a>
-      <br><a href="">+94 719006785</a>
+    <div class="text" id="email">
+      +94 711503122
+      <br>+94 778765345
+      <br>+94 782321456
+      <br>+94 719006785
     </div>
   </div>
 

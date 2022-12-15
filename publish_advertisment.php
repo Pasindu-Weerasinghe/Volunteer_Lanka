@@ -24,7 +24,7 @@ include 'Navbar/navbar_log.php';
         <h1>Publish Advertiesment</h1><br />
         <p class="p1">You can publish your company's adverisement from here. It will be sent to our admins and get published after they accept</p> <br><br>
         <div class="container">
-            <form action="upload_image.php" method="post" enctype="multipart/form-data">
+            <form action="publish_advertisment.php" method="post" enctype="multipart/form-data">
 
                 <label for="photo"><b>Add Photos: <br></label>
                 <input class="file1" type="file" name="file[]" multiple="multiple"><br><br><br><br>
@@ -66,13 +66,13 @@ if (isset($_REQUEST["request"])) {
                     $result = mysqli_query($conn, $query);
 
                     if ($result) {
-                        echo "<script> alert('The file " . $fileName . " has been uploaded successfully.'); </script>";
+                        echo "<script> alert('The file " .$fileName. " has been uploaded successfully.'); </script>";
                     } else {
-                        echo "<script> alert('File upload failed, please try again.'); </script>";
+                        echo "<script> alert('File upload failed, please try again.'); window.location.href='publish_advertisment.php';</script>";
                     }
                 }
             } else {
-                echo "<script> alert('File upload failed, Only JPG, JPEG, PNG & GIF files are allowed to upload.'); </script>";
+                echo "<script> alert('File upload failed, Only JPG, JPEG, PNG & GIF files are allowed to upload.'); window.location.href='publish_advertisment.php'; </script>";
             }
         }
     }

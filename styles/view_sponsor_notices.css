@@ -1,6 +1,6 @@
 .slider {
-    width: 400px;
-    height: 300px;
+    width: 330px;
+    height: 250px;
     background-color: yellow;
     margin-left: 60px;
     text-align: center;
@@ -12,7 +12,7 @@
   .image-container {
     width: 1500px;
     background-color: pink;
-    height: 300px;
+    height: 250px;
     clear: both;
     position: relative;
     -webkit-transition: left 2s;
@@ -25,10 +25,12 @@
     float: left;
     padding: 0px;
     position: relative;
+    width: 500px;
+    height: 250px;
   }
 
   .table1{
-    margin-left: 38%;
+    margin-left: 40%;
     margin-bottom: 0;
     font-size: 13pt;
     font-weight: bolder;
@@ -57,13 +59,10 @@
     height: 15px;
     width: 15px;
     border-radius: 50px;
-    background-color: rgb(255, 255, 255);
-  }
-  th{
-    padding-top: 20px;
+    background-color: rgb(83, 2, 144);
   }
   td{
-    padding-top: 20px;
+    padding-top: 18px;
   }
   p{
     padding: 55px 0px 0px 45px;
@@ -73,10 +72,7 @@
   font-size: 20pt;
   font-weight: bolder;
  }
- .content{
-  width: 85%;
- }
- .para{
+  .para{
   width:80%;
   font-size: 16pt;
   font-weight: bolder;

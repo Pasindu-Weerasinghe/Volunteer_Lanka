@@ -66,7 +66,7 @@ include 'Navbar/navbar_log.php';
                     <td>:A beach cleaning campaign</td><br>
                 </tr>
             </table>
-        </div><BR>
+        </div>
 
         <p class="para">Select sponsor package bellow</p><br><br>
 
@@ -89,9 +89,9 @@ include 'Navbar/navbar_log.php';
         </div>
 
         
-            <br><br>
-            <button class="btn1"><a href="#">Cancel</a></button>
-            <button class="btn2"><a href="#">Confirm</a></button>
+            <br><br><br>
+            <button class="btn1"><a href="home_sponsor.php">Cancel</a></button>
+            <button class="btn2"><a href="view_sponsor_notices.php">Confirm</a></button>
         
 
         </div>

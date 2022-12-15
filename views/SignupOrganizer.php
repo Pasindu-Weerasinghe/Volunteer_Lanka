@@ -16,34 +16,34 @@ session_start();
 <body>
 
     <?php include 'views/includes/navbar.php'; ?>
-    <br>
-    <br>
-    <br>
-    <br>
-    <form action="<?php echo BASE_URL . 'index/signup_finish/' . $_SESSION['role']; ?>" method="post">
+    <div class="main" id="main">
 
-        <div class="container">
-            <h1>Signup as an Organizer</h1><br />
+        <form action="<?php echo BASE_URL . 'index/signup_finish/' . $_SESSION['role']; ?>" method="post">
+    
+            <div class="container">
+                <h1>Signup as an Organizer</h1><br />
+    
+                <label><b>Name</b></label>
+                <input type="text" name="name" required>
+                <label><b>Contact Number</b></label>
+                <input type="text" name="contact" required>
+                <label><b>Address</b></label>
+                <input type="text" name="address" required><br />
+                <label><b>Branch</b></label>
+                <input type="text" name="branch" required><br />
+                <label><b>Number of members</b></label>
+                <input type="number" name="no-of-members" id="no-of-members" min="1" required><br />
+    
+                <input type="checkbox" name="agree" id="chkbox" required>
+                <label>I have read and understand the <a href="">terms and conditions</a> and will adhere to them.</label><br />
+    
+                <div class=" clearfix">
+                    <button class="cancel"><b>Cancel</b></button>
+                    <button type="submit" id="submit" name="submit" class="next"><b>Submit</b></button>
+                </div>
+        </form>
 
-            <label><b>Name</b></label>
-            <input type="text" name="name" required>
-            <label><b>Contact Number</b></label>
-            <input type="text" name="contact" required>
-            <label><b>Address</b></label>
-            <input type="text" name="address" required><br />
-            <label><b>Branch</b></label>
-            <input type="text" name="branch" required><br />
-            <label><b>Number of members</b></label>
-            <input type="number" name="no-of-members" id="no-of-members" min="1" required><br />
-
-            <input type="checkbox" name="agree" id="chkbox" required>
-            <label>I have read and understand the <a href="">terms and conditions</a> and will adhere to them.</label><br />
-
-            <div class=" clearfix">
-                <button class="cancel"><b>Cancel</b></button>
-                <button type="submit" id="submit" name="submit" class="next"><b>Submit</b></button>
-            </div>
-    </form>
+    </div>
 </body>
 
 </html>

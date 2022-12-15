@@ -28,7 +28,7 @@
             }
             ?>
 
-            <label for="uname"><b>Username</b></label>
+            <label for="uname"><b>Email</b></label>
             <input type="email" name="uname" placeholder="Email" required>
 
             <label for="psw"><b>Password</b></label>

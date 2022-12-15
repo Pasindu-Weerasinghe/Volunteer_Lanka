@@ -48,24 +48,37 @@ if (!isset($_SESSION['uid'])) {
                     <label for="">Number of Volunteers</label>
                     <input type="number" name="no-of-members" min="1" required class="input">
                 </div>
-                <div class="row">
-                    <label for="">Select partnership</label>
+                <table>
+                    <tr class="row">
+                        <td id="row-head">
+                            Select partnership
+                        </td>
+                        <td class="td">
+                            <input type="radio" name="partnership" value="single" class="input">
+                            <label for="single" id="radio-label">Single</label>
+                        </td>
 
-                    <input type="radio" name="partnership" value="single" class="input">
-                    <label for="single" id="radio-label">Single</label>
+                        <td class="td">
+                            <input type="radio" name="partnership" value="collaborate" class="input">
+                            <label for="collaborate" id="radio-label">Collaborate</label>
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td id="row-head">
+                            Select sponsorship
+                        </td>
 
-                    <input type="radio" name="partnership" value="collaborate" class="input">
-                    <label for="collaborate" id="radio-label">Collaborate</label>
-                </div>
-                <div class="row">
-                    <label for="">Select sponsorship</label>
+                        <td class="td">
+                            <input type="radio" name="sponsorship" value="no-sponsor" required class="input">No Sponsorship
+                            <!-- <label for="no-sponsor" id="radio-label">No Sponsorship</label> -->
+                        </td>
 
-                    <input type="radio" name="sponsorship" value="no-sponsor" required class="input">Sponsorship
-                    <!-- <label for="no-sponsor" id="radio-label">No Sponsorship</label> -->
-
-                    <input type="radio" name="sponsorship" value="publish-sn" required class="input">Publish Sponsor Notice
-                    <!-- <label for="publish-sn" id="radio-label">Publish Sponsor Notice</label> -->
-                </div>
+                        <td class="td">
+                            <input type="radio" name="sponsorship" value="publish-sn" required class="input">Publish Sponsor Notice
+                            <!-- <label for="publish-sn" id="radio-label">Publish Sponsor Notice</label> -->
+                        </td>
+                    </tr>
+                </table>
 
                 <div class="btn-area">
                     <button onclick="history.back()" class="btn">Cancel</button>

@@ -9,6 +9,42 @@ class User extends Controller
         $this->role = null;
     }
 
+    function calendar()
+    {
+        switch ($this->role) {
+            case 'organizer':
+                $this->render('Calendar');
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    function search_user()
+    {
+        switch ($this->role) {
+            case 'organizer':
+                $this->render('SearchUser');
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    function complain()
+    {
+        switch ($this->role) {
+            case 'organizer':
+                $this->render('Complain');
+                break;
+
+            default:
+                break;
+        }
+    }
+
     function view_project($pid)
     {
         switch ($this->role) {

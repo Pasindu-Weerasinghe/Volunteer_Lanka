@@ -20,6 +20,6 @@
   <a href="newideas_volunteer.php">Request to Organize Projects</a>
   <a href="calendar.php">Calendar</a>
   <a href="search.php">Search Organizers</a>
-  <a href="profile.php">My Profile</a>
+  <a href="profile_volunteer.php">My Profile</a>
   <a href="complain.php">Complain</a>
 </div>

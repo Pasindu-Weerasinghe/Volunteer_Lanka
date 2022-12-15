@@ -59,6 +59,40 @@ $ads = mysqli_fetch_all($result, MYSQLI_ASSOC);
         <!-- Advertiesment Reqests area end-->
         <!-- Complains Area -->
         <h2>Complains</h2><br><br>
+        <div id="c-box">
+                <div id="c-box-item">
+                    <h3 id="uname">User Name</h3>
+                    <button id="c-view-btn">View</button>
+                </div>
+                <p id="c-box-des"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, beatae quidem.
+                    Accusantium voluptatem ipsam dolor, vel officiis, adipisci molestias ea voluptatum iure id
+                    voluptatibus libero quam labore, animi odit. In!</p>
+                <br>
+
+            </div>
+        <div id="c-box">
+                <div id="c-box-item">
+                    <h3 id="uname">User Name</h3>
+                    <button id="c-view-btn">View</button>
+                </div>
+                <p id="c-box-des"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, beatae quidem.
+                    Accusantium voluptatem ipsam dolor, vel officiis, adipisci molestias ea voluptatum iure id
+                    voluptatibus libero quam labore, animi odit. In!</p>
+                <br>
+
+            </div>
+        <div id="c-box">
+                <div id="c-box-item">
+                    <h3 id="uname">User Name</h3>
+                    <button id="c-view-btn">View</button>
+                </div>
+                <p id="c-box-des"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, beatae quidem.
+                    Accusantium voluptatem ipsam dolor, vel officiis, adipisci molestias ea voluptatum iure id
+                    voluptatibus libero quam labore, animi odit. In!</p>
+                <br>
+
+            </div>
+
         
         <!-- Complains Area end-->
     </div>

@@ -20,6 +20,10 @@ require 'Navbar/navbar_log.php';
 </head>
 <body>
 <div id="main" class="main">
+<div class="search-container">
+            <input type="text" name="search">
+            <button name="search"><b>Search<b></button>
+        </div><br>
     <h2>Completed Projects</h2><br/><br/>
     <h3>Provide your valuable feedback for the projects you participated</h3>
     <section class="container">

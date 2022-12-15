@@ -23,7 +23,7 @@ if (isset($_REQUEST["next"])) {
             case 'sponsor':
                 header('Location: signup_sponsor.php');
                 break;
-            
+
             case 'admin':
                 header('Location: signup_auth.php');
                 break;
@@ -54,7 +54,7 @@ if (isset($_REQUEST["next"])) {
                 <p>Passionate about volunteering? <b>Come join us</b></p>
                 <hr>
 
-                <?php 
+                <?php
                 if ($error) {
                     echo '<label id="error"> ' . $error . '</label><br/><br/>';
                 } ?>
@@ -77,9 +77,8 @@ if (isset($_REQUEST["next"])) {
 
                 <label for="psw"><b>Password</b></label>
                 <label id="require"><strong>*</strong></label>
-                <input type="password" name="psw">
-                <!-- required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-        title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" -->
+                <input type="password" name="psw" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+
 
                 <label for="confirm-psw"><b>Confirm Password</b></label>
                 <label id="require"><strong>*</strong></label>

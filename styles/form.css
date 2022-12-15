@@ -79,9 +79,15 @@ button:hover {
   font-size: 20px;
 }
 
+#complain {
+  font-size: 20px;
+}
+
+#send {
+  font-size: 18px;
+}
 .cancel {
   float: left;
-  width: 40%;
 }
 
 .next {

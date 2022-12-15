@@ -29,9 +29,6 @@ require 'Navbar/navbar_log.php';
                 <h3 class="name-item">Advertiesment:</h3>
                 <div id="ad-box-item">
                     <img id="ad-box-img" src="images/beach.jpg" alt="">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti,
-                        nam excepturi est placeat molestiae cupiditate, rerum ex tenetur maxime,
-                        dolorum natus itaque. Rerum facere facilis molestias minus similique quasi veritatis.</p>
                 </div>
             </div>
             <div id="btn-area">

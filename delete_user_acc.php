@@ -19,7 +19,11 @@ require 'Navbar/navbar_log.php';
 </head>
 
 <body>
-    <div class="main">
+    <div class="main" id="main">
+    <div class="search-container">
+            <input type="text" name="search">
+            <button name="search"><b>Search<b></button>
+        </div><br><br>
         <div id="tb_area">
             <table>
                 <thead>
@@ -31,33 +35,30 @@ require 'Navbar/navbar_log.php';
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Pasindu</td>
-                        <td>Admin</td>
-                        <td>Active</td>
-                    </tr>
-                    <tr>
-                        <td>Hasindu</td>
-                        <td>Sponsor</td>
-                        <td>Active</td>
-                    </tr>
-                    <tr>
-                        <td>Nethmie</td>
+                        <td>Nethmie Imanya</td>
                         <td>Volunteer</td>
                         <td>Active</td>
                     </tr>
                     <tr>
-                        <td>Binula</td>
+                        <td>Rotaract Club UOP</td>
                         <td>Organizer</td>
+                        <td>Restricted</td>
+                    </tr>
+                    <tr>
+                        <td>IFS R&D International</td>
+                        <td>Sponsor</td>
+                        <td>Active</td>
+                    </tr>
+                    <tr>
+                        <td>Pasindu Weerasinghe</td>
+                        <td>Admin</td>
                         <td>Active</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-
     </div>
-    <br>
-    <button id="back-btn">Back</button>
-    <br><br>
+    
 </body>
 
 </html>

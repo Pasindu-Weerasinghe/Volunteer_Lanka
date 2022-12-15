@@ -77,6 +77,9 @@ class Organizer extends User
 
     function upcoming_projects()
     {
+        $this->loadModel('Project');
+        session_start();
+        $this->projects = $this->model->getProjects($_SESSION['uid']);
         $this->render('Organizer/UpcomingProjects');
     }
 

@@ -18,7 +18,7 @@ class ProjectModel extends Model
         return $statement->execute();
     }
 
-    function getProject($uid)
+    function getProjects($uid)
     {
         $query = "SELECT * FROM project WHERE U_ID = '$uid'";
         $statement = $this->db->prepare($query);

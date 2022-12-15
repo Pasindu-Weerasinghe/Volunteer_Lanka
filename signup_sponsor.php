@@ -23,22 +23,27 @@ include 'conn.php';
                     <hr>
 
                     <label for="name"><b>Name</b></label>
+                    <label id="require"><strong>*</strong></label>
                     <input type="text" name="name" required>
 
                     <label for="contact"><b>Contact Number</b></label>
+                    <label id="require"><strong>*</strong></label>
                     <input type="text" name="contact" required>
 
                     <label for="address"><b>Address</b></label>
+                    <label id="require"><strong>*</strong></label>
                     <textarea rows="4" name="address" style="resize: none;"></textarea>
 
-                    <label for="type"><b>Select Your Type</b></label><br>
+                    <label for="type"><b>Select Your Type</b></label>
+                    <label id="require"><strong>*</strong></label><br>
+
 
                     <div class="checkbox_container">
-                        <input type="radio" name="type" value="individual">
+                        <input type="radio" name="type" value="individual" required>
                         <label>Individual</label><br>
-                        <input type="radio" name="type" value="organization">
+                        <input type="radio" name="type" value="organization" required>
                         <label>Organization</label><br>
-                        <input type="radio" name="type" value="company">
+                        <input type="radio" name="type" value="company" required>
                         <label>Company</label><br>
                     </div>
 

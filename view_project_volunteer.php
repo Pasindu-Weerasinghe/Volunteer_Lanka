@@ -68,40 +68,10 @@ $result2 = mysqli_query($conn, $sql2);
             </div>
             <div class="btn-area">
                 <button onclick="history.back()" class="btn">Back</button>
-                <button type="submit" name="next" class="btn" id="join">Join</button>
+                <button class="btn" id="join"><a href="join_form.php">Join</a></button>
             </div>
 
         </div>
-        <!-- <table>
-            <tr>
-                <td>Date</td>
-                <td>:</td>
-                <td><?php echo ($Date) ?></td>
-            </tr>
-            <tr>
-                <td>Time</td>
-                <td>:</td>
-                <td><?php echo ($Time) ?></td>
-            </tr>
-            <tr>
-                <td>Venue</td>
-                <td>:</td>
-                <td><?php echo ($Venue) ?></td>
-            </tr>
-            <tr>
-                <td>Number of Volunteers</td>
-                <td>:</td>
-                <td><?php echo ($No_of_volunteers) ?></td>
-            </tr>
-            <tr>
-                <td>Description</td>
-                <td>:</td>
-                <td><?php echo ($Description) ?></td>
-            </tr>
-        </table> -->
-
-        <!-- <button class="btn" href="login.php">Back</a></button>
-    <button class="btn" href="#">Join</a></button> -->
     </div>
 </body>
 

@@ -86,6 +86,11 @@ button:hover {
 #send {
   font-size: 18px;
 }
+
+input[type="radio"] {
+  font-size: 20px;
+}
+
 .cancel {
   float: left;
 }

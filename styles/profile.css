@@ -7,9 +7,8 @@
     display: flex;
     border: none;
     border-radius: 10px;
-    background-color:#89AFD6;
-	width: 75%;
-	height: 60%;
+    background-color:#96c7d6;
+	width: 900px;
 	margin:auto;
 	flex-direction: row;
 
@@ -19,15 +18,20 @@
 }
   
 /* Create two equal columns that sits next to each other */
-.column {
-    flex: 50%;
+.column1 {
+    flex: 40%;
+    padding: 20px;
+    height: 400px; /* Should be removed. Only for demonstration */
+}
+.column2 {
+    flex: 60%;
     padding: 20px;
     height: 400px; /* Should be removed. Only for demonstration */
 }
 
 .btn1{
 	background-color: #84b464;
-	color: black;
+	color: #e0e0f0;
 	font-weight: bold;
 	border: none;
 	border-radius: 15px;
@@ -35,19 +39,12 @@
 	text-align: center;
 	font-family: "Poppins", sans-serif;
 	font-size: 16px;
-	margin-left: 300px;
+	margin-left: 200px;
 }
 
-.btnpw{
-    border: solid;
-    border-radius: 4px;
-	margin-left: 15px;
-    background-color: blanchedalmond;
-    font-size: medium;
-	display: flex;
-}
+
 a {
-	color: rgb(0, 0, 0);
+	color: #e0e0f0;
 	text-decoration: none;
 }
 

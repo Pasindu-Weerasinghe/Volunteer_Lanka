@@ -25,19 +25,9 @@ include 'Navbar/navbar_log.php';
     <div class="main" id="main">
         <form class="main1" action="change_password.php" method="POST">
             <!-- <br><br> <br><br> -->
-            <h2>Changed Password</h2><br><br>
-            <lable>Current Password</lable><br>
-            <input type="text" name="current"><br>
-            <lable>New Password</lable><br>
-            <input type="text" name="new"><br>
-            <lable>Comfirm Password</lable><br>
-            <input type="text" name="confirm"><br><br>
-            <button type="submit" name="submit">Save Password</button>
-            <button type="submit"> <a href="profile_sponsor.php">Back</a> </button>
+            <h2>Changed Password</h2><br>
 
-        
-
-        <?php
+            <?php
         $sql = "SELECT * FROM user WHERE U_ID='" . $uid . "'";
         $result = mysqli_query($conn, $sql);
         while ($row = $result->fetch_assoc())
@@ -55,16 +45,27 @@ include 'Navbar/navbar_log.php';
                     $result = mysqli_query($conn, $sql);
                     $error = "Password Updated Successfully";
                 } else {
-                    $error = "password did not match";
+                    $error = "Password did not match";
                 }
             } else {
-                $error = "OLD PW is not match";
+                $error = "Old Password did not match";
             }
         }
         ?>
 
-        <label class="error"><?php echo $error ?></label>
-
+         <?php 
+                if ($error) {
+                    echo '<label class="error"> ' . $error . '</label><br/><br/>';
+                } ?>
+            <lable>Current Password</lable><br>
+            <input type="password" name="current"><br>
+            <lable>New Password</lable><br>
+            <input type="password" name="new"><br>
+            <lable>Comfirm Password</lable><br>
+            <input type="password" name="confirm"><br><br>
+            
+            <button type="submit"> <a href="profile.php">Back</a> </button>
+            <button class="bt2" type="submit" name="submit">Save</button>
         </form>
     <!-- </div> -->
 </body>

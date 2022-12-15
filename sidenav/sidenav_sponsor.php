@@ -25,7 +25,7 @@
     <a href="publish_advertisment.php">Publish Advertisment</a>
     <a href="calendar.php">Calendar</a>
     <a href="profile.php">My Profile</a>
-    <a href="complaints.php">Complain</a>
+    <a href="complain.php">Complain</a>
   </div>
 </body>
 </html>

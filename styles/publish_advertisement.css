@@ -19,7 +19,7 @@ form{
 	/* width: 70%;
 	height: 65%; */
 	padding: 30px;
-	background-color: #89AFD6;
+	background-color: #96c7d6;
 	margin: center;
 	display: flex;
 }
@@ -50,7 +50,7 @@ h2{
 
 .btn1,.btn2{
 	background-color: #84b464;
-	color: black;
+	color: #e0e0f0;
 	font-weight: bold;
 	border: none;
 	border-radius: 15px;
@@ -93,11 +93,12 @@ label{
 }
 .des{
 	width: 600px;
-	height: 200px;
+	line-height: 4;
 	margin:auto;
 	border-radius: 8px;
 	margin-left: 30px;
 	font-size: 13pt;
+	resize: none;
 
 }
 .file1{

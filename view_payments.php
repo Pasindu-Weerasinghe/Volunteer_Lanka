@@ -17,7 +17,11 @@ require 'Navbar/navbar_log.php';
     <link rel="stylesheet" href="styles/delete_user_acc.css">
 </head>
 <body>
-    <div class="main">
+    <div class="main" id="main">
+    <div class="search-container">
+            <input type="text" name="search">
+            <button name="search"><b>Search<b></button>
+        </div><br><br>
         <div id="tb_area">
             <table>
                 <thead>
@@ -25,41 +29,40 @@ require 'Navbar/navbar_log.php';
                         <th>User Name</th>
                         <th>Amount</th>
                         <th>Date</th>
-                        <th>Payment Month</th>
+                        <th>Payment Type</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Pasindu</td>
-                        <td>Admin</td>
-                        <td>Active</td>
-                        <td>Active</td>
+                        <td>Rotaract Club UOC</td>
+                        <td>LKR 800</td>
+                        <td>2022/11/07</td>
+                        <td>Monthly Subscription</td>
                     </tr>
                     <tr>
-                        <td>Hasindu</td>
-                        <td>Sponsor</td>
-                        <td>Active</td>
-                        <td>Active</td>
+                        <td>Rotaract Club UOM</td>
+                        <td>LKR 80</td>
+                        <td>2022/11/15</td>
+                        <td>Extra Project</td>
                     </tr>
                     <tr>
-                        <td>Nethmie</td>
-                        <td>Volunteer</td>
-                        <td>Active</td>
-                        <td>Active</td>
+                        <td>Leo Club Gampaha</td>
+                        <td>LKR 800</td>
+                        <td>2022/11/07</td>
+                        <td>Monthly Subscription</td>
                     </tr>
                     <tr>
-                        <td>Binula</td>
-                        <td>Organizer</td>
-                        <td>Active</td>
-                        <td>Active</td>
+                    <td>Lions Club Kandy</td>
+                        <td>LKR 80</td>
+                        <td>2022/11/15</td>
+                        <td>Extra Project</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-
-    </div>
-    <br>
+        <br><br><br>
         <button id="back-btn">Back</button>
-        <br><br>
+    </div>
+    
 </body>
 </html>

@@ -20,11 +20,15 @@
                 <hr>
 
                 <label for="name"><b>Name</b></label>
+                <label id="require"><strong>*</strong></label>
                 <input type="text" name="name" required>
 
                 <label for="contact"><b>Contact Number</b></label>
+                <label id="require"><strong>*</strong></label>
                 <input type="text" name="contact" required>
+
                 <label for="address"><b>Address</b></label>
+                <label id="require"><strong>*</strong></label>
                 <textarea rows="4" name="address" style="resize: none;"></textarea>
 
                 <label><b>Select your interested areas for volunteering</b></label><br /><br />

@@ -60,6 +60,8 @@ if (isset($_REQUEST["next"])) {
                 } ?>
 
                 <label for="role"><b>Role</b></label>
+                <label id="require"><strong>*</strong></label>
+
                 <div class="select">
                     <select id="role" name="role" required>
                         <option value="organizer">Organizer</option>
@@ -70,14 +72,17 @@ if (isset($_REQUEST["next"])) {
                 </div>
 
                 <label for="email"><b>Email</b></label>
+                <label id="require"><strong>*</strong></label>
                 <input type="email" name="email" required>
 
                 <label for="psw"><b>Password</b></label>
+                <label id="require"><strong>*</strong></label>
                 <input type="password" name="psw">
                 <!-- required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
         title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" -->
 
                 <label for="confirm-psw"><b>Confirm Password</b></label>
+                <label id="require"><strong>*</strong></label>
                 <input type="password" name="confirm-psw" required>
 
                 <div class="clearfix">

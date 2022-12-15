@@ -135,6 +135,10 @@ p {
 	border-radius: 10px;
 	text-align: center;
 }
+#require{
+	color: red;
+	font-size: large;
+}
 
 .main {
 	padding: 100px 150px 0 150px;   

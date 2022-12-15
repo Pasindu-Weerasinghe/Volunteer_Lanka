@@ -57,8 +57,6 @@ require 'Navbar/navbar_log.php';
                 </tbody>
             </table>
         </div>
-        <br><br><br>
-    <button id="back-btn">Back</button>
     </div>
     
 </body>

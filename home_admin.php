@@ -33,9 +33,9 @@ $ads = mysqli_fetch_all($result, MYSQLI_ASSOC);
         <h2>Advertiesment Requests</h2><br><br>
         <section class="container">
             <?php foreach ($ads as $ad) {
-                $adid = $ad['AD_ID'] ;
-                $sponsor=$ad['Sponsor'];
-                ?>
+                $adid = $ad['AD_ID'];
+                $sponsor = $ad['Sponsor'];
+            ?>
                 <div class="card">
                     <?php $sql2 = "SELECT Image FROM ad_image WHERE $adid = AD_ID";
                     $result2 = mysqli_query($conn, $sql2);
@@ -50,113 +50,48 @@ $ads = mysqli_fetch_all($result, MYSQLI_ASSOC);
                         <h2><?php echo $sponsorname ?></h2>
                     <?php } ?>
 
-                    
+
                     <a class="btn" href="view_ad_req.php">View</a>
                 </div>
             <?php }
-            $conn->close(); ?>
+            ?>
         </section>
         <!-- Advertiesment Reqests area end-->
         <!-- Complains Area -->
         <h2>Complains</h2><br><br>
-        <div id="c-box">
-                <div id="c-box-item">
-                    <h3 id="uname">User Name</h3>
-                    <button id="c-view-btn">View</button>
-                </div>
-                <p id="c-box-des"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, beatae quidem.
-                    Accusantium voluptatem ipsam dolor, vel officiis, adipisci molestias ea voluptatum iure id
-                    voluptatibus libero quam labore, animi odit. In!</p>
-                <br>
+        <?php
+        $sql4 = "SELECT C_ID,About,Complain,U_ID FROM complaints";
+        $result4 = mysqli_query($conn, $sql4);
+        $complaints = mysqli_fetch_all($result4, MYSQLI_ASSOC);
 
-            </div>
-        <div id="c-box">
-                <div id="c-box-item">
-                    <h3 id="uname">User Name</h3>
-                    <button id="c-view-btn">View</button>
-                </div>
-                <p id="c-box-des"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, beatae quidem.
-                    Accusantium voluptatem ipsam dolor, vel officiis, adipisci molestias ea voluptatum iure id
-                    voluptatibus libero quam labore, animi odit. In!</p>
-                <br>
-
-            </div>
-        <div id="c-box">
-                <div id="c-box-item">
-                    <h3 id="uname">User Name</h3>
-                    <button id="c-view-btn">View</button>
-                </div>
-                <p id="c-box-des"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, beatae quidem.
-                    Accusantium voluptatem ipsam dolor, vel officiis, adipisci molestias ea voluptatum iure id
-                    voluptatibus libero quam labore, animi odit. In!</p>
-                <br>
-
-            </div>
-
-        
-        <!-- Complains Area end-->
-    </div>
-    </div>
-    <!-- <div class="main" id="main">
-        <div class="main_container">
-            <h2>Advertiesment Request</h2>
-            <section class="ar-container">
-                <div class="ar-card">
-                    <div class="ar-img ar-card1"></div>
-                    <button>View</button>
-                </div>
-                <div class="ar-card">
-                    <div class="ar-img ar-card1"></div>
-                    <button>View</button>
-                </div>
-                <div class="ar-card">
-                    <div class="ar-img ar-card1"></div>
-                    <button>View</button>
-                </div>
-            </section>
-
-
-            <br>
-            </div>
-        <div class="main_container">
-            <h2>Complaints</h2>
+        foreach ($complaints as $row) {
+            $complain_id = $row['C_ID'];
+            $complain_about = $row['About'];
+            $complain = $row['Complain'];
+            $c_uid = $row['U_ID']; ?>
             <div id="c-box">
                 <div id="c-box-item">
-                    <h3>User Name</h3>
+                    <?php
+                    $sql5 = "SELECT Role FROM user WHERE $c_uid = U_ID";
+                    $result5 = mysqli_query($conn, $sql5);
+                    $row = $result5->fetch_assoc();
+                    $role = $row['Role'];
+
+                    $sql6 = "SELECT Name FROM " . $role . " WHERE '$c_uid'";
+                    $result6 = mysqli_query($conn, $sql6);
+                    $name =  $result6->fetch_assoc()['Name'];
+
+                    ?>
+                    <h3 id="uname"><?php echo $name; ?></h3>
                     <button id="c-view-btn">View</button>
                 </div>
-                <p id="c-box-des"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, beatae quidem.
-                    Accusantium voluptatem ipsam dolor, vel officiis, adipisci molestias ea voluptatum iure id
-                    voluptatibus libero quam labore, animi odit. In!</p>
+                <p id="c-box-des"> <?php echo $complain ?></p>
                 <br>
 
             </div>
-            <div id="c-box">
-                <div id="c-box-item">
-                    <h3>User Name</h3>
-                    <button id="c-view-btn">View</button>
-                </div>
-                <p id="c-box-des"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, beatae quidem.
-                    Accusantium voluptatem ipsam dolor, vel officiis, adipisci molestias ea voluptatum iure id
-                    voluptatibus libero quam labore, animi odit. In!</p>
-                <br>
-
-            </div>
-            <div id="c-box">
-                <div id="c-box-item">
-                    <h3>User Name</h3>
-                    <button id="c-view-btn">View</button>
-                </div>
-                <p id="c-box-des"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, beatae quidem.
-                    Accusantium voluptatem ipsam dolor, vel officiis, adipisci molestias ea voluptatum iure id
-                    voluptatibus libero quam labore, animi odit. In!</p>
-                <br>
-
-            </div>
-            <br>
-        </div>
-    </div> -->
-
+        <?php
+        }
+        ?>
 </body>
 
 </html>

@@ -16,9 +16,10 @@ h2{
 
 #ad-req-box{
     background-color: #B3CCE1;
-    margin: 10px 100px;
+    margin: auto;
     border-radius: 4px;
     margin-bottom: 15px;
+    width: 100%;
 }
 
 .name{

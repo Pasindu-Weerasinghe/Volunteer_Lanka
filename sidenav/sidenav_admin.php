@@ -21,7 +21,7 @@
   <div id="side-menu" class="side-nav">
     <a class="btn-close" onclick="closeSideMenu()">&times;</a>
     <a href="home_admin.php">Home</a>
-    <a href="advertiesment_requests.php">Sponsor Advertiesment Requests</a>
+    <a href="advertiesment_requests.php">Sponsor Advertisement Requests</a>
     <a href="complaints.php">Complaints</a>
     <a href="create_new_admin_acc.php">Create New Account</a>
     <a href="view_payments.php">Payments</a>

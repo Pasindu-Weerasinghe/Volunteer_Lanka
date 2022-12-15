@@ -30,7 +30,7 @@ $ads = mysqli_fetch_all($result, MYSQLI_ASSOC);
 <body>
     <div class="main" id="main">
         <!-- Advertiesment Reqests area -->
-        <h2>Advertiesment Requests</h2><br><br>
+        <h2>Advertisement Requests</h2><br><br>
         <section class="container">
             <?php foreach ($ads as $ad) {
                 $adid = $ad['AD_ID'];
@@ -38,10 +38,10 @@ $ads = mysqli_fetch_all($result, MYSQLI_ASSOC);
             ?>
                 <div class="card">
                     <?php $sql2 = "SELECT Image FROM ad_image WHERE $adid = AD_ID";
-                    $result2 = mysqli_query($conn, $sql2);
+                        $result2 = mysqli_query($conn, $sql2);
                     while ($row = $result2->fetch_assoc()) {
                         $image = $row['Image']; ?>
-                        <div class="card-image"><img id="cards" src="images/<?= $image ?>"></div>
+                        <div class="card-image"><img id="cards" src="images/<?php echo $image ?>"></div>
                     <?php } ?>
                     <?php $sql3 = "SELECT Name FROM sponsor WHERE $sponsor = U_ID";
                     $result3 = mysqli_query($conn, $sql3);
@@ -50,8 +50,7 @@ $ads = mysqli_fetch_all($result, MYSQLI_ASSOC);
                         <h2><?php echo $sponsorname ?></h2>
                     <?php } ?>
 
-
-                    <a class="btn" href="view_ad_req.php">View</a>
+                    <a class="btn" href="view_ad_req.php?adid=<?php echo $adid ?>">View</a>
                 </div>
             <?php }
             ?>
@@ -62,7 +61,7 @@ $ads = mysqli_fetch_all($result, MYSQLI_ASSOC);
         $result4 = mysqli_query($conn, $sql4);
         $complaints = mysqli_fetch_all($result4, MYSQLI_ASSOC); ?>
         <!-- Complains Area -->
-        <h2>Complains</h2><br><br>
+        <h2>Complaints</h2><br><br>
             <?php
             foreach ($complaints as $row) {
                 $complain_id = $row['C_ID'];

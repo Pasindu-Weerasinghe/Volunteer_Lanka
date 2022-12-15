@@ -20,7 +20,7 @@
   background-size: cover;
   background-position: center center;
   z-index: -1;
-  height: 90vh;
+  height: 80vh;
 }
 
 .container {
@@ -78,7 +78,7 @@ input[type=text]:focus {
   font-size: 15px;
 }
 
-#logo {
+#logo2 {
   height: 300px;
 }
 
@@ -133,7 +133,7 @@ table {
 
 .container2 {
   width: 80%;
-  height: 200px;
+  height: 230px;
   border-radius: 20px;
   background-color: rgb(182, 194, 204);
   backdrop-filter: blur(16px);
@@ -145,9 +145,9 @@ table {
   padding: 20px;
 }
 
-#who, #contact {
+#who, #contact{
   font-size: 40px;
-  margin-top: 60px;
+  margin-top: 40px;
 }
 
 #des {
@@ -155,6 +155,27 @@ table {
   width: 800px;
   padding: 50px;
   text-align: justify;
+}
+
+#email {
+  font-size: 20px;
+  padding-top: 50px;
+}
+
+#con-details {
+  font-size: 20px;
+  width: 130px;
+  padding: 50px 0 0 50px;
+}
+
+#numbers {
+  font-size: 20px;
+  width: 210px;
+  padding: 50px 0 0 50px;
+}
+#number {
+  font-size: 20px;
+  margin-top: 50px;
 }
 
 p {

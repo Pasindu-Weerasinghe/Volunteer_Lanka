@@ -14,6 +14,7 @@ while ($row = $result->fetch_assoc()) {
     $Role = $row['Role'];
     $Email = $row['Email'];
     $password = $row['Password'];
+    $Address=$row['Address'];
 }
 
 $sql2 = "SELECT * FROM sponsor WHERE U_ID=' $uid '";
@@ -51,18 +52,22 @@ $result1 = mysqli_query($conn, $sql2);
                     <h2>User Account Details</h2>
                 </strong><br><br>
             <div class="row">
-                <div class="column">
+                <div class="column1">
                     <img class="image" src="./images/profile.jpg" alt="a cat staring at you" height="190" width="190" /><br><br>
                     <h1 class="head1"><label class="sub2"> <?php echo $row1['Name']; ?></label></h1><br><br><br>
-                    <!-- <button class="btn1"><a href="home.php" class="same">Back</a></button> -->
                 </div>
-                <div class="column">
+                <div class="column2">
                     <strong>
                         <table>
                             <tr>
                                 <td>User ID</td>
                                 <td>:</td>
                                 <td><?php echo $row1['U_ID']; ?></td>
+                            </tr>
+                            <tr>
+                                <td>Role</td>
+                                <td>:</td>
+                                <td><?php echo $Role  ?></td>
                             </tr>
                             <tr>
                                 <td>Name</td>
@@ -75,19 +80,19 @@ $result1 = mysqli_query($conn, $sql2);
                                 <td><?php echo $Email ?></td>
                             </tr>
                             <tr>
+                                <td>Address</td>
+                                <td>:</td>
+                                <td><?php echo $row1['Address'] ?></td>
+                            </tr>
+                            <tr>
                                 <td>Contact Number</td>
                                 <td>:</td>
                                 <td><?php echo $row1['Contact']; ?></td>
                             </tr>
-                            <tr>
-                                <td>Role</td>
-                                <td>:</td>
-                                <td><?php echo $Role  ?></td>
-                            </tr>
+                            
                         </table>
-                        <button class="btnpw"> <a href="change_password.php" class="same">Change Password</a></button><br><br>
+                        <button class="btn1"> <a href="change_password.php" class="same">Change Password</a></button><br><br>
                     </strong>
-                    <button class="btn1"> <a href="home_sponsor.php" class="same">Back</a></button>
                 </div>
 
             </div>

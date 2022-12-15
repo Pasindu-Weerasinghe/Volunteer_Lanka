@@ -45,7 +45,7 @@ $result2 = mysqli_query($conn, $sql2);
                 if ($result2->num_rows > 0) {
                     while ($row2 = $result2->fetch_assoc()) {
                         $image = $row2['Image'] ?>
-                        <div class="item"><img src="images/<?php echo $image; ?>"></div>
+                        <img src="images/<?php echo $image; ?>">
                 <?php }
                 } ?>
             </div>

@@ -6,7 +6,6 @@ if (!isset($_SESSION['uid'])) {
     header("Location: login.php");
 }
 include 'Navbar/navbar_log.php';
-session_start();
 $P_ID = $_GET['pid'];
 $sql1 = "SELECT Name, Date, Time, Venue, Description, No_of_volunteers FROM project WHERE P_ID='" . $P_ID . "'";
 $result1 = mysqli_query($conn, $sql1);
@@ -45,7 +44,7 @@ $result2 = mysqli_query($conn, $sql2);
                 if (mysqli_num_rows($result2) > 0) {
                     while ($row2 = $result2->fetch_assoc()) {
                         $image = $row2['Image'] ?>
-                        <div class="item"><img src="images/<?php echo $image ?>"><br><br></div>
+                        <img src="images/<?php echo $image ?>"><br><br>
                 <?php }
                 } ?>
             </div>

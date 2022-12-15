@@ -28,14 +28,14 @@ include 'Navbar/navbar_log.php';
                 <span id="slide-2"></span>
                 <span id="slide-3"></span>
                 <div class="image-container">
-                    <img src="images/img1.jpg" class="slide" width="500" height="300" />
-                    <img src="images/img2.jpg" class="slide" width="500" height="300" />
                     <img src="images/img3.jpg" class="slide" width="500" height="300" />
+                    <img src="images/img2.jpg" class="slide" width="500" height="300" />
+                    <img src="images/img1.jpg" class="slide" width="500" height="300" />
                 </div>
                 <div class="buttons">
-                    <a href="#slide-1"></a>
-                    <a href="#slide-2"></a>
                     <a href="#slide-3"></a>
+                    <a href="#slide-2"></a>
+                    <a href="#slide-1"></a>
                 </div>
             </div>
 
@@ -55,7 +55,7 @@ include 'Navbar/navbar_log.php';
                 </tr>
                 <tr>
                     <td>Organizer</td>
-                    <td>: Rotaract Club UOM</td>
+                    <td>: Rotaract Club UOC</td>
                 </tr>
                 <tr>
                     <td>Number of Volunteers</td>
@@ -63,10 +63,10 @@ include 'Navbar/navbar_log.php';
                 </tr>
                 <tr>
                     <td>Description</td>
-                    <td>:________________________________________________</td><br>
+                    <td>:A beach cleaning campaign</td><br>
                 </tr>
             </table>
-        </div>
+        </div><BR>
 
         <p class="para">Select sponsor package bellow</p><br><br>
 
@@ -88,11 +88,11 @@ include 'Navbar/navbar_log.php';
             <strong>Price: 500.00</strong>
         </div>
 
-        <div>
+        
             <br><br>
             <button class="btn1"><a href="#">Cancel</a></button>
             <button class="btn2"><a href="#">Confirm</a></button>
-        </div>
+        
 
         </div>
     </div>

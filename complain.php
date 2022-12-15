@@ -18,10 +18,10 @@ require 'Navbar/navbar_log.php'; ?>
 <body>
 <div id="main" class="main">
     <h2>Complain to Admin</h2><br/>
-    <h4>Your complaint will be considered by one of our admins. Do not provide false information in the below form.</h4>
+    <label id="complain">Your complaint will be considered by one of our admins. Do not provide false information in the below form.</label>
     <form action="complain.php" method="post">
     <div class="container">
-        <p>Send us your complain about another user or any other general issue</p><hr>
+        <p id="send">Send us your complaint</p><br><hr>
     
         <label for="uname"><b>Username</b></label>
         <input type="text" name="uname" value=<?php echo ($_SESSION['uname']) ?> readonly>

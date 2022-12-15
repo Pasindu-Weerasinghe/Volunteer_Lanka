@@ -60,7 +60,7 @@ $ads = mysqli_fetch_all($result, MYSQLI_ASSOC);
             ?>
         </section>
         <br>
-        <button id="back-btn">Back</button>
+        <button id="back-btn" onclick="window.location.href='home_admin.php'">Back</button>
         <br><br>
     </div>
 

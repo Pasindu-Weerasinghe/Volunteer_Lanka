@@ -23,19 +23,25 @@ require 'Navbar/navbar_log.php';
         <h2>Complaints</h2>
         <div id="com-box">
             <div id="com-box-item">
-                <img id="user-img" src="images/icons8-user-32.png" alt="">
-                <h3 id="com-box-item-uname">User Name</h3>
-                <h4>Complain about:</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti nesciunt ipsam magni quam magnam esse, laudantium ratione unde libero, quis vitae! Perspiciatis minus nihil facere! In veniam facere quos delectus.</p>
+                <!-- <img id="user-img" src="images/icons8-user-32.png" alt=""> -->
+                <h3 id="com-box-item-uname">Leo Club Gampha</h3>
+                <h4>Complain :</h4>
+                <p>I am writing to report a user on your system who has been behaving inappropriately. The user's username is Rotract Club Galle.
+                    I have included evidence of their behavior below and screenshots or other evidence.
+                    I believe that this behavior is in violation of your terms of service and I request that you take appropriate action.
+                    Thank you for your attention to this matter.</p>
                 <button>View</button>
             </div>
         </div>
         <div id="com-box">
             <div id="com-box-item">
-                <img id="user-img" src="images/icons8-user-32.png" alt="">
-                <h3 id="com-box-item-uname">User Name</h3>
-                <h4>Complain about:</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti nesciunt ipsam magni quam magnam esse, laudantium ratione unde libero, quis vitae! Perspiciatis minus nihil facere! In veniam facere quos delectus.</p>
+                <!-- <img id="user-img" src="images/icons8-user-32.png" alt=""> -->
+                <h3 id="com-box-item-uname">Rotract Club Kurunegala</h3>
+                <h4>Complain :</h4>
+                <p>I am writing to bring to your attention a user on the forum who has been posting offensive and inappropriate content. The user's username is [Username] and their posts can be found in the following thread:<a>Link</a>.
+
+                    In their posts, the user has made [describe the offensive or inappropriate content]. This kind of content is not acceptable on our forum and I request that you take action to remove the posts and warn the user.
+                </p>
                 <button>View</button>
             </div>
         </div>

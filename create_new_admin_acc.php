@@ -48,11 +48,12 @@ require 'Navbar/navbar_log.php';
                         <label for="">Role :</label>
                         <select name="role">
                             <option value="admin">Admin</option>
+                            <option value="volunteer">Volunteer</option>
                         </select>
                     </div>
                 </div>
                 <div id="btn-area">
-                    <button class="btn" onclick="history.back()">Cancel</button>
+                    <a class="btn" href="home_admin.php">Cancel</a>
                     <button class="btn" name="create" type="submit">Create</button>
                 </div>
             </div>

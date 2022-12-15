@@ -18,7 +18,7 @@ require 'Navbar/navbar_log.php';
 
 <body>
     <br><br><br>
-    <div class="main">
+    <div class="main" id="main">
         <h2>Complaints</h2>
         <div id="com-box">
             <div class="name">
@@ -31,19 +31,20 @@ require 'Navbar/navbar_log.php';
             </div>
             <div class="name">
                 <h3 class="name-item">Complaint:</h3>
-                <p id="com">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Nobis minima cumque veritatis! Aliquam facilis magnam voluptatem totam,
-                    voluptatum, quae libero temporibus ut officiis aperiam
-                    iste qui dolor rem possimus? Vitae.</p>
+                <p id="com">I am writing to report a user on your system who has been behaving inappropriately. The user's username is [Rotract Club Galle] and they have been [describe the inappropriate behavior].
+                    I have included evidence of their behavior below: [include any relevant screenshots or other evidence].
+                    I believe that this behavior is in violation of your terms of service and I request that you take appropriate action.
+                    Thank you for your attention to this matter.</p>
             </div>
             <br>
+            <div id="btn-area">
+                <button class="btn" onclick="window.location.href='home_admin.php'">Back</button>
+                <button class="btn">Resolve</button>
+            </div>
         </div>
         <br>
     </div>
-    <div id="btn-area">
-        <button class="btn">Back</button>
-        <button class="btn">Resolve</button>
-    </div>
+
     <br>
 </body>
 

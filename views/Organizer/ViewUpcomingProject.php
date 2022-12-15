@@ -26,37 +26,28 @@ if (!isset($_SESSION['uid'])) {
             <div class="container-image">
                 <image src="<?php echo BASE_URL ?>public/images/card-img1.jpg">
             </div>
-            <table>
-                <tr>
-                    <td>Date</td>
-                    <td>:</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Time</td>
-                    <td>:</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Venue</td>
-                    <td>:</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Number of Volunteers</td>
-                    <td>:</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Description</td>
-                    <td>:</td>
-                    <td></td>
-                </tr>
-            </table>
-        </div>
+            <div class="wrapper">
+                <div class="left-div">
+                    <label for="">Date</label><br>
+                    <label for="">Time</label><br>
+                    <label for="">Venue</label><br>
+                    <label for="">Number of Volunteers</label><br>
+                    <label for="">Description</label><br>
+                </div>
 
-        <button class="btn1"><a href="">Cancel Project</a></button>
-        <button class="btn2"><a href="">Postpone Project</a></button>
+                <div class="right-div">
+                    <label id="data"><?php  ?></label><br>
+                    <label id="data"><?php  ?></label><br>
+                    <label id="data"><?php  ?></label><br>
+                    <label id="data"><?php  ?></label><br>
+                    <label id="data"><?php  ?></label><br>
+                </div>
+            </div>
+            <div class="btn-area">
+                <button class="btn" onclick="history.back()">Cancel Project</button>
+                <button class="btn" id="right">Postpone Project</button>
+            </div>
+        </div>
     </div>
 
 </body>

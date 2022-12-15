@@ -17,7 +17,7 @@ if (!isset($_SESSION['uid'])) {
 </head>
 
 <body>
-    <!-- navigationb bar -->
+    <!-- navigation bar -->
     <?php include 'views/includes/navbar_log.php'; ?>
 
     <div class="main" id="main">
@@ -43,7 +43,7 @@ if (!isset($_SESSION['uid'])) {
                 <img src="<?php echo BASE_URL; ?>public/images/card-img3.jpg">
             </div>
             <p class="description">
-
+                fjbfjhbjbsdbfsdbfshjbfshdshhfshbfjshdjhs jsdjad dbsjbjad ajdabdjas asbdajbda bsajdjds asjajd
             </p>
         </div>
     </div>

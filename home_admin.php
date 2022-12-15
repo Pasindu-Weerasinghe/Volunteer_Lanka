@@ -7,9 +7,9 @@ if (!isset($_SESSION['uid'])) {
 require 'Navbar/navbar_log.php';
 ?>
 <?php
-$sql = "SELECT Ad_ID, Name, Date FROM advertisement";
+$sql = "SELECT AD_ID,Sponsor FROM advertisement";
 $result = mysqli_query($conn, $sql);
-$projects = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$ads = mysqli_fetch_all($result, MYSQLI_ASSOC);
 //images tika ad_image table eken
 //advertiesment eken ganna wisthara tika
 //sponsor name eka sponsor table eken ganna
@@ -30,10 +30,12 @@ $projects = mysqli_fetch_all($result, MYSQLI_ASSOC);
 <body>
     <div class="main" id="main">
         <!-- Advertiesment Reqests area -->
-        <h2>Advertiesment Requests</h2><br /><br />
+        <h2>Advertiesment Requests</h2><br><br>
         <section class="container">
-            <?php foreach ($projects as $project) {
-                $adid = $project['AD_ID'] ?>
+            <?php foreach ($ads as $ad) {
+                $adid = $ad['AD_ID'] ;
+                $sponsor=$ad['Sponsor'];
+                ?>
                 <div class="card">
                     <?php $sql2 = "SELECT Image FROM ad_image WHERE $adid = AD_ID";
                     $result2 = mysqli_query($conn, $sql2);
@@ -41,16 +43,22 @@ $projects = mysqli_fetch_all($result, MYSQLI_ASSOC);
                         $image = $row['Image']; ?>
                         <div class="card-image"><img id="cards" src="images/<?= $image ?>"></div>
                     <?php } ?>
-                    <h2><?php echo ($project["Name"]); ?></h2>
-                    <p><?php echo ($project["Date"]); ?></p>
-                    <a class="btn" href="view_project_volunteer.php?pid=<?php echo $pid ?>">View</a>
+                    <?php $sql3 = "SELECT Name FROM sponsor WHERE $sponsor = U_ID";
+                    $result3 = mysqli_query($conn, $sql3);
+                    while ($row = $result3->fetch_assoc()) {
+                        $sponsorname = $row['Name']; ?>
+                        <h2><?php echo $sponsorname ?></h2>
+                    <?php } ?>
+
+                    
+                    <a class="btn" href="view_ad_req.php">View</a>
                 </div>
             <?php }
             $conn->close(); ?>
         </section>
         <!-- Advertiesment Reqests area end-->
         <!-- Complains Area -->
-        <h2>Complains</h2><br /><br />
+        <h2>Complains</h2><br><br>
         
         <!-- Complains Area end-->
     </div>

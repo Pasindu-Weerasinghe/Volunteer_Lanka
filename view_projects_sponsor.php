@@ -38,7 +38,7 @@ $result2 = mysqli_query($conn, $sql2);
 
 <body>
     <div class="main" id="main">
-        <h2><u><?php echo ($Name) ?></u></h2><br /><br />
+        <h2><?php echo ($Name) ?></h2><br /><br />
         <div class="container">
             <div class="container-image">
                 <?php
@@ -49,36 +49,27 @@ $result2 = mysqli_query($conn, $sql2);
                 <?php }
                 } ?>
             </div>
-            <table>
-                <tr>
-                    <td>Date</td>
-                    <td>:</td>
-                    <td><?php echo ($Date) ?></td>
-                </tr>
-                <tr>
-                    <td>Time</td>
-                    <td>:</td>
-                    <td><?php echo ($Time) ?></td>
-                </tr>
-                <tr>
-                    <td>Venue</td>
-                    <td>:</td>
-                    <td><?php echo ($Venue) ?></td>
-                </tr>
-                <tr>
-                    <td>Number of Volunteers</td>
-                    <td>:</td>
-                    <td><?php echo ($No_of_volunteers) ?></td>
-                </tr>
-                <tr>
-                    <td>Description</td>
-                    <td>:</td>
-                    <td><?php echo ($Description) ?></td>
-                </tr>
-            </table>
+            <div class="wrapper">
+                <div class="left-div">
+                    <label for="">Date</label><br>
+                    <label for="">Time</label><br>
+                    <label for="">Venue</label><br>
+                    <label for="">Number of Volunteers</label><br>
+                    <label for="">Description</label><br>
+                </div>
 
-            <button class="btn1"><a href="home_sponsor.php">Back</a></button>
-            <button class="btn2"><a href="#">Join</a></button>
+                <div class="right-div">
+                    <label id="data"><?php echo ($Date) ?></label><br>
+                    <label id="data"><?php echo ($Time) ?></label><br>
+                    <label id="data"><?php echo ($Venue) ?></label><br>
+                    <label id="data"><?php echo ($No_of_volunteers) ?></label><br>
+                    <label id="data"><?php echo ($Description) ?></label><br>
+                </div>
+            </div>
+            <div class="btn-area">
+                <button onclick="history.back()" class="btn">Back</button>
+                <button type="submit" name="next" class="btn" id="join">Join</button>
+            </div>
         </div>
     </div>
 

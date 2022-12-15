@@ -7,7 +7,7 @@ form {
     width: 600px;   
     margin: auto;  
     margin-top: 20px;
-    padding: 75px;  
+    padding: 70px;  
     background: #89afd6;  
     border-radius: 15px ;
   }
@@ -23,18 +23,24 @@ select {
 }
   
 
-input[type=text], input[type=select], input[type=email] {
+input[type=text], input[type=select], .des {
   width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
+	padding: 15px;
+	margin: 5px 0 15px 0;
+	display: inline-block;
+	border: none;
+	border-radius: 10px;
+	background: white;
 }
 
-input[type=text]:focus {
-  background-color: #ddd;
-  outline: none;
+.des {
+  resize: none;
+  line-height: 3;
+}
+
+input[type=text]:focus, .des:focus {
+  border: 4px solid rgb(169, 216, 250);
+	outline: none;
 }
 
 hr {
@@ -43,27 +49,34 @@ hr {
   width: 100%;
 }
 
-button {
+.back, .request {
   background-color: #6aa438;
   color: #e0e0f0;
+  font-size: 18px;
+  font-weight: bold;
   padding: 14px 20px;
-  margin: 15px 0;
   border: none;
+  border-radius: 10px;
   cursor: pointer;
-  width: 40%;
+  width: 30%;
   opacity: 0.9;
+}
+
+.request {
+  float: right;
 }
 
 button:hover {
   opacity:1;
 }
 
-h1{
-    text-align: center;
+#head {
+  font-size: 25px;
+  font-weight: bold;
 }
 
-p{
-    font-size: 18px;
+#text {
+  font-size: 20px;
 }
 
 .cancel {
@@ -93,11 +106,4 @@ p{
 
 .main {
   padding: 100px 150px 0 150px;   
-}
-
-h2, p{
-  margin: 10px 10px 0 10px;
-}
-h3, h4 {
-  margin: 0 0 10px 10px;
 }

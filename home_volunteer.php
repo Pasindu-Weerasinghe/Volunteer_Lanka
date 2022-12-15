@@ -9,6 +9,10 @@ require 'Navbar/navbar_log.php';
 $sql = "SELECT P_ID, Name, Date FROM project WHERE Status='active'";
 $result = mysqli_query($conn, $sql);
 $projects = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+$sql = "SELECT * FROM advertisement";
+$result = mysqli_query($conn, $sql);
+$ads = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -65,6 +69,31 @@ $projects = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 </div>
             <?php } ?>
         </section>
+        <br/>
+
+        <h2>Sponsor Advertisements</h2><br /><br />
+        <section class="container">
+        <?php foreach ($ads as $ad) {
+            $adid = $ad['AD_ID'];
+            $sponsor = $ad['Sponsor'];
+        ?>
+            <div class="card">
+                <?php $sql2 = "SELECT Image FROM ad_image WHERE $adid = AD_ID";
+                $result2 = mysqli_query($conn, $sql2);
+                while ($row = $result2->fetch_assoc()) {
+                    $image = $row['Image']; ?>
+                    <div class="card-image"><img id="cards" src="images/<?= $image ?>"></div>
+                <?php } ?>
+                <?php $sql3 = "SELECT Name FROM sponsor WHERE $sponsor = U_ID";
+                $result3 = mysqli_query($conn, $sql3);
+                $row = $result3->fetch_assoc();
+                $sponsorname = $row['Name']; ?>
+                <h2><?php echo $sponsorname ?></h2>
+                <p><?php echo ($ad['Description']); ?></p><br/>
+            </div>
+        <?php } ?>
+        </section>
+
     </div>
 </body>
 

@@ -57,41 +57,45 @@ $ads = mysqli_fetch_all($result, MYSQLI_ASSOC);
             ?>
         </section>
         <!-- Advertiesment Reqests area end-->
-        <!-- Complains Area -->
-        <h2>Complains</h2><br><br>
         <?php
         $sql4 = "SELECT C_ID,About,Complain,U_ID FROM complaints";
         $result4 = mysqli_query($conn, $sql4);
-        $complaints = mysqli_fetch_all($result4, MYSQLI_ASSOC);
+        $complaints = mysqli_fetch_all($result4, MYSQLI_ASSOC); ?>
+        <!-- Complains Area -->
+        <h2>Complains</h2><br><br>
+            <?php
+            foreach ($complaints as $row) {
+                $complain_id = $row['C_ID'];
+                $complain_about = $row['About'];
+                $complain = $row['Complain'];
+                $c_uid = $row['U_ID']; ?>
+                <div id="c-box">
+                    <div id="c-box-item">
+                        <?php
+                        $sql5 = "SELECT Role FROM user WHERE $c_uid = U_ID";
+                        $result5 = mysqli_query($conn, $sql5);
+                        $row = $result5->fetch_assoc();
+                        $role = $row['Role'];
 
-        foreach ($complaints as $row) {
-            $complain_id = $row['C_ID'];
-            $complain_about = $row['About'];
-            $complain = $row['Complain'];
-            $c_uid = $row['U_ID']; ?>
-            <div id="c-box">
-                <div id="c-box-item">
-                    <?php
-                    $sql5 = "SELECT Role FROM user WHERE $c_uid = U_ID";
-                    $result5 = mysqli_query($conn, $sql5);
-                    $row = $result5->fetch_assoc();
-                    $role = $row['Role'];
+                        $sql6 = "SELECT Name FROM " . $role . " WHERE '$c_uid'";
+                        $result6 = mysqli_query($conn, $sql6);
+                        $name =  $result6->fetch_assoc()['Name'];
 
-                    $sql6 = "SELECT Name FROM " . $role . " WHERE '$c_uid'";
-                    $result6 = mysqli_query($conn, $sql6);
-                    $name =  $result6->fetch_assoc()['Name'];
-
-                    ?>
-                    <h3 id="uname"><?php echo $name; ?></h3>
-                    <button id="c-view-btn">View</button>
+                        ?>
+                        <h3 id="uname"><?php echo $name; ?></h3>
+                        <button id="c-view-btn">View</button>
+                    </div>
+                    <p id="c-box-des"> <?php echo $complain ?></p>
+                    <br>
                 </div>
-                <p id="c-box-des"> <?php echo $complain ?></p>
-                <br>
+            <?php
+            }
+            ?>
+    <br><br><br>
 
-            </div>
-        <?php
-        }
-        ?>
+
+
+
 </body>
 
 </html>

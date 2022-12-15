@@ -12,7 +12,6 @@ if (!isset($_SESSION['uid'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>public/styles/cards.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>public/styles/requests.css">
     <title>Requests from Volunteers</title>
 </head>
@@ -20,12 +19,11 @@ if (!isset($_SESSION['uid'])) {
 <body>
     <!-- navigation bar -->
     <?php include 'views/includes/navbar_log.php'; ?>
+    <div class="main" id="main">
+        <h2>Requests from Volunteers</h2><br>
+        <?php foreach ($this->pr_ideas as $idea) { ?>
 
 
-
-    <?php foreach ($this->pr_ideas as $idea) { ?>
-        <div class="main" id="main">
-            <h2>Requests from Volunteers</h2><br /><br />
             <div class="request">
 
                 <div id="volunteer">
@@ -49,7 +47,7 @@ if (!isset($_SESSION['uid'])) {
         <?php } ?>
 
 
-        </div>
+    </div>
 
 </body>
 

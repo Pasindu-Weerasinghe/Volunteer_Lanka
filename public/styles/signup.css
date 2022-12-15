@@ -41,7 +41,7 @@ input[type="number"] {
 	width: 100%;
 	padding: 10px;
 	margin: 5px 0 15px 0;
-	display: inline-block;
+	/* display: inline-block; */
 	border: 2px solid rgb(169, 216, 250);
 	border-radius: 10px;
 	background: white;

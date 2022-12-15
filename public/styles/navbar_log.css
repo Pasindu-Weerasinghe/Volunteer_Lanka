@@ -49,8 +49,8 @@ header {
 }
 
 ul a {
-	color: #6aa438;
-	font-weight: bold;
+	color: black;
+	/* font-weight: bold; */
 }
 
 ul {
@@ -83,7 +83,7 @@ ul li:hover {
 }
 
 #logout a {
-	color: black;
+	color: white;
 	font-size: 18px;
 }
 

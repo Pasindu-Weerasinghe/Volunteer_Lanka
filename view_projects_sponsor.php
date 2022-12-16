@@ -67,7 +67,7 @@ $result2 = mysqli_query($conn, $sql2);
             </div>
             <div class="btn-area">
                 <button onclick="history.back()" class="btn">Back</button>
-                <button type="submit" name="next" class="btn" id="join">Join</button>
+                <!-- <button type="submit" name="next" class="btn" id="join">Join</button> -->
             </div>
         </div>
     </div>

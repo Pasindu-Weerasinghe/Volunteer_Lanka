@@ -74,7 +74,7 @@ if (isset($_REQUEST["login"])) {
                 ?>
 
                 <label for="uname"><b>Email</b></label>
-                <input type="email" name="uname" required>
+                <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="uname" required>
 
                 <label for="psw"><b>Password</b></label>
                 <input type="password" name="psw" required>

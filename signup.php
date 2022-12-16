@@ -72,7 +72,7 @@ if (isset($_REQUEST["next"])) {
 
                 <label for="email"><b>Email</b></label>
                 <label id="require"><strong>*</strong></label>
-                <input type="email" name="email" required>
+                <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" required>
 
                 <label for="psw"><b>Password</b></label>
                 <label id="require"><strong>*</strong></label>

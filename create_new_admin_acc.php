@@ -16,8 +16,8 @@ if (isset($_REQUEST['create'])) {
     $sql = "INSERT INTO user (Email, Password, Role, Status, Restricted) values ('$email', '$psw', '$role','active', '0')";
     $result = mysqli_query($conn, $sql);
 
-    if($result){
-        $alert="Account created successfully";
+    if ($result) {
+        $alert = "Account created successfully";
     }
 }
 
@@ -42,32 +42,32 @@ if (isset($_REQUEST['create'])) {
             <h2>Create New Admin Accounts</h2>
             <div id="com-box">
                 <div id="box-item">
-                <?php
-                if ($alert) {
-                    echo '<label id="alert"> ' . $alert . '</label><br/><br/>';
-                } ?>
+                    <?php
+                    if ($alert) {
+                        echo '<label id="alert"> ' . $alert . '</label><br/><br/>';
+                    } ?>
                     <!-- <div class="box-item-cus">
                         <label for="">Name :</label>
                         <input type="text"><br>
                     </div> -->
 
                     <div class="box-item-cus">
-                        <label for="">Email :</label>
-                        <input type="text" name="email" required><br>
+                        <label for="">Email<strong>*</strong> :</label>
+                        <input type="text" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required><br>
                     </div>
 
                     <div class="box-item-cus">
-                        <label for="">Password :</label>
-                        <input type="password" name="psw" required><br>
+                        <label for="">Password<strong>*</strong> :</label>
+                        <input type="password" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" required><br>
                     </div>
 
                     <div class="box-item-cus">
-                        <label for="">Confirm Password :</label>
+                        <label for="">Confirm Password<strong>*</strong> :</label>
                         <input type="password" name="confirm-psw" required><br>
                     </div>
 
                     <div class="box-item-cus">
-                        <label for="">Role :</label>
+                        <label for="">Role<strong>*</strong> :</label>
                         <select name="role" required>
                             <option value="admin">Admin</option>
                             <option value="volunteer">Volunteer</option>

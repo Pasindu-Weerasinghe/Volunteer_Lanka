@@ -92,3 +92,7 @@ select {
 	border-radius: 10px;
 	text-align: center;
 }
+
+strong{
+    color: red;
+}

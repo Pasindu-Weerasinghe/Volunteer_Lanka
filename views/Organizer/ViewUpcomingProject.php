@@ -36,11 +36,11 @@ if (!isset($_SESSION['uid'])) {
                 </div>
 
                 <div class="right-div">
-                    <label id="data"><?php  ?></label><br>
-                    <label id="data"><?php  ?></label><br>
-                    <label id="data"><?php  ?></label><br>
-                    <label id="data"><?php  ?></label><br>
-                    <label id="data"><?php  ?></label><br>
+                    <label id="data"><?php echo "2022-12-30"; ?></label><br>
+                    <label id="data"><?php echo '11-30 AM'; ?></label><br>
+                    <label id="data"><?php echo 'Galle'; ?></label><br>
+                    <label id="data"><?php echo '25'; ?></label><br>
+                    <label id="data"><?php echo 'Tree Planting Description'; ?></label><br>
                 </div>
             </div>
             <div class="btn-area">

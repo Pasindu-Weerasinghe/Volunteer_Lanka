@@ -44,7 +44,7 @@ if (isset($_REQUEST['create'])) {
                 <div id="box-item">
                 <?php
                 if ($alert) {
-                    echo '<label id="error"> ' . $alert . '</label><br/><br/>';
+                    echo '<label id="alert"> ' . $alert . '</label><br/><br/>';
                 } ?>
                     <!-- <div class="box-item-cus">
                         <label for="">Name :</label>

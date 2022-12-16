@@ -41,7 +41,7 @@ if (!isset($_SESSION['uid'])) {
                 <img src="<?php echo BASE_URL; ?>public/images/card-img3.jpg">
             </div>
             <p class="description">
-                fjbfjhbjbsdbfsdbfshjbfshdshhfshbfjshdjhs jsdjad dbsjbjad ajdabdjas asbdajbda bsajdjds asjajd
+                A tree planting campaign was organized on 26th November 2022. Around 80 members participated in the campaign.
             </p>
         </div>
     </div>

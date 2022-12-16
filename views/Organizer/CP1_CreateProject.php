@@ -80,6 +80,11 @@ if (!isset($_SESSION['uid'])) {
                     </tr>
                 </table>
 
+                <div class="row">
+                    <label for="images">Upload images here</label>
+                    <input type="file" name="file[]" multiple="multiple" class="input input-file">
+                </div>
+
                 <div class="btn-area">
                     <button onclick="history.back()" class="btn">Cancel</button>
                     <button type="submit" name="next" class="btn">Next</button>

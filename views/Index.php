@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (isset($_SESSION['uid'])) {
+  header('Location: ' . BASE_URL . $_SESSION['role']);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +17,7 @@
 </head>
 
 <body>
-<?php include 'views/includes/navbar.php'; ?>
+  <?php include 'views/includes/navbar.php'; ?>
 
   <div class="back-image" style="background-image: url(public/images/index/bg-img-login.png);">
 

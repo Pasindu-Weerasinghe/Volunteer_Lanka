@@ -28,7 +28,9 @@ class Organizer extends User
                     $_SESSION['no-of-members'] = $_POST['no-of-members'];
                     $_SESSION['partnership'] = $_POST['partnership'];
                     $_SESSION['sponsorship'] = $_POST['sponsorship'];
-
+                    $_SESSION['files'] = ($_FILES["file"]["name"]);
+                    $_SESSION['files_tmpname'] = ($_FILES["file"]["tmp_name"]);
+                    
                     if ($_POST['partnership'] == 'single') {
                         header('Location: ' . BASE_URL . 'organizer/create_project/form_for_volunteers');
                     }
@@ -63,6 +65,50 @@ class Organizer extends User
                         }
                     }
 
+                    // 8888888888888888888888888888888888888888888888888888888888888888888888
+                    $host = 'localhost';
+                    $user = 'root';
+                    $pass = '';
+                    $db = 'volunteer_lanka';
+                    $conn = mysqli_connect($host, $user, $pass, $db);
+
+                    $targetDir = BASE_URL."public/images/pr_images/";
+                    $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+
+                    $files = $_SESSION['files'];
+                    $files_tmpname = $_SESSION['files_tmpname'];
+
+                    if (!empty($files)) {
+
+                        $total = count($files);
+                        for (
+                            $i = 0;
+                            $i < $total;
+                            $i++
+                        ) {
+                            $fileName = $files[$i];
+                            $targetFilePath = $targetDir . $fileName;
+                            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+
+                            if (in_array($fileType, $allowTypes)) {
+                                if (move_uploaded_file($files_tmpname[$i], $targetFilePath)) {
+
+                                    $query = "INSERT into pr_image (P_ID, Image) VALUES ('" . $pid . "','" . $fileName . "')";
+                                    $result = mysqli_query($conn, $query);
+                                    if ($result) {
+                                        $statusMsg = "The file " . $fileName . " has been uploaded successfully.";
+                                    } else {
+                                        $statusMsg = "File upload failed, please try again.";
+                                    }
+                                }
+                            } else {
+                                $statusMsg = 'Only JPG, JPEG, PNG & GIF files are allowed to upload.';
+                            }
+                        }
+                    }
+                    echo $statusMsg;
+                    // 8888888888888888888888888888888888888888888888888888888888888888888888
+
                     $email = $_POST['email'] ? 1 : 0;
                     $contact = $_POST['contact-no'] ? 1 : 0;
                     $meal_pref = $_POST['meal-pref'] ? 1 : 0;
@@ -92,7 +138,7 @@ class Organizer extends User
     {
         $this->loadModel('ProjectIdea');
         $this->pr_ideas = $this->model->getProjectIdeas();
-        
+
         foreach ($this->pr_ideas as $idea) {
             $pi_id = $idea['PI_ID'];
             $this->pr_idea_images[$pi_id] = $this->model->getPI_Image($pi_id);

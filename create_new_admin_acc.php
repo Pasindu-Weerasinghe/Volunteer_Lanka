@@ -15,6 +15,7 @@ require 'Navbar/navbar_log.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create New Admin Accounts</title>
     <link rel="stylesheet" href="styles/create_new_admin_acc.css">
+
 </head>
 
 <body>
@@ -31,22 +32,22 @@ require 'Navbar/navbar_log.php';
 
                     <div class="box-item-cus">
                         <label for="">Email :</label>
-                        <input type="text" name="email"><br>
+                        <input type="text" name="email" required><br>
                     </div>
 
                     <div class="box-item-cus">
                         <label for="">Password :</label>
-                        <input type="password" name="psw"><br>
+                        <input type="password" name="psw" required><br>
                     </div>
 
                     <div class="box-item-cus">
                         <label for="">Confirm Password :</label>
-                        <input type="password" name="confirm-psw"><br>
+                        <input type="password" name="confirm-psw" required><br>
                     </div>
 
                     <div class="box-item-cus">
                         <label for="">Role :</label>
-                        <select name="role">
+                        <select name="role" required>
                             <option value="admin">Admin</option>
                             <option value="volunteer">Volunteer</option>
                         </select>

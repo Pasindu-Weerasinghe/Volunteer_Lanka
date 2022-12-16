@@ -9,21 +9,15 @@ require 'Navbar/navbar_log.php';
 <?php
 $adid = $_REQUEST["adid"];
 
-$sql1 = "SELECT Sponsor FROM advertisement WHERE $adid=AD_ID";
+$sql1 = "SELECT Sponsor, Image FROM advertisement WHERE $adid=AD_ID";
 $result1 = mysqli_query($conn, $sql1);
 if ($result1->num_rows > 0) {
     while ($row = $result1->fetch_assoc()) {
         $sponsor = $row['Sponsor'];
-    }
-}
-echo ($sponsor);
-$sql2 = "SELECT Image FROM ad_image WHERE $adid = AD_ID";
-$result2 = mysqli_query($conn, $sql2);
-if ($result2->num_rows > 0) {
-    while ($row = $result2->fetch_assoc()) {
         $image = $row['Image'];
     }
 }
+
 $sql3 = "SELECT Name FROM sponsor WHERE $sponsor = U_ID";
 $result3 = mysqli_query($conn, $sql3);
 if ($result3->num_rows > 0) {

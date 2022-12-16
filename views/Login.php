@@ -29,7 +29,7 @@
             ?>
 
             <label for="uname"><b>Email</b></label>
-            <input type="email" name="uname" placeholder="Email" required>
+            <input type="email" name="uname" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Email" required>
 
             <label for="psw"><b>Password</b></label>
             <input type="password" name="psw" placeholder="Password" required>

@@ -2,6 +2,8 @@
 	display: flex;
 	background-color: #96c7d6;
 	border-radius: 10px;
+	width:828px;
+	margin:auto;
 }
 
 #left {
@@ -16,7 +18,7 @@
 #left img {
 	width: 150px;
 	border-radius: 50%;
-	border: 3px solid #888888;
+	border: 3px solid white;
 }
 
 #right {
@@ -27,7 +29,9 @@
 }
 
 #right p {
-	background-color: white;
+	/* background-color: white; */
+	font-size: 20px;
+	text-align: justify;
 	margin: 10px;
 	border-radius: 10px;
 	padding: 10px;
@@ -36,17 +40,19 @@
 .post-container {
 	display: block;
 	margin: 10px auto;
+	width: 1028px;
 	margin-top: 20px;
 	padding: 10px;
 	border-radius: 10px;
-	background-color: rgba(138, 239, 165, 0.836);
+	background-color: #96c7d6;
 }
 
 .post-container .description {
-	background-color: white;
+	/* background-color: white; */
 	margin: 10px;
 	border-radius: 10px;
 	padding: 10px;
+	font-size: 18px;
 	text-align: justify;
 }
 
@@ -59,5 +65,7 @@
 
 .post-images img {
 	height: 170px;
-	padding: 5px;
+	margin: 10px;
+	border-radius: 10px;
+    border: 3px solid white;
 }

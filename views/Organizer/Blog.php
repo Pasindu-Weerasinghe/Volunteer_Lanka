@@ -24,13 +24,11 @@ if (!isset($_SESSION['uid'])) {
         <!-- organization start -->
         <div class="organization">
             <div id="left">
-                <img src="<?php echo BASE_URL; ?>public/images/org_image.png">
-                <h3>Organiztion Name</h3>
+                <img src="<?php echo BASE_URL; ?>public/images/org_image.jpg">
+                <h3>Rotaract Club UOC</h3>
             </div>
             <div id="right">
-                <p>uyhg duyhsgf jhdsg afhgfhjasdfh adfhads vfhgavfd vhgfvasg hdfv hgsd vfhgdvf hgds
-                    shgda hgads gshdahd fashfbcshdf hgsdbvhdbf jhdbbjhsbdc jhsbcjhs bcjhbdcjhs bdcjhch jsbd csh
-                </p>
+                <p>A proud member of the Colombo Uptown Rotary family, the Rotaract Club of University of Colombo, Faculty of Arts was charted on the 26th of March 2010. The Club slogan, "United We Stand in Diversity", represents our hope for the club as well as our country. During the period since its charter, the club has been recognised at the District Rotaract Assembly for its numerous projects along with the Rotary and Rotaract district citations and recognition as one of the best reporting clubs.</p>
             </div>
         </div>
         <!-- organization end -->

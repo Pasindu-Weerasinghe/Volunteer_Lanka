@@ -85,3 +85,10 @@ select {
     transform: scale(1.1);
     transition: 00.3s;
 }
+
+#alert {
+	background: #6AA438;
+	padding: 10px;
+	border-radius: 10px;
+	text-align: center;
+}

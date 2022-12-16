@@ -5,6 +5,23 @@ if (!isset($_SESSION['uid'])) {
     header("Location: login.php");
 }
 require 'Navbar/navbar_log.php';
+$alert = null;
+
+if (isset($_REQUEST['create'])) {
+
+    $role = $_REQUEST["role"];
+    $email = $_REQUEST["email"];
+    $psw = password_hash($_REQUEST["psw"], PASSWORD_BCRYPT);
+
+    $sql = "INSERT INTO user (Email, Password, Role, Status, Restricted) values ('$email', '$psw', '$role','active', '0')";
+    $result = mysqli_query($conn, $sql);
+
+    if($result){
+        $alert="Account created successfully";
+    }
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,11 +36,15 @@ require 'Navbar/navbar_log.php';
 
 <body>
 
-    <form action="n_acc.php" method="POST">
+    <form action="create_new_admin_acc.php" method="POST">
         <div class="main" id="main">
             <h2>Create New Admin Accounts</h2>
             <div id="com-box">
                 <div id="box-item">
+                <?php
+                if ($alert) {
+                    echo '<label id="error"> ' . $alert . '</label><br/><br/>';
+                } ?>
                     <!-- <div class="box-item-cus">
                         <label for="">Name :</label>
                         <input type="text"><br>

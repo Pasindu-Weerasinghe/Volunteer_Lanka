@@ -31,9 +31,7 @@ require 'Navbar/navbar_log.php';
             </div>
             <div class="name">
                 <h3 class="name-item">Complaint:</h3>
-                <p id="com">I am writing to report a user on your system who has been behaving inappropriately. The user's username is [Rotract Club Galle] and they have been [describe the inappropriate behavior].
-                    I have included evidence of their behavior below: [include any relevant screenshots or other evidence].
-                    I believe that this behavior is in violation of your terms of service and I request that you take appropriate action.
+                <p id="com">I am writing to report a user on your system who has been behaving inappropriately. Rotaract Club Galle has been cancelling many projects for the past few months . I believe that this behavior is in violation of your terms of service and I request that you take appropriate action.
                     Thank you for your attention to this matter.</p>
             </div>
             <br>

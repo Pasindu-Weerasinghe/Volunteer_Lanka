@@ -76,14 +76,10 @@ $ads = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <?php foreach ($ads as $ad) {
                 $adid = $ad['AD_ID'];
                 $sponsor = $ad['Sponsor'];
+                $image = $ad['Image'];
             ?>
                 <div class="card">
-                    <?php $sql2 = "SELECT Image FROM ad_image WHERE $adid = AD_ID";
-                    $result2 = mysqli_query($conn, $sql2);
-                    while ($row = $result2->fetch_assoc()) {
-                        $image = $row['Image']; ?>
                         <div class="card-image"><img id="cards" src="images/<?= $image ?>"></div>
-                    <?php } ?>
                     <?php $sql3 = "SELECT Name FROM sponsor WHERE $sponsor = U_ID";
                     $result3 = mysqli_query($conn, $sql3);
                     $row = $result3->fetch_assoc();

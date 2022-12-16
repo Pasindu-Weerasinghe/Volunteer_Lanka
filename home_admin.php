@@ -58,7 +58,7 @@ $ads = mysqli_fetch_all($result, MYSQLI_ASSOC);
         $result4 = mysqli_query($conn, $sql4);
         $complaints = mysqli_fetch_all($result4, MYSQLI_ASSOC); ?>
         <!-- Complains Area -->
-        <h2>Complaints</h2><br><br>
+        <br><h2>Complaints</h2><br><br>
             <?php
             foreach ($complaints as $row) {
                 $complain_id = $row['C_ID'];
@@ -73,13 +73,13 @@ $ads = mysqli_fetch_all($result, MYSQLI_ASSOC);
                         $row = $result5->fetch_assoc();
                         $role = $row['Role'];
 
-                        $sql6 = "SELECT Name FROM " . $role . " WHERE '$c_uid'";
+                        $sql6 = "SELECT Name FROM " . $role . " WHERE $c_uid = U_ID";
                         $result6 = mysqli_query($conn, $sql6);
                         $name =  $result6->fetch_assoc()['Name'];
 
                         ?>
                         <h3 id="uname"><?php echo $name; ?></h3>
-                        <button id="c-view-btn">View</button>
+                        <button id="c-view-btn" onclick="window.location.href='view_complaints.php'">View</buttonView</button>
                     </div>
                     <p id="c-box-des"> <?php echo $complain ?></p>
                     <br>

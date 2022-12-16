@@ -31,7 +31,7 @@ require 'Navbar/navbar_log.php';
                     <?php $sql2 = "SELECT Image FROM pr_image WHERE $pid = P_ID";
                     $result2 = mysqli_query($conn, $sql2);
 
-                    $sql3 ="SELECT Amount FROM sponsor_pr WHERE $pid=P_ID && $uid=U_ID ";
+                    $sql3 ="SELECT Amount FROM sponsor_pr WHERE $pid=P_ID";
                     $result3=mysqli_query($conn, $sql3);
                     $amount=$result3->fetch_assoc();
 
@@ -40,7 +40,11 @@ require 'Navbar/navbar_log.php';
                         <div class="card-image"><img id="cards" src="images/<?= $image ?>"></div>
                     <?php } ?>
                     <h2><?php echo ($project["Name"]); ?></h2>
-                    <p>Amount:<?php echo ($amount['Amount']); ?></p>
+                    <p>Amount : <?php if ($amount != null) {
+                                    echo ($amount['Amount']);
+                                } else {
+                                    echo "0";
+                                } ?></p>
                     <a class="btn" href="view_projects_sponsor.php?pid=<?php echo $project['P_ID'] ?>">View</a>
                 </div>
             <?php } ?>

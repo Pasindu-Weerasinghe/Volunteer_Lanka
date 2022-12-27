@@ -54,8 +54,9 @@ input[type="password"] {
 
 input[type="email"]:focus,
 input[type="password"]:focus {
-	border: 4px solid rgb(169, 216, 250);
+	box-shadow: 0 0 0 3px rgb(169, 216, 250);
 	outline: none;
+	transition: all 0.2s ease;
 }
 
 /* Set a style for all buttons */

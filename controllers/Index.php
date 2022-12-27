@@ -174,7 +174,7 @@ class Index extends Controller
                 break;
             
             case 'otp-view':
-                $this->render('ForgotPasswordOTP');
+                $this->render('OTPConfirm');
                 break;
 
             case 'confirm-otp':

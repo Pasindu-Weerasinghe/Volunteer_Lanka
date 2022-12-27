@@ -10,7 +10,6 @@ class Organizer extends User
 
     function index()
     {
-        $this->loadModel('Organizer');
         $this->render('Organizer/Home');
     }
 

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 
 .wrapper {
 	background-color: #96c7d6;
@@ -67,7 +67,7 @@
 	width: 100%;
 }
 
-.wrapper .form .row .input {
+.wrapper .form .input {
 	width: 100%;
 	outline: none;
 	border: 2px solid rgb(169, 216, 250);
@@ -77,20 +77,21 @@
 	padding: 8px 10px;
 }
 
-.wrapper .form .row .input-number {
+.wrapper .form .input-number {
 	text-align: center;
 }
 
-.wrapper .form .row .input:focus {
-	border: 4px solid rgb(169, 216, 250);
+.wrapper .form .input:focus {
+	box-shadow: 0 0 0 3px rgb(169, 216, 250);
 	outline: none;
+	transition: all 0.2s ease;
 }
 
-.wrapper .form .row .textarea {
+.wrapper .form .textarea {
 	resize: none;
 }
 
-.wrapper .form .row .input-chkbox {
+.wrapper .form .input-chkbox {
 	margin-left: 10px;
 	margin-right: 10px;
 }
@@ -118,4 +119,29 @@
 
 .btn:hover {
 	opacity: 1;
+}
+
+/* navbaress pages */
+.navbarless {
+	font-family: 'Source Sans Pro', sans-serif;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.navbarless .wrapper {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.navbarless .wrapper .form .row {
+	margin-bottom: 15px;
+	display: grid;
+	align-items: center;
+}
+
+.navbarless .wrapper .form .row label {
+	margin-bottom: 15px;
 }

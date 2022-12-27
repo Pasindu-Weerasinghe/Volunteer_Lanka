@@ -28,6 +28,7 @@ class App
         $url = filter_var($url, FILTER_SANITIZE_URL);
         return explode('/', $url);
     }
+    
 
     private function _loadDefaultController()
     {

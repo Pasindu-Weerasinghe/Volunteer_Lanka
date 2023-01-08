@@ -16,6 +16,10 @@ class User extends Controller
                 $this->render('Calendar');
                 break;
 
+            case 'volunteer':
+                $this->render('Calendar');
+                break;
+
             default:
                 break;
         }
@@ -28,6 +32,10 @@ class User extends Controller
                 $this->render('SearchUser');
                 break;
 
+            case 'volunteer':
+                $this->render('SearchUser');
+                break;
+
             default:
                 break;
         }
@@ -37,6 +45,10 @@ class User extends Controller
     {
         switch ($this->role) {
             case 'organizer':
+                $this->render('Complain');
+                break;
+
+            case 'volunteer':
                 $this->render('Complain');
                 break;
 

@@ -14,12 +14,12 @@
 
 <div id="side-menu" class="side-nav">
   <a class="btn-close" onclick="closeSideMenu()">&times;</a>
-  <a href="home_volunteer.php">Home</a>
-  <a href="upcoming_volunteer.php">Upcoming Projects</a>
-  <a href="completed_volunteer.php">Completed Projects</a>
-  <a href="newideas_volunteer.php">Request to Organize Projects</a>
-  <a href="calendar.php">Calendar</a>
-  <a href="search.php">Search Organizers</a>
-  <a href="profile_volunteer.php">My Profile</a>
-  <a href="complain.php">Complain</a>
+  <a href="<?php echo BASE_URL; ?>volunteer">Home</a>
+  <a href="<?php echo BASE_URL; ?>volunteer/upcoming_projects">Upcoming Projects</a>
+  <a href="<?php echo BASE_URL; ?>volunteer/completed_projects">Completed Projects</a>
+  <a href="<?php echo BASE_URL; ?>volunteer/request_projects">Request to Organize Projects</a>
+  <a href="<?php echo BASE_URL; ?>volunteer/calendar">Calendar</a>
+  <a href="<?php echo BASE_URL; ?>volunteer/search_user">Search Organizers</a>
+  <a href="<?php echo BASE_URL; ?>volunteer/profile">My Profile</a>
+  <a href="<?php echo BASE_URL; ?>volunteer/complain">Complain</a>
 </div>

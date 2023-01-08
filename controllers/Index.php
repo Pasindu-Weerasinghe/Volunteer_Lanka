@@ -137,6 +137,24 @@ class Index extends Controller
                         break;
 
                     case 'volunteer':
+                        $name = $_POST['name'];
+                        $address = $_POST['address'];
+                        $contact = $_POST['contact'];
+                        $interest = $_POST['area'];
+                        $organ = $_POST['org'];
+                        $this->loadModel('Volunteer');
+                        if ($this->model->setVolunteer($uid, $name, $address, $contact)) {
+                            foreach ($interest as $area) {
+                                $this->model->setInterest($uid, $area);
+                            }
+                            foreach ($organ as $organise) {
+                                $this->model->setOrganization($uid, $organise);
+                            }
+                            session_destroy();
+                            header('Location: ' . BASE_URL . 'index/login');
+                        } else {
+                            // if volunteer data insert failed
+                        }
                         break;
 
                     case 'sponsor':

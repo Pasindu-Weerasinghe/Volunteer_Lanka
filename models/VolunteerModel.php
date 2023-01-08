@@ -15,4 +15,25 @@ class VolunteerModel extends Model
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
+
+    function setVolunteer($uid, $name, $address, $contact)
+    {
+        $query = "INSERT INTO volunteer (U_ID, Name, Address, Contact) VALUES ('$uid', '$name', '$address', '$contact')";
+        $statement = $this->db->prepare($query);
+        return $statement->execute();
+    }
+
+    function setInterest($uid, $area)
+    {
+        $query = "INSERT INTO vol_interest (U_ID, Interest) values ('$uid', '$area')";
+        $statement = $this->db->prepare($query);
+        return $statement->execute();
+    }
+
+    function setOrganization($uid, $organise)
+    {
+        $query = "INSERT INTO vol_organization (U_ID, Organization) values ('$uid', '$organise')";
+        $statement = $this->db->prepare($query);
+        return $statement->execute();
+    }
 }

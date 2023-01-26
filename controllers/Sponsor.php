@@ -5,5 +5,6 @@
         {
             $this->render('Sponsor/home');
         }
+        
     }
 ?>

@@ -140,11 +140,27 @@ class Index extends Controller
                         break;
 
                     case 'sponsor':
+                        $name = $_POST['name'];
+                        $contact = $_POST['contact'];
+                        $address = $_POST['address'];
+                        $type = $_POST['type'];
+                        $this->loadModel('Sponsor');
+                        if ($this->model->setSponsor($uid, $name, $address, $contact, $type)) {
+                            // if organizer data insert successfull
+                            session_destroy();
+                            header('Location: ' . BASE_URL . 'index/login');
+                        } else {
+                            // if organizer data insert failed
+                        }
+
                         break;
                 }
             } else {
                 // if user data insert failed
             }
+        }
+        else{
+            echo 'mdksmksmdksm';
         }
     }
 
@@ -172,7 +188,7 @@ class Index extends Controller
                     }
                 }
                 break;
-            
+
             case 'otp-view':
                 $this->render('OTPConfirm');
                 break;

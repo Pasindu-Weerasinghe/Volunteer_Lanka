@@ -27,5 +27,25 @@ class Volunteer extends User
         $this->render('Volunteer/Profile');
     }
 
+    function newIdeas()
+    {
+        $this->render('Volunteer/Request_projects');
+    }
+
+    function insertIdeas()
+    {
+        session_start();
+        $location = $_POST['location'];
+        $description = $_POST['des'];
+        $uid = $_SESSION['uid'];
+
+        $this->loadModel('Volunteer');
+        $this->model->setProjectIdea($description, $location, $uid);
+ 
+        // $targetDir = "images/";
+        // $allowTypes = array('jpg','png','jpeg','gif');
+        
+    }
+
 
 }

@@ -5,11 +5,11 @@ if (!isset($_SESSION['uid'])) {
 }
 
 
-$uid = $_SESSION['uid'];
+// $uid = $_SESSION['uid'];
 
-    $sql = "SELECT PI_ID, Location, Description FROM pr_ideas WHERE $uid = U_ID";
-    $result = mysqli_query($conn, $sql);
-    $requests = mysqli_fetch_all($result, MYSQLI_ASSOC);
+//     $sql = "SELECT PI_ID, Location, Description FROM pr_ideas WHERE $uid = U_ID";
+//     $result = mysqli_query($conn, $sql);
+//     $requests = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +25,7 @@ $uid = $_SESSION['uid'];
 <?php include 'views/includes/navbar_log.php'; ?>
 <div id="main" class="main">
         <h2>Requests sent by you to organize projects</h2>
-        <button class="new"><a href="request_projects.php"><b>New Request</b></a></button>
+        <button class="new"><a href="<?php echo BASE_URL ?>volunteer/newIdeas"><b>New Request</b></a></button>
         <br/><br/><br/><br/>
         <table>
             <tr>

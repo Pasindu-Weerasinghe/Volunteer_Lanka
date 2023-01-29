@@ -37,14 +37,6 @@ class VolunteerModel extends Model
         return $statement->execute();
     }
 
-    function getProjectIdea($uid)
-    {
-        $query = "SELECT PI_ID, Location, Description FROM pr_ideas WHERE U_ID = '$uid'";
-        $statement = $this->db->prepare($query);
-        $statement->execute();
-        return $statement->fetch(PDO::FETCH_ASSOC);
-    }
-
     function setProjectIdea($description, $location, $uid)
     {
         $query = "INSERT INTO pr_ideas (Description, Location, U_ID) VALUES ('$description', '$location', '$uid')";

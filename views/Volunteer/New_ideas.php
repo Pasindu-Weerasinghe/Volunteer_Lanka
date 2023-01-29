@@ -33,19 +33,15 @@ if (!isset($_SESSION['uid'])) {
                 <th>Description</th>
                 <th>Images</th>
             </tr>
-            <?php foreach ($requests as $request){ ?>  
+            <?php foreach ($this->pr_ideas as $idea) { ?> 
                 <tr>
-                    <td><?php echo ($request["Location"]); ?></td>
-                    <td><?php echo ($request["Description"]); ?></td>
+                    <td><?php echo $idea['Location']; ?></td>
+                    <td><?php echo $idea['Description']; ?></td>
                     <td>
-                    <?php 
-                    $idea = $request["PI_ID"];
-                    $sql2 = "SELECT Image FROM idea_image WHERE $idea = PI_ID";
-                    $result2 = mysqli_query($conn, $sql2);
-                    while($row = $result2->fetch_assoc()) { 
-                        $image = $row['Image'];?>
-                        <img src="images/<?= $image?>">
+                    <?php foreach ($this->pr_idea_images[$idea['PI_ID']] as $images) { ?>
+                        <img src="<?php echo BASE_URL; ?>public/images/pi_images/<?php echo $images['Image']; ?>">
                     <?php } ?>
+                    
                     </td>
                 </tr>
             <?php } ?>

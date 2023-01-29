@@ -20,4 +20,12 @@ class ProjectIdeaModel extends Model {
             return $statement->fetchAll(PDO::FETCH_ASSOC);
         }
     }
+
+    function getProjectIdea($uid)
+    {
+        $query = "SELECT * FROM pr_ideas WHERE U_ID = '$uid'";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

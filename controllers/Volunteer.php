@@ -19,6 +19,15 @@ class Volunteer extends User
 
     function request_projects()
     {
+        session_start();
+        $uid = $_SESSION['uid'];
+        $this->loadModel('ProjectIdea');
+        $this->pr_ideas = $this->model->getProjectIdea($uid);
+
+        foreach ($this->pr_ideas as $idea) {
+            $pi_id = $idea['PI_ID'];
+            $this->pr_idea_images[$pi_id] = $this->model->getPI_Image($pi_id);
+        }
         $this->render('Volunteer/New_ideas');
     }
 

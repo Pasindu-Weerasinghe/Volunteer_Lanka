@@ -48,11 +48,31 @@ class Volunteer extends User
         $description = $_POST['des'];
         $uid = $_SESSION['uid'];
 
-        $this->loadModel('Volunteer');
+        $this->loadModel('ProjectIdea');
         $this->model->setProjectIdea($description, $location, $uid);
+
+        $pi_id = $this->model->getPiId($uid, $location);
  
-        // $targetDir = "images/";
-        // $allowTypes = array('jpg','png','jpeg','gif');
+        $targetDir = "public/images/pi_images/";
+        $allowTypes = array('jpg','png','jpeg','gif');
+
+        if (!empty($_FILES["file"]["name"])) {
+
+            $total = count($_FILES['file']['name']);
+            for ($i = 0; $i < $total; $i++) {
+                $fileName = $_FILES['file']['name'][$i];
+                $targetFilePath = $targetDir . $fileName;
+                $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+    
+                if(in_array($fileType, $allowTypes)){
+                    if(move_uploaded_file($_FILES["file"]["tmp_name"][$i], $targetFilePath)){
+                        $this->model->setPiImage($pi_id, $fileName);
+                    }
+                }else{
+                    $statusMsg = 'Only JPG, JPEG, PNG & GIF files are allowed to upload.';
+                }
+            }
+        }
         
     }
 

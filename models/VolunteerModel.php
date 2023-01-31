@@ -37,10 +37,5 @@ class VolunteerModel extends Model
         return $statement->execute();
     }
 
-    function setProjectIdea($description, $location, $uid)
-    {
-        $query = "INSERT INTO pr_ideas (Description, Location, U_ID) VALUES ('$description', '$location', '$uid')";
-        $statement = $this->db->prepare($query);
-        return $statement->execute();
-    }
+    
 }

@@ -1,11 +1,8 @@
 <?php
-require 'conn.php';
 session_start();
-
 if (!isset($_SESSION['uid'])) {
-    header("Location: login.php");
+    header('Location:' . BASE_URL);
 }
-include 'Navbar/navbar_log.php';
 ?>
 
 <!DOCTYPE html>
@@ -15,11 +12,12 @@ include 'Navbar/navbar_log.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/view.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL ?> public/styles/view.css">
     <title>Published Advertiesment</title>
 </head>
 
 <body>
+<?php include 'views/includes/navbar_log.php'; ?>
     <div class="main" id="main">
         <h1>Published Advertiesment</h1><br />
         <p class="p1">You can publish your company's adverisement from here. It will be sent to our admins and get published after they accept</p> <br />

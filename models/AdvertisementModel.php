@@ -7,8 +7,9 @@ class AdverisementModel extends Model
     }
     function getAdvertisementRequests()
     {
-        $sql = "SELECT AD_ID,Sponsor FROM advertisement";
-        $result = mysqli_query($conn, $sql);
-        $ads = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        $query = "SELECT AD_ID,Sponsor FROM advertisement";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 }

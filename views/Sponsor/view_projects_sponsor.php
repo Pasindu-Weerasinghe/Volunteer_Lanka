@@ -1,13 +1,13 @@
 <?php
-require 'conn.php';
-session_start();
+    session_start();
+    if(!isset($_SESSION['uid']))
+    {
+        header('location:' . BASE_URL);
+    }
 
-if (!isset($_SESSION['uid'])) {
-    header("Location: login.php");
-}
 include 'Navbar/navbar_log.php';
-session_start();
-$P_ID = $_GET['pid'];
+
+$P_ID = $_REQUEST['pid'];
 $sql1 = "SELECT Name, Date, Time, Venue, Description, No_of_volunteers FROM project WHERE P_ID='" . $P_ID . "'";
 $result1 = mysqli_query($conn, $sql1);
 // output data of each row
@@ -22,8 +22,8 @@ while ($row1 = $result1->fetch_assoc()) {
 
 $sql2 = "SELECT Image FROM pr_image WHERE P_ID='$P_ID'";
 $result2 = mysqli_query($conn, $sql2);
-?>
 
+?>
 
 <!DOCTYPE html>
 <html lang="en">

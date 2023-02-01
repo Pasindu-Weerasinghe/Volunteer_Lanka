@@ -24,7 +24,7 @@ if (!isset($_SESSION['uid'])) {
 </head>
 
 <body>
-<?php include 'views/includes/navbar_log.php'; ?>
+    <?php include 'views/includes/navbar_log.php'; ?>
 
     <div class="main" id="main">
         <h2 style="margin-bottom: 50px;">Advertisement Request</h2>
@@ -35,7 +35,7 @@ if (!isset($_SESSION['uid'])) {
             ?>
                 <div class="card">
                     <?php $sql2 = "SELECT Image FROM ad_image WHERE $adid = AD_ID";
-                        $result2 = mysqli_query($conn, $sql2);
+                    $result2 = mysqli_query($conn, $sql2);
                     while ($row = $result2->fetch_assoc()) {
                         $image = $row['Image']; ?>
                         <div class="card-image"><img id="cards" src="images/<?php echo $image ?>"></div>

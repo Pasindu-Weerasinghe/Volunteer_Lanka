@@ -1,5 +1,5 @@
 <?php
-class AdverisementModel extends Model
+class AdvertisementModel extends Model
 {
     function __construct()
     {
@@ -11,5 +11,11 @@ class AdverisementModel extends Model
         $statement = $this->db->prepare($query);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+    function getAdImage($adid){
+        $query = "SELECT `Image` FROM ad_image WHERE $adid = AD_ID";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetch(PDO::FETCH_ASSOC);
     }
 }

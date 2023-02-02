@@ -21,5 +21,9 @@
             $this->render('sponsor/profile');
         }
         
+        function view_sponsor_notices()
+        {
+            $this->render('Sponsor/view_sponsor_notices');
+        }
     }
 ?>

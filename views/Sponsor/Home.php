@@ -5,10 +5,8 @@ if (!isset($_SESSION['uid'])) {
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,7 +31,7 @@ if (!isset($_SESSION['uid'])) {
                 </div>
                 <h2>Tree Planting</h2>
                 <p>2022-12-30</p>
-                <a class="btn" href="<?php echo BASE_URL . 'organizer/view_project/' . $pid; ?>">View</a>
+                <a class="btn" href="<?php echo BASE_URL . 'Sponsor/view_sponsor_notices'; ?>">View</a>
             </div>
             <div class="card">
                 <div class="card-image">
@@ -41,7 +39,7 @@ if (!isset($_SESSION['uid'])) {
                 </div>
                 <h2>Beach Cleaning</h2>
                 <p>2023-01-10</p>
-                <a class="btn" href="<?php echo BASE_URL . 'organizer/view_project/' . $pid; ?>">View</a>
+                <a class="btn" href="<?php echo BASE_URL . 'Sponsor/view_sponsor_notices'; ?>">View</a>
             </div>
             <div class="card">
                 <div class="card-image">
@@ -49,7 +47,7 @@ if (!isset($_SESSION['uid'])) {
                 </div>
                 <h2>Book Donation</h2>
                 <p>2023-01-20</p>
-                <a class="btn" href="<?php echo BASE_URL . 'organizer/view_project/' . $pid; ?>">View</a>
+                <a class="btn" href="<?php echo BASE_URL . 'Sponsor/view_sponsor_notices'; ?>">View</a>
             </div>
             <div class="card">
                 <div class="card-image">
@@ -57,7 +55,7 @@ if (!isset($_SESSION['uid'])) {
                 </div>
                 <h2>Tree Planting</h2>
                 <p>2022-12-30</p>
-                <a class="btn" href="<?php echo BASE_URL . 'organizer/view_project/' . $pid; ?>">View</a>
+                <a class="btn" href="<?php echo BASE_URL . 'Sponsor/view_sponsor_notices'; ?>">View</a>
             </div>
             <div class="card">
                 <div class="card-image">
@@ -65,7 +63,7 @@ if (!isset($_SESSION['uid'])) {
                 </div>
                 <h2>Beach Cleaning</h2>
                 <p>2023-01-10</p>
-                <a class="btn" href="<?php echo BASE_URL . 'organizer/view_project/' . $pid; ?>">View</a>
+                <a class="btn" href="<?php echo BASE_URL .'Sponsor/view_sponsor_notices'; ?>">View</a>
             </div>
             <div class="card">
                 <div class="card-image">
@@ -73,12 +71,10 @@ if (!isset($_SESSION['uid'])) {
                 </div>
                 <h2>Book Donation</h2>
                 <p>2023-01-20</p>
-                <a class="btn" href="<?php echo BASE_URL . 'organizer/view_project/' . $pid; ?>">View</a>
+                <a class="btn" href="<?php echo BASE_URL .'Sponsor/view_sponsor_notices'; ?>">View</a>
             </div>
         </section><br />
-    
-        <!-- <h2>Upcoming Projects</h2><br /><br />
-        <section class="container">
+
             <?php foreach ($projects as $project) {
                 $pid = $project['P_ID'] ?>
                 <div class="card">
@@ -95,7 +91,6 @@ if (!isset($_SESSION['uid'])) {
             <?php } ?>
         </section>
         <br />
-
 
         <h2>Suggested Projects</h2><br /><br />
         <section class="container">
@@ -114,7 +109,7 @@ if (!isset($_SESSION['uid'])) {
                 </div>
             <?php } ?>
         </section>
-        <br />
+        <br/>
 
         <h2>Sponsor Advertisements</h2><br /><br />
         <section class="container">
@@ -135,7 +130,6 @@ if (!isset($_SESSION['uid'])) {
                 </div>
             <?php } ?>
         </section> -->
-
     </div>
 </body>
 

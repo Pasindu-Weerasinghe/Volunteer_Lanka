@@ -7,12 +7,11 @@ if (!isset($_SESSION['uid'])) {
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo BASE_URL ?> public/styles/view.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/form.css">
     <title>Published Advertiesment</title>
 </head>
 
@@ -21,15 +20,13 @@ if (!isset($_SESSION['uid'])) {
     <div class="main" id="main">
         <h1>Published Advertisement</h1><br />
         <p class="p1">You can publish your company's adverisement from here. It will be sent to our admins and get published after they accept</p> <br />
-
-
-        <p><strong>
+        <p>
+            <strong>
                 <h2>Upload Advertiesment</h2>
-            </strong> </p2><br />
+            </strong> </p2><br/>
 
         <div class="container-image">
             <form action="upload_image.php" method="post" enctype="multipart/form-data">
-
                 <label for="photo"><b>Add Photos: </b></label>
                 <input type="file" name="file[]" multiple="multiple"><br /><br />
                 <img class="image2" src="cards/img1.jpg"> <br><br>

@@ -19,7 +19,7 @@ if (!isset($_SESSION['uid'])) {
 <body>
 <?php include 'views/includes/navbar_log.php'; ?>
     <div class="main" id="main">
-        <h1>Published Advertiesment</h1><br />
+        <h1>Published Advertisement</h1><br />
         <p class="p1">You can publish your company's adverisement from here. It will be sent to our admins and get published after they accept</p> <br />
 
 
@@ -37,7 +37,7 @@ if (!isset($_SESSION['uid'])) {
                 <input class="des1" type="text" name="des" required>
                 <!-- <p><strong>Description</strong><textarea rows="10" cols="70" name="comment" placeholder="Enter here!"></textarea> </p2><br /> -->
                 <br><br><br><br><br>
-                <button class="btn4"><a href="publish_advertisment.php">Cancel</a></button>
+                <button class="btn4"><a href="publish_advertisement.php">Cancel</a></button>
                 <button class="btn4" name="request">Send Request</button>
             </form>
         </div>

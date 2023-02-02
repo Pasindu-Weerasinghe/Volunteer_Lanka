@@ -13,7 +13,7 @@
 
         function publish_advertisement()
         {
-            $this->render('sponsor/publish_advertisement');
+            $this->render('Sponsor/publish_advertisement');
         }
 
         function profile()

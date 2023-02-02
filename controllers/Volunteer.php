@@ -4,6 +4,15 @@ class Volunteer extends User
 {
     function index()
     {
+        $this->loadModel('Project');
+        $this->projects = $this->model->cardsVolunteer();
+
+        foreach ($this->projects as $project) {
+            $pid = $project['P_ID'];
+            $this->images = $this->model->getProjectImage($pid);
+        }
+        $this->loadModel('Ad');
+        $this->ads = $this->model->getAds();
         $this->render('Volunteer/Home');
     }
 
@@ -73,6 +82,7 @@ class Volunteer extends User
                 }
             }
         }
+        header('Location: ' .BASE_URL. 'volunteer/request_projects');
         
     }
 

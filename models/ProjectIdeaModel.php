@@ -40,7 +40,9 @@ class ProjectIdeaModel extends Model {
     {
         $query = "INSERT into idea_image (PI_ID, Image) VALUES ('$piid[0]','$fileName')";
         $statement = $this->db->prepare($query);
-        return $statement->execute();
+        if($statement->execute()){
+            header('Location: ' . BASE_URL . "volunteer/New_ideas");
+        }
     }
 
     function getPiId($uid, $location)

@@ -49,11 +49,24 @@ class ProjectModel extends Model
 
     function setVolunteerForm($pid, $email, $contact, $meal_pref, $prior_part)
     {
-        $query  =  "INSERT INTO 
-                    form_for_volunteers (P_ID, Email, Contact, Meal_pref, Prior_participation) 
-                    VALUES ('$pid', '$email', '$contact', '$meal_pref', '$prior_part')";
-
+        $query  =  "INSERT INTO form_for_volunteers (P_ID, Email, Contact, Meal_pref, Prior_participation) VALUES ('$pid', '$email', '$contact', '$meal_pref', '$prior_part')";
         $statement = $this->db->prepare($query);
         return $statement->execute();
+    }
+
+    function cardsVolunteer()
+    {
+        $query = "SELECT P_ID, Name, Date FROM project WHERE Status='active'";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function getProjectImage($pid)
+    {
+        $query = "SELECT Image FROM pr_image WHERE $pid = P_ID";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 }

@@ -4,9 +4,6 @@ if (!isset($_SESSION['uid'])) {
     header('Location: ' . BASE_URL);
 }
 
-// $sql = "SELECT P_ID, Name, Date FROM project WHERE Status='active'";
-// $result = mysqli_query($conn, $sql);
-// $projects = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 // $sql = "SELECT * FROM advertisement";
 // $result = mysqli_query($conn, $sql);
@@ -34,72 +31,9 @@ if (!isset($_SESSION['uid'])) {
 
         <h2>Upcoming Projects</h2><br /><br />
         <section class="container">
-            <div class="card">
-                <div class="card-image">
-                    <img src="<?php echo BASE_URL ?>public/images/tree.jpg" id="card-img">
-                </div>
-                <h2>Tree Planting</h2>
-                <p>2022-12-30</p>
-                <a class="btn" href="<?php echo BASE_URL . 'organizer/view_project/' . $pid; ?>">View</a>
-            </div>
-            <div class="card">
-                <div class="card-image">
-                    <img src="<?php echo BASE_URL ?>public/images/clean.jpeg" id="card-img">
-                </div>
-                <h2>Beach Cleaning</h2>
-                <p>2023-01-10</p>
-                <a class="btn" href="<?php echo BASE_URL . 'organizer/view_project/' . $pid; ?>">View</a>
-            </div>
-            <div class="card">
-                <div class="card-image">
-                    <img src="<?php echo BASE_URL ?>public/images/donate.jpg" id="card-img">
-                </div>
-                <h2>Book Donation</h2>
-                <p>2023-01-20</p>
-                <a class="btn" href="<?php echo BASE_URL . 'organizer/view_project/' . $pid; ?>">View</a>
-            </div>
-        </section><br />
-        <h2>Completed Projects</h2><br /><br />
-        <section class="container">
-            <div class="card">
-                <div class="card-image">
-                    <img src="<?php echo BASE_URL ?>public/images/tree.jpg" id="card-img">
-                </div>
-                <h2>Tree Planting</h2>
-                <p>2022-12-30</p>
-                <a class="btn" href="<?php echo BASE_URL . 'organizer/view_project/' . $pid; ?>">View</a>
-            </div>
-            <div class="card">
-                <div class="card-image">
-                    <img src="<?php echo BASE_URL ?>public/images/clean.jpeg" id="card-img">
-                </div>
-                <h2>Beach Cleaning</h2>
-                <p>2023-01-10</p>
-                <a class="btn" href="<?php echo BASE_URL . 'organizer/view_project/' . $pid; ?>">View</a>
-            </div>
-            <div class="card">
-                <div class="card-image">
-                    <img src="<?php echo BASE_URL ?>public/images/donate.jpg" id="card-img">
-                </div>
-                <h2>Book Donation</h2>
-                <p>2023-01-20</p>
-                <a class="btn" href="<?php echo BASE_URL . 'organizer/view_project/' . $pid; ?>">View</a>
-            </div>
-        </section>
-
-
-
-        <!-- <h2>Upcoming Projects</h2><br /><br />
-        <section class="container">
-            <?php foreach ($projects as $project) {
+            <?php foreach ($this->projects as $project) {
                 $pid = $project['P_ID'] ?>
                 <div class="card">
-                    <?php $sql2 = "SELECT Image FROM pr_image WHERE $pid = P_ID";
-                    $result2 = mysqli_query($conn, $sql2);
-                    while ($row = $result2->fetch_assoc()) {
-                        $image = $row['Image']; ?>
-                        <div class="card-image"><img id="cards" src="images/<?= $image ?>"></div>
-                    <?php } ?>
                     <h2><?php echo ($project["Name"]); ?></h2>
                     <p><?php echo ($project["Date"]); ?></p>
                     <a class="btn" href="view_project_volunteer.php?pid=<?php echo $project['P_ID'] ?>">View</a>
@@ -108,18 +42,11 @@ if (!isset($_SESSION['uid'])) {
         </section>
         <br />
 
-
         <h2>Suggested Projects</h2><br /><br />
         <section class="container">
-            <?php foreach ($projects as $project) {
+            <?php foreach ($this->projects as $project) {
                 $pid = $project['P_ID'] ?>
                 <div class="card">
-                    <?php $sql2 = "SELECT Image FROM pr_image WHERE $pid = P_ID";
-                    $result2 = mysqli_query($conn, $sql2);
-                    while ($row = $result2->fetch_assoc()) {
-                        $image = $row['Image']; ?>
-                        <div class="card-image"><img id="cards" src="images/<?= $image ?>"></div>
-                    <?php } ?>
                     <h2><?php echo ($project["Name"]); ?></h2>
                     <p><?php echo ($project["Date"]); ?></p>
                     <a class="btn" href="view_project_volunteer.php?pid=<?php echo $project['P_ID'] ?>">View</a>
@@ -129,6 +56,20 @@ if (!isset($_SESSION['uid'])) {
         <br />
 
         <h2>Sponsor Advertisements</h2><br /><br />
+        <section class="container">
+            <?php foreach ($this->ads as $ad) {
+                $adid = $ad['AD_ID'];
+                $uid = $ad['Sponsor'] ?>
+                <div class="card">
+                    <h2><?php echo ($ad["Status"]); ?></h2>
+                    <p><?php echo ($ad["Description"]); ?></p>
+                    <a class="btn" href="view_project_volunteer.php?pid=<?php echo $project['P_ID'] ?>">View</a>
+                </div>
+            <?php } ?>
+        </section>
+        <br />
+
+        <!-- <h2>Sponsor Advertisements</h2><br /><br />
         <section class="container">
             <?php foreach ($ads as $ad) {
                 $adid = $ad['AD_ID'];

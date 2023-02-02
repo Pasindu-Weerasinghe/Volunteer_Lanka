@@ -5,15 +5,15 @@ if (!isset($_SESSION['uid'])) {
 }
 
 
-$uid = $_SESSION['uid'];
+// $uid = $_SESSION['uid'];
 
-$sql1 = "SELECT * FROM user WHERE U_ID='$uid'";
-$result1 = mysqli_query($conn, $sql1);
-$row1 = $result1->fetch_assoc();
+// $sql1 = "SELECT * FROM user WHERE U_ID='$uid'";
+// $result1 = mysqli_query($conn, $sql1);
+// $row1 = $result1->fetch_assoc();
 
-$sql2 = "SELECT * FROM volunteer WHERE U_ID='$uid'";
-$result2 = mysqli_query($conn, $sql2);
-$row2 = $result2->fetch_assoc();
+// $sql2 = "SELECT * FROM volunteer WHERE U_ID='$uid'";
+// $result2 = mysqli_query($conn, $sql2);
+// $row2 = $result2->fetch_assoc();
 
 ?>
 
@@ -35,7 +35,7 @@ $row2 = $result2->fetch_assoc();
         <div class="container">
             <div class="column1">
                 <img class="image" src="images/profile_pic.jpeg" /><br><br>
-                <label class="sub2"> <?php echo $row2['Name']; ?></label><br><br>
+                <label class="sub2"> <?php echo $this->user['Name']; ?></label><br><br>
                 <label class="sub3">Projects Volunteered : 8</label>
             </div>
             <div class="column2"><br/>
@@ -44,17 +44,17 @@ $row2 = $result2->fetch_assoc();
                     <tr>
                         <td>User ID</td>
                         <td>:</td>
-                        <td><?php echo $row1['U_ID']; ?></td>
+                        <td><?php echo $this->profile['U_ID']; ?></td>
                     </tr>
                     <tr>
                         <td>Email</td>
                         <td>:</td>
-                        <td><?php echo $row1['Email'] ?></td>
+                        <td><?php echo $this->profile['Email'] ?></td>
                     </tr>
                     <tr>
                         <td>Contact Number</td>
                         <td>:</td>
-                        <td><?php echo $row2['Contact']; ?></td>
+                        <td><?php echo $this->user['Contact']; ?></td>
                     </tr>
             <tr>
                 <td>Interest Areas</td>

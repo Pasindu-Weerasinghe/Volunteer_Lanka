@@ -56,6 +56,12 @@ class Volunteer extends User
 
     function profile()
     {
+        session_start();
+        $uid = $_SESSION['uid'];
+        $this->loadModel('ProfileVolunteer');
+        $this->profile = $this->model->getUserData($uid);
+        $this->user = $this->model->getVolunteerData($uid);
+
         $this->render('Volunteer/Profile');
     }
 

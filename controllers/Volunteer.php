@@ -18,11 +18,25 @@ class Volunteer extends User
 
     function upcoming_projects()
     {
+        $this->loadModel('Project');
+        $this->projects = $this->model->cardsVolunteer();
+
+        foreach ($this->projects as $project) {
+            $pid = $project['P_ID'];
+            $this->images = $this->model->getProjectImage($pid);
+        }
         $this->render('Volunteer/Upcoming_projects');
     }
 
     function completed_projects()
     {
+        $this->loadModel('Project');
+        $this->projects = $this->model->cardsVolunteer();
+
+        foreach ($this->projects as $project) {
+            $pid = $project['P_ID'];
+            $this->images = $this->model->getProjectImage($pid);
+        }
         $this->render('Volunteer/Completed_projects');
     }
 

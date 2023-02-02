@@ -4,10 +4,6 @@ if (!isset($_SESSION['uid'])) {
     header('Location: ' . BASE_URL);
 }
 
-
-// $sql = "SELECT * FROM advertisement";
-// $result = mysqli_query($conn, $sql);
-// $ads = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -68,26 +64,6 @@ if (!isset($_SESSION['uid'])) {
             <?php } ?>
         </section>
         <br />
-
-        <!-- <h2>Sponsor Advertisements</h2><br /><br />
-        <section class="container">
-            <?php foreach ($ads as $ad) {
-                $adid = $ad['AD_ID'];
-                $sponsor = $ad['Sponsor'];
-                $image = $ad['Image'];
-            ?>
-                <div class="card">
-                        <div class="card-image"><img id="cards" src="images/<?= $image ?>"></div>
-                    <?php $sql3 = "SELECT Name FROM sponsor WHERE $sponsor = U_ID";
-                    $result3 = mysqli_query($conn, $sql3);
-                    $row = $result3->fetch_assoc();
-                    $sponsorname = $row['Name']; ?>
-                    <h2><?php echo $sponsorname ?></h2>
-                    <p><?php echo ($ad['Description']); ?></p><br />
-                    <a class="btn" href="view_project_volunteer.php?pid=<?php echo $project['P_ID'] ?>">View</a>
-                </div>
-            <?php } ?>
-        </section> -->
 
     </div>
 </body>

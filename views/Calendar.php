@@ -19,7 +19,7 @@ if (!isset($_SESSION['uid'])) {
 <body>
     <?php include 'views/includes/navbar_log.php'; ?>
 
-    <div class="main">
+    <div id="main" class="main">
         <div class="container">
             <div class="calendar-month">
                 <section class="calendar-month-header">

@@ -64,6 +64,19 @@ class Volunteer extends User
         $this->render('Volunteer/Request_projects');
     }
 
+    function calendar()
+    {
+        $this->render('Calendar');
+    }
+
+    function search_organizer()
+    {
+        $this->loadModel('OrganizerData');
+
+        $this->organizers = $this->model->getOrganizerData();
+        $this->render('Volunteer/Search_organizer');
+    }
+
     function insertIdeas()
     {
         session_start();

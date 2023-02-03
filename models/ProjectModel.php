@@ -56,4 +56,12 @@ class ProjectModel extends Model
         $statement = $this->db->prepare($query);
         return $statement->execute();
     }
+
+    function getSponsorProjects()
+    {
+        $query = "SELECT P_ID, Name, Date FROM project";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

@@ -3,7 +3,9 @@ class Sponsor extends User
 {
     function index()
     {
-        $this->render('Sponsor/home');
+        $this->loadModel('Project');
+        $this->projects = $this->model->getSponsorProjects();
+        $this->render('Sponsor/Home');
     }
 
     function sponsored_projects()

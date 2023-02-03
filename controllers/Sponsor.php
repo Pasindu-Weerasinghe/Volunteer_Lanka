@@ -18,17 +18,12 @@ class Sponsor extends User
 
     function profile()
     {
-        $this->render('Sponsor/profile_sponsor');
-    }
-
-    function profile_user()
-    {
         session_start();
         $uid = $_SESSION['uid'];
         $this->loadModel('Sponsor');
         $this->profile = $this->model->getUserData($uid);
-        $this->user = $this->model->getVolunteerData($uid);
-        $this->render('Sponsor/Profile_user');
+        $this->user = $this->model->getSponsorData($uid);
+        $this->render('Sponsor/profile_sponsor');
     }
 
     function view_sponsor_notices()

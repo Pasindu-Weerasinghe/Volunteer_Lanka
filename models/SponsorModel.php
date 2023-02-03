@@ -23,7 +23,7 @@ class SponsorModel extends Model
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
-    function getVolunteerData($uid)
+    function getSponsorData($uid)
     {
         $query = "SELECT * FROM sponsor WHERE $uid = U_ID";
         $statement = $this->db->prepare($query);

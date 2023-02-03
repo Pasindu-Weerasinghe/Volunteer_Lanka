@@ -2,9 +2,8 @@
 include 'conn.php';
 session_start();
 if (!isset($_SESSION['uid'])) {
-    header("Location: login.php");
+    header('Location: ' . BASE_URL);
 }
-require 'Navbar/navbar_log.php';
 ?>
 <?php
 $adid = $_REQUEST["adid"];
@@ -42,10 +41,11 @@ if ($result3->num_rows > 0) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Advertisement Requests</title>
-    <link rel="stylesheet" href="styles/view_ad_req.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/view_ad_req.css">
 </head>
 
 <body>
+<?php include 'views/includes/navbar_log.php'; ?>
     <div class="main" id="main">
         <h2>View Advertisement Requests</h2>
         <div id="ad-req-box">

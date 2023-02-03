@@ -1,10 +1,9 @@
-<?php include 'conn.php'; ?>
 <?php
 session_start();
 if (!isset($_SESSION['uid'])) {
-    header("Location: login.php");
+    header('Location: ' . BASE_URL);
 }
-require 'Navbar/navbar_log.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,11 +13,11 @@ require 'Navbar/navbar_log.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create New Admin Accounts</title>
-    <link rel="stylesheet" href="styles/create_new_admin_acc.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/create_new_admin_acc.css">
 </head>
 
 <body>
-
+    <?php include 'views/includes/navbar_log.php'; ?>
     <form action="n_acc.php" method="POST">
         <div class="main" id="main">
             <h2>Create New Admin Accounts</h2>

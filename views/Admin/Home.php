@@ -1,8 +1,5 @@
 
 <?php
-// $sql = "SELECT AD_ID,Sponsor FROM advertisement";
-// $result = mysqli_query($conn, $sql);
-// $ads = mysqli_fetch_all($result, MYSQLI_ASSOC);
 session_start();
 ?>
 

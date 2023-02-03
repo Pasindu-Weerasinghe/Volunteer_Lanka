@@ -2,6 +2,13 @@
 
 class Volunteer extends User
 {
+
+    function __construct()
+    {
+        parent::__construct();
+        $this->role = 'volunteer';
+    }
+
     function index()
     {
         $this->loadModel('Project');
@@ -40,7 +47,7 @@ class Volunteer extends User
         $this->render('Volunteer/Completed_projects');
     }
 
-    function request_projects()
+    function new_ideas()
     {
         session_start();
         $uid = $_SESSION['uid'];
@@ -65,7 +72,7 @@ class Volunteer extends User
         $this->render('Volunteer/Profile');
     }
 
-    function newIdeas()
+    function request_projects()
     {
         $this->render('Volunteer/Request_projects');
     }
@@ -115,7 +122,7 @@ class Volunteer extends User
                 }
             }
         }
-        header('Location: ' .BASE_URL. 'volunteer/request_projects');
+        header('Location: ' .BASE_URL. 'volunteer/new_ideas');
         
     }
 

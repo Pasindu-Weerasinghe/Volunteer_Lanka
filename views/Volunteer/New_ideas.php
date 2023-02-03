@@ -25,7 +25,7 @@ if (!isset($_SESSION['uid'])) {
 <?php include 'views/includes/navbar_log.php'; ?>
 <div id="main" class="main">
         <h2>Requests sent by you to organize projects</h2>
-        <button class="new"><a href="<?php echo BASE_URL ?>volunteer/newIdeas"><b>New Request</b></a></button>
+        <button class="new"><a href="<?php echo BASE_URL ?>volunteer/request_projects"><b>New Request</b></a></button>
         <br/><br/><br/><br/>
         <table>
             <tr>

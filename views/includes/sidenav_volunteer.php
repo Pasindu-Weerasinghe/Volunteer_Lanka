@@ -17,7 +17,7 @@
   <a href="<?php echo BASE_URL; ?>volunteer">Home</a>
   <a href="<?php echo BASE_URL; ?>volunteer/upcoming_projects">Upcoming Projects</a>
   <a href="<?php echo BASE_URL; ?>volunteer/completed_projects">Completed Projects</a>
-  <a href="<?php echo BASE_URL; ?>volunteer/request_projects">Request to Organize Projects</a>
+  <a href="<?php echo BASE_URL; ?>volunteer/new_ideas">Request to Organize Projects</a>
   <a href="<?php echo BASE_URL; ?>volunteer/calendar">Calendar</a>
   <a href="<?php echo BASE_URL; ?>volunteer/search_organizer">Search Organizers</a>
   <a href="<?php echo BASE_URL; ?>volunteer/profile">My Profile</a>

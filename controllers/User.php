@@ -43,18 +43,12 @@ class User extends Controller
 
     function complain()
     {
-        switch ($this->role) {
-            case 'organizer':
-                $this->render('Complain');
-                break;
+        $this->render('Complain');
+    }
 
-            case 'volunteer':
-                $this->render('Complain');
-                break;
-
-            default:
-                break;
-        }
+    function sendComplain()
+    {
+        $this->loadModel('User');
     }
 
     function view_project($pid)

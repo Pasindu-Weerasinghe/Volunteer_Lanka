@@ -9,7 +9,7 @@ class Sponsor extends User
         foreach ($this->projects as $project){
             $pid = $project['P_ID'];
             $this->loadModel('SponsorNotice');
-            $this->amount = $this->model->getAmount($pid);
+            $this->amounts[$pid] = $this->model->getAmount($pid)['Amount'];
         }
         $this->render('Sponsor/Home');
     }
@@ -34,8 +34,9 @@ class Sponsor extends User
         $this->render('Sponsor/profile_sponsor');
     }
 
-    function view_sponsor_notices()
+    function view_sponsor_notice($pid)
     {
+        
         $this->render('Sponsor/view_sponsor_notices');
     }
 }

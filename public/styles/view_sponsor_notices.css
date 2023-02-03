@@ -129,5 +129,6 @@ a {
   border:solid;
   border-radius: 40px;
   padding: 20px 20px 20px 20px;
-  background-color:rgb(177, 177, 177);
+  background-color:rgb(169, 216, 250);
+  flex-direction: column;
 }

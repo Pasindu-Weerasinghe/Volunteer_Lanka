@@ -37,8 +37,9 @@ if (!isset($_SESSION['uid'])) {
                 $pid = $project['P_ID'] ?>
                 <div class="card">
                     <h2><?php echo ($project["Name"]); ?></h2>
-                    <p>Amount: <?php echo ($amount["Amount"]); ?></p>
-                    <a class="btn" href="view_project_volunteer.php?pid=<?php echo $project['P_ID'] ?>">View</a>
+                    <p>Date: <?php echo ($project["Date"]);?></p>
+                    <p>Amount: <?php echo ($this->amounts[$pid]); ?></p>
+                    <a class="btn" href="<?php echo BASE_URL ?>Sponsor/view_sponsor_notice/<?php echo $project['P_ID'] ?>">View</a>
                 </div>
             <?php } ?>
         </section>

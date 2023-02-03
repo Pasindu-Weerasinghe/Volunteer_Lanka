@@ -19,7 +19,7 @@ if (!isset($_SESSION['uid'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo BASE_URL ?>public/stylescards.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/cards.css">
     <title>Home</title>
 </head>
 
@@ -31,12 +31,22 @@ if (!isset($_SESSION['uid'])) {
             <button name="search"><b>Search<b></button>
         </div><br>
         <h2>Sponsor Notices</h2><br><br>
+
         <section class="container">
             <?php foreach ($this->projects as $project) {
                 $pid = $project['P_ID'] ?>
                 <div class="card">
-                    <!-- <?php $sql2 = "SELECT Image FROM pr_image WHERE $pid = P_ID";
-                            $result2 = mysqli_query($conn, $sql2);
+                    <h2><?php echo ($project["Name"]); ?></h2>
+                    <p>Amount: <?php echo ($amount["Amount"]); ?></p>
+                    <a class="btn" href="view_project_volunteer.php?pid=<?php echo $project['P_ID'] ?>">View</a>
+                </div>
+            <?php } ?>
+        </section>
+
+        <!-- <section class="container">
+            <?php foreach ($this->projects as $project) {
+                $pid = $project['P_ID'] ?>
+                <div class="card">
 
                             $sql3 = "SELECT Amount FROM sponsor_notice WHERE $pid=P_ID";
                             $result3 = mysqli_query($conn, $sql3);
@@ -45,13 +55,12 @@ if (!isset($_SESSION['uid'])) {
                             while ($row = $result2->fetch_assoc()) {
                                 $image = $row['Image']; ?>
                         <div class="card-image"><img id="cards" src="images/<?= $image ?>"></div>
-                    <?php } ?> -->
                     <h2><?php echo ($project["Name"]); ?></h2>
                     <p>Amount : LKR </p>
                     <a class="btn" href="view_sponsor_notices.php?pid=<?php echo $project['P_ID'] ?>">View</a>
                 </div>
             <?php } ?>
-        </section>
+        </section> -->
     </div>
 
     <!-- <?php

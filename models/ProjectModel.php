@@ -10,9 +10,8 @@ class ProjectModel extends Model
 
     function setProject($pname,  $date, $time, $venue, $description, $no_of_volunteers, $sponsorship, $uid)
     {
-        $query  =  "INSERT INTO 
-                    project (Name, Date, Time, Venue, Description, No_of_volunteers, Sponsor, Status, U_ID) 
-                    VALUES ('$pname', '$date', '$time', '$venue', '$description', '$no_of_volunteers', '$sponsorship', 'active', '$uid')";
+        $query  =  "INSERT INTO project (Name, Date, Time, Venue, Description, No_of_volunteers, Sponsor, Status, U_ID) 
+                    VALUES ('$pname', '$date', '$time', '$venue', '$description', '$no_of_volunteers', '$sponsorship', 'active', $uid)";
 
         $statement = $this->db->prepare($query);
         return $statement->execute();
@@ -55,5 +54,31 @@ class ProjectModel extends Model
 
         $statement = $this->db->prepare($query);
         return $statement->execute();
+    }
+
+    function setProjectImages($pid, $images)
+    {
+        foreach ($images as $image) {
+            $query  =  "INSERT INTO  pr_image (P_ID, Image) VALUES ('$pid', '$image')";
+            $statement = $this->db->prepare($query);
+            $statement->execute();
+        }
+    }
+        function setProjectImage($pid, $image)
+    {
+            $query  =  "INSERT INTO  pr_image (P_ID, Image) VALUES ('$pid', '$image')";
+            $statement = $this->db->prepare($query);
+            $statement->execute();
+    }
+
+    function getLastId(){
+        $query = "SELECT P_ID FROM project ORDER BY P_ID DESC LIMIT 1";
+        $statement = $this->db->prepare($query);
+        if ($statement->execute()) {
+            $pid = $statement->fetch(PDO::FETCH_ASSOC);
+            return $pid['P_ID'];
+        } else {
+            return 0;
+        }
     }
 }

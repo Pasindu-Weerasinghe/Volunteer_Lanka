@@ -20,7 +20,8 @@ if (!isset($_SESSION['uid'])) {
 
     <?php include 'views/includes/navbar_log.php'; ?>
 
-    <div class="main" id="main">
+    <div class="main" id="main"
+    >
 
         <div class="search-container">
             <input type="text" name="search">

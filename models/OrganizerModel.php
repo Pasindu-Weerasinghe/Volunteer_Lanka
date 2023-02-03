@@ -14,4 +14,11 @@ class OrganizerModel extends Model
         $statement = $this->db->prepare($query);
         return $statement->execute();
     }
+
+    function getOrganizerByID($uid) {
+        $query = "SELECT * FROM organizer WHERE U_ID = '$uid'";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
 }

@@ -26,15 +26,11 @@ if (!isset($_SESSION['uid'])) {
         <h2 style="margin-bottom: 50px;">Advertisement Request</h2>
         <section class="container">
             <?php foreach ($this->ads as $ad) {
-                
+
             ?>
                 <div class="card">
-                        <div class="card-image"><img id="cards" src="<?php echo BASE_URL ?>public/images/<?php echo  $this->adimages[$ad['AD_ID']] ?>"></div>
-        
-                    
-                        <h2><?php echo $this->ad_sponsor_name[$ad['AD_ID']] ?></h2>
-    
-
+                    <div class="card-image"><img id="cards" src="<?php echo BASE_URL ?>public/images/<?php echo  $this->adimages[$ad['AD_ID']] ?>"></div>
+                    <h2><?php echo $this->ad_sponsor_name[$ad['AD_ID']] ?></h2>
                     <a class="btn" href="view_ad_req.php?adid=<?php echo $adid ?>">View</a>
                 </div>
             <?php } ?>

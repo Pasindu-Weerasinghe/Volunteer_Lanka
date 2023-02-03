@@ -42,25 +42,6 @@ if (!isset($_SESSION['uid'])) {
                 </div>
             <?php } ?>
         </section>
-
-        <!-- <section class="container">
-            <?php foreach ($this->projects as $project) {
-                $pid = $project['P_ID'] ?>
-                <div class="card">
-
-                            $sql3 = "SELECT Amount FROM sponsor_notice WHERE $pid=P_ID";
-                            $result3 = mysqli_query($conn, $sql3);
-                            $amount = $result3->fetch_assoc();
-
-                            while ($row = $result2->fetch_assoc()) {
-                                $image = $row['Image']; ?>
-                        <div class="card-image"><img id="cards" src="images/<?= $image ?>"></div>
-                    <h2><?php echo ($project["Name"]); ?></h2>
-                    <p>Amount : LKR </p>
-                    <a class="btn" href="view_sponsor_notices.php?pid=<?php echo $project['P_ID'] ?>">View</a>
-                </div>
-            <?php } ?>
-        </section> -->
     </div>
 
     <!-- <?php

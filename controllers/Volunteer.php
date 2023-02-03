@@ -65,7 +65,7 @@ class Volunteer extends User
     {
         session_start();
         $uid = $_SESSION['uid'];
-        $this->loadModel('ProfileVolunteer');
+        $this->loadModel('Volunteer');
         $this->profile = $this->model->getUserData($uid);
         $this->user = $this->model->getVolunteerData($uid);
 
@@ -84,7 +84,7 @@ class Volunteer extends User
 
     function search_organizer()
     {
-        $this->loadModel('OrganizerData');
+        $this->loadModel('Organizer');
 
         $this->organizers = $this->model->getOrganizerData();
         $this->render('Volunteer/Search_organizer');

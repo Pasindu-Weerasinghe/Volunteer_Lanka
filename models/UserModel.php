@@ -71,7 +71,7 @@ class UserModel extends Model
 
     function setComplain($about, $description, $uid)
     {
-        $query = "INSERT INTO complaints (About, Complain, U_ID) VALUES ($about, $description, $uid)";
+        $query = "INSERT INTO complaints (About, Complain, U_ID) VALUES ('$about', '$description', '$uid')";
         $statement = $this->db->prepare($query);
         return $statement->execute();
     }

@@ -14,4 +14,12 @@ class OrganizerModel extends Model
         $statement = $this->db->prepare($query);
         return $statement->execute();
     }
+
+    function getOrganizerData()
+    {
+        $query = "SELECT * FROM organizer";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

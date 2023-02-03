@@ -46,9 +46,18 @@ class User extends Controller
         $this->render('Complain');
     }
 
-    function sendComplain()
+    function setComplain()
     {
+        session_start();
+        $about = $_POST['about'];
+        $des = $_POST['des'];
+        $uid = $_SESSION['uid'];
+
         $this->loadModel('User');
+        if($this->model->setComplain($about, $des, $uid)) {
+            // header('Location: ' .BASE_URL. 'volunteer/complain');
+            echo '<script>alert("Complaint sent to admin")</script>';
+        }
     }
 
     function view_project($pid)

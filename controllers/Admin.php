@@ -8,6 +8,19 @@ class Admin extends User
     }
     function index()
     {
+        $this->loadModel('Advertisement');
+        $this->ads = $this->model->getAdvertisementRequests();
+        foreach ($this->ads as $ad) {
+            $image = $this->model->getAdImage($ad['AD_ID']);
+            $this->adimages[$ad['AD_ID']] = $image['Image'];
+        }
+        $this->loadModel('Sponsor');
+        foreach ($this->ads as $ad) {
+            $adid = $ad['AD_ID'];
+            $sponsor_id = $ad['Sponsor'];
+            $sponsor_name = $this->model->getSponsorbyAdId($sponsor_id);
+            $this->ad_sponsor_name[$adid] = $sponsor_name['Name'];
+        }
         $this->render('Admin/Home');
     }
     function advertiesment_requests()
@@ -27,6 +40,7 @@ class Admin extends User
         }
 
         $this->render('Admin/advertiesment_requests');
+        
     }
     function complaints()
     {

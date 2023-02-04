@@ -8,6 +8,7 @@ class Admin extends User
     }
     function index()
     {
+        //view advertisement req in home page
         $this->loadModel('Advertisement');
         $this->ads = $this->model->getAdvertisementRequests();
         foreach ($this->ads as $ad) {
@@ -20,6 +21,15 @@ class Admin extends User
             $sponsor_id = $ad['Sponsor'];
             $sponsor_name = $this->model->getSponsorbyAdId($sponsor_id);
             $this->ad_sponsor_name[$adid] = $sponsor_name['Name'];
+        }
+        //view compliants in home pagd
+        $this->loadModel('Complaints');
+        $this->complaints  = $this->model->getComplaints();
+        foreach($this->complaints as $complaint){
+            $complain_id = $complaint['C_ID'];
+            $complain_about = $complaint['About'];
+            $complain = $complaint['Complain'];
+            $c_uid = $complaint['U_ID'];
         }
         $this->render('Admin/Home');
     }
@@ -44,6 +54,7 @@ class Admin extends User
     }
     function complaints()
     {
+
         $this->render('Admin/complaints');
     }
     function create_new_admin_acc()

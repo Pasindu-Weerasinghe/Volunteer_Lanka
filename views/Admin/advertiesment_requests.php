@@ -29,7 +29,7 @@ if (!isset($_SESSION['uid'])) {
 
             ?>
                 <div class="card">
-                    <div class="card-image"><img id="cards" src="<?php echo BASE_URL ?>public/images/<?php echo  $this->adimages[$ad['AD_ID']] ?>"></div>
+                    <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/<?php echo  $this->adimages[$ad['AD_ID']] ?>"></div>
                     <h2><?php echo $this->ad_sponsor_name[$ad['AD_ID']] ?></h2>
                     <a class="btn" href="view_ad_req.php?adid=<?php echo $adid ?>">View</a>
                 </div>

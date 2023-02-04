@@ -23,7 +23,6 @@ if (!isset($_SESSION['uid'])) {
         <h2>Complaints</h2>
         <div id="com-box">
             <div id="com-box-item">
-                <!-- <img id="user-img" src="images/icons8-user-32.png" alt=""> -->
                 <h3 id="com-box-item-uname">Leo Club Gampha</h3>
                 <h4>Complain :</h4>
                 <p>I am writing to report a user on your system who has been behaving inappropriately. The user's username is Rotract Club Galle.
@@ -35,7 +34,6 @@ if (!isset($_SESSION['uid'])) {
         </div>
         <div id="com-box">
             <div id="com-box-item">
-                <!-- <img id="user-img" src="images/icons8-user-32.png" alt=""> -->
                 <h3 id="com-box-item-uname">Rotract Club Kurunegala</h3>
                 <h4>Complain :</h4>
                 <p>I am writing to bring to your attention a user on the forum who has been posting offensive and inappropriate content. The user's username is [Username] and their posts can be found in the following thread:<a>Link</a>.

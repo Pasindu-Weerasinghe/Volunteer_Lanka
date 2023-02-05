@@ -91,20 +91,17 @@ function create_project2()
             $sponsorship = $_POST['sponsorship'] == 'publish-sn' ? 1 : 0;
             $uid = 35;
             $this->loadModel('Project');
-            $id = $this->model->getLastId();
-            $id++;
-            $_SESSION['proj_id'] = $id;
+            
             if (true) {
                 if ($this->model->setProject($pname, $date, $time, $venue, $description, $no_of_members, $sponsorship, $uid)) {
-                    echo "Success";
-                    
-                    
+                    $pid = $this->model->getLastId();
+                    $_SESSION['proj_id'] = $pid;                    
 
-                    // $email = $_POST['email'] ? 1 : 0;
-                    // $contact = $_POST['contact-no'] ? 1 : 0;
-                    // $meal_pref = $_POST['meal-pref'] ? 1 : 0;
-                    // $prior_part = $_POST['prior-participations'] ? 1 : 0;
-                    // $this->model->setVolunteerForm($pid, $email, $contact, $meal_pref, $prior_part);
+                    $email = $_POST['email'] ? 1 : 0;
+                    $contact = $_POST['contact-no'] ? 1 : 0;
+                    $meal_pref = $_POST['meal-pref'] ? 1 : 0;
+                    $prior_part = $_POST['prior-participations'] ? 1 : 0;
+                    $this->model->setVolunteerForm($pid, $email, $contact, $meal_pref, $prior_part);
                 }else{
                     echo "Failed";
                 }                
@@ -126,7 +123,7 @@ function create_project2()
         }
     }
 
-    private function getLastId(){
+    function getLastId(){
         $this->loadModel('Project');
         $result = $this->model->getLastId();
     }
@@ -176,6 +173,15 @@ function create_project2()
 
     function blog()
     {
+        session_start();
+        $uid  = $_SESSION['uid'];
+        $this->loadModel('Organizer');
+        $this->organizer = $this->model->getOrganizerById($uid);
+
+        $this->loadModel('Project');
+        $this->no_of_projects = count($this->model->getProjects($uid));
+        $this->no_of_completed_projects = 0;
+
         $this->render('Organizer/Blog');
     }
 }

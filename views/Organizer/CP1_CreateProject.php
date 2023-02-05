@@ -107,8 +107,7 @@ if (!isset($_SESSION['uid'])) {
             </form>
         </div>
 
-
-
+        
 
         <div class="wrapper" id="form-for-volunteers" style="display: none">
             <h2 class="title">Create a Form for Volunteers</h2>

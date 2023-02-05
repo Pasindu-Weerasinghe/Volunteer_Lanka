@@ -4,6 +4,7 @@ const cp4 = document.querySelector("#form-for-volunteers");
 const form1 = document.querySelector("#create-project-form");
 const form4 = document.querySelector("#form-for-volunteers-form");
 
+
 const button1 = document.getElementById("next");
 const button4 = document.querySelector("#create");
 const imgs = document.querySelector("#images");
@@ -11,10 +12,20 @@ const gal = document.querySelector("#gal");
 const resetImgs = document.querySelector("#resetImgs");
 const form2back = document.querySelector("#form2-back");
 // for (const [key, value] of formData) {
-// 	output.textContent += `${key}: ${value}\n`;
-// }
+	// 	output.textContent += `${key}: ${value}\n`;
+	// }
 let imageReaders = [];
 const formDataSubmission = new FormData();
+
+// setting minimum date and time
+const now = new Date();
+document.getElementById("date").min = now
+	.toISOString()
+	.split("T")[0];
+
+// const hours = now.getHours().toString().padStart(2, "0");
+// const minutes = now.getMinutes().toString().padStart(2, "0");
+// document.getElementById("time").min = `${hours}:${minutes}`;
 
 button1.addEventListener("click", (e) => {
 	cp1.style.display = "none";

@@ -64,10 +64,10 @@ class ProjectModel extends Model
 
     function getProjectImage($pid)
     {
-        $query = "SELECT Image FROM pr_image WHERE $pid = P_ID";
+        $query = "SELECT Image FROM pr_image WHERE P_ID = $pid LIMIT 1";
         $statement = $this->db->prepare($query);
         $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
     function getProject($pid)

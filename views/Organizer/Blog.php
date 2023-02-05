@@ -25,19 +25,19 @@ if (!isset($_SESSION['uid'])) {
         <div class="organization">
             <div id="left">
                 <img src="<?php echo BASE_URL; ?>public/images/org_image.jpg">
-                <h3>Rotaract Club UOC</h3>
+                <h3><?php echo $this->organizer['Name']; ?></h3>
             </div>
             <div id="right">
                 <!-- <p>A proud member of the Colombo Uptown Rotary family, the Rotaract Club of University of Colombo, Faculty of Arts was charted on the 26th of March 2010. The Club slogan, "United We Stand in Diversity", represents our hope for the club as well as our country. During the period since its charter, the club has been recognised at the District Rotaract Assembly for its numerous projects along with the Rotary and Rotaract district citations and recognition as one of the best reporting clubs.</p> -->
-                <p><b>No of members:</b> 80</p>
-                <p><b>Branch:</b> Colombo</p>
-                <p><b>Contact:</b> 0712345678</p>
-                <p><b>No of projects organized:</b> 12</p>
-                <P><b>No of completed projects:</b> 10</P>
+                <p><b>No of members:</b> <?php echo $this->organizer['No_of_members']; ?></p>
+                <p><b>Branch:</b> <?php echo $this->organizer['Branch']; ?></p>
+                <p><b>Contact:</b> <?php echo $this->organizer['Contact']; ?></p>
+                <p><b>No of projects organized:</b> <?php echo $this->no_of_projects; ?></p>
+                <P><b>No of completed projects:</b> <?php echo $this->no_of_completed_projects; ?></p>
             </div>
         </div>
         <!-- organization end -->
-
+        
         <!-- ***posts*** -->
         <div class="post-container">
             <center>

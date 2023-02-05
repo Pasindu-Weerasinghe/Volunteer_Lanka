@@ -19,6 +19,7 @@ if (!isset($_SESSION['uid'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/request.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>New Ideas</title>
 </head>
 <body>
@@ -32,17 +33,19 @@ if (!isset($_SESSION['uid'])) {
                 <th>Location</th>
                 <th>Description</th>
                 <th>Images</th>
+                <th>Delete</th>
             </tr>
             <?php foreach ($this->pr_ideas as $idea) { ?> 
                 <tr>
                     <td><?php echo $idea['Location']; ?></td>
                     <td><?php echo $idea['Description']; ?></td>
-                    <td>
+                    <td id="image">
                     <?php foreach ($this->pr_idea_images[$idea['PI_ID']] as $images) { ?>
-                        <img src="<?php echo BASE_URL; ?>public/images/pi_images/<?php echo $images['Image']; ?>">
+                        <img id="tableImage" src="<?php echo BASE_URL; ?>public/images/pi_images/<?php echo $images['Image']; ?>">
                     <?php } ?>
-                    
                     </td>
+                    <td id="delete"><button class="delete"><a href="<?php echo BASE_URL ?>volunteer/delete_request"><i class="fa fa-trash"></i></a></button></td>
+
                 </tr>
             <?php } ?>
         </table>

@@ -41,7 +41,7 @@ if (!isset($_SESSION['uid'])) {
                     <td><?php echo $idea['Description']; ?></td>
                     <td id="image">
                     <?php foreach ($this->pr_idea_images[$idea['PI_ID']] as $images) { ?>
-                        <img id="tableImage" src="<?php echo BASE_URL; ?>public/images/pi_images/<?php echo $images['Image']; ?>">
+                        <img id="tableImage" src="<?php echo $images['Image']; ?>">
                     <?php } ?>
                     </td>
                     <td id="delete"><button class="delete"><a href="<?php echo BASE_URL ?>volunteer/delete_request"><i class="fa fa-trash"></i></a></button></td>

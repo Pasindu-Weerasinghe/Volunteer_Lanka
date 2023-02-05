@@ -119,11 +119,13 @@ class Volunteer extends User
             for ($i = 0; $i < $total; $i++) {
                 $fileName = $_FILES['file']['name'][$i];
                 $targetFilePath = $targetDir . $fileName;
-                $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+                $fileType =  strtolower(pathinfo($targetFilePath,PATHINFO_EXTENSION));
     
                 if(in_array($fileType, $allowTypes)){
                     if(move_uploaded_file($_FILES["file"]["tmp_name"][$i], $targetFilePath)){
-                        $this->model->setPiImage($pi_id, $fileName);
+                        $image_base64 = base64_encode(file_get_contents('public/images/pi_images/'.$fileName) );
+                        $image = 'data:image/'.$fileType.';base64,'.$image_base64;
+                        $this->model->setPiImage($pi_id, $image);
                     }
                 }else{
                     $statusMsg = 'Only JPG, JPEG, PNG & GIF files are allowed to upload.';

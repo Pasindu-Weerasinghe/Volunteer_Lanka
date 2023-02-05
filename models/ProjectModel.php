@@ -69,4 +69,12 @@ class ProjectModel extends Model
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    function getProject($pid)
+    {
+        $query = "SELECT * FROM project WHERE P_ID = $pid";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
 }

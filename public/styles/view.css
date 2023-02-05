@@ -71,6 +71,11 @@
     float: right;
 }
 
+a {
+    text-decoration: none;
+    color: white;
+}
+
 
 /* h2, p{
     margin: 10px 10px 0 10px;

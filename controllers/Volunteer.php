@@ -47,6 +47,14 @@ class Volunteer extends User
         $this->render('Volunteer/Completed_projects');
     }
 
+    function view_projects()
+    {
+        $pid = $_GET["pid"];
+        $this->loadModel('Project');
+        $this->project = $this->model->getProject($pid);
+        $this->render('Volunteer/View_project_volunteer');
+    }
+
     function new_ideas()
     {
         session_start();

@@ -32,7 +32,7 @@ if (!isset($_SESSION['uid'])) {
                 <div class="card">
                     <h2><?php echo ($project["Name"]); ?></h2>
                     <p><?php echo ($project["Date"]); ?></p>
-                    <a class="btn" href="view_project_volunteer.php?pid=<?php echo $project['P_ID'] ?>">View</a>
+                    <a class="btn" href="volunteer/view_projects?pid=<?php echo $project['P_ID'] ?>">View</a>
                 </div>
             <?php } ?>
         </section>
@@ -45,7 +45,7 @@ if (!isset($_SESSION['uid'])) {
                 <div class="card">
                     <h2><?php echo ($project["Name"]); ?></h2>
                     <p><?php echo ($project["Date"]); ?></p>
-                    <a class="btn" href="view_project_volunteer.php?pid=<?php echo $project['P_ID'] ?>">View</a>
+                    <a class="btn" href="volunteer/view_projects?pid=<?php echo $project['P_ID'] ?>">View</a>
                 </div>
             <?php } ?>
         </section>

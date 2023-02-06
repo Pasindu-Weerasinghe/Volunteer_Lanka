@@ -18,15 +18,18 @@ class ProjectModel extends Model
         return $statement->execute();
     }
 
+    
     function getProjects($uid)
     {
         $query = "SELECT * FROM project WHERE U_ID = '$uid'";
         $statement = $this->db->prepare($query);
-
-        if ($statement->execute()) {
+        
+        if($statement->execute()){
             // if query successful
             return $statement->fetchAll(PDO::FETCH_ASSOC);
-        } else {
+        } 
+
+        else{
             // if query failed
             return 'query failed';
         }
@@ -80,4 +83,12 @@ class ProjectModel extends Model
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
+    function getProjectImage($pid)
+    {
+        $query = "SELECT Image FROM pr_image WHERE P_ID = $pid";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
 }

@@ -8,7 +8,7 @@ class Sponsor extends User
 
         foreach ($this->projects as $project){
             $pid = $project['P_ID'];
-            $this->loadModel('SponsorNotice');
+            $this->prImages[$pid] = $this->model->getProjectImage($pid);
             $this->amounts[$pid] = $this->model->getAmount($pid)['Amount'];
         }
         $this->render('Sponsor/Home');
@@ -21,7 +21,7 @@ class Sponsor extends User
 
         foreach ($this->projects as $project){
             $pid = $project['P_ID'];
-            $this->loadModel('SponsorNotice');
+            $this->prImages[$pid] = $this->model->getProjectImage($pid);
             $this->amounts[$pid] = $this->model->getSPAmount($pid)['Amount'];
         }
 

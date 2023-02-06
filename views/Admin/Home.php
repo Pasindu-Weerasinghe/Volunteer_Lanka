@@ -36,24 +36,9 @@ session_start();
         <h2>Complaints</h2><br><br>
         <?php
         foreach ($this->complaints as $complaint) {
-            //     $complain_id = $row['C_ID'];
-            //     $complain_about = $row['About'];
-            //     $complain = $row['Complain'];
-            //     $c_uid = $row['U_ID']; 
         ?>
             <div id="c-box">
-                <div id="c-box-item">
-                    <?php
-                    // $sql5 = "SELECT Role FROM user WHERE $c_uid = U_ID";
-                    // $result5 = mysqli_query($conn, $sql5);
-                    // $row = $result5->fetch_assoc();
-                    // $role = $row['Role'];
-
-                    // $sql6 = "SELECT Name FROM " . $role . " WHERE '$c_uid'";
-                    // $result6 = mysqli_query($conn, $sql6);
-                    // $name =  $result6->fetch_assoc()['Name'];
-
-                    ?>
+                <div id="c-box-item" >
                     <h3 id="uname">Pasindu Weerasinghe</h3>
                     <button id="c-view-btn">View</button>
                 </div>

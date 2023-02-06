@@ -16,7 +16,7 @@ class Volunteer extends User
 
         foreach ($this->projects as $project) {
             $pid = $project['P_ID'];
-            $this->images = $this->model->getProjectImage($pid);
+            $this->image = $this->model->getProjectImage($pid);
         }
         $this->loadModel('Ad');
         $this->ads = $this->model->getAds();
@@ -123,9 +123,7 @@ class Volunteer extends User
     
                 if(in_array($fileType, $allowTypes)){
                     if(move_uploaded_file($_FILES["file"]["tmp_name"][$i], $targetFilePath)){
-                        $image_base64 = base64_encode(file_get_contents('public/images/pi_images/'.$fileName) );
-                        $image = 'data:image/'.$fileType.';base64,'.$image_base64;
-                        $this->model->setPiImage($pi_id, $image);
+                        $this->model->setPiImage($pi_id, $fileName);
                     }
                 }else{
                     $statusMsg = 'Only JPG, JPEG, PNG & GIF files are allowed to upload.';

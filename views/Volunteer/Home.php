@@ -43,7 +43,7 @@ if (!isset($_SESSION['uid'])) {
             <?php foreach ($this->projects as $project) {
                 $pid = $project['P_ID'] ?>
                 <div class="card">
-                    <div class="card-image"><img id="cards" src="<?php echo $this->images; ?>"></div>
+                    <div class="card-image"><img id="cards" src="<?php echo BASE_URL ?>public/images/pr_images<?php echo $this->image; ?>"></div>
                     <h2><?php echo ($project["Name"]); ?></h2>
                     <p><?php echo ($project["Date"]); ?></p>
                     <a class="btn" href="volunteer/view_projects?pid=<?php echo $project['P_ID'] ?>">View</a>

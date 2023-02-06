@@ -30,9 +30,10 @@ if (!isset($_SESSION['uid'])) {
             <?php foreach ($this->projects as $project) {
                 $pid = $project['P_ID'] ?>
                 <div class="card">
+                <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image']?>"></div>
                     <h2><?php echo ($project["Name"]); ?></h2>
                     <p><?php echo ($project["Date"]); ?></p>
-                    <a class="btn" href="volunteer/view_projects?pid=<?php echo $project['P_ID'] ?>">View</a>
+                    <a class="btn" href="volunteer/view_projects/<?php echo $project['P_ID'] ?>">View</a>
                 </div>
             <?php } ?>
         </section>
@@ -40,13 +41,12 @@ if (!isset($_SESSION['uid'])) {
 
         <h2>Suggested Projects</h2><br /><br />
         <section class="container">
-            <?php foreach ($this->projects as $project) {
-                $pid = $project['P_ID'] ?>
+            <?php foreach ($this->projects as $project) { ?>
                 <div class="card">
-                    <div class="card-image"><img id="cards" src="<?php echo BASE_URL ?>public/images/pr_images<?php echo $this->image; ?>"></div>
+                    <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image']?>"></div>
                     <h2><?php echo ($project["Name"]); ?></h2>
                     <p><?php echo ($project["Date"]); ?></p>
-                    <a class="btn" href="volunteer/view_projects?pid=<?php echo $project['P_ID'] ?>">View</a>
+                    <a class="btn" href="volunteer/view_projects/<?php echo $project['P_ID'] ?>">View</a>
                 </div>
             <?php } ?>
         </section>
@@ -54,16 +54,17 @@ if (!isset($_SESSION['uid'])) {
 
         <h2>Sponsor Advertisements</h2><br /><br />
         <section class="container">
-            <?php foreach ($this->ads as $ad) {
-                $adid = $ad['AD_ID'];
-                $uid = $ad['Sponsor'] ?>
+            <?php foreach ($this->ads as $ad) { 
+                $adid = $ad['AD_ID']?>
                 <div class="card">
-                    <h2><?php echo ($ad["Status"]); ?></h2>
-                    <p><?php echo ($ad["Description"]); ?></p>
-                    <a class="btn" href="view_project_volunteer.php?pid=<?php echo $project['P_ID'] ?>">View</a>
+                    <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/ad_images/<?php echo $this->adImage[$adid][0]['Image']?>"></div>
+                    <h2><?php echo ($ad["Description"]); ?></h2>
+                    <p><?php echo ($ad["Status"]); ?></p>
+                    <a class="btn" href="volunteer/view_projects/<?php echo $project['P_ID'] ?>">View</a>
                 </div>
             <?php } ?>
         </section>
+        
         <br />
 
     </div>

@@ -13,13 +13,17 @@ class Volunteer extends User
     {
         $this->loadModel('Project');
         $this->projects = $this->model->cardsVolunteer();
-
         foreach ($this->projects as $project) {
             $pid = $project['P_ID'];
-            $this->image = $this->model->getProjectImage($pid);
+            $this->prImage[$pid] = $this->model->getProjectImage($pid);
         }
+
         $this->loadModel('Ad');
         $this->ads = $this->model->getAds();
+        foreach ($this->ads as $ad) {
+            $adid = $ad['AD_ID'];
+            $this->adImage[$adid] = $this->model->getAdImage($adid);
+        }
         $this->render('Volunteer/Home');
     }
 
@@ -47,9 +51,8 @@ class Volunteer extends User
         $this->render('Volunteer/Completed_projects');
     }
 
-    function view_projects()
+    function view_projects($pid)
     {
-        $pid = $_GET["pid"];
         $this->loadModel('Project');
         $this->project = $this->model->getProject($pid);
         $this->render('Volunteer/View_project_volunteer');

@@ -34,7 +34,7 @@ class Volunteer extends User
 
         foreach ($this->projects as $project) {
             $pid = $project['P_ID'];
-            $this->images = $this->model->getProjectImage($pid);
+            $this->prImage[$pid] = $this->model->getProjectImage($pid);
         }
         $this->render('Volunteer/Upcoming_projects');
     }
@@ -46,7 +46,7 @@ class Volunteer extends User
 
         foreach ($this->projects as $project) {
             $pid = $project['P_ID'];
-            $this->images = $this->model->getProjectImage($pid);
+            $this->prImage[$pid] = $this->model->getProjectImage($pid);
         }
         $this->render('Volunteer/Completed_projects');
     }
@@ -55,6 +55,7 @@ class Volunteer extends User
     {
         $this->loadModel('Project');
         $this->project = $this->model->getProject($pid);
+        $this->images = $this->model->getProjectImage($pid);
         $this->render('Volunteer/View_project_volunteer');
     }
 

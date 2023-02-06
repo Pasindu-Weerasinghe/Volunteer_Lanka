@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 ?>
@@ -16,7 +15,7 @@ session_start();
 </head>
 
 <body>
-<?php include 'views/includes/navbar_log.php'; ?>
+    <?php include 'views/includes/navbar_log.php'; ?>
     <div class="main" id="main">
         <!-- Advertiesment Reqests area -->
         <h2>Advertisement Requests</h2><br><br>
@@ -32,41 +31,38 @@ session_start();
             <?php } ?>
         </section>
         <!-- Advertiesment Reqests area end-->
-        <?php
-        // $sql4 = "SELECT C_ID,About,Complain,U_ID FROM complaints";
-        // $result4 = mysqli_query($conn, $sql4);
-        // $complaints = mysqli_fetch_all($result4, MYSQLI_ASSOC); ?>
-        <!-- Complains Area -->
+        <!-- Complaints area-->
+
         <h2>Complaints</h2><br><br>
-            <?php
-            // foreach ($complaints as $row) {
+        <?php
+        foreach ($this->complaints as $complaint) {
             //     $complain_id = $row['C_ID'];
             //     $complain_about = $row['About'];
             //     $complain = $row['Complain'];
-            //     $c_uid = $row['U_ID']; ?>
-                <div id="c-box">
-                    <div id="c-box-item">
-                        <?php
-                        // $sql5 = "SELECT Role FROM user WHERE $c_uid = U_ID";
-                        // $result5 = mysqli_query($conn, $sql5);
-                        // $row = $result5->fetch_assoc();
-                        // $role = $row['Role'];
+            //     $c_uid = $row['U_ID']; 
+        ?>
+            <div id="c-box">
+                <div id="c-box-item">
+                    <?php
+                    // $sql5 = "SELECT Role FROM user WHERE $c_uid = U_ID";
+                    // $result5 = mysqli_query($conn, $sql5);
+                    // $row = $result5->fetch_assoc();
+                    // $role = $row['Role'];
 
-                        // $sql6 = "SELECT Name FROM " . $role . " WHERE '$c_uid'";
-                        // $result6 = mysqli_query($conn, $sql6);
-                        // $name =  $result6->fetch_assoc()['Name'];
+                    // $sql6 = "SELECT Name FROM " . $role . " WHERE '$c_uid'";
+                    // $result6 = mysqli_query($conn, $sql6);
+                    // $name =  $result6->fetch_assoc()['Name'];
 
-                        ?>
-                        <h3 id="uname"><?php ?></h3>
-                        <button id="c-view-btn">View</button>
-                    </div>
-                    <p id="c-box-des"> <?php ?></p>
-                    <br>
+                    ?>
+                    <h3 id="uname">Pasindu Weerasinghe</h3>
+                    <button id="c-view-btn">View</button>
                 </div>
-            <?php
-            // }
-            ?>
-    <br><br><br>
+                <p id="c-box-des">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates fuga repellat quaerat natus reprehenderit reiciendis quidem rem error, deserunt adipisci saepe explicabo. Fugit, delectus? Dolorem cupiditate saepe quae laborum quibusdam?</p>
+            </div>
+        <?php
+        }
+        ?>
+        <br><br><br>
 
 
 

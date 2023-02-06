@@ -31,7 +31,7 @@ if (!isset($_SESSION['uid'])) {
                     <h2><?php echo ($project["Name"]); ?></h2>
                     <p>Date: <?php echo ($project["Date"]); ?></p>
                     <p>Amount: <?php echo ($this->amounts[$pid]); ?></p>
-                    <a class="btn" href="<?php echo BASE_URL ?>Sponsor/view_projects_sponsor/<?php echo $project['P_ID'] ?>">View</a>
+                    <a class="btn" href="<?php echo BASE_URL ?>Sponsor/view_sponsor_projects/<?php echo $project['P_ID'] ?>">View</a>
                 </div>
             <?php } ?>
         </section>

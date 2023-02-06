@@ -24,7 +24,6 @@ class Sponsor extends User
             $this->prImages[$pid] = $this->model->getProjectImage($pid);
             $this->amounts[$pid] = $this->model->getSPAmount($pid)['Amount'];
         }
-
         $this->render('Sponsor/sponsored_projects');
     }
 
@@ -45,7 +44,14 @@ class Sponsor extends User
 
     function view_sponsor_notice($pid)
     {
-        
         $this->render('Sponsor/view_sponsor_notices');
     }
+
+    function view_sponsor_project($pid)
+    {
+        $this->loadModel('project');
+        $this->project= $this->model->getProject($pid);
+        $this->render('Sponsor/view_projects_sponsor');
+    }
+
 }

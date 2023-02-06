@@ -72,4 +72,12 @@ class ProjectModel extends Model
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
+
+    function getSPAmount($pid)
+    {
+        $query = "SELECT Amount FROM sponsor_pr WHERE P_ID = $pid";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
 }

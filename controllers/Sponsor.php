@@ -16,6 +16,15 @@ class Sponsor extends User
 
     function sponsored_projects()
     {
+        $this->loadModel('project');
+        $this->projects = $this->model->getSponsorProjects();
+
+        foreach ($this->projects as $project){
+            $pid = $project['P_ID'];
+            $this->loadModel('SponsorNotice');
+            $this->amounts[$pid] = $this->model->getSPAmount($pid)['Amount'];
+        }
+
         $this->render('Sponsor/sponsored_projects');
     }
 

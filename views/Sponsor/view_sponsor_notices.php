@@ -15,8 +15,9 @@ if (!isset($_SESSION['uid'])) {
 <body>
 <?php include 'views/includes/navbar_log.php'; ?>
     <div class="main" id="main">
+    <h2>Sponsor Notices</h2><br>
+
         <div class="container">
-        <h2>Sponsor Notices</h2><br>
         <div>
             <div class="slider">
                 <span id="slide-1"></span>
@@ -58,7 +59,7 @@ if (!isset($_SESSION['uid'])) {
                 </tr>
                 <tr>
                     <td>Description</td>
-                    <td>:________________________________________________</td><br>
+                    <td>:________________________________________</td><br>
                 </tr>
             </table>
         </div>

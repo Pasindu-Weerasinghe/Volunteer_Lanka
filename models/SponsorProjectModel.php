@@ -1,6 +1,6 @@
 <?php
 
-class SponsorNoticeModel extends Model
+class SponsorProjectModel extends Model
 {
 
     function __construct()
@@ -8,7 +8,9 @@ class SponsorNoticeModel extends Model
         parent::__construct();
     }
 
-    function getAmount($pid)
+   
+
+    function getSPAmount($pid)
     {
         $query = "SELECT Amount FROM sponsor_notice WHERE P_ID = $pid";
         $statement = $this->db->prepare($query);

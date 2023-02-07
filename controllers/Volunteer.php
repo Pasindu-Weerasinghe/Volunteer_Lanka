@@ -18,11 +18,22 @@ class Volunteer extends User
             $this->prImage[$pid] = $this->model->getProjectImage($pid);
         }
 
+        // $this->comProjects = $this->model->cardsVolunteer();
+        // foreach ($this->comProjects as $comProject) {
+        //     $pid = $comProject['P_ID'];
+        //     $this->comImage[$pid] = $this->model->getProjectImage($pid);
+        // }
+
         $this->loadModel('Ad');
         $this->ads = $this->model->getAds();
+
         foreach ($this->ads as $ad) {
             $adid = $ad['AD_ID'];
+            $uid = $ad['Sponsor'];
             $this->adImage[$adid] = $this->model->getAdImage($adid);
+
+            $this->loadModel('Sponsor');
+            $this->sponsor = $this->model->getSponsorName($uid);
         }
         $this->render('Volunteer/Home');
     }
@@ -136,6 +147,12 @@ class Volunteer extends User
         }
         header('Location: ' .BASE_URL. 'volunteer/new_ideas');
         
+    }
+
+    function delete_ideas($piId)
+    {
+        $this->loadModel('ProjectIdea');
+        $this->model->deleteProjectIdea($piId);
     }
 
 

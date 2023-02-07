@@ -1,15 +1,8 @@
 <?php
-session_start();
-if (!isset($_SESSION['uid'])) {
-    header('Location: ' . BASE_URL);
-}
-
-
-// $uid = $_SESSION['uid'];
-
-//     $sql = "SELECT PI_ID, Location, Description FROM pr_ideas WHERE $uid = U_ID";
-//     $result = mysqli_query($conn, $sql);
-//     $requests = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    session_start();
+    if (!isset($_SESSION['uid'])) {
+        header('Location: ' . BASE_URL);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -44,8 +37,7 @@ if (!isset($_SESSION['uid'])) {
                         <img id="tableImage" src="<?php echo BASE_URL ?>public/images/pi_images/<?php echo $images['Image']; ?>">
                     <?php } ?>
                     </td>
-                    <td id="delete"><button class="delete"><a href="<?php echo BASE_URL ?>volunteer/delete_request"><i class="fa fa-trash"></i></a></button></td>
-
+                    <td id="delete"><button class="delete"><a onclick="return confirm('Are you sure you want to delete this Project Request ?')" href="<?php echo BASE_URL ?>volunteer/delete_ideas/<?php echo $idea['PI_ID']?>"><i class="fa fa-trash"></i></a></button></td>
                 </tr>
             <?php } ?>
         </table>

@@ -45,6 +45,15 @@ class ProjectIdeaModel extends Model {
         }
     }
 
+    function deleteProjectIdea($piid)
+    {
+        $query = "DELETE FROM pr_ideas WHERE PI_ID = '$piid'";
+        $statement = $this->db->prepare($query);
+        if($statement->execute()) {
+            header('Location: ' . BASE_URL . "volunteer/New_ideas");
+        }
+    }
+
     function getPiId($uid, $location)
     {
         $query = "SELECT PI_ID FROM pr_ideas WHERE U_ID = '$uid' && Location = '$location'";

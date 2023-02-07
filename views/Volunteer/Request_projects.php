@@ -19,7 +19,7 @@ if (!isset($_SESSION['uid'])) {
     <label id="head">Request to Organize Projects</label><br/><br/><br/>
     <lable id="text">As a volunteer you are able to inform the organizers about your ideas to arrange new volunteering projects. You can send a request to all the organizers by submitting this form.
     <br/><br/>Please provide reliable information.</label>
-    <form action="<?php echo BASE_URL; ?>volunteer/insertIdeas" method="post" enctype="multipart/form-data">
+    <form action="<?php echo BASE_URL; ?>volunteer/insert_Ideas" method="post" enctype="multipart/form-data">
     <div class="container">
     <p>Let us know of the opportunities</p><hr>
     

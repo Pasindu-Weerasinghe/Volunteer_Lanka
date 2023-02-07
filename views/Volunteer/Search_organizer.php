@@ -26,8 +26,10 @@ if (!isset($_SESSION['uid'])) {
 
     <div id="main" class="main">
         <div class="search-container">
-            <input type="text" name="search">
-            <button name="search"><b>Search<b></button>
+            <form action="<?php echo BASE_URL; ?>volunteer/search_organizer" method="post">
+                <input type="text" name="key">
+                <button name="search"><b>Search<b></button>
+            </form>
         </div><br><br>
         <table>
             <tr>

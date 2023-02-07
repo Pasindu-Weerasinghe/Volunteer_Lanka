@@ -107,13 +107,22 @@ class Volunteer extends User
 
     function search_organizer()
     {
-        $this->loadModel('Organizer');
+        if (isset ($_POST['search'])) {
 
-        $this->organizers = $this->model->getOrganizerData();
+            $key = trim($_POST['key']);
+            $this->loadModel('Organizer');
+            $this->organizers = $this->model->searchOrganizers($key);
+        }
+
+        else {
+            $this->loadModel('Organizer');
+            $this->organizers = $this->model->getOrganizerData();
+        }
+
         $this->render('Volunteer/Search_organizer');
     }
 
-    function insertIdeas()
+    function insert_Ideas()
     {
         session_start();
         $location = $_POST['location'];

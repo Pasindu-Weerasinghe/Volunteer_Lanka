@@ -22,4 +22,12 @@ class OrganizerModel extends Model
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    function searchOrganizers($key)
+    {
+        $query = "SELECT * FROM organizer WHERE Name LIKE '%$key%'";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

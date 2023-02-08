@@ -15,10 +15,28 @@ class OrganizerModel extends Model
         return $statement->execute();
     }
 
+
+    function getOrganizerData()
+    {
+        $query = "SELECT * FROM organizer";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function searchOrganizers($key)
+    {
+        $query = "SELECT * FROM organizer WHERE Name LIKE '%$key%'";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
     function getOrganizerByID($uid) {
         $query = "SELECT * FROM organizer WHERE U_ID = '$uid'";
         $statement = $this->db->prepare($query);
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
+
     }
 }

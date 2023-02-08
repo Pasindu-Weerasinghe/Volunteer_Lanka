@@ -29,10 +29,12 @@ class Volunteer extends User
 
         foreach ($this->ads as $ad) {
             $adid = $ad['AD_ID'];
+            $this->adImage[$adid] = $this->model->getAdImage($adid);  
+        }
+        
+        $this->loadModel('Sponsor');
+        foreach ($this->ads as $ad) {
             $uid = $ad['Sponsor'];
-            $this->adImage[$adid] = $this->model->getAdImage($adid);
-
-            $this->loadModel('Sponsor');
             $this->sponsor = $this->model->getSponsorName($uid);
         }
         $this->render('Volunteer/Home');

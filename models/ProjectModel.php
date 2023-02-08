@@ -76,7 +76,8 @@ class ProjectModel extends Model
         $statement = $this->db->prepare($query);
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
-
+    }
+    
     function setProjectImages($pid, $images)
     {
         foreach ($images as $image) {

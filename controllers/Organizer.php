@@ -17,106 +17,82 @@ class Organizer extends User
     {
         switch ($param) {
             case null:
-                if (isset($_POST['next'])) {
-                    session_start();
-                    $_SESSION['project-name'] = $_POST['project-name'];
-                    $_SESSION['date'] = $_POST['date'];
-                    $_SESSION['time'] = $_POST['time'];
-                    $_SESSION['venue'] = $_POST['venue'];
-                    $_SESSION['description'] = $_POST['description'];
-                    $_SESSION['no-of-members'] = $_POST['no-of-members'];
-                    $_SESSION['partnership'] = $_POST['partnership'];
-                    $_SESSION['sponsorship'] = $_POST['sponsorship'];
-                    $_SESSION['files'] = ($_FILES["file"]["name"]);
-                    $_SESSION['files_tmpname'] = ($_FILES["file"]["tmp_name"]);
-                    
-                    if ($_POST['partnership'] == 'single') {
-                        header('Location: ' . BASE_URL . 'organizer/create_project/form_for_volunteers');
-                    }
-                } else {
-                    $this->render('Organizer/CP1_CreateProject');
-                }
-                break;
-            case 'collaborate_project':
-                $this->render('Organizer/CP2_AddOrgToCollabProject');
-                break;
-            case 'publish_sponsor_notice':
-                $this->render('Organizer/CP3_PublishSponsorNotice');
-                break;
-            case 'form_for_volunteers':
-                $this->render('Organizer/CP4_FormForVolunteers');
+                $this->render('Organizer/CreateProject');
                 break;
             case 'create':
                 if (isset($_POST['create'])) {
+                    $response = array("message" => "");
+
                     $this->loadModel('Project');
                     session_start();
-                    $pname = $_SESSION['project-name'];
-                    $date = $_SESSION['date'];
-                    $time = $_SESSION['time'];
-                    $venue = $_SESSION['venue'];
-                    $description = $_SESSION['description'];
-                    $no_of_volunteers = $_SESSION['no-of-members'];
-                    $sponsorship = $_SESSION['sponsorship'] == 'publish-sn' ? 1 : 0;
+                    $pname = $_POST['project-name'];
+                    $date = $_POST['date'];
+                    $time = $_POST['time'];
+                    $venue = $_POST['venue'];
+                    $description = $_POST['description'];
+                    $no_of_volunteers = $_POST['no-of-members'];
+                    $partnership = $_POST['partnership'] == 'collaborate' ? 1 : 0;
+                    $sponsorship = $_POST['sponsorship'] == 'publish-sn' ? 1 : 0;
                     $uid = $_SESSION['uid'];
 
-                    if ($this->model->setProject($pname, $date, $time, $venue, $description, $no_of_volunteers, $sponsorship, $uid)) {
+                    if ($this->model->setProject($pname, $date, $time, $venue, $description, $no_of_volunteers, $sponsorship, $partnership, $uid)) {
                         if (($pid = $this->model->getProjectId($pname, $uid)) != 'query failed') {
+                            $_SESSION['proj_id'] = $pid;
+
+                            $email = $_POST['email'] ? 1 : 0;
+                            $contact = $_POST['contact-no'] ? 1 : 0;
+                            $meal_pref = $_POST['meal-pref'] ? 1 : 0;
+                            $prior_part = $_POST['prior-participations'] ? 1 : 0;
+                            
+                            // setting volunteer form
+                            $this->model->setVolunteerForm($pid, $email, $contact, $meal_pref, $prior_part);
                         }
-                    }
 
-                    // 8888888888888888888888888888888888888888888888888888888888888888888888
-                    $host = 'localhost';
-                    $user = 'root';
-                    $pass = '';
-                    $db = 'volunteer_lanka';
-                    $conn = mysqli_connect($host, $user, $pass, $db);
-
-                    $targetDir = BASE_URL."public/images/pr_images/";
-                    $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
-
-                    $files = $_SESSION['files'];
-                    $files_tmpname = $_SESSION['files_tmpname'];
-
-                    if (!empty($files)) {
-
-                        $total = count($files);
-                        for (
-                            $i = 0;
-                            $i < $total;
-                            $i++
-                        ) {
-                            $fileName = $files[$i];
-                            $targetFilePath = $targetDir . $fileName;
-                            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-
-                            if (in_array($fileType, $allowTypes)) {
-                                if (move_uploaded_file($files_tmpname[$i], $targetFilePath)) {
-
-                                    $query = "INSERT into pr_image (P_ID, Image) VALUES ('" . $pid . "','" . $fileName . "')";
-                                    $result = mysqli_query($conn, $query);
-                                    if ($result) {
-                                        $statusMsg = "The file " . $fileName . " has been uploaded successfully.";
-                                    } else {
-                                        $statusMsg = "File upload failed, please try again.";
-                                    }
-                                }
-                            } else {
-                                $statusMsg = 'Only JPG, JPEG, PNG & GIF files are allowed to upload.';
-                            }
+                        if($partnership) {
+                            //? if project is a collaboration
                         }
-                    }
-                    echo $statusMsg;
-                    // 8888888888888888888888888888888888888888888888888888888888888888888888
 
-                    $email = $_POST['email'] ? 1 : 0;
-                    $contact = $_POST['contact-no'] ? 1 : 0;
-                    $meal_pref = $_POST['meal-pref'] ? 1 : 0;
-                    $prior_part = $_POST['prior-participations'] ? 1 : 0;
-                    $this->model->setVolunteerForm($pid, $email, $contact, $meal_pref, $prior_part);
-                    unset($_SESSION['project-name'], $_SESSION['date'], $_SESSION['time'], $_SESSION['venue'], $_SESSION['description'], $_SESSION['no-of-members'], $_SESSION['sponsorship']);
-                    header('Location: ' . BASE_URL);
+                        if($sponsorship) {
+                            //? if project is sponsored
+                        }
+
+                    } else {
+                        //! project didn't get created
+                    }
                 }
                 break;
+        }
+    }
+
+    function create_project2()
+    {
+        session_start();
+        if (true) {
+            $pname = $_POST['project-name'];
+            $date = $_POST['date'];
+            $time = $_POST['time'];
+            $venue = $_POST['venue'];
+            $description = $_POST['description'];
+            $no_of_members = $_POST['no-of-members'];
+            $partnership = $_POST['partnership'] == 'collaborate' ? 1 : 0;
+            $sponsorship = $_POST['sponsorship'] == 'publish-sn' ? 1 : 0;
+            $uid = $_SESSION['uid'];
+            $this->loadModel('Project');
+
+
+            if ($this->model->setProject($pname, $date, $time, $venue, $description, $no_of_members, $sponsorship, $uid)) {
+                $pid = $this->model->getLastId();
+                $_SESSION['proj_id'] = $pid;
+
+                $email = $_POST['email'] ? 1 : 0;
+                $contact = $_POST['contact-no'] ? 1 : 0;
+                $meal_pref = $_POST['meal-pref'] ? 1 : 0;
+                $prior_part = $_POST['prior-participations'] ? 1 : 0;
+                $this->model->setVolunteerForm($pid, $email, $contact, $meal_pref, $prior_part);
+            } else {
+                echo "Failed";
+            }
+        } else {
         }
     }
 
@@ -161,6 +137,15 @@ class Organizer extends User
 
     function blog()
     {
+        session_start();
+        $uid  = $_SESSION['uid'];
+        $this->loadModel('Organizer');
+        $this->organizer = $this->model->getOrganizerById($uid);
+
+        $this->loadModel('Project');
+        $this->no_of_projects = count($this->model->getProjects($uid));
+        $this->no_of_completed_projects = 0;
+
         $this->render('Organizer/Blog');
     }
 }

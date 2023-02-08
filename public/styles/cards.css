@@ -24,6 +24,7 @@ body {
     width: 270px;
     margin: 20px;
     border-radius: 20px;
+    transition: all 0.4s ease;
 }
 
 h2,
@@ -77,7 +78,6 @@ h4 {
     /* border: 4px outset rgba(0, 0, 255, 0.253); */
     cursor: pointer;
     transform: scale(1.05);
-    transition: all 0.4s ease;
 }
 
 /*serach bar css part*/

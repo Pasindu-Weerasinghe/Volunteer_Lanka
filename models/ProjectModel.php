@@ -8,10 +8,10 @@ class ProjectModel extends Model
         parent::__construct();
     }
 
-    function setProject($pname,  $date, $time, $venue, $description, $no_of_volunteers, $sponsorship, $uid)
+    function setProject($pname,  $date, $time, $venue, $description, $no_of_volunteers, $sponsorship, $collab, $uid)
     {
-        $query  =  "INSERT INTO project (Name, Date, Time, Venue, Description, No_of_volunteers, Sponsor, Status, U_ID) 
-                    VALUES ('$pname', '$date', '$time', '$venue', '$description', '$no_of_volunteers', '$sponsorship', 'active', $uid)";
+        $query  =  "INSERT INTO project (Name, Date, Time, Venue, Description, No_of_volunteers, Sponsor, Collab, Status, U_ID) 
+                    VALUES ('$pname', '$date', '$time', '$venue', '$description', '$no_of_volunteers', $sponsorship, $collab, 'active', $uid)";
 
         $statement = $this->db->prepare($query);
         return $statement->execute();

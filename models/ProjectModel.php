@@ -17,15 +17,18 @@ class ProjectModel extends Model
         return $statement->execute();
     }
 
+    
     function getProjects($uid)
     {
         $query = "SELECT * FROM project WHERE U_ID = '$uid'";
         $statement = $this->db->prepare($query);
-
-        if ($statement->execute()) {
+        
+        if($statement->execute()){
             // if query successful
             return $statement->fetchAll(PDO::FETCH_ASSOC);
-        } else {
+        } 
+
+        else{
             // if query failed
             return 'query failed';
         }
@@ -54,6 +57,30 @@ class ProjectModel extends Model
     }
 
 
+    function getSponsorProjects()
+    {
+        $query = "SELECT P_ID, Name, Date FROM project WHERE Sponsor = 1";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function getAmount($pid)
+    {
+        $query = "SELECT Amount FROM sponsor_notice WHERE P_ID = $pid";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
+    function getSPAmount($pid)
+    {
+        $query = "SELECT Amount FROM sponsor_pr WHERE P_ID = $pid";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
     function cardsVolunteer()
     {
         $query = "SELECT P_ID, Name, Date FROM project WHERE Status='active'";
@@ -61,7 +88,7 @@ class ProjectModel extends Model
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
-
+    
     function getProjectImage($pid)
     {
         $query = "SELECT Image FROM pr_image WHERE P_ID = $pid";
@@ -77,7 +104,7 @@ class ProjectModel extends Model
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
-    
+
     function setProjectImages($pid, $images)
     {
         foreach ($images as $image) {

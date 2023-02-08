@@ -1,7 +1,7 @@
 <?php
 
 class App
-{
+{  
     private $_url = null;
     private $_controller = null;
 

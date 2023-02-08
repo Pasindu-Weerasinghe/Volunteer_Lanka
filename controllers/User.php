@@ -61,4 +61,32 @@ class User extends Controller
                 break;
         }
     }
+
+    function ChangeProfilePsw() 
+    {
+        if(isset($_POST['submit']))
+        {
+            session_start();
+            $uid=$_SESSION['uid'];
+            $this->loadModel('User');
+            $cu_pw = $this->model->getCurrentPsw($uid)['Password'];
+            $password = $_POST['current'];
+            $new = $_POST['new'];
+            $confirm = $_POST['confirm'];
+            $verify = password_verify($password, $cu_pw);
+
+            if ($verify) {
+                if ($new == $confirm) {
+                    $new1 = password_hash($new, PASSWORD_BCRYPT);
+                    $this->model->changeUserPsw($uid, $new1);
+                    $this->error = "Password Updated Successfully";
+                } else {
+                    $this->error = "password did not match";
+                }
+            } else {
+                $this->error = "OLD PW is not match";
+            }
+        }
+        $this->render('Sponsor/changePasswordProfile');
+    }
 }

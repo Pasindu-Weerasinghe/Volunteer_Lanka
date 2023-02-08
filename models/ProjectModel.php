@@ -88,7 +88,7 @@ class ProjectModel extends Model
         $query = "SELECT Image FROM pr_image WHERE P_ID = $pid";
         $statement = $this->db->prepare($query);
         $statement->execute();
-        return $statement->fetch(PDO::FETCH_ASSOC);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
     function getProject($pid)

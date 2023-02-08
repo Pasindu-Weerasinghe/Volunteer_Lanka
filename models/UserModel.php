@@ -63,9 +63,25 @@ class UserModel extends Model
         }
     }
 
-    function changePassword($email, $password) {
+    function changePassword($email, $password)
+    {
         $query = "UPDATE user SET Password = '$password' WHERE Email = '$email'";
         $statement = $this->db->prepare($query);
         return $statement->execute();
     }
+
+    function getCurrentPsw($uid)
+    {
+        $query = "SELECT Password FROM user WHERE U_ID = '$uid'";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+    function changeUserPsw($uid,$password)
+    {
+        $query = "UPDATE user SET Password = '$password' WHERE U_ID = '$uid'";
+        $statement = $this->db->prepare($query);
+        return $statement->execute();
+    }
+
 }

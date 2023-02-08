@@ -31,11 +31,11 @@ if (!isset($_SESSION['uid'])) {
                 $pid = $project['P_ID'] ?>
                 <div class="card">
                     <div class="card-image">
-                        <img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image'] ?>">
+                        <img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImages[$pid][0]['Image'] ?>">
                     </div>
                     <h2><?php echo ($project["Name"]); ?></h2>
                     <p>Date: <?php echo ($project["Date"]); ?></p>
-                    <p>Amount: <?php echo ($this->amounts[$pid]); ?></p>
+                    <p>Amount: <?php echo ($this->amounts[$pid]['Amount']); ?></p>
                     <a class="btn" href="<?php echo BASE_URL ?>Sponsor/view_sponsor_notice/<?php echo $project['P_ID'] ?>">View</a>
                 </div>
             <?php } ?>

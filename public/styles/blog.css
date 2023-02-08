@@ -2,8 +2,8 @@
 	display: flex;
 	background-color: #96c7d6;
 	border-radius: 10px;
-	width:828px;
-	margin:auto;
+	width: 828px;
+	margin: auto;
 }
 
 #left {
@@ -30,9 +30,9 @@
 
 #right p {
 	/* background-color: white; */
-	font-size: 20px;
+	font-size: px;
 	text-align: justify;
-	margin: 10px;
+	margin: 5px;
 	border-radius: 10px;
 	padding: 10px;
 }
@@ -44,7 +44,13 @@
 	margin-top: 20px;
 	padding: 10px;
 	border-radius: 10px;
-	background-color: #96c7d6;
+	/* background-color: #96c7d6; */
+	background-color: white;
+	box-shadow: 0 0 20px rgb(116, 114, 114);
+}
+
+.post-header {
+	margin-bottom: 12px;
 }
 
 .post-container .description {
@@ -67,5 +73,6 @@
 	height: 170px;
 	margin: 10px;
 	border-radius: 10px;
-    border: 3px solid white;
+	/* border: 3px solid white; */
+	box-shadow: 0 0 10px rgb(116, 114, 114);
 }

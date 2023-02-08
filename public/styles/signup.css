@@ -37,7 +37,8 @@ select {
 input[type="text"],
 input[type="email"],
 input[type="password"],
-input[type="number"] {
+input[type="number"],
+textarea {
 	width: 100%;
 	padding: 10px;
 	margin: 5px 0 15px 0;
@@ -51,7 +52,8 @@ select:focus,
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus,
-input[type="number"]:focus {
+input[type="number"]:focus,
+textarea:focus {
 	box-shadow: 0 0 0 3px rgb(169, 216, 250);
 	outline: none;
 	transition: all 0.2s ease;
@@ -112,6 +114,11 @@ p {
 	content: "";
 	clear: both;
 	display: table;
+}
+
+#require{
+	color: red;
+	font-size: large;
 }
 
 #error {

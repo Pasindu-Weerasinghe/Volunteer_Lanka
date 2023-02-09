@@ -26,7 +26,7 @@ session_start();
                 <div class="card">
                     <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/<?php echo  $this->adimages[$ad['AD_ID']] ?>"></div>
                     <h2><?php echo $this->ad_sponsor_name[$ad['AD_ID']] ?></h2>
-                    <a class="btn" href="view_ad_req.php?adid=<?php echo $adid ?>">View</a>
+                    <a class="btn" href="<?php echo BASE_URL . 'admin/view_ad_req/' . $ad['AD_ID']; ?>">View</a>
                 </div>
             <?php } ?>
         </section>
@@ -35,7 +35,7 @@ session_start();
 
         <h2>Complaints</h2><br><br>
         <?php
-        foreach ($this->complaints as $complaint) {
+        foreach ($this->complaints as $complaint){
         ?>
             <div id="c-box">
                 <div id="c-box-item" >

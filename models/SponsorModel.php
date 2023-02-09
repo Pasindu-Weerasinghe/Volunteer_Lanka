@@ -5,8 +5,8 @@ class SponsorModel extends Model{
         parent::__construct();
     }
 
-    function getSponsorbyAdId($adid){
-        $query = "SELECT Name FROM sponsor WHERE U_ID=$adid";
+    function getSponsorbyId($id){
+        $query = "SELECT Name FROM sponsor WHERE U_ID=$id";
         $statement = $this->db->prepare($query);
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);

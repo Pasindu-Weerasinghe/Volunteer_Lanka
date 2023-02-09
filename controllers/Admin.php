@@ -19,7 +19,7 @@ class Admin extends User
         foreach ($this->ads as $ad) {
             $adid = $ad['AD_ID'];
             $sponsor_id = $ad['Sponsor'];
-            $sponsor_name = $this->model->getSponsorbyAdId($sponsor_id);
+            $sponsor_name = $this->model->getSponsorbyId($sponsor_id);
             $this->ad_sponsor_name[$adid] = $sponsor_name['Name'];
         }
         //view compliants in home pagd
@@ -45,12 +45,22 @@ class Admin extends User
         foreach ($this->ads as $ad) {
             $adid = $ad['AD_ID'];
             $sponsor_id = $ad['Sponsor'];
-            $sponsor_name = $this->model->getSponsorbyAdId($sponsor_id);
+            $sponsor_name = $this->model->getSponsorbyId($sponsor_id);
             $this->ad_sponsor_name[$adid] = $sponsor_name['Name'];
         }
 
         $this->render('Admin/advertiesment_requests');
         
+    }
+    function view_ad_req($adid){
+        $this->loadModel('Advertisement');
+        $ad = $this->model->getAdvertisementRequest($adid);
+        $this->image = $this->model->getAdImage($adid)['Image'];
+        $this->loadModel('Sponsor');
+        $this->sponsor_name = $this->model->getSponsorbyId($ad['Sponsor'])['Name'];
+
+
+        $this->render('Admin/view_ad_req');
     }
     function complaints()
     {

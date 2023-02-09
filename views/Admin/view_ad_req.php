@@ -1,35 +1,34 @@
 <?php
-include 'conn.php';
 session_start();
 if (!isset($_SESSION['uid'])) {
     header('Location: ' . BASE_URL);
 }
 ?>
 <?php
-$adid = $_REQUEST["adid"];
+// $adid = $_REQUEST["adid"];
 
-$sql1 = "SELECT Sponsor FROM advertisement WHERE $adid=AD_ID";
-$result1 = mysqli_query($conn, $sql1);
-if ($result1->num_rows > 0) {
-    while ($row = $result1->fetch_assoc()) {
-        $sponsor = $row['Sponsor'];
-    }
-}
-echo ($sponsor);
-$sql2 = "SELECT Image FROM ad_image WHERE $adid = AD_ID";
-$result2 = mysqli_query($conn, $sql2);
-if ($result2->num_rows > 0) {
-    while ($row = $result2->fetch_assoc()) {
-        $image = $row['Image'];
-    }
-}
-$sql3 = "SELECT Name FROM sponsor WHERE $sponsor = U_ID";
-$result3 = mysqli_query($conn, $sql3);
-if ($result3->num_rows > 0) {
-    while ($row = $result3->fetch_assoc()) {
-        $sponsorname = $row['Name'];
-    }
-}
+// $sql1 = "SELECT Sponsor FROM advertisement WHERE $adid=AD_ID";
+// $result1 = mysqli_query($conn, $sql1);
+// if ($result1->num_rows > 0) {
+//     while ($row = $result1->fetch_assoc()) {
+//         $sponsor = $row['Sponsor'];
+//     }
+// }
+// echo ($sponsor);
+// $sql2 = "SELECT Image FROM ad_image WHERE $adid = AD_ID";
+// $result2 = mysqli_query($conn, $sql2);
+// if ($result2->num_rows > 0) {
+//     while ($row = $result2->fetch_assoc()) {
+//         $image = $row['Image'];
+//     }
+// }
+// $sql3 = "SELECT Name FROM sponsor WHERE $sponsor = U_ID";
+// $result3 = mysqli_query($conn, $sql3);
+// if ($result3->num_rows > 0) {
+//     while ($row = $result3->fetch_assoc()) {
+//         $sponsorname = $row['Name'];
+//     }
+// }
 
 
 ?>
@@ -51,12 +50,12 @@ if ($result3->num_rows > 0) {
         <div id="ad-req-box">
             <div class="name">
                 <h3 class="name-item">Sponsor Name:</h3>
-                <h3 style="padding-top: 30px;"><?php echo $sponsorname ?></h3>
+                <h3 style="padding-top: 30px;"><?php echo $this->sponsor_name ?></h3>
             </div>
             <div class="name">
                 <h3 class="name-item">Advertisement:</h3>
                 <div id="ad-box-item">
-                    <img id="ad-box-img" src="images/<?php echo $image ?>" alt="">
+                    <img id="ad-box-img" src="<?php echo BASE_URL ?>public/images/<?php echo  $this->image ?>" alt="">
                 </div>
             </div>
             <div id="btn-area">

@@ -17,9 +17,13 @@ if (!isset($_SESSION['uid'])) {
 </head>
 
 <body>
-    <?php include 'views/includes/navbar.php' ?>
+    <?php include 'views/includes/navbar_log.php' ?>
     <div class ="main" id="main">
+
         <form method="POST" action="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePsw">
+        <strong>
+                <h2>Chnage Profile Password</h2>
+            </strong><hr><br>
             <p>Existing password<br />
                 <input type="password" class="box" name="current" required />
             </p>

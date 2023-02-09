@@ -98,7 +98,9 @@ class User extends Controller
             } else {
                 $this->error = "OLD PW is not match";
             }
+            
         }
         $this->render('Sponsor/changePasswordProfile');
+        
     }
 }

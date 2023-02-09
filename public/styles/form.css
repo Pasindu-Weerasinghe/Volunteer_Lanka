@@ -121,7 +121,6 @@
 	opacity: 1;
 }
 
-/* navbaress pages */
 .navbarless {
 	font-family: 'Source Sans Pro', sans-serif;
 	padding: 0;
@@ -146,9 +145,9 @@
 	margin-bottom: 15px;
 }
 
-body{
+/* body{
     background-color: white;
-}
+} */
 
 form {
     border: 2px solid #f1f1f1;
@@ -158,7 +157,7 @@ form {
     padding: 70px;  
     background: #96c7d6;  
     border-radius: 15px ;
-  }
+}
 
 select {
     background: #f1f1f1;
@@ -197,60 +196,12 @@ hr {
   width: 100%;
 }
 
-button {
-  background-color: #6aa438;
-  color: #e0e0f0;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 14px 20px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  width: 30%;
-  opacity: 0.9;
-}
-
-.request {
+#request, #complain-btn {
   float: right;
-}
-
-button:hover {
-  opacity:1;
-}
-
-#head {
-  font-size: 25px;
-  font-weight: bold;
-}
-
-#text {
-  font-size: 20px;
-}
-
-#complain {
-  font-size: 20px;
-}
-
-#send {
-  font-size: 18px;
 }
 
 input[type="radio"] {
   font-size: 20px;
-}
-
-.cancel {
-  float: left;
-}
-
-.next {
-    float:right;
-}
-
-.new {
-    float:right;
-    margin:0;
-    padding: 0;
 }
 
 .container {

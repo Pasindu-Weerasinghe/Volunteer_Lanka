@@ -44,13 +44,8 @@ class User extends Controller
 
     function complain()
     {
-        switch ($this->role) {
-            case 'organizer':
+        if ($this->role != 'admin') {
                 $this->render('Complain');
-                break;
-            case 'sponsor':
-                $this->render('Complain');
-                break;
         }
     }
 

@@ -18,19 +18,15 @@ if (!isset($_SESSION['uid'])) {
 <body>
     <?php include 'views/includes/navbar_log.php'; ?>
     <div id="main" class="main">
-        <label id="head">Request to Organize Projects</label><br /><br /><br />
-        <lable id="text">As a volunteer you are able to inform the organizers about your ideas to arrange new volunteering projects. You can send a request to all the organizers by submitting this form.
-            <br /><br />Please provide reliable information.</label>
-            <div class="wrapper">
-                <form action="<?php echo BASE_URL; ?>volunteer/insert_Ideas" method="post" enctype="multipart/form-data" class="form">
-
+        <h3>Request to Organize Projects</h3><br /><br />
+        <p>As a volunteer you are able to inform the organizers about your ideas to arrange new volunteering projects. You can send a request to all the organizers by submitting this form.
+            <br /><br />Please provide reliable information.</p>
+                <form action="<?php echo BASE_URL; ?>volunteer/insert_Ideas" method="post" enctype="multipart/form-data">
+                <div class="container">
                     <p>Let us know of the opportunities</p>
                     <hr>
-                    <div class="row">
-                        <label for="uname"><b>Username</b></label>
-                        <input type="text" name="uname" value=<?php echo ($_SESSION['uname']) ?> readonly>
-
-                    </div>
+                    <label for="uname"><b>Username</b></label>
+                    <input type="text" name="uname" value=<?php echo ($_SESSION['uname']) ?> readonly>
 
                     <label for="location"><b>Location</b></label>
                     <input type="text" name="location" required>
@@ -42,10 +38,9 @@ if (!isset($_SESSION['uid'])) {
                     <input type="file" name="file[]" multiple="multiple"><br /><br />
 
                     <button class="btn">Back</button>
-                    <button class="btn" name="request">Request</button>
-
+                    <button class="btn" name="request" id="request">Request</button>
+                </div>
                 </form>
-            </div>
     </div>
 </body>
 

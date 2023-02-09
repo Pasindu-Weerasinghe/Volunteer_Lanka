@@ -9,6 +9,7 @@ button:hover {
 .new {
     float:right;
     background-color: #6aa438;
+    font-size: 20px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -29,7 +30,6 @@ button:hover {
 a {
     text-decoration: none;
     color: black;
-    font-size: 15px;
 }
 
 .container-body {
@@ -59,16 +59,6 @@ th {
   background-color: #84b464;
   color: black;
 }
-
-/* .card-image{
-  height: 170px;
-  width:100px;
-  display:inline-block;
-  margin-bottom: 15px;
-  background-size: cover;
-  border-radius: 20px;
-  position: relative;
-} */
 
 #tableImage {
   width: 200px;

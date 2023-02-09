@@ -18,12 +18,6 @@ class Volunteer extends User
             $this->prImage[$pid] = $this->model->getProjectImage($pid);
         }
 
-        // $this->comProjects = $this->model->cardsVolunteer();
-        // foreach ($this->comProjects as $comProject) {
-        //     $pid = $comProject['P_ID'];
-        //     $this->comImage[$pid] = $this->model->getProjectImage($pid);
-        // }
-
         $this->loadModel('Ad');
         $this->ads = $this->model->getAds();
 
@@ -161,5 +155,10 @@ class Volunteer extends User
     {
         $this->loadModel('ProjectIdea');
         $this->model->deleteProjectIdea($piId);
+    }
+
+    function join_form()
+    {
+        $this->render('Volunteer/Join_form');
     }
 }

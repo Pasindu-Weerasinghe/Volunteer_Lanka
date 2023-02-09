@@ -21,11 +21,11 @@ if (!isset($_SESSION['uid'])) {
     <div class="main" id="main">
         <h2><?php echo $this->project['Name'] ?></h2><br /><br />
         <div class="container">
-            <!-- <div class="container-image">
+        <div class="container-image">
                 <?php foreach ($this->images as $image) { ?>
                     <img src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $image['Image']; ?>">
                 <?php } ?>
-            </div> -->
+            </div>
             <div class="wrapper">
                 <div class="left-div">
                     <label for="">Date</label><br>

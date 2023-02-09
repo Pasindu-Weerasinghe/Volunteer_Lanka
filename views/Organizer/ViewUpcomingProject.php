@@ -13,18 +13,18 @@ if (!isset($_SESSION['uid'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/view.css">
-    <title>Project Name</title>
+    <title><?php echo $this->project['Name'] ?></title>
 </head>
 
 <body>
-    <!-- navigationb bar -->
-    <?php include 'views/includes/navbar_log.php'; ?>
-
+<?php include 'views/includes/navbar_log.php'; ?>
     <div class="main" id="main">
-        <h2>Project Name</h2><br /><br />
+        <h2><?php echo $this->project['Name'] ?></h2><br /><br />
         <div class="container">
             <div class="container-image">
-                <image src="<?php echo BASE_URL ?>public/images/card-img1.jpg">
+                <?php foreach ($this->images as $image) { ?>
+                    <img src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $image['Image']; ?>">
+                <?php } ?>
             </div>
             <div class="wrapper">
                 <div class="left-div">
@@ -36,20 +36,26 @@ if (!isset($_SESSION['uid'])) {
                 </div>
 
                 <div class="right-div">
-                    <label id="data"><?php echo "2022-12-30"; ?></label><br>
-                    <label id="data"><?php echo '11-30 AM'; ?></label><br>
-                    <label id="data"><?php echo 'Galle'; ?></label><br>
-                    <label id="data"><?php echo '25'; ?></label><br>
-                    <label id="data"><?php echo 'Tree Planting Description'; ?></label><br>
+                    <label id="data"><?php echo $this->project['Date'] ?></label><br>
+                    <label id="data"><?php echo $this->project['Time'] ?></label><br>
+                    <label id="data"><?php echo $this->project['Venue'] ?></label><br>
+                    <label id="data"><?php echo $this->project['No_of_volunteers'] ?></label><br>
+                    <label id="data"><?php echo $this->project['Description'] ?></label><br>
                 </div>
             </div>
             <div class="btn-area">
                 <button class="btn" onclick="history.back()">Cancel Project</button>
                 <button class="btn" id="right">Postpone Project</button>
             </div>
+
         </div>
     </div>
-
 </body>
 
 </html>
+
+
+
+
+
+

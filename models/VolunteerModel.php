@@ -53,5 +53,13 @@ class VolunteerModel extends Model
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
+    function getVolunteerSearch()
+    {
+        $query = "SELECT * FROM volunteer";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
     
 }

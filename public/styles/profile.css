@@ -21,15 +21,15 @@
 .column1 {
     flex: 40%;
     padding: 20px;
-    height: 400px; /* Should be removed. Only for demonstration */
+    height: 450px; /* Should be removed. Only for demonstration */
 }
 .column2 {
     flex: 60%;
     padding: 20px;
-    height: 400px; /* Should be removed. Only for demonstration */
+    height: 450px; /* Should be removed. Only for demonstration */
 }
 
-.btn1{
+.btnpw{
 	background-color: #84b464;
 	color: #e0e0f0;
 	font-weight: bold;

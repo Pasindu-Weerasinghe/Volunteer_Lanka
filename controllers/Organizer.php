@@ -61,16 +61,16 @@ class Organizer extends User
                         $targetDir = "public/images/pi_images/";
                         $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
 
-                        if (!empty($_FILES["file"]["name"])) {
+                        if (!empty($_FILES["files"]["name"])) {
 
-                            $total = count($_FILES['file']['name']);
+                            $total = count($_FILES['files']['name']);
                             for ($i = 0; $i < $total; $i++) {
-                                $newFileName = uniqid() . '-' . $_FILES['file']['name'][$i];
+                                $newFileName = uniqid() . '-' . $_FILES['files']['name'][$i];
                                 $targetFilePath = $targetDir . $newFileName;
                                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
 
                                 if (in_array($fileType, $allowTypes)) {
-                                    if (move_uploaded_file($_FILES["file"]["tmp_name"][$i], $targetFilePath)) {
+                                    if (move_uploaded_file($_FILES["files"]["tmp_name"][$i], $targetFilePath)) {
 
                                         if ($this->model->setProjectImage($pid, $newFileName)) {
                                             $statusMsg = "The file " . $newFileName . " has been uploaded successfully.";
@@ -84,7 +84,6 @@ class Organizer extends User
                             }
                             echo $statusMsg;
                         }
-                        header('Location: '. BASE_URL);
                     } else {
                         //! project didn't get created
                     }

@@ -127,9 +127,10 @@ button4.addEventListener("click", (e) => {
 		formDataSubmission.append(key, value);
 	}
 	formDataSubmission.append("create", true);
-	// for (const [key, value] of formDataSubmission) {
-	//     console.log(key, value);
-	// }
+
+	for (const [key, value] of formDataSubmission) {
+	    console.log(key, value);
+	}
 
 	fetch("http://localhost/Volunteer_Lanka/organizer/create_project/create", {
 		method: "post",
@@ -138,6 +139,7 @@ button4.addEventListener("click", (e) => {
 		.then((response) => response.text())
 		.then((data) => {
 			console.log(data);
+			window.location.href = "http://localhost/Volunteer_Lanka/";
 		})
 		.catch((error) => console.log(error));
 });

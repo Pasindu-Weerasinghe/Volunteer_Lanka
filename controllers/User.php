@@ -48,7 +48,7 @@ class User extends Controller
         $this->loadModel('User');
         if ($this->model->setComplain($about, $des, $uid)) {
             // header('Location: ' .BASE_URL. 'volunteer/complain');
-            echo "<script>alert('Complaint sent to admin');location.href='http://localhost/Volunteer_Lanka/sponsor/complain';</script>";
+            echo "<script>alert('Complaint sent to admin');location.href='http://localhost/Volunteer_Lanka/".$this->role."/complain';</script>";
         }
     }
 

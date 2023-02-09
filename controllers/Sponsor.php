@@ -1,6 +1,11 @@
 <?php
 class Sponsor extends User
 {
+    function __construct()
+    {
+        parent::__construct();
+        $this->role = 'sponsor';
+    }
     function index()
     {
         $this->loadModel('Project');

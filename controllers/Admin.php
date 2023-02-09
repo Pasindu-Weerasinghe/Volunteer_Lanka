@@ -69,6 +69,8 @@ class Admin extends User
     }
     function create_new_admin_acc()
     {
+        $this->loadModel('User');
+        
         $this->render('Admin/create_new_admin_acc');
     }
     function view_payments()

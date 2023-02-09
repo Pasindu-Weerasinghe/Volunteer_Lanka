@@ -1,6 +1,11 @@
 <?php
 class Sponsor extends User
 {
+    function __construct()
+    {
+        parent::__construct();
+        $this->role = 'sponsor';
+    }
     function index()
     {
         $this->loadModel('Project');
@@ -47,6 +52,11 @@ class Sponsor extends User
         $this->render('Sponsor/view_sponsor_notices');
     }
 
+    function calendar()
+    {
+        $this->render('Calendar');
+    }
+
     function view_sponsor_project($pid)
     {
         $this->loadModel('project');
@@ -82,13 +92,11 @@ class Sponsor extends User
                         $this->model->setAdImage($ad_id, $fileName);
                     }
                 } else {
-                    $statusMsg = 'Only JPG, JPEG, PNG & GIF files are allowed to upload.';
+                    echo "<script>alert('Sorry! This file cannot be uploded');location.href='http://localhost/Volunteer_Lanka/sponsor/publish_advertisement';</script>";
                 }
             }
         }
-        header('Location: ' . BASE_URL . "Sponsor/index");
-
-
+    
     }
 
 }

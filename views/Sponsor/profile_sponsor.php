@@ -73,7 +73,7 @@ if (!isset($_SESSION['uid'])) {
                             <td><?php echo $this->user['Contact']; ?></td>
                         </tr>
 
-                        <button class="btnpw"> <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePsw" class="same">Change Password</a></button><br><br>
+                        <button class="btnpw"> <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePsw">Change Password</a></button><br><br>
 
                     </table>
 

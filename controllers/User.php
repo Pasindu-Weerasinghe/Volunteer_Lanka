@@ -51,6 +51,7 @@ class User extends Controller
             case 'sponsor':
                 $this->render('Complain');
                 break;
+        }
     }
 
     function setComplain()
@@ -61,7 +62,7 @@ class User extends Controller
         $uid = $_SESSION['uid'];
 
         $this->loadModel('User');
-        if($this->model->setComplain($about, $des, $uid)) {
+        if ($this->model->setComplain($about, $des, $uid)) {
             // header('Location: ' .BASE_URL. 'volunteer/complain');
             echo '<script>alert("Complaint sent to admin")</script>';
         }
@@ -79,12 +80,11 @@ class User extends Controller
         }
     }
 
-    function ChangeProfilePsw() 
+    function ChangeProfilePsw()
     {
-        if(isset($_POST['submit']))
-        {
+        if (isset($_POST['submit'])) {
             session_start();
-            $uid=$_SESSION['uid'];
+            $uid = $_SESSION['uid'];
             $this->loadModel('User');
             $cu_pw = $this->model->getCurrentPsw($uid)['Password'];
             $password = $_POST['current'];

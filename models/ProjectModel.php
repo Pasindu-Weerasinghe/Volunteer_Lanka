@@ -17,18 +17,16 @@ class ProjectModel extends Model
         return $statement->execute();
     }
 
-    
+
     function getProjects($uid)
     {
         $query = "SELECT * FROM project WHERE U_ID = '$uid'";
         $statement = $this->db->prepare($query);
-        
-        if($statement->execute()){
+
+        if ($statement->execute()) {
             // if query successful
             return $statement->fetchAll(PDO::FETCH_ASSOC);
-        } 
-
-        else{
+        } else {
             // if query failed
             return 'query failed';
         }
@@ -88,7 +86,7 @@ class ProjectModel extends Model
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
-    
+
     function getProjectImage($pid)
     {
         $query = "SELECT Image FROM pr_image WHERE P_ID = $pid";
@@ -105,22 +103,15 @@ class ProjectModel extends Model
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
-    function setProjectImages($pid, $images)
+    function setProjectImage($pid, $image)
     {
-        foreach ($images as $image) {
-            $query  =  "INSERT INTO  pr_image (P_ID, Image) VALUES ('$pid', '$image')";
-            $statement = $this->db->prepare($query);
-            $statement->execute();
-        }
-    }
-        function setProjectImage($pid, $image)
-    {
-            $query  =  "INSERT INTO  pr_image (P_ID, Image) VALUES ('$pid', '$image')";
-            $statement = $this->db->prepare($query);
-            $statement->execute();
+        $query  =  "INSERT INTO  pr_image (P_ID, Image) VALUES ('$pid', '$image')";
+        $statement = $this->db->prepare($query);
+        return $statement->execute();
     }
 
-    function getLastId(){
+    function getLastId()
+    {
         $query = "SELECT P_ID FROM project ORDER BY P_ID DESC LIMIT 1";
         $statement = $this->db->prepare($query);
         if ($statement->execute()) {
@@ -129,6 +120,5 @@ class ProjectModel extends Model
         } else {
             return 0;
         }
-
     }
 }

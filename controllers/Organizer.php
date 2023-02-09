@@ -35,6 +35,7 @@ class Organizer extends User
                     $sponsorship = $_POST['sponsorship'] == 'publish-sn' ? 1 : 0;
                     $uid = $_SESSION['uid'];
 
+                    //todo: creating the project
                     if ($this->model->setProject($pname, $date, $time, $venue, $description, $no_of_volunteers, $sponsorship, $partnership, $uid)) {
                         if (($pid = $this->model->getProjectId($pname, $uid)) != 'query failed') {
                             $_SESSION['proj_id'] = $pid;
@@ -43,19 +44,47 @@ class Organizer extends User
                             $contact = $_POST['contact-no'] ? 1 : 0;
                             $meal_pref = $_POST['meal-pref'] ? 1 : 0;
                             $prior_part = $_POST['prior-participations'] ? 1 : 0;
-                            
+
                             // setting volunteer form
                             $this->model->setVolunteerForm($pid, $email, $contact, $meal_pref, $prior_part);
                         }
 
-                        if($partnership) {
+                        if ($partnership) {
                             //? if project is a collaboration
                         }
 
-                        if($sponsorship) {
+                        if ($sponsorship) {
                             //? if project is sponsored
                         }
 
+                        //todo: if there are images to upload
+                        $targetDir = "public/images/pi_images/";
+                        $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+
+                        if (!empty($_FILES["file"]["name"])) {
+
+                            $total = count($_FILES['file']['name']);
+                            for ($i = 0; $i < $total; $i++) {
+                                $newFileName = uniqid() . '-' . $_FILES['file']['name'][$i];
+                                $targetFilePath = $targetDir . $newFileName;
+                                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+
+                                if (in_array($fileType, $allowTypes)) {
+                                    if (move_uploaded_file($_FILES["file"]["tmp_name"][$i], $targetFilePath)) {
+
+                                        if ($this->model->setProjectImage($pid, $newFileName)) {
+                                            $statusMsg = "The file " . $newFileName . " has been uploaded successfully.";
+                                        } else {
+                                            $statusMsg = "File upload failed, please try again.";
+                                        }
+                                    }
+                                } else {
+                                    $statusMsg = 'Only JPG, JPEG, PNG & GIF files are allowed to upload.';
+                                }
+                            }
+                            echo $statusMsg;
+                        }
+                        header('Location: '. BASE_URL);
                     } else {
                         //! project didn't get created
                     }

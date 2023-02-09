@@ -29,9 +29,9 @@ class Volunteer extends User
 
         foreach ($this->ads as $ad) {
             $adid = $ad['AD_ID'];
-            $this->adImage[$adid] = $this->model->getAdImage($adid);  
+            $this->adImage[$adid] = $this->model->getAdImage($adid);
         }
-        
+
         $this->loadModel('Sponsor');
         foreach ($this->ads as $ad) {
             $uid = $ad['Sponsor'];
@@ -109,14 +109,12 @@ class Volunteer extends User
 
     function search_organizer()
     {
-        if (isset ($_POST['search'])) {
+        if (isset($_POST['search'])) {
 
             $key = trim($_POST['key']);
             $this->loadModel('Organizer');
             $this->organizers = $this->model->searchOrganizers($key);
-        }
-
-        else {
+        } else {
             $this->loadModel('Organizer');
             $this->organizers = $this->model->getOrganizerData();
         }
@@ -135,9 +133,9 @@ class Volunteer extends User
         $this->model->setProjectIdea($description, $location, $uid);
 
         $pi_id = $this->model->getPiId($uid, $location);
- 
+
         $targetDir = "public/images/pi_images/";
-        $allowTypes = array('jpg','png','jpeg','gif');
+        $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
 
         if (!empty($_FILES["file"]["name"])) {
 
@@ -145,19 +143,18 @@ class Volunteer extends User
             for ($i = 0; $i < $total; $i++) {
                 $fileName = $_FILES['file']['name'][$i];
                 $targetFilePath = $targetDir . $fileName;
-                $fileType =  strtolower(pathinfo($targetFilePath,PATHINFO_EXTENSION));
-    
-                if(in_array($fileType, $allowTypes)){
-                    if(move_uploaded_file($_FILES["file"]["tmp_name"][$i], $targetFilePath)){
+                $fileType =  strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
+
+                if (in_array($fileType, $allowTypes)) {
+                    if (move_uploaded_file($_FILES["file"]["tmp_name"][$i], $targetFilePath)) {
                         $this->model->setPiImage($pi_id, $fileName);
                     }
-                }else{
+                } else {
                     $statusMsg = 'Only JPG, JPEG, PNG & GIF files are allowed to upload.';
                 }
             }
         }
-        header('Location: ' .BASE_URL. 'volunteer/new_ideas');
-        
+        header('Location: ' . BASE_URL . 'volunteer/new_ideas');
     }
 
     function delete_ideas($piId)
@@ -165,6 +162,4 @@ class Volunteer extends User
         $this->loadModel('ProjectIdea');
         $this->model->deleteProjectIdea($piId);
     }
-
-
 }

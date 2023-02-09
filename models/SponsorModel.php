@@ -2,7 +2,6 @@
 
 class SponsorModel extends Model
 {
-
     function __construct()
     {
         parent::__construct();
@@ -29,9 +28,7 @@ class SponsorModel extends Model
         $statement = $this->db->prepare($query);
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
-
     }
-}
 
     function getSponsorName($uid)
     {
@@ -40,5 +37,4 @@ class SponsorModel extends Model
         $statement->execute();
         return $statement->fetch();
     }
-
 }

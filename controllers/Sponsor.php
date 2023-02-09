@@ -51,7 +51,44 @@ class Sponsor extends User
     {
         $this->loadModel('project');
         $this->project= $this->model->getProject($pid);
+        $this->images = $this->model->getProjectImage($pid);
         $this->render('Sponsor/view_projects_sponsor');
+    }
+
+    function uploadAdvertisement()
+    {
+        session_start();
+        $description= $_POST['des'];
+        $uid = $_SESSION['uid'];
+
+        $this->loadModel('Ad');
+        $this->model ->setAd($description, $uid);
+
+        $ad_id = $this->model->getAdId($uid, $description);
+
+        $targetDir = "public/images/ad_images/";
+        $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+
+        if (!empty($_FILES["file"]["name"])) {
+
+            $total = count($_FILES['file']['name']);
+            for ($i = 0; $i < $total; $i++) {
+                $fileName = $_FILES['file']['name'][$i];
+                $targetFilePath = $targetDir . $fileName;
+                $fileType =  strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
+
+                if (in_array($fileType, $allowTypes)) {
+                    if (move_uploaded_file($_FILES["file"]["tmp_name"][$i], $targetFilePath)) {
+                        $this->model->setAdImage($ad_id, $fileName);
+                    }
+                } else {
+                    $statusMsg = 'Only JPG, JPEG, PNG & GIF files are allowed to upload.';
+                }
+            }
+        }
+        header('Location: ' . BASE_URL . "Sponsor/publish_advertisement");
+
+
     }
 
 }

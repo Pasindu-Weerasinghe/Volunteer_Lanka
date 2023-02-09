@@ -67,11 +67,29 @@ class Admin extends User
 
         $this->render('Admin/complaints');
     }
-    function create_new_admin_acc()
+    function create_new_admin_acc($action = null)
     {
-        $this->loadModel('User');
-        
-        $this->render('Admin/create_new_admin_acc');
+        switch($action) {
+            case null:
+                $this->render('Admin/create_new_admin_acc');
+                break;
+            case 'create':
+                if(isset($_POST['create'])){
+                    $email=$_POST['email'];
+                    $psw=$_POST['psw'];
+                    $confirm_psw=$_POST['confirm-psw'];
+                    $role=$_POST['role'];  
+                    if($psw==$confirm_psw){
+                        $this->loadModel('User');
+                        $hash_psw=password_hash($psw,PASSWORD_BCRYPT);
+                        if($this->model-> setUser($email, $hash_psw, $role)) {
+                            header('Location: '.BASE_URL);
+                        }
+                    }
+                }
+
+
+        }
     }
     function view_payments()
     {

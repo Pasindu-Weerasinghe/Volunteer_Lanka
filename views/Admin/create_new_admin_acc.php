@@ -18,7 +18,7 @@ if (!isset($_SESSION['uid'])) {
 
 <body>
     <?php include 'views/includes/navbar_log.php'; ?>
-    <form action="n_acc.php" method="POST">
+    <form action="<?php echo BASE_URL ?>admin/create_new_admin_acc/create" method="POST">
         <div class="main" id="main">
             <h2>Create New Admin Accounts</h2>
             <div id="com-box">

@@ -86,7 +86,7 @@ class Sponsor extends User
                 }
             }
         }
-        header('Location: ' . BASE_URL . "Sponsor/publish_advertisement");
+        header('Location: ' . BASE_URL . "Sponsor/index");
 
 
     }

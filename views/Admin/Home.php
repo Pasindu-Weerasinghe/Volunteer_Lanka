@@ -35,14 +35,14 @@ session_start();
 
         <h2>Complaints</h2><br><br>
         <?php
-        foreach ($this->complaints as $complaint){
+        foreach ($this->complaints as $complaint) {
         ?>
             <div id="c-box">
-                <div id="c-box-item" >
+                <div id="c-box-item">
                     <h3 id="uname">Pasindu Weerasinghe</h3>
                     <button id="c-view-btn">View</button>
                 </div>
-                <p id="c-box-des">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates fuga repellat quaerat natus reprehenderit reiciendis quidem rem error, deserunt adipisci saepe explicabo. Fugit, delectus? Dolorem cupiditate saepe quae laborum quibusdam?</p>
+                <p id="c-box-des"> I am writing to report a user on your system who has been behaving inappropriately. The user's username is Rotract Club Galle. I have included evidence of their behavior below and screenshots or other evidence. I believe that this behavior is in violation of your terms of service and I request that you take appropriate action. Thank you for your attention to this matter.</p>
             </div>
         <?php
         }

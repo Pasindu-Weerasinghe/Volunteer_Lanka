@@ -37,7 +37,6 @@ if (!isset($_SESSION['uid'])) {
         </section>
         <br>
         <!-- <button id="back-btn" onclick="window.location.href='<?php echo BASE_URL ?> '">Back</button> -->
-        <button onclick="history.back()" id="back-btn">Back</button>
         <br><br>
     </div>
 

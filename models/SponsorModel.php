@@ -7,6 +7,13 @@ class SponsorModel extends Model
         parent::__construct();
     }
 
+    function getSponsorbyId($id){
+        $query = "SELECT Name FROM sponsor WHERE U_ID=$id";
+           $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
     function setSponsor($uid, $name, $address, $contact, $type)
     {
         $query = "INSERT INTO sponsor (U_ID, Name, Address, Contact, Type ) values ('$uid','$name','$address', '$contact', '$type')";

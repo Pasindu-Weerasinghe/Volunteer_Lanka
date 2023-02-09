@@ -90,5 +90,4 @@ class UserModel extends Model
         $statement = $this->db->prepare($query);
         return $statement->execute();
     }
-
 }

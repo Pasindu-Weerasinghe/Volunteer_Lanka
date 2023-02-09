@@ -44,8 +44,8 @@ if (!isset($_SESSION['uid'])) {
                 </div>
             </div>
             <div class="btn-area">
-                <button onclick="history.back()" class="btn">Back</button>
-                <button class="btn" id="join"><a href="join_form.php">Join</a></button>
+                <button class="btn" onclick="history.back()">Back</button>
+                <button class="btn" id="right"><a href="<?php echo BASE_URL ?>volunteer/join_form">Join Project</a></button>
             </div>
 
         </div>

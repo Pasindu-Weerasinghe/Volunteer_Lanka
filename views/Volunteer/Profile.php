@@ -34,7 +34,7 @@ if (!isset($_SESSION['uid'])) {
         <h2>Volunteer Profile</h2><br><br>
         <div class="container">
             <div class="column1">
-                <img class="image" src="images/profile_pic.jpeg" /><br><br>
+                <img class="image" src="<?php echo BASE_URL ?>public/images/icon.jpg" /><br><br>
                 <label class="sub2"> <?php echo $this->user['Name']; ?></label><br><br>
                 <label class="sub3">Projects Volunteered : 8</label>
             </div>

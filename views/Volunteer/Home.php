@@ -33,7 +33,7 @@ if (!isset($_SESSION['uid'])) {
                 <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image']?>"></div>
                     <h2><?php echo ($project["Name"]); ?></h2>
                     <p><?php echo ($project["Date"]); ?></p>
-                    <a class="btn" href="volunteer/view_projects/<?php echo $project['P_ID'] ?>">View</a>
+                    <a class="btn" href="<?php echo BASE_URL ?>volunteer/view_projects/<?php echo $project['P_ID'] ?>">View</a>
                 </div>
             <?php } ?>
         </section>
@@ -47,7 +47,7 @@ if (!isset($_SESSION['uid'])) {
                     <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image']?>"></div>
                     <h2><?php echo ($project["Name"]); ?></h2>
                     <p><?php echo ($project["Date"]); ?></p>
-                    <a class="btn" href="volunteer/view_projects/<?php echo $project['P_ID'] ?>">View</a>
+                    <a class="btn" href="<?php echo BASE_URL ?>volunteer/view_projects/<?php echo $project['P_ID'] ?>">View</a>
                 </div>
             <?php } ?>
         </section>

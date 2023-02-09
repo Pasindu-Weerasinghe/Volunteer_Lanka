@@ -156,4 +156,9 @@ class Volunteer extends User
         $this->loadModel('ProjectIdea');
         $this->model->deleteProjectIdea($piId);
     }
+
+    function join_form()
+    {
+        $this->render('Volunteer/Join_form');
+    }
 }

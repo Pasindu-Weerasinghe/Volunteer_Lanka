@@ -24,9 +24,9 @@ if (!isset($_SESSION['uid'])) {
                 <span id="slide-2"></span>
                 <span id="slide-3"></span>
                 <div class="image-container">
-                    <img src="<?php echo BASE_URL ?>public/images/tree.jpg" class="slide" width="500" height="300" />
-                    <img src="<?php echo BASE_URL ?>public/images/card-img2.jpg" class="slide" width="500" height="300" />
-                    <img src="<?php echo BASE_URL ?>public/images/card-img3.jpg" class="slide" width="500" height="300" />
+                    <img src="<?php echo BASE_URL ?>public/images/pr_images/wild.jpg" class="slide" width="500" height="300" />
+                    <img src="<?php echo BASE_URL ?>public/images/pr_images/tree.jpg" class="slide" width="500" height="300" />
+                    <img src="<?php echo BASE_URL ?>public/images/pr_images/cleaning.jpg" class="slide" width="500" height="300" />
                 </div>
                 <div class="buttons">
                     <a href="#slide-1"></a>

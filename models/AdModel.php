@@ -36,8 +36,11 @@ class AdModel extends Model
         $query = "INSERT into ad_image (AD_ID, Image) VALUES ('$adid[0]','$image')";
         $statement = $this->db->prepare($query);
         if($statement->execute()){
-            header('Location: ' . BASE_URL . "Sponsor/Home");
+            //header('Location: ' . BASE_URL . "Sponsor/index");
+            echo "<script>alert('Successfully upload the advertisement');location.href='http://localhost/Volunteer_Lanka/sponsor/publish_advertisement';</script>";
+
         }
+        
 
     }
 

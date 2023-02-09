@@ -10,6 +10,12 @@ class Organizer extends User
 
     function index()
     {
+        $this->loadModel('Project');
+        $this->projects = $this->model->cardsVolunteer();
+        foreach ($this->projects as $project) {
+            $pid = $project['P_ID'];
+            $this->prImage[$pid] = $this->model->getProjectImage($pid);
+        }
         $this->render('Organizer/Home');
     }
 
@@ -127,14 +133,27 @@ class Organizer extends User
 
     function upcoming_projects()
     {
-        $this->loadModel('Project');
         session_start();
+        $this->loadModel('Project');
         $this->projects = $this->model->getProjects($_SESSION['uid']);
+        foreach ($this->projects as $project) {
+            $pid = $project['P_ID'];
+            $this->prImage[$pid] = $this->model->getProjectImage($pid);
+        }
+
         $this->render('Organizer/UpcomingProjects');
     }
+    
 
     function completed_projects()
     {
+        session_start();
+        $this->loadModel('Project');
+        $this->projects = $this->model->getProjects($_SESSION['uid']);
+        foreach ($this->projects as $project) {
+            $pid = $project['P_ID'];
+            $this->prImage[$pid] = $this->model->getProjectImage($pid);
+        }
         $this->render('Organizer/CompletedProjects');
     }
 
@@ -177,4 +196,13 @@ class Organizer extends User
 
         $this->render('Organizer/Blog');
     }
+
+    function view_projects($pid)
+    {
+        $this->loadModel('Project');
+        $this->project = $this->model->getProject($pid);
+        $this->images = $this->model->getProjectImage($pid);
+        $this->render('Organizer/ViewUpcomingProject');
+    }
+
 }

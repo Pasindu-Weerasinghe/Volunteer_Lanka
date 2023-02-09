@@ -42,8 +42,9 @@ if (!isset($_SESSION['uid'])) {
                 <h3><?php echo $idea['Location'] ?></h3>
                 </p>
                 <p id="description"><?php echo $idea['Description'] ?></p>
-
+                
             </div>
+            <br/>
         <?php } ?>
 
 

@@ -28,18 +28,7 @@ class User extends Controller
 
     function search_user()
     {
-        switch ($this->role) {
-            case 'organizer':
-                $this->render('SearchUser');
-                break;
-
-            case 'volunteer':
-                $this->render('SearchUser');
-                break;
-
-            default:
-                break;
-        }
+        $this->render('Search_user');
     }
 
     function complain()

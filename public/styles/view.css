@@ -1,3 +1,8 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 .container {
     background-color: #96c7d6;
     border-radius: 20px;
@@ -71,6 +76,11 @@
     float: right;
 }
 
+a {
+    text-decoration: none;
+    color: white;
+}
+
 
 /* h2, p{
     margin: 10px 10px 0 10px;
@@ -81,4 +91,43 @@ h3, h4 {
 
 .main {
     padding: 100px 150px 0 150px;
+}
+
+.p1{
+	font-size: 16pt;
+}
+
+.p1{
+	font-size: 16pt;
+}
+
+.image2{
+	width: 50%;
+	height: 50%;
+	margin-left: 18%;
+}
+
+.btn4{
+	background-color: #84b464;
+	color: black;
+	font-weight: bold;
+	border: none;
+	border-radius: 10px;
+	padding: 5px 10px;
+	text-align: center;
+	display: inline-block;
+	font-family: "Poppins", sans-serif;
+	font-size: 14px;
+	margin: auto;
+	width: 155px;
+	height: 45px;
+}
+
+form{
+	border: solid;
+	border-radius: 30px;
+	width: 70%;
+	height: 80%;
+	padding: 30px;
+	background-color: rgba(157, 156, 156, 0.709);
 }

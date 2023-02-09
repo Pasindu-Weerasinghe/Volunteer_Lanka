@@ -20,4 +20,45 @@ class ProjectIdeaModel extends Model {
             return $statement->fetchAll(PDO::FETCH_ASSOC);
         }
     }
+
+    function getProjectIdea($uid)
+    {
+        $query = "SELECT * FROM pr_ideas WHERE U_ID = '$uid'";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function setProjectIdea($description, $location, $uid)
+    {
+        $query = "INSERT INTO pr_ideas (Description, Location, U_ID) VALUES ('$description', '$location', '$uid')";
+        $statement = $this->db->prepare($query);
+        return $statement->execute();
+    }
+
+    function setPiImage($piid, $image)
+    {
+        $query = "INSERT into idea_image (PI_ID, Image) VALUES ('$piid[0]','$image')";
+        $statement = $this->db->prepare($query);
+        if($statement->execute()){
+            header('Location: ' . BASE_URL . "volunteer/New_ideas");
+        }
+    }
+
+    function deleteProjectIdea($piid)
+    {
+        $query = "DELETE FROM pr_ideas WHERE PI_ID = '$piid'";
+        $statement = $this->db->prepare($query);
+        if($statement->execute()) {
+            header('Location: ' . BASE_URL . "volunteer/New_ideas");
+        }
+    }
+
+    function getPiId($uid, $location)
+    {
+        $query = "SELECT PI_ID FROM pr_ideas WHERE U_ID = '$uid' && Location = '$location'";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetch();
+    }
 }

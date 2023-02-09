@@ -3,16 +3,10 @@ session_start();
 if (!isset($_SESSION['uid'])) {
     header('Location: ' . BASE_URL);
 }
-$host = 'localhost';
-$user = 'root';
-$pass = '';
-$db = 'volunteer_lanka';
-$conn = mysqli_connect($host, $user, $pass, $db);
 
-
-$sql = "SELECT * FROM organizer";
-$result = mysqli_query($conn, $sql);
-$organizers = mysqli_fetch_all($result, MYSQLI_ASSOC);
+// $sql = "SELECT * FROM organizer";
+// $result = mysqli_query($conn, $sql);
+// $organizers = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 ?>
 
@@ -32,8 +26,10 @@ $organizers = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
     <div id="main" class="main">
         <div class="search-container">
-            <input type="text" name="search">
-            <button name="search"><b>Search<b></button>
+            <form action="<?php echo BASE_URL; ?>volunteer/search_organizer" method="post">
+                <input type="text" name="key">
+                <button name="search"><b>Search<b></button>
+            </form>
         </div><br><br>
         <table>
             <tr>
@@ -41,7 +37,7 @@ $organizers = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 <th>Branch</th>
                 <th>Contact Number</th>
             </tr>
-            <?php foreach ($organizers as $organizer) { ?>
+            <?php foreach ($this->organizers as $organizer) { ?>
                 <tr>
                     <td><?php echo ($organizer["Name"]); ?></td>
                     <td><?php echo ($organizer["Branch"]); ?></td>

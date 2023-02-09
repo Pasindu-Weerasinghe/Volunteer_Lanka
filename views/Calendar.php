@@ -19,12 +19,12 @@ if (!isset($_SESSION['uid'])) {
 <body>
     <?php include 'views/includes/navbar_log.php'; ?>
 
-    <div class="main">
+    <div id="main" class="main">
         <div class="container">
             <div class="calendar-month">
                 <section class="calendar-month-header">
                     <div id="selected-month" class="calendar-month-header-selected-month">
-                        December 2022
+                        February 2023
                     </div>
                 </section>
 

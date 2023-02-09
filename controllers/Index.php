@@ -137,14 +137,48 @@ class Index extends Controller
                         break;
 
                     case 'volunteer':
+                        $name = $_POST['name'];
+                        $address = $_POST['address'];
+                        $contact = $_POST['contact'];
+                        $interest = $_POST['area'];
+                        $organ = $_POST['org'];
+                        $this->loadModel('Volunteer');
+                        if ($this->model->setVolunteer($uid, $name, $address, $contact)) {
+                            foreach ($interest as $area) {
+                                $this->model->setInterest($uid, $area);
+                            }
+                            foreach ($organ as $organise) {
+                                $this->model->setOrganization($uid, $organise);
+                            }
+                            session_destroy();
+                            header('Location: ' . BASE_URL . 'index/login');
+                        } else {
+                            // if volunteer data insert failed
+                        }
                         break;
 
                     case 'sponsor':
+                        $name = $_POST['name'];
+                        $contact = $_POST['contact'];
+                        $address = $_POST['address'];
+                        $type = $_POST['type'];
+                        $this->loadModel('Sponsor');
+                        if ($this->model->setSponsor($uid, $name, $address, $contact, $type)) {
+                            // if organizer data insert successfull
+                            session_destroy();
+                            header('Location: ' . BASE_URL . 'index/login');
+                        } else {
+                            // if organizer data insert failed
+                        }
+
                         break;
                 }
             } else {
                 // if user data insert failed
             }
+        }
+        else{
+            echo 'mdksmksmdksm';
         }
     }
 
@@ -172,7 +206,7 @@ class Index extends Controller
                     }
                 }
                 break;
-            
+
             case 'otp-view':
                 $this->render('OTPConfirm');
                 break;
@@ -213,4 +247,6 @@ class Index extends Controller
                 break;
         }
     }
+
+    
 }

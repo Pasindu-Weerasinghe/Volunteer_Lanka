@@ -16,8 +16,8 @@ publish
 form{
 	flex-direction: column;
 	border-radius: 20px;
-	/* width: 70%;
-	height: 65%; */
+	 width: 70%;
+	height: 65%; 
 	padding: 30px;
 	background-color: #96c7d6;
 	margin: center;
@@ -48,7 +48,7 @@ h2{
 	left: 16%;
 }
 
-.btn1,.btn2{
+.btn4{
 	background-color: #84b464;
 	color: #e0e0f0;
 	font-weight: bold;

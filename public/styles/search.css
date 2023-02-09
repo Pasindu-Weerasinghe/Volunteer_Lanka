@@ -29,6 +29,8 @@ button {
 
 input[type=text] {
     width: 400px;
+    padding: 20px;
+    font-size: 20px;
     border: solid;
     border-color: rgb(102, 100, 100);
     border-width: 2px;

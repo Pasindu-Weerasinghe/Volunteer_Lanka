@@ -27,7 +27,7 @@ if (!isset($_SESSION['uid'])) {
             <div class="request">
 
                 <div id="volunteer">
-                    <img src="<?php echo BASE_URL; ?>public/images/org_image.png">
+                    <img src="<?php echo BASE_URL; ?>public/images/icon.jpg">
                     <div>
                         <h3><?php echo $this->pi_vol_name[$idea['PI_ID']]; ?></h3>
                     </div>

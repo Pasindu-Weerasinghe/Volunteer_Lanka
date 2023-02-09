@@ -33,11 +33,26 @@ if (!isset($_SESSION['uid'])) {
                 <th>Address</th>
                 <th>Contact Number</th>
             </tr>
-                <tr>
-                    <td>Binula Rasanjith</td>
-                    <td>Kirillawala</td>
-                    <td>0765432123</td>
-                </tr>
+            <tr>
+                <td>Binula Rasanjith</td>
+                <td>Kirillawala</td>
+                <td>0765432123</td>
+            </tr>
+            <tr>
+                <td>Nethmie Imanya</td>
+                <td>Gampaha</td>
+                <td>0711503122</td>
+            </tr>
+            <tr>
+                <td>Pasindu Weerasinghe</td>
+                <td>Alawwa</td>
+                <td>0776545328</td>
+            </tr>
+            <tr>
+                <td>Hasindu Sudeepana</td>
+                <td>Malabe</td>
+                <td>0773088079</td>
+            </tr>
         </table>
     </div>
 </body>

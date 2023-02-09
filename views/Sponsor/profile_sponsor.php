@@ -32,7 +32,7 @@ if (!isset($_SESSION['uid'])) {
         <h2>Sponsor Profile</h2><br><br>
         <div class="row">
                 <div class="column1">
-                    <img class="image" src="<?php echo BASE_URL ?>public/images/profile.jpg" /><br><br>
+                    <img class="image" src="<?php echo BASE_URL ?>public/images/logoOrg.jpeg" /><br><br>
                     <table>
                         <tr>
                             <td><?php echo $this->user['Name']; ?></td>

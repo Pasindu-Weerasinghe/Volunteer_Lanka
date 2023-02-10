@@ -40,9 +40,7 @@ if (!isset($_SESSION['uid'])) {
         
         <!-- ***posts*** -->
         <div class="post-container">
-            <center>
                 <h2 class="post-header">Tree Planting Campaign</h2>
-            </center>
             <div class="post-images">
                 <img src="<?php echo BASE_URL; ?>public/images/card-img1.jpg">
                 <img src="<?php echo BASE_URL; ?>public/images/card-img2.jpg">
@@ -54,9 +52,7 @@ if (!isset($_SESSION['uid'])) {
         </div>
 
         <div class="post-container">
-            <center>
                 <h2 class="post-header">Beach Cleaning</h2>
-            </center>
             <div class="post-images">
                 <img src="<?php echo BASE_URL; ?>public/images/pr_images/cleaning.jpg">
             </div>

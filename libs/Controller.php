@@ -4,6 +4,7 @@ class Controller
 {
     function __construct()
     {
+        $this->model = null;
     }
 
     public function render($view)

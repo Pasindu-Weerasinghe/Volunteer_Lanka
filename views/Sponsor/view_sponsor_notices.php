@@ -13,82 +13,88 @@ if (!isset($_SESSION['uid'])) {
 </head>
 
 <body>
-<?php include 'views/includes/navbar_log.php'; ?>
+    <?php include 'views/includes/navbar_log.php'; ?>
     <div class="main" id="main">
-    <h2>Beach Cleaning</h2><br>
+        <h2>Beach Cleaning</h2><br>
 
         <div class="container">
-        <div>
-            <div class="slider">
-                <span id="slide-1"></span>
-                <span id="slide-2"></span>
-                <span id="slide-3"></span>
-                <div class="image-container">
-                    <img src="<?php echo BASE_URL ?>public/images/pr_images/cleaning.jpg" class="slide" width="500" height="300" />
-                    <img src="<?php echo BASE_URL ?>public/images/pr_images/tree.jpg" class="slide" width="500" height="300" />
-                    <img src="<?php echo BASE_URL ?>public/images/pr_images/clean.jpeg" class="slide" width="500" height="300" />
+            <div>
+                <div class="slider">
+                    <span id="slide-1"></span>
+                    <span id="slide-2"></span>
+                    <span id="slide-3"></span>
+                    <div class="image-container">
+                        <img src="<?php echo BASE_URL ?>public/images/pr_images/cleaning.jpg" class="slide" width="500" height="300" />
+                        <img src="<?php echo BASE_URL ?>public/images/pr_images/tree.jpg" class="slide" width="500" height="300" />
+                        <img src="<?php echo BASE_URL ?>public/images/pr_images/clean.jpeg" class="slide" width="500" height="300" />
+                    </div>
+                    <div class="buttons">
+                        <a href="#slide-1"></a>
+                        <a href="#slide-2"></a>
+                        <a href="#slide-3"></a>
+                    </div>
                 </div>
-                <div class="buttons">
-                    <a href="#slide-1"></a>
-                    <a href="#slide-2"></a>
-                    <a href="#slide-3"></a>
-                </div>
+
+
+                <table class="table1">
+                    <tr>
+                        <td>Date</td>
+                        <td>: 11/10/2022</td>
+                    </tr>
+                    <tr>
+                        <td>Time</td>
+                        <td>: 10.00 AM</td>
+                    </tr>
+                    <tr>
+                        <td>Venue</td>
+                        <td>: Galle</td>
+                    </tr>
+                    <tr>
+                        <td>Organizer</td>
+                        <td>: Rotaract Club UOM</td>
+                    </tr>
+                    <tr>
+                        <td>Number of Volunteers</td>
+                        <td>: 5</td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td>: Beach cleaning campaign is organized at Unawatuna beach</td><br>
+                    </tr>
+                </table>
             </div>
 
+            <p class="para">Select sponsor package below</p><br><br>
 
-            <table class="table1">
-                <tr>
-                    <td>Date</td>
-                    <td>: 11/10/2022</td>
-                </tr>
-                <tr>
-                    <td>Time</td>
-                    <td>: 10.00 AM</td>
-                </tr>
-                <tr>
-                    <td>Venue</td>
-                    <td>: Galle</td>
-                </tr>
-                <tr>
-                    <td>Organizer</td>
-                    <td>: Rotaract Club UOM</td>
-                </tr>
-                <tr>
-                    <td>Number of Volunteers</td>
-                    <td>: 5</td>
-                </tr>
-                <tr>
-                    <td>Description</td>
-                    <td>: Beach cleaning campaign is organized at Unawatuna beach</td><br>
-                </tr>
-            </table>
-        </div>
+            <div class="silver">
+                <input type="radio" name="individual">
+                <strong>Silver</strong><br>
+                <strong>Price: 2000.00</strong>
+            </div>
 
-        <p class="para">Select sponsor package below</p><br><br>
+            <div class="silver">
+                <input type="radio" name="individual">
+                <strong>Gold</strong><br>
+                <strong>Price: 1000.00</strong>
+            </div>
 
-        <div class="silver">
-            <input type="radio" name="individual">
-            <strong>Silver</strong><br>
-            <strong>Price: 2000.00</strong>
-        </div>
+            <div class="silver">
+                <input type="radio" name="individual">
+                <strong>Platinum</strong><br>
+                <strong>Price: 500.00</strong>
+            </div><br><br>
 
-        <div class="silver">
-            <input type="radio" name="individual">
-            <strong>Gold</strong><br>
-            <strong>Price: 1000.00</strong>
-        </div>
+            <!-- <div>
+                <br><br>
+                <button class="btn1"><a href="#">Cancel</a></button>
+                <button class="btn2"><a href="#">Confirm</a></button>
 
-        <div class="silver">
-            <input type="radio" name="individual">
-            <strong>Platinum</strong><br>
-            <strong>Price: 500.00</strong>
-        </div>
+            </div> -->
 
-        <div>
-            <br><br>
-            <button class="btn1"><a href="#">Cancel</a></button>
-            <button class="btn2"><a href="#">Confirm</a></button>
-        </div>
+            <div class="btn-area">
+                <button onclick="history.back()" class="btn1">Cancel</button>
+                <button class="btn2"><a href="#">Confirm</a></button>
+            </div>
 
         </div>
     </div>

@@ -22,7 +22,7 @@ if (!isset($_SESSION['uid'])) {
     <div id="main" class="main">
         <h2>Complain to Admin</h2><br />
         <h3>Your complaint will be considered by one of our admins. Do not provide false information in the below form.</h3>
-        <form action="setComplain" method="post">
+        <form action="setComplain" method="post" id="form2">
             <div class="container">
                 <h3>Send us your complaint</h3><br>
                 <hr>

@@ -146,13 +146,17 @@
 }
 
 form {
-    border: 2px solid #f1f1f1;
+    /* border: 2px solid #f1f1f1; */
     width: 600px;   
     margin: auto;  
     margin-top: 20px;
-    padding: 70px;  
+    /* padding: 70px;   */
     background: #96c7d6;  
     border-radius: 15px ;
+}
+
+#form2 {
+	padding: 70px;
 }
 
 select {

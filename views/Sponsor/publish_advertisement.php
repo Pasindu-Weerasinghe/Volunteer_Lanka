@@ -21,7 +21,7 @@ if (!isset($_SESSION['uid'])) {
         <h1>Publish Advertisement</h1><br />
         <p class="p1">You can publish your company's adverisement from here. It will be sent to our admins and get published after they accept</p> <br />
         <div class="container-image">
-            <form action="<?php echo BASE_URL; ?>Sponsor/uploadAdvertisement" method="post" enctype="multipart/form-data">
+            <form action="<?php echo BASE_URL; ?>Sponsor/uploadAdvertisement" method="post" enctype="multipart/form-data" id="form2">
             <strong>
                 <h2>Upload Advertisement</h2>
             </strong> <br/><hr>

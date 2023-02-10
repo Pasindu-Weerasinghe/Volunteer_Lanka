@@ -82,10 +82,10 @@ class User extends Controller
                     $this->model->changeUserPsw($uid, $new1);
                     $this->error = "Password Updated Successfully";
                 } else {
-                    $this->error = "password did not match";
+                    $this->error = "Passwords did not match";
                 }
             } else {
-                $this->error = "OLD PW is not match";
+                $this->error = "Existing password is incorrect";
             }
             
         }

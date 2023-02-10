@@ -128,25 +128,16 @@ if (!isset($_SESSION['uid'])) {
                         <span>25</span>
                     </li>
                     <li class="calendar-day">
-                        <span>26</span>
+                        <span>26</span></span><br><br>
+                        <a href="#">
+                            <center><b style="color: red;">Beach cleaning</b></center>
+                        </a>
                     </li>
                     <li class="calendar-day">
                         <span>27</span>
                     </li>
                     <li class="calendar-day">
                         <span>28</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>29</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>30</span><br><br>
-                        <a href="#">
-                            <center><b style="color: red;">Beach cleaning</b></center>
-                        </a>
-                    </li>
-                    <li class="calendar-day">
-                        <span>31</span>
                     </li>
                 </ol>
             </div>

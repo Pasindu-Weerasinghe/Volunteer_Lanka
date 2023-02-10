@@ -22,7 +22,7 @@ if (!isset($_SESSION['uid'])) {
 
         <form method="POST" action="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePsw">
         <strong>
-                <h2>Chnage Profile Password</h2>
+                <h2>Change Profile Password</h2>
             </strong><hr><br>
             <p>Existing password<br />
                 <input type="password" class="box" name="current" required />

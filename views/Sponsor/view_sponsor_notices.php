@@ -15,7 +15,7 @@ if (!isset($_SESSION['uid'])) {
 <body>
 <?php include 'views/includes/navbar_log.php'; ?>
     <div class="main" id="main">
-    <h2>Sponsor Notices</h2><br>
+    <h2>Beach Cleaning</h2><br>
 
         <div class="container">
         <div>
@@ -24,9 +24,9 @@ if (!isset($_SESSION['uid'])) {
                 <span id="slide-2"></span>
                 <span id="slide-3"></span>
                 <div class="image-container">
-                    <img src="<?php echo BASE_URL ?>public/images/pr_images/wild.jpg" class="slide" width="500" height="300" />
-                    <img src="<?php echo BASE_URL ?>public/images/pr_images/tree.jpg" class="slide" width="500" height="300" />
                     <img src="<?php echo BASE_URL ?>public/images/pr_images/cleaning.jpg" class="slide" width="500" height="300" />
+                    <img src="<?php echo BASE_URL ?>public/images/pr_images/tree.jpg" class="slide" width="500" height="300" />
+                    <img src="<?php echo BASE_URL ?>public/images/pr_images/clean.jpeg" class="slide" width="500" height="300" />
                 </div>
                 <div class="buttons">
                     <a href="#slide-1"></a>
@@ -59,12 +59,12 @@ if (!isset($_SESSION['uid'])) {
                 </tr>
                 <tr>
                     <td>Description</td>
-                    <td>:________________________________________</td><br>
+                    <td>: Beach cleaning campaign is organized at Unawatuna beach</td><br>
                 </tr>
             </table>
         </div>
 
-        <p class="para">Select sponsor package bellow</p><br><br>
+        <p class="para">Select sponsor package below</p><br><br>
 
         <div class="silver">
             <input type="radio" name="individual">

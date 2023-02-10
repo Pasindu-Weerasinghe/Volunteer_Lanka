@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 ?>
 
@@ -66,7 +66,7 @@ session_start();
                 <label for="area1">I have read and understand the <a href="#">terms and conditions</a> and will add here to them</label><br /><br />
 
 
-                <div class="buttons">
+                <div class="clearfix">
                     <button class="cancel"><b>Cancel</b></button>
                     <button name="submit" class="next"><b>Submit</b></button>
                 </div>

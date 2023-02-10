@@ -19,7 +19,7 @@
 <?php include 'views/includes/navbar_log.php'; ?>
 <div id="main" class="main">
     <h2>Fill this form and join the project</h2><br/>
-    <form method="post">
+    <form method="post" id="form2">
     <div class="container">
         <label for="uname"><b>Username</b></label>
         <input type="text" name="uname" value=<?php echo ($_SESSION['uname']) ?> readonly>

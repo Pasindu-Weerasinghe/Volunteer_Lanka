@@ -27,7 +27,7 @@ session_start();
 
                 <label for="contact"><b>Contact Number</b></label>
                 <label id="require"><strong>*</strong></label>
-                <input type="text" name="contact" required>
+                <input type="text" name="contact" minlength="10" maxlength="10" required>
 
                 <label for="address"><b>Address</b></label>
                 <label id="require"><strong>*</strong></label>

@@ -55,15 +55,13 @@ if (!isset($_SESSION['uid'])) {
 
         <div class="post-container">
             <center>
-                <h2 class="post-header">Tree Planting Campaign</h2>
+                <h2 class="post-header">Beach Cleaning</h2>
             </center>
             <div class="post-images">
-                <img src="<?php echo BASE_URL; ?>public/images/card-img1.jpg">
-                <img src="<?php echo BASE_URL; ?>public/images/card-img2.jpg">
-                <img src="<?php echo BASE_URL; ?>public/images/card-img3.jpg">
+                <img src="<?php echo BASE_URL; ?>public/images/pr_images/cleaning.jpg">
             </div>
             <p class="description">
-                A tree planting campaign was organized on 26th November 2022. Around 80 members participated in the campaign.
+                A beach cleaning event was organized on 20 October 2022. Around 50 members participated in the event.
             </p>
         </div>
     </div>

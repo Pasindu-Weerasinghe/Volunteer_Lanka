@@ -1,4 +1,14 @@
-<?php $role = $_SESSION['role']; ?>
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    // if session is not started, start the session
+    session_start();
+}
+if (!isset($_SESSION['uid'])) {
+    // if user is not logged in, redirect to login page
+    header('Location: ' . BASE_URL . 'index/login');
+}
+$role = $_SESSION['role'];
+?>
 
 <head>
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>public/styles/navbar_log.css">

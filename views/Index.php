@@ -1,5 +1,8 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    // if session is not started, start the session
+    session_start();
+}
 if (isset($_SESSION['uid'])) {
   header('Location: ' . BASE_URL . $_SESSION['role']);
 }

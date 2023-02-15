@@ -2,6 +2,7 @@
 
 class User extends Controller
 {
+    private $role;
 
     function __construct()
     {
@@ -11,19 +12,20 @@ class User extends Controller
 
     function calendar()
     {
-        switch ($this->role) {
-            case 'organizer':
-                $this->render('Calendar');
-                break;
-            case 'sponsor':
-                $this->render('Calendar');
-                break;
-            case 'volunteer':
-                $this->render('Calendar');
-                break;
-            default:
-                break;
-        }
+        $this->render('Calendar');
+//        switch ($this->role) {
+//            case 'organizer':
+//                $this->render('Calendar');
+//                break;
+//            case 'sponsor':
+//                $this->render('Calendar');
+//                break;
+//            case 'volunteer':
+//                $this->render('Calendar');
+//                break;
+//            default:
+//                break;
+//        }
     }
 
     function search_user()
@@ -34,7 +36,7 @@ class User extends Controller
     function complain()
     {
         if ($this->role != 'admin') {
-                $this->render('Complain');
+            $this->render('Complain');
         }
     }
 
@@ -48,7 +50,7 @@ class User extends Controller
         $this->loadModel('User');
         if ($this->model->setComplain($about, $des, $uid)) {
             // header('Location: ' .BASE_URL. 'volunteer/complain');
-            echo "<script>alert('Complaint sent to admin');location.href='http://localhost/Volunteer_Lanka/".$this->role."/complain';</script>";
+            echo "<script>alert('Complaint sent to admin');location.href='http://localhost/Volunteer_Lanka/" . $this->role . "/complain';</script>";
         }
     }
 
@@ -87,9 +89,9 @@ class User extends Controller
             } else {
                 $this->error = "Existing password is incorrect";
             }
-            
+
         }
         $this->render('Sponsor/changePasswordProfile');
-        
+
     }
 }

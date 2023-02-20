@@ -22,32 +22,32 @@
         <!-- Dataset One -->
         <form class="form" method="post" id="create-project-form">
             <div class="row">
-                <label for="">Project Name</label>
+                <label for="project-name">Project Name</label>
                 <input type="text" name="project-name" id="project-name" required class="input">
             </div>
 
             <div class="row">
-                <label for="">Date</label>
+                <label for="date">Date</label>
                 <input type="date" name="date" id="date" required class="input">
             </div>
 
             <div class="row">
-                <label for="">Time</label>
+                <label for="time">Time</label>
                 <input type="time" name="time" id="time" required class="input">
             </div>
 
             <div class="row">
-                <label for="">Venue</label>
+                <label for="venue">Venue</label>
                 <input type="text" name="venue" id="venue" required class="input">
             </div>
 
             <div class="row">
-                <label for="">Description</label>
+                <label for="description">Description</label>
                 <textarea name="description" id="description" required class="input textarea"></textarea>
             </div>
 
             <div class="row">
-                <label for="">Number of Volunteers</label>
+                <label for="no-of-members">Number of Volunteers</label>
                 <input type="number" name="no-of-members" id="no-of-members" min="1" required class="input">
             </div>
 
@@ -96,8 +96,8 @@
             <button type="button" id="resetImgs" style="display: none;">clear</button>
 
             <div class="btn-area">
-                <button type="button" id="form1-back" class="btn">Cancel</button>
-                <button type="button" name="next" class="btn" id="next">Next</button>
+                <button id="form1-back" class="btn">Cancel</button>
+                <button type="submit" name="next" class="btn" id="next" onclick="return form1.reportValidity()">Next</button>
             </div>
         </form>
     </div>
@@ -112,7 +112,7 @@
 
             <div class="btn-area">
                 <button class="btn" id="form2-back">Cancel</button>
-                <button class="btn" id="next2">Next</button>
+                <button type="submit" class="btn" id="next2">Next</button>
             </div>
         </form>
     </div>
@@ -151,7 +151,7 @@
 
             <div class="btn-area">
                 <button class="btn" id="form3-back">Cancel</button>
-                <button class="btn" id="next3">Publish Notice</button>
+                <button type="submit" class="btn" id="next3">Publish Notice</button>
             </div>
         </form>
     </div>
@@ -178,12 +178,12 @@
             </div>
             <div class="row">
                 <input type="checkbox" name="prior-participations" class="input-chkbox">
-                <label>Prior partcipation in volunteer projects</label>
+                <label>Prior participation in volunteer projects</label>
             </div>
 
             <div class="btn-area">
                 <button id="form4-back" type="button" class="btn">Back</button>
-                <button type="button" name="create" class="btn" id="create">Create</button>
+                <button type="submit" name="create" class="btn" id="create">Create</button>
             </div>
         </form>
     </div>

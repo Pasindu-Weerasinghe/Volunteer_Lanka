@@ -35,8 +35,9 @@ document.getElementById("date").min = now.toISOString().split("T")[0];
 // const minutes = now.getMinutes().toString().padStart(2, "0");
 // document.getElementById("time").min = `${hours}:${minutes}`;
 
-//? buttons of form 1
-button1.addEventListener("click", (e) => {
+//? form 1 actions
+form1.addEventListener("submit", (e) => {
+	e.preventDefault();
 	const formData = new FormData(form1);
 	for (const [key, value] of formData) {
 		formDataSubmission.append(key, value);
@@ -66,11 +67,12 @@ button1.addEventListener("click", (e) => {
 
 //? buttons of form 2
 button2.addEventListener("click", (e) => {
+	e.preventDefault();
 	// const formData = new FormData(form2);
 	// for (const [key, value] of formData) {
 	// 	formDataSubmission.append(key, value);
 	// }
-	if (sponsorship == "publish-sn") {
+	if (sponsorship === "publish-sn") {
 		console.log('btn2-psn');
 		cp2.style.display = "none";
 		cp3.style.display = "block";
@@ -81,13 +83,15 @@ button2.addEventListener("click", (e) => {
 	}
 });
 
-form2back.addEventListener("click", () => {
+form2back.addEventListener("click", (e) => {
+	e.preventDefault();
 	cp2.style.display = "none";
 	cp1.style.display = "block";
 });
 
 //? buttons of form 3
 button3.addEventListener("click", (e) => {
+	e.preventDefault();
 	const formData = new FormData(form3);
 	for (const [key, value] of formData) {
 		formDataSubmission.append(key, value);
@@ -96,8 +100,9 @@ button3.addEventListener("click", (e) => {
 	cp4.style.display = "block";
 });
 
-form3back.addEventListener("click", () => {
-	if (partnership == "collaborate") {
+form3back.addEventListener("click", (e) => {
+	e.preventDefault();
+	if (partnership === "collaborate") {
 		cp3.style.display = "none";
 		cp2.style.display = "block";
 	} else {
@@ -107,12 +112,12 @@ form3back.addEventListener("click", () => {
 });
 
 //? buttons of form 4
-form4back.addEventListener("click", () => {
-	console.log("back4");
-	if (sponsorship == "publish-sn") {
+form4back.addEventListener("click", (e) => {
+	e.preventDefault();
+	if (sponsorship === "publish-sn") {
 		cp4.style.display = "none";
 		cp3.style.display = "block";
-	} else if (partnership == "collaborate") {
+	} else if (partnership === "collaborate") {
 		cp4.style.display = "none";
 		cp2.style.display = "block";
 	} else {
@@ -122,11 +127,12 @@ form4back.addEventListener("click", () => {
 });
 
 button4.addEventListener("click", (e) => {
+	e.preventDefault();
 	const formData = new FormData(form4);
 	for (const [key, value] of formData) {
 		formDataSubmission.append(key, value);
 	}
-	formDataSubmission.append("create", true);
+	formDataSubmission.append("create", 'create');
 
 	for (const [key, value] of formDataSubmission) {
 	    console.log(key, value);
@@ -136,10 +142,10 @@ button4.addEventListener("click", (e) => {
 		method: "post",
 		body: formDataSubmission,
 	})
-		.then((response) => response.text())
+		.then((response) => response.json())
 		.then((data) => {
 			console.log(data);
-			window.location.href = "http://localhost/Volunteer_Lanka/";
+			// window.location.href = "http://localhost/Volunteer_Lanka/";
 		})
 		.catch((error) => console.log(error));
 });
@@ -147,7 +153,7 @@ button4.addEventListener("click", (e) => {
 
 imgs.addEventListener("change", () => {
 	let images = imgs.files;
-	if (images.length != 0) {
+	if (images.length !== 0) {
 		resetImgs.style.display = "inline";
 		for (let i = 0; i < images.length; i++) {
 			let reader = new FileReader();

@@ -42,10 +42,7 @@ class Organizer extends User
                     $uid = $_SESSION['uid'];
 
                     //todo: creating the project
-                    if ($this->model->setProject($pname, $date, $time, $venue, $description, $no_of_volunteers, $sponsorship, $partnership, $uid)) {
-                        if (($pid = $this->model->getProjectId($pname, $uid)) != 'query failed') {
-                            $_SESSION['proj_id'] = $pid;
-
+                    if ($pid = $this->model->setProject($pname, $date, $time, $venue, $description, $no_of_volunteers, $sponsorship, $partnership, $uid)) {
                             $email = $_POST['email'] ? 1 : 0;
                             $contact = $_POST['contact-no'] ? 1 : 0;
                             $meal_pref = $_POST['meal-pref'] ? 1 : 0;
@@ -53,7 +50,6 @@ class Organizer extends User
 
                             // setting volunteer form
                             $this->model->setVolunteerForm($pid, $email, $contact, $meal_pref, $prior_part);
-                        }
 
                         if ($partnership) {
                             //? if project is a collaboration
@@ -88,11 +84,12 @@ class Organizer extends User
                                     $statusMsg = 'Only JPG, JPEG, PNG & GIF files are allowed to upload.';
                                 }
                             }
-                            echo $statusMsg;
                         }
+                        $response = array("message" => "Project created successfully");
+                        echo json_encode($response);
                     } else {
                         //! project didn't get created
-                    }
+                   }
                 }
                 break;
         }

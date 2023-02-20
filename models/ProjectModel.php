@@ -14,7 +14,11 @@ class ProjectModel extends Model
                     VALUES ('$pname', '$date', '$time', '$venue', '$description', '$no_of_volunteers', $sponsorship, $collab, 'active', $uid)";
 
         $statement = $this->db->prepare($query);
-        return $statement->execute();
+        if($statement->execute()) {
+            return $this->db->lastInsertId();
+        } else {
+            return null;
+        }
     }
 
 

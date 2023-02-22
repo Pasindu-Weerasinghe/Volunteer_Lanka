@@ -106,4 +106,5 @@ class User extends Controller
         }
         $this->render('Sponsor/changePasswordProfile');
     }
+    }
 }

@@ -176,9 +176,8 @@ class Index extends Controller
             } else {
                 // if user data insert failed
             }
-        }
-        else{
-            echo 'mdksmksmdksm';
+        } else{
+            header('Location: ' . BASE_URL . 'index/signup');
         }
     }
 

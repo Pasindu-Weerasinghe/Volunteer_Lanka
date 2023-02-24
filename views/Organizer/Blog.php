@@ -17,7 +17,7 @@
     <!-- organization start -->
     <div class="organization">
         <div id="left">
-            <img src="<?php echo BASE_URL; ?>public/images/org_image.jpg">
+            <img src="<?php echo BASE_URL; ?>public/images/org_image.jpg" alt="">
             <h3><?php echo $this->organizer['Name']; ?></h3>
         </div>
         <div id="right">
@@ -35,9 +35,9 @@
     <div class="post-container">
         <h2 class="post-header">Tree Planting Campaign</h2>
         <div class="post-images">
-            <img src="<?php echo BASE_URL; ?>public/images/card-img1.jpg">
-            <img src="<?php echo BASE_URL; ?>public/images/card-img2.jpg">
-            <img src="<?php echo BASE_URL; ?>public/images/card-img3.jpg">
+            <img src="<?php echo BASE_URL; ?>public/images/card-img1.jpg" alt="">
+            <img src="<?php echo BASE_URL; ?>public/images/card-img2.jpg" alt="">
+            <img src="<?php echo BASE_URL; ?>public/images/card-img3.jpg" alt="">
         </div>
         <p class="description">
             A tree planting campaign was organized on 26th November 2022. Around 80 members participated in the
@@ -48,7 +48,7 @@
     <div class="post-container">
         <h2 class="post-header">Beach Cleaning</h2>
         <div class="post-images">
-            <img src="<?php echo BASE_URL; ?>public/images/pr_images/cleaning.jpg">
+            <img src="<?php echo BASE_URL; ?>public/images/pr_images/cleaning.jpg" alt="">
         </div>
         <p class="description">
             A beach cleaning event was organized on 20 October 2022. Around 50 members participated in the event.

@@ -26,8 +26,8 @@ class Organizer extends User
                 $this->render('Organizer/CreateProject');
                 break;
             case 'create':
+                $response = array("message" => "");
                 if (isset($_POST['create'])) {
-                    $response = array("message" => "");
 
                     $this->loadModel('Project');
                     session_start();
@@ -43,13 +43,13 @@ class Organizer extends User
 
                     //todo: creating the project
                     if ($pid = $this->model->setProject($pname, $date, $time, $venue, $description, $no_of_volunteers, $sponsorship, $partnership, $uid)) {
-                            $email = $_POST['email'] ? 1 : 0;
-                            $contact = $_POST['contact-no'] ? 1 : 0;
-                            $meal_pref = $_POST['meal-pref'] ? 1 : 0;
-                            $prior_part = $_POST['prior-participations'] ? 1 : 0;
+                        $email = $_POST['email'] ? 1 : 0;
+                        $contact = $_POST['contact-no'] ? 1 : 0;
+                        $meal_pref = $_POST['meal-pref'] ? 1 : 0;
+                        $prior_part = $_POST['prior-participations'] ? 1 : 0;
 
-                            // setting volunteer form
-                            $this->model->setVolunteerForm($pid, $email, $contact, $meal_pref, $prior_part);
+                        // setting volunteer form
+                        $this->model->setVolunteerForm($pid, $email, $contact, $meal_pref, $prior_part);
 
                         if ($partnership) {
                             //? if project is a collaboration
@@ -63,6 +63,7 @@ class Organizer extends User
                         $targetDir = "public/images/pi_images/";
                         $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
 
+                        // if there are images to upload
                         if (!empty($_FILES["files"]["name"])) {
 
                             $total = count($_FILES['files']['name']);
@@ -75,55 +76,25 @@ class Organizer extends User
                                     if (move_uploaded_file($_FILES["files"]["tmp_name"][$i], $targetFilePath)) {
 
                                         if ($this->model->setProjectImage($pid, $newFileName)) {
-                                            $statusMsg = "The file " . $newFileName . " has been uploaded successfully.";
+                                            $response['images'][] = "The file " . $newFileName . " has been uploaded successfully.";
                                         } else {
-                                            $statusMsg = "File upload failed, please try again.";
+                                            $response['error'][] = "File upload failed, please try again.";
                                         }
                                     }
                                 } else {
-                                    $statusMsg = 'Only JPG, JPEG, PNG & GIF files are allowed to upload.';
+                                    $response['error'][] = 'Only JPG, JPEG, PNG & GIF files are allowed to upload.';
                                 }
                             }
                         }
-                        $response = array("message" => "Project created successfully");
+                        $response['message'] = "Project created successfully";
                         echo json_encode($response);
                     } else {
                         //! project didn't get created
-                   }
+                        $response['message'] = "Project creation failed";
+                        echo json_encode($response);
+                    }
                 }
                 break;
-        }
-    }
-
-    function create_project2()
-    {
-        session_start();
-        if (true) {
-            $pname = $_POST['project-name'];
-            $date = $_POST['date'];
-            $time = $_POST['time'];
-            $venue = $_POST['venue'];
-            $description = $_POST['description'];
-            $no_of_members = $_POST['no-of-members'];
-            $partnership = $_POST['partnership'] == 'collaborate' ? 1 : 0;
-            $sponsorship = $_POST['sponsorship'] == 'publish-sn' ? 1 : 0;
-            $uid = $_SESSION['uid'];
-            $this->loadModel('Project');
-
-
-            if ($this->model->setProject($pname, $date, $time, $venue, $description, $no_of_members, $sponsorship, $uid)) {
-                $pid = $this->model->getLastId();
-                $_SESSION['proj_id'] = $pid;
-
-                $email = $_POST['email'] ? 1 : 0;
-                $contact = $_POST['contact-no'] ? 1 : 0;
-                $meal_pref = $_POST['meal-pref'] ? 1 : 0;
-                $prior_part = $_POST['prior-participations'] ? 1 : 0;
-                $this->model->setVolunteerForm($pid, $email, $contact, $meal_pref, $prior_part);
-            } else {
-                echo "Failed";
-            }
-        } else {
         }
     }
 
@@ -131,7 +102,7 @@ class Organizer extends User
     {
         session_start();
         $this->loadModel('Project');
-        $this->projects = $this->model->getProjects($_SESSION['uid']);
+        $this->projects = $this->model->getUpcomingProjects($_SESSION['uid']);
         foreach ($this->projects as $project) {
             $pid = $project['P_ID'];
             $this->prImage[$pid] = $this->model->getProjectImage($pid);
@@ -139,13 +110,13 @@ class Organizer extends User
 
         $this->render('Organizer/UpcomingProjects');
     }
-    
+
 
     function completed_projects()
     {
         session_start();
         $this->loadModel('Project');
-        $this->projects = $this->model->getProjects($_SESSION['uid']);
+        $this->projects = $this->model->getCompletedProjects($_SESSION['uid']);
         foreach ($this->projects as $project) {
             $pid = $project['P_ID'];
             $this->prImage[$pid] = $this->model->getProjectImage($pid);
@@ -182,7 +153,7 @@ class Organizer extends User
     function blog()
     {
         session_start();
-        $uid  = $_SESSION['uid'];
+        $uid = $_SESSION['uid'];
         $this->loadModel('Organizer');
         $this->organizer = $this->model->getOrganizerById($uid);
 

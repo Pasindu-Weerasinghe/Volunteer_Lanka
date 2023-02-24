@@ -58,10 +58,7 @@ class ProjectIdeaModel extends Model {
         $query = "DELETE FROM pr_ideas WHERE PI_ID = :piid";
         $statement = $this->db->prepare($query);
         $statement->bindParam(':piid', $piid);
-        if($statement->execute()) {
-            // model wala header location danne na yodiye....... database logic witharai...
-            header('Location: ' . BASE_URL . "volunteer/New_ideas");
-        }
+        return $statement->execute();
     }
 
     function getPiId($uid, $location)

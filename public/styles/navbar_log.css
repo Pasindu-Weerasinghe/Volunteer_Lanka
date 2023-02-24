@@ -16,9 +16,9 @@ header a {
 }
 
 header {
-	font-family: "Montserrat";
+	font-family: "Montserrat", serif;
 	padding: 25px 20px;
-	background-color: #D9EEF5;
+	background-color: rgb(217, 238, 245);
 	height: 80px;
 	display: flex;
 	justify-content: space-between;

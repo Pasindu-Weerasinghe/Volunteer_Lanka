@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/form.css">
-    <script defer src="<?php echo BASE_URL ?>public/scripts/create_project.js"></script>
     <title>Create a new Project</title>
 </head>
 
@@ -191,5 +190,7 @@
 
 </div>
 </body>
+
+<script type="module" src="<?php echo BASE_URL ?>public/scripts/create_project.js"></script>
 
 </html>

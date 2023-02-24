@@ -22,9 +22,23 @@ class ProjectModel extends Model
     }
 
 
-    function getProjects($uid)
+    function getUpcomingProjects($uid)
     {
-        $query = "SELECT * FROM project WHERE U_ID = '$uid'";
+        $query = "SELECT * FROM project WHERE U_ID = '$uid' AND Status = 'active'";
+        $statement = $this->db->prepare($query);
+
+        if ($statement->execute()) {
+            // if query successful
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            // if query failed
+            return 'query failed';
+        }
+    }
+
+    function getCompletedProjects($uid)
+    {
+        $query = "SELECT * FROM project WHERE U_ID = '$uid' AND Status = 'completed'";
         $statement = $this->db->prepare($query);
 
         if ($statement->execute()) {

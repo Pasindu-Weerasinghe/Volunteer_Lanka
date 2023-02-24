@@ -1,3 +1,6 @@
+import {BASE_URL} from "../../configs/config.js";
+
+
 const cp1 = document.querySelector("#create-project");
 const cp2 = document.querySelector("#add-org-to-collab");
 const cp3 = document.querySelector("#publish-sponsor-notice");
@@ -8,9 +11,9 @@ const form2 = document.querySelector("#create-project-form");
 const form3 = document.querySelector("#publish-sn-form");
 const form4 = document.querySelector("#form-for-volunteers-form");
 
-const button1 = document.getElementById("next");
-const button2 = document.getElementById("next2");
-const button3 = document.getElementById("next3");
+const button1 = document.querySelector("#next");
+const button2 = document.querySelector("#next2");
+const button3 = document.querySelector("#next3");
 const button4 = document.querySelector("#create");
 
 const imgs = document.querySelector("#images");
@@ -145,7 +148,7 @@ button4.addEventListener("click", (e) => {
 		.then((response) => response.json())
 		.then((data) => {
 			console.log(data);
-			// window.location.href = "http://localhost/Volunteer_Lanka/";
+			// window.location.href = BASE_URL;
 		})
 		.catch((error) => console.log(error));
 });

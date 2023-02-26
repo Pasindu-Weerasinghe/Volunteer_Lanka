@@ -98,7 +98,7 @@ class Volunteer extends User
 
     function calendar()
     {
-        $this->render('Calendar');
+        $this->render('calender');
     }
 
     function search_organizer()

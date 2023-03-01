@@ -116,6 +116,12 @@ class Volunteer extends User
         $this->render('Volunteer/Search_organizer');
     }
 
+    function view_organizer($uid) 
+    {
+        $this->render('Organizer/Blog');
+
+    }
+
     function insert_Ideas()
     {
         session_start();

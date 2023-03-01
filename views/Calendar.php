@@ -23,13 +23,14 @@ if (!isset($_SESSION['uid'])) {
 
 <div class="main" id="main">
 <div class="container">
-        <h1 class="text-center">Calendar</h1><br/>
-                    <div class="icons">
+        <h1 class="text-center">Calendar</h1><br/><br/>
+                    
+                <div class="calendar">
+                <div class="icons">
                         <span id="prev" class="material-symbols-rounded text-center">chevron_left</span>
                         <p class="current-date"></p>
                         <span id="next" class="material-symbols-rounded text-center">chevron_right</span>
                     </div>
-                <div class="calendar">
                     <ul id="days-of-week" class="day-of-week">
                         <li>Sun</li>
                         <li>Mon</li>
@@ -43,59 +44,4 @@ if (!isset($_SESSION['uid'])) {
                 </div>
 </div>
 </div>
-
-
-
-    <!-- <div id="main" class="main">
-        <div class="container">
-            <div class="calendar-month">
-                <section class="calendar-month-header">
-                <div class="icons">
-                        <span id="prev" class="material-symbols-rounded text-center">chevron_left</span>
-                        <span id="next" class="material-symbols-rounded text-center">chevron_right</span>
-                    </div>
-                </section>
-
-                <div class="calendar">
-                    <ul class="weeks flex flex-wrap text-center">
-                        <li>Sun</li>
-                        <li>Mon</li>
-                        <li>Tue</li>
-                        <li>Wed</li>
-                        <li>Thu</li>
-                        <li>Fri</li>
-                        <li>Sat</li>
-                    </ul>
-                    <ul class="days flex flex-wrap text-center text-bold">
-                    </ul>
-                </div> -->
-
-                <!-- <ol id="days-of-week" class="day-of-week">
-                    <li>Mon</li>
-                    <li>Tue</li>
-                    <li>Wed</li>
-                    <li>Thu</li>
-                    <li>Fri</li>
-                    <li>Sat</li>
-                    <li>Sun</li>
-                </ol>
-
-                <ol id="calendar-days" class="days-grid">
-                    <li class="calendar-day" style="background-color: #CFD7E3;">
-                        <span></span>
-                    </li>
-                    <li class="calendar-day" style="background-color: #CFD7E3;">
-                        <span></span>
-                    </li>
-                    <li class="calendar-day" style="background-color: #CFD7E3;">
-                        <span></span>
-                    </li>
-                    
-                </ol> -->
-            <!-- </div>
-        </div>
-
-    </div> -->
-</body>
-
 </html>

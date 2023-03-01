@@ -39,27 +39,27 @@ if (!isset($_SESSION['uid'])) {
                 <table class="table1">
                     <tr>
                         <td>Date</td>
-                        <td>: 11/10/2022</td>
+                        <td>: <?php echo $this->projects['Date'] ?></td>
                     </tr>
                     <tr>
                         <td>Time</td>
-                        <td>: 10.00 AM</td>
+                        <td>: <?php echo $this->projects['Time'] ?></td>
                     </tr>
                     <tr>
                         <td>Venue</td>
-                        <td>: Galle</td>
+                        <td>: <?php echo $this->projects['Venue'] ?></td>
                     </tr>
                     <tr>
                         <td>Organizer</td>
-                        <td>: Rotaract Club UOM</td>
+                        <td>: <?php echo $this->organizer['Name'] ?> </td>
                     </tr>
                     <tr>
                         <td>Number of Volunteers</td>
-                        <td>: 5</td>
+                        <td>: <?php echo $this->projects['No_of_volunteers'] ?></td>
                     </tr>
                     <tr>
                         <td>Description</td>
-                        <td>: Beach cleaning campaign is organized at Unawatuna beach</td><br>
+                        <td>: <?php echo $this->projects['Description'] ?></td><br>
                     </tr>
                 </table>
             </div>

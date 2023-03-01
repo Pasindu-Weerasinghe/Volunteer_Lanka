@@ -101,10 +101,31 @@ class ProjectModel extends Model
 
     function getProject($pid)
     {
-        $query = "SELECT * FROM project WHERE P_ID = $pid";
+   
+        $query = "SELECT * FROM project WHERE P_ID =$pid";
         $statement = $this->db->prepare($query);
-        $statement->execute();
-        return $statement->fetch(PDO::FETCH_ASSOC);
+
+        if ($statement->execute()) {
+            // if query successful
+            return $statement->fetch(PDO::FETCH_ASSOC);
+        } else {
+            // if query failed
+            return 'query failed';
+        }
+    }
+	
+function getOrganizer($uid)
+    {
+        $query = "SELECT Name FROM organizer WHERE U_ID =$uid";
+        $statement = $this->db->prepare($query);
+
+        if ($statement->execute()) {
+            // if query successful
+            return $statement->fetch(PDO::FETCH_ASSOC);
+        } else {
+            // if query failed
+            return 'query failed';
+        }
     }
 
     function setProjectImage($pid, $image)

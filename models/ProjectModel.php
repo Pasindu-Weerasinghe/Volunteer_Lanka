@@ -14,7 +14,7 @@ class ProjectModel extends Model
                     VALUES ('$pname', '$date', '$time', '$venue', '$description', '$no_of_volunteers', $sponsorship, $collab, 'active', $uid)";
 
         $statement = $this->db->prepare($query);
-        if($statement->execute()) {
+        if ($statement->execute()) {
             return $this->db->lastInsertId();
         } else {
             return null;
@@ -67,12 +67,20 @@ class ProjectModel extends Model
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    function getAmount($pid)
+    function getPrice($pid)
     {
-        $query = "SELECT Amount FROM sponsor_notice WHERE P_ID = $pid";
+        $query = "SELECT Price FROM sponsor_notice WHERE P_ID = $pid";
         $statement = $this->db->prepare($query);
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
+    function getAmounts($pid)
+    {
+        $query = "SELECT Package, Amount FROM sponsor_notice WHERE P_ID = $pid AND Package IN ('Silver', 'Gold', 'Platinum')";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
     function getSPAmount($pid)
@@ -101,7 +109,7 @@ class ProjectModel extends Model
 
     function getProject($pid)
     {
-   
+
         $query = "SELECT * FROM project WHERE P_ID =$pid";
         $statement = $this->db->prepare($query);
 
@@ -113,8 +121,8 @@ class ProjectModel extends Model
             return 'query failed';
         }
     }
-	
-function getOrganizer($uid)
+
+    function getOrganizer($uid)
     {
         $query = "SELECT Name FROM organizer WHERE U_ID =$uid";
         $statement = $this->db->prepare($query);

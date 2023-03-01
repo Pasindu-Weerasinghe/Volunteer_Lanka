@@ -66,35 +66,30 @@ if (!isset($_SESSION['uid'])) {
 
             <p class="para">Select sponsor package below</p><br><br>
 
-            <div class="silver">
-                <input type="radio" name="individual">
-                <strong>Silver</strong><br>
-                <strong>Price: 2000.00</strong>
-            </div>
+            <form action="<?php echo BASE_URL; ?>Sponsor/view_sponsor_notice" method="post">
+                <div class="silver">
+                    <input type="radio" name="package" value="silver">
+                    <strong>Silver</strong><br>
+                    <strong>Price: <?php echo $this->silverPrice; ?></strong>
+                </div>
 
-            <div class="silver">
-                <input type="radio" name="individual">
-                <strong>Gold</strong><br>
-                <strong>Price: 1000.00</strong>
-            </div>
+                <div class="silver">
+                    <input type="radio" name="package" value="gold">
+                    <strong>Gold</strong><br>
+                    <strong>Price: <?php echo $this->goldPrice; ?></strong>
+                </div>
 
-            <div class="silver">
-                <input type="radio" name="individual">
-                <strong>Platinum</strong><br>
-                <strong>Price: 500.00</strong>
-            </div><br><br>
+                <div class="silver">
+                    <input type="radio" name="package" value="platinum">
+                    <strong>Platinum</strong><br>
+                    <strong>Price : <?php echo $this->platinumPrice; ?></strong>
+                </div><br><br>
 
-            <!-- <div>
-                <br><br>
-                <button class="btn1"><a href="#">Cancel</a></button>
-                <button class="btn2"><a href="#">Confirm</a></button>
-
-            </div> -->
-
-            <div class="btn-area">
-                <button onclick="history.back()" class="btn1">Cancel</button>
-                <button class="btn2"><a href="#">Confirm</a></button>
-            </div>
+                <div class="btn-area">
+                    <button onclick="history.back()" class="btn1">Cancel</button>
+                    <button class="btn2">Confirm</a></button>
+                </div>
+            </form>
 
         </div>
     </div>

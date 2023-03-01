@@ -50,7 +50,6 @@ session_start();
                         <button class="cancel"><b>Cancel</b></button>
                         <button type="submit" id="submit" name="submit" class="next"><b>Submit</b></button>
                     </div>
-
                 </div>
             </form>
         </div>

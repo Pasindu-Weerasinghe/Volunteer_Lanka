@@ -12,7 +12,15 @@ class Volunteer extends User
     function index()
     {
         $this->loadModel('Project');
-        $this->projects = $this->model->cardsVolunteer();
+        $date_now = Time();
+        $this->uprojects = $this->model->getUpcomingProjects($date_now);
+
+        foreach ($this->uprojects as $uproject) {
+            $pid = $uproject['P_ID'];
+            $this->prImage[$pid] = $this->model->getProjectImage($pid);
+        }
+
+        $this->projects = $this->model->getSuggestedProjects();
         foreach ($this->projects as $project) {
             $pid = $project['P_ID'];
             $this->prImage[$pid] = $this->model->getProjectImage($pid);
@@ -34,25 +42,32 @@ class Volunteer extends User
         $this->render('Volunteer/Home');
     }
 
-    function upcoming_projects()
+    function my_upcoming_projects()
     {
+        session_start();
+        $uid = $_SESSION['uid'];
         $this->loadModel('Project');
-        $this->projects = $this->model->cardsVolunteer();
+        $date_now = Time();
+        $jprojects = $this->model->getJoinedProjects($uid);
 
-        foreach ($this->projects as $project) {
-            $pid = $project['P_ID'];
+        foreach ($jprojects as $jproject) {
+            $pid = $jproject['P_ID'];
+            $this->uprojects = $this->model->getMyUpcomingProjects($pid, $date_now);
             $this->prImage[$pid] = $this->model->getProjectImage($pid);
         }
         $this->render('Volunteer/Upcoming_projects');
     }
 
-    function completed_projects()
+    function my_completed_projects()
     {
+        session_start();
+        $uid = $_SESSION['uid'];
         $this->loadModel('Project');
-        $this->projects = $this->model->cardsVolunteer();
+        $jprojects = $this->model->getJoinedProjects($uid);
 
-        foreach ($this->projects as $project) {
-            $pid = $project['P_ID'];
+        foreach ($jprojects as $jproject) {
+            $pid = $jproject['P_ID'];
+            $this->cprojects = $this->model->getMyCompletedProjects($pid);
             $this->prImage[$pid] = $this->model->getProjectImage($pid);
         }
         $this->render('Volunteer/Completed_projects');
@@ -116,10 +131,9 @@ class Volunteer extends User
         $this->render('Volunteer/Search_organizer');
     }
 
-    function view_organizer($uid) 
+    function view_organizer($uid)
     {
         $this->render('Organizer/Blog');
-
     }
 
     function insert_Ideas()

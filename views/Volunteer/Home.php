@@ -18,7 +18,7 @@ if (!isset($_SESSION['uid'])) {
 </head>
 
 <body>
-<?php include 'views/includes/navbar_log.php'; ?>
+    <?php include 'views/includes/navbar_log.php'; ?>
     <div id="main" class="main">
         <div class="search-container">
             <input type="text" name="search">
@@ -27,13 +27,13 @@ if (!isset($_SESSION['uid'])) {
 
         <h2>Upcoming Projects</h2><br /><br />
         <section class="container">
-            <?php foreach ($this->projects as $project) {
-                $pid = $project['P_ID'] ?>
+            <?php foreach ($this->uprojects as $uproject) {
+                $pid = $uproject['P_ID'] ?>
                 <div class="card">
-                <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image']?>"></div>
-                    <h2><?php echo ($project["Name"]); ?></h2>
-                    <p><?php echo ($project["Date"]); ?></p>
-                    <a class="btn" href="<?php echo BASE_URL ?>volunteer/view_projects/<?php echo $project['P_ID'] ?>">View</a>
+                    <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image'] ?>"></div>
+                    <h2><?php echo ($uproject["Name"]); ?></h2>
+                    <p><?php echo ($uproject["Date"]); ?></p>
+                    <a class="btn" href="<?php echo BASE_URL ?>volunteer/view_projects/<?php echo $uproject['P_ID'] ?>">View</a>
                 </div>
             <?php } ?>
         </section>
@@ -41,10 +41,10 @@ if (!isset($_SESSION['uid'])) {
 
         <h2>Suggested Projects</h2><br /><br />
         <section class="container">
-            <?php foreach ($this->projects as $project) { 
+            <?php foreach ($this->projects as $project) {
                 $pid = $project['P_ID']; ?>
                 <div class="card">
-                    <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image']?>"></div>
+                    <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image'] ?>"></div>
                     <h2><?php echo ($project["Name"]); ?></h2>
                     <p><?php echo ($project["Date"]); ?></p>
                     <a class="btn" href="<?php echo BASE_URL ?>volunteer/view_projects/<?php echo $project['P_ID'] ?>">View</a>
@@ -55,17 +55,17 @@ if (!isset($_SESSION['uid'])) {
 
         <h2>Sponsor Advertisements</h2><br /><br />
         <section class="container">
-            <?php foreach ($this->ads as $ad) { 
-                $adid = $ad['AD_ID']?>
+            <?php foreach ($this->ads as $ad) {
+                $adid = $ad['AD_ID'] ?>
                 <div class="card">
-                    <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/<?php echo $this->adImage[$adid][0]['Image']?>"></div>
+                    <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/<?php echo $this->adImage[$adid][0]['Image'] ?>"></div>
                     <h2><?php echo ($this->sponsor[$adid]['Name']); ?></h2>
                     <p><?php echo ($ad["Description"]); ?></p>
                     <a class="btn" href="volunteer/view_projects/<?php echo $project['P_ID'] ?>">View</a>
                 </div>
             <?php } ?>
         </section>
-        
+
         <br />
 
     </div>

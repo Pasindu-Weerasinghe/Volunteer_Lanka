@@ -83,9 +83,41 @@ class ProjectModel extends Model
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
-    function cardsVolunteer()
+    function getUpcomingProjects($date_now) //All upcoming projects
     {
-        $query = "SELECT P_ID, Name, Date FROM project WHERE Status='active'";
+        $query = "SELECT P_ID, Name, Date FROM project WHERE Status!='cancelled' AND Date > $date_now";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function getJoinedProjects($uid) //Projects that the volunteer has joined
+    {
+        $query = "SELECT P_ID FROM joins WHERE U_ID = $uid";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function getMyUpcomingProjects($pid, $date_now) //Details of the joined and upcoming projects by the volunteer
+    {
+        $query = "SELECT * FROM project WHERE P_ID = $pid AND Status!='cancelled' AND Date > $date_now";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function getMyCompletedProjects($pid) //Details of the completed projects by the volunteer
+    {
+        $query = "SELECT * FROM project WHERE P_ID = $pid AND Status = 'completed'";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function getSuggestedProjects()
+    {
+        $query = "SELECT P_ID, Name, Date FROM project WHERE Status!='cancelled'";
         $statement = $this->db->prepare($query);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);

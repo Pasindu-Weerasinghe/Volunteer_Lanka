@@ -46,8 +46,6 @@ class AdModel extends Model
             echo "<script>alert('Successfully upload the advertisement');location.href='http://localhost/Volunteer_Lanka/sponsor/publish_advertisement';</script>";
 
         }
-        
-
     }
 
     function getAdId($uid, $description)

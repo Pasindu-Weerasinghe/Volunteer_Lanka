@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<!-- navigationb bar -->
+<!-- navigation bar -->
 <?php include 'views/includes/navbar_log.php'; ?>
 
 <div class="main" id="main">

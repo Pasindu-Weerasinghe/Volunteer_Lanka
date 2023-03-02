@@ -43,7 +43,8 @@ class Organizer extends User
 
                     //todo: creating the project
                     if ($pid = $this->model->setProject($pname, $date, $time, $venue, $description, $no_of_volunteers, $sponsorship, $partnership, $uid)) {
-                        $email = $_POST['email'] ? 1 : 0;
+                        var_dump($_POST);
+                        $email = isset($_POST['email']) ? 1 : 0;
                         $contact = $_POST['contact-no'] ? 1 : 0;
                         $meal_pref = $_POST['meal-pref'] ? 1 : 0;
                         $prior_part = $_POST['prior-participations'] ? 1 : 0;

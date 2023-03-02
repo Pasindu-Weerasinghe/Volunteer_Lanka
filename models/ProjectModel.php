@@ -127,16 +127,4 @@ class ProjectModel extends Model
         $statement = $this->db->prepare($query);
         return $statement->execute();
     }
-
-    function getLastId()
-    {
-        $query = "SELECT P_ID FROM project ORDER BY P_ID DESC LIMIT 1";
-        $statement = $this->db->prepare($query);
-        if ($statement->execute()) {
-            $pid = $statement->fetch(PDO::FETCH_ASSOC);
-            return $pid['P_ID'];
-        } else {
-            return 0;
-        }
-    }
 }

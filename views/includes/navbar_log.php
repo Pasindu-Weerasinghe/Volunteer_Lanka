@@ -30,7 +30,11 @@ $role = $_SESSION['role'];
     <nav>
         <ul>
             <li><a><?php echo $_SESSION['uname']; ?></a></li>
-            <li id="logout"><a href="<?php echo BASE_URL; ?>index/logout">Logout</a></li>
+            <li>
+                <a href="<?php echo BASE_URL; ?>index/logout">
+                    <button id="logout">Logout</button>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>

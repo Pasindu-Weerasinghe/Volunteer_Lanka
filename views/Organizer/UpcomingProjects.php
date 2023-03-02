@@ -15,14 +15,6 @@
 
     <div class="main" id="main">
     <h2>Upcoming Projects</h2><br /><br />
-        <div class="search-container">
-            <input type="text" name="search">
-            <button name="search"><b>Search<b></button>
-        </div>
-        <br>
-        <br>
-
-       
         <section class="container">
             <?php foreach ($this->projects as $project) {
                 $pid = $project['P_ID'] ?>

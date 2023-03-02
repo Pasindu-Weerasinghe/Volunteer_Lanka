@@ -5,6 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--navbar links-->
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>public/styles/navbar_log.css">
+    <script defer src="<?php echo BASE_URL; ?>public/scripts/navbar.js"></script>
+    <!--------------------------------------------------------------------------->
+
+    <!--sidenav links-->
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>public/styles/sidenav.css">
+    <script defer src="<?php echo BASE_URL; ?>public/scripts/sidenav.js"></script>
+    <!--------------------------------------------------------------------------->
+
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/cards.css">
     <title>Completed Projects</title>
 </head>

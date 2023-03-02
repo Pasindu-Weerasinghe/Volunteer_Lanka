@@ -74,10 +74,10 @@ form1.addEventListener("submit", (e) => {
 //? buttons of form 2
 button2.addEventListener("click", (e) => {
     e.preventDefault();
-    // const formData = new FormData(form2);
-    // for (const [key, value] of formData) {
-    // 	formDataSubmission.append(key, value);
-    // }
+    formData2 = new FormData(form2);
+    for (const [key, value] of formData2) {
+    	console.log(key, value);
+    }
     if (sponsorship === "publish-sn") {
         console.log('btn2-psn');
         cp2.style.display = "none";
@@ -120,9 +120,26 @@ button4.addEventListener("click", (e) => {
 
     const formDataSubmission = new FormData();
 
+    //? appending project data
     for (const [key, value] of formData1) {
         formDataSubmission.append(key, value);
     }
+
+    //? if organizer wants to create collaborate project
+    if (partnership === "collaborate") {
+        for (const [key, value] of formData2) {
+            formDataSubmission.append(key, value);
+        }
+    }
+
+    //? if organizer wants to publish sponsor notice
+    if (sponsorship === "publish-sn") {
+        for (const [key, value] of formData3) {
+            formDataSubmission.append(key, value);
+        }
+    }
+
+    //? appending form for volunteers data
     for (const [key, value] of formData4) {
         formDataSubmission.append(key, value);
     }

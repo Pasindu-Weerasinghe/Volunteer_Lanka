@@ -5,7 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--navbar links-->
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>public/styles/navbar_log.css">
+    <script defer src="<?php echo BASE_URL; ?>public/scripts/navbar.js"></script>
+    <!--------------------------------------------------------------------------->
+
+    <!--sidenav links-->
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>public/styles/sidenav.css">
+    <script defer src="<?php echo BASE_URL; ?>public/scripts/sidenav.js"></script>
+    <!--------------------------------------------------------------------------->
+
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/form.css">
+    <script defer type="module" src="<?php echo BASE_URL ?>public/scripts/create_project.js"></script>
     <title>Create a new Project</title>
 </head>
 
@@ -96,7 +107,8 @@
 
             <div class="btn-area">
                 <button id="form1-back" class="btn">Cancel</button>
-                <button type="submit" name="next" class="btn" id="next" onclick="return form1.reportValidity()">Next</button>
+                <button type="submit" name="next" class="btn" id="next" onclick="return form1.reportValidity()">Next
+                </button>
             </div>
         </form>
     </div>
@@ -105,9 +117,7 @@
     <div class="wrapper" id="add-org-to-collab" style="display: none">
         <h2>Add Organizers to Collaborate Project</h2><br/><br/>
         <form class="form" method="post" id="publish-sn-form">
-            <div class="row">
 
-            </div>
 
             <div class="btn-area">
                 <button class="btn" id="form2-back">Cancel</button>
@@ -190,7 +200,4 @@
 
 </div>
 </body>
-
-<script type="module" src="<?php echo BASE_URL ?>public/scripts/create_project.js"></script>
-
 </html>

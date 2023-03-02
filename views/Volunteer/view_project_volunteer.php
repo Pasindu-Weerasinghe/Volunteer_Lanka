@@ -3,6 +3,8 @@ session_start();
 if (!isset($_SESSION['uid'])) {
     header('Location: ' . BASE_URL);
 }
+
+$pid = $this->project['P_ID'];
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +47,7 @@ if (!isset($_SESSION['uid'])) {
             </div>
             <div class="btn-area">
                 <button class="btn" onclick="history.back()">Back</button>
-                <button class="btn" id="right"><a href="<?php echo BASE_URL ?>volunteer/join_form">Join Project</a></button>
+                <button class="btn" id="right"><a href="<?php echo BASE_URL ?>volunteer/join_form/<?php echo $this->project['P_ID'] ?>">Join Project</a></button>
             </div>
 
         </div>

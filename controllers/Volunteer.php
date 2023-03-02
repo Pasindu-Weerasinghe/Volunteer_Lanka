@@ -81,6 +81,38 @@ class Volunteer extends User
         $this->render('Volunteer/View_project_volunteer');
     }
 
+    function join_form($pid)
+    {
+        $this->pid = $pid;
+        $this->render('Volunteer/Join_form');
+    }
+
+    function join_project($pid) {
+
+        if(!isset($_SESSION)) {
+            session_start();
+        }
+        $uid = $_SESSION['uid'];
+        $contact = $_POST['contact'];
+        $meal = $_POST['radio-meal'];
+        $prior = $_POST['radio-prior'];
+
+        if ($prior == 'yes') {
+            $prior = 1;
+        } else if ($prior == 'no') {
+            $prior = 0;
+        }
+
+        if ($meal == 'veg') {
+            $meal = "Veg";
+        } else if ($meal == 'nonveg') {
+           $meal = "NonVeg";
+        }
+
+        $this->loadmodel('Project');
+        $this->model->joinProject($uid, $pid, $contact, $meal, $prior);
+    }
+
     function new_ideas()
     {
         session_start();
@@ -177,8 +209,4 @@ class Volunteer extends User
         $this->model->deleteProjectIdea($piId);
     }
 
-    function join_form()
-    {
-        $this->render('Volunteer/Join_form');
-    }
 }

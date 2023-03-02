@@ -123,6 +123,13 @@ class ProjectModel extends Model
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    function joinProject($uid, $pid, $contact, $meal, $prior)
+    {
+        $query  =  "INSERT INTO  joins (U_ID, P_ID, Contact, Meal, Prior_part) VALUES ('$uid', '$pid', '$contact', '$meal', '$prior')";
+        $statement = $this->db->prepare($query);
+        return $statement->execute();
+    }
+
     function getProjectImage($pid)
     {
         $query = "SELECT Image FROM pr_image WHERE P_ID = $pid";

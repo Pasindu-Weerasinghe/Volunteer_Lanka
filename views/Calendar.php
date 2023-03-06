@@ -145,5 +145,6 @@ if (!isset($_SESSION['uid'])) {
 
     </div>
 </body>
+<?php include 'views/includes/footer.php'; ?>
 
 </html>

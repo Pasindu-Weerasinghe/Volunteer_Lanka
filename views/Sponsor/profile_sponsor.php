@@ -30,57 +30,60 @@ if (!isset($_SESSION['uid'])) {
     <?php include 'views/includes/navbar_log.php'; ?>
     <div class="main" id="main">
         <h2>Sponsor Profile</h2><br><br>
-        <div class="row">
-                <div class="column1">
-                    <img class="image" src="<?php echo BASE_URL ?>public/images/logoOrg.jpeg" /><br><br>
-                    <table>
-                        <tr>
-                            <td><?php echo $this->user['Name']; ?></td>
-                        </tr>
-                    </table>
-                </div>
+        <div class="row1">
+            <div class="column1">
+                <img class="image" src="<?php echo BASE_URL ?>public/images/logoOrg.jpeg" /><br><br>
+                <table>
+                    <tr>
+                        <td><?php echo $this->user['Name']; ?></td>
+                    </tr>
+                </table>
+                <button class="btnpw"> <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePsw">Change Password</a></button><br><br>
 
-                <div class="column2"><br/>
-                    <table>
-                        <tr>
-                            <td>User ID</td>
-                            <td>:</td>
-                            <td><?php echo $this->profile['U_ID']; ?></td>
-                        </tr>
-                        <tr>
-                            <td>Role</td>
-                            <td>:</td>
-                            <td><?php echo $this->profile['Role']; ?></td>
-                        </tr>
-                        <tr>
-                            <td>Contact Number</td>
-                            <td>:</td>
-                            <td><?php echo $this->user['Name']; ?></td>
-                        </tr>
-                        <tr>
-                            <td>Email</td>
-                            <td>:</td>
-                            <td><?php echo $this->profile['Email'] ?></td>
-                        </tr>
-                        <tr>
-                            <td>Contact Number</td>
-                            <td>:</td>
-                            <td><?php echo $this->user['Address']; ?></td>
-                        </tr>
-                        <tr>
-                            <td>Contact Number</td>
-                            <td>:</td>
-                            <td><?php echo $this->user['Contact']; ?></td>
-                        </tr>
+            </div>
 
-                        <button class="btnpw"> <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePsw">Change Password</a></button><br><br>
+            <div class="column2">
 
-                    </table>
+                <table>
+                    <tr>
+                        <td>User ID</td>
+                        <td>:</td>
+                        <td><?php echo $this->profile['U_ID']; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Role</td>
+                        <td>:</td>
+                        <td><?php echo $this->profile['Role']; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>:</td>
+                        <td><?php echo $this->user['Name']; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>:</td>
+                        <td><?php echo $this->profile['Email'] ?></td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>:</td>
+                        <td><?php echo $this->user['Address']; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Contact Number</td>
+                        <td>:</td>
+                        <td><?php echo $this->user['Contact']; ?></td>
+                    </tr>
 
-                </div>
+
+                </table>
+
+            </div>
         </div>
     </div>
-    <?php include 'views/includes/footer.php'; ?>
+   
 </body>
+<?php include 'views/includes/footer.php'; ?>
 
 </html>

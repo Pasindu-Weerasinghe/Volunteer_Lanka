@@ -21,11 +21,11 @@ $role = $_SESSION['role'];
 <body>
     <header>
         <div id="navbar-left">
-        <?php include 'views/includes/sidenav_' . $role . '.php' ?>
+            <?php include 'views/includes/sidenav_' . $role . '.php' ?>
             <div id="brand">
-            <a href="<?php echo BASE_URL . $role; ?>">
-                <img id="logo" src="<?php echo BASE_URL; ?>public/images/logo_transparent.png" alt="">
-            </a>
+                <a href="<?php echo BASE_URL . $role; ?>">
+                    <img id="logo" src="<?php echo BASE_URL; ?>public/images/logo_transparent.png" alt="">
+                </a>
             </div>
         </div>
         <nav>
@@ -33,12 +33,12 @@ $role = $_SESSION['role'];
                 <li>
                     <div class="profile-wrapper">
                         <div class="abc">
-                        <span class="username"><?php echo $_SESSION['uname']; ?></span><br>
-                        <img class="profile-image" src="<?php echo BASE_URL ?>public/images/logoOrg.jpeg" alt="">
-                        <div class="profile-dropdown">
-                        <a href="#"><i class="fas fa-user-circle"></i> Profile</a>
-                        <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
-                        </div>
+                            <span class="username"><?php echo $_SESSION['uname']; ?></span><br>
+                            <img class="profile-image" src="<?php echo BASE_URL ?>public/images/logoOrg.jpeg" alt="">
+                            <div class="profile-dropdown">
+                                <a href="<?php echo BASE_URL; ?>Sponsor/profile"><i class="fas fa-user-circle"></i> Profile</a>
+                                <a href="<?php echo BASE_URL; ?>index/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
                         </div>
                     </div>
                 </li>

@@ -70,19 +70,19 @@ if (!isset($_SESSION['uid'])) {
                 <div class="silver">
                     <input type="radio" name="package" value="silver">
                     <strong>Silver</strong><br>
-                    <strong>Price: <?php echo $this->silverPrice; ?></strong>
+                    <strong>Amount: <?php echo $this->silverPrice; ?></strong>
                 </div>
 
                 <div class="silver">
                     <input type="radio" name="package" value="gold">
                     <strong>Gold</strong><br>
-                    <strong>Price: <?php echo $this->goldPrice; ?></strong>
+                    <strong>Amount: <?php echo $this->goldPrice; ?></strong>
                 </div>
 
                 <div class="silver">
                     <input type="radio" name="package" value="platinum">
                     <strong>Platinum</strong><br>
-                    <strong>Price : <?php echo $this->platinumPrice; ?></strong>
+                    <strong>Amount : <?php echo $this->platinumPrice; ?></strong>
                 </div><br><br>
 
                 <div class="btn-area">
@@ -93,7 +93,7 @@ if (!isset($_SESSION['uid'])) {
 
         </div>
     </div>
-
+    <?php include 'views/includes/footer.php'; ?>
 
 </body>
 

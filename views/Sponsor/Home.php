@@ -42,14 +42,8 @@ if (!isset($_SESSION['uid'])) {
         </section>
     </div>
 
-    <!-- <?php
-            if ($amount != null) {
-                echo ($amount['Amount']);
-            } else {
-                echo "0";
-            }
-            ?> -->
-
+<?php include 'views/includes/footer.php'; ?>
 </body>
+
 
 </html>

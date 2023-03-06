@@ -80,6 +80,7 @@ if (!isset($_SESSION['uid'])) {
                 </div>
         </div>
     </div>
+    <?php include 'views/includes/footer.php'; ?>
 </body>
 
 </html>

@@ -113,6 +113,24 @@ class Volunteer extends User
         $this->model->joinProject($uid, $pid, $contact, $meal, $prior);
     }
 
+    function feedback($pid) 
+    {
+        $this->pid = $pid;
+        $this->render('Volunteer/Feedback_form');
+    }
+
+    function add_feedback($pid) 
+    {
+        if(!isset($_SESSION)) {
+            session_start();
+        }
+        $uid = $_SESSION['uid'];
+        $des = $_POST['des'];
+        $this->loadModel('Feedback');
+        $this->model->setFeedback($uid, $des, $pid);
+        header("Location: " . BASE_URL . "volunteer/feedback/$pid");
+    }
+
     function new_ideas()
     {
         session_start();
@@ -125,6 +143,48 @@ class Volunteer extends User
             $this->pr_idea_images[$pi_id] = $this->model->getPI_Image($pi_id);
         }
         $this->render('Volunteer/New_ideas');
+    }
+
+    function insert_Ideas()
+    {
+        session_start();
+        $location = $_POST['location'];
+        $description = $_POST['des'];
+        $uid = $_SESSION['uid'];
+
+        $this->loadModel('ProjectIdea');
+        $this->model->setProjectIdea($description, $location, $uid);
+
+        $pi_id = $this->model->getPiId($uid);
+
+        $targetDir = "public/images/pi_images/";
+        $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+
+        if (!empty($_FILES["file"]["name"])) {
+
+            $total = count($_FILES['file']['name']);
+            for ($i = 0; $i < $total; $i++) {
+                $fileName = $_FILES['file']['name'][$i];
+                $targetFilePath = $targetDir . $fileName;
+                $fileType =  strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
+
+                if (in_array($fileType, $allowTypes)) {
+                    if (move_uploaded_file($_FILES["file"]["tmp_name"][$i], $targetFilePath)) {
+                        $this->model->setPiImage($pi_id, $fileName);
+                    }
+                } else {
+                    $statusMsg = 'Only JPG, JPEG, PNG & GIF files are allowed to upload.';
+                }
+            }
+        }
+        header('Location: ' . BASE_URL . 'volunteer/new_ideas');
+    }
+
+    function delete_ideas($piId)
+    {
+        $this->loadModel('ProjectIdea');
+        $this->model->deleteProjectIdea($piId);
+        header('Location: ' . BASE_URL . 'volunteer/new_ideas');
     }
 
     function profile()
@@ -166,47 +226,6 @@ class Volunteer extends User
     function view_organizer($uid)
     {
         $this->render('Organizer/Blog');
-    }
-
-    function insert_Ideas()
-    {
-        session_start();
-        $location = $_POST['location'];
-        $description = $_POST['des'];
-        $uid = $_SESSION['uid'];
-
-        $this->loadModel('ProjectIdea');
-        $this->model->setProjectIdea($description, $location, $uid);
-
-        $pi_id = $this->model->getPiId($uid, $location);
-
-        $targetDir = "public/images/pi_images/";
-        $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
-
-        if (!empty($_FILES["file"]["name"])) {
-
-            $total = count($_FILES['file']['name']);
-            for ($i = 0; $i < $total; $i++) {
-                $fileName = $_FILES['file']['name'][$i];
-                $targetFilePath = $targetDir . $fileName;
-                $fileType =  strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
-
-                if (in_array($fileType, $allowTypes)) {
-                    if (move_uploaded_file($_FILES["file"]["tmp_name"][$i], $targetFilePath)) {
-                        $this->model->setPiImage($pi_id, $fileName);
-                    }
-                } else {
-                    $statusMsg = 'Only JPG, JPEG, PNG & GIF files are allowed to upload.';
-                }
-            }
-        }
-        header('Location: ' . BASE_URL . 'volunteer/new_ideas');
-    }
-
-    function delete_ideas($piId)
-    {
-        $this->loadModel('ProjectIdea');
-        $this->model->deleteProjectIdea($piId);
     }
 
 }

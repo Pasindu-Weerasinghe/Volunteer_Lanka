@@ -35,12 +35,38 @@ class OrganizerModel extends Model
     {
         $query = "SELECT * FROM organizer WHERE Name LIKE :key";
         $statement = $this->db->prepare($query);
-        $statement->bindValue(':key', "%$key%", PDO::PARAM_STR);
+        $statement->bindValue(':key', "%$key%");
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
-    
-    function getOrganizerByID($uid) {
+
+    function searchOrganizersWithPhoto($key)
+    {
+        if ($key === '') {
+            $query = "SELECT `user`.U_ID, `user`.Photo, organizer.Name
+                      FROM `user`
+                      INNER JOIN `organizer`
+                      ON `user`.U_ID = `organizer`.U_ID";
+            $statement = $this->db->prepare($query);
+        } else {
+            $query = "SELECT `user`.U_ID, `user`.Photo, organizer.Name
+                      FROM `user`
+                      INNER JOIN `organizer`
+                      ON `user`.U_ID = `organizer`.U_ID
+                      WHERE organizer.Name LIKE :key";
+            $statement = $this->db->prepare($query);
+            $statement->bindValue(':key', "%$key%");
+        }
+
+        if ($statement->execute()) {
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            return false;
+        }
+    }
+
+    function getOrganizerByID($uid)
+    {
         $query = "SELECT * FROM organizer WHERE U_ID = :uid";
         $statement = $this->db->prepare($query);
         $statement->bindParam(':uid', $uid);

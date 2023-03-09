@@ -43,17 +43,23 @@ class Organizer extends User
 
                     //todo: creating the project
                     if ($pid = $this->model->setProject($pname, $date, $time, $venue, $description, $no_of_volunteers, $sponsorship, $partnership, $uid)) {
-                        var_dump($_POST);
+//                        var_dump($_POST);
                         $email = isset($_POST['email']) ? 1 : 0;
-                        $contact = $_POST['contact-no'] ? 1 : 0;
-                        $meal_pref = $_POST['meal-pref'] ? 1 : 0;
-                        $prior_part = $_POST['prior-participations'] ? 1 : 0;
+                        $contact = isset($_POST['contact-no']) ? 1 : 0;
+                        $meal_pref = isset($_POST['meal-pref']) ? 1 : 0;
+                        $prior_part = isset($_POST['prior-participations']) ? 1 : 0;
 
                         // setting volunteer form
                         $this->model->setVolunteerForm($pid, $email, $contact, $meal_pref, $prior_part);
 
                         if ($partnership) {
                             //? if project is a collaboration
+                            $this->model->setCollaborateProject($pid);
+                            $collaborators = json_decode($_POST['collaborators'], true);
+                            foreach ($collaborators as $collaborator) {
+                                $this->model->setCollaborator(intval($pid), intval($collaborator));
+                            }
+
                         }
 
                         if ($sponsorship) {
@@ -62,7 +68,7 @@ class Organizer extends User
 
                         //todo: if there are images to upload
                         $targetDir = "public/images/pi_images/";
-                        $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+                        $allowTypes = array('jpg', 'png', 'jpeg', 'gif', '');
 
                         // if there are images to upload
                         if (!empty($_FILES["files"]["name"])) {
@@ -87,6 +93,7 @@ class Organizer extends User
                                 }
                             }
                         }
+                        header("Content-Type: application/json");
                         $response['message'] = "Project created successfully";
                         echo json_encode($response);
                     } else {
@@ -97,6 +104,14 @@ class Organizer extends User
                 }
                 break;
         }
+    }
+
+    function search_organizers($key = '')
+    {
+        $this->loadModel('Organizer');
+        $organizers = $this->model->searchOrganizersWithPhoto($key);
+        header("Content-Type: application/json");
+        echo json_encode($organizers);
     }
 
     function upcoming_projects()

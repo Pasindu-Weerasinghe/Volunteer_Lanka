@@ -11,10 +11,23 @@ const form2 = document.querySelector("#create-project-form");
 const form3 = document.querySelector("#publish-sn-form");
 const form4 = document.querySelector("#form-for-volunteers-form");
 
-const button1 = document.querySelector("#next");
+const button1 = document.querySelector("#next1");
 const button2 = document.querySelector("#next2");
 const button3 = document.querySelector("#next3");
 const button4 = document.querySelector("#create");
+
+// searching for organizers
+const searchOrg = document.querySelector("#search-org");
+const searchOrgBtn = document.querySelector("#search-org-btn");
+const searchOrgResult = document.querySelector(".search-results");
+const collabContainer = document.querySelector(".collaborators-container");
+
+const addOrgSearch = document.querySelector("#add-org-srch-btn");
+const popUp = document.querySelector(".popup-bg");
+const popUpClose = document.querySelector(".popup-close");
+
+let searchData = {};
+let collaborators = {};
 
 const imgs = document.querySelector("#images");
 const gal = document.querySelector("#gal");
@@ -36,15 +49,15 @@ let partnership = null;
 let imageReaders = [];
 
 
-// setting minimum date and time
+// setting minimum date
 const now = new Date();
 document.getElementById("date").min = now.toISOString().split("T")[0];
 
-// const hours = now.getHours().toString().padStart(2, "0");
-// const minutes = now.getMinutes().toString().padStart(2, "0");
-// document.getElementById("time").min = `${hours}:${minutes}`;
+//? form 1 actions ************************************************************************************************
+button1.addEventListener("click", (e) => {
+    return form1.reportValidity();
+});
 
-//? form 1 actions
 form1.addEventListener("submit", (e) => {
     e.preventDefault();
     formData1 = new FormData(form1);
@@ -71,12 +84,115 @@ form1.addEventListener("submit", (e) => {
     }
 });
 
-//? buttons of form 2
+
+//? form 2 actions ************************************************************************************************
+
+const removeAddedCollabs = () => {
+    for (let key in collaborators) {
+        if (key in searchData) {
+            delete searchData[key];
+        }
+    }
+}
+
+const convertToJSObject = (data) => {
+    searchData = {};
+    for (const [key, value] of Object.entries(data)) {
+        searchData[value.U_ID] = value;
+    }
+}
+
+const rmvCollaborator = (uid) => {
+    searchData[uid] = collaborators[uid];
+    delete collaborators[uid];
+    viewCollaborators();
+}
+
+const viewCollaborators = () => {
+    collabContainer.innerHTML = "";
+    for (const [key, value] of Object.entries(collaborators)) {
+        collabContainer.innerHTML += `
+        <div class="row">
+            <img src="${BASE_URL}public/images/profile.jpg" alt="">
+            <h3>${value.Name}</h3>
+            <a class="rmv-btn" onclick="rmvCollaborator(${value.U_ID})"><i class="fa-solid fa-circle-minus"></i></a>
+        </div>
+        `;
+        // <img src="${BASE_URL}public/images/${value.Photo}" alt="">
+    }
+}
+
+function addCollaborator(uid) {
+    collaborators[uid] = searchData[uid];
+    delete searchData[uid];
+    viewSearchData();
+    viewCollaborators();
+}
+
+const viewSearchData = () => {
+    searchOrgResult.innerHTML = "";
+    for (const [key, value] of Object.entries(searchData)) {
+        searchOrgResult.innerHTML += `
+        <div class="row">
+            <img src="${BASE_URL}public/images/profile.jpg" alt="">
+            <h3>${value.Name}</h3>
+            <a class="add-btn" onclick="return addCollaborator(${value.U_ID})"><i class="fa-solid fa-circle-plus"></i></a>
+        </div>
+        `;
+        // <img src="${BASE_URL}public/images/${value.Photo}" alt="">
+    }
+}
+
+
+const searchAndView = () => {
+    const searchOrgValue = searchOrg.value;
+
+    fetch(BASE_URL + "organizer/search_organizers/" + searchOrgValue, {
+        method: "post",
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            convertToJSObject(data);
+            removeAddedCollabs();
+            viewSearchData();
+        })
+        .catch((error) => console.log(error));
+}
+
+// opening popup
+addOrgSearch.addEventListener("click", (e) => {
+    e.preventDefault();
+    popUp.style.display = "flex";
+    searchAndView();
+});
+
+// closing popup
+popUpClose.addEventListener("click", (e) => {
+    e.preventDefault();
+    popUp.style.display = "none";
+});
+
+// TODO: for input, searching for organizers
+searchOrg.addEventListener("input", searchAndView);
+
+// TODO: for button, searching for organizers
+searchOrgBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    searchAndView();
+});
+
 button2.addEventListener("click", (e) => {
     e.preventDefault();
-    formData2 = new FormData(form2);
+    let collabArray = [];
+    for (const key in collaborators) {
+        collabArray.push(key);
+    }
+    collabArray = JSON.stringify(collabArray);
+    formData2 = new FormData();
+    formData2.append("collaborators", collabArray);
+
     for (const [key, value] of formData2) {
-    	console.log(key, value);
+        console.log(key, value);
     }
     if (sponsorship === "publish-sn") {
         console.log('btn2-psn');
@@ -95,7 +211,7 @@ form2back.addEventListener("click", (e) => {
     cp1.style.display = "block";
 });
 
-//? buttons of form 3
+//? form 3 actions ************************************************************************************************
 button3.addEventListener("click", (e) => {
     e.preventDefault();
     cp3.style.display = "none";
@@ -113,7 +229,7 @@ form3back.addEventListener("click", (e) => {
     }
 });
 
-//? buttons of form 4
+//? form 4 actions ************************************************************************************************
 button4.addEventListener("click", (e) => {
     e.preventDefault();
     formData4 = new FormData(form4);
@@ -197,3 +313,6 @@ resetImgs.addEventListener("click", () => {
     imageReaders = [];
     gal.innerHTML = "";
 });
+
+window.addCollaborator = addCollaborator; // for adding collaborator
+window.rmvCollaborator = rmvCollaborator; // for removing collaborator

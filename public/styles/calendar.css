@@ -5,58 +5,39 @@
 
 .container {
     margin-left: 100px;
-}
+    display: flex; 
+} 
 
 .calendar {
-    font-weight: 100;
     --grey-100: #e4e9f0;
     --grey-200: #cfd7e3;
     --grey-300: #b5c0cd;
     --grey-800: #3e4e63;
     --grid-gap: 5px;
-    --day-label-size: 80px;
-}
-
-.container-body {
-    padding: 0 150px 0 150px;
-}
-
-.calendar{
-    position: relative;
-    border: solid 1px var(--grey-300);
-    width: 700px;
+    --day-label-size: 75px;
 }
 
 .icons {
     display: flex;
+    justify-content: space-around;
+    font-size: 30px;
+    padding: 10px;
+    border: solid 1px var(--grey-200);
+
 }
 
 .icons span{
-    width: 50px;
     cursor: pointer;
-    font-size: 30px;
     margin-top: 5px;
-    margin-left: 10px;
 } 
-
-#next {
-    float: right;
-    margin-left: 35%;
-}
-
-.current-date {
-    font-size: 30px;
-    margin-left: 200px;
-}
 
 /* sat, sun */
 .day-of-week { 
+    height: 13%;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     color: var(--grey-800);
     font-size: 20px;
-    padding-bottom: 5px;
-    padding-top: 10px;
     text-align: center;
     background-color: #6aa438a1;
 }
@@ -69,9 +50,6 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     position: relative;
-    /* align-content: center; */
-    grid-column-gap: var(--grid-gap);
-    grid-row-gap: var(--grid-gap);
     border: solid 1px var(--grey-200);
     text-align: center;
 }
@@ -79,22 +57,37 @@
 .calendar .days li{
     cursor: pointer;
     color: var(--grey-800);
-    font-size: 18px;
+    font-size: 20px;
     background-color: var(--grey-200);
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    padding: 10px 0 0 30px;
     width: var(--day-label-size);
-    height: 60px;
-}
-
-.days li.active {
-    color: var(--grey-800);
 }
 
 .days li.inactive{
     color: var(--grey-300);
 }
 
+.days li.active {
+    background-color: green;
+    color: white;
+}
 
+.card{
+    margin: 10%;
+    width: 40%;
+}
+
+.cards_heading{
+    background: #0B2273;
+    color: white;
+    font-size: 23px;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+}
+
+.cards_content{
+    background: #E6ECF2;
+    font-size: 20px;
+    padding: 8px;
+}
 

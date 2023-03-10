@@ -12,7 +12,7 @@ class Volunteer extends User
     function index()
     {
         $this->loadModel('Project');
-        $date_now = Time();
+        $date_now = date('Y-m-d');
         $this->uprojects = $this->model->getUpcomingProjects($date_now);
 
         foreach ($this->uprojects as $uproject) {
@@ -47,7 +47,7 @@ class Volunteer extends User
         session_start();
         $uid = $_SESSION['uid'];
         $this->loadModel('Project');
-        $date_now = Time();
+        $date_now = date('Y-m-d');
         $jprojects = $this->model->getJoinedProjects($uid);
 
         foreach ($jprojects as $jproject) {

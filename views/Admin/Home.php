@@ -15,7 +15,7 @@ session_start();
 </head>
 
 <body>
-    <?php include 'views/includes/navbar_log.php'; ?>
+     <?php include 'views/includes/navbar_log.php'; ?> 
     <div class="main" id="main">
         <!-- Advertiesment Reqests area -->
         <h2>Advertisement Requests</h2><br><br>

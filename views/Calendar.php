@@ -18,6 +18,7 @@ if (!isset($_SESSION['uid'])) {
 
 <body>
     <?php include 'views/includes/navbar_log.php'; ?>
+    <?php include 'views/includes/chat_icon.php'; ?>
 
     <div class="main">
         <div class="container">

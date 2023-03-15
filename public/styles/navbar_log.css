@@ -96,3 +96,9 @@ ul li:hover {
 		display: block;
 	}
 }
+
+.chat-icon-area .chat-icon{
+	position: absolute;
+	top: 500px;
+	z-index: 10;
+}

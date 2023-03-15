@@ -22,8 +22,7 @@ $pid = 1;
     <?php include 'views/includes/navbar_log.php'; ?>
 
     <div class="main" id="main">
-        <h2>Upcoming Projects</h2>
-
+    <h2>Upcoming Projects</h2><br /><br />
         <div class="search-container">
             <input type="text" name="search">
             <button name="search"><b>Search<b></button>
@@ -31,32 +30,19 @@ $pid = 1;
         <br>
         <br>
 
+       
         <section class="container">
-            <div class="card">
-                <div class="card-image">
-                    <img src="<?php echo BASE_URL ?>public/images/tree.jpg" id="card-img">
+            <?php foreach ($this->projects as $project) {
+                $pid = $project['P_ID'] ?>
+                <div class="card">
+                <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image']?>"></div>
+                    <h2><?php echo ($project["Name"]); ?></h2>
+                    <p><?php echo ($project["Date"]); ?></p>
+                    <a class="btn" href="organizer/view_projects/<?php echo $project['P_ID'] ?>">View</a>
                 </div>
-                <h2>Tree Planting</h2>
-                <p>2022-12-30</p>
-                <a class="btn" href="<?php echo BASE_URL . 'organizer/view_project/' . $pid; ?>">View</a>
-            </div>
-            <div class="card">
-                <div class="card-image">
-                    <img src="<?php echo BASE_URL ?>public/images/clean.jpeg" id="card-img">
-                </div>
-                <h2>Beach Cleaning</h2>
-                <p>2023-01-10</p>
-                <a class="btn" href="<?php echo BASE_URL . 'organizer/view_project/' . $pid; ?>">View</a>
-            </div>
-            <div class="card">
-                <div class="card-image">
-                    <img src="<?php echo BASE_URL ?>public/images/donate.jpg" id="card-img">
-                </div>
-                <h2>Book Donation</h2>
-                <p>2023-01-20</p>
-                <a class="btn" href="<?php echo BASE_URL . 'organizer/view_project/' . $pid; ?>">View</a>
-            </div>
+            <?php } ?>
         </section>
+        <br />
 
     </div>
 

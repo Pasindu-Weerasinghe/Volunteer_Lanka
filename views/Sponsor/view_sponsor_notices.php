@@ -1,35 +1,32 @@
 <?php
-require 'conn.php';
 session_start();
-
 if (!isset($_SESSION['uid'])) {
-    header("Location: login.php");
+    header('Location:' . BASE_URL);
 }
-include 'Navbar/navbar_log.php';
 ?>
-
-
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/view_sponsor_notices.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/view_sponsor_notices.css">
 </head>
 
 <body>
+<?php include 'views/includes/navbar_log.php'; ?>
     <div class="main" id="main">
+    <h2>Sponsor Notices</h2><br>
+
         <div class="container">
-        <h2>Sponsor Notices</h2><br>
         <div>
             <div class="slider">
                 <span id="slide-1"></span>
                 <span id="slide-2"></span>
                 <span id="slide-3"></span>
                 <div class="image-container">
-                    <img src="cards/img1.jpg" class="slide" width="500" height="300" />
-                    <img src="cards/img2.jpg" class="slide" width="500" height="300" />
-                    <img src="cards/img3.jpg" class="slide" width="500" height="300" />
+                    <img src="<?php echo BASE_URL ?>public/images/pr_images/wild.jpg" class="slide" width="500" height="300" />
+                    <img src="<?php echo BASE_URL ?>public/images/pr_images/tree.jpg" class="slide" width="500" height="300" />
+                    <img src="<?php echo BASE_URL ?>public/images/pr_images/cleaning.jpg" class="slide" width="500" height="300" />
                 </div>
                 <div class="buttons">
                     <a href="#slide-1"></a>
@@ -62,7 +59,7 @@ include 'Navbar/navbar_log.php';
                 </tr>
                 <tr>
                     <td>Description</td>
-                    <td>:________________________________________________</td><br>
+                    <td>:________________________________________</td><br>
                 </tr>
             </table>
         </div>

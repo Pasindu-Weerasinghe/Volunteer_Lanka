@@ -1,3 +1,4 @@
+const BASE_URL= 'http://localhost/Volunteer_Lanka/';
 const searchBar = document.querySelector(".users .search input"),
     searchBtn = document.querySelector(".users .search button"),
     usersList = document.querySelector(".users .users-list");
@@ -16,7 +17,7 @@ searchBar.onkeyup = () => {
         searchBar.classList.remove("active");
     }
     let xhr = new XMLHttpRequest(); //creating XML object
-    xhr.open("POST", "php/search.php", true);
+    xhr.open("POST", BASE_URL+role+"/search", true);
     xhr.onload = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {

@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (!isset($_SESSION['uid'])) {
+    header('Location: ' . BASE_URL);
+}
 ?>
 
 <!DOCTYPE html>
@@ -11,11 +14,14 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/admin_home.css">
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/cards.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>public/styles/chat-icon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Admin Home Page</title>
 </head>
 
 <body>
      <?php include 'views/includes/navbar_log.php'; ?> 
+
     <div class="main" id="main">
         <!-- Advertiesment Reqests area -->
         <h2>Advertisement Requests</h2><br><br>
@@ -50,6 +56,8 @@ session_start();
         <br><br><br>
 
 
+        <?php include 'views/includes/chat_icon.php'; ?>
+        
 
 
 </body>

@@ -92,4 +92,12 @@ class User extends Controller
         $this->render('Sponsor/changePasswordProfile');
         
     }
+
+    function chat(){
+        session_start();
+        $uid = $_SESSION['uid'];
+        $this->loadModel('User');
+        $this->user = $this->model->getUserDatatoChat($uid);
+        $this->render("includes/user");
+    }
 }

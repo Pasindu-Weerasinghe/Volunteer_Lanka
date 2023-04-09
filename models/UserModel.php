@@ -28,7 +28,17 @@ class UserModel extends Model
             return 'query failed';
         }
     }
-
+    function getUserDatatoChat($uid){
+        $query = "SELECT * FROM user WHERE U_ID = '$uid'";
+        $statement = $this->db->prepare($query);
+        if ($statement->execute()) {
+            // if query successful
+            return $statement->fetch(PDO::FETCH_ASSOC);
+        } else {
+            // if query failed
+            return 'query failed';
+        }
+    }
     function getUserId($email)
     {
         $query = "SELECT U_ID FROM user WHERE Email = '$email' LIMIT 1";

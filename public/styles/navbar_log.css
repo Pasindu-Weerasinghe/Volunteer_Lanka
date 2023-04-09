@@ -97,8 +97,3 @@ ul li:hover {
 	}
 }
 
-.chat-icon-area .chat-icon{
-	position: absolute;
-	top: 500px;
-	z-index: 10;
-}

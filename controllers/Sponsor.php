@@ -104,6 +104,94 @@ class Sponsor extends User
         $this->render('Sponsor/profile_sponsor');
     }
 
+//     public function changeProfilePic()
+// {
+//     session_start();
+//     $uid = $_SESSION['uid'];
+//     $this->loadModel('Sponsor');
+//     $this->profile = $this->model->getUserData($uid);
+//     $this->user = $this->model->getSponsorData($uid);
+
+//     if (isset($_POST['submit'])) {
+//         $file = $_FILES['file'];
+//         $file_name = $file['name'];
+//         $file_tmp_name = $file['tmp_name'];
+//         $file_size = $file['size'];
+//         $file_error = $file['error'];
+//         $file_ext = explode('.', $file_name);
+//         $file_actual_ext = strtolower(end($file_ext));
+//         $allowed = array('jpg', 'jpeg', 'png');
+
+//         if (in_array($file_actual_ext, $allowed)) {
+//             if ($file_error === 0) {
+//                 if ($file_size < 500000) { // 500KB max file size, adjust as needed
+//                     $file_new_name = uniqid('', true) . "." . $file_actual_ext;
+//                     $file_destination = "public/images/profiles/" . $file_new_name;
+//                     move_uploaded_file($file_tmp_name, $file_destination);
+//                     $this->model->updateProfilePic($uid, $file_new_name);
+//                     $_SESSION['success'] = "Profile picture updated successfully.";
+//                     header("Location: " . BASE_URL . "Sponsor/profile");
+//                     exit();
+//                 } else {
+//                     $_SESSION['error'] = "File size is too big. Please upload a file under 500KB.";
+//                     header("Location: " . BASE_URL . "Sponsor/profile");
+//                     exit();
+//                 }
+//             } else {
+//                 $_SESSION['error'] = "There was an error uploading your file.";
+//                 header("Location: " . BASE_URL . "Sponsor/profile");
+//                 exit();
+//             }
+//         } else {
+//             $_SESSION['error'] = "You cannot upload files of this type. Please upload a JPG, JPEG, or PNG file.";
+//             header("Location: " . BASE_URL . "Sponsor/profile");
+//             exit();
+//         }
+//     } else {
+//         $this->render('Sponsor/profile_sponsor');
+//     }
+// }
+
+public function changeProfilePic()
+{
+    session_start();
+    $uid = $_SESSION['uid'];
+    $this->loadModel('Sponsor');
+    $this->profile = $this->model->getUserData($uid);
+    $this->user = $this->model->getSponsorData($uid);
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $target_dir = "public/images/";
+        $image_name = basename($_FILES["profilepic"]["name"]);
+        $target_file = $target_dir . $image_name;
+        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        $extensions_arr = array("jpg","jpeg","png","gif");
+
+        // Check if file is a valid image
+        if(!in_array($imageFileType,$extensions_arr)) {
+            echo "Invalid image file type. Only JPG, JPEG, PNG, and GIF files are allowed.";
+            return;
+        }
+
+        // Move uploaded file to uploads directory
+        if (move_uploaded_file($_FILES["profilepic"]["tmp_name"], $target_file)) {
+            $uid = $_SESSION['uid'];
+            $profilepic = $target_file;
+            // Update user's record in the database with new profile picture
+            $this->model->updateProfilePic($uid, $profilepic);
+            // header('Location: ' . BASE_URL . 'Sponsor/Profile');
+            $this->render('Sponsor/profile_sponsor');
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+        }
+    } else {
+        // $this->view('change_profile_pic');
+        $this->render('Sponsor/profile_sponsor');
+    }
+}
+
+
+
     function calendar()
     {
         $this->render('Calendar');

@@ -15,16 +15,6 @@ if (!isset($_SESSION['uid'])) {
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/profile.css">
     <title>User Profile</title>
 </head>
-<script>
-    function myFunction() {
-        var y = document.getElementById("myInput");
-        if (y.type == "password") {
-            y.type = "text";
-        } else {
-            y.type = "password";
-        }
-    }
-</script>
 
 <body>
     <?php include 'views/includes/navbar_log.php'; ?>
@@ -32,18 +22,24 @@ if (!isset($_SESSION['uid'])) {
         <h2>Sponsor Profile</h2><br><br>
         <div class="row1">
             <div class="column1">
-                <img class="image" src="<?php echo BASE_URL ?>public/images/logoOrg.jpeg" /><br><br>
+                <form action="<?php echo BASE_URL; ?>Sponsor/changeProfilePic" method="post" enctype="multipart/form-data">
+                    <?php if (!empty($this->user['Photo'])) : ?>
+                        <img id="card-img" src="<?php echo BASE_URL . $this->user['Photo']; ?>" /><br><br>
+                    <?php endif; ?>
+                    <input type="file" name="profilepic"><br><br>
+                    <input type="submit" value="Save" class="btn">
+                </form>
+
+
                 <table>
                     <tr>
                         <td><?php echo $this->user['Name']; ?></td>
                     </tr>
                 </table>
                 <button class="btnpw"> <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePsw">Change Password</a></button><br><br>
-
             </div>
 
             <div class="column2">
-
                 <table>
                     <tr>
                         <td>User ID</td>
@@ -75,15 +71,11 @@ if (!isset($_SESSION['uid'])) {
                         <td>:</td>
                         <td><?php echo $this->user['Contact']; ?></td>
                     </tr>
-
-
                 </table>
-
             </div>
         </div>
     </div>
-   
+    <?php include 'views/includes/footer.php'; ?>
 </body>
-<?php include 'views/includes/footer.php'; ?>
 
 </html>

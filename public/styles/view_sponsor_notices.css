@@ -134,3 +134,17 @@ background-color:#96c7d6;
 width: 950PX;
 margin: auto;
 }
+
+.input-container {
+  width: 125px; /* set the width of the div container */
+  position: relative; /* set the position to relative so we can position the currency symbol */
+}
+
+.input-container input[type="number"] {
+  width: 120%; /* set the width of the input field to 100% of the container */
+  padding: 10px; /* add some padding to the input field */
+  border-radius: 8px;
+  background-color: rgb(190, 192, 194);
+}
+
+

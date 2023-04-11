@@ -68,28 +68,49 @@ if (!isset($_SESSION['uid'])) {
 
             <form action="<?php echo BASE_URL; ?>Sponsor/view_sponsor_notice" method="post">
                 <div class="silver">
-                    <input type="radio" name="package" value="silver">
+                    <input type="radio" name="package" value="silver" onchange="toggleInputField(this)">
                     <strong>Silver</strong><br>
                     <strong>Amount: <?php echo $this->silverPrice; ?></strong>
                 </div>
 
                 <div class="silver">
-                    <input type="radio" name="package" value="gold">
+                    <input type="radio" name="package" value="gold" onchange="toggleInputField(this)">
                     <strong>Gold</strong><br>
                     <strong>Amount: <?php echo $this->goldPrice; ?></strong>
                 </div>
 
                 <div class="silver">
-                    <input type="radio" name="package" value="platinum">
+                    <input type="radio" name="package" value="platinum" onchange="toggleInputField(this)">
                     <strong>Platinum</strong><br>
                     <strong>Amount : <?php echo $this->platinumPrice; ?></strong>
+                </div>
+
+                <div class="silver">
+                    <strong>Other</strong><br>
+
+                    <div class="input-container">
+                        <input type="number" id="otherAmount" placeholder="Enter amount" >
+                    </div>
+
                 </div><br><br>
 
                 <div class="btn-area">
                     <button onclick="history.back()" class="btn1">Cancel</button>
-                    <button class="btn2">Confirm</a></button>
+                    <button class="btn2">Confirm</button>
                 </div>
             </form>
+
+            <script>
+                function toggleInputField(radio) {
+                    var otherAmountInput = document.getElementById("otherAmount");
+                    if (radio.value === "other") {
+                        otherAmountInput.disabled = false;
+                    } else {
+                        otherAmountInput.disabled = true;
+                    }
+                }
+            </script>
+
 
         </div>
     </div>

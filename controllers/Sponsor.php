@@ -45,30 +45,6 @@ class Sponsor extends User
         $this->platinumPrice = $platinumPrice;
         $this->render('Sponsor/view_sponsor_notices');
 
-
-        // if (isset($_POST['pid'])) {
-        //     $uid = $_SESSION['user']['U_ID'];
-        //     $amount = 0;
-        //     $package = $_POST['package'];
-
-        //     if ($package == "Silver") {
-        //         $amount = $silverPrice;
-        //     } elseif ($package == "Gold") {
-        //         $amount = $goldPrice;
-        //     } elseif ($package == "Platinum") {
-        //         $amount = $platinumPrice;
-        //     }
-
-        //     $this->loadModel('Project');
-        //     $success = $this->model->insertSponsorPrice($uid, $pid, $amount, $package);
-
-        //     if ($success) {
-        //         echo "<script>alert('Sponsorship request sent successfully');</script>";
-        //     } else {
-        //         echo "<script>alert('Failed to send sponsorship request');</script>";
-        //     }
-        // }
-
     }
 
 
@@ -103,54 +79,6 @@ class Sponsor extends User
         $this->user = $this->model->getSponsorData($uid);
         $this->render('Sponsor/profile_sponsor');
     }
-
-//     public function changeProfilePic()
-// {
-//     session_start();
-//     $uid = $_SESSION['uid'];
-//     $this->loadModel('Sponsor');
-//     $this->profile = $this->model->getUserData($uid);
-//     $this->user = $this->model->getSponsorData($uid);
-
-//     if (isset($_POST['submit'])) {
-//         $file = $_FILES['file'];
-//         $file_name = $file['name'];
-//         $file_tmp_name = $file['tmp_name'];
-//         $file_size = $file['size'];
-//         $file_error = $file['error'];
-//         $file_ext = explode('.', $file_name);
-//         $file_actual_ext = strtolower(end($file_ext));
-//         $allowed = array('jpg', 'jpeg', 'png');
-
-//         if (in_array($file_actual_ext, $allowed)) {
-//             if ($file_error === 0) {
-//                 if ($file_size < 500000) { // 500KB max file size, adjust as needed
-//                     $file_new_name = uniqid('', true) . "." . $file_actual_ext;
-//                     $file_destination = "public/images/profiles/" . $file_new_name;
-//                     move_uploaded_file($file_tmp_name, $file_destination);
-//                     $this->model->updateProfilePic($uid, $file_new_name);
-//                     $_SESSION['success'] = "Profile picture updated successfully.";
-//                     header("Location: " . BASE_URL . "Sponsor/profile");
-//                     exit();
-//                 } else {
-//                     $_SESSION['error'] = "File size is too big. Please upload a file under 500KB.";
-//                     header("Location: " . BASE_URL . "Sponsor/profile");
-//                     exit();
-//                 }
-//             } else {
-//                 $_SESSION['error'] = "There was an error uploading your file.";
-//                 header("Location: " . BASE_URL . "Sponsor/profile");
-//                 exit();
-//             }
-//         } else {
-//             $_SESSION['error'] = "You cannot upload files of this type. Please upload a JPG, JPEG, or PNG file.";
-//             header("Location: " . BASE_URL . "Sponsor/profile");
-//             exit();
-//         }
-//     } else {
-//         $this->render('Sponsor/profile_sponsor');
-//     }
-// }
 
 public function changeProfilePic()
 {

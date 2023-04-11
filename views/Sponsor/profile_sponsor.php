@@ -23,9 +23,7 @@ if (!isset($_SESSION['uid'])) {
         <div class="row1">
             <div class="column1">
                 <form action="<?php echo BASE_URL; ?>Sponsor/changeProfilePic" method="post" enctype="multipart/form-data">
-                    <?php if (!empty($this->user['Photo'])) : ?>
-                        <img id="card-img" src="<?php echo BASE_URL . $this->user['Photo']; ?>" /><br><br>
-                    <?php endif; ?>
+                    <img class="profile-image" src="<?php echo BASE_URL ?>public/images/<?php echo $this->profile['Photo'] ?>" alt=""><br>
                     <input type="file" name="profilepic"><br><br>
                     <input type="submit" value="Save" class="btn">
                 </form>

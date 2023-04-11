@@ -34,7 +34,7 @@ $role = $_SESSION['role'];
                     <div class="profile-wrapper">
                         <div class="abc">
                             <span class="username"><?php echo $_SESSION['uname']; ?></span><br>
-                            <img class="profile-image" src="<?php echo BASE_URL ?>public/images/logoOrg.jpeg" alt="">
+                            <img class="profile-image" src="<?php echo BASE_URL ?>public/images/<?php echo $this->profile['Photo'] ?>" alt="">
                             <div class="profile-dropdown">
                                 <a href="<?php echo BASE_URL; ?>Sponsor/profile"><i class="fas fa-user-circle"></i> Profile</a>
                                 <a href="<?php echo BASE_URL; ?>index/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>

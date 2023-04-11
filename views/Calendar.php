@@ -27,7 +27,7 @@ if (!isset($_SESSION['uid'])) {
             <div class="calendar">
                 <div class="icons">
                     <span id="prev" class="material-symbols-rounded text-center">chevron_left</span>
-                    <p class="current-date"></p>
+                    <p class="current-date" id="current-date"></p>
                     <span id="next" class="material-symbols-rounded text-center">chevron_right</span>
                 </div>
                 <ul id="days-of-week" class="day-of-week">
@@ -39,13 +39,13 @@ if (!isset($_SESSION['uid'])) {
                     <li>Fri</li>
                     <li>Sat</li>
                 </ul>
-                <ul class="days"></ul>
+                    <ul class="days" id="days"></ul>
             </div>
 
             <div class="card">
                 <div class="cards_heading">
-                    <div class="rank">2023-03-09</div>
-                    <div class="student_name">Events</div>
+                    <div class="date" id="date">bleh</div>
+                    <div class="title">Events</div>
                 </div>
 
                 <div class="cards_content">

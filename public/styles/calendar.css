@@ -62,8 +62,13 @@
     width: var(--day-label-size);
 }
 
+.days li:hover{
+    background-color: #89afd6;
+}
+
 .days li.inactive{
     color: var(--grey-300);
+    cursor: none;
 }
 
 .days li.active {

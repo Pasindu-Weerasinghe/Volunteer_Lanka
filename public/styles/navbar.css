@@ -79,6 +79,7 @@ header .btn {
     height: 50px;
     text-align: center;
     align-items: center;
+    cursor: pointer;
 }
 
 #login {

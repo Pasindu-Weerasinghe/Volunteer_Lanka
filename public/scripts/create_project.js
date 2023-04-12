@@ -7,7 +7,7 @@ const cp3 = document.querySelector("#publish-sponsor-notice");
 const cp4 = document.querySelector("#form-for-volunteers");
 
 const form1 = document.querySelector("#create-project-form");
-const form2 = document.querySelector("#create-project-form");
+const form2 = document.querySelector("#add-org-to-collab-form");
 const form3 = document.querySelector("#publish-sn-form");
 const form4 = document.querySelector("#form-for-volunteers-form");
 
@@ -28,6 +28,17 @@ const popUpClose = document.querySelector(".popup-close");
 
 let searchData = {};
 let collaborators = {};
+
+// sponosrship notice form
+const silverAmount = document.querySelector("#silver-amount");
+const goldAmount = document.querySelector("#gold-amount");
+const platinumAmount = document.querySelector("#platinum-amount");
+
+const silverQuantity = document.querySelector("#silver-quantity");
+const goldQuantity = document.querySelector("#gold-quantity");
+const platinumQuantity = document.querySelector("#platinum-quantity");
+
+const totalAmount = document.querySelector("#total-amount");
 
 const imgs = document.querySelector("#images");
 const gal = document.querySelector("#gal");
@@ -212,8 +223,33 @@ form2back.addEventListener("click", (e) => {
 });
 
 //? form 3 actions ************************************************************************************************
+
+const setAmount = () => {
+    let silverTotalAmount = silverAmount.value * silverQuantity.value;
+    let goldTotalAmount = goldAmount.value * goldQuantity.value;
+    let platinumTotalAmount = platinumAmount.value * platinumQuantity.value;
+
+    let total = silverTotalAmount + goldTotalAmount + platinumTotalAmount;
+
+    totalAmount.value = total;
+    console.log(total);
+}
+
+silverAmount.addEventListener("input", setAmount);
+silverQuantity.addEventListener("input", setAmount);
+goldAmount.addEventListener("input", setAmount);
+goldQuantity.addEventListener("input", setAmount);
+platinumAmount.addEventListener("input", setAmount);
+platinumQuantity.addEventListener("input", setAmount);
+
 button3.addEventListener("click", (e) => {
     e.preventDefault();
+    formData3 = new FormData(form3);
+
+    for (const [key, value] of formData3) {
+        console.log(key, value);
+    }
+
     cp3.style.display = "none";
     cp4.style.display = "block";
 });

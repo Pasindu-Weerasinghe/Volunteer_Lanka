@@ -47,9 +47,26 @@ class ProjectModel extends Model
 
     }
 
+    function setSponsorNotice($amount, $package, $price, $qty, $pid, $uid){
+        // TODO: check this again!
+        $query = "INSERT INTO `sponsor_notice` (Amount, Package, Price, Quantity, P_ID, U_ID) 
+                  VALUES (:amount, :package, :price, :qty, :pid, :uid)";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':amount', $amount);
+        $statement->bindParam(':package', $package);
+        $statement->bindParam(':price', $price);
+        $statement->bindParam(':qty', $qty);
+        $statement->bindParam(':pid', $pid);
+        $statement->bindParam(':uid', $uid);
+        return $statement->execute();
+    }
+
     function getUpcomingProjects($uid)
     {
-        $query = "SELECT * FROM project WHERE U_ID = :uid AND Status = 'active'";
+        $query = "SELECT `project`.*
+                  FROM `project`
+                  INNER JOIN `partners` ON `project`.P_ID = `partners`.U_ID
+                  WHERE (`project`.U_ID = :uid OR `partners`.U_ID = :uid) AND `project`.Status = 'active'";
         $statement = $this->db->prepare($query);
         $statement->bindParam(':uid', $uid);
         if ($statement->execute()) {

@@ -41,9 +41,8 @@ class Organizer extends User
                     $sponsorship = $_POST['sponsorship'] == 'publish-sn' ? 1 : 0;
                     $uid = $_SESSION['uid'];
 
-                    //todo: creating the project
+                    // creating the project
                     if ($pid = $this->model->setProject($pname, $date, $time, $venue, $description, $no_of_volunteers, $sponsorship, $partnership, $uid)) {
-//                        var_dump($_POST);
                         $email = isset($_POST['email']) ? 1 : 0;
                         $contact = isset($_POST['contact-no']) ? 1 : 0;
                         $meal_pref = isset($_POST['meal-pref']) ? 1 : 0;
@@ -64,6 +63,17 @@ class Organizer extends User
 
                         if ($sponsorship) {
                             //? if project is sponsored
+                            $silverAmount = $_POST['silver-amount'];
+                            $goldAmount = $_POST['gold-amount'];
+                            $platinumAmount = $_POST['platinum-amount'];
+                            $silverQty = $_POST['silver-quantity'];
+                            $goldQty = $_POST['gold-quantity'];
+                            $platinumQty = $_POST['platinum-quantity'];
+                            $totalAmount = $_POST['total-amount'];
+
+                            $this->model->setSponsorNotice($silverAmount, 'Silver', $totalAmount, $silverQty, $pid, $uid);
+                            $this->model->setSponsorNotice($goldAmount, 'Gold', $totalAmount, $goldQty, $pid, $uid);
+                            $this->model->setSponsorNotice($platinumAmount, 'Platinum', $totalAmount, $platinumQty, $pid, $uid);
                         }
 
                         //todo: if there are images to upload

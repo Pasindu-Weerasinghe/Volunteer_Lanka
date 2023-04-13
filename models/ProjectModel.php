@@ -130,6 +130,26 @@ class ProjectModel extends Model
         return $statement->execute();
     }
 
+    function isJoined($pid, $uid)
+    {
+        $query = "SELECT * FROM joins WHERE P_ID = $pid AND U_ID = $uid LIMIT 1";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        $isJoined = $statement->fetch(PDO::FETCH_ASSOC);
+        if ($isJoined != null) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    function leaveProject($pid, $uid)
+    {
+        $query = "DELETE FROM joins WHERE P_ID = $pid AND U_ID = $uid";
+        $statement = $this->db->prepare($query);
+        return $statement->execute();
+    }
+
     function getProjectImage($pid)
     {
         $query = "SELECT Image FROM pr_image WHERE P_ID = $pid";

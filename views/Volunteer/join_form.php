@@ -23,25 +23,28 @@ if (!isset($_SESSION['uid'])) {
         <h2>Fill this form and join the project</h2><br />
         <form action="<?php echo BASE_URL ?>volunteer/join_project/<?php echo $this->pid ?>" method="post" id="form2">
             <div class="container">
-                <label for="uname"><b>Username</b></label><br>
+                <label for="uname"><b>Username</b></label>
+                <label id="require"><strong>*</strong></label><br>
                 <input type="text" name="uname" value=<?php echo ($_SESSION['uname']) ?> readonly>
 
-                <label for="contact"><b>Contact Number</b></label><br>
-                <input type="text" name="contact">
+                <label for="contact"><b>Contact Number</b></label>
+                <label id="require"><strong>*</strong></label><br>
+                <input type="text" name="contact" required>
 
-                <br><br><label for="about"><b>Meal Preference</b></label><br><br>
-                <input type="radio" name="radio-meal" id="veg" value="veg"> Vegetarian &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                <input type="radio" name="radio-meal" id="non-veg" value="nonveg"> Non Vegetarian<br><br>
+                <br><br><label for="about"><b>Meal Preference</b></label>
+                <label id="require"><strong>*</strong></label><br><br>
+                <input type="radio" name="radio-meal" id="veg" value="veg" required> Vegetarian &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <input type="radio" name="radio-meal" id="non-veg" value="nonveg"> Non Vegetarian<br><br><br>
 
-                <label for="des"><b>Have you participated in volunteering projects before?</b></label><br><br>
-                <input type="radio" name="radio-prior" id="yes" value="yes"> Yes &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                <input type="radio" name="radio-prior" id="no" value="no"> No<br><br>
+                <label for="des"><b>Have you participated in volunteering projects before?</b></label>
+                <label id="require"><strong>*</strong></label><br><br>
+                <input type="radio" name="radio-prior" id="yes" value="yes"required> Yes &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <input type="radio" name="radio-prior" id="no" value="no"> No<br><br><br>
 
                 <div class="btn-area">
                     <button class="btn" onclick="history.back()">Back</button>
                     <button class="btn" id="right" type="submit">Submit</button>
                 </div>
-
             </div>
         </form>
     </div>

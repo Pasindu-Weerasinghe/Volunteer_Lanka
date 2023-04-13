@@ -75,16 +75,32 @@ class Volunteer extends User
 
     function view_projects($pid)
     {
+        if(!isset($_SESSION)) {
+            session_start();
+        }
+        $uid = $_SESSION['uid'];
         $this->loadModel('Project');
         $this->project = $this->model->getProject($pid);
         $this->images = $this->model->getProjectImage($pid);
+        $this->isJoined = $this->model->isJoined($pid, $uid);
         $this->render('Volunteer/View_project_volunteer');
     }
 
-    function join_form($pid)
+    function join_leave_project($pid, $isJoined)
     {
         $this->pid = $pid;
-        $this->render('Volunteer/Join_form');
+        if(!isset($_SESSION)) {
+            session_start();
+        }
+        $uid = $_SESSION['uid'];
+        $this->loadModel('Project');
+        if($isJoined) {
+            $this->model->leaveProject($pid, $uid);
+            header("Location: " . BASE_URL . "volunteer/view_projects/$pid");
+        }
+        else {
+            $this->render('Volunteer/Join_form');
+        }
     }
 
     function join_project($pid) {
@@ -111,6 +127,7 @@ class Volunteer extends User
 
         $this->loadmodel('Project');
         $this->model->joinProject($uid, $pid, $contact, $meal, $prior);
+        header("Location: " . BASE_URL . "volunteer/view_projects/$pid");
     }
 
     function feedback($pid) 
@@ -173,7 +190,7 @@ class Volunteer extends User
                         $this->model->setPiImage($pi_id, $fileName);
                     }
                 } else {
-                    $statusMsg = 'Only JPG, JPEG, PNG & GIF files are allowed to upload.';
+                    $this->statusMsg = 'Only JPG, JPEG, PNG & GIF files are allowed to upload.';
                 }
             }
         }

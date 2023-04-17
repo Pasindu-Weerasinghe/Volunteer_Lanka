@@ -11,6 +11,10 @@ class Volunteer extends User
 
     function index()
     {
+        if(!isset($_SESSION)) {
+            session_start();
+        }
+        $uid = $_SESSION['uid'];
         $this->loadModel('Project');
         $date_now = date('Y-m-d');
         $this->uprojects = $this->model->getUpcomingProjects($date_now);
@@ -20,7 +24,16 @@ class Volunteer extends User
             $this->prImage[$pid] = $this->model->getProjectImage($pid);
         }
 
-        $this->projects = $this->model->getSuggestedProjects();
+        $this->loadModel('Volunteer');
+        $this->interests = $this->model->getVolunteerInterests($uid);
+
+        $this->loadModel('Project');
+        $this->projects = [];
+        foreach ($this->interests as $interest) {
+            $key = trim($interest['Interest']);
+            $this->result = $this->model->getSuggestedProjects($key);
+            $this->projects = array_merge($this->projects, $this->result);
+        }
         foreach ($this->projects as $project) {
             $pid = $project['P_ID'];
             $this->prImage[$pid] = $this->model->getProjectImage($pid);
@@ -44,7 +57,9 @@ class Volunteer extends User
 
     function my_upcoming_projects()
     {
-        session_start();
+        if(!isset($_SESSION)) {
+            session_start();
+        }
         $uid = $_SESSION['uid'];
         $this->loadModel('Project');
         $date_now = date('Y-m-d');
@@ -60,7 +75,9 @@ class Volunteer extends User
 
     function my_completed_projects()
     {
-        session_start();
+        if(!isset($_SESSION)) {
+            session_start();
+        }
         $uid = $_SESSION['uid'];
         $this->loadModel('Project');
         $jprojects = $this->model->getJoinedProjects($uid);
@@ -150,7 +167,9 @@ class Volunteer extends User
 
     function new_ideas()
     {
-        session_start();
+        if(!isset($_SESSION)) {
+            session_start();
+        }
         $uid = $_SESSION['uid'];
         $this->loadModel('ProjectIdea');
         $this->pr_ideas = $this->model->getProjectIdea($uid);
@@ -164,7 +183,9 @@ class Volunteer extends User
 
     function insert_Ideas()
     {
-        session_start();
+        if(!isset($_SESSION)) {
+            session_start();
+        }
         $location = $_POST['location'];
         $description = $_POST['des'];
         $uid = $_SESSION['uid'];
@@ -206,7 +227,9 @@ class Volunteer extends User
 
     function profile()
     {
-        session_start();
+        if(!isset($_SESSION)) {
+            session_start();
+        }
         $uid = $_SESSION['uid'];
         $this->loadModel('Volunteer');
         $this->profile = $this->model->getUserData($uid);
@@ -238,6 +261,46 @@ class Volunteer extends User
         }
 
         $this->render('Volunteer/Search_organizer');
+    }
+
+    function search_project()
+    {
+        $filter = $_POST['filter'];
+        $key = trim($_POST['key']);
+        $this->loadModel('Project');
+        if ($filter == 'name') {
+            $this->projects = $this->model->getProjectsByName($key);
+        }
+        else if ($filter == 'area') {
+            $this->projects = $this->model->getProjectsByArea($key);
+        }
+        else if ($filter == 'date') {
+            $this->projects = $this->model->getProjectsByDate($key);
+        }
+        else if ($filter == 'location') {
+            $this->projects = $this->model->getProjectsByLocation($key);
+        }
+        else if ($filter == 'organizer') {
+            $this->loadModel('Organizer');
+            $organizers = $this->model->getOrganizers($key);
+
+            $this->loadModel('Project');
+            foreach ($organizers as $organizer) {
+                $this->projects = $this->model->getProjectsByOrganizer($organizer);
+            }
+        }
+        else if ($filter == 'completed') {
+            $this->projects = $this->model->getCompletedProjects($key);
+        }
+        else if ($filter == 'volunteers') {
+            $this->projects = $this->model->getProjectsByVolunteers($key);
+        }
+
+        foreach ($this->projects as $project) {
+            $pid = $project['P_ID'];
+            $this->prImage[$pid] = $this->model->getProjectImage($pid);
+        }
+        $this->render('Volunteer/Search_results');
     }
 
     function view_organizer($uid)

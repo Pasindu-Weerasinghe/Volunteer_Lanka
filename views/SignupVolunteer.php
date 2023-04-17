@@ -35,15 +35,15 @@ session_start();
 
                 <label><b>Select your interested areas for volunteering</b></label><br /><br />
                 <div class="checkbox_container ">
-                    <input type="checkbox" name="area[]" value="Beach cleaning">
+                    <input type="checkbox" name="area[]" value="Beach">
                     <label>Beach cleaning</label><br />
-                    <input type="checkbox" name="area[]" value="Providing facilities to rural areas">
+                    <input type="checkbox" name="area[]" value="Donation">
                     <label>Providing facilities to rural areas</label><br />
-                    <input type="checkbox" name="area[]" value="Tree planting">
+                    <input type="checkbox" name="area[]" value="Environment">
                     <label>Tree planting</label> <br />
-                    <input type="checkbox" name="area[]" value="Helping child/adult orphanages">
+                    <input type="checkbox" name="area[]" value="Orphan">
                     <label>Helping child/adult orphanages</label><br />
-                    <input type="checkbox" name="area[]" value="Animal rescuing/rehabilitation">
+                    <input type="checkbox" name="area[]" value="Animal">
                     <label>Animal rescuing/rehabilitation</label><br /><br />
                 </div>
 

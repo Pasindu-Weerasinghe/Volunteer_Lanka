@@ -22,7 +22,7 @@ const renderCalender = () => {
     for(let i = 1; i <= lastDateofMonth; i++){
         let isToday = i === date.getDate() && currMonth === new Date().getMonth()
             && currYear === new Date().getFullYear() ? "active": "";//highlight current date
-        liTag += `<li class="${isToday}" id="${i}">${i}</li>`;
+        liTag += `<li class="${isToday}" id="${i}" onclick=>${i}</li>`;
     }
     for (let i = lastDayofMonth; i < 6; i++) {
         liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`;

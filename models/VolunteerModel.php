@@ -72,5 +72,13 @@ class VolunteerModel extends Model
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
+    function getVolunteerInterests($uid)
+    {
+        $query = "SELECT * FROM vol_interest WHERE U_ID = $uid";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     
 }

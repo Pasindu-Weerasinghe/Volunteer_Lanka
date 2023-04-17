@@ -115,9 +115,9 @@ class ProjectModel extends Model
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    function getSuggestedProjects()
+    function getSuggestedProjects($interest)
     {
-        $query = "SELECT P_ID, Name, Date FROM project WHERE Status!='cancelled'";
+        $query = "SELECT * FROM project WHERE Status = 'active' AND Area LIKE '%$interest%'";
         $statement = $this->db->prepare($query);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -183,5 +183,61 @@ class ProjectModel extends Model
         } else {
             return 0;
         }
+    }
+
+    function getProjectsByName($key)    //search projetcs function
+    {
+        $query = "SELECT * FROM project WHERE Name LIKE '%$key%' AND Status = 'active'";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function getProjectsByArea($key)    //search projetcs function
+    {
+        $query = "SELECT * FROM project WHERE Area LIKE '%$key%' AND Status = 'active'";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function getProjectsByDate($key)    //search projetcs function
+    {
+        $query = "SELECT * FROM project WHERE Date LIKE '%$key%' AND Status != 'completed'";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function getProjectsByLocation($key)    //search projetcs function
+    {
+        $query = "SELECT * FROM project WHERE Venue LIKE '%$key%' AND Status != 'completed'";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function getProjectsByOrganizer($key)    //search projetcs function
+    {
+        $query = "SELECT * FROM project WHERE U_ID LIKE '%$key%' AND Status != 'completed'";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function getCompletedProjects($key)    //search projetcs function
+    {
+        $query = "SELECT * FROM project WHERE Name LIKE '%$key%' AND Status = 'completed'";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function getProjectsByVolunteers($key)    //search projetcs function
+    {
+        $query = "SELECT * FROM project WHERE No_of_volunteers LIKE '%$key%' AND Status != 'completed'";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 }

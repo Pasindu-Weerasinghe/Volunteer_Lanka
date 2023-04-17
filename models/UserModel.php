@@ -28,8 +28,32 @@ class UserModel extends Model
             return 'query failed';
         }
     }
-    function getUserDatatoChat($uid){
-        $query = "SELECT * FROM user WHERE U_ID = '$uid'";
+    function getUserRole($uid){
+        $query = "SELECT role FROM user WHERE U_ID = '$uid'";
+        $statement = $this->db->prepare($query);
+        if ($statement->execute()) {
+            // if query successful
+            return $statement->fetch(PDO::FETCH_ASSOC);
+        } else {
+            // if query failed
+            return 'query failed';
+        }
+    }
+    //chat
+    
+    function getUserName($uid,$role){
+        $query = "SELECT Name FROM " .$role. " WHERE U_ID = '$uid'";
+        $statement = $this->db->prepare($query);
+        if ($statement->execute()) {
+            // if query successful
+            return $statement->fetch(PDO::FETCH_ASSOC);
+        } else {
+            // if query failed
+            return 'query failed';
+        }
+    }
+    function searchUserInChat($outgoing_id,$searchTerm){
+        $query = "SELECT * FROM organizer WHERE NOT U_ID = {$outgoing_id} AND (Name LIKE '%{$searchTerm}%')";
         $statement = $this->db->prepare($query);
         if ($statement->execute()) {
             // if query successful

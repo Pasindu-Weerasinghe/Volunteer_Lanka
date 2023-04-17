@@ -17,7 +17,7 @@ searchBar.onkeyup = () => {
         searchBar.classList.remove("active");
     }
     let xhr = new XMLHttpRequest(); //creating XML object
-    xhr.open("POST", BASE_URL+role+"/search", true);
+    xhr.open("POST", "php/search.php", true);
     xhr.onload = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {

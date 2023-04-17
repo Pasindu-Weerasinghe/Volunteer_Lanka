@@ -2,11 +2,9 @@
 <html lang="en">
 
 <?php 
-   //  session_start();
     if (!isset($_SESSION['uid'])) {
         header('Location: ' . BASE_URL);
     }
-
 ?>
 <head>
     <meta charset="UTF-8">
@@ -26,9 +24,9 @@
         <section class="users">
             <header>
                 <div class="content">
-                    <img src="images/" alt="">
+                    <img src="../public/images/profile.jpg" alt="">
                     <div class="details">
-                        <span><?php echo $this->user['Email'] ?></span>
+                        <span><?php echo $this->user['Name'] ?></span>
                         <p></p>
                     </div>
                 </div>
@@ -44,9 +42,6 @@
            
         </section>
     </div>
-    <script>
-        const role = "<?php echo $_SESSION['role'] ?>"
-    </script>
 </body>
 
 </html>

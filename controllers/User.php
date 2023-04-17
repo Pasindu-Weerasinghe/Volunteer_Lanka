@@ -95,9 +95,10 @@ class User extends Controller
 
     function chat(){
         session_start();
+        $role=$_SESSION['role'];
         $uid = $_SESSION['uid'];
         $this->loadModel('User');
-        $this->user = $this->model->getUserDatatoChat($uid);
+        $this->user = $this->model->getUserDatatoChat($uid,$role);
         $this->render("includes/user");
     }
 }

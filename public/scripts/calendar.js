@@ -1,11 +1,13 @@
 const currentDate = document.querySelector(".current-date");
 daysTag = document.querySelector(".days");
 prevNextIcon = document.querySelectorAll(".icons span");
-// const days = document.querySelectorAll(".days li");
 
 let date = new Date();
 currYear = date.getFullYear();
 currMonth = date.getMonth();
+
+const BASE_URL = 'http://localhost/Volunteer_Lanka/';
+const role = document.querySelector("input[name='role']").value;
 
 const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 const renderCalender = () => {
@@ -30,7 +32,9 @@ const renderCalender = () => {
     currentDate.innerText = `${months[currMonth]} ${currYear}`;
     daysTag.innerHTML = liTag;
 }
+
 renderCalender();
+
 prevNextIcon.forEach(icon =>{
     icon.addEventListener("click", ()=>{ //add click arrow button
         currMonth = icon.id === "prev" ? currMonth - 1: currMonth + 1;
@@ -46,41 +50,26 @@ prevNextIcon.forEach(icon =>{
     });
 })
 
-// days.forEach(li => {
-//     li.addEventListener('click', ()=> {
-//         const date = li.innerHTML;
-//         document.getElementById("date").innerHTML = date;
-//     })
-// })
-
 function displayEvents(i) {
    
     let month = currMonth + 1;
     if (month < 10) {
         month = "0" + month;
     }
+    if (i < 10) {
+        i = "0" + i;
+    }
     let year = currYear;
     let date = year + '-' + month + '-' + i;
     document.getElementById("date").innerHTML = date;
 
-    let fetchReq = fetch("${BASE_URL}volunteer/get_events/$date");
-
-    fetchReq.then(res => res.json()). then(data => {
+    fetch(`${BASE_URL}${role}/get_events/${date}`)
+        .then(res => res.json())
+        .then(data => {
         console.log(data);
-        //window.location.href = BASE_URL;
     })
     .catch((error) => console.log(error));
 }
 
-// let lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate();
-// let currentMonth = document.getElementById("current-date");
-
-// for(let i = 0; i <= lastDateofMonth; i++){
-//     const element = document.getElementById(i);
-//     const date = element.innerHTML;
-//     element.addEventListener("click", function() {
-//         document.getElementById("date").innerHTML = date;
-//     });
-// }
 
 

@@ -47,14 +47,16 @@ if (!isset($_SESSION['uid'])) {
                     <div class="date" id="date">bleh</div>
                     <div class="title">Events</div>
                 </div>
-
+                
                 <div class="cards_content">
-                    <div class="event">Beach cleaning Campaign</div>
-                    <div class="time">Time: 09:30</div>
-                    <div class="venue">Venue: Mount Lavinia Beach</div>
+                    <div class="event" id="project">Beach cleaning Campaign</div>
+                    <div class="time" id="time">Time: 09:30</div>
+                    <div class="venue" id="venue">Venue: Mount Lavinia Beach</div>
                 </div>
             </div>
         </div>
     </div>
+    <input type="hidden" name="role" value="<?php echo $_SESSION['role']?>">
+</body>
 
 </html>

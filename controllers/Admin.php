@@ -24,13 +24,15 @@ class Admin extends User
         }
         //view compliants in home pagd
         $this->loadModel('Complaints');
-        $this->complaints  = $this->model->getComplaints();
+        $this->complaints  = $this->model->getComplaintDetails();
         foreach($this->complaints as $complaint){
-            $complain_id = $complaint['C_ID'];
-            $complain_about = $complaint['About'];
-            $complain = $complaint['Complain'];
-            $c_uid = $complaint['U_ID'];
+            $this->complain_id = $complaint['C_ID'];
+            $this->complain_about[$complaint['C_ID']] = $complaint['About'];
+            $name = $this->model->getUserDatatoComplain($complaint['U_ID'],$complaint['Role']);
+            $this->complain_userName[$complaint['C_ID']] = $name['Name'];
         }
+        
+
         $this->render('Admin/Home');
     }
     function advertiesment_requests()
@@ -64,7 +66,15 @@ class Admin extends User
     }
     function complaints()
     {
-
+        $this->loadModel('Complaints');
+        $this->complaints  = $this->model->getComplaintDetails();
+        foreach($this->complaints as $complaint){
+            $this->complain_id = $complaint['C_ID'];
+            $this->complain_about[$complaint['C_ID']] = $complaint['About'];
+            $this->complain[$complaint['C_ID']] = $complaint['Complain'];
+            $name = $this->model->getUserDatatoComplain($complaint['U_ID'],$complaint['Role']);
+            $this->complain_userName[$complaint['C_ID']] = $name['Name'];
+        }
         $this->render('Admin/complaints');
     }
     function create_new_admin_acc($action = null)

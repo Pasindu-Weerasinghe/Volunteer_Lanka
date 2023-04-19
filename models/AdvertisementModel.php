@@ -24,4 +24,5 @@ class AdvertisementModel extends Model
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
+    
 }

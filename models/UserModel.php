@@ -28,7 +28,7 @@ class UserModel extends Model
             return 'query failed';
         }
     }
-    function getUserRole($uid){
+    function getUserRolebyId($uid){
         $query = "SELECT role FROM user WHERE U_ID = '$uid'";
         $statement = $this->db->prepare($query);
         if ($statement->execute()) {
@@ -41,28 +41,7 @@ class UserModel extends Model
     }
     //chat
     
-    function getUserName($uid,$role){
-        $query = "SELECT Name FROM " .$role. " WHERE U_ID = '$uid'";
-        $statement = $this->db->prepare($query);
-        if ($statement->execute()) {
-            // if query successful
-            return $statement->fetch(PDO::FETCH_ASSOC);
-        } else {
-            // if query failed
-            return 'query failed';
-        }
-    }
-    function searchUserInChat($outgoing_id,$searchTerm){
-        $query = "SELECT * FROM organizer WHERE NOT U_ID = {$outgoing_id} AND (Name LIKE '%{$searchTerm}%')";
-        $statement = $this->db->prepare($query);
-        if ($statement->execute()) {
-            // if query successful
-            return $statement->fetch(PDO::FETCH_ASSOC);
-        } else {
-            // if query failed
-            return 'query failed';
-        }
-    }
+    
     function getUserId($email)
     {
         $query = "SELECT U_ID FROM user WHERE Email = '$email' LIMIT 1";

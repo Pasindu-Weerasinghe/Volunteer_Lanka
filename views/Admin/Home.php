@@ -45,17 +45,21 @@ if (!isset($_SESSION['uid'])) {
         ?>
             <div id="c-box">
                 <div id="c-box-item" >
-                    <h3 id="uname">Pasindu Weerasinghe</h3>
-                    <button id="c-view-btn">View</button>
+                    <h3 id="uname"><?php echo  $this->complain_userName[$complaint['C_ID']] ?></h3>
+                    <button onclick="window.location.href='<?php echo BASE_URL . 'admin/complaints/' . $complaint['C_ID']; ?>'" id="c-view-btn">View</button>
                 </div>
-                <p id="c-box-des">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates fuga repellat quaerat natus reprehenderit reiciendis quidem rem error, deserunt adipisci saepe explicabo. Fugit, delectus? Dolorem cupiditate saepe quae laborum quibusdam?</p>
+                <h4 id="c-box-des"><?php echo $this->complain_about[$complaint['C_ID']]  ?></h4>
             </div>
         <?php
         }
         ?>
         <br><br><br>
 
-
+        <pre>
+            <?php 
+            print_r($this->complaints);
+            ?>
+        </pre>
         <?php include 'views/includes/chat_icon.php'; ?>
         
 

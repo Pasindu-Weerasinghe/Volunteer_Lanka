@@ -21,28 +21,19 @@ if (!isset($_SESSION['uid'])) {
     <br><br><br>
     <div class="main" id="main">
         <h2>Complaints</h2>
+        <?php foreach($this->complaints as $complaint){ ?>
         <div id="com-box">
             <div id="com-box-item">
-                <h3 id="com-box-item-uname">Leo Club Gampha</h3>
+                <h3 id="com-box-item-uname"><?php echo $this->complain_about[$complaint['C_ID']]  ?></h3>
                 <h4>Complain :</h4>
-                <p>I am writing to report a user on your system who has been behaving inappropriately. The user's username is Rotract Club Galle.
-                    I have included evidence of their behavior below and screenshots or other evidence.
-                    I believe that this behavior is in violation of your terms of service and I request that you take appropriate action.
-                    Thank you for your attention to this matter.</p>
-                <button>View</button>
+                <p><?php echo $this->complain[$complaint['C_ID']] ?></p>
+                <button onclick="window.location.href='<?php echo BASE_URL . 'admin/complaints/' . $complaint['C_ID']; ?>'">View</button>
             </div>
         </div>
-        <div id="com-box">
-            <div id="com-box-item">
-                <h3 id="com-box-item-uname">Rotract Club Kurunegala</h3>
-                <h4>Complain :</h4>
-                <p>I am writing to bring to your attention a user on the forum who has been posting offensive and inappropriate content. The user's username is [Username] and their posts can be found in the following thread:<a>Link</a>.
-
-                    In their posts, the user has made [describe the offensive or inappropriate content]. This kind of content is not acceptable on our forum and I request that you take action to remove the posts and warn the user.
-                </p>
-                <button>View</button>
-            </div>
-        </div>
+        <?php
+        }
+        ?>
+       
         <br>
         <button onclick="history.back()" id="back-btn">Back</button>
         <br><br>

@@ -17,9 +17,10 @@
 </head>
 
 <body>
-    <?php
+    <!-- <pre><?php
     //print_r($this->user);
-    ?>
+    ?></pre> -->
+    
     <div class="wrapper">
         <section class="users">
             <header>

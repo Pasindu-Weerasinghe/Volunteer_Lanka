@@ -22,7 +22,7 @@ const renderCalender = () => {
     for(let i = 1; i <= lastDateofMonth; i++){
         let isToday = i === date.getDate() && currMonth === new Date().getMonth()
             && currYear === new Date().getFullYear() ? "active": "";//highlight current date
-        liTag += `<li class="${isToday}" id="${i}" onclick=>${i}</li>`;
+        liTag += `<li class="${isToday}" id="${i}" onclick="displayEvents(${i})">${i}</li>`;
     }
     for (let i = lastDayofMonth; i < 6; i++) {
         liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`;
@@ -53,16 +53,34 @@ prevNextIcon.forEach(icon =>{
 //     })
 // })
 
+function displayEvents(i) {
+   
+    let month = currMonth + 1;
+    if (month < 10) {
+        month = "0" + month;
+    }
+    let year = currYear;
+    let date = year + '-' + month + '-' + i;
+    document.getElementById("date").innerHTML = date;
 
-let lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate();
-let currentMonth = document.getElementById("current-date");
+    let fetchReq = fetch("${BASE_URL}volunteer/get_events/$date");
 
-for(let i = 0; i <= lastDateofMonth; i++){
-    const element = document.getElementById(i);
-    const date = element.innerHTML;
-    element.addEventListener("click", function() {
-        document.getElementById("date").innerHTML = date;
-    });
+    fetchReq.then(res => res.json()). then(data => {
+        console.log(data);
+        //window.location.href = BASE_URL;
+    })
+    .catch((error) => console.log(error));
 }
+
+// let lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate();
+// let currentMonth = document.getElementById("current-date");
+
+// for(let i = 0; i <= lastDateofMonth; i++){
+//     const element = document.getElementById(i);
+//     const date = element.innerHTML;
+//     element.addEventListener("click", function() {
+//         document.getElementById("date").innerHTML = date;
+//     });
+// }
 
 

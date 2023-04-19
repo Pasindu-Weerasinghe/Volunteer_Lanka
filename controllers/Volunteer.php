@@ -248,6 +248,18 @@ class Volunteer extends User
         $this->render('Calendar');
     }
 
+    function get_events($date)
+    {
+        if(!isset($_SESSION)) {
+            session_start();
+        }
+        $uid = $_SESSION['uid'];
+        $this->loadModel('Calendar');
+        $events = $this->model->getEvents($uid, $date);
+
+        echo json_encode($events);
+    }
+
     function search_organizer()
     {
         if (isset($_POST['search'])) {

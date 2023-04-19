@@ -13,10 +13,10 @@
 	flex-direction: row;
 
 }
-.profile-image{
-	border-radius: 100%;
-	width: 10px;
-	height: 10px;
+.image{
+	border-radius: 50%;
+	height: 45%;
+	width: 60%;
 }
   
 /* Create two equal columns that sits next to each other */
@@ -73,6 +73,8 @@ td{
 	font-size: 14pt;
 	font-weight: bolder;
 }
+
+
 
 
 

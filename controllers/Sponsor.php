@@ -107,13 +107,11 @@ public function changeProfilePic()
             $profilepic = $target_file;
             // Update user's record in the database with new profile picture
             $this->model->updateProfilePic($uid, $profilepic);
-            // header('Location: ' . BASE_URL . 'Sponsor/Profile');
-            $this->render('Sponsor/profile_sponsor');
+            header('Location: ' . BASE_URL . 'Sponsor/Profile');
         } else {
             echo "Sorry, there was an error uploading your file.";
         }
     } else {
-        // $this->view('change_profile_pic');
         $this->render('Sponsor/profile_sponsor');
     }
 }

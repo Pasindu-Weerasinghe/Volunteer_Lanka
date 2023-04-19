@@ -23,17 +23,18 @@ if (!isset($_SESSION['uid'])) {
         <div class="row1">
             <div class="column1">
                 <form action="<?php echo BASE_URL; ?>Sponsor/changeProfilePic" method="post" enctype="multipart/form-data">
-                    <img class="profile-image" src="<?php echo BASE_URL ?>public/images/<?php echo $this->profile['Photo'] ?>" alt=""><br>
-                    <input type="file" name="profilepic"><br><br>
-                    <input type="submit" value="Save" class="btn">
-                </form>
+                    <table>
+                        <tr>
+                            <td><?php echo $this->user['Name']; ?></td>
+                        </tr>
+                    </table>
+                    <img class="image" src="<?php echo BASE_URL ?>public/images/<?php echo $this->profile['Photo'] ?>" alt="">
+                    <input type="file" name="profilepic" ><br>
+                    <input type="submit" value="Save" >
+                </form><br>
 
 
-                <table>
-                    <tr>
-                        <td><?php echo $this->user['Name']; ?></td>
-                    </tr>
-                </table>
+
                 <button class="btnpw"> <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePsw">Change Password</a></button><br><br>
             </div>
 

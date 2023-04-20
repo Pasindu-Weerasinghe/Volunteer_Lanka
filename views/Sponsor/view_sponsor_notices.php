@@ -66,52 +66,61 @@ if (!isset($_SESSION['uid'])) {
 
             <p class="para">Select sponsor package below</p><br><br>
 
-            <form action="<?php echo BASE_URL; ?>Sponsor/view_sponsor_notice" method="post">
+            <form action="<?php echo BASE_URL; ?>Sponsor/view_sponsor_notice/<?php echo $this->pid ?>/confirm" method="post">
                 <div class="silver">
                     <input type="radio" name="package" value="silver" onchange="toggleInputField(this)">
+                    <input type="hidden" name="silverPrice" value="<?php echo $this->silverPrice; ?>">
                     <strong>Silver</strong><br>
                     <strong>Amount: <?php echo $this->silverPrice; ?></strong>
                 </div>
 
                 <div class="silver">
                     <input type="radio" name="package" value="gold" onchange="toggleInputField(this)">
+                    <input type="hidden" name="goldPrice" value="<?php echo $this->goldPrice; ?>">
                     <strong>Gold</strong><br>
                     <strong>Amount: <?php echo $this->goldPrice; ?></strong>
                 </div>
 
                 <div class="silver">
                     <input type="radio" name="package" value="platinum" onchange="toggleInputField(this)">
+                    <input type="hidden" name="platinumPrice" value="<?php echo $this->platinumPrice; ?>">
                     <strong>Platinum</strong><br>
                     <strong>Amount : <?php echo $this->platinumPrice; ?></strong>
                 </div>
 
                 <div class="silver">
+                    <input type="radio" name="package" value="other" onchange="toggleInputField(this)">
                     <strong>Other</strong><br>
-
                     <div class="input-container">
-                        <input type="number" id="otherAmount" placeholder="Enter amount" >
+                        <input type="number" id="otherAmount" name="otherAmount" placeholder="Enter amount" disabled>
                     </div>
-
                 </div><br><br>
 
                 <div class="btn-area">
                     <button onclick="history.back()" class="btn1">Cancel</button>
-                    <button class="btn2">Confirm</button>
+                    <button type="submit" name="confirm" class="btn2">Confirm</button>
                 </div>
             </form>
 
             <script>
-                function toggleInputField(radio) {
-                    var otherAmountInput = document.getElementById("otherAmount");
-                    if (radio.value === "other") {
-                        otherAmountInput.disabled = false;
+                function toggleInputField(element) {
+                    if (element.value === "other") {
+                        document.getElementById("otherAmount").disabled = false;
+                        document.getElementsByName("package").forEach(function(radio) {
+                            if (radio.value !== "other") {
+                                radio.disabled = true;
+                            }
+                        });
                     } else {
-                        otherAmountInput.disabled = true;
+                        document.getElementById("otherAmount").disabled = true;
+                        document.getElementsByName("package").forEach(function(radio) {
+                            if (radio.value !== "other") {
+                                radio.disabled = false;
+                            }
+                        });
                     }
                 }
             </script>
-
-
         </div>
     </div>
     <?php include 'views/includes/footer.php'; ?>

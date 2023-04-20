@@ -19,4 +19,15 @@ class SponsorProjectModel extends Model
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
+    function saveSponsorPackage($uid, $pid, $amount, $package)
+    {
+        $query = "INSERT INTO sponsor_pr (U_ID, P_ID, Amount, Package) VALUES (:uid, :pid, :amount, :package)";
+        $statement = $this->db->prepare($query);
+        $statement->bindValue(':uid', $uid, PDO::PARAM_INT);
+        $statement->bindValue(':pid', $pid, PDO::PARAM_INT);
+        $statement->bindValue(':amount', $amount, PDO::PARAM_STR);
+        $statement->bindValue(':package', $package, PDO::PARAM_STR);
+        return $statement->execute();
+    }
+
 }

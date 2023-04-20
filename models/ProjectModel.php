@@ -75,14 +75,6 @@ class ProjectModel extends Model
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
-    function getAmounts($pid)
-    {
-        $query = "SELECT Package, Amount FROM sponsor_notice WHERE P_ID = $pid AND Package IN ('Silver', 'Gold', 'Platinum')";
-        $statement = $this->db->prepare($query);
-        $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
-    }
-
     function getSPAmount($pid)
     {
         $query = "SELECT Amount FROM sponsor_pr WHERE P_ID = $pid";
@@ -121,6 +113,13 @@ class ProjectModel extends Model
             return 'query failed';
         }
     }
+    function getAmounts($pid)
+    {
+        $query = "SELECT Package, Amount FROM sponsor_notice WHERE P_ID = $pid AND Package IN ('Silver', 'Gold', 'Platinum')";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 
     function getOrganizer($uid)
     {
@@ -135,6 +134,9 @@ class ProjectModel extends Model
             return 'query failed';
         }
     }
+
+ 
+
 
     function setProjectImage($pid, $image)
     {

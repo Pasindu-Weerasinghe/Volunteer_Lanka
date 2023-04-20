@@ -18,33 +18,69 @@ class Sponsor extends User
         }
         $this->render('Sponsor/Home');
     }
-    function view_sponsor_notice($pid)
+
+    function view_sponsor_notice($pid, $action = null)
     {
-        $this->loadModel('Project');
-        $this->projects = $this->model->getProject($pid);
-        $uid = $this->projects['U_ID'];
-        $this->organizer = $this->model->getOrganizer($uid);
-        $this->packages = $this->model->getAmounts($pid);
+        $this->pid = $pid;
 
-        $silverPrice = 0;
-        $goldPrice = 0;
-        $platinumPrice = 0;
+        if ($action == null) {
+            $this->loadModel('Project');
+            $this->projects = $this->model->getProject($pid);
+            $uid = $this->projects['U_ID'];
+            $this->organizer = $this->model->getOrganizer($uid);
+            $this->packages = $this->model->getAmounts($pid);
 
-        foreach ($this->packages as $package) {
-            if ($package['Package'] == "Silver") {
-                $silverPrice = $package['Amount'];
-            } elseif ($package['Package'] == "Gold") {
-                $goldPrice = $package['Amount'];
-            } elseif ($package['Package'] == "Platinum") {
-                $platinumPrice = $package['Amount'];
+            $silverPrice = 0;
+            $goldPrice = 0;
+            $platinumPrice = 0;
+
+            foreach ($this->packages as $package) {
+                if ($package['Package'] == "Silver") {
+                    $silverPrice = $package['Amount'];
+                } elseif ($package['Package'] == "Gold") {
+                    $goldPrice = $package['Amount'];
+                } elseif ($package['Package'] == "Platinum") {
+                    $platinumPrice = $package['Amount'];
+                }
             }
+
+            $this->silverPrice = $silverPrice;
+            $this->goldPrice = $goldPrice;
+            $this->platinumPrice = $platinumPrice;
+
+            $this->render('Sponsor/view_sponsor_notices');
+        } else if ($action == 'confirm') {
+
+            if(isset($_POST['confirm']))
+            {
+                session_start();
+                $uid=$_SESSION['uid'];
+                $package=$_POST['package'];
+                $amount=0;
+                $this->loadModel('SponsorProject');
+                switch($package)
+                {
+                    case 'silver':
+                        $amount=$_POST['silverPrice'];
+                        break;
+
+                    case 'gold':
+                        $amount=$_POST['goldPrice'];
+                        break;
+                    
+                    case 'platinum':
+                        $amount=$_POST['platinumPrice'];
+                        break;
+
+                    case 'other':
+                        $amount=$_POST['otherAmount'];
+                        break;
+                }
+                $this->model->saveSponsorPackage($uid, $pid, $amount, $package);
+            }
+
+            header('Location: ' . BASE_URL . 'Sponsor/view_sponsor_notice/'.$pid);
         }
-
-        $this->silverPrice = $silverPrice;
-        $this->goldPrice = $goldPrice;
-        $this->platinumPrice = $platinumPrice;
-        $this->render('Sponsor/view_sponsor_notices');
-
     }
 
 
@@ -80,41 +116,41 @@ class Sponsor extends User
         $this->render('Sponsor/profile_sponsor');
     }
 
-public function changeProfilePic()
-{
-    session_start();
-    $uid = $_SESSION['uid'];
-    $this->loadModel('Sponsor');
-    $this->profile = $this->model->getUserData($uid);
-    $this->user = $this->model->getSponsorData($uid);
+    public function changeProfilePic()
+    {
+        session_start();
+        $uid = $_SESSION['uid'];
+        $this->loadModel('Sponsor');
+        $this->profile = $this->model->getUserData($uid);
+        $this->user = $this->model->getSponsorData($uid);
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $target_dir = "public/images/";
-        $image_name = basename($_FILES["profilepic"]["name"]);
-        $target_file = $target_dir . $image_name;
-        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-        $extensions_arr = array("jpg","jpeg","png","gif");
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $target_dir = "public/images/";
+            $image_name = basename($_FILES["profilepic"]["name"]);
+            $target_file = $target_dir . $image_name;
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+            $extensions_arr = array("jpg", "jpeg", "png", "gif");
 
-        // Check if file is a valid image
-        if(!in_array($imageFileType,$extensions_arr)) {
-            echo "Invalid image file type. Only JPG, JPEG, PNG, and GIF files are allowed.";
-            return;
-        }
+            // Check if file is a valid image
+            if (!in_array($imageFileType, $extensions_arr)) {
+                echo "Invalid image file type. Only JPG, JPEG, PNG, and GIF files are allowed.";
+                return;
+            }
 
-        // Move uploaded file to uploads directory
-        if (move_uploaded_file($_FILES["profilepic"]["tmp_name"], $target_file)) {
-            $uid = $_SESSION['uid'];
-            $profilepic = $target_file;
-            // Update user's record in the database with new profile picture
-            $this->model->updateProfilePic($uid, $profilepic);
-            header('Location: ' . BASE_URL . 'Sponsor/Profile');
+            // Move uploaded file to uploads directory
+            if (move_uploaded_file($_FILES["profilepic"]["tmp_name"], $target_file)) {
+                $uid = $_SESSION['uid'];
+                $profilepic = $target_file;
+                // Update user's record in the database with new profile picture
+                $this->model->updateProfilePic($uid, $profilepic);
+                header('Location: ' . BASE_URL . 'Sponsor/Profile');
+            } else {
+                echo "Sorry, there was an error uploading your file.";
+            }
         } else {
-            echo "Sorry, there was an error uploading your file.";
+            $this->render('Sponsor/profile_sponsor');
         }
-    } else {
-        $this->render('Sponsor/profile_sponsor');
     }
-}
 
 
 

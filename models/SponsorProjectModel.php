@@ -29,5 +29,18 @@ class SponsorProjectModel extends Model
         $statement->bindValue(':package', $package, PDO::PARAM_STR);
         return $statement->execute();
     }
+    public function getSponsorPackage($uid, $pid)
+    {
+        $query = "SELECT * FROM sponsor_pr WHERE U_ID = $uid AND P_ID = $pid";
+        $result = $this->db->query($query);
+    
+        if ($result->rowCount() > 0) {
+            return $result->fetch(PDO::FETCH_ASSOC);
+        } else {
+            return null;
+        }
+    }
+    
+
 
 }

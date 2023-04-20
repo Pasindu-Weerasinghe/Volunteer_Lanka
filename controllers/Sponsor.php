@@ -19,45 +19,118 @@ class Sponsor extends User
         $this->render('Sponsor/Home');
     }
 
+    // function view_sponsor_notice($pid, $action = null)
+    // {
+    //     $this->pid = $pid;
+
+    //     if ($action == null) {
+    //         $this->loadModel('Project');
+    //         $this->projects = $this->model->getProject($pid);
+    //         $uid = $this->projects['U_ID'];
+    //         $this->organizer = $this->model->getOrganizer($uid);
+    //         $this->packages = $this->model->getAmounts($pid);
+
+    //         $silverPrice = 0;
+    //         $goldPrice = 0;
+    //         $platinumPrice = 0;
+
+    //         foreach ($this->packages as $package) {
+    //             if ($package['Package'] == "Silver") {
+    //                 $silverPrice = $package['Amount'];
+    //             } elseif ($package['Package'] == "Gold") {
+    //                 $goldPrice = $package['Amount'];
+    //             } elseif ($package['Package'] == "Platinum") {
+    //                 $platinumPrice = $package['Amount'];
+    //             }
+    //         }
+
+    //         $this->silverPrice = $silverPrice;
+    //         $this->goldPrice = $goldPrice;
+    //         $this->platinumPrice = $platinumPrice;
+
+    //         $this->render('Sponsor/view_sponsor_notices');
+    //     } else if ($action == 'confirm') {
+
+    //         if(isset($_POST['confirm']))
+    //         {
+    //             session_start();
+    //             $uid=$_SESSION['uid'];
+    //             $package=$_POST['package'];
+    //             $amount=0;
+    //             $this->loadModel('SponsorProject');
+    //             switch($package)
+    //             {
+    //                 case 'silver':
+    //                     $amount=$_POST['silverPrice'];
+    //                     break;
+
+    //                 case 'gold':
+    //                     $amount=$_POST['goldPrice'];
+    //                     break;
+                    
+    //                 case 'platinum':
+    //                     $amount=$_POST['platinumPrice'];
+    //                     break;
+
+    //                 case 'other':
+    //                     $amount=$_POST['otherAmount'];
+    //                     break;
+    //             }
+    //             $this->model->saveSponsorPackage($uid, $pid, $amount, $package);
+    //         }
+
+    //         header('Location: ' . BASE_URL . 'Sponsor/view_sponsor_notice/'.$pid);
+    //     }
+    // }
+
     function view_sponsor_notice($pid, $action = null)
-    {
-        $this->pid = $pid;
+{
+    $this->pid = $pid;
 
-        if ($action == null) {
-            $this->loadModel('Project');
-            $this->projects = $this->model->getProject($pid);
-            $uid = $this->projects['U_ID'];
-            $this->organizer = $this->model->getOrganizer($uid);
-            $this->packages = $this->model->getAmounts($pid);
+    if ($action == null) {
+        $this->loadModel('Project');
+        $this->projects = $this->model->getProject($pid);
+        $uid = $this->projects['U_ID'];
+        $this->organizer = $this->model->getOrganizer($uid);
+        $this->packages = $this->model->getAmounts($pid);
 
-            $silverPrice = 0;
-            $goldPrice = 0;
-            $platinumPrice = 0;
+        $silverPrice = 0;
+        $goldPrice = 0;
+        $platinumPrice = 0;
 
-            foreach ($this->packages as $package) {
-                if ($package['Package'] == "Silver") {
-                    $silverPrice = $package['Amount'];
-                } elseif ($package['Package'] == "Gold") {
-                    $goldPrice = $package['Amount'];
-                } elseif ($package['Package'] == "Platinum") {
-                    $platinumPrice = $package['Amount'];
-                }
+        foreach ($this->packages as $package) {
+            if ($package['Package'] == "Silver") {
+                $silverPrice = $package['Amount'];
+            } elseif ($package['Package'] == "Gold") {
+                $goldPrice = $package['Amount'];
+            } elseif ($package['Package'] == "Platinum") {
+                $platinumPrice = $package['Amount'];
             }
+        }
 
-            $this->silverPrice = $silverPrice;
-            $this->goldPrice = $goldPrice;
-            $this->platinumPrice = $platinumPrice;
+        $this->silverPrice = $silverPrice;
+        $this->goldPrice = $goldPrice;
+        $this->platinumPrice = $platinumPrice;
 
-            $this->render('Sponsor/view_sponsor_notices');
-        } else if ($action == 'confirm') {
+        $this->render('Sponsor/view_sponsor_notices');
+    } else if ($action == 'confirm') {
 
+        session_start();
+        $uid = $_SESSION['uid'];
+
+        // Check if the user has already sponsored the project
+        $this->loadModel('SponsorProject');
+        $sponsorPackage = $this->model->getSponsorPackage($uid, $pid);
+
+        if (!empty($sponsorPackage)) {
+            // User has already sponsored the project
+            echo "<script>alert('You cannot add another sponsor package because you have already selected a package.')</script>";
+        } else {
+            // User has not sponsored the project before
             if(isset($_POST['confirm']))
             {
-                session_start();
-                $uid=$_SESSION['uid'];
                 $package=$_POST['package'];
                 $amount=0;
-                $this->loadModel('SponsorProject');
                 switch($package)
                 {
                     case 'silver':
@@ -82,6 +155,8 @@ class Sponsor extends User
             header('Location: ' . BASE_URL . 'Sponsor/view_sponsor_notice/'.$pid);
         }
     }
+}
+
 
 
 

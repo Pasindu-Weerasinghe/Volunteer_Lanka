@@ -16,17 +16,22 @@ class ChatModel extends Model{
             return 'query failed';
         }
     }
-    // function searchUserInChat($outgoing_id,$searchTerm){
-    //     $query = "SELECT * FROM organizer WHERE NOT U_ID = {$outgoing_id} AND (Name LIKE '%{$searchTerm}%')";
-    //     $statement = $this->db->prepare($query);
-    //     if ($statement->execute()) {
-    //         // if query successful
-    //         return $statement->fetch(PDO::FETCH_ASSOC);
-    //     } else {
-    //         // if query failed
-    //         return 'query failed';
-    //     }
-    // }
+    function searchUserInChat($uid,$searchTerm){
+        $query = "SELECT 
+                  organizer.U_ID, organizer.Name, user.Role FROM organizer INNER JOIN user ON 
+                  organizer.U_ID=user.U_ID  WHERE NOT user.U_ID = {$uid} AND (Name LIKE '%{$searchTerm}%')
+                  UNION 
+                  SELECT sponsor.U_ID, sponsor.Name, user.Role FROM sponsor INNER JOIN user ON 
+                  sponsor.U_ID=user.U_ID  WHERE NOT user.U_ID = {$uid} AND (Name LIKE '%{$searchTerm}%')";
+        $statement = $this->db->prepare($query);
+        if ($statement->execute()) {
+            // if query successful
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            // if query failed
+            return 'query failed';
+        }
+    }
     //to get all user names to our chat
     function getAlluserstochat($uid){
         $query = "SELECT 
@@ -63,15 +68,13 @@ class ChatModel extends Model{
         $query = "SELECT Name FROM " .$user_role. " WHERE U_ID = '$user_id'";
         $statement = $this->db->prepare($query);
          if ($statement->execute()) {
-             // if query successful
              return $statement->fetch(PDO::FETCH_ASSOC);
          } else {
-             // if query failed
              return 'query failed';
          }
     }
     function getAllMessages(){
-        
+
     }
 }
 

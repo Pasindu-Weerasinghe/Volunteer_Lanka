@@ -101,7 +101,34 @@ class User extends Controller
         $this->user = $this->model->getUserDatatoChat($uid,$role);
         $this->render("includes/user");
     }
+    function searchUser(){
+        session_start();
+        $uid = $_SESSION['uid'];
+        $searchTerm = $_POST['searchTerm'];
+        $this->loadModel('Chat');
+        $usernames = $this->model->searchUserInChat($uid,$searchTerm);
+        $output = "";
+        if(count($usernames) > 0){
+            foreach($usernames as $username){
+                $this->lastmessages= $this->model->getLastmsg($uid);
+                $output .= ' <a href="'.BASE_URL. $_SESSION['role'] .'/viewchat/'.$username['U_ID'].'/'.$username['Role'].'" >
+                        <div class="content"> 
+                            <img src="http://localhost/Volunteer_Lanka//public/images/profile.jpg" alt="">
+                            <div class="details">
+                            <span>' . $username['Name'] .'</span>
+                            <p></p>
+                        </div>
+                        </div>
+                        <div class="status-dot"><i class="fa-solid fa-circle"></i></div>
+                    </a> ';
+            }
+                
+            
+            
+        }
+        echo $output;
 
+    }
     function setAlluserstochat(){
         session_start();
         $uid = $_SESSION['uid'];

@@ -94,11 +94,49 @@ class User extends Controller
     }
 
     function chat(){
-        session_start();
+       session_start();
         $role=$_SESSION['role'];
         $uid = $_SESSION['uid'];
         $this->loadModel('Chat');
         $this->user = $this->model->getUserDatatoChat($uid,$role);
         $this->render("includes/user");
     }
+
+    function setAlluserstochat(){
+        session_start();
+        $uid = $_SESSION['uid'];
+        $this->loadModel('Chat');
+        $usernames = $this->model->getAlluserstochat($uid);
+        $output = "";
+        if(count($usernames) == 1){
+            $output .= "No users are available to chat";
+        }else if(count($usernames) > 0){
+            foreach($usernames as $username){
+                $this->lastmessages= $this->model->getLastmsg($uid);
+                $output .= ' <a href="'.BASE_URL. $_SESSION['role'] .'/viewchat/'.$username['U_ID'].'/'.$username['Role'].'" >
+                        <div class="content"> 
+                            <img src="http://localhost/Volunteer_Lanka//public/images/profile.jpg" alt="">
+                            <div class="details">
+                            <span>' . $username['Name'] .'</span>
+                            <p></p>
+                        </div>
+                        </div>
+                        <div class="status-dot"><i class="fa-solid fa-circle"></i></div>
+                    </a> ';
+            }
+                
+            
+            
+        }
+        echo $output;
+    }
+    function viewchat($user_id,$user_role){
+        
+        $this->user_id = $user_id;
+        $this->user_role = $user_role;
+        $this->loadModel('Chat');
+        $this->user = $this->model-> getUserName($user_id,$user_role);
+        $this->render("includes/chat");
+    }
+    
 }

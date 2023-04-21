@@ -60,7 +60,7 @@ if (!isset($_SESSION['uid'])) {
             print_r($this->complaints);
             ?>
         </pre>
-        <?php include 'views/includes/chat_icon.php'; ?>
+        
         
 
 

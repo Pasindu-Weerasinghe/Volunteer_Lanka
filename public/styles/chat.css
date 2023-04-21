@@ -258,6 +258,7 @@ body{
 .chat-area header .back-icon{
     font-size: 18px;
     color: #333;
+    cursor: pointer;
 }
 .chat-area header img{
    height: 45px;

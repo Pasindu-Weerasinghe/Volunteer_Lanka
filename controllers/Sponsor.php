@@ -83,7 +83,81 @@ class Sponsor extends User
     //     }
     // }
 
-    function view_sponsor_notice($pid, $action = null)
+//     function view_sponsor_notice($pid, $action = null)
+// {
+//     $this->pid = $pid;
+
+//     if ($action == null) {
+//         $this->loadModel('Project');
+//         $this->projects = $this->model->getProject($pid);
+//         $uid = $this->projects['U_ID'];
+//         $this->organizer = $this->model->getOrganizer($uid);
+//         $this->packages = $this->model->getAmounts($pid);
+
+//         $silverPrice = 0;
+//         $goldPrice = 0;
+//         $platinumPrice = 0;
+
+//         foreach ($this->packages as $package) {
+//             if ($package['Package'] == "Silver") {
+//                 $silverPrice = $package['Amount'];
+//             } elseif ($package['Package'] == "Gold") {
+//                 $goldPrice = $package['Amount'];
+//             } elseif ($package['Package'] == "Platinum") {
+//                 $platinumPrice = $package['Amount'];
+//             }
+//         }
+
+//         $this->silverPrice = $silverPrice;
+//         $this->goldPrice = $goldPrice;
+//         $this->platinumPrice = $platinumPrice;
+
+//         $this->render('Sponsor/view_sponsor_notices');
+//     } else if ($action == 'confirm') {
+
+//         session_start();
+//         $uid = $_SESSION['uid'];
+
+//         // Check if the user has already sponsored the project
+//         $this->loadModel('SponsorProject');
+//         $sponsorPackage = $this->model->getSponsorPackage($uid, $pid);
+
+//         if (!empty($sponsorPackage)) {
+//             // User has already sponsored the project
+//             echo "<script>alert('You cannot add another sponsor package because you have already selected a package.')</script>";
+//         } else {
+//             // User has not sponsored the project before
+//             if(isset($_POST['confirm']))
+//             {
+//                 $package=$_POST['package'];
+//                 $amount=0;
+//                 switch($package)
+//                 {
+//                     case 'silver':
+//                         $amount=$_POST['silverPrice'];
+//                         break;
+
+//                     case 'gold':
+//                         $amount=$_POST['goldPrice'];
+//                         break;
+                    
+//                     case 'platinum':
+//                         $amount=$_POST['platinumPrice'];
+//                         break;
+
+//                     case 'other':
+//                         $amount=$_POST['otherAmount'];
+//                         break;
+//                 }
+//                 $this->model->saveSponsorPackage($uid, $pid, $amount, $package);
+//             }
+
+//             header('Location: ' . BASE_URL . 'Sponsor/view_sponsor_notice/'.$pid);
+//         }
+//     }
+// }
+
+function view_sponsor_notice($pid, $action = null)
 {
     $this->pid = $pid;
 
@@ -124,7 +198,7 @@ class Sponsor extends User
 
         if (!empty($sponsorPackage)) {
             // User has already sponsored the project
-            echo "<script>alert('You cannot add another sponsor package because you have already selected a package.')</script>";
+            echo "<script>alert('You cannot add another sponsor package because you have already selected a package.'); window.location.href='".BASE_URL."Sponsor/view_sponsor_notice/$pid';</script>";
         } else {
             // User has not sponsored the project before
             if(isset($_POST['confirm']))
@@ -152,7 +226,7 @@ class Sponsor extends User
                 $this->model->saveSponsorPackage($uid, $pid, $amount, $package);
             }
 
-            header('Location: ' . BASE_URL . 'Sponsor/view_sponsor_notice/'.$pid);
+            echo "<script>alert('Succesfully added your sponsor package.');window.location.href='".BASE_URL."Sponsor/view_sponsor_notice/$pid';</script>";
         }
     }
 }

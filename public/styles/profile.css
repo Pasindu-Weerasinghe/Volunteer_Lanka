@@ -3,59 +3,39 @@
 }
 
 .row1{
-    /* margin-top: 20px; */
     display: flex;
-    /* border: none;
-    border-radius: 10px;
-    background: #89afd6;
-	
-	margin:auto; */
-	width: 1000px;
-	flex-direction: row;
-
+	width: auto;
+	flex-direction: column;
 }
-/* form {
+
+.form1{
 	border: 2px solid #f1f1f1;
-	width: 75%;
+	width: 60%;
 	display: flex;
 	margin: auto;
 	margin-top: 20px;
 	padding: 50px 50px;
 	background: #89afd6;
 	border-radius: 15px;
-} */
-.form{
-		border: 2px solid #f1f1f1;
-		width: 75%;
-		display: flex;
-		margin: auto;
-		margin-top: 20px;
-		padding: 50px 50px;
-		background: #89afd6;
-		border-radius: 15px;
 }
 
-
-  
 /* Create two equal columns that sits next to each other */
 .column1 {
     flex: 40%;
     padding: 20px;
-    height: 450px; /* Should be removed. Only for demonstration */
+    height: auto; /* Should be removed. Only for demonstration */
 }
 .column2 {
     flex: 60%;
 	padding: 20px;
-	margin-top: 25px;
+	padding-left: 50px;
 }
-#col2{
-	margin-right: 15px;
-}
+
 
 .image{
 	border-radius: 50%;
-	height: 45%;
-	width: 60%;
+	height: 70%;
+	width: 70%;
 }
 
 
@@ -65,17 +45,7 @@ a {
 }
 
 
-.row2{
-    margin-top: 100px;
-	
-}
 
-/* .column2 {
-	float: left;
-	width: 25%;
-	padding: 10px;
-	height: 300px;	 
-} */
 
 label{
 	
@@ -86,12 +56,12 @@ p{
 }
 td{
 	padding: 14px;
-	font-size: 14pt;
+	font-size: 16pt;
 	font-weight: bolder;
 }
 input[type="text"],
 input[type="password"] {
-	width: 50%;
+	width: 70%;
 	padding: 12px 20px;
 	margin: 8px 0;
 	display: inline-block;
@@ -108,12 +78,14 @@ input[type="password"]:focus {
 	background-color: #6aa438;
 	color: #e0e0f0;
 	font-weight: bold;
-	width: 25%;
+	width: auto ;
 	border: none;
 	border-radius: 10px;
 	padding: 10px 10px;
 	text-align: center;
-	font-size: 18px;
+	font-size: 16px;
+	margin-left: 0px;
+	display: flex;
 }
 
 /* Set a style for all buttons */

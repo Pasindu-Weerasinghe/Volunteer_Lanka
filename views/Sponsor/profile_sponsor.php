@@ -19,23 +19,19 @@ if (!isset($_SESSION['uid'])) {
 <body>
     <?php include 'views/includes/navbar_log.php'; ?>
     <div class="main" id="main">
-        <h2>Sponsor Profile</h2><br><br>
+        <h2>Sponsor Profile</h2><br>
+        <form class="form">
         <div class="row1">
             <div class="column1">
-                <form action="<?php echo BASE_URL; ?>Sponsor/changeProfilePic" method="post" enctype="multipart/form-data">
                     <table>
                         <tr>
                             <td><?php echo $this->user['Name']; ?></td>
                         </tr>
                     </table>
                     <img class="image" src="<?php echo BASE_URL ?>public/images/<?php echo $this->profile['Photo'] ?>" alt="">
-                    <input type="file" name="profilepic" ><br>
-                    <input type="submit" value="Save" >
-                </form><br>
-
-
-
-                <button class="btnpw"> <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePsw">Change Password</a></button><br><br>
+                <br><br>
+                <button > <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePic">Edit Profile</a></button><br>
+                <button > <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePsw">Change Password</a></button>
             </div>
 
             <div class="column2">
@@ -73,6 +69,7 @@ if (!isset($_SESSION['uid'])) {
                 </table>
             </div>
         </div>
+        </form>
     </div>
     <?php include 'views/includes/footer.php'; ?>
 </body>

@@ -35,7 +35,7 @@ if (!isset($_SESSION['uid'])) {
             </p>
            
             <button><a href="<?php echo BASE_URL ?> Sponsor/Profile" class="same">Back</a></button>
-            <button name="submit" type="submit" >Save Password</button>
+            <button name="submit" type="submit" >Confirm</button>
             <?php
             if (isset($this->error)) {
                 echo '<label class="error">'.$this->error.'</label>';
@@ -43,7 +43,7 @@ if (!isset($_SESSION['uid'])) {
 
         </form>
     </div>
-    <?php include 'views/includes/footer.php'; ?>
+    
 </body>
-
+<?php include 'views/includes/footer.php'; ?>
 </html>

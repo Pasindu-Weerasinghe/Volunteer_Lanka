@@ -27,26 +27,16 @@ class SponsorModel extends Model
         $statement->bindParam(':type', $type);
         return $statement->execute();
     }
-    // function updateProfilePic($uid, $filename)
-    // {
-    //     $query = "UPDATE user SET Photo  = :filename WHERE U_ID = :uid";
-    //     $statement = $this->db->prepare($query);
-    //     $statement->bindParam(':filename', $filename);
-    //     $statement->bindParam(':uid', $uid);
-    //     $statement->execute();
-    // }
 
     public function updateProfilePic($uid, $profilepic)
-{
-    $filename = basename($profilepic);
-
-     $sql = "UPDATE user SET Photo=:profilepic WHERE U_ID=:uid";
-    $stmt = $this->db->prepare($sql);
-    $stmt->bindValue(':profilepic', $filename);
-    $stmt->bindValue(':uid', $uid);
-    $stmt->execute();
-}
-
+    {
+        $filename = basename($profilepic);
+        $sql = "UPDATE user SET Photo=:profilepic WHERE U_ID=:uid";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':profilepic', $filename);
+        $stmt->bindValue(':uid', $uid);
+        $stmt->execute();
+    }
 
 
     function getUserData($uid)

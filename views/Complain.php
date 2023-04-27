@@ -42,6 +42,7 @@ if (!isset($_SESSION['uid'])) {
             </div>
         </form>
     </div>
+    
     <?php include 'views/includes/footer.php'; ?>
 </body>
 

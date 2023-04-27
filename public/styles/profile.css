@@ -3,21 +3,39 @@
 }
 
 .row1{
-    margin-top: 20px;
+    /* margin-top: 20px; */
     display: flex;
-    border: none;
+    /* border: none;
     border-radius: 10px;
-    background-color:#96c7d6;
+    background: #89afd6;
+	
+	margin:auto; */
 	width: 1000px;
-	margin:auto;
 	flex-direction: row;
 
 }
-.image{
-	border-radius: 50%;
-	height: 45%;
-	width: 60%;
+/* form {
+	border: 2px solid #f1f1f1;
+	width: 75%;
+	display: flex;
+	margin: auto;
+	margin-top: 20px;
+	padding: 50px 50px;
+	background: #89afd6;
+	border-radius: 15px;
+} */
+.form{
+		border: 2px solid #f1f1f1;
+		width: 75%;
+		display: flex;
+		margin: auto;
+		margin-top: 20px;
+		padding: 50px 50px;
+		background: #89afd6;
+		border-radius: 15px;
 }
+
+
   
 /* Create two equal columns that sits next to each other */
 .column1 {
@@ -27,19 +45,17 @@
 }
 .column2 {
     flex: 60%;
-	padding-top: -200px;
+	padding: 20px;
+	margin-top: 25px;
+}
+#col2{
+	margin-right: 15px;
 }
 
-.btnpw{
-	background-color: #84b464;
-	color: #e0e0f0;
-	font-weight: bold;
-	border: none;
-	border-radius: 15px;
-	padding: 10px 32px;
-	text-align: center;
-	font-family: "Poppins", sans-serif;
-	font-size: 16px;
+.image{
+	border-radius: 50%;
+	height: 45%;
+	width: 60%;
 }
 
 
@@ -54,12 +70,12 @@ a {
 	
 }
 
-.column2 {
+/* .column2 {
 	float: left;
 	width: 25%;
 	padding: 10px;
 	height: 300px;	 
-}
+} */
 
 label{
 	
@@ -72,6 +88,58 @@ td{
 	padding: 14px;
 	font-size: 14pt;
 	font-weight: bolder;
+}
+input[type="text"],
+input[type="password"] {
+	width: 50%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: none;
+	box-sizing: border-box;
+  border-radius: 10px;
+}
+input[type="text"]:focus,
+input[type="password"]:focus {
+	border: 4px solid rgb(169, 216, 250);
+	outline: none;
+}
+.updatebt{
+	background-color: #6aa438;
+	color: #e0e0f0;
+	font-weight: bold;
+	width: 25%;
+	border: none;
+	border-radius: 10px;
+	padding: 10px 10px;
+	text-align: center;
+	font-size: 18px;
+}
+
+/* Set a style for all buttons */
+button {
+	background-color: #6aa438;
+	color: #e0e0f0;
+	padding: 10px 10px;
+	margin: 10px 20;
+	border: none;
+	border-radius: 10px;
+	font-size: 17px;
+	font-weight: bold;
+	cursor: pointer;
+	width: 50%;
+	opacity: 0.9;
+}
+.bt2 {
+	margin-left: 60px;
+}
+a {
+	color: #e0e0f0;
+	text-decoration: none;
+}
+
+button:hover {
+	opacity: 1;
 }
 
 

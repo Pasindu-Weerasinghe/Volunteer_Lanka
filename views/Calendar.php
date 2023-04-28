@@ -44,15 +44,11 @@ if (!isset($_SESSION['uid'])) {
 
             <div class="card">
                 <div class="cards_heading">
-                    <div class="date" id="date">bleh</div>
+                    <div class="date" id="date"></div>
                     <div class="title">Events</div>
                 </div>
                 
-                <div class="cards_content">
-                    <div class="event" id="project">Beach cleaning Campaign</div>
-                    <div class="time" id="time">Time: 09:30</div>
-                    <div class="venue" id="venue">Venue: Mount Lavinia Beach</div>
-                </div>
+                <div class="cards_content"></div>
             </div>
         </div>
     </div>

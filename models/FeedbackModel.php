@@ -8,11 +8,12 @@ class FeedbackModel extends Model
         parent::__construct();
     }
 
-    function setFeedback($uid, $des, $pid)
+    function setFeedback($des, $rating, $uid, $pid)
     {
-        $query = "INSERT INTO feedback (Description, U_ID, P_ID) VALUES (:description, :uid, :pid)";
+        $query = "INSERT INTO feedback (Description, Rating, U_ID, P_ID) VALUES (:des, :rating, :uid, :pid)";
         $statement = $this->db->prepare($query);
-        $statement->bindParam(':description', $des);
+        $statement->bindParam(':des', $des);
+        $statement->bindParam(':rating', $rating);
         $statement->bindParam(':uid', $uid);
         $statement->bindParam(':pid', $pid);
         $statement->execute();

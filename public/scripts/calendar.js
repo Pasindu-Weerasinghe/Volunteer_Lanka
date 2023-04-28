@@ -1,6 +1,7 @@
 const currentDate = document.querySelector(".current-date");
 daysTag = document.querySelector(".days");
 prevNextIcon = document.querySelectorAll(".icons span");
+const cardsContent = document.querySelector(".cards_content");
 
 let date = new Date();
 currYear = date.getFullYear();
@@ -53,6 +54,7 @@ prevNextIcon.forEach(icon =>{
 function displayEvents(i) {
    
     let month = currMonth + 1;
+    let events = [];
     if (month < 10) {
         month = "0" + month;
     }
@@ -67,6 +69,19 @@ function displayEvents(i) {
         .then(res => res.json())
         .then(data => {
         console.log(data);
+        
+        if (data.length === 0) {
+            cardsContent.innerHTML = "";
+        } else {
+            cardsContent.innerHTML = "";
+            data.forEach((i) => {
+                cardsContent.innerHTML += `
+                <div class="event" id="project">${i.Name}</div>
+                <div class="time" id="time">${i.Time}</div>
+                <div class="venue" id="venue">${i.Venue}</div>
+                ` 
+            })
+        }
     })
     .catch((error) => console.log(error));
 }

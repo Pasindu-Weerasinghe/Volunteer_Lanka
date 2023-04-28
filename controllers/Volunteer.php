@@ -160,8 +160,9 @@ class Volunteer extends User
         }
         $uid = $_SESSION['uid'];
         $des = $_POST['des'];
+        $rating = $_POST['rating'];
         $this->loadModel('Feedback');
-        $this->model->setFeedback($uid, $des, $pid);
+        $this->model->setFeedback($des, $rating, $uid, $pid);
         header("Location: " . BASE_URL . "volunteer/feedback/$pid");
     }
 

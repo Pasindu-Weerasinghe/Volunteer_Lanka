@@ -32,7 +32,7 @@
     height: auto; /* Should be removed. Only for demonstration */
 }
 .column2 {
-    flex: 60%;
+    flex: 90%;
 	padding: 20px;
 	padding-left: 50px;
 }

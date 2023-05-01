@@ -96,11 +96,13 @@ if (!isset($_SESSION['uid'])) {
                     </div>
                 </div><br><br>
 
-                <div class="btn-area">
-                    <button onclick="history.back()" class="btn1">Cancel</button>
+                <div class="btn-area1">
                     <button type="submit" name="confirm" class="btn2">Confirm</button>
                 </div>
             </form>
+            <div class="btn-area2">
+                    <button onclick="history.back()" class="btn1">Cancel</button>
+                </div>
 
             <script>
                 function toggleInputField(element) {

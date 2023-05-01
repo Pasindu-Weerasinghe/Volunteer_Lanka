@@ -49,7 +49,7 @@ if (!isset($_SESSION['uid'])) {
                 <label for="des"><b>Address</b></label><br>
                 <input type="text" name="cNumber" value="<?php echo $this->user['Address']; ?>"><br>
 
-                <button class="updatebt" name="Update" >Update Profile</button>
+                <button class="prbtn"> <a href="">Update Profile</a></button>
 
             </form>
 

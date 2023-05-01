@@ -20,56 +20,60 @@ if (!isset($_SESSION['uid'])) {
     <?php include 'views/includes/navbar_log.php'; ?>
     <div class="main" id="main">
         <h2>Sponsor Profile</h2><br>
-        <form class="form">
-        <div class="row1">
-            <div class="column1">
+        <div class="form1">
+            <div class="row1">
+                <div>
                     <table>
                         <tr>
                             <td><?php echo $this->user['Name']; ?></td>
                         </tr>
                     </table>
                     <img class="image" src="<?php echo BASE_URL ?>public/images/<?php echo $this->profile['Photo'] ?>" alt="">
-                <br><br>
-                <button > <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePic">Edit Profile</a></button><br>
-                <button > <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePsw">Change Password</a></button>
+                    <br><br>
+                    <div class="prbtn">
+                        <button class="prbtn"> <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePic">Edit Profile</a></button>
+                        <button class="prbtn"> <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePsw">Change Password</a></button>
+                    </div>
+
+                </div>
             </div>
 
-            <div class="column2">
-                <table>
-                    <tr>
-                        <td>User ID</td>
-                        <td>:</td>
-                        <td><?php echo $this->profile['U_ID']; ?></td>
-                    </tr>
-                    <tr>
-                        <td>Role</td>
-                        <td>:</td>
-                        <td><?php echo $this->profile['Role']; ?></td>
-                    </tr>
-                    <tr>
-                        <td>Name</td>
-                        <td>:</td>
-                        <td><?php echo $this->user['Name']; ?></td>
-                    </tr>
-                    <tr>
-                        <td>Email</td>
-                        <td>:</td>
-                        <td><?php echo $this->profile['Email'] ?></td>
-                    </tr>
-                    <tr>
-                        <td>Address</td>
-                        <td>:</td>
-                        <td><?php echo $this->user['Address']; ?></td>
-                    </tr>
-                    <tr>
-                        <td>Contact Number</td>
-                        <td>:</td>
-                        <td><?php echo $this->user['Contact']; ?></td>
-                    </tr>
-                </table>
-            </div>
+
+            <table class="T1">
+                <tr>
+                    <td>User ID</td>
+                    <td>:</td>
+                    <td><?php echo $this->profile['U_ID']; ?></td>
+                </tr>
+                <tr>
+                    <td>Role</td>
+                    <td>:</td>
+                    <td><?php echo $this->profile['Role']; ?></td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td>:</td>
+                    <td><?php echo $this->user['Name']; ?></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>:</td>
+                    <td><?php echo $this->profile['Email'] ?></td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td>:</td>
+                    <td><?php echo $this->user['Address']; ?></td>
+                </tr>
+                <tr>
+                    <td>Contact Number</td>
+                    <td>:</td>
+                    <td><?php echo $this->user['Contact']; ?></td>
+                </tr>
+            </table>
+
         </div>
-        </form>
+
     </div>
     <?php include 'views/includes/footer.php'; ?>
 </body>

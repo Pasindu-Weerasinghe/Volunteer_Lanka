@@ -7,6 +7,12 @@
 	width: auto;
 	flex-direction: column;
 }
+.row1{
+    display: flex;
+	width: auto;
+	flex: 80%;
+	flex-direction: roe;
+}
 
 .form1{
 	border: 2px solid #f1f1f1;
@@ -30,7 +36,6 @@
 	padding: 20px;
 	padding-left: 50px;
 }
-
 
 .image{
 	border-radius: 50%;
@@ -56,9 +61,14 @@ p{
 }
 td{
 	padding: 14px;
-	font-size: 16pt;
+	font-size: 14pt;
 	font-weight: bolder;
 }
+.T1{
+	margin-top: -20px;
+	display: flex;
+}
+
 input[type="text"],
 input[type="password"] {
 	width: 70%;
@@ -101,6 +111,9 @@ button {
 	cursor: pointer;
 	width: 50%;
 	opacity: 0.9;
+}
+.prbtn{
+	margin-top: 0px;
 }
 .bt2 {
 	margin-left: 60px;

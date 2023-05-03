@@ -35,10 +35,12 @@ if (!isset($_SESSION['uid'])) {
                 </div>
             </div>
 
-            <form class="column2">
+            <form action="<?php echo BASE_URL.$_SESSION['role']; ?>/updateProfile" method="post" enctype="multipart/form-data" class="column2">
 
+                <input type="hidden" name="uid" value="<?php echo $_SESSION['uid'] ?>">
+                
                 <label for="uname"><b>E-Mail</b></label><br>
-                <input type="text" name="uname" value="<?php echo $this->profile['Email'] ?>" readonly><br>
+                <input type="text" name="email" value="<?php echo $this->profile['Email'] ?>" readonly><br>
 
                 <label for="uname"><b>Name</b></label><br>
                 <input type="text" name="uname" value="<?php echo $this->user['Name']; ?>"" > <br>
@@ -47,9 +49,9 @@ if (!isset($_SESSION['uid'])) {
                 <input type="text" name="cNumber" value="<?php echo $this->user['Contact']; ?>"><br>
 
                 <label for="des"><b>Address</b></label><br>
-                <input type="text" name="cNumber" value="<?php echo $this->user['Address']; ?>"><br>
+                <input type="text" name="address" value="<?php echo $this->user['Address']; ?>"><br>
 
-                <button class="prbtn"> <a href="">Update Profile</a></button>
+                <button class="prbtn" name="update"> Update Profile</a></button>
 
             </form>
 

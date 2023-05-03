@@ -58,10 +58,13 @@ class Sponsor extends User
             $this->loadModel('SponsorProject');
             $sponsorPackage = $this->model->getSponsorPackage($uid, $pid);
 
+            // if (empty($sponsorPackage)) {
+            //     echo "<script>alert('Please select your sponsor package.'); window.location.href='" . BASE_URL . "Sponsor/view_sponsor_notice/$pid';</script>";
+            // }
             if (!empty($sponsorPackage)) {
                 // User has already sponsored the project
                 echo "<script>alert('You cannot add another sponsor package because you have already selected a package.'); window.location.href='" . BASE_URL . "Sponsor/view_sponsor_notice/$pid';</script>";
-            } else {
+            }  else {
                 // User has not sponsored the project before
                 if (isset($_POST['confirm'])) {
                     $package = $_POST['package'];
@@ -90,10 +93,6 @@ class Sponsor extends User
             }
         }
     }
-
-
-
-
     function sponsored_projects()
     {
         $this->loadModel('project');
@@ -134,10 +133,6 @@ class Sponsor extends User
         $this->user = $this->model->getSponsorData($uid);
         $this->render('Sponsor/changeProfilepic');
     }
-
-    
-
-
 
     function calendar()
     {

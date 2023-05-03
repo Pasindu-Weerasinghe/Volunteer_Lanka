@@ -13,19 +13,19 @@ class User extends Controller
     function calendar()
     {
         $this->render('Calendar');
-//        switch ($this->role) {
-//            case 'organizer':
-//                $this->render('Calendar');
-//                break;
-//            case 'sponsor':
-//                $this->render('Calendar');
-//                break;
-//            case 'volunteer':
-//                $this->render('Calendar');
-//                break;
-//            default:
-//                break;
-//        }
+        //        switch ($this->role) {
+        //            case 'organizer':
+        //                $this->render('Calendar');
+        //                break;
+        //            case 'sponsor':
+        //                $this->render('Calendar');
+        //                break;
+        //            case 'volunteer':
+        //                $this->render('Calendar');
+        //                break;
+        //            default:
+        //                break;
+        //        }
     }
 
     function search_user()
@@ -79,10 +79,8 @@ class User extends Controller
             } else {
                 $this->error = "Existing password is incorrect";
             }
-
         }
         $this->render('Sponsor/changePasswordProfile');
-
     }
 
     public function changeProfilePic()
@@ -92,9 +90,9 @@ class User extends Controller
         $this->loadModel('Sponsor');
         $this->profile = $this->model->getUserData($uid);
         $this->user = $this->model->getSponsorData($uid);
-        
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            
+
             $target_dir = "public/images/";
             $image_name = basename($_FILES["profilepic"]["name"]);
             $target_file = $target_dir . $image_name;
@@ -120,6 +118,27 @@ class User extends Controller
         } else {
             //$this->render('Sponsor/profile_sponsor');
             $this->render('Sponsor/changeProfile');
+        }
+    }
+
+    public function updateProfile()
+    {
+        
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
+            $name = $_POST['uname'];
+            $contact = $_POST['cNumber'];
+            $address = $_POST['address'];
+            $uid= $_POST['uid'];
+
+            $this->loadModel('User');
+            $this->model->updateUserProfile($name, $contact, $address, $uid);
+
+            // Redirect to profile page
+            //$this->view->render('sponsor/profile_sponsor');
+            header('Location: ' . BASE_URL . 'Sponsor/profile');
+        } else {
+            // Render the view page
+            $this->view->render('sponsor/profile_sponsor');
         }
     }
 }

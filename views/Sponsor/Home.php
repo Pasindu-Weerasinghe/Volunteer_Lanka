@@ -5,7 +5,6 @@ if (!isset($_SESSION['uid'])) {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +27,8 @@ if (!isset($_SESSION['uid'])) {
 
         <section class="container">
             <?php foreach ($this->projects as $project) {
-                $pid = $project['P_ID'] ?>
+                $pid = $project['P_ID'];
+                ?>
                 <div class="card">
                     <div class="card-image">
                         <img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImages[$pid][0]['Image'] ?>">
@@ -42,8 +42,7 @@ if (!isset($_SESSION['uid'])) {
         </section>
     </div>
 
-<?php include 'views/includes/footer.php'; ?>
+    <?php include 'views/includes/footer.php'; ?>
 </body>
-
 
 </html>

@@ -36,6 +36,7 @@ if (!isset($_SESSION['uid'])) {
             <form action="#" class="typing-area" autocomplete="off">
                 <input type="text" name="outgoing_id" value="<?php echo $_SESSION['uid']; ?>" hidden>
                 <input type="text" name="incoming_id" value="<?php echo $this->user_id ?>" hidden>
+                <input type="hidden" name='role' value="<?php echo $_SESSION['role']?>" hidden>
                 <input type="text" name="message" class="input-field" placeholder="Type a message here...">
                 <button><i class="fa-solid fa-paper-plane"></i></button>
             </form>

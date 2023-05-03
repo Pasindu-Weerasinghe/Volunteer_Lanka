@@ -73,11 +73,29 @@ class ChatModel extends Model{
              return 'query failed';
          }
     }
-    function getAllMessages(){
+    function sendMessage($outgoing_id, $incoming_id, $message){
+        $query = "INSERT INTO messages (incoming_msg_id,outgoing_msg_id,msg)
+                    VALUES ({$incoming_id},{$outgoing_id},'{$message}')";
+        $statement = $this->db->prepare($query);
+        if ($statement->execute()) {
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            return 'query failed';
+        }
 
     }
+    function getMessage($outgoing_id,$incoming_id){
+        $query = "SELECT * FROM messages LEFT JOIN user ON user.U_ID = messages.outgoing_msg_id 
+        WHERE (outgoing_msg_id = {$outgoing_id} AND incoming_msg_id = {$incoming_id})
+        OR (outgoing_msg_id = {$incoming_id} AND incoming_msg_id = {$outgoing_id}) ORDER BY msg_id ASC"; 
+        $statement = $this->db->prepare($query);
+        if ($statement->execute()) {
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            return 'query failed';
+        }
+    }
 }
-
 
 
 

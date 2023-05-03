@@ -27,7 +27,7 @@ if (!isset($_SESSION['uid'])) {
                 <h3 id="com-box-item-uname"><?php echo $this->complain_about[$complaint['C_ID']]  ?></h3>
                 <h4>Complain :</h4>
                 <p><?php echo $this->complain[$complaint['C_ID']] ?></p>
-                <button onclick="window.location.href='<?php echo BASE_URL . 'admin/complaints/' . $complaint['C_ID']; ?>'">View</button>
+                <button onclick="window.location.href='<?php echo BASE_URL . 'admin/view_complaints/' . $complaint['C_ID']; ?>'">View</button>
             </div>
         </div>
         <?php

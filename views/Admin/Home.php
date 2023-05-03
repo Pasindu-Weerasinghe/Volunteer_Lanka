@@ -46,7 +46,7 @@ if (!isset($_SESSION['uid'])) {
             <div id="c-box">
                 <div id="c-box-item" >
                     <h3 id="uname"><?php echo  $this->complain_userName[$complaint['C_ID']] ?></h3>
-                    <button onclick="window.location.href='<?php echo BASE_URL . 'admin/complaints/' . $complaint['C_ID']; ?>'" id="c-view-btn">View</button>
+                    <button onclick="window.location.href='<?php echo BASE_URL . 'admin/view_complaints/' . $complaint['C_ID']; ?>'" id="c-view-btn">View</button>
                 </div>
                 <h4 id="c-box-des"><?php echo $this->complain_about[$complaint['C_ID']]  ?></h4>
             </div>
@@ -57,7 +57,7 @@ if (!isset($_SESSION['uid'])) {
 
         <pre>
             <?php 
-            print_r($this->complaints);
+            //print_r($this->complaints);
             ?>
         </pre>
         

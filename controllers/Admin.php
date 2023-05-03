@@ -77,6 +77,9 @@ class Admin extends User
         }
         $this->render('Admin/complaints');
     }
+    function view_complaints(){
+        $this->render('Admin/view_complaints');
+    }
     function create_new_admin_acc($action = null)
     {
         switch($action) {

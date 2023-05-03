@@ -1,3 +1,5 @@
+const BASE_URL = 'http://localhost/Volunteer_Lanka/';
+const ROLE = document.querySelector('input[name="role"]').value;
 const form = document.querySelector(".typing-area"),
 inputField = form.querySelector(".input-field"),
 sendBtn = form.querySelector("button"),
@@ -10,7 +12,7 @@ form.onsubmit = (e) => {
 
 sendBtn.onclick = ()=>{
     let xhr = new XMLHttpRequest(); //creating XML object
-    xhr.open("POST", "php/insert-chat.php", true);
+    xhr.open("POST", `${BASE_URL}${ROLE}/insertChat`, true);
     xhr.onload = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
@@ -33,7 +35,7 @@ chatBox.onmouseleave = ()=>{
 
 setInterval(() => {
     let xhr = new XMLHttpRequest(); //creating XML object
-    xhr.open("POST", "php/get-chat.php", true);
+    xhr.open("POST", `${BASE_URL}${ROLE}/getChat`, true);
     xhr.onload = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {

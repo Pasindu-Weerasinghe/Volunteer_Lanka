@@ -64,65 +64,120 @@ if (!isset($_SESSION['uid'])) {
                 </table>
             </div>
 
-            <p class="para">Select sponsor package below</p><br><br>
+            <p class="para">Sponsor Packages</p><br>
 
             <form action="<?php echo BASE_URL; ?>Sponsor/view_sponsor_notice/<?php echo $this->pid ?>/confirm" method="post">
-                <div class="silver">
-                    <input type="radio" name="package" value="silver" onchange="toggleInputField(this)">
-                    <input type="hidden" name="silverPrice" value="<?php echo $this->silverPrice; ?>">
-                    <strong>Silver</strong><br>
-                    <strong>Amount: <?php echo $this->silverPrice; ?></strong>
-                </div>
-
-                <div class="silver">
-                    <input type="radio" name="package" value="gold" onchange="toggleInputField(this)">
-                    <input type="hidden" name="goldPrice" value="<?php echo $this->goldPrice; ?>">
-                    <strong>Gold</strong><br>
-                    <strong>Amount: <?php echo $this->goldPrice; ?></strong>
-                </div>
-
-                <div class="silver">
-                    <input type="radio" name="package" value="platinum" onchange="toggleInputField(this)">
-                    <input type="hidden" name="platinumPrice" value="<?php echo $this->platinumPrice; ?>">
-                    <strong>Platinum</strong><br>
-                    <strong>Amount : <?php echo $this->platinumPrice; ?></strong>
-                </div>
-
-                <div class="silver">
-                    <input type="radio" name="package" value="other" onchange="toggleInputField(this)">
-                    <strong>Other</strong><br>
-                    <div class="input-container">
-                        <input type="number" id="otherAmount" name="otherAmount" placeholder="Enter amount" disabled>
+                <div>
+                    <div class="package" id="silverPackage1">
+                        <label name="package1" value="silver">
+                            <strong>Silver Package<br>More than Rs 5000</strong><br>
+                        </label>
                     </div>
+
+                    <div class="package" id="goldPackage2">
+                        <label name="package2" value="gold">
+                            <input type="hidden" name="goldPrice" value="<?php echo $this->goldPrice; ?>">
+                            <strong>Gold Package <br>More than Rs 7500</strong><br>
+                        </label>
+                    </div>
+
+                    <div class="package" id="platinumPackage3">
+                        <label name="package3" value="platinum">
+                            <strong>Platinum Package<br>More than Rs 10000</strong><br>
+                        </label>
+                    </div>
+                </div>
+                <tr>
+                    <td>
+                        <p class="para">Select Your Sponsor Package Amount
+                    </td>
+                    <td>:
+                        <input class="input-container" type="number" id="selectAmount" name="selectAmount" placeholder="Rs 0.00">
+                    </td>
+                </tr>
+
+
+                <div><br>
+                    <div class="a12">
+                        <div class="sPackage" id="silverPackage">
+                            <label name="package1" value="silver">
+                                <strong>Your Package is Silver </strong><br>
+                                <script>
+                                    document.getElementById("silverPackage").style.display = "none";
+                                </script>
+                            </label>
+                        </div>
+
+                        <div class="sPackage" id="goldPackage">
+                            <label name="package2" value="gold">
+                                <script>
+                                    document.getElementById("goldPackage").style.display = "none";
+                                </script>
+                                <strong>Your Package is Gold</strong><br>
+                            </label>
+                        </div>
+
+                        <div class="sPackage" id="platinumPackage">
+                            <label name="package3" value="platinum">
+                                <script>
+                                    document.getElementById("platinumPackage").style.display = "none";
+                                </script>
+                                <strong>Your Package is Platinum</strong><br>
+                            </label>
+                        </div>
+
+                        <div class="sPackage" id="otherPackage">
+                            <label name="package4" value="other">
+                                <script>
+                                    document.getElementById("otherPackage").style.display = "none";
+                                </script>
+                                <strong>Your Package is Other</strong><br>
+                            </label>
+                        </div>
+                    </div>
+
                 </div><br><br>
 
                 <div class="btn-area1">
                     <button type="submit" name="confirm" class="btn2">Confirm</button>
                 </div>
             </form>
-            <div class="btn-area2">
-                    <button onclick="history.back()" class="btn1">Cancel</button>
-                </div>
 
             <script>
-                function toggleInputField(element) {
-                    if (element.value === "other") {
-                        document.getElementById("otherAmount").disabled = false;
-                        document.getElementsByName("package").forEach(function(radio) {
-                            if (radio.value !== "other") {
-                                radio.disabled = true;
-                            }
-                        });
-                    } else {
-                        document.getElementById("otherAmount").disabled = true;
-                        document.getElementsByName("package").forEach(function(radio) {
-                            if (radio.value !== "other") {
-                                radio.disabled = false;
-                            }
-                        });
+                function showPackage() {
+                    var amount = parseInt(document.getElementById("selectAmount").value);
+                    if (amount >= 10000) {
+                        document.getElementById("platinumPackage").style.display = "block";
+                        document.getElementById("goldPackage").style.display = "none";
+                        document.getElementById("silverPackage").style.display = "none";
+                        document.getElementById("otherPackage").style.display = "none";
+                    } else if (amount >= 7500) {
+                        document.getElementById("platinumPackage").style.display = "none";
+                        document.getElementById("goldPackage").style.display = "block";
+                        document.getElementById("silverPackage").style.display = "none";
+                        document.getElementById("otherPackage").style.display = "none";
+                    } else if (amount >= 5000) {
+                        document.getElementById("platinumPackage").style.display = "none";
+                        document.getElementById("goldPackage").style.display = "none";
+                        document.getElementById("silverPackage").style.display = "block";
+                        document.getElementById("otherPackage").style.display = "none";
+                    } else if (amount < 5000) {
+                        document.getElementById("platinumPackage").style.display = "none";
+                        document.getElementById("goldPackage").style.display = "none";
+                        document.getElementById("silverPackage").style.display = "none";
+                        document.getElementById("otherPackage").style.display = "block";
+
                     }
                 }
+
+                // Call the function when the input field value changes
+                document.getElementById("selectAmount").addEventListener("input", showPackage);
             </script>
+
+
+            <div class="btn-area2">
+                <button onclick="history.back()" class="btn1">Cancel</button>
+            </div>
         </div>
     </div>
     <?php include 'views/includes/footer.php'; ?>

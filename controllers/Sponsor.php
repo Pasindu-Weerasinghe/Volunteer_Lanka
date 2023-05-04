@@ -28,25 +28,8 @@ class Sponsor extends User
             $this->projects = $this->model->getProject($pid);
             $uid = $this->projects['U_ID'];
             $this->organizer = $this->model->getOrganizer($uid);
-            $this->packages = $this->model->getAmounts($pid);
+            $this->packages = $this->model->getAmounts($pid,$uid);
 
-            $silverPrice = 0;
-            $goldPrice = 0;
-            $platinumPrice = 0;
-
-            foreach ($this->packages as $package) {
-                if ($package['Package'] == "Silver") {
-                    $silverPrice = $package['Amount'];
-                } elseif ($package['Package'] == "Gold") {
-                    $goldPrice = $package['Amount'];
-                } elseif ($package['Package'] == "Platinum") {
-                    $platinumPrice = $package['Amount'];
-                }
-            }
-
-            $this->silverPrice = $silverPrice;
-            $this->goldPrice = $goldPrice;
-            $this->platinumPrice = $platinumPrice;
 
             $this->render('Sponsor/view_sponsor_notices');
         } else if ($action == 'confirm') {
@@ -63,36 +46,32 @@ class Sponsor extends User
             // }
             if (!empty($sponsorPackage)) {
                 // User has already sponsored the project
-                echo "<script>alert('You cannot add another sponsor package because you have already selected a package.'); window.location.href='" . BASE_URL . "Sponsor/view_sponsor_notice/$pid';</script>";
+                echo "<script>alert('You cannot add another sponsor package because you have already selected a package.'); window.location.href='" . BASE_URL . "Sponsor/index';</script>";
             }  else {
                 // User has not sponsored the project before
                 if (isset($_POST['confirm'])) {
-                    $package = $_POST['package'];
-                    $amount = 0;
-                    switch ($package) {
-                        case 'silver':
-                            $amount = $_POST['silverPrice'];
-                            break;
-
-                        case 'gold':
-                            $amount = $_POST['goldPrice'];
-                            break;
-
-                        case 'platinum':
-                            $amount = $_POST['platinumPrice'];
-                            break;
-
-                        case 'other':
-                            $amount = $_POST['otherAmount'];
-                            break;
+                    $amount = $_POST['selectAmount'];
+                        if ($amount>=10000){
+                            $package="Platinum";
+                        }
+                        else if($amount>=7500){
+                            $package="Gold";
+                        }
+                        else if ($amount>=5000){
+                            #package="Silver";
+                        }
+                        else{
+                            $package="Other";
+                        }
                     }
                     $this->model->saveSponsorPackage($uid, $pid, $amount, $package);
                 }
 
-                echo "<script>alert('Succesfully added your sponsor package.');window.location.href='" . BASE_URL . "Sponsor/view_sponsor_notice/$pid';</script>";
+                echo "<script>alert('Succesfully added your sponsor package.');window.location.href='" . BASE_URL . "Sponsor/index';</script>";
             }
         }
-    }
+    
+    
     function sponsored_projects()
     {
         $this->loadModel('project');

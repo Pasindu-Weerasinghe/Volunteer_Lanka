@@ -66,10 +66,31 @@ class ProjectModel extends Model
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
+    function getSpProjects($pid,$uid)
+    {
+        $query = "SELECT  Name, Date FROM project WHERE Sponsor = 1 AND P_ID=$pid AND U_ID=$uid";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+    function getSponsor()
+    {
+        $query = "SELECT P_ID,U_ID FROM sponsor_pr";
+        $statement = $this->db->prepare($query);
+
+        if ($statement->execute()) {
+            // if query successful
+            return $statement->fetch(PDO::FETCH_ASSOC);
+        } else {
+            // if query failed
+            return 'query failed';
+        }
+    }
+
 
     function getPrice($pid)
     {
-        $query = "SELECT Price FROM sponsor_notice WHERE P_ID = $pid";
+        $query = "SELECT Amount FROM sponsor_notice WHERE P_ID = $pid";
         $statement = $this->db->prepare($query);
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
@@ -113,9 +134,9 @@ class ProjectModel extends Model
             return 'query failed';
         }
     }
-    function getAmounts($pid)
+    function getAmounts($pid,$uid)
     {
-        $query = "SELECT Package, Amount FROM sponsor_notice WHERE P_ID = $pid AND Package IN ('Silver', 'Gold', 'Platinum')";
+        $query = "SELECT Amount FROM sponsor_notice WHERE P_ID = $pid AND U_ID = $uid";
         $statement = $this->db->prepare($query);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);

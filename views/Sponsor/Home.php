@@ -23,6 +23,24 @@ if (!isset($_SESSION['uid'])) {
             <br /><input type="text" name="search">
             <button name="search"><b>Search<b></button>
         </div><br>
+        <h2>My sponsored Project</h2><br><br>
+
+        <section class="container">
+            <?php foreach ($this->projects as $project) {
+                $pid = $project['P_ID'];
+                ?>
+                <div class="card">
+                    <div class="card-image">
+                        <img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImages[$pid][0]['Image'] ?>">
+                    </div>
+                    <h2><?php echo ($project["Name"]); ?></h2>
+                    <p>Date: <?php echo ($project["Date"]); ?></p>
+                    <p>Total: <?php echo ($this->prices[$pid]['Amount']); ?></p>
+                    <a class="btn" href="<?php echo BASE_URL ?>Sponsor/view_sponsor_project/<?php echo $project['P_ID'] ?>">View</a>
+                </div>
+            <?php } ?>
+        </section>
+
         <h2>Sponsor Notices</h2><br><br>
 
         <section class="container">
@@ -35,7 +53,7 @@ if (!isset($_SESSION['uid'])) {
                     </div>
                     <h2><?php echo ($project["Name"]); ?></h2>
                     <p>Date: <?php echo ($project["Date"]); ?></p>
-                    <p>Price: <?php echo ($this->prices[$pid]['Price']); ?></p>
+                    <p>Total: <?php echo ($this->prices[$pid]['Amount']); ?></p>
                     <a class="btn" href="<?php echo BASE_URL ?>Sponsor/view_sponsor_notice/<?php echo $project['P_ID'] ?>">View</a>
                 </div>
             <?php } ?>

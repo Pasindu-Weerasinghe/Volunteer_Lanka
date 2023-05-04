@@ -80,11 +80,9 @@ class Volunteer extends User
         }
         $uid = $_SESSION['uid'];
         $this->loadModel('Project');
-        $jprojects = $this->model->getJoinedProjects($uid);
-
-        foreach ($jprojects as $jproject) {
-            $pid = $jproject['P_ID'];
-            $this->cprojects = $this->model->getMyCompletedProjects($pid);
+        $this->projects = $this->model->getMyCompletedProjects($uid);
+        foreach ($this->projects as $project) {
+            $pid = $project['P_ID'];
             $this->prImage[$pid] = $this->model->getProjectImage($pid);
         }
         $this->render('Volunteer/Completed_projects');
@@ -235,6 +233,27 @@ class Volunteer extends User
         $this->loadModel('Volunteer');
         $this->profile = $this->model->getUserData($uid);
         $this->user = $this->model->getVolunteerData($uid);
+        $this->interests = $this->model->getVolunteerInterests($uid);
+        $this->orgs = $this->model->getOrganizations($uid);
+
+        $this->loadModel('Project');
+        $this->projects = $this->model->getMyCompletedProjects($uid);
+        
+        $this->loadModel('Post');
+        foreach ($this->projects as $project) {
+            $pid = $project['P_ID'];
+            $this->prImage[$pid] = $this->model->getPostImages($pid);
+            $this->description[$pid] = $this->model->getPostDescription($pid);
+        }
+
+        $this->loadModel('Feedback');
+        foreach ($this->projects as $project) {
+            $pid = $project['P_ID'];
+            $this->feedbacks[$pid] = $this->model->getFeedbacks($pid);
+            $this->feedbackCount[$pid] = sizeof($this->feedbacks[$pid]);
+        }
+
+        
 
         $this->render('Volunteer/Profile');
     }

@@ -24,13 +24,13 @@ if (!isset($_SESSION['uid'])) {
     <h2>Completed Projects</h2><br/><br/>
     <h3>Provide your valuable feedback for the projects you participated</h3>
     <section class="container">
-    <?php foreach ($this->cprojects as $cproject) {
-                $pid = $cproject['P_ID'] ?>
+    <?php foreach ($this->projects as $project) {
+                $pid = $project['P_ID'] ?>
                 <div class="card">
                 <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image']?>"></div>
-                    <h2><?php echo ($cproject["Name"]); ?></h2>
-                    <p><?php echo ($cproject["Date"]); ?></p>
-                    <a class="btn" href="<?php echo BASE_URL ?>volunteer/feedback/<?php echo $cproject['P_ID'] ?>">Add Feedback</a>
+                    <h2><?php echo ($project["Name"]); ?></h2>
+                    <p><?php echo ($project["Date"]); ?></p>
+                    <a class="btn" href="<?php echo BASE_URL ?>volunteer/feedback/<?php echo $project['P_ID'] ?>">Add Feedback</a>
                 </div>
             <?php } ?>
     </section>

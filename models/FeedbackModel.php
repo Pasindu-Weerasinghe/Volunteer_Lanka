@@ -19,6 +19,14 @@ class FeedbackModel extends Model
         $statement->execute();
     }
 
+    function getFeedbacks($pid)
+    {
+        $query = "SELECT * FROM feedback WHERE P_ID = $pid";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 
 }
 

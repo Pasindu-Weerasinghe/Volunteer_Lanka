@@ -4,6 +4,7 @@ prevNextIcon = document.querySelectorAll(".icons span");
 const cardsContent = document.querySelector(".cards_content");
 
 let date = new Date();
+currDate = date.getDate();
 currYear = date.getFullYear();
 currMonth = date.getMonth();
 
@@ -32,6 +33,10 @@ const renderCalender = () => {
     }
     currentDate.innerText = `${months[currMonth]} ${currYear}`;
     daysTag.innerHTML = liTag;
+
+    let today = new Date().toJSON().slice(0, 10);
+    document.getElementById("date").innerHTML = today;
+    getTodayEvents(today);
 }
 
 renderCalender();
@@ -51,10 +56,34 @@ prevNextIcon.forEach(icon =>{
     });
 })
 
+function getTodayEvents(date) {
+
+    fetch(`${BASE_URL}${role}/get_events/${date}`)
+        .then(res => res.json())
+        .then(data => {
+        console.log(data);
+        
+        if (data.length === 0) {
+            cardsContent.innerHTML = "No events available";
+        } else {
+            cardsContent.innerHTML = "";
+            data.forEach((i) => {
+                cardsContent.innerHTML += `
+                <div class="event" id="project">Title: ${i.Name}</div>
+                <div class="time" id="time">Time: ${i.Time}</div>
+                <div class="venue" id="venue">Venue: ${i.Venue}</div>
+                ` 
+            })
+        }
+    })
+    .catch((error) => console.log(error));
+}
+
 function displayEvents(i) {
-   
+
+    //document.getElementById({i}).style.borderColor = "Green";
+
     let month = currMonth + 1;
-    let events = [];
     if (month < 10) {
         month = "0" + month;
     }
@@ -62,7 +91,8 @@ function displayEvents(i) {
         i = "0" + i;
     }
     let year = currYear;
-    let date = year + '-' + month + '-' + i;
+    //let date = year + '-' + month + '-' + i;
+    let date = `${year}-${month}-${i}`;
     document.getElementById("date").innerHTML = date;
 
     fetch(`${BASE_URL}${role}/get_events/${date}`)
@@ -71,19 +101,21 @@ function displayEvents(i) {
         console.log(data);
         
         if (data.length === 0) {
-            cardsContent.innerHTML = "";
+            cardsContent.innerHTML = "No events available";
         } else {
             cardsContent.innerHTML = "";
             data.forEach((i) => {
                 cardsContent.innerHTML += `
-                <div class="event" id="project">${i.Name}</div>
-                <div class="time" id="time">${i.Time}</div>
-                <div class="venue" id="venue">${i.Venue}</div>
+                <div class="event" id="project">Title: ${i.Name}</div>
+                <div class="time" id="time">Time: ${i.Time}</div>
+                <div class="venue" id="venue">Venue: ${i.Venue}</div>
                 ` 
             })
         }
     })
     .catch((error) => console.log(error));
+
+    
 }
 
 

@@ -96,3 +96,7 @@
     padding: 8px;
 }
 
+.selected_date {
+    border: 1px solid green;
+    
+}

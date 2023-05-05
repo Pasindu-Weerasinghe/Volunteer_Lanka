@@ -28,7 +28,7 @@
                 </div>
                 <h2><?php echo($project["Name"]); ?></h2>
                 <p><?php echo($project["Date"]); ?></p>
-                <a href="<?php echo BASE_URL ?>organizer/view_projects/<?php echo $project['P_ID'] ?>">
+                <a href="<?php echo BASE_URL ?>organizer/view_upcoming_project/<?php echo $project['P_ID'] ?>">
                     <button>View</button>
                 </a>
             </div>

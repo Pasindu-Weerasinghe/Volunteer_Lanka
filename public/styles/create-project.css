@@ -1,3 +1,148 @@
+/* container and form styles */
+.wrapper {
+    background-color: #96c7d6;
+    min-width: 580px;
+    max-width: 700px;
+    width: 100%;
+    margin: 10px auto;
+    padding: 40px 100px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.125);
+    border-radius: 20px;
+}
+
+.wrapper .title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.form {
+    width: 100%;
+}
+
+.wrapper .form .row {
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.wrapper .form .row label:first-child {
+    font-size: 18px;
+    font-weight: bold;
+    max-width: 200px;
+    width:100%;
+    margin-bottom: 5px;
+}
+
+.wrapper .form .row section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.wrapper .form .row section .radio {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 50%;
+    min-height: 40px;
+}
+
+
+/* input styles */
+.wrapper .form .input {
+    max-width: 300px;
+    width: 100%;
+    outline: none;
+    border: 2px solid rgb(169, 216, 250);
+    border-radius: 10px;
+    background: white;
+    font-size: 15px;
+    padding: 8px 10px;
+    transition: all 0.2s ease;
+}
+
+.form .row section .radio input[type="radio"] {
+    margin-right: 5px;
+}
+
+.currency {
+    width: 100%;
+    max-width: 300px;
+    margin: 0;
+    position: relative;
+}
+
+.currency:before {
+    content: "Rs. ";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+}
+
+.currency input::-webkit-outer-spin-button,
+.currency input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.currency input[type=number] {
+    width: 100%;
+    text-align: right;
+    padding-left: 40px;
+    -moz-appearance: textfield;
+}
+
+
+.wrapper .form .input:focus {
+    box-shadow: 0 0 0 3px rgb(169, 216, 250);
+    outline: none;
+}
+
+.wrapper .form .textarea {
+    resize: none;
+}
+
+.wrapper .form .input-chkbox {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+/* buttons */
+.btn-area {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.btn {
+    color: white;
+    background-color: #84b464;
+    font-weight: bold;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0.88;
+    transition: 0.2s ease;
+}
+
+.btn:hover {
+    opacity: 1;
+}
+
+
+
+/* popups styles */
 #add-org-srch-btn {
     width: 180px;
     margin: 5px;
@@ -119,4 +264,14 @@
     background-color: red;
     text-decoration: none;
     box-shadow: 0 0 5px 2px red;
+}
+
+@media only screen and (max-width: 1018px) {
+    .wrapper .form .input, .currency {
+        max-width: 100%;
+    }
+
+    .btn {
+        max-width: 150px;
+    }
 }

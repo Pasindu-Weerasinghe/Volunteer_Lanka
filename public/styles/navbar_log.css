@@ -95,4 +95,10 @@ ul li:hover {
 	#hamburger-icon {
 		display: block;
 	}
+
+	.main {
+		padding: 100px 10px 0px 10px;
+	}
+
+
 }

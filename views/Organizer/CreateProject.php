@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <?php include 'views/includes/head-includes.php'; ?>
-    <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/form.css">
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/create-project.css">
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/popup.css">
 
@@ -54,48 +53,55 @@
                 <input type="number" name="no-of-members" id="no-of-members" min="1" required class="input">
             </div>
 
-            <table>
-                <tr class="row">
-                    <td id="row-head">
-                        Select partnership
-                    </td>
-                    <td class="td">
-                        <input type="radio" name="partnership" value="single" id="single" class="input">
+            <div class="row">
+                <label for="partnership">
+                    Select partnership
+                </label>
+                <section>
+                    <div class="radio">
+                        <input type="radio" name="partnership" value="single" id="single">
                         <label for="single" id="radio-label">Single</label>
-                    </td>
-
-                    <td class="td">
-                        <input type="radio" name="partnership" value="collaborate" id="collaborate" class="input">
+                    </div>
+                    <div class="radio">
+                        <input type="radio" name="partnership" value="collaborate" id="collaborate">
                         <label for="collaborate" id="radio-label">Collaborate</label>
-                    </td>
-                </tr>
-                <tr class="row">
-                    <td id="row-head">
-                        Select sponsorship
-                    </td>
+                    </div>
+                </section>
+            </div>
 
-                    <td class="td">
-                        <input type="radio" name="sponsorship" value="no-sponsor" id="no-sponsor" required
-                               class="input">No Sponsorship
-                        <!-- <label for="no-sponsor" id="radio-label">No Sponsorship</label> -->
-                    </td>
+            <div class="row">
+                <label for="sponsorship">
+                    Select sponsorship
+                </label>
+                <section>
+                    <div class="radio">
+                        <input type="radio" name="sponsorship" value="no-sponsor" id="no-sponsor">
+                        <label for="no-sponsor" id="radio-label">No Sponsorship</label>
+                    </div>
+                    <div class="radio">
+                        <input type="radio" name="sponsorship" value="publish-sn" id="publish-sn">
+                        <label for="publish-sn" id="radio-label">Publish Sponsor Notice</label>
+                    </div>
+                </section>
+            </div>
 
-                    <td class="td">
-                        <input type="radio" name="sponsorship" value="publish-sn" id="publish-sn" required
-                               class="input">Publish Sponsor Notice
-                        <!-- <label for="publish-sn" id="radio-label">Publish Sponsor Notice</label> -->
-                    </td>
-                </tr>
-            </table>
+            <div class="row">
+                <label for="category">Select category</label>
+                <select name="category" id="category" required class="input">
+                    <option value="Beach cleaning">Beach cleaning</option>
+                    <option value="Providing facilities to rural areas">Providing facilities to rural areas</option>
+                    <option value="Tree planting">Tree planting</option>
+                    <option value="Helping child/adult orphanages">Helping child/adult orphanages</option>
+                    <option value="Animal rescuing/rehabilitation">Animal rescuing/rehabilitation</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
 
             <div class="row">
                 <label for="images">Upload images here</label>
-                <input type="file" name="files[]" id="images" multiple="multiple" class="input input-file">
+                <input type="file" name="files[]" id="images" multiple="multiple" class="input-file">
             </div>
-
-            <div id="gal">
-
-            </div>
+            <div id="gal"></div>
             <button type="button" id="resetImgs" style="display: none;">clear</button>
 
             <div class="btn-area">
@@ -104,6 +110,7 @@
             </div>
         </form>
     </div>
+
 
     <!-- //? Add organizer to collaborate project -->
     <div class="wrapper" id="add-org-to-collab" style="display: none">
@@ -155,31 +162,30 @@
         <form class="form" method="post" id="publish-sn-form">
 
             <div class="row">
+                <label for="toatl-amount">Total expected amount</label>
+                <div class="currency">
+                    <input type="number" name="total-amount" min="0" id="total-amount" required class="input">
+                </div>
+            </div>
+            <div class="row">
                 <label for="silver-amount">Silver</label>
-                <input type="number" name="silver-amount" min="0" id="silver-amount" value="0" required>
-                <input type="number" name="silver-quantity" min="0" id="silver-quantity" value="0" required>
+                <div class="currency">
+                    <input type="number" name="silver-amount" min="0" id="silver-amount" required class="input">
+                </div>
             </div>
 
             <div class="row">
                 <label for="gold-amount">Gold</label>
-                <input type="number" name="gold-amount" min="0" id="gold-amount" value="0" required>
-                <input type="number" name="gold-quantity" min="0" id="gold-quantity" value="0" required>
+                <div class="currency">
+                    <input type="number" name="gold-amount" min="0" id="gold-amount" required class="input">
+                </div>
             </div>
 
             <div class="row">
                 <label for="platinum-amount">Platinum</label>
-                <input type="number" name="platinum-amount" min="0" id="platinum-amount" value="0" required>
-                <input type="number" name="platinum-quantity" min="0" id="platinum-quantity" value="0" required>
-            </div>
-
-            <div class="row">
-                <label for="toatl-amount">Total expected amount</label>
-                <input type="number" name="total-amount" id="total-amount" value="0" required class="input" readonly>
-            </div>
-
-            <div class="row">
-                <label for="description">Description</label>
-                <textarea name="sn-description" id="sn-description" required class="input textarea"></textarea>
+                <div class="currency">
+                    <input type="number" name="platinum-amount" min="0" id="platinum-amount" required class="input">
+                </div>
             </div>
 
             <div class="btn-area">
@@ -198,7 +204,7 @@
             <p>The form you create here will be displayed to volunteers when joining
                 select necessary fields you would like to have in your form.</p>
             <div class="row">
-                <input type="checkbox" name="email" class="input-chkbox">
+                <input type="checkbox" name="email" value="1" checked disabled class="input-chkbox">
                 <label>E-mail address</label>
             </div>
             <div class="row">

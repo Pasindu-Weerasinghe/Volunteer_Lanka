@@ -55,4 +55,17 @@ class SponsorModel extends Model
         $statement->execute();
         return $statement->fetch();
     }
+
+    function getSponsorsOfProject($pid)
+    {
+        $query = "SELECT `sponsor`.`U_ID`, `sponsor`.`Name`, `user`.`Photo`, `sponsor_pr`.`Package`, `sponsor_pr`.`Amount`
+                    FROM `sponsor_pr`
+                    INNER JOIN `sponsor` ON `sponsor_pr`.`U_ID` = `sponsor`.`U_ID`
+                    INNER JOIN `user` ON `sponsor`.`U_ID` = `user`.`U_ID`
+                    WHERE `sponsor_pr`.`P_ID` = :pid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':pid', $pid);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

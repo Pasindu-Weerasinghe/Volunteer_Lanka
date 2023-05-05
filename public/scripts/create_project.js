@@ -29,17 +29,6 @@ const popUpClose = document.querySelector(".popup-close");
 let searchData = {};
 let collaborators = {};
 
-// sponosrship notice form
-const silverAmount = document.querySelector("#silver-amount");
-const goldAmount = document.querySelector("#gold-amount");
-const platinumAmount = document.querySelector("#platinum-amount");
-
-const silverQuantity = document.querySelector("#silver-quantity");
-const goldQuantity = document.querySelector("#gold-quantity");
-const platinumQuantity = document.querySelector("#platinum-quantity");
-
-const totalAmount = document.querySelector("#total-amount");
-
 const imgs = document.querySelector("#images");
 const gal = document.querySelector("#gal");
 const resetImgs = document.querySelector("#resetImgs");
@@ -158,7 +147,7 @@ const viewSearchData = () => {
 const searchAndView = () => {
     const searchOrgValue = searchOrg.value;
 
-    fetch(BASE_URL + "organizer/search_organizers/" + searchOrgValue, {
+    fetch(`${BASE_URL}organizer/search_organizers/${searchOrgValue}`, {
         method: "post",
     })
         .then((response) => response.json())
@@ -223,25 +212,6 @@ form2back.addEventListener("click", (e) => {
 });
 
 //? form 3 actions ************************************************************************************************
-
-const setAmount = () => {
-    let silverTotalAmount = silverAmount.value * silverQuantity.value;
-    let goldTotalAmount = goldAmount.value * goldQuantity.value;
-    let platinumTotalAmount = platinumAmount.value * platinumQuantity.value;
-
-    let total = silverTotalAmount + goldTotalAmount + platinumTotalAmount;
-
-    totalAmount.value = total;
-    console.log(total);
-}
-
-silverAmount.addEventListener("input", setAmount);
-silverQuantity.addEventListener("input", setAmount);
-goldAmount.addEventListener("input", setAmount);
-goldQuantity.addEventListener("input", setAmount);
-platinumAmount.addEventListener("input", setAmount);
-platinumQuantity.addEventListener("input", setAmount);
-
 button3.addEventListener("click", (e) => {
     e.preventDefault();
     formData3 = new FormData(form3);
@@ -301,14 +271,14 @@ button4.addEventListener("click", (e) => {
         console.log(key, value);
     }
 
-    fetch(BASE_URL + "organizer/create_project/create", {
+    fetch(`${BASE_URL}organizer/create_project/create`, {
         method: "post",
         body: formDataSubmission,
     })
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
-            window.location.href = BASE_URL + "organizer/create_project";
+            window.location.href = BASE_URL;
         })
         .catch((error) => console.log(error));
 });

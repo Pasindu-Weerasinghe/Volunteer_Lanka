@@ -60,7 +60,9 @@ if (!isset($_SESSION['uid'])) {
         </section>
     </div>
 
-    <?php include 'views/includes/footer.php'; ?>
+    <?php 
+    print_r($this->projects);
+    include 'views/includes/footer.php'; ?>
 </body>
 
 </html>

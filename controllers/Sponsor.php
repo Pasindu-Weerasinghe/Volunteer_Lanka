@@ -69,7 +69,7 @@ class Sponsor extends User
 
                 echo "<script>alert('Succesfully added your sponsor package.');window.location.href='" . BASE_URL . "Sponsor/index';</script>";
             }
-        }
+    }
     
     
     function sponsored_projects()
@@ -151,6 +151,8 @@ class Sponsor extends User
                 if (in_array($fileType, $allowTypes)) {
                     if (move_uploaded_file($_FILES["file"]["tmp_name"][$i], $targetFilePath)) {
                         $this->model->setAdImage($ad_id, $fileName);
+                        echo "<script>alert('Successfully published your advertiesment.'); window.location.href='" . BASE_URL . "sponsor/publish_advertisement';</script>";
+
                     }
                 } else {
                     echo "<script>alert('Sorry! This file cannot be uploded');location.href='http://localhost/Volunteer_Lanka/sponsor/publish_advertisement';</script>";

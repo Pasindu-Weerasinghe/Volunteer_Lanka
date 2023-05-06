@@ -50,14 +50,14 @@ class ChatModel extends Model{
         }
     }
     //get last message to our chat
-    function getLastmsg($uid){
-        $query = "SELECT * FROM messages WHERE (incoming_msg_id = {$uid}
-        OR outgoing_msg_id = {$uid}) AND (outgoing_msg_id = {$uid} 
+    function getLastmsg($uid,$uname){
+        $query = "SELECT * FROM messages WHERE (incoming_msg_id = {$uname}
+        OR outgoing_msg_id = {$uname}) AND (outgoing_msg_id = {$uid} 
         OR incoming_msg_id = {$uid}) ORDER BY msg_id DESC LIMIT 1";
          $statement = $this->db->prepare($query);
          if ($statement->execute()) {
              // if query successful
-             return $statement->fetchAll(PDO::FETCH_ASSOC);
+             return $statement->fetch(PDO::FETCH_ASSOC);
          } else {
              // if query failed
              return 'query failed';

@@ -56,13 +56,19 @@ class Admin extends User
     }
     function view_ad_req($adid){
         $this->loadModel('Advertisement');
-        $ad = $this->model->getAdvertisementRequest($adid);
+        $this->ad = $this->model->getAdvertisementRequest($adid);
         $this->image = $this->model->getAdImage($adid)['Image'];
         $this->loadModel('Sponsor');
-        $this->sponsor_name = $this->model->getSponsorbyId($ad['Sponsor'])['Name'];
+        $this->sponsor_name = $this->model->getSponsorbyId($this->ad['Sponsor'])['Name'];
 
 
         $this->render('Admin/view_ad_req');
+    }
+    function accept_ad_req($adid){
+        $this->loadModel('Advertisement');
+        $this->ad = $this->model->accept_ad_req($adid);
+        header('Location: '.BASE_URL.'admin');
+
     }
     function complaints()
     {

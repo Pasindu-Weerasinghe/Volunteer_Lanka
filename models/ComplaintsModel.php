@@ -27,4 +27,5 @@ class ComplaintsModel extends Model
             return 'query failed';
         }
     }
+    
 }

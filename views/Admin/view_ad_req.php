@@ -32,7 +32,7 @@ if (!isset($_SESSION['uid'])) {
             </div>
             <div id="btn-area">
                 <button class="btn">Reject</button>
-                <button class="btn">Accept</button>
+                <button onclick="window.location.href='<?php echo BASE_URL . 'admin/accept_ad_req/' . $this->ad['AD_ID']; ?>'" class="btn">Accept</button>
             </div>
 
         </div>
@@ -40,6 +40,9 @@ if (!isset($_SESSION['uid'])) {
 
         <br>
     </div>
+    <?php 
+    print_r($this->ad)
+    ?>
 </body>
 
 </html>

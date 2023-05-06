@@ -21,18 +21,18 @@ if (!isset($_SESSION['uid'])) {
         <h2>View Complaints</h2>
         <div id="ad-req-box">
             <div class="name">
-                <h3 class="name-item">Sponsor Name:</h3>
+                <h3 class="name-item">User Name:</h3>
                 <h3 style="padding-top: 30px;"></h3>
             </div>
             <div class="name">
-                <h3 class="name-item">Advertisement:</h3>
+                <h3 class="name-item">About:</h3>
                 <div id="ad-box-item">
-                    <img id="ad-box-img" src="" alt="">
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error adipisci voluptas rem ducimus qui ad labore pariatur delectus consectetur, omnis sed modi obcaecati accusamus quod illum, molestias inventore quasi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, hic atque fugit animi fuga magni vero quaerat ipsa consectetur, officia autem similique. Fugiat tenetur voluptas eum adipisci corrupti praesentium pariatur.</p>
                 </div>
             </div>
             <div id="btn-area">
-                <button class="btn">Reject</button>
-                <button class="btn">Accept</button>
+                <!-- <button class="btn">Reject</button>
+                <button class="btn">Accept</button> -->
             </div>
 
         </div>

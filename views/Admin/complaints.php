@@ -21,15 +21,16 @@ if (!isset($_SESSION['uid'])) {
     <br><br><br>
     <div class="main" id="main">
         <h2>Complaints</h2>
-        <?php foreach($this->complaints as $complaint){ ?>
-        <div id="com-box">
-            <div id="com-box-item">
-                <h3 id="com-box-item-uname"><?php echo $this->complain_about[$complaint['C_ID']]  ?></h3>
-                <h4>Complain :</h4>
-                <p><?php echo $this->complain[$complaint['C_ID']] ?></p>
-                <button onclick="window.location.href='<?php echo BASE_URL . 'admin/view_complaints/' . $complaint['C_ID']; ?>'">View</button>
+        <?php
+        foreach ($this->complaints as $complaint){
+        ?>
+            <div id="c-box">
+                <div id="c-box-item" >
+                    <h3 id="uname"><?php echo  $this->complain_userName[$complaint['C_ID']] ?></h3>
+                    <button onclick="window.location.href='<?php echo BASE_URL . 'admin/view_complaints/' . $complaint['C_ID']; ?>'" id="c-view-btn">View</button>
+                </div>
+                <h4 id="c-box-des"><?php echo $this->complain_about[$complaint['C_ID']]  ?></h4>
             </div>
-        </div>
         <?php
         }
         ?>

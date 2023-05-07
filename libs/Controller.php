@@ -15,11 +15,13 @@ class Controller
     public function loadModel($modelName)
     {
         $file = 'models/' . $modelName . 'Model.php';
-
+        ob_start();
+        
         if (file_exists($file)) {
-            require $file;
+            include_once $file;
             $modelClassName = $modelName . 'Model';
             $this->model = new $modelClassName();
         }
+        return ob_get_clean();
     }
 }

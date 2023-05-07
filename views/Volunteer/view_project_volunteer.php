@@ -3,6 +3,8 @@ session_start();
 if (!isset($_SESSION['uid'])) {
     header('Location: ' . BASE_URL);
 }
+
+$pid = $this->project['P_ID'];
 ?>
 
 <!DOCTYPE html>
@@ -14,12 +16,24 @@ if (!isset($_SESSION['uid'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/view.css">
     <title><?php echo $this->project['Name'] ?></title>
+    <script type="text/javascript">
+        function button2() {
+            var isJoined = <?php echo $this->isJoined?>;
+            if (isJoined){
+                document.getElementById("right").innerHTML = "Leave Project";
+            }
+            else {
+                document.getElementById("right").innerHTML = "Join Project";
+            }
+        }
+        window.onload = button2;
+    </script>
 </head>
 
 <body>
 <?php include 'views/includes/navbar_log.php'; ?>
     <div class="main" id="main">
-        <h2><?php echo $this->project['Name'] ?></h2><br /><br />
+        <h2><?php echo $this->project['Name']?></h2><br /><br />
         <div class="container">
             <div class="container-image">
                 <?php foreach ($this->images as $image) { ?>
@@ -45,7 +59,7 @@ if (!isset($_SESSION['uid'])) {
             </div>
             <div class="btn-area">
                 <button class="btn" onclick="history.back()">Back</button>
-                <button class="btn" id="right"><a href="<?php echo BASE_URL ?>volunteer/join_form">Join Project</a></button>
+                <a href="<?php echo BASE_URL ?>volunteer/join_leave_project/<?php echo $this->project['P_ID']?>/<?php echo $this->isJoined?>"><button class="btn" id="right"></button></a>
             </div>
 
         </div>

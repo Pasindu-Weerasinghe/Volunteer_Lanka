@@ -11,8 +11,29 @@ class Volunteer extends User
 
     function index()
     {
+        if(!isset($_SESSION)) {
+            session_start();
+        }
+        $uid = $_SESSION['uid'];
         $this->loadModel('Project');
-        $this->projects = $this->model->cardsVolunteer();
+        $date_now = date('Y-m-d');
+        $this->uprojects = $this->model->getUpcomingProjects($date_now);
+
+        foreach ($this->uprojects as $uproject) {
+            $pid = $uproject['P_ID'];
+            $this->prImage[$pid] = $this->model->getProjectImage($pid);
+        }
+
+        $this->loadModel('Volunteer');
+        $this->interests = $this->model->getVolunteerInterests($uid);
+
+        $this->loadModel('Project');
+        $this->projects = [];
+        foreach ($this->interests as $interest) {
+            $key = trim($interest['Interest']);
+            $this->result = $this->model->getSuggestedProjects($key);
+            $this->projects = array_merge($this->projects, $this->result);
+        }
         foreach ($this->projects as $project) {
             $pid = $project['P_ID'];
             $this->prImage[$pid] = $this->model->getProjectImage($pid);
@@ -34,23 +55,32 @@ class Volunteer extends User
         $this->render('Volunteer/Home');
     }
 
-    function upcoming_projects()
+    function my_upcoming_projects()
     {
+        if(!isset($_SESSION)) {
+            session_start();
+        }
+        $uid = $_SESSION['uid'];
         $this->loadModel('Project');
-        $this->projects = $this->model->cardsVolunteer();
+        $date_now = date('Y-m-d');
+        $jprojects = $this->model->getJoinedProjects($uid);
 
-        foreach ($this->projects as $project) {
-            $pid = $project['P_ID'];
+        foreach ($jprojects as $jproject) {
+            $pid = $jproject['P_ID'];
+            $this->uprojects = $this->model->getMyUpcomingProjects($pid, $date_now);
             $this->prImage[$pid] = $this->model->getProjectImage($pid);
         }
         $this->render('Volunteer/Upcoming_projects');
     }
 
-    function completed_projects()
+    function my_completed_projects()
     {
+        if(!isset($_SESSION)) {
+            session_start();
+        }
+        $uid = $_SESSION['uid'];
         $this->loadModel('Project');
-        $this->projects = $this->model->cardsVolunteer();
-
+        $this->projects = $this->model->getMyCompletedProjects($uid);
         foreach ($this->projects as $project) {
             $pid = $project['P_ID'];
             $this->prImage[$pid] = $this->model->getProjectImage($pid);
@@ -60,15 +90,85 @@ class Volunteer extends User
 
     function view_projects($pid)
     {
+        if(!isset($_SESSION)) {
+            session_start();
+        }
+        $uid = $_SESSION['uid'];
         $this->loadModel('Project');
         $this->project = $this->model->getProject($pid);
         $this->images = $this->model->getProjectImage($pid);
+        $this->isJoined = $this->model->isJoined($pid, $uid);
         $this->render('Volunteer/View_project_volunteer');
+    }
+
+    function join_leave_project($pid, $isJoined)
+    {
+        $this->pid = $pid;
+        if(!isset($_SESSION)) {
+            session_start();
+        }
+        $uid = $_SESSION['uid'];
+        $this->loadModel('Project');
+        if($isJoined) {
+            $this->model->leaveProject($pid, $uid);
+            header("Location: " . BASE_URL . "volunteer/view_projects/$pid");
+        }
+        else {
+            $this->render('Volunteer/Join_form');
+        }
+    }
+
+    function join_project($pid) {
+
+        if(!isset($_SESSION)) {
+            session_start();
+        }
+        $uid = $_SESSION['uid'];
+        $contact = $_POST['contact'];
+        $meal = $_POST['radio-meal'];
+        $prior = $_POST['radio-prior'];
+
+        if ($prior == 'yes') {
+            $prior = 1;
+        } else if ($prior == 'no') {
+            $prior = 0;
+        }
+
+        if ($meal == 'veg') {
+            $meal = "Veg";
+        } else if ($meal == 'nonveg') {
+           $meal = "NonVeg";
+        }
+
+        $this->loadmodel('Project');
+        $this->model->joinProject($uid, $pid, $contact, $meal, $prior);
+        header("Location: " . BASE_URL . "volunteer/view_projects/$pid");
+    }
+
+    function feedback($pid) 
+    {
+        $this->pid = $pid;
+        $this->render('Volunteer/Feedback_form');
+    }
+
+    function add_feedback($pid) 
+    {
+        if(!isset($_SESSION)) {
+            session_start();
+        }
+        $uid = $_SESSION['uid'];
+        $des = $_POST['des'];
+        $rating = $_POST['rating'];
+        $this->loadModel('Feedback');
+        $this->model->setFeedback($des, $rating, $uid, $pid);
+        header("Location: " . BASE_URL . "volunteer/feedback/$pid");
     }
 
     function new_ideas()
     {
-        session_start();
+        if(!isset($_SESSION)) {
+            session_start();
+        }
         $uid = $_SESSION['uid'];
         $this->loadModel('ProjectIdea');
         $this->pr_ideas = $this->model->getProjectIdea($uid);
@@ -80,45 +180,11 @@ class Volunteer extends User
         $this->render('Volunteer/New_ideas');
     }
 
-    function profile()
-    {
-        session_start();
-        $uid = $_SESSION['uid'];
-        $this->loadModel('Volunteer');
-        $this->profile = $this->model->getUserData($uid);
-        $this->user = $this->model->getVolunteerData($uid);
-
-        $this->render('Volunteer/Profile');
-    }
-
-    function request_projects()
-    {
-        $this->render('Volunteer/Request_projects');
-    }
-
-    function calendar()
-    {
-        $this->render('Calendar');
-    }
-
-    function search_organizer()
-    {
-        if (isset($_POST['search'])) {
-
-            $key = trim($_POST['key']);
-            $this->loadModel('Organizer');
-            $this->organizers = $this->model->searchOrganizers($key);
-        } else {
-            $this->loadModel('Organizer');
-            $this->organizers = $this->model->getOrganizerData();
-        }
-
-        $this->render('Volunteer/Search_organizer');
-    }
-
     function insert_Ideas()
     {
-        session_start();
+        if(!isset($_SESSION)) {
+            session_start();
+        }
         $location = $_POST['location'];
         $description = $_POST['des'];
         $uid = $_SESSION['uid'];
@@ -126,7 +192,7 @@ class Volunteer extends User
         $this->loadModel('ProjectIdea');
         $this->model->setProjectIdea($description, $location, $uid);
 
-        $pi_id = $this->model->getPiId($uid, $location);
+        $pi_id = $this->model->getPiId($uid);
 
         $targetDir = "public/images/pi_images/";
         $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
@@ -144,7 +210,7 @@ class Volunteer extends User
                         $this->model->setPiImage($pi_id, $fileName);
                     }
                 } else {
-                    $statusMsg = 'Only JPG, JPEG, PNG & GIF files are allowed to upload.';
+                    $this->statusMsg = 'Only JPG, JPEG, PNG & GIF files are allowed to upload.';
                 }
             }
         }
@@ -155,10 +221,132 @@ class Volunteer extends User
     {
         $this->loadModel('ProjectIdea');
         $this->model->deleteProjectIdea($piId);
+        header('Location: ' . BASE_URL . 'volunteer/new_ideas');
     }
 
-    function join_form()
+    function profile()
     {
-        $this->render('Volunteer/Join_form');
+        if(!isset($_SESSION)) {
+            session_start();
+        }
+        $uid = $_SESSION['uid'];
+        $this->loadModel('Volunteer');
+        $this->profile = $this->model->getUserData($uid);
+        $this->user = $this->model->getVolunteerData($uid);
+        $this->interests = $this->model->getVolunteerInterests($uid);
+        $this->orgs = $this->model->getOrganizations($uid);
+
+        $this->loadModel('Project');
+        $this->projects = $this->model->getMyCompletedProjects($uid);
+        
+        $this->loadModel('Post');
+        foreach ($this->projects as $project) {
+            $pid = $project['P_ID'];
+            $this->prImage[$pid] = $this->model->getPostImages($pid);
+            $this->description[$pid] = $this->model->getPostDescription($pid);
+        }
+
+        $total_rating[] = 0;
+        foreach ($this->projects as $project) {
+            $this->loadModel('Feedback');
+            $pid = $project['P_ID'];
+            $this->feedbacks[$pid] = $this->model->getFeedbacks($pid);
+            $this->feedbackCount[$pid] = sizeof($this->feedbacks[$pid]);
+
+            foreach ($this->feedbacks[$pid] as $feedback) {
+                $total_rating[$pid] += $feedback['Rating'];
+                $uid = $feedback['U_ID'];
+                $this->loadModel('Volunteer');
+                $this->names[$uid] = $this->model->getName($uid);
+                $this->loadModel('User');
+                $this->profilePics[$uid] = $this->model->getProfilePic($uid);
+            }
+            $this->avg_rating[$pid] = $total_rating[$pid]/$this->feedbackCount[$pid];
+        }
+
+        $this->render('Volunteer/Profile');
     }
+
+    function request_projects()
+    {
+        $this->render('Volunteer/Request_projects');
+    }
+
+    function calendar()
+    {
+        $this->render('Calendar');
+    }
+
+    function get_events($date)
+    {
+        if(!isset($_SESSION)) {
+            session_start();
+        }
+        $uid = $_SESSION['uid'];
+        $this->loadModel('Calendar');
+        $events = $this->model->getEvents($uid, $date);
+
+        echo json_encode($events);
+    }
+
+    function search_organizer()
+    {
+        if (isset($_POST['search'])) {
+
+            $key = trim($_POST['key']);
+            $this->loadModel('Organizer');
+            $this->organizers = $this->model->searchOrganizers($key);
+        } else {
+            $this->loadModel('Organizer');
+            $this->organizers = $this->model->getOrganizerData();
+        }
+
+        $this->render('Volunteer/Search_organizer');
+    }
+
+    function search_project()
+    {
+        $filter = $_POST['filter'];
+        $key = trim($_POST['key']);
+        $this->loadModel('Project');
+        if ($filter == 'name') {
+            $this->projects = $this->model->getProjectsByName($key);
+        }
+        else if ($filter == 'area') {
+            $this->projects = $this->model->getProjectsByArea($key);
+        }
+        else if ($filter == 'date') {
+            $this->projects = $this->model->getProjectsByDate($key);
+        }
+        else if ($filter == 'location') {
+            $this->projects = $this->model->getProjectsByLocation($key);
+        }
+        else if ($filter == 'organizer') {
+            $this->loadModel('Organizer');
+            $organizers = $this->model->getOrganizers($key);
+
+            $this->loadModel('Project');
+            foreach ($organizers as $organizer) {
+                $this->projects = $this->model->getProjectsByOrganizer($organizer);
+            }
+        }
+        else if ($filter == 'completed') {
+            $this->projects = $this->model->getCompletedProjects($key);
+        }
+        else if ($filter == 'volunteers') {
+            $this->projects = $this->model->getProjectsByVolunteers($key);
+        }
+
+        foreach ($this->projects as $project) {
+            $pid = $project['P_ID'];
+            $this->prImage[$pid] = $this->model->getProjectImage($pid);
+        }
+        $this->render('Volunteer/Search_results');
+    }
+
+    function view_organizer($uid)
+    {
+        $this->render('Organizer/Blog');
+    }
+
 }

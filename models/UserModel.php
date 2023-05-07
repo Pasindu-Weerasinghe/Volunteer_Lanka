@@ -98,6 +98,7 @@ class UserModel extends Model
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
+
     function changeUserPsw($uid, $password)
     {
         $query = "UPDATE user SET Password = '$password' WHERE U_ID = :uid";
@@ -105,7 +106,8 @@ class UserModel extends Model
         $statement->bindParam(':uid', $uid);
         return $statement->execute();
     }
-    public function updateUserProfile($name, $contact, $address, $uid)
+
+    function updateUserProfile($name, $contact, $address, $uid)
     {
         // Update the user profile in the database
         $query = "UPDATE sponsor SET Name=:name, Contact=:contact, Address=:address WHERE U_ID = :uid";
@@ -115,5 +117,15 @@ class UserModel extends Model
         $statement->bindParam(':address', $address);
         $statement->bindParam(':uid', $uid);
         return $statement->execute();
+        }
+
+
+    function getProfilePic($uid)
+    {
+        $query = "SELECT Photo FROM user WHERE U_ID = :uid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':uid', $uid);
+        $statement->execute();
+        return $statement->fetch(PDO::FETCH_ASSOC);   
     }
 }

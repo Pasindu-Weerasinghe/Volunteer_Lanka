@@ -46,6 +46,14 @@ class OrganizerModel extends Model
         $statement->bindParam(':uid', $uid);
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
+    }
 
+    function getOrganizers($key)
+    {
+        $query = "SELECT U_ID FROM organizer WHERE Name LIKE :key";
+        $statement = $this->db->prepare($query);
+        $statement->bindValue(':key', "%$key%", PDO::PARAM_STR);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 }

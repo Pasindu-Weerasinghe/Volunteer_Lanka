@@ -222,3 +222,18 @@ input[type="radio"] {
 	color: red;
 	font-size: large;
 }
+
+.stars  {
+    color: #e6e6e6;
+    font-size: 35px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.checked {
+    color: #ff9c1a;
+}
+
+.unchecked {
+    color: #e6e6e6;
+}

@@ -54,5 +54,6 @@ if (!isset($_SESSION['uid'])) {
     </div>
     <input type="hidden" name="role" value="<?php echo $_SESSION['role']?>">
 </body>
+<?php include 'views/includes/footer.php'; ?>
 
 </html>

@@ -95,6 +95,7 @@ if (isset($_SESSION['uid'])) {
   <br><br><br>
 
 </body>
+<?php include 'views/includes/footer.php'; ?>
 
 <script src="<?php echo BASE_URL ?>public/scripts/index.js"></script>
 

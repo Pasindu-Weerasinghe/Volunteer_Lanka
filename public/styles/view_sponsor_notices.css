@@ -77,17 +77,75 @@ width:80%;
 font-size: 16pt;
 font-weight: bolder;
 }
-.silver
-{
+
+.package {
+  display: inline-block;
+  width: 190px;
+  height: 50px;
   border: none;
   border-radius: 10px;
-  background-color: rgb(190, 192, 194);
-  width: 150px;
-  height: 50px;
-  display: inline-block;
-  margin-left: 8%;
   text-align: center;
+  margin: 15px;
+  position: relative;
+  margin-left: 10%;
+  padding-left: 35px;
+  padding-top: 9px;
+  background-color: rgb(75, 151, 228);
+} 
+.package:before {
+  content: "";
+  position: absolute;
+  left:3px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
 }
+#silverPackage1:before {
+  background-color: silver;
+}
+#goldPackage2:before {
+  background-color: gold;
+}
+#platinumPackage3:before {
+  background-color: 	rgb(229, 228, 226);
+}
+.sPackage
+{
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(63, 192, 97);
+  width: auto;
+  height: 40px;
+  font-size: large;
+  display: inline-block;
+  margin-left: 5%;
+  padding-top: 7px;
+}
+#amount{
+  width: 250px;
+  height: 70px;
+  padding-top: 5px;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  margin-left: 5%;
+  background-color: rgb(190, 192, 194);
+}
+#selectAmount{
+  padding-left: 8px;
+}
+
+.color-circle {
+  margin-top: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgb(149, 255, 0);
+}
+
 .btn1 {
 background-color: #84b464;
 color: #e0e0f0;
@@ -99,8 +157,7 @@ text-align: center;
 display: inline-block;
 font-family: "Poppins", sans-serif;
 font-size: 16px;
-margin-right: 50%; 
-margin-left: 5%
+margin-left: 23%
 }
 
 .btn2{
@@ -114,9 +171,22 @@ text-align: center;
 display: inline-block;
 font-family: "Poppins", sans-serif;
 font-size: 16px;
-/* margin-left: 5%;
-margin-right: 650px; */
+
 }
+
+.btn-area1{
+  width: 500px;
+overflow: auto;
+margin-left: 73%;
+margin-top: 2%;
+}
+
+.btn-area2{
+  width: 500px;
+overflow: auto;
+margin-top: -38px;
+}
+
 a {
 color: white;
 text-decoration: none;
@@ -134,3 +204,17 @@ background-color:#96c7d6;
 width: 950PX;
 margin: auto;
 }
+
+.input-container {
+  width: 150px; /* set the width of the div container */
+  position: relative; /* set the position to relative so we can position the currency symbol */
+  padding-left: 15px;
+  background-color: rgb(255, 255, 255);
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  font-size: large;
+}
+
+
+

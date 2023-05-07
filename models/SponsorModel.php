@@ -28,7 +28,17 @@ class SponsorModel extends Model
         return $statement->execute();
     }
 
-    //************************* ai ???????
+    public function updateProfilePic($uid, $profilepic)
+    {
+        $filename = basename($profilepic);
+        $sql = "UPDATE user SET Photo=:profilepic WHERE U_ID=:uid";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':profilepic', $filename);
+        $stmt->bindValue(':uid', $uid);
+        $stmt->execute();
+    }
+
+
     function getUserData($uid)
     {
         $query = "SELECT * FROM user WHERE U_ID = :uid";

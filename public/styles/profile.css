@@ -2,44 +2,45 @@
 	padding: 100px 150px 0px 150px;
 }
 
-.row{
-    margin-top: 20px;
+.row1{
     display: flex;
-    border: none;
-    border-radius: 10px;
-    background-color:#96c7d6;
-	width: 1000px;
-	margin:auto;
-	flex-direction: row;
+	width: auto;
+	flex-direction: column;
+}
+.row1{
+    display: flex;
+	width: auto;
+	flex: 80%;
+	flex-direction: roe;
+}
 
+.form1{
+	border: 2px solid #f1f1f1;
+	width: 60%;
+	display: flex;
+	margin: auto;
+	margin-top: 20px;
+	padding: 50px 50px;
+	background: #89afd6;
+	border-radius: 15px;
 }
-.image{
-	border-radius: 50%;
-}
-  
+
 /* Create two equal columns that sits next to each other */
 .column1 {
     flex: 40%;
     padding: 20px;
-    height: 450px; /* Should be removed. Only for demonstration */
+    height: auto; /* Should be removed. Only for demonstration */
 }
 .column2 {
-    flex: 60%;
-    padding: 20px;
-    height: 450px; /* Should be removed. Only for demonstration */
+    flex: 90%;
+	padding: 20px;
+	padding-left: 50px;
 }
 
-.btnpw{
-	background-color: #84b464;
-	color: #e0e0f0;
-	font-weight: bold;
-	border: none;
-	border-radius: 15px;
-	padding: 10px 32px;
-	text-align: center;
-	font-family: "Poppins", sans-serif;
-	font-size: 16px;
-	margin-left: 200px;
+.image{
+	border-radius: 50%;
+	height: 50%;
+	width: 60%;
 }
 
 
@@ -49,17 +50,7 @@ a {
 }
 
 
-.row2{
-    margin-top: 100px;
-	
-}
 
-.column2 {
-	float: left;
-	width: 25%;
-	padding: 10px;
-	height: 300px;	 
-}
 
 label{
 	
@@ -73,6 +64,70 @@ td{
 	font-size: 14pt;
 	font-weight: bolder;
 }
+.T1{
+	margin-top: -20px;
+	display: flex;
+}
+
+input[type="text"],
+input[type="password"] {
+	width: 70%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: none;
+	box-sizing: border-box;
+  border-radius: 10px;
+}
+input[type="text"]:focus,
+input[type="password"]:focus {
+	border: 4px solid rgb(169, 216, 250);
+	outline: none;
+}
+.updatebt{
+	background-color: #6aa438;
+	color: #e0e0f0;
+	font-weight: bold;
+	width: auto ;
+	border: none;
+	border-radius: 10px;
+	padding: 10px 10px;
+	text-align: center;
+	font-size: 16px;
+	margin-left: 0px;
+	display: flex;
+}
+
+/* Set a style for all buttons */
+button {
+	background-color: #6aa438;
+	color: #e0e0f0;
+	padding: 10px 10px;
+	margin: 10px 20;
+	border: none;
+	border-radius: 10px;
+	font-size: 17px;
+	font-weight: bold;
+	cursor: pointer;
+	width: 50%;
+	opacity: 0.9;
+}
+.prbtn{
+	margin-top: 0px;
+}
+.bt2 {
+	margin-left: 60px;
+}
+a {
+	color: #e0e0f0;
+	text-decoration: none;
+}
+
+button:hover {
+	opacity: 1;
+}
+
+
 
 
 

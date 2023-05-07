@@ -71,7 +71,8 @@ class UserModel extends Model
     }
 
 
-    function changePassword($email, $password) {
+    function changePassword($email, $password)
+    {
         $query = "UPDATE user SET `Password` = :password WHERE Email = :email";
         $statement = $this->db->prepare($query);
         $statement->bindParam(':email', $email);
@@ -98,13 +99,26 @@ class UserModel extends Model
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
-    function changeUserPsw($uid,$password)
+    function changeUserPsw($uid, $password)
     {
         $query = "UPDATE user SET Password = '$password' WHERE U_ID = :uid";
         $statement = $this->db->prepare($query);
         $statement->bindParam(':uid', $uid);
         return $statement->execute();
     }
+
+    function updateUserProfile($name, $contact, $address, $uid)
+    {
+        // Update the user profile in the database
+        $query = "UPDATE sponsor SET Name=:name, Contact=:contact, Address=:address WHERE U_ID = :uid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':name', $name);
+        $statement->bindParam(':contact', $contact);
+        $statement->bindParam(':address', $address);
+        $statement->bindParam(':uid', $uid);
+        return $statement->execute();
+        }
+
 
     function getProfilePic($uid)
     {

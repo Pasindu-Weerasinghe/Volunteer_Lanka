@@ -34,23 +34,29 @@
     background-color: #6aa438;
     color: white;
     padding: 10px 20px;
-    margin: 20px 0;
+     margin: 20px 0; 
     border-radius: 10px;
     border: none;
     cursor: pointer;
     text-align: center;
-    width: 200px;
+    width: auto;
     font-size: 20px;
     opacity: 0.88;
+    margin-left: 350px;
 }
+#publish-btn {
+    margin-left: 400px;
+  }
 
 .btn:hover {
     opacity: 1;
 }
 
 .btn-area {
-    width: 50%;
+    width: auto;
     margin: auto;
+    display: block;
+    
 }
 
 /* #cancel {

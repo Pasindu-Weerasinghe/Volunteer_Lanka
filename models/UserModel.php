@@ -97,11 +97,21 @@ class UserModel extends Model
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
+
     function changeUserPsw($uid,$password)
     {
         $query = "UPDATE user SET Password = '$password' WHERE U_ID = :uid";
         $statement = $this->db->prepare($query);
         $statement->bindParam(':uid', $uid);
         return $statement->execute();
+    }
+
+    function getProfilePic($uid)
+    {
+        $query = "SELECT Photo FROM user WHERE U_ID = :uid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':uid', $uid);
+        $statement->execute();
+        return $statement->fetch(PDO::FETCH_ASSOC);   
     }
 }

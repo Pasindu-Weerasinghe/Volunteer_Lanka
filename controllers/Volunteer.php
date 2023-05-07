@@ -246,14 +246,23 @@ class Volunteer extends User
             $this->description[$pid] = $this->model->getPostDescription($pid);
         }
 
-        $this->loadModel('Feedback');
+        $total_rating[] = 0;
         foreach ($this->projects as $project) {
+            $this->loadModel('Feedback');
             $pid = $project['P_ID'];
             $this->feedbacks[$pid] = $this->model->getFeedbacks($pid);
             $this->feedbackCount[$pid] = sizeof($this->feedbacks[$pid]);
-        }
 
-        
+            foreach ($this->feedbacks[$pid] as $feedback) {
+                $total_rating[$pid] += $feedback['Rating'];
+                $uid = $feedback['U_ID'];
+                $this->loadModel('Volunteer');
+                $this->names[$uid] = $this->model->getName($uid);
+                $this->loadModel('User');
+                $this->profilePics[$uid] = $this->model->getProfilePic($uid);
+            }
+            $this->avg_rating[$pid] = $total_rating[$pid]/$this->feedbackCount[$pid];
+        }
 
         $this->render('Volunteer/Profile');
     }

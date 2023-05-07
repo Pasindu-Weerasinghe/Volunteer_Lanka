@@ -19,39 +19,13 @@
 
     <h2>Upcoming Projects</h2><br/><br/>
     <section class="container">
-        <?php foreach ($this->upcoming_projects as $project) {
-            $pid = $project['P_ID'] ?>
-            <div class="card">
-                <div class="card-image">
-                    <img id="card-img"
-                         src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid] ?>">
-                </div>
-                <h2><?php echo($project["Name"]); ?></h2>
-                <p><?php echo($project["Date"]); ?></p>
-                <a href="<?php echo BASE_URL ?>organizer/view_upcoming_project/<?php echo $project['P_ID'] ?>">
-                    <button>View</button>
-                </a>
-            </div>
-        <?php } ?>
+        <?php include 'views/Organizer/includes/upcoming_projects.php' ?>
     </section>
     <br/>
 
     <h2>Completed Projects</h2><br/><br/>
     <section class="container">
-        <?php foreach ($this->upcoming_projects as $project) {
-            $pid = $project['P_ID'] ?>
-            <div class="card">
-                <div class="card-image">
-                    <img id="card-img"
-                         src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid] ?>">
-                </div>
-                <h2><?php echo($project["Name"]); ?></h2>
-                <p><?php echo($project["Date"]); ?></p>
-                <a href="<?php echo BASE_URL ?>volunteer/view_projects/<?php echo $project['P_ID'] ?>">
-                    <button>View</button>
-                </a>
-            </div>
-        <?php } ?>
+        <?php include 'views/Organizer/includes/completed_projects.php' ?>
     </section>
     <br/>
 

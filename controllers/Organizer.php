@@ -20,14 +20,16 @@ class Organizer extends User
         $this->upcoming_projects = $this->model->getUpcomingProjects($uid, $limit);
         foreach ($this->upcoming_projects as $project) {
             $pid = $project['P_ID'];
-            $this->prImage[$pid] = $this->model->getProjectImage($pid)[0]['Image'];
+            $image = $this->model->getProjectImage($pid);
+            $this->prImage[$pid] = $image?$image[0]['Image']:null;
         }
 
         // getting completed projects & images
         $this->completed_projects = $this->model->getCompletedProjects($uid, $limit);
         foreach ($this->completed_projects as $project) {
             $pid = $project['P_ID'];
-            $this->prImage[$pid] = $this->model->getProjectImage($pid)[0]['Image'];
+            $image = $this->model->getProjectImage($pid);
+            $this->prImage[$pid] = $image?$image[0]['Image']:null;
         }
 
         $this->render('Organizer/Home');
@@ -143,10 +145,11 @@ class Organizer extends User
     {
         session_start();
         $this->loadModel('Project');
-        $this->projects = $this->model->getUpcomingProjects($_SESSION['uid']);
-        foreach ($this->projects as $project) {
+        $this->upcoming_projects = $this->model->getUpcomingProjects($_SESSION['uid']);
+        foreach ($this->upcoming_projects as $project) {
             $pid = $project['P_ID'];
-            $this->prImage[$pid] = $this->model->getProjectImage($pid);
+            $image = $this->model->getProjectImage($pid);
+            $this->prImage[$pid] = $image?$image[0]['Image']:null;
         }
 
         $this->render('Organizer/UpcomingProjects');
@@ -157,10 +160,11 @@ class Organizer extends User
     {
         session_start();
         $this->loadModel('Project');
-        $this->projects = $this->model->getCompletedProjects($_SESSION['uid']);
-        foreach ($this->projects as $project) {
+        $this->completed_projects = $this->model->getCompletedProjects($_SESSION['uid']);
+        foreach ($this->completed_projects as $project) {
             $pid = $project['P_ID'];
-            $this->prImage[$pid] = $this->model->getProjectImage($pid);
+            $image = $this->model->getProjectImage($pid);
+            $this->prImage[$pid] = $image?$image[0]['Image']:null;
         }
         $this->render('Organizer/CompletedProjects');
     }

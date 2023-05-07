@@ -18,15 +18,7 @@
     <div class="main" id="main">
     <h2>Upcoming Projects</h2><br /><br />
         <section class="container">
-            <?php foreach ($this->projects as $project) {
-                $pid = $project['P_ID'] ?>
-                <div class="card">
-                <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image']?>"></div>
-                    <h2><?php echo ($project["Name"]); ?></h2>
-                    <p><?php echo ($project["Date"]); ?></p>
-                    <a class="btn" href="organizer/view_projects/<?php echo $project['P_ID'] ?>">View</a>
-                </div>
-            <?php } ?>
+            <?php include 'views/Organizer/includes/upcoming_projects.php' ?>
         </section>
         <br />
 

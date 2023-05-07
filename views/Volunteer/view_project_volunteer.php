@@ -1,10 +1,5 @@
 <?php
-session_start();
-if (!isset($_SESSION['uid'])) {
-    header('Location: ' . BASE_URL);
-}
-
-$pid = $this->project['P_ID'];
+    $pid = $this->project['P_ID'];
 ?>
 
 <!DOCTYPE html>

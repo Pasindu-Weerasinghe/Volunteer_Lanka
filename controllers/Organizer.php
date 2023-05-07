@@ -10,12 +10,26 @@ class Organizer extends User
 
     function index()
     {
+        session_start();
+        $uid = $_SESSION['uid'];
+        $limit = 4;
+
         $this->loadModel('Project');
-        $this->projects = $this->model->cardsVolunteer();
-        foreach ($this->projects as $project) {
+
+        // getting upcoming projects & images
+        $this->upcoming_projects = $this->model->getUpcomingProjects($uid, $limit);
+        foreach ($this->upcoming_projects as $project) {
             $pid = $project['P_ID'];
-            $this->prImage[$pid] = $this->model->getProjectImage($pid);
+            $this->prImage[$pid] = $this->model->getProjectImage($pid)[0]['Image'];
         }
+
+        // getting completed projects & images
+        $this->completed_projects = $this->model->getCompletedProjects($uid, $limit);
+        foreach ($this->completed_projects as $project) {
+            $pid = $project['P_ID'];
+            $this->prImage[$pid] = $this->model->getProjectImage($pid)[0]['Image'];
+        }
+
         $this->render('Organizer/Home');
     }
 
@@ -268,13 +282,19 @@ class Organizer extends User
             $this->images[$i] = $this->images[$i]['Image'];
         }
 
+        $this->volunteer_form = $this->model->getVolunteerForm($pid);
+
         $this->loadModel('Volunteer');
-        $this->volunteers = $this->model->getJoinedVolunteersOfProject($pid);
+        $this->joined_volunteers = $this->model->getJoinedVolunteersOfProject($pid);
 
         //if project is a collaboration project
         if ($this->project['Collab'] == 1) {
             $this->loadModel('Organizer');
             $this->collaborators = $this->model->getCollaboratorsOfProject($pid);
+            session_start();
+            if ($this->project['U_ID'] != $_SESSION['uid']) {
+                $this->pr_creator = $this->model->getOrganizerById($this->project['U_ID']);
+            }
         }
 
         // if project is a sponsored project
@@ -299,8 +319,9 @@ class Organizer extends User
         $this->render('Organizer/ViewUpcomingProject');
     }
 
-    function edit_project($pid){
-        if(isset($_POST['edit-project'])) {
+    function edit_project($pid)
+    {
+        if (isset($_POST['edit-project'])) {
             $pname = $_POST['pr-name'];
             $venue = $_POST['pr-venue'];
             $volunteers = $_POST['pr-volunteers'];
@@ -308,12 +329,26 @@ class Organizer extends User
             $this->loadModel('Project');
             $status = $this->project = $this->model->updateProject($pid, $pname, $venue, $volunteers, $description);
 
-            if($status) {
+            if ($status) {
                 header('Location:' . BASE_URL . 'organizer/view_upcoming_project/' . $pid);
             } else {
                 echo "Error";
             }
         }
+    }
+
+    function leave_project($pid, $uid)
+    {
+        session_start();
+        $this->loadModel('Project');
+        $collab_deleted = $this->model->deleteCollaborator($pid, $_SESSION['uid']);
+        // TODO: send notification to creator
+        if ($collab_deleted) {
+            echo json_encode(['status' => 'success']);
+        } else {
+            echo "Error";
+        }
+
     }
 
     function view_completed_project($pid)
@@ -327,9 +362,10 @@ class Organizer extends User
         $this->render('Organizer/ViewCompletedProject');
     }
 
-    function add_to_blog($pid) {
+    function add_to_blog($pid)
+    {
         $this->loadModel('Blog');
-        $this->model->addProjectToBlog($pid, $_SESSION['uid'], );
+        $this->model->addProjectToBlog($pid, $_SESSION['uid'],);
 
         $targetDir = "public/images/post_images/";
         $allowTypes = array('jpg', 'png', 'jpeg', 'gif', '');
@@ -366,9 +402,10 @@ class Organizer extends User
         }
         return $amount;
     }
+
     private function _filterSponsorsBYPackage($sponsors, $package)
     {
-        return array_filter($sponsors, function($sponsor) use ($package) {
+        return array_filter($sponsors, function ($sponsor) use ($package) {
             return $sponsor["Package"] == $package;
         });
     }

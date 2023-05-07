@@ -30,7 +30,7 @@ class OrganizerModel extends Model
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
-
+    
     function searchOrganizers($key)
     {
         $query = "SELECT * FROM organizer WHERE Name LIKE :key";
@@ -74,9 +74,11 @@ class OrganizerModel extends Model
                     WHERE organizer.U_ID = :uid";
         $statement = $this->db->prepare($query);
         $statement->bindParam(':uid', $uid);
-        $statement->execute();
-        return $statement->fetch(PDO::FETCH_ASSOC);
-
+        if ($statement->execute()) {
+            return $statement->fetch(PDO::FETCH_ASSOC);
+        } else {
+            return null;
+        }
     }
 
     function canceledProjectCount($uid) {
@@ -88,21 +90,22 @@ class OrganizerModel extends Model
         if ($statement->execute()) {
             return $statement->fetch(PDO::FETCH_ASSOC)['row_count'];
         } else {
-            return false;
+            return null;
         }
     }
 
     function getCollaboratorsOfProject($pid) {
-        $query = "SELECT `partners`.`U_ID`, `user`.`Name`, `user`.`Photo`
+        $query = "SELECT `partners`.`U_ID`, `organizer`.`Name`, `user`.`Photo`, `partners`.`Status`
                     FROM `partners`
                     INNER JOIN `user` ON `partners`.`U_ID` = `user`.`U_ID`
+                    INNER JOIN `organizer` ON `partners`.`U_ID` = `organizer`.`U_ID`
                     WHERE `partners`.`P_ID` = :pid";
         $statement = $this->db->prepare($query);
         $statement->bindParam(':pid', $pid);
         if ($statement->execute()) {
             return $statement->fetchAll(PDO::FETCH_ASSOC);
         } else {
-            return false;
+            return null;
         }
     }
 }

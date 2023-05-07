@@ -19,12 +19,12 @@
 
     <h2>Upcoming Projects</h2><br/><br/>
     <section class="container">
-        <?php foreach ($this->projects as $project) {
+        <?php foreach ($this->upcoming_projects as $project) {
             $pid = $project['P_ID'] ?>
             <div class="card">
                 <div class="card-image">
                     <img id="card-img"
-                         src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image'] ?>">
+                         src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid] ?>">
                 </div>
                 <h2><?php echo($project["Name"]); ?></h2>
                 <p><?php echo($project["Date"]); ?></p>
@@ -38,12 +38,12 @@
 
     <h2>Completed Projects</h2><br/><br/>
     <section class="container">
-        <?php foreach ($this->projects as $project) {
+        <?php foreach ($this->upcoming_projects as $project) {
             $pid = $project['P_ID'] ?>
             <div class="card">
                 <div class="card-image">
                     <img id="card-img"
-                         src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image'] ?>">
+                         src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid] ?>">
                 </div>
                 <h2><?php echo($project["Name"]); ?></h2>
                 <p><?php echo($project["Date"]); ?></p>

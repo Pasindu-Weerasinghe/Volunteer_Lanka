@@ -1,4 +1,5 @@
-import { BASE_URL} from "../../configs/config.js";
+import {BASE_URL} from "../../configs/config.js";
+
 const uid = document.querySelector('input[name="uid"]').value;
 const pid = document.querySelector('input[name="pid"]').value;
 
@@ -7,11 +8,13 @@ const editPrBtn = document.querySelector("#edit-btn");
 const joinedVolunteersBtn = document.querySelector("#joined-volunteers-btn");
 const cancelPrBtn = document.querySelector("#cancel-btn");
 const postponePrBtn = document.querySelector("#postpone-btn");
+const leaveBtn = document.querySelector("#leave-btn");
 
 const editPrPopup = document.querySelector("#popup-edit");
 const joinedVolunteers = document.querySelector("#popup-joined-volunteers");
 const cancelPopup = document.querySelector("#popup-cancel");
 const postponePopup = document.querySelector("#popup-postpone");
+const leavePopup = document.querySelector("#popup-leave");
 
 const cancelPr = document.querySelector("#cancel-project");
 const postponePr = document.querySelector("#postpone-project");
@@ -19,33 +22,39 @@ const postponePr = document.querySelector("#postpone-project");
 const popUpBG = document.querySelector(".popup-bg");
 const popUpClose = document.querySelectorAll(".popup-close");
 
-editPrBtn.addEventListener("click", () => {
-    popUpBG.style.display = "flex";
-    editPrPopup.style.display = "flex";
-});
+if (editPrBtn) {
+    editPrBtn.addEventListener("click", () => {
+        popUpBG.style.display = "flex";
+        editPrPopup.style.display = "flex";
+    });
+}
 
 joinedVolunteersBtn.addEventListener("click", () => {
     popUpBG.style.display = "flex";
     joinedVolunteers.style.display = "flex";
 });
 
-cancelPrBtn.addEventListener("click", () => {
-    popUpBG.style.display = "flex";
-    cancelPopup.style.display = "flex";
-    if (checkCancelPrLimit()) {
-        // if pr limit not reached
-    } else {
-        // if pr limit reached
-        cancelPr.disabled = true;
-        cancelPr.style.cursor = "not-allowed";
-        cancelPr.style.opacity = "0.5";
-    }
-});
+if (cancelPrBtn) {
+    cancelPrBtn.addEventListener("click", () => {
+        popUpBG.style.display = "flex";
+        cancelPopup.style.display = "flex";
+        if (checkCancelPrLimit()) {
+            // if pr limit not reached
+        } else {
+            // if pr limit reached
+            cancelPr.disabled = true;
+            cancelPr.style.cursor = "not-allowed";
+            cancelPr.style.opacity = "0.5";
+        }
+    });
+}
 
-postponePrBtn.addEventListener("click", () => {
-    popUpBG.style.display = "flex";
-    postponePopup.style.display = "flex";
-});
+if (postponePrBtn) {
+    postponePrBtn.addEventListener("click", () => {
+        popUpBG.style.display = "flex";
+        postponePopup.style.display = "flex";
+    });
+}
 
 popUpClose.forEach((close) => {
     close.addEventListener("click", () => {
@@ -146,6 +155,35 @@ postponePrForm.addEventListener("submit", (e) => {
         .catch((err) => console.log(err));
 });
 
+//? leave button for collaborators *********************************
+leaveBtn.addEventListener('click', () => {
+    popUpBG.style.display = "flex";
+    leavePopup.style.display = "flex";
+});
+
+const leavePR = document.querySelector('#leave-project');
+const leaveMsg = document.querySelector('#leave-msg');
+
+leavePR.addEventListener('click', ((e) => {
+    e.preventDefault();
+    const url = `${BASE_URL}organizer/leave_project/${pid}/${uid}`;
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === 'success') {
+                console.log(data);
+                leavePR.style.backgroundColor = '#6aa438';
+                leavePR.innerHTML = 'Ok';
+                leaveMsg.innerHTML = 'You have left the project';
+                leavePR.addEventListener('click', () => {
+                    window.location.href = `${BASE_URL}organizer/`;
+                });
+            } else {
+                console.log(data);
+            }
+        })
+        .catch(err => console.log(err));
+}));
 
 
 

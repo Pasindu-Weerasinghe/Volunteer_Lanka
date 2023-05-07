@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php
-function currencyFormat($number): string
-{
-    return number_format($number, 2, '.', ' ');
-}
-
-?>
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,20 +16,35 @@ function currencyFormat($number): string
 
 <body>
 <?php include 'views/includes/navbar_log.php'; ?>
+
+<?php
+$uid = $_SESSION['uid'];
+$pid = $this->project['P_ID'];
+$creator_check = $this->project['U_ID'] == $uid;
+function currencyFormat($number): string
+{
+    return number_format($number, 2, '.', ' ');
+}
+
+?>
+
 <div class="main" id="main">
     <h1><?php echo $this->project['Name'] ?></h1><br/><br/>
-
-    <?php
-    print_r($this->sn_amount);
-    echo "<br/>";
-    print_r($this->package_range);
-    echo "<br/>";
-    print_r($this->volunteers);
-    ?>
+<!---->
+<!--    --><?php
+//    print_r($this->sn_amount);
+//    echo "<br/>";
+//    print_r($this->package_range);
+//    echo "<br/>";
+//    ?>
 
 
     <div class="container">
-        <button id="edit-btn"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+        <?php
+        if ($creator_check) { ?>
+            <button id="edit-btn"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+        <?php }
+        ?>
         <div class="wrapper">
             <div class="slideshow-container">
                 <div class="slideshow">
@@ -75,7 +82,8 @@ function currencyFormat($number): string
 
                 <div class="row">
                     <label for="volunteers" style="height: fit-content">Volunteers</label>
-                    <p id="volunteers"><?php echo count($this->volunteers) ?> / <?php echo $this->project['No_of_volunteers'] ?></p>
+                    <p id="volunteers"><?php echo count($this->joined_volunteers) ?>
+                        / <?php echo $this->project['No_of_volunteers'] ?></p>
                 </div>
 
                 <div class="row">
@@ -92,21 +100,63 @@ function currencyFormat($number): string
 
         <?php
         // if this project is a collaboration, show the collaborators details
-        if($this->project['Collab'] == 1) {
+        if ($this->project['Collab'] == 1) {
+            $uid = $_SESSION['uid'];
+            foreach ($this->collaborators as $key => $collaborator) {
+                if ($collaborator['U_ID'] == $uid) {
+                    unset($this->collaborators[$key]);
+                }
+            }
+
+            $accepted_collaborators = array_filter($this->collaborators, function ($collaborator) {
+                return $collaborator['Status'] == 'accepted';
+            });
+
+            $pending_collaborators = array_filter($this->collaborators, function ($collaborator) {
+                return $collaborator['Status'] == 'pending';
+            });
             ?>
             <div class="collab-area">
                 <h2>Collaborators</h2>
                 <div class="collabs">
                     <?php
-                        foreach ($this->collaborators as $collaborator) { ?>
-                            <a href="" class="collaborator">
-                                <img src="<?php echo BASE_URL ?>public/images/<?php echo $collaborator['Photo']?$collaborator['Photo']:'profile.jpg' ?>" alt="">
-                                <div>
-                                    <label><?php echo $collaborator['Name'] ?></label>
-                                    <p><?php echo $collaborator['Description'] ?></p>
-                                </div>
-                            </a>
-                        <?php }
+                    if (!$creator_check) { ?>
+                        <a href="" class="collaborator">
+                            <img
+                                src="<?php echo BASE_URL ?>public/images/<?php echo $this->pr_creator['Photo'] ?: 'profile.jpg' ?>"
+                                alt="">
+                            <div>
+                                <label><?php echo $this->pr_creator['Name'] ?></label>
+                                <p style="color: cornflowerblue">Creator</p>
+                            </div>
+                        </a>
+                    <?php }
+                    ?>
+                    <?php
+                    foreach ($accepted_collaborators as $collaborator) { ?>
+                        <a href="" class="collaborator">
+                            <img
+                                src="<?php echo BASE_URL ?>public/images/<?php echo $collaborator['Photo'] ?: 'profile.jpg' ?>"
+                                alt="">
+                            <div>
+                                <label><?php echo $collaborator['Name'] ?></label>
+                                <p style="color: limegreen">Accepted</p>
+                            </div>
+                        </a>
+                    <?php }
+                    ?>
+                    <?php
+                    foreach ($pending_collaborators as $collaborator) { ?>
+                        <a href="" class="collaborator">
+                            <img
+                                src="<?php echo BASE_URL ?>public/images/<?php echo $collaborator['Photo'] ?: 'profile.jpg' ?>"
+                                alt="">
+                            <div>
+                                <label><?php echo $collaborator['Name'] ?></label>
+                                <p style="color: grey">Pending</p>
+                            </div>
+                        </a>
+                    <?php }
                     ?>
                 </div>
             </div>
@@ -139,12 +189,15 @@ function currencyFormat($number): string
                 </h2>
 
                 <div class="sponsors">
-                    <h3><span class="silver spon-dot"></span> Silver Sponsors - Rs. <?php echo currencyFormat($this->package_range['silver']) ?></h3>
+                    <h3><span class="silver spon-dot"></span> Silver Sponsors -
+                        Rs. <?php echo currencyFormat($this->package_range['silver']) ?></h3>
                     <?php
                     if (count($this->silver_sponsors) > 0) {
                         foreach ($this->silver_sponsors as $sponsor) { ?>
                             <a href="" class="sponsor">
-                                <img src="<?php echo BASE_URL ?>public/images/<?php echo $sponsor['Photo']?$sponsor['Photo']:'profile.jpg' ?>" alt="">
+                                <img
+                                    src="<?php echo BASE_URL ?>public/images/<?php echo $sponsor['Photo'] ?: 'profile.jpg' ?>"
+                                    alt="">
                                 <div>
                                     <label><?php echo $sponsor['Name'] ?></label>
                                     <p class="amount">
@@ -159,12 +212,15 @@ function currencyFormat($number): string
                     } ?>
                 </div>
                 <div class="sponsors">
-                    <h3><span class="gold spon-dot"></span> Gold Sponsors - Rs. <?php echo currencyFormat($this->package_range['gold']) ?></h3>
+                    <h3><span class="gold spon-dot"></span> Gold Sponsors -
+                        Rs. <?php echo currencyFormat($this->package_range['gold']) ?></h3>
                     <?php
                     if (count($this->gold_sponsors) > 0) {
                         foreach ($this->gold_sponsors as $sponsor) { ?>
                             <a href="" class="sponsor">
-                                <img src="<?php echo BASE_URL ?>public/images/<?php echo $sponsor['Photo']?$sponsor['Photo']:'profile.jpg' ?>" alt="">
+                                <img
+                                    src="<?php echo BASE_URL ?>public/images/<?php echo $sponsor['Photo'] ?: 'profile.jpg' ?>"
+                                    alt="">
                                 <div>
                                     <label><?php echo $sponsor['Name'] ?></label>
                                     <p class="amount">
@@ -180,12 +236,15 @@ function currencyFormat($number): string
                     ?>
                 </div>
                 <div class="sponsors">
-                    <h3><span class="platinum spon-dot"></span> Platinum Sponsors - Rs. <?php echo currencyFormat($this->package_range['platinum']) ?></h3>
+                    <h3><span class="platinum spon-dot"></span> Platinum Sponsors -
+                        Rs. <?php echo currencyFormat($this->package_range['platinum']) ?></h3>
                     <?php
                     if (count($this->platinum_sponsors) > 0) {
                         foreach ($this->platinum_sponsors as $sponsor) { ?>
                             <a href="" class="sponsor">
-                                <img src="<?php echo BASE_URL ?>public/images/<?php echo $sponsor['Photo']?$sponsor['Photo']:'profile.jpg' ?>" alt="">
+                                <img
+                                    src="<?php echo BASE_URL ?>public/images/<?php echo $sponsor['Photo'] ?: 'profile.jpg' ?>"
+                                    alt="">
                                 <div>
                                     <label><?php echo $sponsor['Name'] ?></label>
                                     <p class="amount">
@@ -206,7 +265,9 @@ function currencyFormat($number): string
                     if (count($this->other_sponsors) > 0) {
                         foreach ($this->other_sponsors as $sponsor) { ?>
                             <a href="" class="sponsor">
-                                <img src="<?php echo BASE_URL ?>public/images/<?php echo $sponsor['Photo']?$sponsor['Photo']:'profile.jpg' ?>" alt="">
+                                <img
+                                    src="<?php echo BASE_URL ?>public/images/<?php echo $sponsor['Photo'] ?: 'profile.jpg' ?>"
+                                    alt="">
                                 <div>
                                     <label><?php echo $sponsor['Name'] ?></label>
                                     <p class="amount">
@@ -226,10 +287,22 @@ function currencyFormat($number): string
         }
         ?>
 
-        <div class="btn-area">
-            <button class="btn" id="cancel-btn">Cancel Project</button>
-            <button class="btn" id="postpone-btn">Postpone Project</button>
-        </div>
+        <?php
+        if ($creator_check) {
+            ?>
+            <div class="btn-area">
+                <button class="btn" id="cancel-btn">Cancel Project</button>
+                <button class="btn" id="postpone-btn">Postpone Project</button>
+            </div>
+        <?php } else {
+            ?>
+            <div class="btn-area">
+                <button class="btn" id="leave-btn" style="background-color: darkred">Leave Project</button>
+            </div>
+        <?php }
+        ?>
+
+
     </div>
 
 
@@ -243,7 +316,8 @@ function currencyFormat($number): string
         <div class="popup-close" data-popup-id="popup-edit"><i class="fa-solid fa-xmark"></i></div>
 
         <h2>Edit Project</h2>
-        <form id="edit-pr-form" method="post" action="<?php echo BASE_URL ?>organizer/edit_project/<?php echo $this->project['P_ID'] ?>">
+        <form id="edit-pr-form" method="post"
+              action="<?php echo BASE_URL ?>organizer/edit_project/<?php echo $pid ?>">
             <label for="pr-name">Project Name <b style="color: red">*</b></label>
             <input type="text" name="pr-name" id="pr-name" value="<?php echo $this->project['Name'] ?>" required>
             <label for="pr-venue">Venue <b style="color: red">*</b></label>
@@ -264,16 +338,35 @@ function currencyFormat($number): string
 
         <h2>Joined Volunteers</h2>
         <div class="joined-volunteers">
-            <a class="volunteer">
-                <img src="<?php echo BASE_URL ?>public/images/profile.jpg" alt="" class="float-left">
-                <div>
-                    <label><?php echo 'Volunteer name' ?></label>
-                    <p>
-                        <span>Contact: 8y897897</span>
-                        <span>Meal: Veg</span>
-                    </p>
-                </div>
-            </a>
+            <?php
+            if (count($this->joined_volunteers) > 0) {
+                foreach ($this->joined_volunteers as $volunteer) { ?>
+                    <a class="volunteer">
+                        <div>
+                            <img
+                                src="<?php echo BASE_URL ?>public/images/<?php echo $volunteer['Photo'] ?: 'profile.jpg' ?>"
+                                alt="" class="float-left">
+                            <label><?php echo $volunteer['Name'] ?></label>
+
+                        </div>
+                        <p>
+                            <?php
+                            if ($this->volunteer_form['Email']) {
+                                echo "<span>Email: {$volunteer['Email']}</span>";
+                            }
+                            if ($this->volunteer_form['Contact']) {
+                                echo "<span>Phone: {$volunteer['Contact']}</span>";
+                            }
+                            if ($this->volunteer_form['Meal_pref']) {
+                                $meal_pref = $volunteer['Meal'] == 'veg' ? 'Vegetarian' : 'Non-vegetarian';
+                                echo "<span>Meal preference: {$meal_pref}</span>";
+                            }
+                            ?>
+                        </p>
+                    </a>
+                <?php }
+            }
+            ?>
         </div>
     </div>
 
@@ -306,16 +399,25 @@ function currencyFormat($number): string
             <button class="btn" type="submit" id="postpone-project">Postpone Project</button>
         </form>
     </div>
-</div>
 
-<?php
-//
-?>
+    <!-- leave project -->
+    <div class="popup" id="popup-leave" style="display: none;">
+        <!--close button-->
+        <div class="popup-close" data-popup-id="popup-leave"><i class="fa-solid fa-xmark"></i></div>
+        <h2 id="leave-msg">Do you really want to leave the project?</h2>
+        <button class="btn" id="leave-project" style="background-color: darkred">
+            Leave Project
+        </button>
+    </div>
 
-<!--    hidden values   -->
-<input type="hidden" name="uid" value="<?php echo $_SESSION['uid'] ?>">
-<input type="hidden" name="pid" value="<?php echo $this->project['P_ID'] ?>">
-<input type="hidden" name="imagesArray" value='<?php echo json_encode($this->images); ?>'>
+    <?php
+    //
+    ?>
+
+    <!--    hidden values   -->
+    <input type="hidden" name="uid" value="<?php echo $uid ?>">
+    <input type="hidden" name="pid" value="<?php echo $pid ?>">
+    <input type="hidden" name="imagesArray" value='<?php echo json_encode($this->images); ?>'>
 </body>
 <script>
     const descriptionElement = document.getElementById('description');
@@ -323,6 +425,12 @@ function currencyFormat($number): string
     const rowElement = descriptionElement.parentElement;
     rowElement.style.height = `${descriptionHeight + 10}px`;
     descriptionElement.style.height = '100%';
+
+    const venueElement = document.getElementById('venue');
+    const venueHeight = venueElement.offsetHeight;
+    const venueRowElement = venueElement.parentElement;
+    venueRowElement.style.height = `${venueHeight + 10}px`;
+    venueElement.style.height = '100%';
 </script>
 <script type="module" src="<?php echo BASE_URL ?>public/scripts/view_upcoming_pr_org.js"></script>
 <script type="module" src="<?php echo BASE_URL ?>public/scripts/slideshow.js"></script>

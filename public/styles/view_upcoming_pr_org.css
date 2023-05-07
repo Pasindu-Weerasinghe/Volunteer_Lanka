@@ -69,13 +69,24 @@
     padding: 0 5px;
 }
 
-/*? sponsored area styles */
+/*? collab & sponsored area styles */
+.collab-area,
 .spon-area {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: start;
     margin: 10px;
+}
+
+.collab-area {
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 80%;
+    margin: auto;
 }
 
 .spon-area .amounts {
@@ -111,6 +122,13 @@
     background-color: white;
 }
 
+.collabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
 .sponsors {
     display: flex;
     flex-direction: column;
@@ -125,6 +143,7 @@
     overflow: hidden;
 }
 
+.collab-area h2,
 .sponsors h3 {
     display: flex;
     justify-content: center;
@@ -158,10 +177,12 @@
     background-color: #e5e4e2;
 }
 
-/*? sponsor decorations */
+/*? collaborator & sponsor decorations */
+.collaborator,
 .sponsor {
     text-decoration: none;
     width: 88%;
+    max-width: 350px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -171,11 +192,13 @@
     transition: all 0.2s ease;
 }
 
+.collaborator div,
 .sponsor div {
     display: flex;
     flex-direction: column;
 }
 
+.collaborator label,
 .sponsor label {
     font-size: 18px;
     font-weight: bold;
@@ -183,6 +206,7 @@
     color: darkblue;
 }
 
+.collaborator p,
 .sponsor p {
     font-size: 18px;
     font-weight: bold;
@@ -190,10 +214,12 @@
     color: black;
 }
 
+.collaborator:hover,
 .sponsor:hover {
     box-shadow: 0 0 0 3px rgb(169, 216, 250);
 }
 
+.collaborator img,
 .sponsor img {
     width: 40px;
     margin: 10px;
@@ -336,15 +362,21 @@ textarea:focus {
 }
 
 .joined-volunteers .volunteer {
+    text-decoration: none;
+    cursor: pointer;
     display: flex;
+    flex-direction: column;
     width: 100%;
     max-width: 300px;
-    color: white;
     background-color: #96c7d6;
     padding: 5px;
     margin: 10px;
     border-radius: 10px;
 }
+
+.joined-volunteers .volunteer:hover {
+    box-shadow: 0 0 0 3px rgb(169, 216, 250);
+} 
 
 .volunteer img {
     width: 50px;
@@ -359,9 +391,8 @@ textarea:focus {
 
 .volunteer div {
     display: flex;
-    flex-direction: column;
     justify-content: start;
-    align-items: start;
+    align-items: center;
 
 }
 
@@ -375,13 +406,25 @@ textarea:focus {
     background-color: white;
 }
 
-.volunteer div p {
+.volunteer p {
     display: flex;
     flex-direction: column;
     font-size: 16px;
+    margin: 5px;
 }
 
-.volunteer div p span {
+.volunteer p span {
     font-weight: bold;
     color: black;
+}
+
+#popup-leave {
+    align-items: center;
+    min-height:auto;
+    height:auto;
+}
+
+#popup-leave h2 {
+    margin-bottom: 15px;
+    font-weight: bold;
 }

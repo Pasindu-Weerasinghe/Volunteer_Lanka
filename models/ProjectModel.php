@@ -47,7 +47,15 @@ class ProjectModel extends Model
         $statement->bindParam(':pid', $pid);
         $statement->bindParam(':uid', $uid);
         return $statement->execute();
+    }
 
+    function deleteCollaborator($pid, $uid)
+    {
+        $query = "DELETE FROM `partners` WHERE P_ID = :pid AND U_ID = :uid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':pid', $pid);
+        $statement->bindParam(':uid', $uid);
+        return $statement->execute();
     }
 
     function setSponsorNotice($pid, $uid, $amount)
@@ -71,14 +79,26 @@ class ProjectModel extends Model
         return $statement->execute();
     }
 
-    function getUpcomingProjects($uid)
+    function getUpcomingProjects($uid, $limit = null)
     {
-        $query = "SELECT `project`.*
-                  FROM `project`
-                  INNER JOIN `partners` ON `project`.P_ID = `partners`.U_ID
-                  WHERE (`project`.U_ID = :uid OR `partners`.U_ID = :uid) AND `project`.Status = 'active'";
+        $query = "SELECT * FROM (
+                            SELECT * FROM `project` WHERE U_ID = :uid AND Status = 'active'
+                            UNION
+                            SELECT `project`.* FROM `project`
+                            INNER JOIN `partners` ON `project`.`P_ID` = `partners`.`P_ID`
+                            WHERE `partners`.`U_ID` = :uid AND `partners`.`Status` = 'accepted' AND `project`.`Status` = 'active'
+                    ) AS results
+                    ORDER BY results.Date ASC";
+
+        if ($limit != null) {
+            $query .= " LIMIT :limit";
+        }
+
         $statement = $this->db->prepare($query);
         $statement->bindParam(':uid', $uid);
+        if ($limit != null) {
+            $statement->bindParam(':limit', $limit, PDO::PARAM_INT);
+        }
         if ($statement->execute()) {
             // if query successful
             return $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -113,6 +133,20 @@ class ProjectModel extends Model
         $statement->bindParam(':meal_pref', $meal_pref);
         $statement->bindParam(':prior_part', $prior_part);
         return $statement->execute();
+    }
+
+    function getVolunteerForm($pid)
+    {
+        $query = "SELECT Email, Contact, Meal_pref, Prior_participation FROM form_for_volunteers WHERE P_ID = :pid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':pid', $pid);
+        if ($statement->execute()) {
+            // if query successful
+            return $statement->fetch(PDO::FETCH_ASSOC);
+        } else {
+            // if query failed
+            return null;
+        }
     }
 
 

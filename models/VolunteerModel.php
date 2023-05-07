@@ -73,7 +73,7 @@ class VolunteerModel extends Model
     }
 
     function getJoinedVolunteersOfProject($pid) {
-        $query = "SELECT volunteer.U_ID, volunteer.Name, volunteer.Contact, user.Photo, joins.Meal, joins.Prior_part
+        $query = "SELECT volunteer.U_ID, volunteer.Name, volunteer.Contact, user.Email, user.Photo, joins.Meal, joins.Prior_part
                     FROM joins 
                     INNER JOIN volunteer ON joins.U_ID = volunteer.U_ID
                     INNER JOIN user ON joins.U_ID = user.U_ID

@@ -23,10 +23,6 @@
 	height: auto;
 	margin:auto;
 }
-
-.image{
-	border-radius: 50%;
-}
   
 /* Create two equal columns that sits next to each other */
 .column1 {
@@ -47,6 +43,7 @@
     margin-left: 80px;
     height: 240px;
     width: 220px; 
+    border-radius: 50%;
 }
 
 .btnpw {
@@ -140,6 +137,12 @@ hr {
 .user {
     height: 55px;
     width: 55px;
+    border-radius: 50%;
+}
+
+.badge {
+    height: 60px;
+    width: 60px;
     border-radius: 50%;
 }
 

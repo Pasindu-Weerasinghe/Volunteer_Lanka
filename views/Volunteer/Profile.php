@@ -29,6 +29,7 @@ if (!isset($_SESSION['uid'])) {
                 <img class="image" src="<?php echo BASE_URL ?>public/images/icon.jpg" /><br><br>
                 <label class="sub2"> <?php echo $this->user['Name']; ?></label><br><br>
                 <label class="sub3">Bronze Member</label>
+                <img class= "badge" src= "<?php echo BASE_URL ?>public/images/bronze.png"/>
 
             </div>
             <div class="column2"><br />

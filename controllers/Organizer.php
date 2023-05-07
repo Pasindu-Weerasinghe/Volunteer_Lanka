@@ -21,7 +21,7 @@ class Organizer extends User
         foreach ($this->upcoming_projects as $project) {
             $pid = $project['P_ID'];
             $image = $this->model->getProjectImage($pid);
-            $this->prImage[$pid] = $image?$image[0]['Image']:null;
+            $this->prImage[$pid] = $image ? $image[0]['Image'] : null;
         }
 
         // getting completed projects & images
@@ -29,7 +29,7 @@ class Organizer extends User
         foreach ($this->completed_projects as $project) {
             $pid = $project['P_ID'];
             $image = $this->model->getProjectImage($pid);
-            $this->prImage[$pid] = $image?$image[0]['Image']:null;
+            $this->prImage[$pid] = $image ? $image[0]['Image'] : null;
         }
 
         $this->render('Organizer/Home');
@@ -58,7 +58,7 @@ class Organizer extends User
                     $uid = $_SESSION['uid'];
 
                     $this->loadModel('Project');
-                    $this->model->startTransaction();
+                    $this->model->beginTransaction();
                     // creating the project
                     if ($pid = $this->model->setProject($pname, $date, $time, $venue, $description, $no_of_volunteers, $category, $sponsorship, $partnership, $uid)) {
                         $email = isset($_POST['email']) ? 1 : 0;
@@ -118,13 +118,13 @@ class Organizer extends User
                                 }
                             }
                         }
-                        $this->model->commitTransaction();
+                        $this->model->commit();
                         header("Content-Type: application/json");
                         $response['message'] = "Project created successfully";
                         echo json_encode($response);
                     } else {
                         //! project didn't get created
-                        $this->model->rollbackTransaction();
+                        $this->model->rollBack();
                         $response['message'] = "Project creation failed";
                         echo json_encode($response);
                     }
@@ -149,7 +149,7 @@ class Organizer extends User
         foreach ($this->upcoming_projects as $project) {
             $pid = $project['P_ID'];
             $image = $this->model->getProjectImage($pid);
-            $this->prImage[$pid] = $image?$image[0]['Image']:null;
+            $this->prImage[$pid] = $image ? $image[0]['Image'] : null;
         }
 
         $this->render('Organizer/UpcomingProjects');
@@ -164,7 +164,7 @@ class Organizer extends User
         foreach ($this->completed_projects as $project) {
             $pid = $project['P_ID'];
             $image = $this->model->getProjectImage($pid);
-            $this->prImage[$pid] = $image?$image[0]['Image']:null;
+            $this->prImage[$pid] = $image ? $image[0]['Image'] : null;
         }
         $this->render('Organizer/CompletedProjects');
     }
@@ -368,32 +368,43 @@ class Organizer extends User
 
     function add_to_blog($pid)
     {
+        session_start();
+        $this->loadModel('Organizer');
+        $this->collaborators = $this->model->getCollaboratorsOfProject($pid);
+
         $this->loadModel('Blog');
-        $this->model->addProjectToBlog($pid, $_SESSION['uid'],);
+        $this->model->beginTransaction();
+        try {
+            $this->model->setPost($pid);
 
-        $targetDir = "public/images/post_images/";
-        $allowTypes = array('jpg', 'png', 'jpeg', 'gif', '');
+            $targetDir = "public/images/post_images/";
+            $allowTypes = array('jpg', 'png', 'jpeg', 'gif', '');
 
-        if (!empty($_FILES["files"]["name"])) {
-            $total = count($_FILES['files']['name']);
-            for ($i = 0; $i < $total; $i++) {
-                $newFileName = uniqid() . '-' . $_FILES['files']['name'][$i];
-                $targetFilePath = $targetDir . $newFileName;
-                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+            if (!empty($_FILES["files"]["name"])) {
+                $total = count($_FILES['files']['name']);
+                for ($i = 0; $i < $total; $i++) {
+                    $newFileName = uniqid() . '-' . $_FILES['files']['name'][$i];
+                    $targetFilePath = $targetDir . $newFileName;
+                    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
 
-                if (in_array($fileType, $allowTypes)) {
-                    if (move_uploaded_file($_FILES["files"]["tmp_name"][$i], $targetFilePath)) {
+                    if (in_array($fileType, $allowTypes)) {
+                        if (move_uploaded_file($_FILES["files"]["tmp_name"][$i], $targetFilePath)) {
 
-                        if ($this->model->setPostImage($pid, $newFileName)) {
-                            $response['images'][] = "The file " . $newFileName . " has been uploaded successfully.";
-                        } else {
-                            $response['error'][] = "File upload failed, please try again.";
+                            if ($this->model->setPostImage($pid, $newFileName)) {
+                                $response['images'][] = "The file " . $newFileName . " has been uploaded successfully.";
+                            } else {
+                                $response['error'][] = "File upload failed, please try again.";
+                            }
                         }
+                    } else {
+                        $response['error'][] = 'Only JPG, JPEG, PNG & GIF files are allowed to upload.';
                     }
-                } else {
-                    $response['error'][] = 'Only JPG, JPEG, PNG & GIF files are allowed to upload.';
                 }
             }
+            $this->model->commit();
+        } catch (Exception $e) {
+            $this->model->rollback();
+            echo $e->getMessage();
         }
     }
 

@@ -5,15 +5,15 @@ class Model {
         $this->db = new Database(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASSWORD);
     }
 
-    function startTransaction() {
+    function beginTransaction() {
         $this->db->beginTransaction();
     }
 
-    function commitTransaction() {
+    function commit() {
         $this->db->commit();
     }
 
-    function rollbackTransaction() {
+    function rollBack() {
         $this->db->rollBack();
     }
 }

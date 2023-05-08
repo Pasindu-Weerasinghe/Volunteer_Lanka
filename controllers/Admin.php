@@ -83,7 +83,12 @@ class Admin extends User
         }
         $this->render('Admin/complaints');
     }
-    function view_complaints(){
+    function view_complaints($cid){
+        $this->loadModel('Complaints');
+        $this->complaint = $this->model->getComplaint($cid);
+        $uid = $this->complaint['U_ID'];
+        $role = $this->model->getUserRolebyId($uid);
+        $this->name = $this->model->getUserDatatoComplain($uid,$role['Role']);
         $this->render('Admin/view_complaints');
     }
     function create_new_admin_acc($action = null)

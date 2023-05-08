@@ -14,6 +14,7 @@ if (!isset($_SESSION['uid'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delete User Account</title>
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/delete_user_acc.css">
+    <script src="<?php echo BASE_URL; ?>public/scripts/user_in_admin.js" async></script>
 </head>
 
 <body>

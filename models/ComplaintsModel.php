@@ -27,5 +27,25 @@ class ComplaintsModel extends Model
             return 'query failed';
         }
     }
+    function getComplaint($cid){
+        $query = "SELECT * FROM complaints WHERE C_ID = $cid";
+        $statement = $this->db->prepare($query);
+        if ($statement->execute()) {
+            return $statement->fetch(PDO::FETCH_ASSOC);
+        } else {
+            return 'query failed';
+        }
+    }
+    function getUserRolebyId($uid){
+        $query = "SELECT Role FROM user WHERE U_ID = '$uid'";
+        $statement = $this->db->prepare($query);
+        if ($statement->execute()) {
+            // if query successful
+            return $statement->fetch(PDO::FETCH_ASSOC);
+        } else {
+            // if query failed
+            return 'query failed';
+        }
+    }
     
 }

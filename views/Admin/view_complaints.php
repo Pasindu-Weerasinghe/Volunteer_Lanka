@@ -22,12 +22,14 @@ if (!isset($_SESSION['uid'])) {
         <div id="ad-req-box">
             <div class="name">
                 <h3 class="name-item">User Name:</h3>
-                <h3 style="padding-top: 30px;"></h3>
+                <h3 style="padding-top: 30px;"><?php echo $this->name['Name'];
+        
+        ?></h3>
             </div>
             <div class="name">
                 <h3 class="name-item">About:</h3>
                 <div id="ad-box-item">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error adipisci voluptas rem ducimus qui ad labore pariatur delectus consectetur, omnis sed modi obcaecati accusamus quod illum, molestias inventore quasi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, hic atque fugit animi fuga magni vero quaerat ipsa consectetur, officia autem similique. Fugiat tenetur voluptas eum adipisci corrupti praesentium pariatur.</p>
+                    <p><?php echo $this->complaint['Complain'] ?></p>
                 </div>
             </div>
             <div id="btn-area">
@@ -40,6 +42,7 @@ if (!isset($_SESSION['uid'])) {
 
         <br>
     </div>
+    
 </body>
 
 </html>

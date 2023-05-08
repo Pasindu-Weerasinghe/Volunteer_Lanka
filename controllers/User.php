@@ -90,7 +90,8 @@ class User extends Controller
         }
         $this->render('Sponsor/changePasswordProfile');
     }
-
+    
+    //chat
     function chat()
     {
         session_start();
@@ -110,16 +111,27 @@ class User extends Controller
         $output = "";
         if (count($usernames) > 0) {
             foreach ($usernames as $username) {
-                $this->lastmessages = $this->model->getLastmsg($uid);
+                $lastmessages = $this->model->getLastmsg($uid,$username['U_ID']);
+                if(is_countable($lastmessages) && count($lastmessages) > 0){
+                    $result = $lastmessages['msg'];
+                }else{
+                    $result = "No message available";
+                }
+                (strlen($result) > 28) ? $msg =  substr($result, 0, 28) . '...' : $msg = $result;
+                if (isset($lastmessages['outgoing_msg_id'])) {
+                    ($uid == $lastmessages['outgoing_msg_id']) ? $you = "You: " : $you = "";
+                } else {
+                    $you = "";
+                }
                 $output .= ' <a href="' . BASE_URL . $_SESSION['role'] . '/viewchat/' . $username['U_ID'] . '/' . $username['Role'] . '" >
                         <div class="content"> 
                             <img src="http://localhost/Volunteer_Lanka//public/images/profile.jpg" alt="">
                             <div class="details">
                             <span>' . $username['Name'] . '</span>
-                            <p></p>
+                            <p>' . $you . $msg . '</p>
                         </div>
                         </div>
-                        <div class="status-dot"><i class="fa-solid fa-circle"></i></div>
+                        
                     </a> ';
             }
         }

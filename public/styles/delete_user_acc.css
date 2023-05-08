@@ -28,13 +28,7 @@ button {
 }
 
 input[type=text]{
-    width: 400px;
-    border: solid;
-    border-color: rgb(102, 100, 100);
-    border-width: 2px;
-    height: 40px;
-    border-radius: 20px;
-    background-color: rgb(255, 255, 255);
+   
 }
 
 table {
@@ -76,3 +70,13 @@ h3, h4 {
     padding-left: 30%;
     padding-top: 20px;
 }
+.search-container input[type="text"] {
+    padding: 10px;
+    width: 400px;
+    border: solid;
+    border-color: rgb(102, 100, 100);
+    border-width: 2px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255); 
+  }

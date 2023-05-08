@@ -121,6 +121,37 @@ class Admin extends User
     }
     function delete_user_acc()
     {
-        $this->render('Admin/delete_user_acc');
+            session_start();
+            $uid = $_SESSION['uid'];
+            $this->loadModel('User');
+            $this->userDetails= $this->model->getAllUserDetails($uid);
+            foreach($this->userDetails as $userDetail){
+                $this->uname[$userDetail['U_ID']]=$userDetail['Name'];
+                $this->role[$userDetail['U_ID']]=$userDetail['Role'];
+                $this->status[$userDetail['U_ID']]=$userDetail['Status'];
+            }
+            $this->render('Admin/delete_user_acc');
+    }
+    function searchUser(){
+        session_start();
+        $uid = $_SESSION['uid'];
+        $searchTerm = $_POST['searchTerm'];
+        $this->loadModel('User');
+        $userDetails= $this->model->searchUser($uid,$searchTerm);
+        $output = "";
+        if(count($userDetails) > 0){
+            foreach($userDetails as $userDetail){
+                $this->uname[$userDetail['U_ID']]=$userDetail['Name'];
+                $this->role[$userDetail['U_ID']]=$userDetail['Role'];
+                $this->status[$userDetail['U_ID']]=$userDetail['Status'];
+               $output .= '<tr>
+               <td>'.$this->uname[$userDetail['U_ID']].'</td>
+               <td>'.$this->role[$userDetail['U_ID']].'</td>
+               <td>'.$this->status[$userDetail['U_ID']].'</td>
+                </tr>';
+            } 
+        }
+
+        echo $output;
     }
 }

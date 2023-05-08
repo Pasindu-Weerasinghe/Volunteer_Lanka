@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 if (!isset($_SESSION['uid'])) {
     header('Location: ' . BASE_URL);
 }
@@ -14,7 +13,7 @@ if (!isset($_SESSION['uid'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delete User Account</title>
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/delete_user_acc.css">
-    <script src="<?php echo BASE_URL; ?>public/scripts/user_in_admin.js" async></script>
+    <script src="<?php echo BASE_URL; ?>public/scripts/user_in_admin.js" defer></script>
 </head>
 
 <body>
@@ -33,32 +32,19 @@ if (!isset($_SESSION['uid'])) {
                         <th>Status</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="users-list">
+                    <?php foreach($this->userDetails as $userDetail) {?>
                     <tr>
-                        <td>Nethmie Imanya</td>
-                        <td>Volunteer</td>
-                        <td>Active</td>
+                        <td><?php echo $this->uname[$userDetail['U_ID']] ?></td>
+                        <td><?php echo $this->role[$userDetail['U_ID']] ?></td>
+                        <td><?php echo $this->status[$userDetail['U_ID']] ?></td>
                     </tr>
-                    <tr>
-                        <td>Rotaract Club UOP</td>
-                        <td>Organizer</td>
-                        <td>Restricted</td>
-                    </tr>
-                    <tr>
-                        <td>IFS R&D International</td>
-                        <td>Sponsor</td>
-                        <td>Active</td>
-                    </tr>
-                    <tr>
-                        <td>Pasindu Weerasinghe</td>
-                        <td>Admin</td>
-                        <td>Active</td>
-                    </tr>
+                    <?php } ?>
+                    
                 </tbody>
             </table>
         </div>
     </div>
-
 </body>
 
 </html>

@@ -24,7 +24,6 @@ class Sponsor extends User
             }
         }
 
-
         $this->loadModel('Project');
         foreach ($this->sponsor_notices as $project) {
             $pid = $project['P_ID'];
@@ -34,9 +33,6 @@ class Sponsor extends User
             $pid = $project['P_ID'];
             $this->prImage[$pid] = $this->model->getProjectImage($pid);
         }
-
-
-
         $this->render('Sponsor/Home');
     }
 
@@ -75,13 +71,13 @@ class Sponsor extends User
                 if (isset($_POST['confirm'])) {
                     $amount = $_POST['selectAmount'];
                     if ($amount >= 10000) {
-                        $package = "Platinum";
+                        $package = "platinum";
                     } else if ($amount >= 7500) {
-                        $package = "Gold";
+                        $package = "gold";
                     } else if ($amount >= 5000) {
-                        #package="Silver";
+                        $package="silver";
                     } else {
-                        $package = "Other";
+                        $package = "other";
                     }
                 }
                 $this->model->saveSponsorPackage($uid, $pid, $amount, $package);

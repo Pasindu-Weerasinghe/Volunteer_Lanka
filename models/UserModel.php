@@ -126,16 +126,20 @@ class UserModel extends Model
     }
     function searchUser($uid,$searchTerm){
         $query = "SELECT organizer.U_ID,organizer.Name, user.Role, user.Status FROM organizer INNER JOIN user 
-        ON organizer.U_ID=user.U_ID WHERE NOT user.U_ID = {$uid} AND (Name LIKE '%{$searchTerm}%')
+        ON organizer.U_ID=user.U_ID WHERE NOT user.U_ID = {$uid} AND 
+        ((Name LIKE '%{$searchTerm}%') OR (Role LIKE '{$searchTerm}%') OR (Status Like '{$searchTerm}%'))
         UNION 
         SELECT sponsor.U_ID,sponsor.Name, user.Role, user.Status FROM sponsor INNER JOIN user 
-        ON sponsor.U_ID=user.U_ID WHERE NOT user.U_ID = {$uid} AND (Name LIKE '%{$searchTerm}%')
+        ON sponsor.U_ID=user.U_ID WHERE NOT user.U_ID = {$uid} AND 
+        ((Name LIKE '%{$searchTerm}%') OR (Role LIKE '{$searchTerm}%') OR (Status Like '{$searchTerm}%'))
         UNION 
         SELECT volunteer.U_ID,volunteer.Name, user.Role, user.Status FROM volunteer INNER JOIN user 
-        ON volunteer.U_ID=user.U_ID WHERE NOT user.U_ID = {$uid} AND (Name LIKE '%{$searchTerm}%')
+        ON volunteer.U_ID=user.U_ID WHERE NOT user.U_ID = {$uid} AND 
+        ((Name LIKE '%{$searchTerm}%') OR (Role LIKE '{$searchTerm}%') OR (Status Like '{$searchTerm}%'))
         UNION 
         SELECT admin.U_ID,admin.Name, user.Role, user.Status FROM admin INNER JOIN user 
-        ON admin.U_ID=user.U_ID WHERE NOT user.U_ID = {$uid} AND (Name LIKE '%{$searchTerm}%');";
+        ON admin.U_ID=user.U_ID WHERE NOT user.U_ID = {$uid} AND 
+        ((Name LIKE '%{$searchTerm}%') OR (Role LIKE '{$searchTerm}%') OR (Status Like '{$searchTerm}%'))";
         $statement = $this->db->prepare($query);
         if ($statement->execute()) {
             // if query successful

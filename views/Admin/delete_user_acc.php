@@ -35,9 +35,9 @@ if (!isset($_SESSION['uid'])) {
                 <tbody class="users-list">
                     <?php foreach($this->userDetails as $userDetail) {?>
                     <tr>
-                        <td><?php echo $this->uname[$userDetail['U_ID']] ?></td>
-                        <td><?php echo $this->role[$userDetail['U_ID']] ?></td>
-                        <td><?php echo $this->status[$userDetail['U_ID']] ?></td>
+                        <td><?php echo $userDetail['Name'] ?></td>
+                        <td><?php echo ucfirst($userDetail['Role']) ?></td>
+                        <td><?php echo ucfirst($userDetail['Status']) ?></td>
                     </tr>
                     <?php } ?>
                     

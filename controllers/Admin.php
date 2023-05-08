@@ -125,11 +125,6 @@ class Admin extends User
             $uid = $_SESSION['uid'];
             $this->loadModel('User');
             $this->userDetails= $this->model->getAllUserDetails($uid);
-            foreach($this->userDetails as $userDetail){
-                $this->uname[$userDetail['U_ID']]=$userDetail['Name'];
-                $this->role[$userDetail['U_ID']]=$userDetail['Role'];
-                $this->status[$userDetail['U_ID']]=$userDetail['Status'];
-            }
             $this->render('Admin/delete_user_acc');
     }
     function searchUser(){
@@ -141,13 +136,10 @@ class Admin extends User
         $output = "";
         if(count($userDetails) > 0){
             foreach($userDetails as $userDetail){
-                $this->uname[$userDetail['U_ID']]=$userDetail['Name'];
-                $this->role[$userDetail['U_ID']]=$userDetail['Role'];
-                $this->status[$userDetail['U_ID']]=$userDetail['Status'];
                $output .= '<tr>
-               <td>'.$this->uname[$userDetail['U_ID']].'</td>
-               <td>'.$this->role[$userDetail['U_ID']].'</td>
-               <td>'.$this->status[$userDetail['U_ID']].'</td>
+               <td>'.$userDetail['Name'].'</td>
+               <td>'.ucfirst($userDetail['Role']).'</td>
+               <td>'.ucfirst($userDetail['Status']).'</td>
                 </tr>';
             } 
         }

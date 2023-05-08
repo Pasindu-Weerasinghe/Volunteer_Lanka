@@ -8,36 +8,34 @@ class Sponsor extends User
     }
     function index()
     {
+        session_start();
+        $uid = $_SESSION['uid'];
+        $this->loadModel('SponsorNotice');
+        $this->sponsor_notices = $this->model->getSponsorNotices();
+
+        $this->sponsored_projects = $this->model->getSponsoredProjects($uid, 'active');
+
+        foreach ($this->sponsored_projects as &$item2) {
+            foreach ($this->sponsor_notices as $key1 => $item1) {
+                if ($item2['P_ID'] == $item1['P_ID']) {
+                    unset($this->sponsor_notices[$key1]);
+                    break;
+                }
+            }
+        }
+
+
         $this->loadModel('Project');
-        $this->projects = $this->model->getSponsorProjects();
-
-        foreach ($this->projects as $project) {
+        foreach ($this->sponsor_notices as $project) {
             $pid = $project['P_ID'];
-            $this->prImages[$pid] = $this->model->getProjectImage($pid);
-            $this->prices[$pid] = $this->model->getPrice($pid);
+            $this->prImage[$pid] = $this->model->getProjectImage($pid);
+        }
+        foreach ($this->sponsored_projects as $project) {
+            $pid = $project['P_ID'];
+            $this->prImage[$pid] = $this->model->getProjectImage($pid);
         }
 
-        //For already sponsored projects
-        $this->spProjects = $this->model->getSponsored();
 
-        foreach ($this->spProjects as $spProject) {
-            $pid = $spProject['P_ID'];
-            $this->sProject[$pid] = $this->model->getSpProjects($pid);
-        }
-
-        //Not sponsorred projects
-        $this->projectsNs = $this->model->getSponsor();
-
-        foreach ($this->projectsNs as $projectNs) {
-            $pid = $projectNs['P_ID'];
-        }
-        
-        //after sponsorred projects removed from cards
-        foreach ($this->spProjects as $spProject) {
-            $pid = $spProject['P_ID'];
-            $this->rmProject[$pid] = $this->model->removeProject($pid);
-            
-        }
 
         $this->render('Sponsor/Home');
     }
@@ -63,7 +61,7 @@ class Sponsor extends User
             $uid = $_SESSION['uid'];
 
             // Check if the user has already sponsored the project
-            $this->loadModel('SponsorProject');
+            $this->loadModel('SponsorNotice');
             $sponsorPackage = $this->model->getSponsorPackage($uid, $pid);
 
             // if (empty($sponsorPackage)) {
@@ -96,16 +94,17 @@ class Sponsor extends User
 
     function sponsored_projects()
     {
-        $this->loadModel('project');
-        $this->projects = $this->model->getSponsorProjects();
+        session_start();
+        $uid = $_SESSION['uid'];
+        $this->loadModel('SponsorNotice');
+        $this->sponsored_projects = $this->model->getSponsoredProjects($uid);
 
-        foreach ($this->projects as $project) {
+
+        $this->loadModel('Project');
+        foreach ($this->sponsored_projects as $project) {
             $pid = $project['P_ID'];
-            $this->prImages[$pid] = $this->model->getProjectImage($pid);
-            $this->amounts[$pid] = $this->model->getSPAmount($pid)['Amount'];
+            $this->prImage[$pid] = $this->model->getProjectImage($pid);
         }
-
-
 
         $this->render('Sponsor/sponsored_projects');
     }

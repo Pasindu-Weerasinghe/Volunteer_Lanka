@@ -19,7 +19,7 @@
             <div class="column1">
                 <img class="image" src="<?php echo BASE_URL ?>public/images/<?php echo $this->profile['Photo'] ?>" /><br><br>
                 <label class="sub2"> <?php echo $this->user['Name']; ?></label><br><br>
-                <img class="badge" src="<?php echo BASE_URL ?>public/images/bronze.png" /><br>
+                <div class="badge"><i class="fas fa-medal <?php echo $this->color?>-color fa-4x"></i></div><br>
                 <label class="sub3"><?php echo $this->badge ?></label>
 
             </div>
@@ -70,15 +70,18 @@
             <div class="cont1">
                 <label class="head">Details of Projects Volunteered</label><br><br>
                 <label>Total projects volunteered : <?php echo $this->projectCount ?></label><br>
-                <label>Feedbacks given : </label><br>
             </div>
 
             <div class="cont1">
-                <label class="head">Badges Earned</label><br><br>
-                <label>Badges earned by volunteering in projects : <?php echo $this->projectCount ?></label><br>
-                <label>Badges earned by sending new project ideas : <?php echo $this->ideaBadgeCount ?></label><br>
-                <label>Total badges : <?php echo $this->totalCount ?></label><br>
-                <label>3 more badges to earn gold medal</label><br>
+                <div class="head">
+                    <label>Badges Earned</label>
+                    <i class="fas fa-medal gold-color fa-2x"></i><br><br>
+                </div>
+                
+                <label class="details">Badges earned by volunteering in projects : <?php echo $this->projectCount ?></label><br><br>
+                <label class="details">Badges earned by sending new project ideas : <?php echo $this->ideaBadgeCount ?></label><br><br>
+                <label class="details">Total badges : <?php echo $this->totalCount ?></label><br><br>
+                <div class="more"><?php echo $this->more?> more badges to earn <?php echo $this->next?> medal</div><br>
             </div>
 
         </div>

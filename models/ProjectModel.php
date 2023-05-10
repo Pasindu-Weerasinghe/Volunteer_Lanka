@@ -135,17 +135,17 @@ class ProjectModel extends Model
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    function getMyUpcomingProjects($pid, $date_now) //Details of the joined and upcoming projects by the volunteer
+    function getMyUpcomingProjects($uid) //Details of the joined and upcoming projects by the volunteer
     {
-        $query = "SELECT * FROM project WHERE P_ID = $pid AND Status!='cancelled' AND `Date` > '$date_now'";
+        $query = "SELECT * FROM joins INNER JOIN project ON joins.P_ID = project.P_ID WHERE joins.U_ID = $uid AND project.Status='active'";
         $statement = $this->db->prepare($query);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    function getMyCompletedProjects($pid) //Details of the completed projects by the volunteer
+    function getMyCompletedProjects($uid) //Details of the completed projects by the volunteer
     {
-        $query = "SELECT * FROM joins INNER JOIN project ON joins.P_ID = project.P_ID WHERE joins.U_ID = $pid AND project.Status='completed'";
+        $query = "SELECT * FROM joins INNER JOIN project ON joins.P_ID = project.P_ID WHERE joins.U_ID = $uid AND project.Status='completed'";
         $statement = $this->db->prepare($query);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -185,7 +185,17 @@ class ProjectModel extends Model
         $statement = $this->db->prepare($query);
         return $statement->execute();
     }
-function getProject($pid)
+
+    function getJoinedCount($pid)
+    {
+        $query = "SELECT COUNT(U_ID) AS Count FROM joins WHERE P_ID = :pid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':pid', $pid);
+        $statement->execute();
+        return $statement->fetch();
+    }
+
+    function getProject($pid)
     {
 
         $query = "SELECT * FROM project WHERE P_ID =$pid";
@@ -261,7 +271,7 @@ function getProject($pid)
 
     function getProjectsByDate($key)    //search projetcs function
     {
-        $query = "SELECT * FROM project WHERE Date LIKE '%$key%' AND Status != 'completed'";
+        $query = "SELECT * FROM project WHERE Date LIKE '%$key%' AND Status = 'active'";
         $statement = $this->db->prepare($query);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -269,7 +279,7 @@ function getProject($pid)
 
     function getProjectsByLocation($key)    //search projetcs function
     {
-        $query = "SELECT * FROM project WHERE Venue LIKE '%$key%' AND Status != 'completed'";
+        $query = "SELECT * FROM project WHERE Venue LIKE '%$key%' AND Status = 'active'";
         $statement = $this->db->prepare($query);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -277,23 +287,7 @@ function getProject($pid)
 
     function getProjectsByOrganizer($key)    //search projetcs function
     {
-        $query = "SELECT * FROM project WHERE U_ID LIKE '%$key%' AND Status != 'completed'";
-        $statement = $this->db->prepare($query);
-        $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    function getCompletedProjects($key)    //search projetcs function
-    {
-        $query = "SELECT * FROM project WHERE Name LIKE '%$key%' AND Status = 'completed'";
-        $statement = $this->db->prepare($query);
-        $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    function getProjectsByVolunteers($key)    //search projetcs function
-    {
-        $query = "SELECT * FROM project WHERE No_of_volunteers LIKE '%$key%' AND Status != 'completed'";
+        $query = "SELECT * FROM project INNER JOIN organizer ON project.U_ID = organizer.U_ID WHERE organizer.Name LIKE '%$key%' AND Status = 'active'";
         $statement = $this->db->prepare($query);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);

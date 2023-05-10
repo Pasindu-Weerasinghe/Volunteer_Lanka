@@ -16,13 +16,12 @@
         <form action="<?php echo BASE_URL; ?>volunteer/search_project" method="post">
                 <label>Filter By</label>
                 <select id="filter" name="filter">
+                <option disabled selected value> -- select a filter -- </option>
                     <option value="name">Project Name</option>
                     <option value="area">Interest Area</option>
                     <option value="date">Date</option>
                     <option value="location">Location</option>
                     <option value="organizer">Organizer</option>
-                    <option value="completed">Completed Projects</option>
-                    <option value="volunteers">Number of Volunteers</option>
                 </select>
                 <label>Enter your keyword</label><input type="text" name="key">
                 <button name="search"><b>Search<b></button>
@@ -30,6 +29,7 @@
         </div><br><hr><br>
 
         <h2>Search Results</h2><br /><br />
+        <label id="error"><?php echo $this->message ?></label>
         <section class="container">
             <?php foreach ($this->projects as $project) {
                 $pid = $project['P_ID'] ?>

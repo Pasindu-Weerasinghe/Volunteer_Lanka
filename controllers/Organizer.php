@@ -239,23 +239,76 @@ class Organizer extends User
 
     function requests()
     {
+        session_start();
+        $uid = $_SESSION['uid'];
         $this->loadModel('ProjectIdea');
         $this->pr_ideas = $this->model->getProjectIdeas();
 
         foreach ($this->pr_ideas as $idea) {
             $pi_id = $idea['PI_ID'];
-            $this->pr_idea_images[$pi_id] = $this->model->getPI_Image($pi_id);
+            $this->pr_idea_images[$pi_id] = $this->model->getPI_Images($pi_id)[0]['Image'];
         }
+
+        $this->replied_ideas = $this->model->getRepliedIdeas($uid);
 
         $this->loadModel('Volunteer');
         foreach ($this->pr_ideas as $idea) {
             $pi_id = $idea['PI_ID'];
             $vol_id = $idea['U_ID'];
             $volunteer = $this->model->getVolunteerById($vol_id);
-            $this->pi_vol_name[$pi_id] = $volunteer['Name'];
+            $this->volunteer[$pi_id] = $volunteer;
+        }
+
+
+        foreach ($this->replied_ideas as $replied_idea) {
+            $replied_pi_id = $replied_idea['PI_ID'];
+            foreach ($this->pr_ideas as $key => $idea) {
+                $pr_pi_id = $idea['PI_ID'];
+                if ($replied_pi_id == $pr_pi_id) {
+                    unset($this->pr_ideas[$key]);
+                    break;
+                }
+            }
         }
 
         $this->render('Organizer/Requests');
+    }
+
+    function view_pr_idea($pi_id, $reply = null)
+    {
+        session_start();
+        $uid = $_SESSION['uid'];
+        $this->loadModel('ProjectIdea');
+        $this->pr_idea = $this->model->getPrIdeaByID($pi_id);
+        $this->pr_idea_images = $this->model->getPI_Images($pi_id);
+
+        for ($i = 0; $i < count($this->pr_idea_images); $i++) {
+            $this->pr_idea_images[$i] = $this->pr_idea_images[$i]['Image'];
+        }
+
+        if($reply == 'replied'){
+            $this->pr_idea['reply'] = $this->model->getReply($pi_id, $uid)['Reply'];
+        }
+
+        $this->loadModel('Volunteer');
+        $this->volunteer = $this->model->getVolunteerById($this->pr_idea['U_ID']);
+        $this->render('Organizer/ViewProjectIdea');
+    }
+
+    function reply_to_pr_idea($piid)
+    {
+        if (isset($_POST['reply-submit'])) {
+            session_start();
+            $uid = $_SESSION['uid'];
+            $reply = $_POST['reply'];
+
+            $this->loadModel('ProjectIdea');
+            if ($this->model->replyToPrIdea($piid, $uid, $reply)) {
+                header('Location: ' . BASE_URL . 'organizer/requests');
+            } else {
+                echo 'Error occured';
+            }
+        }
     }
 
     function payments()
@@ -368,43 +421,70 @@ class Organizer extends User
 
     function add_to_blog($pid)
     {
-        session_start();
-        $this->loadModel('Organizer');
-        $this->collaborators = $this->model->getCollaboratorsOfProject($pid);
+        if (isset($_POST['add-to-blog'])) {
+            session_start();
+            $uid = $_SESSION['uid'];
+            $description = $_POST['description'];
 
-        $this->loadModel('Blog');
-        $this->model->beginTransaction();
-        try {
-            $this->model->setPost($pid);
+            $this->loadModel('Project');
+            $project = $this->model->getProject($pid);
 
-            $targetDir = "public/images/post_images/";
-            $allowTypes = array('jpg', 'png', 'jpeg', 'gif', '');
+            $blogs_of_organizers = [$uid];
 
-            if (!empty($_FILES["files"]["name"])) {
-                $total = count($_FILES['files']['name']);
-                for ($i = 0; $i < $total; $i++) {
-                    $newFileName = uniqid() . '-' . $_FILES['files']['name'][$i];
-                    $targetFilePath = $targetDir . $newFileName;
-                    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-
-                    if (in_array($fileType, $allowTypes)) {
-                        if (move_uploaded_file($_FILES["files"]["tmp_name"][$i], $targetFilePath)) {
-
-                            if ($this->model->setPostImage($pid, $newFileName)) {
-                                $response['images'][] = "The file " . $newFileName . " has been uploaded successfully.";
-                            } else {
-                                $response['error'][] = "File upload failed, please try again.";
-                            }
-                        }
-                    } else {
-                        $response['error'][] = 'Only JPG, JPEG, PNG & GIF files are allowed to upload.';
-                    }
+            if ($project['Collab'] == 1) {
+                $this->loadModel('Organizer');
+                $collaborators = $this->model->getCollaboratorsOfProject($pid, 'accepted');
+                foreach ($collaborators as $collaborator) {
+                    array_push($blogs_of_organizers, $collaborator['U_ID']);
                 }
             }
-            $this->model->commit();
-        } catch (Exception $e) {
-            $this->model->rollback();
-            echo $e->getMessage();
+
+            $this->loadModel('Blog');
+            $this->model->beginTransaction();
+            try {
+                $this->model->setPost($pid, $description);
+
+                $targetDir = "public/images/post_images/";
+                $allowTypes = array('jpg', 'png', 'jpeg', 'gif', '');
+
+                if (!empty($_FILES["files"]["name"])) {
+                    $total = count($_FILES['files']['name']);
+                    for ($i = 0; $i < $total; $i++) {
+                        $newFileName = uniqid() . '-' . $_FILES['files']['name'][$i];
+                        $targetFilePath = $targetDir . $newFileName;
+                        $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+
+                        if (in_array(strtolower($fileType), $allowTypes)) {
+                            if (move_uploaded_file($_FILES["files"]["tmp_name"][$i], $targetFilePath)) {
+
+                                if ($this->model->setPostImage($pid, $newFileName)) {
+                                    $response['images'][] = "The file " . $newFileName . " has been uploaded successfully.";
+                                } else {
+                                    $response['error'][] = "File upload failed, please try again." . $newFileName;
+                                }
+                            }
+                        } else {
+                            $response['error'][] = 'Only JPG, JPEG, PNG & GIF files are allowed to upload.';
+                        }
+                    }
+                }
+
+                if (isset($response['error'])) {
+                    throw new Exception(json_encode($response['error']));
+                }
+
+                foreach ($blogs_of_organizers as $organizer) {
+                    $this->model->setPostToBlog($organizer, $pid);
+                }
+
+                // TODO: set project status to blogged
+                // TODO: send notification to all organizers
+
+                $this->model->commit();
+            } catch (Exception $e) {
+                $this->model->rollback();
+                echo $e->getMessage();
+            }
         }
     }
 

@@ -10,7 +10,10 @@ class VolunteerModel extends Model
 
     function getVolunteerById($uid)
     {
-        $query = "SELECT * FROM volunteer WHERE U_ID = :uid LIMIT 1";
+        $query = "SELECT volunteer.*, user.Photo
+                    FROM volunteer
+                    INNER JOIN user ON volunteer.U_ID = user.U_ID
+                    WHERE user.U_ID = :uid LIMIT 1";
         $statement = $this->db->prepare($query);
         $statement->bindParam(':uid', $uid);
         $statement->execute();

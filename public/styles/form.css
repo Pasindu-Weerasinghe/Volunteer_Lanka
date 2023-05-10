@@ -87,6 +87,23 @@
 	margin-right: 10px;
 }
 
+#gal {
+	width: 100%;
+	margin-top: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 5px;
+	background-color: white;
+	border-radius: 10px;
+}
+
+#gal img {
+	width: 100px;
+	margin: 5px;
+	border-radius: 5px;
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.125);
+}
+
 .btn-area {
 	display: flex;
 	justify-content: space-around;
@@ -110,6 +127,12 @@
 
 .btn:hover {
 	opacity: 1;
+}
+
+#resetImgs {
+	background-color: darkblue;
+	margin-left: 10px;
+	width: 100px;
 }
 
 .navbarless {

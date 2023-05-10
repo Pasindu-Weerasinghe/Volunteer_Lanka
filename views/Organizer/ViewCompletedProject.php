@@ -29,7 +29,8 @@ function currencyFormat($number)
     <div class="wrapper">
         <h2 class="title">Add Completed project to Blog</h2>
 
-        <form action="<?php echo BASE_URL ?>organizer/add_to_blog/<?php echo $this->project['P_ID'] ?>" class="form">
+        <form method="post" enctype="multipart/form-data"
+              action="<?php echo BASE_URL ?>organizer/add_to_blog/<?php echo $this->project['P_ID'] ?>" class="form">
             <div class="row">
                 <label for="description">Description</label>
                 <textarea name="description" id="description" required class="input textarea"></textarea>
@@ -39,15 +40,47 @@ function currencyFormat($number)
                 <input type="file" name="files[]" id="images" multiple="multiple" class="input input-file">
             </div>
 
-            <div id="gal">
+            <div id="gal" style="display: none"></div>
+            <button type="button" id="resetImgs" class="btn" style="display: none;">Clear</button>
 
             <div class="btn-area">
-                <button class="btn">Back</button>
-                <button class="btn" type="submit">Add to blog</button>
+                <button class="btn" onclick="history.back()">Back</button>
+                <button class="btn" name="add-to-blog" type="submit">Add to blog</button>
             </div>
         </form>
 
     </div>
 </div>
 </body>
+<script>
+    const imgs = document.getElementById('images');
+    const gal = document.getElementById('gal');
+    const resetImgs = document.getElementById('resetImgs');
+    let imageReaders = [];
+
+    imgs.addEventListener("change", () => {
+        let images = imgs.files;
+        if (images.length !== 0) {
+            gal.style.display = "block";
+            resetImgs.style.display = "inline";
+            for (let i = 0; i < images.length; i++) {
+                let reader = new FileReader();
+                reader.readAsDataURL(images[i]);
+                reader.onload = function () {
+                    imageReaders.push(reader.result);
+                    gal.innerHTML += `<img src="${reader.result}" alt="image"/>`;
+                };
+            }
+        } else {
+            resetImgs.style.display = "none";
+        }
+    });
+
+    resetImgs.addEventListener("click", () => {
+        imgs.value = "";
+        imageReaders = [];
+        gal.innerHTML = "";
+        resetImgs.style.display = "none";
+    });
+</script>
 </html>

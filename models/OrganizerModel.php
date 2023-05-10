@@ -94,14 +94,22 @@ class OrganizerModel extends Model
         }
     }
 
-    function getCollaboratorsOfProject($pid) {
+    function getCollaboratorsOfProject($pid, $status = null) {
         $query = "SELECT `partners`.`U_ID`, `organizer`.`Name`, `user`.`Photo`, `partners`.`Status`
                     FROM `partners`
                     INNER JOIN `user` ON `partners`.`U_ID` = `user`.`U_ID`
                     INNER JOIN `organizer` ON `partners`.`U_ID` = `organizer`.`U_ID`
                     WHERE `partners`.`P_ID` = :pid";
+
+        if($status !== null) {
+            $query .= " AND `partners`.`Status` = :status";
+        }
+
         $statement = $this->db->prepare($query);
         $statement->bindParam(':pid', $pid);
+        if($status !== null) {
+            $statement->bindParam(':status', $status);
+        }
         if ($statement->execute()) {
             return $statement->fetchAll(PDO::FETCH_ASSOC);
         } else {

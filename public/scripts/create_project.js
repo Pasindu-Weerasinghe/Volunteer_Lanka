@@ -297,17 +297,17 @@ form4back.addEventListener("click", (e) => {
     }
 });
 
-
 imgs.addEventListener("change", () => {
     let images = imgs.files;
     if (images.length !== 0) {
+        gal.style.display = "block";
         resetImgs.style.display = "inline";
         for (let i = 0; i < images.length; i++) {
             let reader = new FileReader();
             reader.readAsDataURL(images[i]);
             reader.onload = function () {
                 imageReaders.push(reader.result);
-                gal.innerHTML += `<img src="${reader.result}" alt="image" style="width:100px;"/>`;
+                gal.innerHTML += `<img src="${reader.result}" alt="image"/>`;
             };
         }
     } else {
@@ -316,8 +316,10 @@ imgs.addEventListener("change", () => {
 });
 
 resetImgs.addEventListener("click", () => {
+    imgs.value = "";
     imageReaders = [];
     gal.innerHTML = "";
+    resetImgs.style.display = "none";
 });
 
 window.addCollaborator = addCollaborator; // for adding collaborator

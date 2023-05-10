@@ -13,12 +13,21 @@ class ProjectIdeaModel extends Model {
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    function getPI_Image($pi_id) {
+    function getPI_Images($pi_id) {
         $query = "SELECT * FROM idea_image WHERE PI_ID = :pi_id";
         $statement = $this->db->prepare($query);
         $statement->bindParam(':pi_id', $pi_id);
         if($statement->execute()){
             return $statement->fetchAll(PDO::FETCH_ASSOC);
+        }
+    }
+
+    function getPrIdeaByID($pi_id) {
+        $query = "SELECT * FROM pr_ideas WHERE PI_ID = :pi_id";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':pi_id', $pi_id);
+        if($statement->execute()){
+            return $statement->fetch(PDO::FETCH_ASSOC);
         }
     }
 
@@ -31,6 +40,27 @@ class ProjectIdeaModel extends Model {
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    function getRepliedIdeas($uid)
+    {
+        $query = "SELECT * FROM pr_ideas WHERE PI_ID IN (SELECT PI_ID FROM pi_reply WHERE U_ID = :uid)";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':uid', $uid);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function getReply($pi_id, $uid) {
+        $query = "SELECT Reply FROM pi_reply WHERE PI_ID = :pi_id AND U_ID = :uid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':pi_id', $pi_id);
+        $statement->bindParam(':uid', $uid);
+        if($statement->execute()){
+            return $statement->fetch(PDO::FETCH_ASSOC);
+        } else {
+            return false;
+        }
+    }
+
     function setProjectIdea($description, $location, $uid)
     {
         $query = "INSERT INTO pr_ideas (Description, Location, U_ID) VALUES (:description, :location, :uid)";
@@ -41,7 +71,15 @@ class ProjectIdeaModel extends Model {
         return $statement->execute();
     }
 
-    // ************************************** ai? [0] **************************************
+    function replyToPrIdea($piid, $uid, $reply) {
+        $query = "INSERT INTO pi_reply (PI_ID, U_ID, Reply) VALUES (:piid, :uid, :reply)";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':piid', $piid);
+        $statement->bindParam(':uid', $uid);
+        $statement->bindParam(':reply', $reply);
+        return $statement->execute();
+    }
+
     function setPiImage($piid, $image)
     {
         $query = "INSERT into idea_image (PI_ID, Image) VALUES (:piid, :image)";

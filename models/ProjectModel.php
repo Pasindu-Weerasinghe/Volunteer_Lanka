@@ -150,42 +150,6 @@ class ProjectModel extends Model
     }
 
 
-    function getSponsorProjects()
-    {
-        $query = "SELECT P_ID, Name, Date FROM project WHERE Sponsor = 1";
-        $statement = $this->db->prepare($query);
-        $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    function getAmount($pid)
-    {
-        $query = "SELECT Amount FROM sponsor_notice WHERE P_ID = :pid";
-        $statement = $this->db->prepare($query);
-        $statement->bindParam(':pid', $pid);
-        if ($statement->execute()) {
-            // if query successful
-            return $statement->fetch(PDO::FETCH_ASSOC);
-        } else {
-            // if query failed
-            return null;
-        }
-    }
-
-    function getSPAmount($pid)
-    {
-        $query = "SELECT Amount FROM sponsor_pr WHERE P_ID = :pid";
-        $statement = $this->db->prepare($query);
-        $statement->bindParam(':pid', $pid);
-        if ($statement->execute()) {
-            // if query successful
-            return $statement->fetch(PDO::FETCH_ASSOC);
-        } else {
-            // if query failed
-            return null;
-        }
-    }
-
     function cardsVolunteer()
     {
         $query = "SELECT P_ID, Name, Date FROM project WHERE Status='active'";

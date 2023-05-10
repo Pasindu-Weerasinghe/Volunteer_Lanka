@@ -121,4 +121,43 @@ class ProjectModel extends Model
             return 0;
         }
     }
+    function getAllProjectfeeDetails(){
+        $query="SELECT * FROM (SELECT sub_fee.PAY_ID, sub_fee.Date, sub_fee.Amount, organizer.U_ID, organizer.Name,
+        'Monthly Subscription' AS PaymentType FROM sub_fee 
+        INNER JOIN organizer ON sub_fee.U_ID = organizer.U_ID 
+        UNION 
+        SELECT project_fee.PAY_ID, project_fee.Date, project_fee.Amount, organizer.U_ID, organizer.Name,
+        'Extra Project' AS PaymentType FROM project_fee 
+        INNER JOIN organizer ON project_fee.U_ID = organizer.U_ID) 
+        AS results ORDER BY results.Date ASC";
+        $statement = $this->db->prepare($query);
+        if ($statement->execute()) {
+            // if query successful
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            // if query faileds
+            return 'query failed';
+        }
+    }
+    function searchPayement($searchTerm){
+        $query="SELECT * FROM (SELECT sub_fee.PAY_ID, sub_fee.Date, sub_fee.Amount, organizer.U_ID, organizer.Name,
+        'Monthly Subscription' AS PaymentType FROM sub_fee 
+        INNER JOIN organizer ON sub_fee.U_ID = organizer.U_ID 
+        UNION 
+        SELECT project_fee.PAY_ID, project_fee.Date, project_fee.Amount, organizer.U_ID, organizer.Name,
+        'Extra Project' AS PaymentType FROM project_fee 
+        INNER JOIN organizer ON project_fee.U_ID = organizer.U_ID )
+        AS results 
+        WHERE results.Name LIKE '%{$searchTerm}%' OR results.Date LIKE '{$searchTerm}%' OR results.PaymentType LIKE '{$searchTerm}%'
+        ORDER BY results.Date ASC";
+        $statement = $this->db->prepare($query);
+        if ($statement->execute()) {
+            // if query successful
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            // if query faileds
+            return 'query failed';
+        }
+    }
+
 }

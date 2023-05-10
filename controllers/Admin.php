@@ -117,7 +117,27 @@ class Admin extends User
     }
     function view_payments()
     {
+        $this->loadModel('Project');
+        $this->paymentDetails=$this->model->getAllProjectfeeDetails();
         $this->render('Admin/view_payments');
+    }
+    function searchPayment()
+    {
+        $searchTerm = $_POST['searchTerm'];
+        $this->loadModel('Project');
+        $paymentDetails=$this->model->searchPayement($searchTerm);
+        $output="";
+        if(count($paymentDetails)){
+            foreach($paymentDetails as $paymentDetail){
+                $output .= '<tr>
+               <td>'.$paymentDetail['Name'].'</td>
+               <td>'.$paymentDetail['Amount'].'</td>
+               <td>'.$paymentDetail['Date'].'</td>
+               <td>'.$paymentDetail['PaymentType'].'</td>
+                </tr>';
+            }
+        }
+        echo $output;
     }
     function delete_user_acc()
     {
@@ -146,4 +166,5 @@ class Admin extends User
 
         echo $output;
     }
+    
 }

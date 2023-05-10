@@ -38,6 +38,7 @@
             <div class="card">
                 <div class="cards_heading">
                     <div class="date" id="date"></div>
+                    <div class="date" id="test"></div>
                     <div class="title">Events</div>
                 </div>
                 
@@ -47,6 +48,5 @@
     </div>
     <input type="hidden" name="role" value="<?php echo $_SESSION['role']?>">
 </body>
-<?php include 'views/includes/footer.php'; ?>
 
 </html>

@@ -7,12 +7,21 @@ let date = new Date();
 currDate = date.getDate();
 currYear = date.getFullYear();
 currMonth = date.getMonth();
+var eventDates = [];
 
 const BASE_URL = 'http://localhost/Volunteer_Lanka/';
 const role = document.querySelector("input[name='role']").value;
 
 const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 const renderCalender = () => {
+
+    monthtoPass = currMonth + 1;
+    if (monthtoPass < 10) {
+        monthtoPass = "0" + monthtoPass;
+    }
+    datetoPass = `${currYear}-${monthtoPass}`
+    getallEvents(datetoPass);
+
     let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(); //getting first day of month
     let lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(); //getting last date of month
     let lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay(); //getting last day of month
@@ -31,12 +40,14 @@ const renderCalender = () => {
     for (let i = lastDayofMonth; i < 6; i++) {
         liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`;
     }
+
     currentDate.innerText = `${months[currMonth]} ${currYear}`;
     daysTag.innerHTML = liTag;
 
     let today = new Date().toJSON().slice(0, 10);
     document.getElementById("date").innerHTML = today;
     getTodayEvents(today);
+
 }
 
 renderCalender();
@@ -113,10 +124,26 @@ function displayEvents(i) {
             })
         }
     })
-    .catch((error) => console.log(error));
-
-    
+    .catch((error) => console.log(error));    
 }
 
+function getallEvents(date) {
 
+    fetch(`${BASE_URL}${role}/get_all_events/${date}`)
+        .then(res => res.json())
+        .then(data => {
+        console.log(data);
+        
+        if (data.length != 0) {
+            data.forEach((i) => {
+                eventDates += `${i.Date}`;
+                
+            })
+            
+        }
+    })
+    .catch((error) => console.log(error));
+
+    document.getElementById("test").innerHTML = eventDates;
+}
 

@@ -15,7 +15,7 @@ class Sponsor extends User
 
         $this->sponsored_projects = $this->model->getSponsoredProjects($uid, 'active');
 
-        foreach ($this->sponsored_projects as &$item2) {
+        foreach ($this->sponsored_projects as $item2) {
             foreach ($this->sponsor_notices as $key1 => $item1) {
                 if ($item2['P_ID'] == $item1['P_ID']) {
                     unset($this->sponsor_notices[$key1]);
@@ -117,7 +117,33 @@ class Sponsor extends User
         $this->loadModel('Sponsor');
         $this->profile = $this->model->getUserData($uid);
         $this->user = $this->model->getSponsorData($uid);
+        $this->sPackages = $this->model->getPackages($uid);
+        $this->sAdvertisements = $this->model->getAdvertisements($uid);
+
+        $this->loadModel('SponsorNotice');
+        $this->sponsor_notices = $this->model->getSponsorNotices();
+
+        $this->sponsored_projects = $this->model->getSponsoredProjects($uid, 'active');
+
+        foreach ($this->sponsored_projects as $item2) {
+            foreach ($this->sponsor_notices as $key1 => $item1) {
+                if ($item2['P_ID'] == $item1['P_ID']) {
+                    unset($this->sponsor_notices[$key1]);
+                    break;
+                }
+            }
+        }
+        $this->loadModel('Project');
+        foreach ($this->sponsored_projects as $project) {
+            $pid = $project['P_ID'];
+            $this->prImage[$pid] = $this->model->getProjectImage($pid);
+        }
+
+        $this->loadModel('Sponsor');
+        $this->sAmount= $this->model->getTotalAmount($uid);
+
         $this->render('Sponsor/profile_sponsor');
+
     }
 
     function profilepic()

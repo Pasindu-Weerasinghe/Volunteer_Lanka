@@ -1,0 +1,93 @@
+h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.container {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    min-width: fit-content;
+    margin: 0 auto;
+    background-color: #96c7d6;
+    border-radius: 20px;
+    padding: 10px;
+    position: relative;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+    min-width: 500px;
+    margin: 10px auto;
+    padding: 0;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.notification {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 30px;
+    padding: 10px 20px;
+    background-color: white;
+}
+
+.notification p {
+    width: 70%;
+    margin: 0;
+    padding: 0;
+    font-size: 17px;
+}
+
+.notification .btn-area {
+    width: 30%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#delete-all-notifications,
+.notification .btn-area button {
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    color: white;
+    padding: 10px;
+    opacity: 0.8;
+}
+
+#delete-all-notifications:hover,
+.notification .btn-area button:hover {
+    opacity: 1;
+}
+
+#delete-all-notifications {
+    background-color: darkred;
+    width: fit-content;
+    font-size: 18px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.btn-area .delete {
+    font-size: 18px;
+    width: 60%;
+    background-color: darkred;
+}
+
+.btn-area .accept,
+.btn-area .view {
+    background-color: green;
+}
+
+.btn-area .reject {
+    background-color: red;
+}

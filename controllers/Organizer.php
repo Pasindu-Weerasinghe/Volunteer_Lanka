@@ -8,6 +8,13 @@ class Organizer extends User
         $this->role = 'organizer';
     }
 
+    function test()
+    {
+        $this->loadModel('Project');
+        $good = $this->model->setEvent(10, '2021-05-20 00:00:00');
+        var_dump($good);
+    }
+
     function index()
     {
         session_start();
@@ -118,6 +125,16 @@ class Organizer extends User
                                 }
                             }
                         }
+                        // if project is a collaboration set notifications for collaborators
+                        if ($partnership) {
+                            $this->loadModel('Organizer');
+                            $organizer_name = $this->model->getOrganizerByID($uid)['Name'];
+                            $this->loadModel('Notification');
+                            $message = "You have been invited to collaborate on a project named " . $pname . " by " . $organizer_name;
+                            foreach ($collaborators as $collaborator) {
+                                $this->model->setNotification($collaborator, $message, 'collab-req', $pid);
+                            }
+                        }
                         $this->model->commit();
                         header("Content-Type: application/json");
                         $response['message'] = "Project created successfully";
@@ -139,6 +156,43 @@ class Organizer extends User
         $organizers = $this->model->searchOrganizersWithPhoto($key);
         header("Content-Type: application/json");
         echo json_encode($organizers);
+    }
+
+    function collab_req($action, $pid, $uid)
+    {
+        if ($action == 'accept') {
+            // if collaborator request is accepted
+            $this->loadModel('Project');
+            $collab_action = $this->model->updateCollaborator($pid, $uid, 'accepted');
+        } else if ($action == 'reject') {
+            // if collaborator request is rejected
+            $this->loadModel('Project');
+            $collab_action = $this->model->deleteCollaborator($pid, $uid);
+        }
+
+        // send notification to the organizer
+        $this->loadModel('Organizer');
+        $collaborator = $this->model->getOrganizer($uid);
+        $htis->loadModel('Project');
+        $project = $this->model->getProject($pid);
+        $organizer_id = $project['U_ID'];
+
+        if ($action == 'accept') {
+            $message = "Your collaboration request for the project " . $project['Name'] . " has been accepted by " . $collaborator['Name'];
+        } else if ($action == 'reject') {
+            $message = "Your collaboration request for the project " . $project['Name'] . " has been rejected by " . $collaborator['Name'];
+        }
+
+        $this->loadModel('Notification');
+        $notification_set = $this->model->setNotification($organizer_id, $message);
+
+        if ($collab_action && $notification_set) {
+            header("Content-Type: application/json");
+            echo json_encode(true);
+        } else {
+            header("Content-Type: application/json");
+            echo json_encode(false);
+        }
     }
 
     function upcoming_projects()
@@ -199,7 +253,16 @@ class Organizer extends User
             if ($this->model->cancelProject($pid, $uid, $cancelReason)) {
                 $message['status'] = 'success';
                 // TODO: sponsor notice cancel
-                // TODO: send notifications to volunteers
+
+
+                // send notifications to volunteers
+                $this->loadModel('Volunteer');
+                $volunteers = $this->model->getJoinedVolunteersOfProject($pid);
+                $this->loadModel('Notification');
+                foreach ($volunteers as $volunteer) {
+                    $message = "The project " . $this->model->getProject($pid)['Name'] . " has been canceled by the organizer.\nReason:\n" . $cancelReason;
+                    $this->model->setNotification($volunteer['U_ID'], $message);
+                }
                 echo json_encode($message);
             } else {
                 $message['status'] = 'failed';
@@ -286,7 +349,7 @@ class Organizer extends User
             $this->pr_idea_images[$i] = $this->pr_idea_images[$i]['Image'];
         }
 
-        if($reply == 'replied'){
+        if ($reply == 'replied') {
             $this->pr_idea['reply'] = $this->model->getReply($pi_id, $uid)['Reply'];
         }
 
@@ -295,15 +358,22 @@ class Organizer extends User
         $this->render('Organizer/ViewProjectIdea');
     }
 
-    function reply_to_pr_idea($piid)
+    function reply_to_pr_idea($piid, $vol_uid)
     {
         if (isset($_POST['reply-submit'])) {
             session_start();
             $uid = $_SESSION['uid'];
+            $this->loadModel('Organizer');
+            $uname = $this->model->getOrganizerById($uid)['Name'];
             $reply = $_POST['reply'];
 
             $this->loadModel('ProjectIdea');
             if ($this->model->replyToPrIdea($piid, $uid, $reply)) {
+                // send notification to volunteer
+                $this->loadModel('Notification');
+                $message = "Your project idea has been replied by a organizer.\n" . $uname . ":\n" . $reply;
+                $this->model->setNotification($vol_uid, $message);
+
                 header('Location: ' . BASE_URL . 'organizer/requests');
             } else {
                 echo 'Error occured';
@@ -397,10 +467,22 @@ class Organizer extends User
     function leave_project($pid, $uid)
     {
         session_start();
+        $uid = $_SESSION['uid'];
         $this->loadModel('Project');
-        $collab_deleted = $this->model->deleteCollaborator($pid, $_SESSION['uid']);
-        // TODO: send notification to creator
-        if ($collab_deleted) {
+        $creator_id = $this->model->getProject($pid)['U_ID'];
+        // deleting collaborator from project
+        $collab_deleted = $this->model->deleteCollaborator($pid, $uid);
+
+        $this->loadModel('Organizer');
+        $collab_name = $this->model->getOrganizerById($uid)['Name'];
+
+        // send notification to creator
+        $this->loadModel('Notification');
+        $message = $collab_name . " has left your project.";
+
+        $set_notification = $this->model->setNotification($creator_id, $message, 'leave-project', $pid);
+
+        if ($collab_deleted && $set_notification) {
             echo json_encode(['status' => 'success']);
         } else {
             echo "Error";
@@ -478,7 +560,13 @@ class Organizer extends User
                 }
 
                 // TODO: set project status to blogged
-                // TODO: send notification to all organizers
+
+                // send notification to all collaborators
+                $this->loadModel('Notification');
+                $message = "Your collaborate project named ".$project['Name']." has been added to blog.";
+                foreach ($collaborators as $collaborator) {
+                    $this->model->setNotification($collaborator['U_ID'], $message, 'add-to-blog', $pid);
+                }
 
                 $this->model->commit();
             } catch (Exception $e) {

@@ -31,6 +31,24 @@ class ProjectModel extends Model
         }
     }
 
+    function setProjectCompleteEvent($pid, $date, $type = 'create') {
+        if($type == 'create') {
+            $query = "CREATE EVENT `event_$pid` 
+                    ON SCHEDULE AT :date + INTERVAL 2 DAY
+                    DO
+                        UPDATE `project` SET Status = 'completed' WHERE P_ID = :pid";
+        } else if($type == 'update') {
+            $query = "ALTER EVENT `event_$pid` 
+                    ON SCHEDULE AT :date + INTERVAL 2 DAY
+                    DO
+                        UPDATE `project` SET Status = 'completed' WHERE P_ID = :pid";
+        }
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':date', $date);
+        $statement->bindParam(':pid', $pid);
+        return $statement->execute();
+    }
+
     function setCollaborateProject($pid)
     {
         $query = "INSERT INTO `collaborate_project` (P_ID) VALUES (:pid)";
@@ -46,6 +64,16 @@ class ProjectModel extends Model
         $statement = $this->db->prepare($query);
         $statement->bindParam(':pid', $pid);
         $statement->bindParam(':uid', $uid);
+        return $statement->execute();
+    }
+
+    function updateCollaborator($pid, $uid, $status)
+    {
+        $query = "UPDATE `partners` SET Status = :status WHERE P_ID = :pid AND U_ID = :uid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':pid', $pid);
+        $statement->bindParam(':uid', $uid);
+        $statement->bindParam(':status', $status);
         return $statement->execute();
     }
 

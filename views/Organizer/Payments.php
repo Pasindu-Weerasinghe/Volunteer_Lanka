@@ -64,7 +64,6 @@
     </div>
 </body>
 <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
-<script type="text/javascript" src="<?php echo BASE_URL ?>/"></script>
 <script>
     const order_id = "<?php echo $order_id; ?>";
     const amount = "<?php echo $amount; ?>";
@@ -115,7 +114,6 @@
 
     // Show the payhere.js popup, when "PayHere Pay" is clicked
     document.getElementById('payhere-payment').onclick = function(e) {
-
         payhere.startPayment(payment);
     };
 </script>

@@ -64,7 +64,7 @@ function currencyFormat($number)
         </div>
 
         <form method="post"
-              action="<?php echo BASE_URL ?>organizer/reply_to_pr_idea/<?php echo $this->pr_idea['PI_ID'] ?>"
+              action="<?php echo BASE_URL ?>organizer/reply_to_pr_idea/<?php echo $this->pr_idea['PI_ID'] ?>/<?php echo $this->volunteer['U_ID'] ?>"
               class="lower-container">
             <h2 id="reply-header">Reply to Volunteer</h2>
             <textarea name="reply" id="reply" rows="4" placeholder="Write your reply here..." required></textarea>

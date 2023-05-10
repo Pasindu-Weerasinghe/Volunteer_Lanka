@@ -66,4 +66,13 @@ class ProjectIdeaModel extends Model {
         $statement->execute();
         return $statement->fetch();
     }
+
+    function getMyIdeas($uid)
+    {
+        $query = "SELECT COUNT(PI_ID) AS Count FROM pr_ideas WHERE U_ID = :uid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':uid', $uid);
+        $statement->execute();
+        return $statement->fetch();
+    }
 }

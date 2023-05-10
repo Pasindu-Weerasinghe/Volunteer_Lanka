@@ -32,7 +32,7 @@
                 <label for="photo"><b>Add Photos</b></label>
                 <input type="file" name="file[]" multiple="multiple"><br /><br />
 
-                <button class="btn">Back</button>
+                <button class="btn" onclick="history.back()">Back</button>
                 <button class="btn" name="request" id="request">Request</button>
             </div>
         </form>

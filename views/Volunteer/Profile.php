@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/profile_volunteer.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <title>User Profile</title>
 </head>
@@ -16,15 +17,15 @@
         <h2>Volunteer Profile</h2><br><br>
         <div class="top-container">
             <div class="column1">
-                <img class="image" src="<?php echo BASE_URL ?>public/images/icon.jpg" /><br><br>
+                <img class="image" src="<?php echo BASE_URL ?>public/images/<?php echo $this->profile['Photo'] ?>" /><br><br>
                 <label class="sub2"> <?php echo $this->user['Name']; ?></label><br><br>
-                <label class="sub3">Bronze Member</label>
-                <img class= "badge" src= "<?php echo BASE_URL ?>public/images/bronze.png"/>
+                <img class="badge" src="<?php echo BASE_URL ?>public/images/bronze.png" /><br>
+                <label class="sub3"><?php echo $this->badge ?></label>
 
             </div>
             <div class="column2"><br />
                 <button class="btnpw"> <a href="<?php echo BASE_URL; ?>Volunteer/ChangeProfilePsw">Change Password</a></button>
-                <button class="btnpw"> <a href="<?php echo BASE_URL; ?>Volunteer/ChangeProfilePsw">Edit</a></button><br><br>
+                <button class="btnpw"> <a href="<?php echo BASE_URL; ?>Volunteer/change_profile">Edit</a></button><br><br>
                 <table>
                     <tr>
                         <td class="top-td">User ID</td>
@@ -42,11 +43,16 @@
                         <td class="top-td"><?php echo $this->user['Contact']; ?></td>
                     </tr>
                     <tr>
+                        <td class="top-td">Address</td>
+                        <td class="top-td">:</td>
+                        <td class="top-td"><?php echo $this->user['Address']; ?></td>
+                    </tr>
+                    <tr>
                         <td class="top-td">Interest Areas</td>
                         <td class="top-td">:</td>
                         <td class="top-td"><?php foreach ($this->interests as $interest) {
                                                 echo $interest['Interest'];
-                                            } ?>
+                                            } ?><br>
                         </td>
                     </tr>
                     <tr>
@@ -54,22 +60,33 @@
                         <td class="top-td">:</td>
                         <td class="top-td"><?php foreach ($this->orgs as $org) {
                                                 echo $org['Organization'];
-                                            } ?>
+                                            } ?><br>
                         </td>
                     </tr>
                 </table>
             </div>
         </div>
-        <!-- <div class="horizontal">
-            <label class="sub3">Projects Volunteered : 4</label>
-            <label class="sub3">Badges earned by participating in projects : 4</label>
-            <label class="sub3">Badges earned by sending new project ideas : 1</label>
-            <label class="sub3">Total badges: 5</label>
-        </div> -->
+        <div class="horizontal">
+            <div class="cont1">
+                <label class="head">Details of Projects Volunteered</label><br><br>
+                <label>Total projects volunteered : <?php echo $this->projectCount ?></label><br>
+                <label>Feedbacks given : </label><br>
+            </div>
+
+            <div class="cont1">
+                <label class="head">Badges Earned</label><br><br>
+                <label>Badges earned by volunteering in projects : <?php echo $this->projectCount ?></label><br>
+                <label>Badges earned by sending new project ideas : <?php echo $this->ideaBadgeCount ?></label><br>
+                <label>Total badges : <?php echo $this->totalCount ?></label><br>
+                <label>3 more badges to earn gold medal</label><br>
+            </div>
+
+        </div>
         <br><br>
 
-        <?php foreach ($this->projects as $project) {
-            $pid = $project['P_ID'] ?>
+        <!-- Blog part starts here -->
+        <!-- <?php foreach ($this->projects as $project) {
+                    $pid = $project['P_ID'] ?>
             <div class="post-container">
 
                 <div class="title">
@@ -106,7 +123,7 @@
                 </div>
                 <hr>
                 <?php foreach ($this->feedbacks[$pid] as $feedback) {
-                    $uid = $feedback['U_ID'] ?>
+                        $uid = $feedback['U_ID'] ?>
                     <div class="feedback">
                         <?php if ($this->profilePics[$uid]['Photo'] == null) { ?>
                             <img class="user" src="<?php echo BASE_URL ?>public/images/icon.jpg" />
@@ -127,7 +144,7 @@
                     </div>
                 <?php } ?>
             </div><br /><br />
-        <?php } ?>
+        <?php } ?> -->
     </div>
 
 </body>

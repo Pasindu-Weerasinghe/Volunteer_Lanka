@@ -12,6 +12,7 @@ if (!isset($_SESSION['uid'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include 'views/includes/head-includes-log.php'; ?>
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/admin_home.css">
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/cards.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>public/styles/chat-icon.css">

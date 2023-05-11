@@ -12,6 +12,7 @@ if (!isset($_SESSION['uid'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Complaints</title>
+    <?php include 'views/includes/head-includes-log.php'; ?>
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/view_ad_req.css">
 </head>
 

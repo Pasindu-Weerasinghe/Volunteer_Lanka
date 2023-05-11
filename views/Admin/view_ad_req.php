@@ -12,7 +12,9 @@ if (!isset($_SESSION['uid'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Advertisement Requests</title>
+    <?php include 'views/includes/head-includes-log.php'; ?>
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/view_ad_req.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/popup.css">
 </head>
 
 <body>
@@ -31,7 +33,7 @@ if (!isset($_SESSION['uid'])) {
                 </div>
             </div>
             <div id="btn-area">
-                <button class="btn">Reject</button>
+                <button class="btn" id="reject-btn">Reject</button>
                 <button onclick="window.location.href='<?php echo BASE_URL . 'admin/accept_ad_req/' . $this->ad['AD_ID']; ?>'" class="btn">Accept</button>
             </div>
 
@@ -40,9 +42,31 @@ if (!isset($_SESSION['uid'])) {
 
         <br>
     </div>
-    <?php 
-    print_r($this->ad)
-    ?>
+    <div class="popup-bg" style="display:none;">
+        <div class="popup">
+            <!--close button-->
+            <div class="popup-close"><i class="fa-solid fa-xmark"></i></div>
+            <form action="">
+                
+            </form>
+        </div>
+    </div>
+    
 </body>
+<script>
+    const popupbg = document.querySelector(".popup-bg");
+    const popup = document.querySelector(".popup");
+    const popupCloseBtn = document.querySelector(".popup-close");
+    const rejectBtn = document.querySelector("#reject-btn");
+
+    rejectBtn.addEventListener("click",() =>{
+        popupbg.style.display="flex";
+    });
+    popupCloseBtn.addEventListener("click",() =>{
+        popupbg.style.display="none";
+    });
+
+
+</script>
 
 </html>

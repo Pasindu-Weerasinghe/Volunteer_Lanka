@@ -1,6 +1,6 @@
 <?php
 
-class SponsorProjectModel extends Model
+class SponsorNoticeModel extends Model
 {
 
     function __construct()
@@ -8,7 +8,31 @@ class SponsorProjectModel extends Model
         parent::__construct();
     }
 
-   
+    function getSponsorNotices()
+    {
+        $query = "SELECT sponsor_notice.*, project.Name, project.Date FROM sponsor_notice 
+                INNER JOIN project ON project.P_ID = sponsor_notice.P_ID
+                WHERE project.Status = 'active'";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function getSponsoredProjects($uid, $status = null) {
+        $query = "SELECT sponsor_pr.*, project.Name, project.Date From sponsor_pr 
+                    INNER JOIN project ON project.P_ID = sponsor_pr.P_ID 
+                    WHERE sponsor_pr.U_ID = :uid";
+        if($status == 'active') {
+            $query .= " AND project.Status = 'active'";
+        }
+        if($status == 'completed') {
+            $query .= " AND project.Status = 'completed'";
+        }
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':uid', $uid);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 
     function getSPAmount($pid)
     {
@@ -33,14 +57,11 @@ class SponsorProjectModel extends Model
     {
         $query = "SELECT * FROM sponsor_pr WHERE U_ID = $uid AND P_ID = $pid";
         $result = $this->db->query($query);
-    
+
         if ($result->rowCount() > 0) {
             return $result->fetch(PDO::FETCH_ASSOC);
         } else {
             return null;
         }
     }
-    
-
-
 }

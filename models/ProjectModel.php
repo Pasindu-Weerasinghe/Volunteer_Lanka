@@ -36,61 +36,9 @@ class ProjectModel extends Model
         }
     }
 
-    function getProjectId($pname, $uid)
-    {
-        $query  =  "SELECT P_ID FROM project WHERE Name = '$pname' AND U_ID = '$uid'";
-
-        $statement = $this->db->prepare($query);
-        if ($statement->execute()) {
-            // if query is successful
-            $pid = $statement->fetch(PDO::FETCH_ASSOC);
-            return $pid['P_ID'];
-        } else {
-            // if query failed
-            return 'query failed';
-        }
-    }
-
     function setVolunteerForm($pid, $email, $contact, $meal_pref, $prior_part)
     {
         $query  =  "INSERT INTO form_for_volunteers (P_ID, Email, Contact, Meal_pref, Prior_participation) VALUES ('$pid', '$email', '$contact', '$meal_pref', '$prior_part')";
-        $statement = $this->db->prepare($query);
-        return $statement->execute();
-    }
-
-
-    function getSponsorProjects()
-    {
-        $query = "SELECT P_ID, Name, Date FROM project WHERE Sponsor = 1";
-        $statement = $this->db->prepare($query);
-        $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
-    }
-    function getSpProjects($pid)
-    {
-        $query = "SELECT  Name, Date FROM project WHERE Sponsor = 1 AND P_ID=$pid";
-        $statement = $this->db->prepare($query);
-        $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
-    }
-    function getSponsored()
-    {
-        $query = "SELECT P_ID,U_ID FROM sponsor_pr";
-        $statement = $this->db->prepare($query);
-        $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
-    }
-    function getSponsor()
-    {
-        $query = "SELECT P_ID,U_ID FROM sponsor_notice";
-        $statement = $this->db->prepare($query);
-        $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    function removeProject($pid)
-    {
-        $query = "DELETE FROM sponsor_notice WHERE P_ID = $pid";
         $statement = $this->db->prepare($query);
         return $statement->execute();
     }
@@ -106,14 +54,6 @@ class ProjectModel extends Model
     function getPrice($pid)
     {
         $query = "SELECT Amount FROM sponsor_notice WHERE P_ID = $pid";
-        $statement = $this->db->prepare($query);
-        $statement->execute();
-        return $statement->fetch(PDO::FETCH_ASSOC);
-    }
-
-    function getSPAmount($pid)
-    {
-        $query = "SELECT Amount FROM sponsor_pr WHERE P_ID = $pid";
         $statement = $this->db->prepare($query);
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);

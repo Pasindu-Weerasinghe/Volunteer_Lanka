@@ -1,10 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['uid'])) {
-    header('Location: ' . BASE_URL);
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,9 +11,7 @@ if (!isset($_SESSION['uid'])) {
 </head>
 
 <body>
-    <?php include 'views/includes/navbar_log.php'
-    ;
-    print_r($this->spProjects);
+    <?php include 'views/includes/navbar_log.php';
     ?>
 
     <div class="main" id="main">
@@ -31,19 +22,19 @@ if (!isset($_SESSION['uid'])) {
         <h2>My sponsored Project</h2><br><br>
 
         <section class="container">
-            <?php foreach ($this->spProjects as $spProject) {
+            <?php foreach ($this->sponsored_projects as $spProject) {
                 $pid = $spProject['P_ID'];
             ?>
                 <div class="card">
                     <div class="card-image">
-                        <img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImages[$pid][0]['Image'] ?>">
+                        <img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image'] ?>">
                     </div>
 
                     <h2><?php echo ($spProject["Name"]); ?></h2>
                     <p>Date: <?php echo ($spProject["Date"]); ?></p> 
-                    <p>Total: <?php echo ($this->prices[$pid]['Amount']); ?></p>
+                    <p><?php echo ucfirst($spProject['Package']) ?>: <?php echo ($spProject['Amount']); ?></p>
 
-                    <a class="btn" href="<?php echo BASE_URL ?>Sponsor/view_sponsor_project/<?php echo $spProject['P_ID'] ?>">View</a>
+                    <a class="btn" href="<?php echo BASE_URL ?>Sponsor/view_sponsor_project/<?php echo $pid ?>">View</a>
 
                 </div>
             <?php } ?>
@@ -52,17 +43,17 @@ if (!isset($_SESSION['uid'])) {
         <h2>Sponsor Notices</h2><br><br>
 
         <section class="container">
-            <?php foreach ($this->projectsNs as $projectNs) {
-                $pid = $projectNs['P_ID'];
+            <?php foreach ($this->sponsor_notices as $sn) {
+                $pid = $sn['P_ID'];
             ?>
                 <div class="card">
                     <div class="card-image">
-                        <img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImages[$pid][0]['Image'] ?>">
+                        <img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image'] ?>">
                     </div>
-                    <h2><?php echo ($projects["Name"]); ?></h2>
-                    <p>Date: <?php echo ($projects["Date"]); ?></p>
-                    <p>Total: <?php echo ($this->prices[$pid]['Amount']); ?></p>
-                    <a class="btn" href="<?php echo BASE_URL ?>Sponsor/view_sponsor_notice/<?php echo $projectNs['P_ID'] ?>">View</a>
+                    <h2><?php echo ($sn["Name"]); ?></h2>
+                    <p>Date: <?php echo ($sn["Date"]); ?></p>
+                    <p>Total: <?php echo ($sn['Amount']); ?></p>
+                    <a class="btn" href="<?php echo BASE_URL ?>Sponsor/view_sponsor_notice/<?php echo $sn['P_ID'] ?>">View</a>
                 </div>
             <?php } ?>
         </section>

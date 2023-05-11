@@ -1,7 +1,6 @@
 
 <?php 
-require 'conn.php';
-session_start();
+
 
 if (isset($_REQUEST["request"])){
 

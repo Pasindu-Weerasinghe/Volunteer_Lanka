@@ -1,9 +1,4 @@
-<?php
-session_start();
-if (!isset($_SESSION['uid'])) {
-    header('Location:' . BASE_URL);
-}
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,16 +17,20 @@ if (!isset($_SESSION['uid'])) {
         <br />
         <h2>Sponserd Projects</h2><br /><br />
         <section class="container">
-            <?php foreach ($this->projects as $project) {
-                $pid = $project['P_ID'] ?>
+        <?php foreach ($this->sponsored_projects as $spProject) {
+                $pid = $spProject['P_ID'];
+            ?>
                 <div class="card">
                     <div class="card-image">
-                        <img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImages[$pid][0]['Image'] ?>">
+                        <img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image'] ?>">
                     </div>
-                    <h2><?php echo ($project["Name"]); ?></h2>
-                    <p>Date: <?php echo ($project["Date"]); ?></p>
-                    <p>Amount: <?php echo ($this->amounts[$pid]); ?></p>
-                    <a class="btn" href="<?php echo BASE_URL ?>Sponsor/view_sponsor_project/<?php echo $project['P_ID'] ?>">View</a>
+
+                    <h2><?php echo ($spProject["Name"]); ?></h2>
+                    <p>Date: <?php echo ($spProject["Date"]); ?></p> 
+                    <p><?php echo ucfirst($spProject['Package']) ?>: <?php echo ($spProject['Amount']); ?></p>
+
+                    <a class="btn" href="<?php echo BASE_URL ?>Sponsor/view_sponsor_project/<?php echo $pid ?>">View</a>
+
                 </div>
             <?php } ?>
         </section>

@@ -47,6 +47,6 @@
         </div>
     </div>
     <input type="hidden" name="role" value="<?php echo $_SESSION['role']?>">
-</body>
-
+</body><br><br><br><br><br><br><br>
+<?php include 'views/includes/footer.php'; ?>
 </html>

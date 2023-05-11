@@ -1,9 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['uid'])) {
-    header('Location:' . BASE_URL);
-}
-?>
 
 <head>
     <meta charset="UTF-8">
@@ -15,7 +9,7 @@ if (!isset($_SESSION['uid'])) {
 <body>
     <?php include 'views/includes/navbar_log.php'; ?>
     <div class="main" id="main">
-        <h2>Beach Cleaning</h2><br>
+        <h2><?php echo $this->projects['Name'] ?></h2><br>
 
         <div class="container">
             <div>

@@ -247,8 +247,11 @@ class Volunteer extends User
     function delete_ideas($piId)
     {
         $this->loadModel('ProjectIdea');
-        $this->model->deleteProjectIdea($piId);
+        if ($this->model->deleteProjectIdea($piId)) {
         header('Location: ' . BASE_URL . 'volunteer/new_ideas');
+        } else {
+            //! Error message
+        }
     }
 
     function profile()

@@ -2,6 +2,7 @@
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>public/styles/navbar.css">
     <script defer src="<?php echo BASE_URL; ?>public/scripts/navbar.js"></script>
 </head>
+
 <!-- Navbar start -->
 <header>
     <div id="brand">

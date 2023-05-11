@@ -10,7 +10,10 @@ class VolunteerModel extends Model
 
     function getVolunteerById($uid)
     {
-        $query = "SELECT * FROM volunteer WHERE U_ID = :uid LIMIT 1";
+        $query = "SELECT volunteer.*, user.Photo
+                    FROM volunteer
+                    INNER JOIN user ON volunteer.U_ID = user.U_ID
+                    WHERE user.U_ID = :uid LIMIT 1";
         $statement = $this->db->prepare($query);
         $statement->bindParam(':uid', $uid);
         $statement->execute();
@@ -71,6 +74,19 @@ class VolunteerModel extends Model
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
+
+
+    function getJoinedVolunteersOfProject($pid) {
+        $query = "SELECT volunteer.U_ID, volunteer.Name, volunteer.Contact, user.Email, user.Photo, joins.Meal, joins.Prior_part
+                    FROM joins 
+                    INNER JOIN volunteer ON joins.U_ID = volunteer.U_ID
+                    INNER JOIN user ON joins.U_ID = user.U_ID
+                    WHERE joins.P_ID = :pid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':pid', $pid);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+}
 
     function getVolunteerInterests($uid)
     {

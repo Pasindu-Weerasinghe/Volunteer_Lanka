@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
-
 .wrapper {
 	background-color: #96c7d6;
+	min-width: 580px;
 	max-width: 700px;
 	width: 100%;
 	margin: auto;
@@ -21,8 +20,9 @@
 }
 
 .wrapper .form .row {
-	margin-bottom: 15px;
+	margin-bottom: 10x;
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 }
 
@@ -32,25 +32,16 @@
 }
 
 .wrapper .form .row label {
-	font-size: 16px;
+	font-size: 18px;
+	font-weight: bold;
 	width: 400px;
-	margin-right: 10px;
+	margin-bottom: 5px;
 }
 
 .wrapper .form .row #row-head {
 	font-size: 16px;
 	width: 200px;
 	margin-right: 10px;
-}
-
-.wrapper .form .row .td {
-	display: flex;
-	width: 150px;
-}
-
-.wrapper .form .row .td input {
-	margin: 0 10px;
-	width: 12px;
 }
 
 .wrapper .form .notice {
@@ -96,6 +87,23 @@
 	margin-right: 10px;
 }
 
+#gal {
+	width: 100%;
+	margin-top: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 5px;
+	background-color: white;
+	border-radius: 10px;
+}
+
+#gal img {
+	width: 100px;
+	margin: 5px;
+	border-radius: 5px;
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.125);
+}
+
 .btn-area {
 	display: flex;
 	justify-content: space-around;
@@ -109,7 +117,7 @@
 	font-size: 18px;
 	border: none;
 	border-radius: 8px;
-	width: 120px;
+	width: 200px;
 	height: 50px;
 	text-align: center;
 	align-items: center;
@@ -119,6 +127,12 @@
 
 .btn:hover {
 	opacity: 1;
+}
+
+#resetImgs {
+	background-color: darkblue;
+	margin-left: 10px;
+	width: 100px;
 }
 
 .navbarless {

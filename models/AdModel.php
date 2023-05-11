@@ -47,8 +47,6 @@ class AdModel extends Model
            // echo "<script>alert('Successfully published your advertiesment.'); window.location.href='" . BASE_URL . "sponsor/publish_advertisement';</script>";
 
         }
-        
-
     }
 
     function getAdId($uid, $description)

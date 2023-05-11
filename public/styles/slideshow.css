@@ -1,0 +1,108 @@
+.slideshow-container {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.slideshow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.slide {
+    display: none;
+}
+
+.slide img {
+    width: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+/* next & previous buttons */
+.prevBtn,
+.nextBtn {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 10px 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    user-select: none;
+}
+
+.prevBtn {
+    left: 0;
+    border-radius: 0 10px 10px 0;
+}
+
+.nextBtn {
+    right: 0;
+    border-radius: 10px 0 0 10px;
+}
+
+.prevBtn:hover,
+.nextBtn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* dots */
+.dots {
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    bottom: 0;
+    padding: 3px 10px;
+    text-align: center;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 3px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active,
+.dot:hover {
+    background-color: #414141;
+}
+
+/* fading animation */
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 0.6s;
+    animation-name: fade;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .4;
+        filter: blur(5px);
+    }
+
+    to {
+        opacity: 1;
+        filter: blur(0px);
+    }
+}

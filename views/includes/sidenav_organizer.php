@@ -1,8 +1,4 @@
-<head>
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>public/styles/sidenav.css">
-    <script defer src="<?php echo BASE_URL; ?>public/scripts/sidenav.js"></script>
-</head>
-
+<!-- sidenav start -->
 <span class="open-slide">
     <a onclick="openSideMenu()">
         <svg width="30" height="30">
@@ -26,3 +22,4 @@
     <a href="<?php echo BASE_URL; ?>organizer/search_user">Search Users</a>
     <a href="<?php echo BASE_URL; ?>organizer/complain">Complain</a>
 </div>
+<!-- sidenav end -->

@@ -1,0 +1,160 @@
+.wrapper {
+    display: block;
+    position: relative;
+    min-width: 580px;
+    background-color: #96c7d6;
+    border-radius: 20px;
+}
+
+.upper-container,
+.lower-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.upper-container section {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 400px;
+    margin: 10px;
+}
+
+.upper-container section * {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+}
+
+.volunteer {
+    max-width: 300px;
+    text-decoration: none;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    margin-bottom: 10px;
+    background-color: white;
+    padding: 5px;
+    transition: 0.2s ease;
+}
+
+.volunteer img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center center;
+    margin: 5px;
+}
+
+.volunteer h3 {
+    color: darkblue;
+    font-weight: bold;
+}
+
+.volunteer:hover {
+    box-shadow: 0 0 0 3px rgb(169, 216, 250);
+}
+
+.location {
+    flex-direction: row;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.location * {
+    font-size: 18px;
+}
+
+.description {
+    flex-direction: column;
+    border-radius: 15px;
+}
+
+.location label,
+.description h2 {
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-color: darkblue;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.location p,
+.description p {
+    margin: 0;
+    padding: 5px;
+    background-color: white;
+    text-align: justify;
+}
+
+.location label {
+    width: 40%;
+}
+
+.location p {
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+}
+
+.lower-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.lower-container h2 {
+    margin-bottom: 10px;
+}
+
+.lower-container textarea {
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 16px;
+    resize: none;
+    width:100%;
+    max-width: 500px;
+    transition: 0.2s ease;
+    box-shadow: 0 0 0 2px rgb(169, 216, 250);
+    margin-bottom: 10px;
+}
+
+.lower-container textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 5px rgb(169, 216, 250);
+}
+
+.lower-container button {
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: green;
+    font-size: 20px;
+    color: white;
+    width: 100%;
+    max-width: 500px;
+    transition: 0.2s ease;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.lower-container button:hover {
+    opacity: 1;
+}
+
+@media screen and (max-width: 1000px) {
+    .upper-container section {
+        width: 100%;
+    }
+}

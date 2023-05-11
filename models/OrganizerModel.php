@@ -81,9 +81,35 @@ class OrganizerModel extends Model
         }
     }
 
+    function getProjectCreateCount($uid) {
+        $query = "SELECT COUNT(*) AS row_count
+                    FROM `project`
+                    WHERE MONTH(`Create_date`) = MONTH(NOW()) AND YEAR(`Create_date`) = YEAR(NOW()) AND `U_ID` = :uid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':uid', $uid);
+        if ($statement->execute()) {
+            return $statement->fetch(PDO::FETCH_ASSOC)['row_count'];
+        } else {
+            return null;
+        }
+    }
+
     function canceledProjectCount($uid) {
         $query = "SELECT COUNT(*) AS row_count
                     FROM `cancels`
+                    WHERE MONTH(`Date`) = MONTH(NOW()) AND YEAR(`Date`) = YEAR(NOW()) AND `U_ID` = :uid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':uid', $uid);
+        if ($statement->execute()) {
+            return $statement->fetch(PDO::FETCH_ASSOC)['row_count'];
+        } else {
+            return null;
+        }
+    }
+
+    function postponedProjectCount($uid) {
+        $query = "SELECT COUNT(*) AS row_count
+                    FROM `postpones`
                     WHERE MONTH(`Date`) = MONTH(NOW()) AND YEAR(`Date`) = YEAR(NOW()) AND `U_ID` = :uid";
         $statement = $this->db->prepare($query);
         $statement->bindParam(':uid', $uid);

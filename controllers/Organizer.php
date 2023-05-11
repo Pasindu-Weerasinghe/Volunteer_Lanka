@@ -46,6 +46,23 @@ class Organizer extends User
     {
         switch ($param) {
             case null:
+                session_start();
+                $uid = $_SESSION['uid'];
+                $this->loadModel('Organizer');
+                // TODO: check if user can create project
+                $created_pr_count = $this->model->getProjectCreateCount($uid);
+                $cancelled_pr_count = $this->model->canceledProjectCount($uid);
+                $postponed_pr_count = $this->model->postponedProjectCount($uid);
+                $this->loadModel('Payment');
+                $extra_pr_arr = $this->model->getExtraProjectCount($uid);
+                $extra_pr_count = 0;
+                foreach ($extra_pr_arr as $extra_pr) {
+                    $extra_pr_count += $extra_pr['Quantity'];
+                }
+                $create_pr_limit = PROJECT_CREATE_LIMIT + $extra_pr_count;
+
+                // check if user can create project
+                $this->can_create_pr = $create_pr_limit >= $created_pr_count;
                 $this->render('Organizer/CreateProject');
                 break;
             case 'create':
@@ -125,6 +142,9 @@ class Organizer extends User
                                 }
                             }
                         }
+                        // set project complete event
+                        $this->model->setProjectCompleteEvent($pid, $date);
+
                         // if project is a collaboration set notifications for collaborators
                         if ($partnership) {
                             $this->loadModel('Organizer');
@@ -135,6 +155,11 @@ class Organizer extends User
                                 $this->model->setNotification($collaborator, $message, 'collab-req', $pid);
                             }
                         }
+
+                        // set reminder for project
+                        $message = "You have an upcoming project named " . $pname . " on " . $date; //TODO: change message
+                        $this->setUpcomingProjectReminder($uid, $message, $pid, $date);
+
                         $this->model->commit();
                         header("Content-Type: application/json");
                         $response['message'] = "Project created successfully";
@@ -158,7 +183,7 @@ class Organizer extends User
         echo json_encode($organizers);
     }
 
-    function collab_req($action, $pid, $uid)
+    function collab_req($action, $pid, $uid, $notification_id)
     {
         if ($action == 'accept') {
             // if collaborator request is accepted
@@ -184,6 +209,7 @@ class Organizer extends User
         }
 
         $this->loadModel('Notification');
+        $this->model->deleteNotification($notification_id);
         $notification_set = $this->model->setNotification($organizer_id, $message);
 
         if ($collab_action && $notification_set) {
@@ -251,6 +277,7 @@ class Organizer extends User
             $cancelReason = $_POST['cancel-reason'];
             $this->loadModel('Project');
             if ($this->model->cancelProject($pid, $uid, $cancelReason)) {
+                $this->model->dropProjectCompleteEvent($pid);
                 $message['status'] = 'success';
                 // TODO: sponsor notice cancel
 
@@ -263,6 +290,9 @@ class Organizer extends User
                     $message = "The project " . $this->model->getProject($pid)['Name'] . " has been canceled by the organizer.\nReason:\n" . $cancelReason;
                     $this->model->setNotification($volunteer['U_ID'], $message);
                 }
+                // drop upcoming project reminder notification
+                $this->model->dropUpcomingProjectReminder($uid, $pid);
+
                 echo json_encode($message);
             } else {
                 $message['status'] = 'failed';
@@ -286,8 +316,34 @@ class Organizer extends User
             $postponeReason = $_POST['postpone-reason'];
             $postponeDate = $_POST['postpone-date'];
             $postponeTime = $_POST['postpone-time'];
+
             $this->loadModel('Project');
             if ($this->model->postponeProject($pid, $uid, $postponeReason, $postponeDate, $postponeTime)) {
+                // updating project complete event
+                $this->model->setProjectCompleteEvent($pid, $postponeDate, 'update');
+                $project_name = $this->model->getProject($pid)['Name'];
+
+                $this->loadModel('Volunteer');
+                $volunteers = $this->model->getJoinedVolunteersOfProject($pid);
+
+                $this->loadModel('Organizer');
+                $collaborators = $this->model->getCollaboratorsOfProject($pid);
+
+                // updating notification reminder
+                $this->loadModel('Notification');
+                $this->model->updateUpcomingProjectReminder($uid, $pid, $postponeDate);
+
+                // TODO: send notifications to volunteers, sponsors, collaborators
+                foreach ($volunteers as $volunteer) {
+                    $message = "The project " . $project_name . " has been postponed by the organizer.\nReason:\n" . $postponeReason;
+                    $this->model->setNotification($volunteer['U_ID'], $message);
+                }
+
+                foreach ($collaborators as $collaborator) {
+                    $message = "The project " . $project_name . " has been postponed by the organizer.\nReason:\n" . $postponeReason;
+                    $this->model->setNotification($collaborator['U_ID'], $message);
+                }
+
                 $message['status'] = 'success';
             } else {
                 $message['status'] = 'failed';
@@ -383,6 +439,10 @@ class Organizer extends User
 
     function payments()
     {
+        session_start();
+        $uid = $_SESSION['uid'];
+        $this->loadModel('Payment');
+
         $this->render('Organizer/Payments');
     }
 
@@ -563,7 +623,7 @@ class Organizer extends User
 
                 // send notification to all collaborators
                 $this->loadModel('Notification');
-                $message = "Your collaborate project named ".$project['Name']." has been added to blog.";
+                $message = "Your collaborate project named " . $project['Name'] . " has been added to blog.";
                 foreach ($collaborators as $collaborator) {
                     $this->model->setNotification($collaborator['U_ID'], $message, 'add-to-blog', $pid);
                 }

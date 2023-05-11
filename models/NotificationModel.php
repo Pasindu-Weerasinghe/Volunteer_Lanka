@@ -46,4 +46,35 @@ class NotificationModel extends Model
         $statement->bindParam(':uid', $uid);
         return $statement->execute();
     }
+
+    function setUpcomingProjectReminder($uid, $message, $pid, $date): bool
+    {
+        $query = "CREATE EVENT IF NOT EXISTS `upcoming_project_reminder_$uid$pid`
+                    ON SCHEDULE AT DATE_SUB(:date, INTERVAL 1 DAY)
+                    DO
+                        INSERT INTO `notification` (U_ID, Message, Type, Event_ID)
+                        VALUES (:uid, :message, 'upcoming_pr', :pid)";
+
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':uid', $uid);
+        $statement->bindParam(':pid', $pid);
+        $statement->bindParam(':message', $message);
+        $statement->bindParam(':date', $date);
+        return $statement->execute();
+    }
+
+    function updateUpcomingProjectReminder($uid, $pid, $date): bool
+    {
+        $query = "ALTER EVENT `upcoming_project_reminder_$uid$pid` ON SCHEDULE AT DATE_SUB(:date, INTERVAL 1 DAY)";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':date', $date);
+        return $statement->execute();
+    }
+
+    function dropUpcomingProjectReminder($uid, $pid): bool
+    {
+        $query = "DROP EVENT IF EXISTS `upcoming_project_reminder_$uid$pid`";
+        $statement = $this->db->prepare($query);
+        return $statement->execute();
+    }
 }

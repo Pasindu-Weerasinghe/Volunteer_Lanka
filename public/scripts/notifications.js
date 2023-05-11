@@ -24,8 +24,8 @@ function getNotifications() {
                                         <p>${notification.Message}</p>`;
                 if (notification.Type === 'collab-req') {
                     content += `<div class="btn-area">
-                                                <button class="accept" onclick="acceptCollabReq(${notification.Event_ID})">Accept</button>
-                                                <button class="reject" onclick="rejectCollabReq(${notification.Event_ID})">Reject</button>
+                                                <button class="accept" onclick="acceptCollabReq(${notification.Event_ID}, ${notification.Notify_ID})">Accept</button>
+                                                <button class="reject" onclick="rejectCollabReq(${notification.Event_ID}, ${notification.Notify_ID})">Reject</button>
                                           
                                           </div> </section>`;
                 }
@@ -43,8 +43,8 @@ function getNotifications() {
         .catch(error => console.log(error));
 }
 
-function acceptCollabReq(eventID) {
-    fetch(`${BASE_URL}${role}/notifications/collab_req/accept/${eventID}`)
+function acceptCollabReq(eventID, notificationID) {
+    fetch(`${BASE_URL}${role}/notifications/collab_req/accept/${eventID}/${uid}/${notificationID}`)
         .then(response => response.json())
         .then(result => {
             if (result) {
@@ -54,8 +54,8 @@ function acceptCollabReq(eventID) {
         .catch(error => console.log(error));
 }
 
-function rejectCollabReq(eventID) {
-    fetch(`${BASE_URL}${role}/notifications/collab_req/reject/${eventID}`)
+function rejectCollabReq(eventID, notificationID) {
+    fetch(`${BASE_URL}${role}/notifications/collab_req/reject/${eventID}/${uid}/${notificationID}`)
         .then(response => response.json())
         .then(result => {
             if (result) {
@@ -77,7 +77,14 @@ function deleteNotification(notificationID) {
 }
 
 clearAllBtn.addEventListener('click', () => {
-   fetch(`${BASE_URL}${role}/notifications/delete-all`))
+   fetch(`${BASE_URL}${role}/notifications/delete-all`)
+       .then(response => response.json())
+         .then(result => {
+             if (result) {
+                 getNotifications();
+             }
+         })
+            .catch(error => console.log(error));
 });
 
 window.acceptCollabReq = acceptCollabReq;

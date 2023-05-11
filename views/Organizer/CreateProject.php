@@ -142,6 +142,13 @@
                     </div> -->
                 </div>
             </div>
+
+            <!-- Add extra projects popup -->
+            <div class="popup popup-add-extra-proj">
+                <div class="popup-close"><i class="fa-solid fa-xmark"></i></div>
+
+                <h2>Add Extra Projects</h2>
+                
         </div>
 
         <!-- //? Publish sponsor notice form -->
@@ -217,6 +224,8 @@
 
 
     </div>
+
+<input type="hidden" id="can_create" value="<?php echo json_encode($this->can_create_pr) ?>">
 </body>
 <script type="module" src="<?php echo BASE_URL ?>public/scripts/create_project.js"></script>
 

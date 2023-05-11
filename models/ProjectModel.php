@@ -33,19 +33,25 @@ class ProjectModel extends Model
 
     function setProjectCompleteEvent($pid, $date, $type = 'create') {
         if($type == 'create') {
-            $query = "CREATE EVENT `event_$pid` 
-                    ON SCHEDULE AT :date + INTERVAL 2 DAY
-                    DO
-                        UPDATE `project` SET Status = 'completed' WHERE P_ID = :pid";
+            $query = "CREATE EVENT IF NOT EXISTS `complete_pr_$pid` 
+                        ON SCHEDULE AT :date + INTERVAL 2 DAY
+                        DO
+                            UPDATE `project` SET Status = 'completed' WHERE P_ID = :pid";
         } else if($type == 'update') {
-            $query = "ALTER EVENT `event_$pid` 
-                    ON SCHEDULE AT :date + INTERVAL 2 DAY
-                    DO
-                        UPDATE `project` SET Status = 'completed' WHERE P_ID = :pid";
+            $query = "ALTER EVENT IF NOT EXISTS `complete_pr_$pid` 
+                        ON SCHEDULE AT :date + INTERVAL 2 DAY
+                        DO
+                            UPDATE `project` SET Status = 'completed' WHERE P_ID = :pid";
         }
         $statement = $this->db->prepare($query);
         $statement->bindParam(':date', $date);
         $statement->bindParam(':pid', $pid);
+        return $statement->execute();
+    }
+
+    function dropProjectCompleteEvent($pid) {
+        $query = "DROP EVENT IF EXISTS `complete_pr_$pid`";
+        $statement = $this->db->prepare($query);
         return $statement->execute();
     }
 
@@ -88,7 +94,6 @@ class ProjectModel extends Model
 
     function setSponsorNotice($pid, $uid, $amount)
     {
-        // TODO: check this again!
         $query = "INSERT INTO `sponsor_notice` (P_ID, U_ID, Amount) VALUES (:pid, :uid, :amount)";
         $statement = $this->db->prepare($query);
         $statement->bindParam(':pid', $pid);

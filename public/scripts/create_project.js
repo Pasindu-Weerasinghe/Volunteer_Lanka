@@ -322,5 +322,11 @@ resetImgs.addEventListener("click", () => {
     resetImgs.style.display = "none";
 });
 
+//? check project create limit
+const can_create = JSON.parse(document.getElementById('can_create').value);
+if(!can_create){
+
+}
+
 window.addCollaborator = addCollaborator; // for adding collaborator
 window.rmvCollaborator = rmvCollaborator; // for removing collaborator

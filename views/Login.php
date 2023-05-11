@@ -15,7 +15,7 @@
     <form action="<?php echo BASE_URL; ?>index/login_auth" method="post">
         <div class="container">
             <h1>Login</h1>
-<br>
+            <br>
             <?php
             if ($this->error == 'incorrect email') {
                 echo '<p id="error">Incorrect Username</p>';
@@ -27,7 +27,7 @@
                 echo '<p id="error">Your Account is Restricted!</p>';
             }
             ?>
-    <br>
+            <br>
             <label for="uname"><b>Email</b></label>
             <input type="email" name="uname" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Email" required>
 

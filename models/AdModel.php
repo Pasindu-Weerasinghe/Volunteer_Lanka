@@ -43,14 +43,15 @@ class AdModel extends Model
         $statement->bindParam(':image', $image);
         if($statement->execute()){
             //header('Location: ' . BASE_URL . "Sponsor/index");
-            echo "<script>alert('Successfully upload the advertisement');location.href='http://localhost/Volunteer_Lanka/sponsor/publish_advertisement';</script>";
+            //echo "<script>alert('Successfully upload the advertisement');location.href='http://localhost/Volunteer_Lanka/sponsor/publish_advertisement';</script>";
+           // echo "<script>alert('Successfully published your advertiesment.'); window.location.href='" . BASE_URL . "sponsor/publish_advertisement';</script>";
 
         }
     }
 
     function getAdId($uid, $description)
     {
-        $query = "SELECT AD_ID FROM advertisement WHERE Sponsor = :uid && Description :description";
+        $query = "SELECT AD_ID FROM advertisement WHERE Sponsor = :uid && Description = :description";
         $statement = $this->db->prepare($query);
         $statement->bindParam(':uid', $uid);
         $statement->bindParam(':description', $description);

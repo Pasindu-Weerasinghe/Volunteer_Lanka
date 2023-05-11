@@ -15,7 +15,7 @@
 .side-nav a {
   padding: 10px 10px 10px 30px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 18px;
   color: white;
   display: block;
   transition: 0.3s;
@@ -33,12 +33,14 @@
   right: 22px;
   font-size: 36px;
   margin-left: 50px;
+  cursor: pointer;
 }
 
 
 #main{
   transition:margin-left 0.5s;
 }
+
 
 @media(max-width:568px) {
   .navbar-nav {
@@ -48,4 +50,8 @@
 
 @media(min-width:568px) {
   /*.open-slide{display:none}*/
+}
+
+#icon{
+  padding-right: 15px;
 }

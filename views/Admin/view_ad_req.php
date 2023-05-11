@@ -4,34 +4,6 @@ if (!isset($_SESSION['uid'])) {
     header('Location: ' . BASE_URL);
 }
 ?>
-<?php
-// $adid = $_REQUEST["adid"];
-
-// $sql1 = "SELECT Sponsor FROM advertisement WHERE $adid=AD_ID";
-// $result1 = mysqli_query($conn, $sql1);
-// if ($result1->num_rows > 0) {
-//     while ($row = $result1->fetch_assoc()) {
-//         $sponsor = $row['Sponsor'];
-//     }
-// }
-// echo ($sponsor);
-// $sql2 = "SELECT Image FROM ad_image WHERE $adid = AD_ID";
-// $result2 = mysqli_query($conn, $sql2);
-// if ($result2->num_rows > 0) {
-//     while ($row = $result2->fetch_assoc()) {
-//         $image = $row['Image'];
-//     }
-// }
-// $sql3 = "SELECT Name FROM sponsor WHERE $sponsor = U_ID";
-// $result3 = mysqli_query($conn, $sql3);
-// if ($result3->num_rows > 0) {
-//     while ($row = $result3->fetch_assoc()) {
-//         $sponsorname = $row['Name'];
-//     }
-// }
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,7 +32,7 @@ if (!isset($_SESSION['uid'])) {
             </div>
             <div id="btn-area">
                 <button class="btn">Reject</button>
-                <button class="btn">Accept</button>
+                <button onclick="window.location.href='<?php echo BASE_URL . 'admin/accept_ad_req/' . $this->ad['AD_ID']; ?>'" class="btn">Accept</button>
             </div>
 
         </div>
@@ -68,6 +40,9 @@ if (!isset($_SESSION['uid'])) {
 
         <br>
     </div>
+    <?php 
+    print_r($this->ad)
+    ?>
 </body>
 
 </html>

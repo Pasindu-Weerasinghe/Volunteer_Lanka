@@ -210,7 +210,7 @@ hr {
   width: 100%;
 }
 
-#request, #complain-btn {
+#request, #complain-btn, #update {
   float: right;
 }
 
@@ -230,4 +230,23 @@ input[type="radio"] {
 
 .main {
   padding: 100px 150px 0 150px;   
+}
+
+#require{
+	color: red;
+	font-size: large;
+}
+
+.image {
+	border-radius: 50%;
+	height: 200px;
+	width: 200px;
+}
+
+.heading {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+	font-size: 25px;
+	font-weight: bold;
 }

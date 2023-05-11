@@ -26,4 +26,11 @@ class AdvertisementModel extends Model
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
+    function accept_ad_req($adid){
+        $query = "UPDATE advertisement SET Status='Accepted' WHERE AD_ID='$adid'";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement;
+    }
+    
 }

@@ -1,10 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['uid'])) {
-    header('Location: ' . BASE_URL);
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,6 +35,8 @@ if (!isset($_SESSION['uid'])) {
             </div>
         </form>
     </div>
+    
+    <?php include 'views/includes/footer.php'; ?>
 </body>
 
 </html>

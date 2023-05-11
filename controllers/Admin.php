@@ -24,13 +24,15 @@ class Admin extends User
         }
         //view compliants in home pagd
         $this->loadModel('Complaints');
-        $this->complaints  = $this->model->getComplaints();
+        $this->complaints  = $this->model->getComplaintDetails();
         foreach($this->complaints as $complaint){
-            $complain_id = $complaint['C_ID'];
-            $complain_about = $complaint['About'];
-            $complain = $complaint['Complain'];
-            $c_uid = $complaint['U_ID'];
+            $this->complain_id = $complaint['C_ID'];
+            $this->complain_about[$complaint['C_ID']] = $complaint['About'];
+            $name = $this->model->getUserDatatoComplain($complaint['U_ID'],$complaint['Role']);
+            $this->complain_userName[$complaint['C_ID']] = $name['Name'];
         }
+        
+
         $this->render('Admin/Home');
     }
     function advertiesment_requests()
@@ -54,18 +56,40 @@ class Admin extends User
     }
     function view_ad_req($adid){
         $this->loadModel('Advertisement');
-        $ad = $this->model->getAdvertisementRequest($adid);
+        $this->ad = $this->model->getAdvertisementRequest($adid);
         $this->image = $this->model->getAdImage($adid)['Image'];
         $this->loadModel('Sponsor');
-        $this->sponsor_name = $this->model->getSponsorbyId($ad['Sponsor'])['Name'];
+        $this->sponsor_name = $this->model->getSponsorbyId($this->ad['Sponsor'])['Name'];
 
 
         $this->render('Admin/view_ad_req');
     }
+    function accept_ad_req($adid){
+        $this->loadModel('Advertisement');
+        $this->ad = $this->model->accept_ad_req($adid);
+        header('Location: '.BASE_URL.'admin');
+
+    }
     function complaints()
     {
-
+        $this->loadModel('Complaints');
+        $this->complaints  = $this->model->getComplaintDetails();
+        foreach($this->complaints as $complaint){
+            $this->complain_id = $complaint['C_ID'];
+            $this->complain_about[$complaint['C_ID']] = $complaint['About'];
+            $this->complain[$complaint['C_ID']] = $complaint['Complain'];
+            $name = $this->model->getUserDatatoComplain($complaint['U_ID'],$complaint['Role']);
+            $this->complain_userName[$complaint['C_ID']] = $name['Name'];
+        }
         $this->render('Admin/complaints');
+    }
+    function view_complaints($cid){
+        $this->loadModel('Complaints');
+        $this->complaint = $this->model->getComplaint($cid);
+        $uid = $this->complaint['U_ID'];
+        $role = $this->model->getUserRolebyId($uid);
+        $this->name = $this->model->getUserDatatoComplain($uid,$role['Role']);
+        $this->render('Admin/view_complaints');
     }
     function create_new_admin_acc($action = null)
     {
@@ -93,10 +117,54 @@ class Admin extends User
     }
     function view_payments()
     {
+        $this->loadModel('Project');
+        $this->paymentDetails=$this->model->getAllProjectfeeDetails();
         $this->render('Admin/view_payments');
+    }
+    function searchPayment()
+    {
+        $searchTerm = $_POST['searchTerm'];
+        $this->loadModel('Project');
+        $paymentDetails=$this->model->searchPayement($searchTerm);
+        $output="";
+        if(count($paymentDetails)){
+            foreach($paymentDetails as $paymentDetail){
+                $output .= '<tr>
+               <td>'.$paymentDetail['Name'].'</td>
+               <td>'.$paymentDetail['Amount'].'</td>
+               <td>'.$paymentDetail['Date'].'</td>
+               <td>'.$paymentDetail['PaymentType'].'</td>
+                </tr>';
+            }
+        }
+        echo $output;
     }
     function delete_user_acc()
     {
-        $this->render('Admin/delete_user_acc');
+            session_start();
+            $uid = $_SESSION['uid'];
+            $this->loadModel('User');
+            $this->userDetails= $this->model->getAllUserDetails($uid);
+            $this->render('Admin/delete_user_acc');
     }
+    function searchUser(){
+        session_start();
+        $uid = $_SESSION['uid'];
+        $searchTerm = $_POST['searchTerm'];
+        $this->loadModel('User');
+        $userDetails= $this->model->searchUser($uid,$searchTerm);
+        $output = "";
+        if(count($userDetails) > 0){
+            foreach($userDetails as $userDetail){
+               $output .= '<tr>
+               <td>'.$userDetail['Name'].'</td>
+               <td>'.ucfirst($userDetail['Role']).'</td>
+               <td>'.ucfirst($userDetail['Status']).'</td>
+                </tr>';
+            } 
+        }
+
+        echo $output;
+    }
+    
 }

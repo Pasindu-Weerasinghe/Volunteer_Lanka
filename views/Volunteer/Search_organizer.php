@@ -1,15 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['uid'])) {
-    header('Location: ' . BASE_URL);
-}
-
-// $sql = "SELECT * FROM organizer";
-// $result = mysqli_query($conn, $sql);
-// $organizers = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,7 +27,7 @@ if (!isset($_SESSION['uid'])) {
             </tr>
             <?php foreach ($this->organizers as $organizer) { ?>
                 <tr>
-                    <td><?php echo ($organizer["Name"]); ?></td>
+                    <td><a class="profile" href="<?php echo BASE_URL ?>volunteer/view_organizer/<?php echo $organizer['U_ID'] ?>"><?php echo ($organizer["Name"]); ?></a></td>
                     <td><?php echo ($organizer["Branch"]); ?></td>
                     <td><?php echo ($organizer["Contact"]); ?></td>
                 </tr>

@@ -71,6 +71,13 @@ ul li:hover {
 	transition: 00.3s;
 }
 
+.profile-wrapper .abc{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+}
+ 
 #logout {
 	background-color: #84b464;
 	border-radius: 4px;
@@ -87,6 +94,47 @@ ul li:hover {
 	font-size: 18px;
 }
 
+.profile-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: white;
+    border: 2px solid #7d7d7d;
+    border-radius: 3px;
+    padding: 5px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: none;
+	width: 160px;
+}
+
+.profile-dropdown a {
+    display: block;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #333;
+
+}
+
+.profile-dropdown a:hover {
+    background-color: #dbdbdb;
+}
+
+  
 @media only screen and (max-width: 750px) {
 	header nav {
 		display: none;
@@ -99,6 +147,5 @@ ul li:hover {
 	.main {
 		padding: 100px 10px 0px 10px;
 	}
-
 
 }

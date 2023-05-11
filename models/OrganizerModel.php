@@ -65,15 +65,7 @@ class OrganizerModel extends Model
         }
     }
 
-    function getOrganizerByID($uid)
-    {
-        $query = "SELECT organizer.U_ID, organizer.Name, organizer.No_of_members, organizer.Branch, organizer.Address,
-                    organizer.Contact, user.Email, user.Photo
-                    FROM organizer
-                    INNER JOIN user ON organizer.U_ID = user.U_ID
-                    WHERE organizer.U_ID = :uid";
-        $statement = $this->db->prepare($query);
-        $statement->bindParam(':uid', $uid);
+    
         if ($statement->execute()) {
             return $statement->fetch(PDO::FETCH_ASSOC);
         } else {
@@ -141,5 +133,27 @@ class OrganizerModel extends Model
         } else {
             return null;
         }
+    }
+
+  function getOrganizerByID($uid)
+    {
+        $query = "SELECT organizer.U_ID, organizer.Name, organizer.No_of_members, organizer.Branch, organizer.Address,
+                    organizer.Contact, user.Email, user.Photo
+                    FROM organizer
+                    INNER JOIN user ON organizer.U_ID = user.U_ID
+                    WHERE organizer.U_ID = :uid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':uid', $uid);
+        $statement->execute();
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
+    function getOrganizers($key)
+    {
+        $query = "SELECT U_ID FROM organizer WHERE Name LIKE :key";
+        $statement = $this->db->prepare($query);
+        $statement->bindValue(':key', "%$key%", PDO::PARAM_STR);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 }

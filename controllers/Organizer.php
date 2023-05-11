@@ -198,7 +198,7 @@ class Organizer extends User
         // send notification to the organizer
         $this->loadModel('Organizer');
         $collaborator = $this->model->getOrganizer($uid);
-        $htis->loadModel('Project');
+        $this->loadModel('Project');
         $project = $this->model->getProject($pid);
         $organizer_id = $project['U_ID'];
 

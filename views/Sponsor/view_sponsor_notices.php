@@ -1,9 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['uid'])) {
-    header('Location:' . BASE_URL);
-}
-?>
 
 <head>
     <meta charset="UTF-8">
@@ -15,7 +9,7 @@ if (!isset($_SESSION['uid'])) {
 <body>
     <?php include 'views/includes/navbar_log.php'; ?>
     <div class="main" id="main">
-        <h2>Beach Cleaning</h2><br>
+        <h2><?php echo $this->projects['Name'] ?></h2><br>
 
         <div class="container">
             <div>
@@ -39,66 +33,148 @@ if (!isset($_SESSION['uid'])) {
                 <table class="table1">
                     <tr>
                         <td>Date</td>
-                        <td>: 11/10/2022</td>
+                        <td>: <?php echo $this->projects['Date'] ?></td>
                     </tr>
                     <tr>
                         <td>Time</td>
-                        <td>: 10.00 AM</td>
+                        <td>: <?php echo $this->projects['Time'] ?></td>
                     </tr>
                     <tr>
                         <td>Venue</td>
-                        <td>: Galle</td>
+                        <td>: <?php echo $this->projects['Venue'] ?></td>
                     </tr>
                     <tr>
                         <td>Organizer</td>
-                        <td>: Rotaract Club UOM</td>
+                        <td>: <?php echo $this->organizer['Name'] ?> </td>
                     </tr>
                     <tr>
                         <td>Number of Volunteers</td>
-                        <td>: 5</td>
+                        <td>: <?php echo $this->projects['No_of_volunteers'] ?></td>
                     </tr>
                     <tr>
                         <td>Description</td>
-                        <td>: Beach cleaning campaign is organized at Unawatuna beach</td><br>
+                        <td>: <?php echo $this->projects['Description'] ?></td><br>
                     </tr>
                 </table>
             </div>
 
-            <p class="para">Select sponsor package below</p><br><br>
+            <p class="para">Sponsor Packages</p><br>
 
-            <div class="silver">
-                <input type="radio" name="individual">
-                <strong>Silver</strong><br>
-                <strong>Price: 2000.00</strong>
-            </div>
+            <form action="<?php echo BASE_URL; ?>Sponsor/view_sponsor_notice/<?php echo $this->pid ?>/confirm" method="post">
+                <div>
+                    <div class="package" id="silverPackage1">
+                        <label name="package1" value="silver">
+                            <strong>Silver Package<br>More than Rs 5000</strong><br>
+                        </label>
+                    </div>
 
-            <div class="silver">
-                <input type="radio" name="individual">
-                <strong>Gold</strong><br>
-                <strong>Price: 1000.00</strong>
-            </div>
+                    <div class="package" id="goldPackage2">
+                        <label name="package2" value="gold">
+                            <input type="hidden" name="goldPrice" value="<?php echo $this->goldPrice; ?>">
+                            <strong>Gold Package <br>More than Rs 7500</strong><br>
+                        </label>
+                    </div>
 
-            <div class="silver">
-                <input type="radio" name="individual">
-                <strong>Platinum</strong><br>
-                <strong>Price: 500.00</strong>
-            </div><br><br>
+                    <div class="package" id="platinumPackage3">
+                        <label name="package3" value="platinum">
+                            <strong>Platinum Package<br>More than Rs 10000</strong><br>
+                        </label>
+                    </div>
+                </div>
+                <tr>
+                    <td>
+                        <p class="para">Select Your Sponsor Package Amount
+                    </td>
+                    <td>:
+                        <input class="input-container" type="number" id="selectAmount" name="selectAmount" placeholder="Rs 0.00">
+                    </td>
+                </tr>
 
-            <!-- <div>
-                <br><br>
-                <button class="btn1"><a href="#">Cancel</a></button>
-                <button class="btn2"><a href="#">Confirm</a></button>
 
-            </div> -->
+                <div><br>
+                    <div class="a12">
+                        <div class="sPackage" id="silverPackage">
+                            <label name="package1" value="silver">
+                                <strong>Your Package is Silver </strong><br>
+                                <script>
+                                    document.getElementById("silverPackage").style.display = "none";
+                                </script>
+                            </label>
+                        </div>
 
-            <div class="btn-area">
+                        <div class="sPackage" id="goldPackage">
+                            <label name="package2" value="gold">
+                                <script>
+                                    document.getElementById("goldPackage").style.display = "none";
+                                </script>
+                                <strong>Your Package is Gold</strong><br>
+                            </label>
+                        </div>
+
+                        <div class="sPackage" id="platinumPackage">
+                            <label name="package3" value="platinum">
+                                <script>
+                                    document.getElementById("platinumPackage").style.display = "none";
+                                </script>
+                                <strong>Your Package is Platinum</strong><br>
+                            </label>
+                        </div>
+
+                        <div class="sPackage" id="otherPackage">
+                            <label name="package4" value="other">
+                                <script>
+                                    document.getElementById("otherPackage").style.display = "none";
+                                </script>
+                                <strong>Your Package is Other</strong><br>
+                            </label>
+                        </div>
+                    </div>
+
+                </div><br><br>
+
+                <div class="btn-area1">
+                    <button type="submit" name="confirm" class="btn2">Confirm</button>
+                </div>
+            </form>
+
+            <script>
+                function showPackage() {
+                    var amount = parseInt(document.getElementById("selectAmount").value);
+                    if (amount >= 10000) {
+                        document.getElementById("platinumPackage").style.display = "block";
+                        document.getElementById("goldPackage").style.display = "none";
+                        document.getElementById("silverPackage").style.display = "none";
+                        document.getElementById("otherPackage").style.display = "none";
+                    } else if (amount >= 7500) {
+                        document.getElementById("platinumPackage").style.display = "none";
+                        document.getElementById("goldPackage").style.display = "block";
+                        document.getElementById("silverPackage").style.display = "none";
+                        document.getElementById("otherPackage").style.display = "none";
+                    } else if (amount >= 5000) {
+                        document.getElementById("platinumPackage").style.display = "none";
+                        document.getElementById("goldPackage").style.display = "none";
+                        document.getElementById("silverPackage").style.display = "block";
+                        document.getElementById("otherPackage").style.display = "none";
+                    } else if (amount < 5000) {
+                        document.getElementById("platinumPackage").style.display = "none";
+                        document.getElementById("goldPackage").style.display = "none";
+                        document.getElementById("silverPackage").style.display = "none";
+                        document.getElementById("otherPackage").style.display = "block";
+
+                    }
+                }
+
+                // Call the function when the input field value changes
+                document.getElementById("selectAmount").addEventListener("input", showPackage);
+            </script>
+
+
+            <div class="btn-area2">
                 <button onclick="history.back()" class="btn1">Cancel</button>
-                <button class="btn2"><a href="#">Confirm</a></button>
             </div>
-
         </div>
     </div>
-
+    <?php include 'views/includes/footer.php'; ?>
 
 </body>
 

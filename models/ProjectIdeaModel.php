@@ -86,9 +86,7 @@ class ProjectIdeaModel extends Model {
         $statement = $this->db->prepare($query);
         $statement->bindParam(':piid', $piid[0]);
         $statement->bindParam(':image', $image);
-        if($statement->execute()){
-            header('Location: ' . BASE_URL . "volunteer/New_ideas");
-        }
+        return $statement->execute();
     }
 
     function deleteProjectIdea($piid)
@@ -99,9 +97,18 @@ class ProjectIdeaModel extends Model {
         return $statement->execute();
     }
 
-    function getPiId($uid, $location)
+    function getPiId($uid)
     {
-        $query = "SELECT PI_ID FROM pr_ideas WHERE U_ID = :uid && Location = :location";
+        $query = "SELECT PI_ID FROM pr_ideas WHERE U_ID = :uid ORDER BY PI_ID DESC LIMIT 1";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':uid', $uid);
+        $statement->execute();
+        return $statement->fetch();
+    }
+
+    function getMyIdeas($uid)
+    {
+        $query = "SELECT COUNT(PI_ID) AS Count FROM pr_ideas WHERE U_ID = :uid";
         $statement = $this->db->prepare($query);
         $statement->bindParam(':uid', $uid);
         $statement->execute();

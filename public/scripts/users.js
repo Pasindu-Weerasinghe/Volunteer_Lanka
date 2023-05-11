@@ -24,7 +24,6 @@ searchBar.onkeyup = () => {
             if (xhr.status === 200) {
                 let data = xhr.response;
                 usersList.innerHTML = data;
-                //console.log(data);
             }
         }
     }

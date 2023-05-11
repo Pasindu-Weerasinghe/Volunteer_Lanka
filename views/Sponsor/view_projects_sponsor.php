@@ -45,10 +45,12 @@ if (!isset($_SESSION['uid'])) {
             </div>
             <div class="btn-area">
                 <button onclick="history.back()" class="btn">Back</button>
+                <a href=" <?php echo BASE_URL?> sponsor/publish_advertisement"> <button class="btn" id="publish-btn">  Publish Advertiesment</button>
             </div>
 
         </div>
     </div>
+    <?php include 'views/includes/footer.php'; ?>
 </body>
 
 </html>

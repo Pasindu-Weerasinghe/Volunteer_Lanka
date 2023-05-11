@@ -22,7 +22,7 @@
     <a href="#" class="btn-close" onclick="closeSideMenu()">&times;</a>
     <a href="<?php echo BASE_URL; ?>sponsor">Home</a>
     <a href="<?php echo BASE_URL; ?>sponsor/sponsored_projects">My Sponsored Projects</a>
-    <a href="<?php echo BASE_URL; ?>sponsor/publish_advertisement">Publish Advertisment</a>
+    <!-- <a href="<?php echo BASE_URL; ?>sponsor/publish_advertisement">Publish Advertisment</a> -->
     <a href="<?php echo BASE_URL; ?>sponsor/calendar">Calendar</a>
     <a href="<?php echo BASE_URL; ?>sponsor/profile">My Profile</a>
     <a href="<?php echo BASE_URL; ?>sponsor/complain">Complain</a>

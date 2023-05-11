@@ -1,5 +1,8 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    // if session is not started, start the session
+    session_start();
+}
 if (isset($_SESSION['uid'])) {
   header('Location: ' . BASE_URL . $_SESSION['role']);
 }
@@ -19,7 +22,7 @@ if (isset($_SESSION['uid'])) {
 <body>
   <?php include 'views/includes/navbar.php'; ?>
 
-  <div class="back-image" style="background-image: url(public/images/index/bg-img-login.png);">
+  <div class="back-image" style="background-image: url(<?php echo BASE_URL; ?>public/images/index/bg-img-login.png);">
 
   </div>
   <div class="container">
@@ -58,10 +61,10 @@ if (isset($_SESSION['uid'])) {
 
   <table>
     <tr>
-      <th><img class="brands" src="<?php echo BASE_URL ?>public/images/index/rotaract.png"></th>
-      <th><img class="brands" src="<?php echo BASE_URL ?>public/images/index/leo.png"></th>
-      <th><img class="brands" src="<?php echo BASE_URL ?>public/images/index/aiesec.jpg"></th>
-      <th><img class="brands" src="<?php echo BASE_URL ?>public/images/index/lions.png"></th>
+      <th><img class="brands" src="<?php echo BASE_URL ?>public/images/index/rotaract.png" alt=""></th>
+      <th><img class="brands" src="<?php echo BASE_URL ?>public/images/index/leo.png" alt=""></th>
+      <th><img class="brands" src="<?php echo BASE_URL ?>public/images/index/aiesec.jpg" alt=""></th>
+      <th><img class="brands" src="<?php echo BASE_URL ?>public/images/index/lions.png" alt=""></th>
     </tr>
   </table>
   <div class="container2">
@@ -92,6 +95,7 @@ if (isset($_SESSION['uid'])) {
   <br><br><br>
 
 </body>
+<?php include 'views/includes/footer.php'; ?>
 
 <script src="<?php echo BASE_URL ?>public/scripts/index.js"></script>
 

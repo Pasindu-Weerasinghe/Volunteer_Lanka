@@ -1,10 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['uid'])) {
-    header('Location: ' . BASE_URL);
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,146 +6,47 @@ if (!isset($_SESSION['uid'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>public/styles/calendar.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <script src="<?php echo BASE_URL; ?>public/scripts/calendar.js" defer></script>
     <title>Calendar</title>
 </head>
 
 <body>
     <?php include 'views/includes/navbar_log.php'; ?>
 
-    <div id="main" class="main">
+    <div class="main" id="main">
+    <h1 class="text-center">Calendar</h1><br /><br />
         <div class="container">
-            <div class="calendar-month">
-                <section class="calendar-month-header">
-                    <div id="selected-month" class="calendar-month-header-selected-month">
-                        February 2023
-                    </div>
-                </section>
-
-                <ol id="days-of-week" class="day-of-week">
+            <div class="calendar">
+                <div class="icons">
+                    <span id="prev" class="material-symbols-rounded text-center">chevron_left</span>
+                    <p class="current-date" id="current-date"></p>
+                    <span id="next" class="material-symbols-rounded text-center">chevron_right</span>
+                </div>
+                <ul id="days-of-week" class="day-of-week">
+                    <li>Sun</li>
                     <li>Mon</li>
                     <li>Tue</li>
                     <li>Wed</li>
                     <li>Thu</li>
                     <li>Fri</li>
                     <li>Sat</li>
-                    <li>Sun</li>
-                </ol>
+                </ul>
+                    <ul class="days" id="days"></ul>
+            </div>
 
-                <ol id="calendar-days" class="days-grid">
-                    <li class="calendar-day" style="background-color: #CFD7E3;">
-                        <span></span>
-                    </li>
-                    <li class="calendar-day" style="background-color: #CFD7E3;">
-                        <span></span>
-                    </li>
-                    <li class="calendar-day" style="background-color: #CFD7E3;">
-                        <span></span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>1</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>2</span><br>
-                    </li>
-                    <li class="calendar-day">
-                        <span>3</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>4</span>
-                    </li>
-
-                    <li class="calendar-day">
-                        <span>5</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>6</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>7</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>8</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>9</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>10</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>11</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>12</span><br><br>
-                        <a href="#">
-                            <center><b style="color: red;">Tree planting</b></center>
-                        </a>
-                    </li>
-                    <li class="calendar-day">
-                        <span>13</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>14</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>15</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>16</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>17</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>18</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>19</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>20</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>21</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>22</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>23</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>24</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>25</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>26</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>27</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>28</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>29</span>
-                    </li>
-                    <li class="calendar-day">
-                        <span>30</span><br><br>
-                        <a href="#">
-                            <center><b style="color: red;">Beach cleaning</b></center>
-                        </a>
-                    </li>
-                    <li class="calendar-day">
-                        <span>31</span>
-                    </li>
-                </ol>
+            <div class="card">
+                <div class="cards_heading">
+                    <div class="date" id="date"></div>
+                    <div class="date" id="test"></div>
+                    <div class="title">Events</div>
+                </div>
+                
+                <div class="cards_content"></div>
             </div>
         </div>
-
     </div>
+    <input type="hidden" name="role" value="<?php echo $_SESSION['role']?>">
 </body>
 
 </html>

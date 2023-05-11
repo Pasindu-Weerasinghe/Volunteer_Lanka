@@ -36,6 +36,7 @@ if (!isset($_SESSION['uid'])) {
             <?php } ?>
         </section>
     </div>
+    <?php include 'views/includes/footer.php'; ?>
 </body>
 
 </html>

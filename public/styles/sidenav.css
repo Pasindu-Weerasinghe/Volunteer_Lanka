@@ -32,15 +32,13 @@
   right: 22px;
   font-size: 36px;
   margin-left: 50px;
+  cursor: pointer;
 }
 
 
-/* #main{
+#main{
   transition:margin-left 0.5s;
-  padding:20px;
-  overflow:hidden;
-  width:100%;
-} */
+} 
 
 @media(max-width:568px) {
   .navbar-nav {

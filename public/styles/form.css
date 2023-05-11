@@ -145,18 +145,18 @@
 	margin-bottom: 15px;
 }
 
-/* body{
-    background-color: white;
-} */
-
 form {
-    border: 2px solid #f1f1f1;
+    /* border: 2px solid #f1f1f1; */
     width: 600px;   
     margin: auto;  
     margin-top: 20px;
-    padding: 70px;  
+    /* padding: 70px;   */
     background: #96c7d6;  
     border-radius: 15px ;
+}
+
+#form2 {
+	padding: 70px;
 }
 
 select {
@@ -196,7 +196,7 @@ hr {
   width: 100%;
 }
 
-#request, #complain-btn {
+#request, #complain-btn, #update {
   float: right;
 }
 
@@ -216,4 +216,23 @@ input[type="radio"] {
 
 .main {
   padding: 100px 150px 0 150px;   
+}
+
+#require{
+	color: red;
+	font-size: large;
+}
+
+.image {
+	border-radius: 50%;
+	height: 200px;
+	width: 200px;
+}
+
+.heading {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+	font-size: 25px;
+	font-weight: bold;
 }

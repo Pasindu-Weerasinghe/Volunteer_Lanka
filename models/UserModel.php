@@ -10,15 +10,19 @@ class UserModel extends Model
 
     function setUser($email, $hash_psw, $role)
     {
-        $query = "INSERT INTO user (Email, Password, Role, Status, Restricted) VALUES ('$email', '$hash_psw', '$role', 'active', '0')";
+        $query = "INSERT INTO user (Email, Password, Role, Status, Restricted) VALUES (:email, :hash_psw, :role, 'active', '0')";
         $statement = $this->db->prepare($query);
+        $statement->bindParam(':email', $email);
+        $statement->bindParam(':hash_psw', $hash_psw);
+        $statement->bindParam(':role', $role);
         return $statement->execute();
     }
 
     function getUserData($email)
     {
-        $query = "SELECT * FROM user WHERE Email='$email' LIMIT 1";
+        $query = "SELECT * FROM user WHERE Email = :email LIMIT 1";
         $statement = $this->db->prepare($query);
+        $statement->bindParam(':email', $email);
 
         if ($statement->execute()) {
             // if query successful
@@ -44,8 +48,9 @@ class UserModel extends Model
     
     function getUserId($email)
     {
-        $query = "SELECT U_ID FROM user WHERE Email = '$email' LIMIT 1";
+        $query = "SELECT U_ID FROM user WHERE Email = :email LIMIT 1";
         $statement = $this->db->prepare($query);
+        $statement->bindParam(':email', $email);
 
         if ($statement->execute()) {
             // if query successful
@@ -59,8 +64,10 @@ class UserModel extends Model
 
     function checkEmailExist($email)
     {
-        $query = "SELECT Email FROM user WHERE Email='$email' LIMIT 1";
+        $query = "SELECT Email FROM user WHERE Email = :email LIMIT 1";
         $statement = $this->db->prepare($query);
+        $statement->bindParam(':email', $email);
+
         if ($statement->execute()) {
             // if query successful
             if ($statement->rowCount()) {
@@ -77,31 +84,62 @@ class UserModel extends Model
     }
 
 
-    function changePassword($email, $password) {
-        $query = "UPDATE user SET `Password` = '$password' WHERE Email = '$email'";
+    function changePassword($email, $password)
+    {
+        $query = "UPDATE user SET `Password` = :password WHERE Email = :email";
         $statement = $this->db->prepare($query);
+        $statement->bindParam(':email', $email);
+        $statement->bindParam(':password', $password);
         return $statement->execute();
     }
 
     function setComplain($about, $description, $uid)
     {
-        $query = "INSERT INTO complaints (About, Complain, U_ID) VALUES ('$about', '$description', '$uid')";
+        $query = "INSERT INTO complaints (About, Complain, U_ID) VALUES (:about, :description, :uid)";
         $statement = $this->db->prepare($query);
+        $statement->bindParam(':about', $about);
+        $statement->bindParam(':description', $description);
+        $statement->bindParam(':uid', $uid);
         return $statement->execute();
     }
 
     function getCurrentPsw($uid)
     {
-        $query = "SELECT Password FROM user WHERE U_ID = '$uid'";
+        $query = "SELECT Password FROM user WHERE U_ID = :uid";
         $statement = $this->db->prepare($query);
+        $statement->bindParam(':uid', $uid);
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
-    function changeUserPsw($uid,$password)
+
+    function changeUserPsw($uid, $password)
     {
-        $query = "UPDATE user SET Password = '$password' WHERE U_ID = '$uid'";
+        $query = "UPDATE user SET Password = '$password' WHERE U_ID = :uid";
         $statement = $this->db->prepare($query);
+        $statement->bindParam(':uid', $uid);
         return $statement->execute();
+    }
+
+    function updateUserProfile($name, $contact, $address, $uid)
+    {
+        // Update the user profile in the database
+        $query = "UPDATE sponsor SET Name=:name, Contact=:contact, Address=:address WHERE U_ID = :uid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':name', $name);
+        $statement->bindParam(':contact', $contact);
+        $statement->bindParam(':address', $address);
+        $statement->bindParam(':uid', $uid);
+        return $statement->execute();
+        }
+
+
+    function getProfilePic($uid)
+    {
+        $query = "SELECT Photo FROM user WHERE U_ID = :uid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':uid', $uid);
+        $statement->execute();
+        return $statement->fetch(PDO::FETCH_ASSOC);   
     }
     function getAllUserDetails($uid){
         $query = "SELECT organizer.U_ID,organizer.Name, user.Role, user.Status FROM organizer INNER JOIN user 

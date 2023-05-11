@@ -1,10 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['uid'])) {
-    header('Location: ' . BASE_URL . 'index/login');
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,40 +10,40 @@ if (!isset($_SESSION['uid'])) {
 </head>
 
 <body>
-    <!-- navigation bar -->
-    <?php include 'views/includes/navbar_log.php'; ?>
+<!-- navigation bar -->
+<?php include 'views/includes/navbar_log.php'; ?>
 
-    <div class="main" id="main">
-        <div class="wrapper">
-            <h2 class="title">Create a Form for Volunteers</h2>
-            <form class="form" action="<?php echo BASE_URL; ?>organizer/create_project/create" method="post">
+<div class="main" id="main">
+    <div class="wrapper">
+        <h2 class="title">Create a Form for Volunteers</h2>
+        <form class="form" action="<?php echo BASE_URL; ?>organizer/create_project/create" method="post">
 
-                <p>The form you create here will be displayed to volunteers when joining
-                    select necessary fields you would like to have in your form.</p>
-                <div class="row">
-                    <input type="checkbox" name="email" class="input-chkbox">
-                    <label>E-mail address</label>
-                </div>
-                <div class="row">
-                    <input type="checkbox" name="contact-no" class="input-chkbox">
-                    <label>Contact number</label>
-                </div>
-                <div class="row">
-                    <input type="checkbox" name="meal-pref" class="input-chkbox">
-                    <label>Meal preference</label>
-                </div>
-                <div class="row">
-                    <input type="checkbox" name="prior-participations" class="input-chkbox">
-                    <label>Prior partcipation in volunteer projects</label>
-                </div>
+            <p>The form you create here will be displayed to volunteers when joining
+                select necessary fields you would like to have in your form.</p>
+            <div class="row">
+                <input type="checkbox" name="email" class="input-chkbox">
+                <label>E-mail address</label>
+            </div>
+            <div class="row">
+                <input type="checkbox" name="contact-no" class="input-chkbox">
+                <label>Contact number</label>
+            </div>
+            <div class="row">
+                <input type="checkbox" name="meal-pref" class="input-chkbox">
+                <label>Meal preference</label>
+            </div>
+            <div class="row">
+                <input type="checkbox" name="prior-participations" class="input-chkbox">
+                <label>Prior partcipation in volunteer projects</label>
+            </div>
 
-                <div class="btn-area">
-                    <button onclick="history.back()" class="btn">Back</button>
-                    <button type="submit" name="create" class="btn">Create</button>
-                </div>
-            </form>
-        </div>
+            <div class="btn-area">
+                <button onclick="history.back()" class="btn">Back</button>
+                <button type="submit" name="create" class="btn">Create</button>
+            </div>
+        </form>
     </div>
+</div>
 
 </body>
 

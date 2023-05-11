@@ -22,7 +22,7 @@ if (!isset($_SESSION['uid'])) {
 
         <form method="POST" action="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePsw">
         <strong>
-                <h2>Chnage Profile Password</h2>
+                <h2>Change Profile Password</h2>
             </strong><hr><br>
             <p>Existing password<br />
                 <input type="password" class="box" name="current" required />
@@ -34,8 +34,8 @@ if (!isset($_SESSION['uid'])) {
                 <input type="password" name="confirm" required />
             </p>
            
-            <button><a href="<?php echo BASE_URL ?> Sponsor/Profile" class="same">Back</a></button>
-            <button name="submit" type="submit" >Save Password</button>
+            <button onclick="history.back()"><a class="same">Back</a></button>
+            <button name="submit" type="submit" >Confirm</button>
             <?php
             if (isset($this->error)) {
                 echo '<label class="error">'.$this->error.'</label>';
@@ -45,5 +45,5 @@ if (!isset($_SESSION['uid'])) {
     </div>
     
 </body>
-
+<?php include 'views/includes/footer.php'; ?>
 </html>

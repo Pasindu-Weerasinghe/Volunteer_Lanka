@@ -41,7 +41,7 @@ if (!isset($_SESSION['uid'])) {
 
         <h2>Complaints</h2><br><br>
         <?php
-        foreach ($this->complaints as $complaint){
+        foreach ($this->complaints as $complaint) {
         ?>
             <div id="c-box">
                 <div id="c-box-item" >

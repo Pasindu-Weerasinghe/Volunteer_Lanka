@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 ?>
 
@@ -27,7 +27,7 @@ session_start();
 
                 <label for="contact"><b>Contact Number</b></label>
                 <label id="require"><strong>*</strong></label>
-                <input type="text" name="contact" required>
+                <input type="text" name="contact" minlength="10" maxlength="10" required>
 
                 <label for="address"><b>Address</b></label>
                 <label id="require"><strong>*</strong></label>
@@ -35,15 +35,15 @@ session_start();
 
                 <label><b>Select your interested areas for volunteering</b></label><br /><br />
                 <div class="checkbox_container ">
-                    <input type="checkbox" name="area[]" value="Beach cleaning">
+                    <input type="checkbox" name="area[]" value="Beach">
                     <label>Beach cleaning</label><br />
-                    <input type="checkbox" name="area[]" value="Providing facilities to rural areas">
+                    <input type="checkbox" name="area[]" value="Donation">
                     <label>Providing facilities to rural areas</label><br />
-                    <input type="checkbox" name="area[]" value="Tree planting">
+                    <input type="checkbox" name="area[]" value="Environment">
                     <label>Tree planting</label> <br />
-                    <input type="checkbox" name="area[]" value="Helping child/adult orphanages">
+                    <input type="checkbox" name="area[]" value="Orphan">
                     <label>Helping child/adult orphanages</label><br />
-                    <input type="checkbox" name="area[]" value="Animal rescuing/rehabilitation">
+                    <input type="checkbox" name="area[]" value="Animal">
                     <label>Animal rescuing/rehabilitation</label><br /><br />
                 </div>
 
@@ -66,7 +66,7 @@ session_start();
                 <label for="area1">I have read and understand the <a href="#">terms and conditions</a> and will add here to them</label><br /><br />
 
 
-                <div class="buttons">
+                <div class="clearfix">
                     <button class="cancel"><b>Cancel</b></button>
                     <button name="submit" class="next"><b>Submit</b></button>
                 </div>

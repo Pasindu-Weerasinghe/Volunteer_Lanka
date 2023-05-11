@@ -80,6 +80,6 @@ include 'Navbar/navbar_log.php';
     <button class="btn2"><a href="#">Join</a></button>
 
 </div>
-
+<?php include 'views/includes/footer.php'; ?>
 </body>
 </html>

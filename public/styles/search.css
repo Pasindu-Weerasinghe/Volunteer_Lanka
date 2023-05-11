@@ -71,6 +71,11 @@ th {
     color: black;
 }
 
+.profile{
+    cursor: pointer;
+    text-decoration: none;
+}
+
 .main {
     padding: 100px 150px 0 150px;
 }

@@ -1,0 +1,79 @@
+body{
+    background-color: white;
+}
+
+button:hover {
+  opacity:1;
+}
+
+.new {
+    float:right;
+    background-color: #6aa438;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: auto;
+    opacity: 0.9;
+    padding: 15px;
+}
+
+.delete {
+    background-color: #6aa438;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.container-body {
+  padding: 0 150px 0 150px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2;}
+tr:nth-child(odd){background-color: #e0e0f0;}
+
+
+tr:nth-child(even):hover {background-color: #ddd;}
+tr:nth-child(odd):hover {background-color: rgb(207, 203, 203);}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #84b464;
+  color: black;
+}
+
+#tableImage {
+  width: 200px;
+  position: relative;
+}
+
+#image{
+  width: 600px;
+}
+
+#delete {
+  text-align: center;
+}
+
+.main {
+  padding: 100px 150px 0 150px;   
+}

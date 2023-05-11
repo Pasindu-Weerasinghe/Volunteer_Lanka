@@ -1,0 +1,101 @@
+.wrapper .form .row .td {
+    display: flex;
+    width: 150px;
+}
+
+.wrapper .form .row .td input {
+    margin: 0 10px;
+    width: 12px;
+}
+
+.wrapper .form .notice {
+    background-color: white;
+    font-size: 20px;
+    text-align: center;
+    color: #888888;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+#radio-label {
+    width: 100%;
+}
+
+.wrapper .form .input {
+    width: 100%;
+    outline: none;
+    border: 2px solid rgb(169, 216, 250);
+    border-radius: 10px;
+    background: white;
+    font-size: 15px;
+    padding: 8px 10px;
+}
+
+.wrapper .form .input-number {
+    text-align: center;
+}
+
+.wrapper .form .input:focus {
+    box-shadow: 0 0 0 3px rgb(169, 216, 250);
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.wrapper .form .textarea {
+    resize: none;
+}
+
+.wrapper .form .input-chkbox {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.btn-area {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.btn {
+    color: white;
+    background-color: #84b464;
+    font-weight: bold;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    width: 120px;
+    height: 50px;
+    text-align: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0.88;
+}
+
+.btn:hover {
+    opacity: 1;
+}
+
+.navbarless {
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.navbarless .wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.navbarless .wrapper .form .row {
+    margin-bottom: 15px;
+    display: grid;
+    align-items: center;
+}
+
+.navbarless .wrapper .form .row label {
+    margin-bottom: 15px;
+}

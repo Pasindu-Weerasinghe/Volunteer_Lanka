@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Lobster&family=Open+Sans:wght@300&family=Poppins:ital,wght@0,100;0,200;0,400;1,100&display=swap");
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: url("../images/bg-img2.png") fixed center;
+	background-image: url("../images/bg-img2.png");
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: center;
+}
+
+h1 {
+	/* color: white; */
+	text-align: center;
+	padding: 5px;
+}
+
+/* Bordered form */
+form {
+	/* color: white; */
+	width: 400px;
+	margin: auto;
+	margin-top: 20px;
+	padding: 30px 50px;
+	background: rgba(255, 255, 255, 0.75);
+	backdrop-filter: blur(16px) saturate(180%);
+	border-radius: 20px;
+	position: absolute;
+	top: 53%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+label {
+	padding-top: 30px;
+}
+
+/* Full-width inputs */
+input[type="email"],
+input[type="password"] {
+	width: 100%;
+	padding: 10px;
+	margin: 5px 0 22px 0;
+	display: inline-block;
+	border: 2px solid rgb(169, 216, 250);
+	border-radius: 10px;
+	background: white;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+	box-shadow: 0 0 0 3px rgb(169, 216, 250);
+	outline: none;
+	transition: all 0.2s ease;
+}
+
+/* Set a style for all buttons */
+#login-btn {
+	background-color: #6aa438;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	width: 100%;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+/* Add a hover effect for buttons */
+#login-btn:hover {
+	opacity: 0.8;
+}
+
+/* Add padding to containers */
+.container {
+	padding: 16px;
+}
+
+/* The "Forgot password" text */
+span.psw {
+	float: right;
+}
+
+.signup {
+	text-align: center;
+}
+
+#error {
+	color: white;
+	background: rgb(201, 61, 61);
+	padding: 10px;
+	border-radius: 10px;
+	text-align: center;
+}

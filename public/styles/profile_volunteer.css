@@ -1,0 +1,255 @@
+.main{
+	padding: 100px 150px 0px 150px;
+}
+
+.sub2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 50px;
+}
+
+.sub3 {
+    font-size: 25px;
+    margin-left: 110px;
+}
+
+.top-container{
+    margin-top: 20px;
+    display: flex;
+    border: none;
+    border-radius: 10px;
+    background-color:#96c7d6;
+	width: 70%;
+	height: auto;
+	margin: auto;
+}
+  
+/* Create two equal columns that sits next to each other */
+.column1 {
+    flex: 40%;
+    padding: 20px;
+    height: 500px; 
+    /* border: 1px solid black; */
+}
+
+.column2 {
+    flex: 60%;
+    padding: 20px;
+    height: 500px; 
+    /* border: 1px solid black; */
+}
+
+.image {
+    margin-left: 50px;
+    height: 240px;
+    width: 240px; 
+    border-radius: 50%;
+}
+
+.badge {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    margin-left: 130px;
+}
+
+.btnpw {
+    border-radius: 5px;
+    background-color: #84b464;
+    border: none;
+    font-size: medium;
+    width: auto;
+    padding: 10px;
+    margin: 0px 10px 0px 10px;
+    float: right;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+}
+
+.top-td {
+	padding: 14px;
+	font-size: 14pt;
+	font-weight: bolder;
+}
+
+.horizontal {
+    display: flex;
+    margin-top: 20px;
+}
+
+.cont1 {
+    width: 50%;
+    margin: 20px;
+    background-color: #96c7d6;
+    height: auto;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 20px;
+}
+.cont2 {
+    width: 50%;
+    margin: 20px;
+    background-color: #96c7d6;
+}
+
+.head {
+    font-weight: bold;
+    font-size: 25px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.more {
+    background-color: #84b464;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    border-radius: 20px;
+    padding: 10px 0px 10px 130px;
+    font-weight: bold;
+}
+
+.white-color {
+    color: white;
+}
+
+.bronze-color {
+    color: #CD7F32;
+}
+
+.silver-color {
+    color: silver;
+}
+
+.gold-color {
+    color: gold;
+}
+
+.platinum-color {
+    color: #be8616;
+}
+
+.details {
+   
+}
+
+
+
+
+
+
+
+
+
+/* below here are css for the blog */
+
+.top-td {
+	padding: 14px;
+	font-size: 14pt;
+	font-weight: bolder;
+}
+
+.post-container{
+    border: none;
+    border-radius: 10px;
+    background-color:#96c7d6;
+	width: 80%;
+	margin: auto;
+    height: 700px;
+    padding-bottom: 10px;
+    overflow: none;
+}
+
+.title {
+    padding: 30px 30px 0px 30px;
+    font-size: 20pt;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title-feedback {
+    padding: 10px 10px 10px 20px;
+    font-size: 15pt;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+
+#view-all {
+    background-color: #84b464;
+    border: none;
+    font-size: 13px;
+    padding: 6px 8px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.post-table {
+    /* border: 1px solid black; */
+    width: 100%;
+    margin: auto;
+    padding-left: 100px;
+    font-size: 20px;
+}
+
+hr {
+    border: 1px solid gray;
+}
+
+.feedback {
+    width: 80%;
+    margin: 20px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.item-name {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.item {
+    margin-left: 20px;
+}
+
+.user {
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+}
+
+.container-image {
+    padding: 30px 50px 30px 50px;
+    width: 100%;
+}
+
+.container-image img {
+    height: 200px;
+    width: 300px;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.p1{
+	font-size: 16pt;
+}
+
+.checked {
+    color: #ff9c1a;
+}
+
+.unchecked {
+    color: #e6e6e6;
+}
+
+
+
+
+

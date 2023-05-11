@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+* {
+	font-family: 'Source Sans Pro', sans-serif;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.main {
+	padding: 100px 150px 0px 150px;
+}
+
+header a {
+	text-decoration: none;
+}
+
+header {
+	font-family: "Montserrat";
+	padding: 25px 20px;
+	background-color: #D9EEF5;
+	height: 80px;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	z-index: 100;
+}
+
+#navbar-left {
+	display: flex;
+}
+
+#logo {
+	width: 85px;
+	height: 85px;
+	opacity: 0.8;
+}
+
+#logo:hover {
+	opacity: 1;
+}
+
+#brand {
+	align-items: center;
+	display: flex;
+	margin-left: 10px;
+}
+
+ul a {
+	color: black;
+	/* font-weight: bold; */
+}
+
+ul {
+	list-style: none;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+ul li {
+	padding: 15px;
+	margin-left: 10px;
+}
+
+ul li:hover {
+	transform: scale(1.1);
+	transition: 00.3s;
+}
+
+.profile-wrapper .abc{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+}
+ 
+#logout {
+	background-color: #84b464;
+	border-radius: 4px;
+	width: 110px;
+	height: 50px;
+	text-align: center;
+	display: inline-block;
+	align-items: center;
+	margin-left: 0;
+}
+
+#logout a {
+	color: white;
+	font-size: 18px;
+}
+
+.profile-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: white;
+    border: 2px solid #7d7d7d;
+    border-radius: 3px;
+    padding: 5px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: none;
+	width: 160px;
+}
+
+.profile-dropdown a {
+    display: block;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #333;
+
+}
+
+.profile-dropdown a:hover {
+    background-color: #dbdbdb;
+}
+
+  
+@media only screen and (max-width: 750px) {
+	header nav {
+		display: none;
+	}
+
+	#hamburger-icon {
+		display: block;
+	}
+}
+

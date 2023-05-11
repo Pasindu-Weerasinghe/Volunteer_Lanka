@@ -1,0 +1,102 @@
+
+.main {
+    padding: 100px 150px 0 150px;
+}
+
+.container {
+    margin-left: 100px;
+    display: flex; 
+} 
+
+.calendar {
+    --grey-100: #e4e9f0;
+    --grey-200: #cfd7e3;
+    --grey-300: #b5c0cd;
+    --grey-800: #3e4e63;
+    --grid-gap: 5px;
+    --day-label-size: 75px;
+}
+
+.icons {
+    display: flex;
+    justify-content: space-around;
+    font-size: 30px;
+    padding: 10px;
+    border: solid 1px var(--grey-200);
+
+}
+
+.icons span{
+    cursor: pointer;
+    margin-top: 5px;
+} 
+
+/* sat, sun */
+.day-of-week { 
+    height: 13%;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    color: var(--grey-800);
+    font-size: 20px;
+    text-align: center;
+    background-color: #6aa438a1;
+}
+
+/* .day-of-week>* {
+    text-align: center;
+} */
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    position: relative;
+    border: solid 1px var(--grey-200);
+    text-align: center;
+}
+
+.calendar .days li{
+    cursor: pointer;
+    color: var(--grey-800);
+    font-size: 20px;
+    background-color: var(--grey-200);
+    width: var(--day-label-size);
+}
+
+.days li:hover{
+    background-color: #89afd6;
+}
+
+.days li.inactive{
+    color: var(--grey-300);
+    cursor: none;
+}
+
+.days li.active {
+    background-color: green;
+    color: white;
+}
+
+.card{
+    margin: 10%;
+    width: 40%;
+}
+
+.cards_heading{
+    background: #0B2273;
+    color: white;
+    font-size: 23px;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+}
+
+.cards_content{
+    background: #E6ECF2;
+    font-size: 20px;
+    padding: 8px;
+}
+
+.selected_date {
+    border: 1px solid green;
+    
+}

@@ -1,0 +1,51 @@
+.side-nav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(63, 106, 129, 0.666);
+  backdrop-filter: blur(16px);
+  overflow-x: hidden;
+  padding-top: 80px;
+  transition: 0.5s;
+}
+
+.side-nav a {
+  padding: 10px 10px 10px 30px;
+  text-decoration: none;
+  font-size: 17px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.side-nav a:hover {
+  transform: scale(1.1);
+  transition: 00.3s;
+}
+
+.side-nav .btn-close {
+  position: absolute;
+  top: 0;
+  right: 22px;
+  font-size: 36px;
+  margin-left: 50px;
+  cursor: pointer;
+}
+
+
+#main{
+  transition:margin-left 0.5s;
+} 
+
+@media(max-width:568px) {
+  .navbar-nav {
+    display: none
+  }
+}
+
+@media(min-width:568px) {
+  /*.open-slide{display:none}*/
+}

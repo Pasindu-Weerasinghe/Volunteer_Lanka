@@ -1,16 +1,7 @@
-*
-{
-    margin: 0;
-    padding: 0;
-    font-family: 'poppins',sans-serif;
-    box-sizing: border-box;
-}
-body{
-    background: #eef8ff;
-}
 footer {
     width: 100%;
     background: linear-gradient(to right,#00093c, #2d0b00);
+    font-family: 'poppins', sans-serif;
     color: #fff;
     padding: 100px, 30px;
     border-top-left-radius: 60px;
@@ -19,14 +10,14 @@ footer {
     margin-top: 50px;
 }
   
-.logo {
+footer .logo {
     width: 100px;;
     margin-bottom: -10px;
     margin-top: -50px;
     
 } 
   
-.row{
+footer .row{
     width: auto;
     height: flex-container; ;
     /* margin: auto; */
@@ -36,28 +27,28 @@ footer {
     justify-content: center;
 }
 
-.col{
+footer .col{
     flex-basis: 25%;
     padding: -20px;
     font-size: medium;
     padding-left: 40px;
 } 
-.col h2{
+footer .col h2{
     display: block;
     
     margin-left: -2px;
 }
-#col3 h2{
+footer #col3 h2{
     margin-top: 18px;
 }
-#col2 h2{
+footer #col2 h2{
     margin-top: -20px;
 }
-#col4 h2{
+footer #col4 h2{
     margin-top: 8px;
 }
 
-.col h2{
+footer .col h2{
     width: fit-content;
     margin:center;
     position: relative;
@@ -66,7 +57,7 @@ footer {
     padding-right: 138px;
 }
 
-.email-id{
+footer .email-id{
     width:fit-content;
     border-bottom: solid #ccc;
     margin-top: 5px;
@@ -74,16 +65,16 @@ footer {
     
 }
 
-a{
+footer a{
     list-style: none;
     margin-bottom: 12px;
     color: #fff;
 }
 
-.social-icons {
+footer .social-icons {
     margin-left: -15px;
 }
-.social-icons .fab{
+footer .social-icons .fab{
     width: 50px;
     height:35px;
     border-radius: 50%;
@@ -94,13 +85,13 @@ a{
     cursor: pointer;
 }
 
-#col2{
+footer #col2{
   height: 100%;
   padding-left: 70px;
   margin:auto;
 }
 
-#col3{
+footer #col3{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -110,7 +101,7 @@ a{
 
 }
 
-#col3 a{
+footer #col3 a{
   flex-basis: calc(50% - 5px);
   height: 35px;
   text-align: center;

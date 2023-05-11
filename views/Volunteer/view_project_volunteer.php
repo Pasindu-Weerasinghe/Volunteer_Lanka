@@ -1,5 +1,5 @@
 <?php
-    $pid = $this->project['P_ID'];
+$pid = $this->project['P_ID'];
 ?>
 
 <!DOCTYPE html>
@@ -9,15 +9,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include 'views/includes/head-includes-log.php'; ?>
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/view.css">
     <title><?php echo $this->project['Name'] ?></title>
     <script type="text/javascript">
         function button2() {
-            var isJoined = <?php echo $this->isJoined?>;
-            if (isJoined){
+            var isJoined = <?php echo $this->isJoined ?>;
+            if (isJoined) {
                 document.getElementById("right").innerHTML = "Leave Project";
-            }
-            else {
+            } else {
                 document.getElementById("right").innerHTML = "Join Project";
             }
         }
@@ -26,9 +26,9 @@
 </head>
 
 <body>
-<?php include 'views/includes/navbar_log.php'; ?>
+    <?php include 'views/includes/navbar_log.php'; ?>
     <div class="main" id="main">
-        <h2><?php echo $this->project['Name']?></h2><br /><br />
+        <h2><?php echo $this->project['Name'] ?></h2><br /><br />
         <div class="container">
             <div class="container-image">
                 <?php foreach ($this->images as $image) { ?>
@@ -54,7 +54,7 @@
             </div>
             <div class="btn-area">
                 <button class="btn" onclick="history.back()">Back</button>
-                <a onclick="return confirm('Are you sure you want to leave this Project?')" href="<?php echo BASE_URL ?>volunteer/join_leave_project/<?php echo $this->project['P_ID']?>/<?php echo $this->isJoined?>/<?php echo $this->project['No_of_volunteers'] ?>/<?php echo $this->project['Date'] ?>"><button class="btn" id="right"></button></a>
+                <a onclick="return confirm('Are you sure you want to leave this Project?')" href="<?php echo BASE_URL ?>volunteer/join_leave_project/<?php echo $this->project['P_ID'] ?>/<?php echo $this->isJoined ?>/<?php echo $this->project['No_of_volunteers'] ?>/<?php echo $this->project['Date'] ?>"><button class="btn" id="right"></button></a>
             </div>
 
         </div>

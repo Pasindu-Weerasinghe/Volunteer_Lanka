@@ -37,6 +37,7 @@ class Index extends Controller
                     $_SESSION['uid'] = $user['U_ID'];
                     $_SESSION['uname'] = $uname;
                     $_SESSION['role'] = $user['Role'];
+                    $_SESSION['photo'] = $user['Photo'];
 
                     // send the user to the relevant home page of the role
                     header('Location: ' . BASE_URL . $user['Role']);

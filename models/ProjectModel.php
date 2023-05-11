@@ -226,7 +226,6 @@ class ProjectModel extends Model
     {
         $query = "SELECT * FROM project WHERE Status = 'active' AND Area LIKE '%$interest%'";
         $statement = $this->db->prepare($query);
-        $statement->bindParam(':pid', $pid);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }

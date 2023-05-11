@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include 'views/includes/head-includes-log.php'; ?>
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/profile.css" text="text/css">
     <title>Edit Profile </title>
 </head>
@@ -30,10 +29,10 @@
                 </div>
             </div>
 
-            <form action="<?php echo BASE_URL.$_SESSION['role']; ?>/updateProfile" method="post" enctype="multipart/form-data" class="column2">
+            <form action="<?php echo BASE_URL . $_SESSION['role']; ?>/updateProfile" method="post" enctype="multipart/form-data" class="column2">
 
                 <input type="hidden" name="uid" value="<?php echo $_SESSION['uid'] ?>">
-                
+
                 <label for="uname"><b>E-Mail</b></label><br>
                 <input type="text" name="email" value="<?php echo $this->profile['Email'] ?>" readonly><br>
 

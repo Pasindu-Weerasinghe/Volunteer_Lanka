@@ -1,10 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['uid'])) {
-    header('Location: ' . BASE_URL);
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,6 +5,7 @@ if (!isset($_SESSION['uid'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include 'views/includes/head-includes-log.php'; ?>
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/form.css" text="text/css">
     <title>Edit Profile </title>
 </head>
@@ -19,16 +13,16 @@ if (!isset($_SESSION['uid'])) {
 <body>
     <?php include 'views/includes/navbar_log.php' ?>
     <div class="main" id="main">
-    
-                <form action="<?php echo BASE_URL; ?>Volunteer/change_profile" method="post" id="form2">
-                <div class="heading">
-                    <?php echo $this->user['Name']; ?>
-                    <img class="image" src="<?php echo BASE_URL ?>public/images/<?php echo $this->profile['Photo'] ?>">
-                </div>
-                    <input type="file" name="profilepic"><br><br>
-                    <input type="submit" value="Save" class="btn">
-                </form>
-            
+
+        <form action="<?php echo BASE_URL; ?>Volunteer/change_profile" method="post" id="form2">
+            <div class="heading">
+                <?php echo $this->user['Name']; ?>
+                <img class="image" src="<?php echo BASE_URL ?>public/images/<?php echo $this->profile['Photo'] ?>">
+            </div>
+            <input type="file" name="profilepic"><br><br>
+            <input type="submit" value="Save" class="btn">
+        </form>
+
         <form action="<?php echo BASE_URL ?>volunteer/update_profile" method="post" enctype="multipart/form-data" id="form2">
             <div class="container">
                 <input type="hidden" name="uid" value="<?php echo $_SESSION['uid'] ?>">

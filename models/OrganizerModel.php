@@ -65,13 +65,13 @@ class OrganizerModel extends Model
         }
     }
 
-    
-        if ($statement->execute()) {
-            return $statement->fetch(PDO::FETCH_ASSOC);
-        } else {
-            return null;
-        }
-    }
+//
+//        if ($statement->execute()) {
+//            return $statement->fetch(PDO::FETCH_ASSOC);
+//        } else {
+//            return null;
+//        }
+//    }
 
     function getProjectCreateCount($uid) {
         $query = "SELECT COUNT(*) AS row_count

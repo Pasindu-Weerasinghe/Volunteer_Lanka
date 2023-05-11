@@ -1,10 +1,3 @@
-<head>
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>public/styles/footer.css">
-    <script src="https://kit.fontawesome.com/18409fd0c0.js" crossorigin="anonymous"></script>
-
-</head>
-
-
 <footer class="footer">
     <div class="row">
         <div class="col" id="col1"><br>

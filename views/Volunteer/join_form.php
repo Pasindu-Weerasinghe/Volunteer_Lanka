@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include 'views/includes/head-includes-log.php'; ?>
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/form.css">
     <title>Join Form</title>
 </head>
@@ -30,7 +31,7 @@
 
                 <label for="des"><b>Have you participated in volunteering projects before?</b></label>
                 <label id="require"><strong>*</strong></label><br><br>
-                <input type="radio" name="radio-prior" id="yes" value="yes"required> Yes &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <input type="radio" name="radio-prior" id="yes" value="yes" required> Yes &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 <input type="radio" name="radio-prior" id="no" value="no"> No<br><br><br>
 
                 <div class="btn-area">

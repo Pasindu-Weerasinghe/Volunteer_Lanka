@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <?php include 'views/includes/head-includes.php'; ?>
+    <?php include 'views/includes/head-includes-log.php'; ?>
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>public/styles/form.css">
     <title>Requests from Volunteers</title>
 </head>

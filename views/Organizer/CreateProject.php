@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <?php include 'views/includes/head-includes.php'; ?>
+    <?php include 'views/includes/head-includes-log.php'; ?>
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/create-project.css">
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/popup.css">
 
@@ -148,84 +148,84 @@
                 <div class="popup-close"><i class="fa-solid fa-xmark"></i></div>
 
                 <h2>Add Extra Projects</h2>
-                
+
+            </div>
+
+            <!-- //? Publish sponsor notice form -->
+            <div class="wrapper" id="publish-sponsor-notice" style="display: none">
+                <h2>Publish Sponsor Notice</h2><br />
+                <form class="form" method="post" id="publish-sn-form">
+
+                    <div class="row">
+                        <label for="toatl-amount">Total expected amount</label>
+                        <div class="currency">
+                            <input type="number" name="total-amount" min="0" id="total-amount" required class="input">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="silver-amount">Silver</label>
+                        <div class="currency">
+                            <input type="number" name="silver-amount" min="0" id="silver-amount" required class="input">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label for="gold-amount">Gold</label>
+                        <div class="currency">
+                            <input type="number" name="gold-amount" min="0" id="gold-amount" required class="input">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label for="platinum-amount">Platinum</label>
+                        <div class="currency">
+                            <input type="number" name="platinum-amount" min="0" id="platinum-amount" required class="input">
+                        </div>
+                    </div>
+
+                    <div class="btn-area">
+                        <button class="btn" id="form3-back">Cancel</button>
+                        <button type="submit" class="btn" id="next3">Publish Notice</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- //? Form for Volunteers -->
+            <div class="wrapper" id="form-for-volunteers" style="display: none">
+                <h2 class="title">Create a Form for Volunteers</h2>
+
+                <form class="form" method="post" id="form-for-volunteers-form">
+
+                    <p>The form you create here will be displayed to volunteers when joining
+                        select necessary fields you would like to have in your form.</p>
+                    <div class="row">
+                        <input type="checkbox" name="email" value="1" checked disabled class="input-chkbox">
+                        <label>E-mail address</label>
+                    </div>
+                    <div class="row">
+                        <input type="checkbox" name="contact-no" class="input-chkbox">
+                        <label>Contact number</label>
+                    </div>
+                    <div class="row">
+                        <input type="checkbox" name="meal-pref" class="input-chkbox">
+                        <label>Meal preference</label>
+                    </div>
+                    <div class="row">
+                        <input type="checkbox" name="prior-participations" class="input-chkbox">
+                        <label>Prior participation in volunteer projects</label>
+                    </div>
+
+                    <div class="btn-area">
+                        <button id="form4-back" type="button" class="btn">Back</button>
+                        <button type="submit" name="create" class="btn" id="create">Create</button>
+                    </div>
+                </form>
+            </div>
+
+
         </div>
 
-        <!-- //? Publish sponsor notice form -->
-        <div class="wrapper" id="publish-sponsor-notice" style="display: none">
-            <h2>Publish Sponsor Notice</h2><br />
-            <form class="form" method="post" id="publish-sn-form">
-
-                <div class="row">
-                    <label for="toatl-amount">Total expected amount</label>
-                    <div class="currency">
-                        <input type="number" name="total-amount" min="0" id="total-amount" required class="input">
-                    </div>
-                </div>
-                <div class="row">
-                    <label for="silver-amount">Silver</label>
-                    <div class="currency">
-                        <input type="number" name="silver-amount" min="0" id="silver-amount" required class="input">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <label for="gold-amount">Gold</label>
-                    <div class="currency">
-                        <input type="number" name="gold-amount" min="0" id="gold-amount" required class="input">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <label for="platinum-amount">Platinum</label>
-                    <div class="currency">
-                        <input type="number" name="platinum-amount" min="0" id="platinum-amount" required class="input">
-                    </div>
-                </div>
-
-                <div class="btn-area">
-                    <button class="btn" id="form3-back">Cancel</button>
-                    <button type="submit" class="btn" id="next3">Publish Notice</button>
-                </div>
-            </form>
-        </div>
-
-        <!-- //? Form for Volunteers -->
-        <div class="wrapper" id="form-for-volunteers" style="display: none">
-            <h2 class="title">Create a Form for Volunteers</h2>
-
-            <form class="form" method="post" id="form-for-volunteers-form">
-
-                <p>The form you create here will be displayed to volunteers when joining
-                    select necessary fields you would like to have in your form.</p>
-                <div class="row">
-                    <input type="checkbox" name="email" value="1" checked disabled class="input-chkbox">
-                    <label>E-mail address</label>
-                </div>
-                <div class="row">
-                    <input type="checkbox" name="contact-no" class="input-chkbox">
-                    <label>Contact number</label>
-                </div>
-                <div class="row">
-                    <input type="checkbox" name="meal-pref" class="input-chkbox">
-                    <label>Meal preference</label>
-                </div>
-                <div class="row">
-                    <input type="checkbox" name="prior-participations" class="input-chkbox">
-                    <label>Prior participation in volunteer projects</label>
-                </div>
-
-                <div class="btn-area">
-                    <button id="form4-back" type="button" class="btn">Back</button>
-                    <button type="submit" name="create" class="btn" id="create">Create</button>
-                </div>
-            </form>
-        </div>
-
-
-    </div>
-
-<input type="hidden" id="can_create" value="<?php echo json_encode($this->can_create_pr) ?>">
+        <input type="hidden" id="can_create" value="<?php echo json_encode($this->can_create_pr) ?>">
 </body>
 <script type="module" src="<?php echo BASE_URL ?>public/scripts/create_project.js"></script>
 

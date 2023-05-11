@@ -14,6 +14,7 @@ class Volunteer extends User
         if(!isset($_SESSION)) {
             session_start();
         }
+
         $uid = $_SESSION['uid'];
         $this->loadModel('Project');
         $date_now = date('Y-m-d');
@@ -24,7 +25,7 @@ class Volunteer extends User
             $this->myprImage[$pid] = $this->model->getProjectImage($pid);
         }
 
-        $this->uprojects = $this->model->getUpcomingProjects($date_now);
+        $this->uprojects = $this->model->getUpcomingProjectsVolunteer($date_now);
         foreach ($this->uprojects as $uproject) {
             $pid = $uproject['P_ID'];
             $this->prImage[$pid] = $this->model->getProjectImage($pid);
@@ -202,7 +203,7 @@ class Volunteer extends User
 
         foreach ($this->pr_ideas as $idea) {
             $pi_id = $idea['PI_ID'];
-            $this->pr_idea_images[$pi_id] = $this->model->getPI_Image($pi_id);
+            $this->pr_idea_images[$pi_id] = $this->model->getPI_Images($pi_id);
         }
         $this->render('Volunteer/New_ideas');
     }

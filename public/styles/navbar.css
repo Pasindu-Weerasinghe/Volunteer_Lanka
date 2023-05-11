@@ -90,20 +90,6 @@ header .btn {
     background-color: #84b464;
 }
 
-#hamburger-icon {
-    margin: auto 0;
-    display: none;
-    cursor: pointer;
-}
-
-#hamburger-icon div {
-    width: 35px;
-    height: 3px;
-    background-color: black;
-    margin: 6px 0;
-    transition: 0.4s;
-}
-
 .open .bar1 {
     -webkit-transform: rotate(-45deg) translate(-6px, 6px);
     transform: rotate(-45deg) translate(-6px, 6px);
@@ -170,12 +156,5 @@ header .btn {
 }
 
 
-@media only screen and (max-width:750px) {
-    header nav {
-        display: none;
-    }
-
-    #hamburger-icon {
-        display: block;
-    }
-}
+/* @media only screen and (max-width:750px) {
+} */

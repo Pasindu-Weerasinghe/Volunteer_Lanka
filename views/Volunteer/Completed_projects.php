@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include 'views/includes/head-includes-log.php'; ?>
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/cards.css">
     <title>Completed Projects</title>
 
@@ -33,13 +34,13 @@
         <h3><?php print_r($this->feedbackGiven) ?></h3>
         <section class="container">
             <?php foreach ($this->projects as $project) {
-                $pid = $project['P_ID'] ;
+                $pid = $project['P_ID'];
                 $isGiven = $this->feedbackGiven[$pid] ?>
                 <div class="card">
                     <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image'] ?>"></div>
                     <h2><?php echo ($project["Name"]); ?></h2>
                     <p><?php echo ($project["Date"]); ?></p>
-                    <a class="btn" href="<?php echo BASE_URL ?>volunteer/feedback/<?php echo $isGiven?>/<?php echo $project['P_ID'] ?>" id="add">Add Feedback</a>
+                    <a class="btn" href="<?php echo BASE_URL ?>volunteer/feedback/<?php echo $isGiven ?>/<?php echo $project['P_ID'] ?>" id="add">Add Feedback</a>
                 </div>
             <?php } ?>
         </section>

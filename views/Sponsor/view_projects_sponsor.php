@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,16 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include 'views/includes/head-includes-log.php'; ?>
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/view.css">
     <title><?php echo $this->project['Name'] ?></title>
 </head>
 
 <body>
-<?php include 'views/includes/navbar_log.php'; ?>
+    <?php include 'views/includes/navbar_log.php'; ?>
     <div class="main" id="main">
         <h2><?php echo $this->project['Name'] ?></h2><br /><br />
         <div class="container">
-        <div class="container-image">
+            <div class="container-image">
                 <?php foreach ($this->images as $image) { ?>
                     <img src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $image['Image']; ?>">
                 <?php } ?>
@@ -40,7 +39,7 @@
             </div>
             <div class="btn-area">
                 <button onclick="history.back()" class="btn">Back</button>
-                <a href=" <?php echo BASE_URL?> sponsor/publish_advertisement"> <button class="btn" id="publish-btn">  Publish Advertiesment</button>
+                <a href=" <?php echo BASE_URL ?> sponsor/publish_advertisement"> <button class="btn" id="publish-btn"> Publish Advertiesment</button>
             </div>
 
         </div>

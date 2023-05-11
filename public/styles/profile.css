@@ -1,32 +1,24 @@
-.main{
-	padding: 100px 150px 0px 150px;
-	height: auto;
-}
-
-.row1{
-    display: flex;
-	width:50%;
-	flex-direction:column;
-	padding-left: 50px;
-}
 
 .form1{
 	border: 2px solid #f1f1f1;
-	width: 60%;
+	width: 100%;
+	min-width: 580px;
+	max-width: 850px;
 	height: auto;
 	display: flex;
+	flex-wrap: wrap;
 	margin: auto;
 	margin-top: 20px;
-	padding: 50px 50px;
+	padding: 20px 20px;
 	background: #89afd6;
 	border-radius: 15px;
 }
 .form2{
 	border: 2px solid #f1f1f1;
-	width: 60%;
+	width: 850px;
 	height: auto;
 	display: flex;
-	display:block;
+	flex-direction: column;
 	margin: auto;
 	margin-top: 20px;
 	padding: 50px 50px;
@@ -34,23 +26,40 @@
 	border-radius: 15px;
 }
 
+.left-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 40%;
+}
+.left-container h2{
+	margin-bottom: 10px;
+	text-align: center;
+}
+#lc{
+	margin-top: -50px;
+}
+#lc2{
+	margin-top: 45px;
+}
+.right-container{
+	width: 60%;
+}
+
 /* Create two equal columns that sits next to each other */
-.column1 {
+/* .column1 {
     flex: 40%;
     padding: 20px;
-    height: auto; /* Should be removed. Only for demonstration */
+    height: auto; 
 }
 .column2 {
     flex: 90%;
 	padding: 20px;
-	padding-left: 50px;
-}
+	padding-left: 100px;
+} */
 
-.image{
-	border-radius: 50%;
-	height: 40%;
-	width: 80%;
-}
+
 
 .cd1{
 	margin-left: 30px;
@@ -65,16 +74,11 @@ h3{
 	margin-left: 50px;
 }
 
- 
-
-
 label{
 	
 	font-size: larger;
 }
-/* p{
-    color: blue;
-} */
+
 td{
 	padding: 14px;
 	font-size: 14pt;
@@ -87,7 +91,6 @@ th{
 	font-weight: bolder;
 }
 .T1{
-	margin-top: 70px;
 	display: flex;
 	margin-left: 90px;
 }
@@ -97,6 +100,7 @@ th{
 	display: flex;
 	margin-left: 90px;
 }
+
 input[type="text"],
 input[type="password"] {
 	width: 70%;
@@ -126,40 +130,34 @@ input[type="password"]:focus {
 	display: flex;
 }
 
-/* Set a style for all buttons */
-.prbtn{
+
+.btn-area button {
 	background-color: #6aa438;
 	color: #e0e0f0;
-	padding: 10px 10px;
-	margin: 10px 20;
+	padding: 10px 15px;
+	margin: 10px; 
 	border: none;
 	border-radius: 10px;
-	font-size: 17px;
+	font-size: 18px;
 	font-weight: bold;
 	cursor: pointer;
-	width: 50%;
+	width: 210px;
 	opacity: 0.9;
 }
-.prbtn1{
-	background-color: #6aa438;
-	color: #e0e0f0;
-	padding: 8px 2px;
-	margin: 5px 5px;
-	border: none;
-	border-radius: 10px;
-	font-size: 16px;
-	font-weight: bold;
-	cursor: pointer;
-	width: 50%;
-	opacity: 0.9;
+
+.btn-area{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
 }
 
 .col{
 	margin-right: 150px;
+	width: 250px;
+	margin-left: -50px;
 }
-#cp{
-	width: auto;
-}
+
 /* .prbtn{
 	margin-top: 0px;
 } */
@@ -179,12 +177,20 @@ button:hover {
 	margin-left: 50px;
 }
 
-.img{
-	height: 175px;
-	width: 280px;
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
+
+
+/* #change{
+	width: 80%;
+} */
+/* .pimg{
+	height: auto;
+	padding-right:-5px;
+} */
+.image{
+	object-fit: cover;
+	border-radius: 50%;
+	width: 180px;
+	height: 180px;
 
 }
 
@@ -192,9 +198,8 @@ button:hover {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    border-radius: 10px;
 
-}
+} 
 
 
 .card {
@@ -217,6 +222,10 @@ h4 {
     margin: 0 0 10px 10px;
 }
 
+.img{
+	width: 230px;
+	height: 230px;
+}
 .card a {
     text-decoration: none;
     display: block;
@@ -257,7 +266,14 @@ h4 {
     transform: scale(1.05);
 }
 
-
+#save{
+	background-color:#6aa438 ;
+	border:none;
+	color: #e0e0f0;
+	font-size: 20px;
+	font-weight: bold;
+	cursor: pointer;
+}
 
 
 

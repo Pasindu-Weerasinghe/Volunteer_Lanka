@@ -1,9 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['uid'])) {
-    header('Location:' . BASE_URL);
-}
-?>
 
 <head>
     <meta charset="UTF-8">

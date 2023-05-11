@@ -1,10 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['uid'])) {
-    header('Location: ' . BASE_URL);
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,14 +14,11 @@ if (!isset($_SESSION['uid'])) {
     <?php include 'views/includes/navbar_log.php'; ?>
     <div class="main" id="main">
         <div class="form1">
-            <div class="row1">
+            <!-- <h2><i class="fa-solid fa-caret-right fa-lg" style="color: #000000;"></i> Achivemenbjjjjjhjnts</h2><br>
+            <h2><i class="fa-solid fa-caret-right fa-lg" style="color: #000000;"></i> Profile Details</h2><br> -->
 
-                <table>
-                    <tr>
-                        <h2><i class="fa-solid fa-caret-right fa-lg" style="color: #000000;"></i> Profile Details</h2><br>
-                    </tr>
-                </table>
-                <div class="cd1">
+            <div class="row1">
+                <div class="col">
                     <table>
                         <tr>
                             <td><?php echo $this->user['Name']; ?></td>
@@ -36,13 +26,11 @@ if (!isset($_SESSION['uid'])) {
                     </table>
                     <img class="image" src="<?php echo BASE_URL ?>public/images/<?php echo $this->profile['Photo'] ?>" alt="">
                     <br><br>
-                    <div class="prbtn">
-                        <button class="prbtn"> <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePic">Edit Profile</a></button>
-                        <button class="prbtn"> <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePsw">Change Password</a></button>
+                    <div class="btn">
+                        <button class="prbtn1"> <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePic">Edit Profile</a></button>
+                        <button class="prbtn1" id="cp"> <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePsw">Change Password</a></button>
                     </div>
                 </div>
-
-
             </div>
 
 
@@ -93,21 +81,15 @@ if (!isset($_SESSION['uid'])) {
                 <table class="T2">
                     <tbody>
                         <tr>
-                            <th>
-
-                            </th>
+                            <th></th>
                             <th>
                                 Project
                             </th>
-                            <th>
-
-                            </th>
+                            <th></th>
                             <th>
                                 Total Amount
                             </th>
                         </tr>
-
-
                         <tr>
                             <td><i class="fa-solid fa-circle fa-lg" style="color: #c0c0c0;"></i> Silver</td>
                             <td><?php echo $this->sPackages['silver']; ?></td>
@@ -134,7 +116,6 @@ if (!isset($_SESSION['uid'])) {
                         </tr>
                     </tbody>
                 </table>
-
             </div><br>
         </div><br>
 
@@ -174,8 +155,28 @@ if (!isset($_SESSION['uid'])) {
                 <br>
             </div>
 
+            <h3 class="pack">Aready Completed</h3>
             <section class="container2">
-                <?php foreach ($this->sponsored_projects as $spProject) {
+                <?php
+                foreach ($this->cSponsored_projects as $spProject) {
+                    $pid = $spProject['P_ID'];
+                ?>
+                    <div class="card">
+                        <div class="card-image">
+                            <img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image'] ?>">
+                        </div>
+
+                        <h2><?php echo ($spProject["Name"]); ?></h2>
+                        <p>Date: <?php echo ($spProject["Date"]); ?></p>
+                        <p><?php echo ucfirst($spProject['Package']) ?>: <?php echo ($spProject['Amount']); ?></p>
+                    </div>
+                <?php } ?>
+            </section><br>
+
+            <h3 class="pack">Active Projects</h3><br>
+            <section class="container2">
+                <?php
+                foreach ($this->aSponsored_projects as $spProject) {
                     $pid = $spProject['P_ID'];
                 ?>
                     <div class="card">

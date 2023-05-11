@@ -1,11 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['uid'])) {
-    header('Location: ' . BASE_URL);
-}
-?>
-
-
 <html lang="en">
 
 <head>
@@ -18,32 +10,34 @@ if (!isset($_SESSION['uid'])) {
 
 <body>
     <?php include 'views/includes/navbar_log.php' ?>
-    <div class ="main" id="main">
+    <div class="main" id="main">
 
         <form method="POST" action="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePsw">
-        <strong>
+            <strong>
                 <h2>Change Profile Password</h2>
-            </strong><hr><br>
+            </strong>
+            <hr><br>
             <p>Existing password<br />
                 <input type="password" class="box" name="current" required />
             </p>
             <p>New password<br />
-                <input type="password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"  class="box" name="new" id="t1" required />
+                <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" class="box" name="new" id="t1" required />
             </p>
             <p>Confirm password<br />
                 <input type="password" name="confirm" required />
             </p>
-           
+
             <button><a href="<?php echo BASE_URL ?> Sponsor/Profile" class="same">Back</a></button>
-            <button name="submit" type="submit" >Confirm</button>
+            <button name="submit" type="submit">Confirm</button>
             <?php
             if (isset($this->error)) {
-                echo '<label class="error">'.$this->error.'</label>';
-            }?>
+                echo '<label class="error">' . $this->error . '</label>';
+            } ?>
 
         </form>
     </div>
-    
+
 </body>
 <?php include 'views/includes/footer.php'; ?>
+
 </html>

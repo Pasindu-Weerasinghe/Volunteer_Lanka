@@ -25,6 +25,9 @@ class SponsorNoticeModel extends Model
         if($status == 'active') {
             $query .= " AND project.Status = 'active'";
         }
+        if($status == 'completed') {
+            $query .= " AND project.Status = 'completed'";
+        }
         $statement = $this->db->prepare($query);
         $statement->bindParam(':uid', $uid);
         $statement->execute();

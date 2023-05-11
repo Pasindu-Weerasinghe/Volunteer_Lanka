@@ -5,8 +5,9 @@
 
 .row1{
     display: flex;
-	width:150%;
+	width:50%;
 	flex-direction:column;
+	padding-left: 50px;
 }
 
 .form1{
@@ -126,7 +127,7 @@ input[type="password"]:focus {
 }
 
 /* Set a style for all buttons */
-button {
+.prbtn{
 	background-color: #6aa438;
 	color: #e0e0f0;
 	padding: 10px 10px;
@@ -139,9 +140,29 @@ button {
 	width: 50%;
 	opacity: 0.9;
 }
-.prbtn{
-	margin-top: 0px;
+.prbtn1{
+	background-color: #6aa438;
+	color: #e0e0f0;
+	padding: 8px 2px;
+	margin: 5px 5px;
+	border: none;
+	border-radius: 10px;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+	width: 50%;
+	opacity: 0.9;
 }
+
+.col{
+	margin-right: 150px;
+}
+#cp{
+	width: auto;
+}
+/* .prbtn{
+	margin-top: 0px;
+} */
 .bt2 {
 	margin-left: 60px;
 }

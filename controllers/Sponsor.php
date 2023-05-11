@@ -121,24 +121,22 @@ class Sponsor extends User
         $this->sAdvertisements = $this->model->getAdvertisements($uid);
 
         $this->loadModel('SponsorNotice');
-        $this->sponsor_notices = $this->model->getSponsorNotices();
 
-        $this->sponsored_projects = $this->model->getSponsoredProjects($uid, 'active');
+        $this->cSponsored_projects = $this->model->getSponsoredProjects($uid, 'completed');
 
-        foreach ($this->sponsored_projects as $item2) {
-            foreach ($this->sponsor_notices as $key1 => $item1) {
-                if ($item2['P_ID'] == $item1['P_ID']) {
-                    unset($this->sponsor_notices[$key1]);
-                    break;
-                }
-            }
-        }
+        $this->aSponsored_projects = $this->model->getSponsoredProjects($uid, 'active');
+
+        
         $this->loadModel('Project');
-        foreach ($this->sponsored_projects as $project) {
+        foreach ($this->cSponsored_projects as $project) {
             $pid = $project['P_ID'];
             $this->prImage[$pid] = $this->model->getProjectImage($pid);
         }
-
+        foreach ($this->aSponsored_projects as $project) {
+            $pid = $project['P_ID'];
+            $this->prImage[$pid] = $this->model->getProjectImage($pid);
+        }
+                
         $this->loadModel('Sponsor');
         $this->sAmount= $this->model->getTotalAmount($uid);
 

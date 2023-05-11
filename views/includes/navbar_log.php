@@ -17,8 +17,6 @@ $role = $_SESSION['role'];
 </head>
 
 <!-- Navbar start -->
-
-<body>
     <header>
         <div id="navbar-left">
             <?php include 'views/includes/sidenav_' . $role . '.php' ?>
@@ -46,5 +44,11 @@ $role = $_SESSION['role'];
         </nav>
     </header>
     <script defer src="<?php echo BASE_URL; ?>public/scripts/navbarlog.js"></script>
-
-</body>
+    <nav>
+        <ul>
+            <li><a><?php echo $_SESSION['uname']; ?></a></li>
+            <li id="logout"><a href="<?php echo BASE_URL; ?>index/logout">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+<!-- Navbar end -->

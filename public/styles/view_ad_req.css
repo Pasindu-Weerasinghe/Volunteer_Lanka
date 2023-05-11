@@ -71,6 +71,12 @@ h2{
     margin-bottom: 30px;
     width: 100%;
 }
+#ad-box-item p{
+    display: flex;
+    margin-left: 10px;
+    margin-bottom: 30px;
+    width: 100%;
+}
 
 #ad-box-item p{
     width: 100%;

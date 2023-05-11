@@ -13,57 +13,52 @@ h2{
     padding: 30px 50px;
 }
 
-#com-box{
-    background-color: #B3CCE1;
-    margin: 10px 100px;
+#c-box{
+    background-color: #96C7D6;
+    margin: auto;
     border-radius: 4px;
-    margin-bottom: 15px;
+    width: 100%;
+    margin-top: 10px;
+    height: 200px;
+    
 }
 
-#com-box-item{
-    display: flex;
-    align-items: center;
-}
-
-#user-img{
-    margin-left: 50px;
-    height: 50px;
-    width: 50px;
-}
-#com-box-item-uname{
-    width: 150px;
-    display: inline;
-    margin-left: 50px;
-    width: 30%;
-}
-
-#com-box-item p {
-    margin: 20px 50px 20px 50px;
-    width: 500px;
-}
-#com-box-item h4 {
-    display: inline;
-    width: 200px;
-}
-#com-box-item button {
-    padding: 15px 20px;
+#c-view-btn{
+    padding: 15px;
     margin-right: 50px;
-    text-align: center;
+    margin-top: 30px;
     background-color: #84B464;
-    color: white;
     border: none;
     font-size: 16px;
     font-weight: bold;
     text-decoration: none;
-    border-radius: 10px;
+    border-radius: 4px;
     width: 100px;
     cursor: pointer;
+    padding: 10px;
+    color: white;
 }
-#com-box-item button:hover {
+
+#c-view-btn:hover{
     transform: scale(1.1);
     transition: 00.3s;
 }
 
+#c-box-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    
+}
+
+#c-box-des{
+    margin: 0 50px 10px 50px;
+    padding: 0 50px 0 0;
+}
+
+#uname{
+    padding: 30px 50px;
+}
 #back-btn{
     padding: 15px 20px;
     margin-right: 50px;
@@ -74,13 +69,8 @@ h2{
     font-size: 16px;
     font-weight: bold;
     text-decoration: none;
-    border-radius: 10px;
+    border-radius: 5px;
     width: 100px;
     cursor: pointer;
-    margin-left: 100px;
-}
-
-#back-btn:hover{
-    transform: scale(1.1);
-    transition: 00.3s;
+    margin-left: 50px;
 }

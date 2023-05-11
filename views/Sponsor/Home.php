@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/cards.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>public/styles/chat-icon.css">
     <title>Home</title>
 </head>
 
@@ -58,6 +59,14 @@
         </section>
     </div>
 
+    <!-- <?php
+            if ($amount != null) {
+                echo ($amount['Amount']);
+            } else {
+                echo "0";
+            }
+            ?> -->
+        <?php include 'views/includes/chat_icon.php'; ?>
     <?php include 'views/includes/footer.php'; ?>
 </body>
 

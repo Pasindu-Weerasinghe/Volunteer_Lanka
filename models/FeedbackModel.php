@@ -27,6 +27,19 @@ class FeedbackModel extends Model
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    function isFeedbackGiven($pid, $uid)
+    {
+        $query = "SELECT * FROM feedback WHERE P_ID = $pid AND U_ID = $uid LIMIT 1";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        $isGiven = $statement->fetch(PDO::FETCH_ASSOC);
+        if ($isGiven != null) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
 
 }
 

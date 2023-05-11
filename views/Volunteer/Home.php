@@ -1,13 +1,3 @@
-<?php
-if(!isset($_SESSION)) {
-    session_start();
-}
-if (!isset($_SESSION['uid'])) {
-    header('Location: ' . BASE_URL);
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,6 +16,7 @@ if (!isset($_SESSION['uid'])) {
         <form action="<?php echo BASE_URL; ?>volunteer/search_project" method="post">
                 <label>Filter By</label>
                 <select id="filter" name="filter">
+                <option disabled selected value> -- select a filter -- </option>
                     <option value="name">Project Name</option>
                     <option value="area">Interest Area</option>
                     <option value="date">Date</option>
@@ -38,6 +29,20 @@ if (!isset($_SESSION['uid'])) {
                 <button name="search"><b>Search<b></button>
             </form>
         </div><br><hr><br>
+
+        <h2>My Upcoming Projects</h2><br /><br />
+        <section class="container">
+            <?php foreach ($this->myprojects as $myproject) {
+                $pid = $myproject['P_ID'] ?>
+                <div class="card">
+                    <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->myprImage[$pid][0]['Image'] ?>"></div>
+                    <h2><?php echo ($myproject["Name"]); ?></h2>
+                    <p><?php echo ($myproject["Date"]); ?></p>
+                    <a class="btn" href="<?php echo BASE_URL ?>volunteer/view_projects/<?php echo $myproject['P_ID'] ?>">View</a>
+                </div>
+            <?php } ?>
+        </section>
+        <br />
 
         <h2>Upcoming Projects</h2><br /><br />
         <section class="container">

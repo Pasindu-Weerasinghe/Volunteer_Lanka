@@ -1,9 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['uid'])) {
-    header('Location: ' . BASE_URL);
-} ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +32,7 @@ if (!isset($_SESSION['uid'])) {
                 <label for="photo"><b>Add Photos</b></label>
                 <input type="file" name="file[]" multiple="multiple"><br /><br />
 
-                <button class="btn">Back</button>
+                <button class="btn" onclick="history.back()">Back</button>
                 <button class="btn" name="request" id="request">Request</button>
             </div>
         </form>

@@ -26,9 +26,10 @@
             <p>Confirm password<br />
                 <input type="password" name="confirm" required />
             </p>
-
-            <button><a href="<?php echo BASE_URL ?> Sponsor/Profile" class="same">Back</a></button>
-            <button name="submit" type="submit">Confirm</button>
+           
+            <button onclick="history.back()"><a class="same">Back</a></button>
+            <button name="submit" type="submit" >Confirm</button>
+          
             <?php
             if (isset($this->error)) {
                 echo '<label class="error">' . $this->error . '</label>';

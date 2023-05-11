@@ -1,10 +1,5 @@
 <?php
-session_start();
-if (!isset($_SESSION['uid'])) {
-    header('Location: ' . BASE_URL);
-}
-
-$pid = $this->project['P_ID'];
+    $pid = $this->project['P_ID'];
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +54,7 @@ $pid = $this->project['P_ID'];
             </div>
             <div class="btn-area">
                 <button class="btn" onclick="history.back()">Back</button>
-                <a href="<?php echo BASE_URL ?>volunteer/join_leave_project/<?php echo $this->project['P_ID']?>/<?php echo $this->isJoined?>"><button class="btn" id="right"></button></a>
+                <a onclick="return confirm('Are you sure you want to leave this Project?')" href="<?php echo BASE_URL ?>volunteer/join_leave_project/<?php echo $this->project['P_ID']?>/<?php echo $this->isJoined?>/<?php echo $this->project['No_of_volunteers'] ?>/<?php echo $this->project['Date'] ?>"><button class="btn" id="right"></button></a>
             </div>
 
         </div>

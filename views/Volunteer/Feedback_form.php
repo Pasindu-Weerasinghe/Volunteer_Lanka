@@ -1,11 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['uid'])) {
-    header('Location: ' . BASE_URL);
-}
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,7 +22,7 @@ if (!isset($_SESSION['uid'])) {
                 <input type="text" name="uname" value=<?php echo ($_SESSION['uname']) ?> readonly>
 
                 <label for="contact"><b>Description</b></label><br>
-                <input type="text" name="des" id="des"><br>
+                <input type="text" name="des" id="des" required><br>
 
                 <label for="rating"><b>Leave your rating</b></label><br><br>
                     <div class="stars">

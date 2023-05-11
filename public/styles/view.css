@@ -34,7 +34,7 @@
     background-color: #6aa438;
     color: white;
     padding: 10px 20px;
-     margin: 20px 0; 
+    margin: 20px 0; 
     border-radius: 10px;
     border: none;
     cursor: pointer;
@@ -42,8 +42,8 @@
     width: auto;
     font-size: 20px;
     opacity: 0.88;
-    margin-left: 350px;
 }
+
 #publish-btn {
     margin-left: 400px;
   }
@@ -55,13 +55,11 @@
 .btn-area {
     width: auto;
     margin: auto;
-    display: block;
-    
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 200px;
 }
 
-/* #cancel {
-    float: left;
-} */
 
 .left-div {
     float: left;
@@ -76,10 +74,6 @@
     margin-left: 50px;
     font-size: 18px;
     /* border: 1px solid black; */
-}
-
-#right {
-    float: right;
 }
 
 a {

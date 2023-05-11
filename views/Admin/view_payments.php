@@ -13,6 +13,7 @@ if (!isset($_SESSION['uid'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Payments</title>
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/delete_user_acc.css">
+    <script src="<?php echo BASE_URL; ?>public/scripts/payment.js" defer></script>
 </head>
 
 <body>
@@ -33,31 +34,15 @@ if (!isset($_SESSION['uid'])) {
                         <th>Payment Type</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="payment-list">
+                    <?php foreach($this->paymentDetails as $paymentDetail){ ?>
                     <tr>
-                        <td>Rotaract Club UOC</td>
-                        <td>LKR 800</td>
-                        <td>2022/11/07</td>
-                        <td>Monthly Subscription</td>
+                        <td><?php echo $paymentDetail['Name'] ?></td>
+                        <td><?php echo $paymentDetail['Amount'] ?></td>
+                        <td><?php echo $paymentDetail['Date'] ?></td>
+                        <td><?php echo $paymentDetail['PaymentType'] ?></td>
                     </tr>
-                    <tr>
-                        <td>Rotaract Club UOM</td>
-                        <td>LKR 80</td>
-                        <td>2022/11/15</td>
-                        <td>Extra Project</td>
-                    </tr>
-                    <tr>
-                        <td>Leo Club Gampaha</td>
-                        <td>LKR 800</td>
-                        <td>2022/11/07</td>
-                        <td>Monthly Subscription</td>
-                    </tr>
-                    <tr>
-                        <td>Lions Club Kandy</td>
-                        <td>LKR 80</td>
-                        <td>2022/11/15</td>
-                        <td>Extra Project</td>
-                    </tr>
+                   <?php } ?>
                 </tbody>
             </table>
         </div>

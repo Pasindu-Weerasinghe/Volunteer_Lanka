@@ -1,15 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['uid'])) {
-    header('Location: ' . BASE_URL);
-}
-
-// $sql = "SELECT * FROM organizer";
-// $result = mysqli_query($conn, $sql);
-// $organizers = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 

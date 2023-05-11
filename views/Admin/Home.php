@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (!isset($_SESSION['uid'])) {
+    header('Location: ' . BASE_URL);
+}
 ?>
 
 <!DOCTYPE html>
@@ -11,11 +14,14 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/admin_home.css">
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/cards.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>public/styles/chat-icon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Admin Home Page</title>
 </head>
 
 <body>
-    <?php include 'views/includes/navbar_log.php'; ?>
+     <?php include 'views/includes/navbar_log.php'; ?> 
+
     <div class="main" id="main">
         <!-- Advertiesment Reqests area -->
         <h2>Advertisement Requests</h2><br><br>
@@ -38,18 +44,24 @@ session_start();
         foreach ($this->complaints as $complaint) {
         ?>
             <div id="c-box">
-                <div id="c-box-item">
-                    <h3 id="uname">Pasindu Weerasinghe</h3>
-                    <button id="c-view-btn">View</button>
+                <div id="c-box-item" >
+                    <h3 id="uname"><?php echo  $this->complain_userName[$complaint['C_ID']] ?></h3>
+                    <button onclick="window.location.href='<?php echo BASE_URL . 'admin/view_complaints/' . $complaint['C_ID']; ?>'" id="c-view-btn">View</button>
                 </div>
-                <p id="c-box-des"> I am writing to report a user on your system who has been behaving inappropriately. The user's username is Rotract Club Galle. I have included evidence of their behavior below and screenshots or other evidence. I believe that this behavior is in violation of your terms of service and I request that you take appropriate action. Thank you for your attention to this matter.</p>
+                <h4 id="c-box-des"><?php echo $this->complain_about[$complaint['C_ID']]  ?></h4>
             </div>
         <?php
         }
         ?>
         <br><br><br>
 
-
+        <pre>
+            <?php 
+            //print_r($this->complaints);
+            ?>
+        </pre>
+        
+        
 
 
 </body>

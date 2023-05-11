@@ -1,10 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['uid'])) {
-    header('Location: ' . BASE_URL);
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,6 +38,7 @@ if (!isset($_SESSION['uid'])) {
             <div class="card">
                 <div class="cards_heading">
                     <div class="date" id="date"></div>
+                    <div class="date" id="test"></div>
                     <div class="title">Events</div>
                 </div>
                 
@@ -55,5 +49,4 @@ if (!isset($_SESSION['uid'])) {
     <input type="hidden" name="role" value="<?php echo $_SESSION['role']?>">
 </body><br><br><br><br><br><br><br>
 <?php include 'views/includes/footer.php'; ?>
-
 </html>

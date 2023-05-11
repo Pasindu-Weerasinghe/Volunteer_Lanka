@@ -10,7 +10,7 @@
 
 .sub3 {
     font-size: 25px;
-    margin-left: 30px;
+    margin-left: 110px;
 }
 
 .top-container{
@@ -21,29 +21,36 @@
     background-color:#96c7d6;
 	width: 70%;
 	height: auto;
-	margin:auto;
+	margin: auto;
 }
   
 /* Create two equal columns that sits next to each other */
 .column1 {
     flex: 40%;
     padding: 20px;
-    height: 400px; 
+    height: 500px; 
     /* border: 1px solid black; */
 }
 
 .column2 {
     flex: 60%;
     padding: 20px;
-    height: 400px; 
+    height: 500px; 
     /* border: 1px solid black; */
 }
 
 .image {
-    margin-left: 80px;
+    margin-left: 50px;
     height: 240px;
-    width: 220px; 
+    width: 240px; 
     border-radius: 50%;
+}
+
+.badge {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    margin-left: 130px;
 }
 
 .btnpw {
@@ -61,6 +68,84 @@ a {
 	color: white;
 	text-decoration: none;
 }
+
+.top-td {
+	padding: 14px;
+	font-size: 14pt;
+	font-weight: bolder;
+}
+
+.horizontal {
+    display: flex;
+    margin-top: 20px;
+}
+
+.cont1 {
+    width: 50%;
+    margin: 20px;
+    background-color: #96c7d6;
+    height: auto;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 20px;
+}
+.cont2 {
+    width: 50%;
+    margin: 20px;
+    background-color: #96c7d6;
+}
+
+.head {
+    font-weight: bold;
+    font-size: 25px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.more {
+    background-color: #84b464;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    border-radius: 20px;
+    padding: 10px 0px 10px 130px;
+    font-weight: bold;
+}
+
+.white-color {
+    color: white;
+}
+
+.bronze-color {
+    color: #CD7F32;
+}
+
+.silver-color {
+    color: silver;
+}
+
+.gold-color {
+    color: gold;
+}
+
+.platinum-color {
+    color: #be8616;
+}
+
+.details {
+   
+}
+
+
+
+
+
+
+
+
+
+/* below here are css for the blog */
 
 .top-td {
 	padding: 14px;
@@ -137,12 +222,6 @@ hr {
 .user {
     height: 55px;
     width: 55px;
-    border-radius: 50%;
-}
-
-.badge {
-    height: 60px;
-    width: 60px;
     border-radius: 50%;
 }
 

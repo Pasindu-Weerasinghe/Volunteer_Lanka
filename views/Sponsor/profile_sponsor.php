@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/profile.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/profile.css" text="text/css">
     <script src="https://kit.fontawesome.com/18409fd0c0.js" crossorigin="anonymous"></script>
     <title>User Profile</title>
 </head>
@@ -14,27 +14,24 @@
     <?php include 'views/includes/navbar_log.php'; ?>
     <div class="main" id="main">
         <div class="form1">
-            <!-- <h2><i class="fa-solid fa-caret-right fa-lg" style="color: #000000;"></i> Achivemenbjjjjjhjnts</h2><br>
-            <h2><i class="fa-solid fa-caret-right fa-lg" style="color: #000000;"></i> Profile Details</h2><br> -->
-
-            <div class="row1">
-                <div class="col">
-                    <table>
-                        <tr>
-                            <td><?php echo $this->user['Name']; ?></td>
-                        </tr>
-                    </table>
+                <div class="left-container">
+                   
+                    <h2><?php echo $this->user['Name']; ?></h2>
+                        
+                    
+                    
                     <img class="image" src="<?php echo BASE_URL ?>public/images/<?php echo $this->profile['Photo'] ?>" alt="">
-                    <br><br>
-                    <div class="btn">
-                        <button class="prbtn1"> <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePic">Edit Profile</a></button>
-                        <button class="prbtn1" id="cp"> <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePsw">Change Password</a></button>
+                    
+                    
+                    <div class="btn-area">
+                        <button class="prbtn1" > <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePic"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</a></button>
+                        <button class="prbtn1" > <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePsw"><i class="fa-solid fa-key"></i> Change Password</a></button>
                     </div>
                 </div>
-            </div>
+            
 
 
-            <table class="T1">
+            <table class="right-container">
                 <tr>
                     <td>User ID</td>
                     <td>:</td>
@@ -73,7 +70,7 @@
         <div class="form2">
             <h2><i class="fa-solid fa-caret-right fa-lg" style="color: #000000;"></i> Achivements</h2><br>
             <div>
-                <h3 class="pack">Number of Sponsored Projects : <?php echo $this->sPackages['total']; ?></h3>
+                <h3 class="pack"><i class="fa-solid fa-circle fa-2xs"></i> Number of Sponsored Projects : <?php echo $this->sPackages['total']; ?></h3>
                 <br>
             </div><br>
             <div class="pack">
@@ -155,7 +152,7 @@
                 <br>
             </div>
 
-            <h3 class="pack">Aready Completed</h3>
+            <h3 class="pack"><i class="fa-solid fa-circle fa-2xs"></i> Aready Completed</h3>
             <section class="container2">
                 <?php
                 foreach ($this->cSponsored_projects as $spProject) {
@@ -173,7 +170,7 @@
                 <?php } ?>
             </section><br>
 
-            <h3 class="pack">Active Projects</h3><br>
+            <h3 class="pack"><i class="fa-solid fa-circle fa-2xs"></i> Active Projects</h3><br>
             <section class="container2">
                 <?php
                 foreach ($this->aSponsored_projects as $spProject) {

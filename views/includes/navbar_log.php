@@ -45,10 +45,10 @@ $role = $_SESSION['role'];
     </header>
     <script defer src="<?php echo BASE_URL; ?>public/scripts/navbarlog.js"></script>
     <nav>
-        <ul>
+        <!-- <ul>
             <li><a><?php echo $_SESSION['uname']; ?></a></li>
             <li id="logout"><a href="<?php echo BASE_URL; ?>index/logout">Logout</a></li>
-        </ul>
+        </ul> -->
     </nav>
 </header>
 <!-- Navbar end -->

@@ -209,6 +209,8 @@ class User extends Controller
             }
             echo $output;
         }
+    }
+
 
     public function changeProfilePic()
     {

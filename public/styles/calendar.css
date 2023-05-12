@@ -100,3 +100,8 @@
     border: 1px solid green;
     
 }
+
+.eventDate li{
+    background-color: green;
+    color: white;
+}

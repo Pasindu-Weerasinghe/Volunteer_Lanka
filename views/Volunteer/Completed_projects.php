@@ -9,29 +9,14 @@
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/cards.css">
     <title>Completed Projects</title>
 
-    <script type="text/javascript">
-        function buttonAdd($i) {
-            if ($i == 1) {
-                document.getElementById("add").innerHTML = "View";
-            } else {
-                document.getElementById("right").innerHTML = "Add Feedback";
-            }
-        }
-    </script>
-
 </head>
 
 <body>
 
     <?php include 'views/includes/navbar_log.php'; ?>
     <div id="main" class="main">
-        <div class="search-container">
-            <input type="text" name="search">
-            <button name="search"><b>Search<b></button>
-        </div><br>
         <h2>Completed Projects</h2><br /><br />
         <h3>Provide your valuable feedback for the projects you participated</h3>
-        <h3><?php print_r($this->feedbackGiven) ?></h3>
         <section class="container">
             <?php foreach ($this->projects as $project) {
                 $pid = $project['P_ID'];

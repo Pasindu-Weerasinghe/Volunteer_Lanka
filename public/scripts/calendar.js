@@ -8,6 +8,7 @@ currDate = date.getDate();
 currYear = date.getFullYear();
 currMonth = date.getMonth();
 let eventDates = [];
+let test2 = [];
 
 const BASE_URL = 'http://localhost/Volunteer_Lanka/';
 const role = document.querySelector("input[name='role']").value;
@@ -22,7 +23,9 @@ const renderCalender = () => {
     }
     datetoPass = `${currYear}-${monthtoPass}`
     getallEvents(datetoPass);
-    console.log(eventDates);
+    test2.forEach((i) => {
+        addClass(i, 'eventDate');
+    })
 
     let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(); //getting first day of month
     let lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(); //getting last date of month
@@ -94,8 +97,6 @@ function getTodayEvents(date) {
 
 function displayEvents(i) {
 
-    //document.getElementById({i}).style.borderColor = "Green";
-
     let month = currMonth + 1;
     if (month < 10) {
         month = "0" + month;
@@ -138,11 +139,10 @@ function getallEvents(date) {
 
             data.forEach((i) => {
                 eventDates.push(i.Date);
-
-            })
-
-            console.log(eventDates);
-            document.getElementById("test").innerHTML = JSON.stringify(eventDates);
+            });
+            eventDates.forEach((i) => {
+                test2.push(i.split('-')[2]);
+            });
 
         })
         .catch((error) => console.log(error));

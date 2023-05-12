@@ -26,11 +26,6 @@
                         </tr>
                     </table>
                     <img class="image" src="<?php echo BASE_URL ?>public/images/<?php echo $this->profile['Photo'] ?>" alt="">
-                    <br><br>
-                    <div class="btn">
-                        <button class="prbtn1"> <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePic">Edit Profile</a></button>
-                        <button class="prbtn1" id="cp"> <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePsw">Change Password</a></button>
-                    </div>
                 </div>
             </div>
 
@@ -72,7 +67,7 @@
 
 
         <div class="form2">
-            <h2><i class="fa-solid fa-caret-right fa-lg" style="color: #000000;"></i> Achivements</h2><br>
+            <h2><i class="fa-solid fa-caret-right fa-lg" style="color: #000000;"></i> Achievements</h2><br>
             <div>
                 <h3 class="pack">Number of Sponsored Projects : <?php echo $this->sPackages['total']; ?></h3>
                 <br>
@@ -156,7 +151,7 @@
                 <br>
             </div>
 
-            <h3 class="pack">Aready Completed</h3>
+            <h3 class="pack">Already Completed</h3>
             <section class="container2">
                 <?php
                 foreach ($this->cSponsored_projects as $spProject) {

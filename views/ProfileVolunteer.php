@@ -25,8 +25,6 @@
 
             </div>
             <div class="column2"><br />
-                <button class="btnpw"> <a href="<?php echo BASE_URL; ?>Volunteer/ChangeProfilePsw">Change Password</a></button>
-                <button class="btnpw"> <a href="<?php echo BASE_URL; ?>Volunteer/change_profile">Edit</a></button><br><br>
                 <table>
                     <tr>
                         <td class="top-td">User ID</td>

@@ -13,8 +13,8 @@ if (!isset($_SESSION['uid'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Complaints</title>
     <?php include 'views/includes/head-includes-log.php'; ?>
-    <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/view_compliants.css">
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/popup.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/view_compliants.css">
 </head>
 
 <body>
@@ -41,7 +41,7 @@ if (!isset($_SESSION['uid'])) {
             <div id="btn-area">
                 <button class="btn">Cancel</button>
                 <button class="btn" id="response-btn">Response</button>
-            </div>
+            </div><br>
 
         </div>
         <br>
@@ -52,8 +52,10 @@ if (!isset($_SESSION['uid'])) {
         <div class="popup">
             <!--close button-->
             <div class="popup-close"><i class="fa-solid fa-xmark"></i></div>
-            <form action="">
-                
+            <h2>Reason you are rejecting this advertisement</h2>
+            <form id="edit-pr-form" method="post" action="<?php echo BASE_URL ?>">
+                <textarea name="response" id="response" value="<?php  ?>" required></textarea>
+                <button class="btn" type="submit" name="edit-project" id="edit-project">Send</button>
             </form>
         </div>
     </div>

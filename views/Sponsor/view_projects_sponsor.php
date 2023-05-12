@@ -44,7 +44,7 @@
 
         </div>
     </div>
-    <?php include 'views/includes/footer.php'; ?>
+    <!-- <?php include 'views/includes/footer.php'; ?> -->
 </body>
 
 </html>

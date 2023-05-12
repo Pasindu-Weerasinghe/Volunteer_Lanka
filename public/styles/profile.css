@@ -38,10 +38,12 @@
 	text-align: center;
 }
 #lc{
-	margin-top: -50px;
+	margin-top: 17px;
 }
 #lc2{
-	margin-top: 45px;
+	margin-top: 23px;
+	width: 50%;
+	margin-left: 50px;
 }
 .right-container{
 	width: 60%;
@@ -66,10 +68,7 @@
 }
 
 
-a {
-	color: #e0e0f0;
-	text-decoration: none;
-}
+
 h3{
 	margin-left: 50px;
 }
@@ -131,7 +130,7 @@ input[type="password"]:focus {
 }
 
 
-.btn-area button {
+.btn-area .btn {
 	background-color: #6aa438;
 	color: #e0e0f0;
 	padding: 10px 15px;
@@ -164,7 +163,7 @@ input[type="password"]:focus {
 .bt2 {
 	margin-left: 60px;
 }
-a {
+button a {
 	color: #e0e0f0;
 	text-decoration: none;
 }
@@ -274,6 +273,19 @@ h4 {
 	font-weight: bold;
 	cursor: pointer;
 }
+
+#upbtn{
+	margin-right: 175px;
+}
+.column1{
+	margin-top: -25px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+
 
 
 

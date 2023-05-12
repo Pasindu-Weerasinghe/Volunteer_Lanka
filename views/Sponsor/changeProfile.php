@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <?php include 'views/includes/head-includes-log.php'; ?>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,12 +14,17 @@
     <?php include 'views/includes/navbar_log.php' ?>
     <div class="main" id="main">
         <div class="form1">
-            <div class="left-container" >
+            <div class="left-container">
                 <h2 id="lc"><?php echo $this->user['Name']; ?></h2>
-                <img class="image" src="<?php echo BASE_URL ?>public/images/<?php echo $this->profile['Photo'] ?>" alt=""><br><br>
+                <img class="image" src="<?php echo BASE_URL ?>public/images/profile_images/<?php echo $this->profile['Photo'] ?>" alt=""><br><br>
                 <form class="column1" action="<?php echo BASE_URL; ?>Sponsor/changeProfilePic" method="post" enctype="multipart/form-data">
-                    <input type="file" name="profilepic"><br>
-                    <input type="submit" value="Save">
+                    
+                    <h3><i class="fa-solid fa-pen-to-square fa-lg"></i> Add Image</h3>
+                    <div class="btn-area">
+                        <input type="file" name="profilepic" class="btn" style="font-size: small">
+                        <input type="submit" value="Save" class="btn">
+                    </div>
+
                 </form>
             </div>
 
@@ -39,7 +45,7 @@
                 <input type="text" name="address" value="<?php echo $this->user['Address']; ?>"><br>
 
                 <div class="btn-area">
-                    <button class="prbtn1" name="update"> Update Profile</a></button>
+                    <button class="btn" id="upbtn" name="update"> Update Profile</a></button>
                 </div>
             </form>
 

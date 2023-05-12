@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <?php include 'views/includes/head-includes-log.php'; ?>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,21 +15,21 @@
     <?php include 'views/includes/navbar_log.php'; ?>
     <div class="main" id="main">
         <div class="form1">
-                <div class="left-container">
-                   
-                    <h2><?php echo $this->user['Name']; ?></h2>
-                        
-                    
-                    
-                    <img class="image" src="<?php echo BASE_URL ?>public/images/<?php echo $this->profile['Photo'] ?>" alt="">
-                    
-                    
-                    <div class="btn-area">
-                        <button class="prbtn1" > <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePic"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</a></button>
-                        <button class="prbtn1" > <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePsw"><i class="fa-solid fa-key"></i> Change Password</a></button>
-                    </div>
+            <div class="left-container">
+
+                <h2><?php echo $this->user['Name']; ?></h2>
+
+
+
+                <img class="image" src="<?php echo BASE_URL ?>public/images/profile_images/<?php echo $this->profile['Photo'] ?>" alt="">
+
+
+                <div class="btn-area">
+                    <button  class="btn"> <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePic"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</a></button>
+                    <button  class="btn"> <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePsw"><i class="fa-solid fa-key"></i> Change Password</a></button>
                 </div>
-            
+            </div>
+
 
 
             <table class="right-container">
@@ -152,6 +153,23 @@
                 <br>
             </div>
 
+            <h3 class="pack"><i class="fa-solid fa-circle fa-2xs"></i> Active Projects</h3><br>
+            <section class="container2">
+                <?php
+                foreach ($this->aSponsored_projects as $spProject) {
+                    $pid = $spProject['P_ID'];
+                ?>
+                    <div class="card">
+                        <div class="card-image">
+                            <img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image'] ?>">
+                        </div>
+
+                        <h2><?php echo ($spProject["Name"]); ?></h2>
+                        <p>Date: <?php echo ($spProject["Date"]); ?></p>
+                        <p><?php echo ucfirst($spProject['Package']) ?>: <?php echo ($spProject['Amount']); ?></p>
+                    </div>
+                <?php } ?>
+            </section>
             <h3 class="pack"><i class="fa-solid fa-circle fa-2xs"></i> Aready Completed</h3>
             <section class="container2">
                 <?php
@@ -170,26 +188,10 @@
                 <?php } ?>
             </section><br>
 
-            <h3 class="pack"><i class="fa-solid fa-circle fa-2xs"></i> Active Projects</h3><br>
-            <section class="container2">
-                <?php
-                foreach ($this->aSponsored_projects as $spProject) {
-                    $pid = $spProject['P_ID'];
-                ?>
-                    <div class="card">
-                        <div class="card-image">
-                            <img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image'] ?>">
-                        </div>
 
-                        <h2><?php echo ($spProject["Name"]); ?></h2>
-                        <p>Date: <?php echo ($spProject["Date"]); ?></p>
-                        <p><?php echo ucfirst($spProject['Package']) ?>: <?php echo ($spProject['Amount']); ?></p>
-                    </div>
-                <?php } ?>
-            </section>
         </div>
-    </div><br><br><br>
-    <?php include 'views/includes/footer.php'; ?>
+    <!-- </div><br><br><br>
+    <?php include 'views/includes/footer.php'; ?> -->
 </body>
 
 </html>

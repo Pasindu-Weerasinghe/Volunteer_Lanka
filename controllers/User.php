@@ -221,7 +221,7 @@ class User extends Controller
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            $target_dir = "public/images/";
+            $target_dir = "public/images/profile_images/";
             $image_name = basename($_FILES["profilepic"]["name"]);
             $target_file = $target_dir . $image_name;
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -239,6 +239,7 @@ class User extends Controller
                 $profilepic = $target_file;
                 // Update user's record in the database with new profile picture
                 $this->model->updateProfilePic($uid, $profilepic);
+                $_SESSION['photo']=$profilepic;
                 header('Location: ' . BASE_URL . 'Sponsor/profile');
             } else {
                 echo "Sorry, there was an error uploading your file.";

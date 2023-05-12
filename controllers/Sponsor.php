@@ -46,8 +46,11 @@ class Sponsor extends User
             $this->loadModel('Project');
             $this->projects = $this->model->getProject($pid);
             $uid = $this->projects['U_ID'];
-            $this->organizer = $this->model->getOrganizer($uid);
-            $this->packages = $this->model->getAmounts($pid, $uid);
+
+            $this->loadModel('Organizer');
+            $this->organizer = $this->model->getOrganizerByID($uid);
+            $this->loadModel('SponsorNotice');
+            $this->packages = $this->model->getSponsorPackage($pid, $uid);
 
 
             $this->render('Sponsor/view_sponsor_notices');

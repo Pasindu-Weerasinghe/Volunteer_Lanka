@@ -82,12 +82,12 @@ a {
 }
 
 
-/* h2, p{
+h2, p{
     margin: 10px 10px 0 10px;
 }
 h3, h4 {
     margin: 0 0 10px 10px;
-} */
+}
 
 .main {
     padding: 100px 150px 0 150px;

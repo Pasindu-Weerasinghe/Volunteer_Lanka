@@ -22,12 +22,12 @@ $role = $_SESSION['role'];
     </div>
     <nav>
         <ul>
-            <li>
+            <li id="bell-econ">
                 <a href="<?php echo BASE_URL . $_SESSION['role']; ?>/notifications">
-                    <i class="fa-solid fa-bell fa-2xl"></i>
+                    <i class="fa-solid fa-bell fa-2xl" ></i>
                 </a>
             </li>
-            <li>
+            <li id="profile-icon">
                 <div class="profile-wrapper">
                     <div class="abc">
                         <img class="profile-image" src="<?php echo BASE_URL ?>public/images/profile_images/<?php echo ($_SESSION['photo'] ?: 'user-icon.png') ?>" alt="">

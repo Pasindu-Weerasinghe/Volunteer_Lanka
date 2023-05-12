@@ -99,6 +99,14 @@ class Admin extends User
         $this->name = $this->model->getUserDatatoComplain($uid, $role['Role']);
         $this->render('Admin/view_complaints');
     }
+    function setComplainResponse($cid){
+        $response = $_POST['response'];
+        $this->loadModel('Admin');
+        echo $response;
+        echo $cid;
+       $this->model->setComplainResponse($cid,$response);
+        header('Location: ' . BASE_URL . 'Admin/complaints');
+    }
     function create_acc_auth()
     {
         if (isset($_POST['create'])) {

@@ -56,7 +56,7 @@ if (!isset($_SESSION['uid'])) {
             <h2>Reason you are rejecting this advertisement</h2>
             <form id="edit-pr-form" method="post" action="<?php echo BASE_URL ?>admin/setAdReason/<?php echo $this->ad['AD_ID']; ?>">
                 <textarea name="reason" id="raeson" required></textarea>
-                <button class="btn" type="submit" name="edit-project" id="edit-project">Send</button>
+                <button class="btn" type="submit">Send</button>
             </form>
 
         </div>

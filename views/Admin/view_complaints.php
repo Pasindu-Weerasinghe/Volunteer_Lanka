@@ -45,7 +45,6 @@ if (!isset($_SESSION['uid'])) {
 
         </div>
         <br>
-
         <br>
     </div>
     <div class="popup-bg" style="display:none;">
@@ -53,9 +52,9 @@ if (!isset($_SESSION['uid'])) {
             <!--close button-->
             <div class="popup-close"><i class="fa-solid fa-xmark"></i></div>
             <h2>Response</h2>
-            <form id="edit-pr-form" method="post" action="<?php echo BASE_URL ?>">
-                <textarea name="response" id="response" value="<?php  ?>" required></textarea>
-                <button class="btn" type="submit" name="edit-project" id="edit-project">Send</button>
+            <form id="edit-pr-form" method="post" action="<?php echo BASE_URL ?>Admin/setComplainResponse/<?php echo $this->complaint['C_ID']; ?>">
+                <textarea name="response" id="response" required></textarea>
+                <button class="btn" type="submit">Send</button>
             </form>
         </div>
     </div>

@@ -20,5 +20,11 @@ class AdminModel extends Model{
         $statement->bindParam(':adid', $adid);
         return $statement->execute();
     }
-    
+    function setComplainResponse($cid,$response) {
+        $query = "UPDATE complaints SET Response = :response WHERE C_ID = :cid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':response', $response);
+        $statement->bindParam(':cid', $cid);
+        return $statement->execute();
+    }   
 }

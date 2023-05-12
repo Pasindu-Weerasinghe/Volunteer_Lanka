@@ -34,14 +34,14 @@ if (!isset($_SESSION['uid'])) {
                     </tr>
                 </thead>
                 <tbody class="users-list">
-                    <?php foreach($this->userDetails as $userDetail) {?>
-                    <tr>
-                        <td><?php echo $userDetail['Name'] ?></td>
-                        <td><?php echo ucfirst($userDetail['Role']) ?></td>
-                        <td><?php echo ucfirst($userDetail['Status']) ?></td>
-                    </tr>
+                    <?php foreach ($this->userDetails as $userDetail) { ?>
+                        <tr>
+                            <td><?php echo $userDetail['Name'] ?></td>
+                            <td><?php echo ucfirst($userDetail['Role']) ?></td>
+                            <td><?php echo ucfirst($userDetail['Status']) ?></td>
+                        </tr>
                     <?php } ?>
-                    
+
                 </tbody>
             </table>
         </div>

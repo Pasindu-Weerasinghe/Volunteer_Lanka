@@ -70,6 +70,13 @@ class Admin extends User
         $this->ad = $this->model->accept_ad_req($adid);
         header('Location: ' . BASE_URL . 'admin');
     }
+    function setAdReason($adid){
+        $reason = $_POST['reason'];
+        $this->loadModel('Admin');
+        $this->model->setAdReason($adid,$reason);
+        header('Location: ' . BASE_URL . 'Admin/advertiesment_requests');
+        
+    }
     function complaints()
     {
         $this->loadModel('Complaints');

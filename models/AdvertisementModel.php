@@ -7,7 +7,7 @@ class AdvertisementModel extends Model
     }
     function getAdvertisementRequests()
     {
-        $query = "SELECT AD_ID,Sponsor FROM advertisement";
+        $query = "SELECT AD_ID,Status,Sponsor,Reason FROM advertisement";
         $statement = $this->db->prepare($query);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);

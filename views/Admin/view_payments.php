@@ -36,14 +36,14 @@ if (!isset($_SESSION['uid'])) {
                     </tr>
                 </thead>
                 <tbody class="payment-list">
-                    <?php foreach($this->paymentDetails as $paymentDetail){ ?>
-                    <tr>
-                        <td><?php echo $paymentDetail['Name'] ?></td>
-                        <td><?php echo $paymentDetail['Amount'] ?></td>
-                        <td><?php echo $paymentDetail['Date'] ?></td>
-                        <td><?php echo $paymentDetail['PaymentType'] ?></td>
-                    </tr>
-                   <?php } ?>
+                    <?php foreach ($this->paymentDetails as $paymentDetail) { ?>
+                        <tr>
+                            <td><?php echo $paymentDetail['Name'] ?></td>
+                            <td><?php echo $paymentDetail['Amount'] ?></td>
+                            <td><?php echo $paymentDetail['Date'] ?></td>
+                            <td><?php echo $paymentDetail['PaymentType'] ?></td>
+                        </tr>
+                    <?php } ?>
                 </tbody>
             </table>
         </div>

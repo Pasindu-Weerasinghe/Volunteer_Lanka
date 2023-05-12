@@ -18,7 +18,7 @@ if (!isset($_SESSION['uid'])) {
 </head>
 
 <body>
-<?php include 'views/includes/navbar_log.php'; ?>
+    <?php include 'views/includes/navbar_log.php'; ?>
     <div class="main" id="main">
         <h2>View Advertisement Requests</h2>
         <div id="ad-req-box">
@@ -53,15 +53,15 @@ if (!isset($_SESSION['uid'])) {
         <div class="popup">
             <!--close button-->
             <div class="popup-close"><i class="fa-solid fa-xmark"></i></div>
-            <h2>Rsponse</h2>
-            <form id="edit-pr-form" method="post" action="<?php echo BASE_URL ?>">
-                <textarea name="reson" id="reson" value="<?php  ?>" required></textarea>
+            <h2>Reason you are rejecting this advertisement</h2>
+            <form id="edit-pr-form" method="post" action="<?php echo BASE_URL ?>admin/setAdReason/<?php echo $this->ad['AD_ID']; ?>">
+                <textarea name="reason" id="raeson" required></textarea>
                 <button class="btn" type="submit" name="edit-project" id="edit-project">Send</button>
             </form>
-            
+
         </div>
     </div>
-    
+
 </body>
 <script>
     const popupbg = document.querySelector(".popup-bg");
@@ -69,14 +69,12 @@ if (!isset($_SESSION['uid'])) {
     const popupCloseBtn = document.querySelector(".popup-close");
     const rejectBtn = document.querySelector("#reject-btn");
 
-    rejectBtn.addEventListener("click",() =>{
-        popupbg.style.display="flex";
+    rejectBtn.addEventListener("click", () => {
+        popupbg.style.display = "flex";
     });
-    popupCloseBtn.addEventListener("click",() =>{
-        popupbg.style.display="none";
+    popupCloseBtn.addEventListener("click", () => {
+        popupbg.style.display = "none";
     });
-
-
 </script>
 
 </html>

@@ -21,21 +21,22 @@ if (!isset($_SESSION['uid'])) {
 </head>
 
 <body>
-     <?php include 'views/includes/navbar_log.php'; ?> 
+    <?php include 'views/includes/navbar_log.php'; ?>
 
     <div class="main" id="main">
         <!-- Advertiesment Reqests area -->
         <h2>Advertisement Requests</h2><br><br>
         <section class="container">
             <?php foreach ($this->ads as $ad) {
-
+                if ($ad['Status'] == null && $ad['Reason'] == null) {
             ?>
-                <div class="card">
-                    <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/<?php echo  $this->adimages[$ad['AD_ID']] ?>"></div>
-                    <h2><?php echo $this->ad_sponsor_name[$ad['AD_ID']] ?></h2>
-                    <a class="btn" href="<?php echo BASE_URL . 'admin/view_ad_req/' . $ad['AD_ID']; ?>">View</a>
-                </div>
-            <?php } ?>
+                    <div class="card">
+                        <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/<?php echo  $this->adimages[$ad['AD_ID']] ?>"></div>
+                        <h2><?php echo $this->ad_sponsor_name[$ad['AD_ID']] ?></h2>
+                        <a class="btn" href="<?php echo BASE_URL . 'admin/view_ad_req/' . $ad['AD_ID']; ?>">View</a>
+                    </div>
+            <?php }
+            } ?>
         </section>
         <!-- Advertiesment Reqests area end-->
         <!-- Complaints area-->
@@ -43,26 +44,23 @@ if (!isset($_SESSION['uid'])) {
         <h2>Complaints</h2><br><br>
         <?php
         foreach ($this->complaints as $complaint) {
+            if ($complaint['Response'] == null) {
         ?>
-            <div id="c-box">
-                <div id="c-box-item" >
-                    <h3 id="uname"><?php echo  $this->complain_userName[$complaint['C_ID']] ?></h3>
-                    <button onclick="window.location.href='<?php echo BASE_URL . 'admin/view_complaints/' . $complaint['C_ID']; ?>'" id="c-view-btn">View</button>
+                <div id="c-box">
+                    <div id="c-box-item">
+                        <h3 id="uname"><?php echo  $this->complain_userName[$complaint['C_ID']] ?></h3>
+                        <button onclick="window.location.href='<?php echo BASE_URL . 'admin/view_complaints/' . $complaint['C_ID']; ?>'" id="c-view-btn">View</button>
+                    </div>
+                    <h4 id="c-box-des"><?php echo $this->complain_about[$complaint['C_ID']]  ?></h4>
                 </div>
-                <h4 id="c-box-des"><?php echo $this->complain_about[$complaint['C_ID']]  ?></h4>
-            </div>
         <?php
+            }
         }
         ?>
         <br><br><br>
 
-        <pre>
-            <?php 
-            //print_r($this->complaints);
-            ?>
-        </pre>
-        
-        
+
+
 
 
 </body>

@@ -12,4 +12,13 @@ class AdminModel extends Model{
         $statement->bindParam(':name', $name);
         return $statement->execute();
     }
+
+    function setAdReason($adid, $reason) {
+        $query = "UPDATE advertisement SET Reason = :reason WHERE AD_ID = :adid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':reason', $reason);
+        $statement->bindParam(':adid', $adid);
+        return $statement->execute();
+    }
+    
 }

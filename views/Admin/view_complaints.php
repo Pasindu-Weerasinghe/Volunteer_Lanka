@@ -52,7 +52,7 @@ if (!isset($_SESSION['uid'])) {
         <div class="popup">
             <!--close button-->
             <div class="popup-close"><i class="fa-solid fa-xmark"></i></div>
-            <h2>Reason you are rejecting this advertisement</h2>
+            <h2>Response</h2>
             <form id="edit-pr-form" method="post" action="<?php echo BASE_URL ?>">
                 <textarea name="response" id="response" value="<?php  ?>" required></textarea>
                 <button class="btn" type="submit" name="edit-project" id="edit-project">Send</button>

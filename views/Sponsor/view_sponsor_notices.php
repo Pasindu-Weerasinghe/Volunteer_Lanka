@@ -14,46 +14,60 @@
         <div class="container">
             <div>
                 <div class="slider">
-                    <span id="slide-1"></span>
-                    <span id="slide-2"></span>
-                    <span id="slide-3"></span>
+                    <?php foreach ($this->prImage as $index => $image) : ?>
+                        <span id="slide-<?php echo $index + 1 ?>"></span>
+                    <?php endforeach; ?>
                     <div class="image-container">
-                        <img src="<?php echo BASE_URL ?>public/images/pr_images/cleaning.jpg" class="slide" width="500" height="300" />
-                        <img src="<?php echo BASE_URL ?>public/images/pr_images/tree.jpg" class="slide" width="500" height="300" />
-                        <img src="<?php echo BASE_URL ?>public/images/pr_images/clean.jpeg" class="slide" width="500" height="300" />
+                        <?php foreach ($this->prImage as $index => $image) : ?>
+                            <img src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $image['Image'] ?>" class="slide" width="500" height="300" />
+                        <?php endforeach; ?>
                     </div>
+
                     <div class="buttons">
-                        <a href="#slide-1"></a>
-                        <a href="#slide-2"></a>
-                        <a href="#slide-3"></a>
+                        <?php foreach ($this->prImage as $index => $image) : ?>
+                            <a href="#slide-<?php echo $index + 1 ?>"></a>
+                        <?php endforeach; ?>
                     </div>
+                    </slider>
                 </div>
+
 
 
                 <table class="table1">
                     <tr>
                         <td>Date</td>
-                        <td>: <?php echo $this->projects['Date'] ?></td>
+                        <td>:</td>
+                        <td><?php echo $this->projects['Date'] ?></td>
                     </tr>
                     <tr>
                         <td>Time</td>
-                        <td>: <?php echo $this->projects['Time'] ?></td>
+                        <td>:</td>
+                        <td><?php echo $this->projects['Time'] ?></td>
                     </tr>
                     <tr>
                         <td>Venue</td>
-                        <td>: <?php echo $this->projects['Venue'] ?></td>
+                        <td>:</td>
+                        <td><?php echo $this->projects['Venue'] ?></td>
                     </tr>
                     <tr>
                         <td>Organizer</td>
-                        <td>: <?php echo $this->organizer['Name'] ?> </td>
+                        <td>:</td>
+                        <td><?php echo $this->organizer['Name'] ?> </td>
                     </tr>
                     <tr>
                         <td>Number of Volunteers</td>
-                        <td>: <?php echo $this->projects['No_of_volunteers'] ?></td>
+                        <td>:</td>
+                        <td><?php echo $this->projects['No_of_volunteers'] ?></td>
                     </tr>
                     <tr>
                         <td>Description</td>
-                        <td>: <?php echo $this->projects['Description'] ?></td><br>
+                        <td>:</td>
+                        <td><?php echo $this->projects['Description'] ?></td><br>
+                    </tr>
+                    <tr>
+                        <td>Total Bujet</td>
+                        <td>: </td>
+                        <td>Rs <?php echo $this->budjet['Amount'] ?>.00</td><br>
                     </tr>
                 </table>
             </div>
@@ -77,7 +91,7 @@
 
                     <div class="package" id="platinumPackage3">
                         <label name="package3" value="platinum">
-                            <strong>Platinum Package<br>More than Rs 10000</strong><br>
+                            <strong>Platinum Package<br>More than Rs 10000</strong>
                         </label>
                     </div>
                 </div>
@@ -86,7 +100,7 @@
                         <p class="para">Select Your Sponsor Package Amount
                     </td>
                     <td>:
-                        <input class="input-container" type="number" id="selectAmount" name="selectAmount" placeholder="Rs 0.00">
+                        <input class="input-container" type="number" id="selectAmount" name="selectAmount" placeholder="Rs 0.00" required>
                     </td>
                 </tr>
 

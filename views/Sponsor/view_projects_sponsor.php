@@ -35,16 +35,29 @@
                     <label id="data"><?php echo $this->project['Venue'] ?></label><br>
                     <label id="data"><?php echo $this->project['No_of_volunteers'] ?></label><br>
                     <label id="data"><?php echo $this->project['Description'] ?></label><br>
+
+
                 </div>
             </div>
             <div class="btn-area">
                 <button onclick="history.back()" class="btn">Back</button>
-                <a href=" <?php echo BASE_URL ?> sponsor/publish_advertisement"> <button class="btn" id="publish-btn"> Publish Advertiesment</button>
+                <a href=" <?php echo BASE_URL ?> sponsor/publish_advertisement/<?php echo $this->project['P_ID'] ?>"> <button class="btn" id="publish-btn"> Publish Advertiesment</button>
             </div>
 
         </div>
     </div>
     <!-- <?php include 'views/includes/footer.php'; ?> -->
+    <input type="hidden" name="ad-published" id="ad-published" value="<?php echo json_encode($this->ad_published) ?>">
 </body>
+<script>
+    const adPublished = JSON.parse(document.getElementById('ad-published').value);
+    console.log(adPublished);
+    const publishBtn = document.getElementById('publish-btn');
+    if (adPublished) {
+        publishBtn.disabled = true;
+        publishBtn.style.backgroundColor = 'grey';
+        publishBtn.title = "You cannot publish. Because you already published for this project.";
+    }
+</script>
 
 </html>

@@ -454,7 +454,7 @@ class Organizer extends User
         $this->organizer = $this->model->getOrganizerById($uid);
 
         $this->loadModel('Project');
-        $this->no_of_projects = count($this->model->getProjects($uid));
+//        $this->no_of_projects = count($this->model->getProjects($uid));
         $this->no_of_completed_projects = 0;
         $this->projects = $this->model->getProjectsOrganizer($uid);
 

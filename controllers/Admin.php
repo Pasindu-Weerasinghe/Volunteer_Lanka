@@ -70,12 +70,12 @@ class Admin extends User
         $this->ad = $this->model->accept_ad_req($adid);
         header('Location: ' . BASE_URL . 'admin');
     }
-    function setAdReason($adid){
+    function setAdReason($adid)
+    {
         $reason = $_POST['reason'];
         $this->loadModel('Admin');
-        $this->model->setAdReason($adid,$reason);
+        $this->model->setAdReason($adid, $reason);
         header('Location: ' . BASE_URL . 'Admin/advertiesment_requests');
-        
     }
     function complaints()
     {
@@ -99,12 +99,13 @@ class Admin extends User
         $this->name = $this->model->getUserDatatoComplain($uid, $role['Role']);
         $this->render('Admin/view_complaints');
     }
-    function setComplainResponse($cid){
+    function setComplainResponse($cid)
+    {
         $response = $_POST['response'];
         $this->loadModel('Admin');
         echo $response;
         echo $cid;
-       $this->model->setComplainResponse($cid,$response);
+        $this->model->setComplainResponse($cid, $response);
         header('Location: ' . BASE_URL . 'Admin/complaints');
     }
     function create_acc_auth()
@@ -123,11 +124,11 @@ class Admin extends User
                 if (!$this->model->checkEmailExist($email)) {
                     // if email does not exist
                     $hash_psw = password_hash($psw, PASSWORD_BCRYPT);
-                    if ($this->model->setUser($email, $hash_psw, $role)){
+                    if ($this->model->setUser($email, $hash_psw, $role)) {
 
                         $uid = $this->model->getUserId($email);
                         $this->loadModel('Admin');
-                        $this->model->setAdmin($uid,$name);
+                        $this->model->setAdmin($uid, $name);
                     }
 
                     header('Location: ' . BASE_URL . 'Admin/create_new_admin_acc');

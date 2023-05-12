@@ -37,42 +37,104 @@
 	padding: 10px;
 }
 
-.post-container {
-	display: block;
-	margin: 10px auto;
-	width: 1028px;
-	margin-top: 20px;
-	padding: 10px;
-	border-radius: 10px;
-	/* background-color: #96c7d6; */
-	background-color: white;
-	box-shadow: 0 0 20px rgb(116, 114, 114);
+.top-td {
+	padding: 14px;
+	font-size: 14pt;
+	font-weight: bolder;
 }
 
-.post-header {
-	margin-bottom: 12px;
+.post-container{
+    border: none;
+    border-radius: 10px;
+    background-color:#96c7d6;
+	width: 80%;
+	margin: auto;
+    height: 700px;
+    padding-bottom: 10px;
+    overflow: none;
 }
 
-.post-container .description {
-	/* background-color: white; */
-	margin: 10px;
-	border-radius: 10px;
-	padding: 10px;
-	font-size: 18px;
-	text-align: justify;
+.title {
+    padding: 30px 30px 0px 30px;
+    font-size: 20pt;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
 }
 
-.post-images {
-	display: flex;
-	flex-wrap: wrap;
-	width: 100%;
-	justify-content: center;
+.title-feedback {
+    padding: 10px 10px 10px 20px;
+    font-size: 15pt;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
 }
 
-.post-images img {
-	height: 170px;
-	margin: 10px;
-	border-radius: 10px;
-	/* border: 3px solid white; */
-	box-shadow: 0 0 10px rgb(116, 114, 114);
+#view-all {
+    background-color: #84b464;
+    border: none;
+    font-size: 13px;
+    padding: 6px 8px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.post-table {
+    /* border: 1px solid black; */
+    width: 100%;
+    margin: auto;
+    padding-left: 100px;
+    font-size: 20px;
+}
+
+hr {
+    border: 1px solid gray;
+}
+
+.feedback {
+    width: 80%;
+    margin: 20px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.item-name {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.item {
+    margin-left: 20px;
+}
+
+.user {
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+}
+
+.container-image {
+    padding: 30px 50px 30px 50px;
+    width: 100%;
+}
+
+.container-image img {
+    height: 200px;
+    width: 300px;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.p1{
+	font-size: 16pt;
+}
+
+.checked {
+    color: #ff9c1a;
+}
+
+.unchecked {
+    color: #e6e6e6;
 }

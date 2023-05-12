@@ -281,6 +281,14 @@ class ProjectModel extends Model
         }
     }
 
+    function getProjectsOrganizer($uid)
+    {
+        $query = "SELECT * FROM project WHERE U_ID = $uid and Status = 'blogged'";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     function setProjectImage($pid, $image)
     {
         $query = "INSERT INTO  pr_image (P_ID, Image) VALUES (:pid, :image)";

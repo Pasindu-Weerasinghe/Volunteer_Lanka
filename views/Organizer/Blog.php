@@ -32,7 +32,7 @@
             </div>
         </div>
         <!-- organization end -->
-
+        <br>
         <!-- Blog part starts here -->
         <?php foreach ($this->projects as $project) {
             $pid = $project['P_ID'] ?>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="container-image">
                     <?php foreach ($this->prImage[$pid] as $image) { ?>
-                        <img src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $image['Image'] ?>">
+                        <img src="<?php echo BASE_URL ?>public/images/post_images/<?php echo $image['Image'] ?>">
                     <?php } ?>
                 </div>
                 <table class="post-table">

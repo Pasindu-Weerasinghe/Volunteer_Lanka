@@ -32,6 +32,13 @@ if (!isset($_SESSION['uid'])) {
                     <img id="ad-box-img" src="<?php echo BASE_URL ?>public/images/<?php echo  $this->image ?>" alt="">
                 </div>
             </div>
+            <div class="name">
+                <h3 class="name-item">Description:</h3>
+                <div id="ad-box-item">
+                    <p><?php echo $this->ad['Description'] ?></p>
+                </div>
+            </div>
+            <br><br>
             <div id="btn-area">
                 <button class="btn" id="reject-btn">Reject</button>
                 <button onclick="window.location.href='<?php echo BASE_URL . 'admin/accept_ad_req/' . $this->ad['AD_ID']; ?>'" class="btn">Accept</button>

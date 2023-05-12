@@ -65,20 +65,23 @@ h2{
 }
 
 #ad-box-item{
-    display: flex;
+    display: inline;
     margin-left: 10px;
     margin-top: 30px;
     margin-bottom: 30px;
     width: 100%;
 }
 #ad-box-item p{
-    display: flex;
+    display: inline;
     margin-left: 10px;
     margin-bottom: 30px;
     width: 100%;
+    
 }
-
-#ad-box-item p{
+p{
+    text-align: justify;
+}
+/* #ad-box-item p{
     width: 100%;
     margin: 40px;
-}
+} */

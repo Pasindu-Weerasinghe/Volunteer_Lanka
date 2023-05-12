@@ -20,7 +20,7 @@ class AdvertisementModel extends Model
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
     function getAdvertisementRequest($adid){
-        $query = "SELECT AD_ID,Sponsor FROM advertisement WHERE AD_ID=:adid";
+        $query = "SELECT AD_ID,Description,Sponsor FROM advertisement WHERE AD_ID=:adid";
         $statement = $this->db->prepare($query);
         $statement->bindParam(':adid', $adid);
         $statement->execute();

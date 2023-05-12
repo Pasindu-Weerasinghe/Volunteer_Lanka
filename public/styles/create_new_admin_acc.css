@@ -105,7 +105,11 @@ p {
 
 /* Add padding to container elements */
 .container {
-	padding: 16px;
+	padding: 25px;
+	height: auto;
+	background-color: #96C7D6; 
+	border-radius: 10px;
+	width: 500px;
 }
 
 /* Clear floats */

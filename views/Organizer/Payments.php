@@ -9,113 +9,168 @@
 
     <?php include 'views/includes/head-includes-log.php'; ?>
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>public/styles/form.css">
-    <title>Requests from Volunteers</title>
+    <title>Subscription fee payment</title>
 </head>
 
 <body>
-    <!-- navigation bar -->
-    <?php include 'views/includes/navbar_log.php'; ?>
+<!-- navigation bar -->
+<?php include 'views/includes/navbar_log.php'; ?>
 
-    <div class="main" id="main">
-        <div class="wrapper">
-            <h2 class="title">Pay Subscription Fee</h2>
-            <form class="form" action="<?php echo BASE_URL; ?>organizer/create_project/" method="post">
-                <div class="row">
-                    <label for="">Amount</label>
-                    <input type="number" name="amount" required class="input input-number" value="800.00" readonly>
-                </div>
-                <div class="row">
-                    <label for="">Month</label>
-                    <input type="text" name="month" required class="input input-number" value="December" readonly>
-                </div>
-                <div class="notice">
-                    <label for="">Days reamining to pay: 4</label>
-                </div>
+<div class="main" id="main">
+    <div class="wrapper">
+        <h2 class="title">Pay Subscription Fee</h2>
+        <form class="form" id="payment-form" method="post">
+            <div class="row">
+                <label for="">First name</label>
+                <input type="text" name="first-name"  class="input">
+            </div>
+            <div class="row">
+                <label for="">Last name</label>
+                <input type="text" name="last-name" class="input">
+            </div>
+            <div class="row">
+                <label for="">Contact</label>
+                <input type="text" name="contact" class="input"
+                       value="<?php echo $this->organizer['Contact']; ?>">
+            </div>
+            <div class="row">
+                <label for="">Email</label>
+                <input type="email" name="email" class="input" value="<?php echo $_SESSION['uname']; ?>">
+            </div>
+            <div class="row">
+                <label for="">Address</label>
+                <input type="text" name="Address" class="input">
+            </div>
+            <div class="row">
+                <label for="">City</label>
+                <input type="text" name="city" class="input">
+            </div>
+            <div class="row">
+                <label for="amount">Amount</label>
+                <input type="number" name="amount" class="input input-number" value="<?php echo SUB_FEE; ?>"
+                       readonly>
+            </div>
+            <div class="row">
+                <label for="">Month</label>
+                <input type="text" name="month" class="input input-number" value="<?php echo date('Y-m'); ?>"
+                       readonly>
+            </div>
+            <div class="notice">
+                <label for="">Days remaining to pay: <?php echo $this->days_remaining; ?></label>
+            </div>
 
 
-                <div class="btn-area">
-                    <button onclick="history.back()" class="btn">Cancel</button>
-                    <button type="submit" name="next" class="btn">Next</button>
-                </div>
-            </form>
-        </div>
-        <button type="submit" id="payhere-payment">PayHere Pay</button>
-        <?php
-        print_r($_ENV);
-
-        $order_id = "ItemNo12345";
-        $amount = 1000.00;
-        $currency = "LKR";
-        $merchant_id = $_ENV['MERCHANT_ID'];
-        $merchant_secret = $_ENV['MERCHANT_SECRET'];
-
-
-        $hash = strtoupper(
-            md5(
-                $merchant_id .
-                    $order_id .
-                    number_format($amount, 2, '.', '') .
-                    $currency .
-                    strtoupper(md5($merchant_secret))
-            )
-        );
-        ?>
-
+            <div class="btn-area">
+                <button onclick="history.back()" class="btn">Cancel</button>
+                <button type="submit" id="payhere-payment" name="pay" class="btn">Next</button>
+            </div>
+        </form>
+        <h3 id="paid-notice"style="display: none">You have paid the subscription for this month</h3>
     </div>
+    <?php
+    $order_id = "ItemNo123457";
+    $amount = SUB_FEE;
+    $currency = "LKR";
+    $merchant_id = $_ENV['MERCHANT_ID'];
+    $merchant_secret = $_ENV['MERCHANT_SECRET'];
+
+    $hash = strtoupper(
+        md5(
+            $merchant_id .
+            $order_id .
+            number_format($amount, 2, '.', '') .
+            $currency .
+            strtoupper(md5($merchant_secret))
+        )
+    );
+    ?>
+    <input type="hidden" name="paid" id="paid" value="<?php echo json_encode($this->paid) ?>">
+</div>
 </body>
 <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
 <script>
-    const order_id = "<?php echo $order_id; ?>";
+    const paymentForm = document.getElementById('payment-form');
+
+    const uid = "<?php echo $_SESSION['uid']; ?>";
+    const order_id = "<?php echo $order_id ?>"; // TODO: check!!!
     const amount = "<?php echo $amount; ?>";
     const currency = "<?php echo $currency; ?>";
     const hash = "<?php echo $hash; ?>";
     const merchant_id = "<?php echo $_ENV['MERCHANT_ID']; ?>";
 
+    // notify url
+    const localhost = "https://twelve-stars-melt.loca.lt";
+    const notify_url = localhost + "/Volunteer_Lanka/organizer/payment_successful/sub-fee/" + uid + "/" + amount;
+
+
+
     // Put the payment variables here
-    let payment = {
-        sandbox: true,
-        merchant_id: merchant_id, // Replace your Merchant ID
-        return_url: undefined, // Important
-        cancel_url: undefined, // Important
-        notify_url: "http://sample.com/notify",
-        order_id: "ItemNo12345",
-        items: "Door bell wireles",
-        amount: amount,
-        currency: currency,
-        hash: hash, // *Replace with generated hash retrieved from backend
-        first_name: "Saman",
-        last_name: "Perera",
-        email: "samanp@gmail.com",
-        phone: "0771234567",
-        address: "No.1, Galle Road",
-        city: "Colombo",
-        country: "Sri Lanka",
-        custom_1: "",
-        custom_2: "",
-    };
+    let payment = {}
 
     // Payment window closed
     payhere.onDismissed = function onDismissed() {
         // Note: Prompt user to pay again or show an error page
-        console.log("Payment dismissed");
+        alert("Payment dismissed");
+        //window.location.href = '<?php //echo BASE_URL ?>//' + 'organizer/payments';
     };
 
     // Error occurred
     payhere.onError = function onError(error) {
         // Note: show an error page
-        console.log("Error:" + error);
+        alert("Error:" + error);
+        //window.location.href = '<?php //echo BASE_URL ?>//' + 'organizer';
     };
+
+
 
     // Payment completed. It can be a successful failure.
     payhere.onCompleted = function onCompleted(orderId) {
         console.log("Payment completed. OrderID:" + orderId);
+        window.location.href = '<?php echo BASE_URL ?>' + 'organizer';
         // Note: validate the payment and show success or failure page to the customer
     };
 
     // Show the payhere.js popup, when "PayHere Pay" is clicked
-    document.getElementById('payhere-payment').onclick = function(e) {
+    document.getElementById('payhere-payment').onclick = function (e) {
+        e.preventDefault();
+        const formData = new FormData(paymentForm);
+
+        console.log(formData.get('first-name'));
+
+        let payment = {
+            sandbox: true,
+            merchant_id: merchant_id, // Replace your Merchant ID
+            return_url: undefined, // Important
+            cancel_url: undefined, // Important
+            notify_url: notify_url,
+            order_id: order_id,
+            items: "Subscription Fee",
+            amount: amount,
+            currency: currency,
+            hash: hash, // *Replace with generated hash retrieved from backend
+            first_name: formData.get('first-name'),
+            last_name: formData.get('last-name'),
+            email: formData.get('email'),
+            phone: formData.get('contact'),
+            address: formData.get('address'),
+            city: formData.get('city'),
+            country: "Sri Lanka",
+            custom_1: "",
+            custom_2: "",
+        };
         payhere.startPayment(payment);
     };
+
+    // check if the user has already paid the subscription fee for this month
+    const paid = JSON.parse(document.getElementById('paid').value);
+    const paid_notice = document.getElementById('paid-notice');
+
+    if (paid) {
+        document.querySelector('.title').style.display = "none";
+        paymentForm.style.display = "none";
+        paid_notice.style.display = "block";
+    }
+
 </script>
 
 </html>

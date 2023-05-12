@@ -441,11 +441,25 @@ class Organizer extends User
     {
         session_start();
         $uid = $_SESSION['uid'];
+
+        $this->loadModel('Organizer');
+        $this->organizer = $this->model->getOrganizerById($uid);
+
+        $this->days_remaining = 3; // TODO: get days remaining
+
+        // TODO: validation
         $this->loadModel('Payment');
+        $this->paid = !empty($this->model->getThisMonthSubFee($uid));
 
         $this->render('Organizer/Payments');
     }
 
+    function payment_successful($type, $uid, $amount) {
+        if($type == 'sub-fee') {
+        $this->loadModel('Payment');
+        $this->model->setSubFee($amount, $uid);
+        }
+    }
     function blog()
     {
         session_start();

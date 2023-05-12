@@ -33,7 +33,7 @@ class PaymentModel extends Model
         $statement = $this->db->prepare($query);
         $statement->bindParam(':uid', $uid);
         $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
     function getExtraProjectCount($uid) {

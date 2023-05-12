@@ -35,12 +35,16 @@
         <section class="container">
             <?php foreach ($this->projects as $project) {
                 $pid = $project['P_ID'];
-                $isGiven = $this->feedbackGiven[$pid] ?>
+                if($this->feedbackGiven[$pid]==1) {
+                    $btnmessage = "View";
+                } else {
+                    $btnmessage = "Add Feedback";
+                }?>
                 <div class="card">
                     <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image'] ?>"></div>
                     <h2><?php echo ($project["Name"]); ?></h2>
                     <p><?php echo ($project["Date"]); ?></p>
-                    <a class="btn" href="<?php echo BASE_URL ?>volunteer/feedback/<?php echo $isGiven ?>/<?php echo $project['P_ID'] ?>" id="add">Add Feedback</a>
+                    <a class="btn" href="<?php echo BASE_URL ?>volunteer/feedback/<?php echo $this->feedbackGiven[$pid]?>/<?php echo $project['P_ID'] ?>/<?php echo $project['U_ID'] ?>" id="add"><?php echo $btnmessage?></a>
                 </div>
             <?php } ?>
         </section>

@@ -304,4 +304,59 @@ class User extends Controller
                 break;
         }
     }
+
+    function viewVolunteerProfile($uid)
+    {
+        $this->loadModel('Volunteer');
+        $this->profile = $this->model->getUserData($uid);
+        $this->user = $this->model->getVolunteerData($uid);
+        $this->interests = $this->model->getVolunteerInterests($uid);
+        $this->orgs = $this->model->getOrganizations($uid);
+
+        $this->loadModel('Project');
+        $this->projects = $this->model->getMyCompletedProjects($uid);
+        $this->projectCount = count($this->projects);
+
+        $this->loadModel('ProjectIdea');
+        $ideaCount = $this->model->getMyIdeas($uid)['Count'];
+        $this->totalCount = $this->projectCount + $ideaCount;
+
+        $this->ideaBadgeCount = 0;
+        for($i=1; $i<=$ideaCount; $i++){
+            if($i % 3 == 0){
+                $this->ideaBadgeCount += 1;
+            }
+        }
+        
+        if ($this->totalCount <5){
+            $this->badge = "Beginner";
+            $this->more = 5 - $this->totalCount;
+            $this->next = "Bronze";
+            $this->color = "white";
+
+        } else if($this->totalCount  <10) {
+            $this->badge = "Bronze Member";
+            $this->more = 10 - $this->totalCount;
+            $this->next = "Silver";
+            $this->color = "bronze";
+
+        } else if($this->totalCount <20) {
+            $this->badge = "Silver Member";
+            $this->more = 20 - $this->totalCount;
+            $this->next = "Gold";
+            $this->color = "silver";
+
+        } else if($this->totalCount <50) {
+            $this->badge = "Gold Member";
+            $this->more = 50 - $this->totalCount;
+            $this->next = "Platinum";
+            $this->color = "gold";
+
+        } else {
+            $this->badge = "Platinum Member";
+            $this->color = "platinum";
+        }
+
+        $this->render('ProfileVolunteer');
+    }
 }

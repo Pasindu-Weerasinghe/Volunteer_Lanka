@@ -23,8 +23,6 @@
                     <option value="date">Date</option>
                     <option value="location">Location</option>
                     <option value="organizer">Organizer</option>
-                    <option value="completed">Completed Projects</option>
-                    <option value="volunteers">Number of Volunteers</option>
                 </select>
                 <label>Enter your keyword</label><input type="text" name="key">
                 <button name="search"><b>Search<b></button>

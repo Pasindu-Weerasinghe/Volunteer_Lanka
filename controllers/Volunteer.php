@@ -108,8 +108,13 @@ class Volunteer extends User
         $this->project = $this->model->getProject($pid);
         $this->images = $this->model->getProjectImage($pid);
         $this->isJoined = $this->model->isJoined($pid, $uid);
+        $oid = $this->project['U_ID'];
+
+        $this->loadModel('Organizer');
+        $this->organizer = $this->model->getOrganizerByID($oid);
         $this->render('Volunteer/View_project_volunteer');
     }
+    
 
     function join_leave_project($pid, $isJoined, $nuVolunteers, $date)
     {
@@ -168,10 +173,10 @@ class Volunteer extends User
         header("Location: " . BASE_URL . "volunteer/view_projects/$pid");
     }
 
-    function feedback($isGiven, $pid) 
+    function feedback($isGiven, $pid, $uid) 
     {
         if ($isGiven == 1) {
-            header("Location: " . BASE_URL . "volunteer/view_projects/$pid");
+            header("Location: " . BASE_URL . "organizer/blog/$uid");
         } else {
             $this->pid = $pid;
             $this->render('Volunteer/Feedback_form');
@@ -351,7 +356,7 @@ class Volunteer extends User
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            $target_dir = "public/images/";
+            $target_dir = "public/images/profile_images";
             $image_name = basename($_FILES["profilepic"]["name"]);
             $target_file = $target_dir . $image_name;
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));

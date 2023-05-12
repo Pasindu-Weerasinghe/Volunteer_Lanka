@@ -359,4 +359,73 @@ class User extends Controller
 
         $this->render('ProfileVolunteer');
     }
+
+    function viewSponsorProfile($uid)
+    {
+        $this->loadModel('Sponsor');
+        $this->profile = $this->model->getUserData($uid);
+        $this->user = $this->model->getSponsorData($uid);
+        $this->sPackages = $this->model->getPackages($uid);
+        $this->sAdvertisements = $this->model->getAdvertisements($uid);
+
+        $this->loadModel('SponsorNotice');
+
+        $this->cSponsored_projects = $this->model->getSponsoredProjects($uid, 'completed');
+
+        $this->aSponsored_projects = $this->model->getSponsoredProjects($uid, 'active');
+
+        
+        $this->loadModel('Project');
+        foreach ($this->cSponsored_projects as $project) {
+            $pid = $project['P_ID'];
+            $this->prImage[$pid] = $this->model->getProjectImage($pid);
+        }
+        foreach ($this->aSponsored_projects as $project) {
+            $pid = $project['P_ID'];
+            $this->prImage[$pid] = $this->model->getProjectImage($pid);
+        }
+                
+        $this->loadModel('Sponsor');
+        $this->sAmount= $this->model->getTotalAmount($uid);
+
+        $this->render('ProfileSponsor');
+    }
+
+    function viewOrganizerBlog($uid)
+    {
+        $this->loadModel('Organizer');
+        $this->organizer = $this->model->getOrganizerById($uid);
+
+        $this->loadModel('Project');
+//        $this->no_of_projects = count($this->model->getProjects($uid));
+        $this->no_of_completed_projects = 0;
+        $this->projects = $this->model->getProjectsOrganizer($uid);
+
+        $this->loadModel('Post');
+        foreach ($this->projects as $project) {
+            $pid = $project['P_ID'];
+            $this->prImage[$pid] = $this->model->getPostImages($pid);
+            $this->description[$pid] = $this->model->getPostDescription($pid);
+        }
+
+        $total_rating[] = 0;
+        foreach ($this->projects as $project) {
+            $this->loadModel('Feedback');
+            $pid = $project['P_ID'];
+            $this->feedbacks[$pid] = $this->model->getFeedbacks($pid);
+            $this->feedbackCount[$pid] = sizeof($this->feedbacks[$pid]);
+
+            foreach ($this->feedbacks[$pid] as $feedback) {
+                $total_rating[$pid] += $feedback['Rating'];
+                $uid = $feedback['U_ID'];
+                $this->loadModel('Volunteer');
+                $this->names[$uid] = $this->model->getName($uid);
+                $this->loadModel('User');
+                $this->profilePics[$uid] = $this->model->getProfilePic($uid);
+            }
+            $this->avg_rating[$pid] = $total_rating[$pid]/$this->feedbackCount[$pid];
+        }
+
+        $this->render('OrganizerBlog');
+    }
 }

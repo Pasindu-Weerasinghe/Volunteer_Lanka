@@ -83,17 +83,15 @@
                 <div class="more"><?php echo $this->more ?> more badges to earn <?php echo $this->next ?> medal</div><br>
             </div>
         </div>
-        <?php if(isset($_SESSION['role']) && $_SESSION['role']=='admin'){ 
-        $u_id = $this->profile['U_ID'];
-        $status= $this->profile['Status'];
-        include 'views/includes/only_admin.php';
-    }
-    
-    
-    ?>
+        <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
+            $u_id = $this->profile['U_ID'];
+            $status = $this->profile['Status'];
+            include 'views/includes/only_admin.php';
+        }
+        ?>
     </div>
-    
-<br><br>
+
+    <br><br>
 </body>
 
 </html>

@@ -45,4 +45,13 @@ class AdminModel extends Model{
         $statement->bindParam(':uid', $uid);
         return $statement->execute();
     }
+    function getUserData($uid){
+        $query="SELECT admin.U_ID,admin.Name, user.Role, user.Status FROM admin INNER JOIN user 
+        ON admin.U_ID=user.U_ID WHERE admin.U_ID= :uid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':uid', $uid);
+        $statement->execute();
+        return $statement->fetch(PDO::FETCH_ASSOC);  
+        
+    }
 }

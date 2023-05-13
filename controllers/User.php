@@ -429,6 +429,11 @@ class User extends Controller
 
         $this->render('OrganizerBlog');
     }
+    function viewAdminProfile($uid){
+        $this->loadModel('Admin');
+        $this->profile= $this->model->getUserData($uid);
+        $this->render('ProfileAdmin');
+    }
 
     function indexSearch()
     {

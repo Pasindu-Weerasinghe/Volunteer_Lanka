@@ -22,6 +22,7 @@
 	width: 70%;
 	height: auto;
 	margin: auto;
+    min-width: 900px;
 }
   
 /* Create two equal columns that sits next to each other */
@@ -133,8 +134,9 @@ a {
     color: #be8616;
 }
 
-.details {
-   
+.name {
+   display: flex;
+   justify-content: space-between;
 }
 
 
@@ -248,6 +250,7 @@ hr {
 .unchecked {
     color: #e6e6e6;
 }
+
 
 
 

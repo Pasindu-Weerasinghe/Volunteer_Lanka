@@ -216,7 +216,7 @@ class ProjectModel extends Model
 
     function getMyCompletedProjects($uid) //Details of the completed projects by the volunteer
     {
-        $query = "SELECT * FROM joins INNER JOIN project ON joins.P_ID = project.P_ID WHERE joins.U_ID = $uid AND project.Status='completed'";
+        $query = "SELECT * FROM joins INNER JOIN project ON joins.P_ID = project.P_ID WHERE joins.U_ID = $uid AND project.Status='completed' OR project.Status = 'blogged'";
         $statement = $this->db->prepare($query);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -279,6 +279,14 @@ class ProjectModel extends Model
             // if query failed
             return 'query failed';
         }
+    }
+
+    function getProjectsOrganizer($uid)
+    {
+        $query = "SELECT * FROM project WHERE U_ID = $uid and Status = 'blogged'";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
     function setProjectImage($pid, $image)

@@ -35,30 +35,59 @@ $pid = $this->project['P_ID'];
                     <img src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $image['Image']; ?>">
                 <?php } ?>
             </div>
-            <div class="wrapper">
-                <div class="left-div">
-                    <label for="">Date</label><br>
-                    <label for="">Time</label><br>
-                    <label for="">Venue</label><br>
-                    <label for="">Number of Volunteers</label><br>
-                    <label for="">Description</label><br>
+            
+            <div class="details-container">
+                    <div class="row">
+                        <label for="date">Date</label>
+                        <p id="date"><?php echo $this->project['Date'] ?></p>
+                    </div>
+
+                    <div class="row">
+                        <label for="time">Time</label>
+                        <p id="time"><?php echo $this->project['Time'] ?></p>
+                    </div>
+
+                    <div class="row">
+                        <label for="time">Organizer</label>
+                        <p id="organizer"><?php echo $this->organizer['Name'] ?></p>
+                    </div>
+
+                    <div class="row">
+                        <label for="venue">Venue</label>
+                        <p id="venue"><?php echo $this->project['Venue'] ?></p>
+                    </div>
+
+                    <div class="row">
+                        <label for="volunteers">Volunteers</label>
+                        <p id="volunteers"><?php echo $this->project['No_of_volunteers'] ?></p>
+                    </div>
+
+                    <div class="row">
+                        <label for="description">Description</label>
+                        <p id="description"><?php echo $this->project['Description'] ?></p>
+                    </div>
                 </div>
 
-                <div class="right-div">
-                    <label id="data"><?php echo $this->project['Date'] ?></label><br>
-                    <label id="data"><?php echo $this->project['Time'] ?></label><br>
-                    <label id="data"><?php echo $this->project['Venue'] ?></label><br>
-                    <label id="data"><?php echo $this->project['No_of_volunteers'] ?></label><br>
-                    <label id="data"><?php echo $this->project['Description'] ?></label><br>
-                </div>
-            </div>
             <div class="btn-area">
                 <button class="btn" onclick="history.back()">Back</button>
                 <a onclick="return confirm('Are you sure you want to leave this Project?')" href="<?php echo BASE_URL ?>volunteer/join_leave_project/<?php echo $this->project['P_ID'] ?>/<?php echo $this->isJoined ?>/<?php echo $this->project['No_of_volunteers'] ?>/<?php echo $this->project['Date'] ?>"><button class="btn" id="right"></button></a>
             </div>
-
         </div>
     </div>
 </body>
+
+<script>
+    const descriptionElement = document.getElementById('description');
+    const descriptionHeight = descriptionElement.offsetHeight;
+    const rowElement = descriptionElement.parentElement;
+    rowElement.style.height = `${descriptionHeight + 10}px`;
+    descriptionElement.style.height = '100%';
+
+    const venueElement = document.getElementById('venue');
+    const venueHeight = venueElement.offsetHeight;
+    const venueRowElement = venueElement.parentElement;
+    venueRowElement.style.height = `${venueHeight + 10}px`;
+    venueElement.style.height = '100%';
+</script>
 
 </html>

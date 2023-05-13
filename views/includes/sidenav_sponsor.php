@@ -1,6 +1,6 @@
 
     <span class="open-slide">
-      <a href="#" onclick="openSideMenu()">
+      <a id ="bars" onclick="openSideMenu()">
     <i class="fa-solid fa-bars fa-2xl"></i>
       </a>
     </span>

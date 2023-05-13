@@ -18,7 +18,7 @@
         <h2>Volunteer Profile</h2><br><br>
         <div class="top-container">
             <div class="column1">
-                <img class="image" src="<?php echo BASE_URL ?>public/images/profile_images/<?php echo $this->profile['Photo'] ?>" /><br><br>
+                <img class="image" src="<?php echo BASE_URL ?>public/images/profile_images/<?php echo ($this->profile['Photo'] ?: 'user-icon.png') ?>" /><br><br>
                 <label class="sub2"> <?php echo $this->user['Name']; ?></label><br><br>
                 <div class="badge"><i class="fas fa-medal <?php echo $this->color ?>-color fa-4x"></i></div><br>
                 <label class="sub3"><?php echo $this->badge ?></label>
@@ -52,8 +52,19 @@
                         <td class="top-td">Interest Areas</td>
                         <td class="top-td">:</td>
                         <td class="top-td"><?php foreach ($this->interests as $interest) {
-                                                echo $interest['Interest'];
-                                            } ?><br>
+                                                if ($interest['Interest'] == 'Beach') {
+                                                    $text = 'Beach Cleaning ';
+                                                } else if ($interest['Interest'] == 'Donation') {
+                                                    $text = 'Providing facilities to rural areas ';
+                                                } else if ($interest['Interest'] == 'Environement') {
+                                                    $text = 'Tree Planting ';
+                                                } else if ($interest['Interest'] == 'Orphan') {
+                                                    $text = 'Helping child/adult orphanages ';
+                                                } else if ($interest['Interest'] == 'Animal') {
+                                                    $text = 'Animal rescuing/rehabilitation ';
+                                                }
+                                                echo $text ?> <br><?php
+                                            } ?>
                         </td>
                     </tr>
                     <tr>
@@ -71,6 +82,21 @@
             <div class="cont1">
                 <label class="head">Details of Projects Volunteered</label><br><br>
                 <label>Total projects volunteered : <?php echo $this->projectCount ?></label><br>
+                <!-- <div class="projects">
+
+
+                    <label>Name</label>
+                    <label>Location</label><br>
+                    <div class="name">
+                        <?php foreach ($this->projects as $project) { ?>
+                            <?php echo ($project['Name']) ?>
+                            <?php echo ($project['Venue']) ?><br>
+                        <?php } ?>
+                    </div>
+
+
+                </div> -->
+
             </div>
 
             <div class="cont1">

@@ -14,7 +14,7 @@
     <?php include 'views/includes/navbar_log.php' ?>
     <div class="main" id="main">
 
-        <form action="<?php echo BASE_URL; ?>Volunteer/change_profile" method="post" id="form2">
+        <form action="<?php echo BASE_URL; ?>Volunteer/change_profile" method="post" id="form2" enctype="multipart/form-data">
             <div class="heading">
                 <?php echo $this->user['Name']; ?>
                 <img class="image" src="<?php echo BASE_URL ?>public/images/<?php echo $this->profile['Photo'] ?>">

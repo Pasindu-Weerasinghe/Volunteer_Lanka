@@ -316,31 +316,6 @@ class Volunteer extends User
             $this->color = "platinum";
         }
 
-        // $this->loadModel('Post');
-        // foreach ($this->projects as $project) {
-        //     $pid = $project['P_ID'];
-        //     $this->prImage[$pid] = $this->model->getPostImages($pid);
-        //     $this->description[$pid] = $this->model->getPostDescription($pid);
-        // }
-
-        // $total_rating[] = 0;
-        // foreach ($this->projects as $project) {
-        //     $this->loadModel('Feedback');
-        //     $pid = $project['P_ID'];
-        //     $this->feedbacks[$pid] = $this->model->getFeedbacks($pid);
-        //     $this->feedbackCount[$pid] = sizeof($this->feedbacks[$pid]);
-
-        //     foreach ($this->feedbacks[$pid] as $feedback) {
-        //         $total_rating[$pid] += $feedback['Rating'];
-        //         $uid = $feedback['U_ID'];
-        //         $this->loadModel('Volunteer');
-        //         $this->names[$uid] = $this->model->getName($uid);
-        //         $this->loadModel('User');
-        //         $this->profilePics[$uid] = $this->model->getProfilePic($uid);
-        //     }
-        //     $this->avg_rating[$pid] = $total_rating[$pid]/$this->feedbackCount[$pid];
-        // }
-
         $this->render('Volunteer/Profile');
     }
 
@@ -356,7 +331,7 @@ class Volunteer extends User
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            $target_dir = "public/images/profile_images";
+            $target_dir = "public/images/profile_images/";
             $image_name = basename($_FILES["profilepic"]["name"]);
             $target_file = $target_dir . $image_name;
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -374,7 +349,8 @@ class Volunteer extends User
                 $profilepic = $target_file;
                 // Update user's record in the database with new profile picture
                 $this->model->updateProfilePic($uid, $profilepic);
-                header('Location: ' . BASE_URL . 'Volunteer/profile');
+                $_SESSION['photo'] = $image_name;
+                header('Location: ' . BASE_URL . 'Volunteer/Change_profile');
             } else {
                 echo "Sorry, there was an error uploading your file.";
             }

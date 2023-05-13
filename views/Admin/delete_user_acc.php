@@ -35,7 +35,7 @@ if (!isset($_SESSION['uid'])) {
                 </thead>
                 <tbody class="users-list">
                     <?php foreach ($this->userDetails as $userDetail) { ?>
-                        <tr>
+                        <tr onclick="window.location.href='<?php echo BASE_URL . 'Admin/view'.ucfirst($userDetail['Role']).'Profile/' . $userDetail['U_ID']; ?>'">
                             <td><?php echo $userDetail['Name'] ?></td>
                             <td><?php echo ucfirst($userDetail['Role']) ?></td>
                             <td><?php echo ucfirst($userDetail['Status']) ?></td>

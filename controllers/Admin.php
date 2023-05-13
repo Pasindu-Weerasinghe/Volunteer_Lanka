@@ -195,7 +195,8 @@ class Admin extends User
         $output = "";
         if (count($userDetails) > 0) {
             foreach ($userDetails as $userDetail) {
-                $output .= '<tr>
+                $url = BASE_URL . 'Admin/view' . ucfirst($userDetail['Role']) . 'Profile/' . $userDetail['U_ID'];
+                $output .= '<tr onclick="window.location.href=\'' . $url . '\'">
                <td>' . $userDetail['Name'] . '</td>
                <td>' . ucfirst($userDetail['Role']) . '</td>
                <td>' . ucfirst($userDetail['Status']) . '</td>

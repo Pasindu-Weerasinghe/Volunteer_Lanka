@@ -392,7 +392,7 @@ class User extends Controller
         $this->render('ProfileSponsor');
     }
 
-    function viewOrganizerBlog($uid)
+    function viewOrganizerProfile($uid)
     {
         $this->loadModel('Organizer');
         $this->organizer = $this->model->getOrganizerById($uid);

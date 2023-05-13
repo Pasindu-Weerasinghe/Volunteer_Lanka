@@ -445,13 +445,37 @@ class Organizer extends User
         $this->loadModel('Organizer');
         $this->organizer = $this->model->getOrganizerById($uid);
 
-        $this->days_remaining = 3; // TODO: get days remaining
+        $currentDate = date('Y-m-d');
+        $startDate = date('Y-m-01');
+        $daysDiff = floor((strtotime($currentDate) - strtotime($startDate)) / (60 * 60 * 24));
 
-        // TODO: validation
+        if ($daysDiff >= 7) {
+            $this->days_remaining = $daysDiff;
+        } else {
+            $this->days_remaining = 7 - $daysDiff;
+        }
+
         $this->loadModel('Payment');
+        $this->payment_details = $this->model->getPaymentDetails($uid);
         $this->paid = !empty($this->model->getThisMonthSubFee($uid));
 
         $this->render('Organizer/Payments');
+    }
+
+    function set_payment_details($uid) {
+        $first_name = $_POST['first-name'];
+        $last_name = $_POST['last-name'];
+        $contact = $_POST['contact'];
+        $email = $_POST['email'];
+        $address = $_POST['address'];
+        $city = $_POST['city'];
+
+        $this->loadModel('Payment');
+        if($this->model->setPaymentDetails($uid, $first_name, $last_name, $contact, $email, $address, $city)) {
+            echo json_encode(['success' => true]);
+        } else {
+            echo json_encode(['success' => false]);
+        }
     }
 
     function payment_successful($type, $uid, $amount) {
@@ -468,7 +492,7 @@ class Organizer extends User
         $this->organizer = $this->model->getOrganizerById($uid);
 
         $this->loadModel('Project');
-        $this->no_of_projects = count($this->model->getProjects($uid));
+//        $this->no_of_projects = count($this->model->get($uid));
         $this->no_of_completed_projects = 0;
 
         $this->render('Organizer/Blog');
@@ -501,8 +525,7 @@ class Organizer extends User
         // if project is a sponsored project
         if ($this->project['Sponsor'] == 1) {
             $this->loadModel('SponsorNotice');
-            // TODO: get sn amount
-            $this->sn_amount = 100000;
+            $this->sn_amount = $this->model->getSPAmount($pid)['Amount'];
             // TODO: get package ranges
             $this->package_range = ["silver" => 10000, "gold" => 20000, "platinum" => 30000];
 

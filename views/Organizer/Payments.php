@@ -22,37 +22,43 @@
         <form class="form" id="payment-form" method="post">
             <div class="row">
                 <label for="">First name</label>
-                <input type="text" name="first-name"  class="input">
+                <input type="text" name="first-name" class="input"
+                       value="<?php echo $this->payment_details ? $this->payment_details['First_name'] : ''; ?>">
             </div>
-            <div class="row">
+            <div class=" row">
                 <label for="">Last name</label>
-                <input type="text" name="last-name" class="input">
+                <input type="text" name="last-name" class="input"
+                       value="<?php echo $this->payment_details ? $this->payment_details['Last_name'] : '';; ?>">
             </div>
-            <div class="row">
+            <div class=" row">
                 <label for="">Contact</label>
                 <input type="text" name="contact" class="input"
-                       value="<?php echo $this->organizer['Contact']; ?>">
+                       value="<?php echo $this->payment_details ? $this->payment_details['Contact'] : $this->organizer['Contact'];; ?>">
             </div>
             <div class="row">
                 <label for="">Email</label>
-                <input type="email" name="email" class="input" value="<?php echo $_SESSION['uname']; ?>">
+                <input type="email" name="email" class="input"
+                       value="<?php echo $this->payment_details ? $this->payment_details['Email'] : $_SESSION['uname'];; ?>">
             </div>
             <div class="row">
                 <label for="">Address</label>
-                <input type="text" name="Address" class="input">
+                <input type="text" name="address" class="input"
+                       value="<?php echo $this->payment_details ? $this->payment_details['Address'] : '';; ?>">
             </div>
-            <div class="row">
+            <div class=" row">
                 <label for="">City</label>
-                <input type="text" name="city" class="input">
+                <input type="text" name="city" class="input"
+                       value="<?php echo $this->payment_details ? $this->payment_details['City'] : '';; ?>">
             </div>
-            <div class="row">
+            <div class=" row">
                 <label for="amount">Amount</label>
                 <input type="number" name="amount" class="input input-number" value="<?php echo SUB_FEE; ?>"
                        readonly>
             </div>
             <div class="row">
                 <label for="">Month</label>
-                <input type="text" name="month" class="input input-number" value="<?php echo date('Y-m'); ?>"
+                <input type="text" name="month" class="input input-number" style="font-size: 20px"
+                       value="<?php echo date('Y F'); ?>"
                        readonly>
             </div>
             <div class="notice">
@@ -65,10 +71,10 @@
                 <button type="submit" id="payhere-payment" name="pay" class="btn">Next</button>
             </div>
         </form>
-        <h3 id="paid-notice"style="display: none">You have paid the subscription for this month</h3>
+        <h2 id="paid-notice" style="display: none">You have paid the subscription for this month</h2>
     </div>
     <?php
-    $order_id = "ItemNo123457";
+    $order_id = "sub-fee_" . $_SESSION['uid'] . "_" . date("Y-m");
     $amount = SUB_FEE;
     $currency = "LKR";
     $merchant_id = $_ENV['MERCHANT_ID'];
@@ -88,20 +94,21 @@
 </div>
 </body>
 <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
-<script>
+<script type="module">
+    import {BASE_URL, LOCALHOST} from "../configs/config.js";
+
+    console.log(LOCALHOST);
     const paymentForm = document.getElementById('payment-form');
 
     const uid = "<?php echo $_SESSION['uid']; ?>";
-    const order_id = "<?php echo $order_id ?>"; // TODO: check!!!
+    const order_id = "<?php echo $order_id ?>";
     const amount = "<?php echo $amount; ?>";
     const currency = "<?php echo $currency; ?>";
     const hash = "<?php echo $hash; ?>";
     const merchant_id = "<?php echo $_ENV['MERCHANT_ID']; ?>";
 
     // notify url
-    const localhost = "https://twelve-stars-melt.loca.lt";
-    const notify_url = localhost + "/Volunteer_Lanka/organizer/payment_successful/sub-fee/" + uid + "/" + amount;
-
+    const notify_url = LOCALHOST + "/Volunteer_Lanka/organizer/payment_successful/sub-fee/" + uid + "/" + amount;
 
 
     // Put the payment variables here
@@ -111,22 +118,19 @@
     payhere.onDismissed = function onDismissed() {
         // Note: Prompt user to pay again or show an error page
         alert("Payment dismissed");
-        //window.location.href = '<?php //echo BASE_URL ?>//' + 'organizer/payments';
     };
 
     // Error occurred
     payhere.onError = function onError(error) {
         // Note: show an error page
         alert("Error:" + error);
-        //window.location.href = '<?php //echo BASE_URL ?>//' + 'organizer';
     };
-
 
 
     // Payment completed. It can be a successful failure.
     payhere.onCompleted = function onCompleted(orderId) {
         console.log("Payment completed. OrderID:" + orderId);
-        window.location.href = '<?php echo BASE_URL ?>' + 'organizer';
+        window.location.href = '<?php echo BASE_URL ?>' + 'organizer/payments';
         // Note: validate the payment and show success or failure page to the customer
     };
 
@@ -136,6 +140,18 @@
         const formData = new FormData(paymentForm);
 
         console.log(formData.get('first-name'));
+
+        fetch(BASE_URL + `organizer/set_payment_details/${uid}`, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(err => {
+                console.log(err);
+            })
 
         let payment = {
             sandbox: true,
@@ -168,7 +184,7 @@
     if (paid) {
         document.querySelector('.title').style.display = "none";
         paymentForm.style.display = "none";
-        paid_notice.style.display = "block";
+        paid_notice.style.display = "flex";
     }
 
 </script>

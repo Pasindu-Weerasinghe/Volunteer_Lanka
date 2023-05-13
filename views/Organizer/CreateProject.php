@@ -225,6 +225,7 @@
 
         </div>
 
+        <input type="hidden" name="uid" id="uid" value="<?php echo $_SESSION['uid'] ?>">
         <input type="hidden" id="can_create" value="<?php echo json_encode($this->can_create_pr) ?>">
 </body>
 <script type="module" src="<?php echo BASE_URL ?>public/scripts/create_project.js"></script>

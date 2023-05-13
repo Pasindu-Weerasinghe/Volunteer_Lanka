@@ -13,10 +13,6 @@
 <body>
     <?php include 'views/includes/navbar_log.php'; ?>
     <div id="main" class="main">
-        <div class="search-container">
-            <input type="text" name="search">
-            <button name="search"><b>Search<b></button>
-        </div><br>
         <h2>My Upcoming Projects</h2><br /><br />
         <section class="container">
             <?php foreach ($this->uprojects as $uproject) {

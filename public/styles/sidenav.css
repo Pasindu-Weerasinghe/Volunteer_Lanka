@@ -41,6 +41,11 @@
   transition:margin-left 0.5s;
 }
 
+#bars {
+  color: black;
+  cursor: pointer;
+}
+
 
 @media(max-width:568px) {
   .navbar-nav {

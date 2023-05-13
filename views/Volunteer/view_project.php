@@ -12,6 +12,17 @@
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/popup.css">
 
     <title><?php echo $this->project['Name'] ?></title>
+    <script type="text/javascript">
+        function button2() {
+            var isJoined = <?php echo $this->isJoined ?>;
+            if (isJoined) {
+                document.getElementById("right").innerHTML = "Leave Project";
+            } else {
+                document.getElementById("right").innerHTML = "Join Project";
+            }
+        }
+        window.onload = button2;
+    </script>
 </head>
 
 <body>
@@ -20,7 +31,6 @@
     <?php
     $uid = $_SESSION['uid'];
     $pid = $this->project['P_ID'];
-    $creator_check = $this->project['U_ID'] == $uid;
     function currencyFormat($number): string
     {
         return number_format($number, 2, '.', ' ');
@@ -30,28 +40,14 @@
 
     <div class="main" id="main">
         <h1><?php echo $this->project['Name'] ?></h1><br /><br />
-        <!---->
-        <!--    --><?php
-                    //    print_r($this->sn_amount);
-                    //    echo "<br/>";
-                    //    print_r($this->package_range);
-                    //    echo "<br/>";
-                    //    
-                    ?>
-
 
         <div class="container">
-            <?php
-            if ($creator_check) { ?>
-                <button id="edit-btn"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
-            <?php }
-            ?>
             <div class="wrapper">
                 <div class="slideshow-container">
                     <div class="slideshow">
-                        <?php foreach ($this->images as $image) { ?>
+                    <?php foreach ($this->images as $image) { ?>
                             <div class="slide fade">
-                                <img src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $image; ?>" alt="">
+                            <img src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $image['Image']; ?>">
                             </div>
                         <?php } ?>
                     </div>
@@ -83,8 +79,7 @@
 
                     <div class="row">
                         <label for="volunteers" style="height: fit-content">Volunteers</label>
-                        <p id="volunteers"><?php echo count($this->joined_volunteers) ?>
-                            / <?php echo $this->project['No_of_volunteers'] ?></p>
+                        <?php echo $this->project['No_of_volunteers'] ?></p>
                     </div>
 
                     <div class="row">
@@ -94,35 +89,22 @@
                 </div>
             </div>
 
-            <!-- joined volunteers popup button -->
-            <div class="btn-area">
-                <button id="joined-volunteers-btn"><i class="fa-solid fa-user-group"></i> Joined Volunteers</button>
-            </div>
-
             <?php
             // if this project is a collaboration, show the collaborators details
             if ($this->project['Collab'] == 1) {
+                $uid = $_SESSION['uid'];
                 foreach ($this->collaborators as $key => $collaborator) {
                     if ($collaborator['U_ID'] == $uid) {
                         unset($this->collaborators[$key]);
                     }
-                }
-
-                $accepted_collaborators = array_filter($this->collaborators, function ($collaborator) {
-                    return $collaborator['Status'] == 'accepted';
-                });
-
-                $pending_collaborators = array_filter($this->collaborators, function ($collaborator) {
-                    return $collaborator['Status'] == 'pending';
-                });
-            ?>
+                }            ?>
                 <div class="collab-area">
                     <h2>Collaborators</h2>
                     <div class="collabs">
                         <?php
                         if (!$creator_check) { ?>
                             <a href="" class="collaborator">
-                                <img src="<?php echo BASE_URL ?>public/images/profile_images/<?php echo $this->pr_creator['Photo'] ?: 'user-icon.png' ?>" alt="">
+                                <img src="<?php echo BASE_URL ?>public/images/<?php echo $this->pr_creator['Photo'] ?: 'profile.jpg' ?>" alt="">
                                 <div>
                                     <label><?php echo $this->pr_creator['Name'] ?></label>
                                     <p style="color: cornflowerblue">Creator</p>
@@ -133,7 +115,7 @@
                         <?php
                         foreach ($accepted_collaborators as $collaborator) { ?>
                             <a href="" class="collaborator">
-                                <img src="<?php echo BASE_URL ?>public/images/profile_images/<?php echo $collaborator['Photo'] ?: 'user-icon.png' ?>" alt="">
+                                <img src="<?php echo BASE_URL ?>public/images/<?php echo $collaborator['Photo'] ?: 'profile.jpg' ?>" alt="">
                                 <div>
                                     <label><?php echo $collaborator['Name'] ?></label>
                                     <p style="color: limegreen">Accepted</p>
@@ -144,7 +126,7 @@
                         <?php
                         foreach ($pending_collaborators as $collaborator) { ?>
                             <a href="" class="collaborator">
-                                <img src="<?php echo BASE_URL ?>public/images/profile_images/<?php echo $collaborator['Photo'] ?: 'user-icon.png' ?>" alt="">
+                                <img src="<?php echo BASE_URL ?>public/images/<?php echo $collaborator['Photo'] ?: 'profile.jpg' ?>" alt="">
                                 <div>
                                     <label><?php echo $collaborator['Name'] ?></label>
                                     <p style="color: grey">Pending</p>
@@ -168,7 +150,7 @@
                             <?php
                             $formatted_amount = currencyFormat($this->sn_amount);
                             ?>
-                            LKR <?php echo $formatted_amount ?>
+                            Rs. <?php echo $formatted_amount ?>
                         </p>
                     </h2>
 
@@ -178,24 +160,25 @@
                             <?php
                             $formatted_amount = currencyFormat($this->sponsored_amount);
                             ?>
-                            LKR <?php echo $formatted_amount ?>
+                            Rs. <?php echo $formatted_amount ?>
                         </p>
                     </h2>
 
                     <div class="sponsors">
-                        <h3><span class="silver spon-dot"></span> Silver Sponsors</h3>
+                        <h3><span class="silver spon-dot"></span> Silver Sponsors -
+                            Rs. <?php echo currencyFormat($this->package_range['silver']) ?></h3>
                         <?php
                         if (count($this->silver_sponsors) > 0) {
                             foreach ($this->silver_sponsors as $sponsor) { ?>
                                 <a href="" class="sponsor">
-                                    <img src="<?php echo BASE_URL ?>public/images/profile_images/<?php echo $sponsor['Photo'] ?: 'user-icon.png' ?>" alt="">
+                                    <img src="<?php echo BASE_URL ?>public/images/<?php echo $sponsor['Photo'] ?: 'profile.jpg' ?>" alt="">
                                     <div>
                                         <label><?php echo $sponsor['Name'] ?></label>
                                         <p class="amount">
                                             <?php
                                             $formatted_amount = currencyFormat($sponsor['Amount']);
                                             ?>
-                                            LKR <?php echo $formatted_amount ?>
+                                            Rs. <?php echo $formatted_amount ?>
                                         </p>
                                     </div>
                                 </a>
@@ -203,19 +186,20 @@
                         } ?>
                     </div>
                     <div class="sponsors">
-                        <h3><span class="gold spon-dot"></span> Gold Sponsors</h3>
+                        <h3><span class="gold spon-dot"></span> Gold Sponsors -
+                            Rs. <?php echo currencyFormat($this->package_range['gold']) ?></h3>
                         <?php
                         if (count($this->gold_sponsors) > 0) {
                             foreach ($this->gold_sponsors as $sponsor) { ?>
                                 <a href="" class="sponsor">
-                                    <img src="<?php echo BASE_URL ?>public/images/profile_images/<?php echo $sponsor['Photo'] ?: 'user-icon.png' ?>" alt="">
+                                    <img src="<?php echo BASE_URL ?>public/images/<?php echo $sponsor['Photo'] ?: 'profile.jpg' ?>" alt="">
                                     <div>
                                         <label><?php echo $sponsor['Name'] ?></label>
                                         <p class="amount">
                                             <?php
                                             $formatted_amount = currencyFormat($sponsor['Amount']);
                                             ?>
-                                            LKR <?php echo $formatted_amount ?>
+                                            Rs. <?php echo $formatted_amount ?>
                                         </p>
                                     </div>
                                 </a>
@@ -224,19 +208,20 @@
                         ?>
                     </div>
                     <div class="sponsors">
-                        <h3><span class="platinum spon-dot"></span> Platinum Sponsors</h3>
+                        <h3><span class="platinum spon-dot"></span> Platinum Sponsors -
+                            Rs. <?php echo currencyFormat($this->package_range['platinum']) ?></h3>
                         <?php
                         if (count($this->platinum_sponsors) > 0) {
                             foreach ($this->platinum_sponsors as $sponsor) { ?>
                                 <a href="" class="sponsor">
-                                    <img src="<?php echo BASE_URL ?>public/images/profile_images/<?php echo $sponsor['Photo'] ?: 'user-icon.png' ?>" alt="">
+                                    <img src="<?php echo BASE_URL ?>public/images/<?php echo $sponsor['Photo'] ?: 'profile.jpg' ?>" alt="">
                                     <div>
                                         <label><?php echo $sponsor['Name'] ?></label>
                                         <p class="amount">
                                             <?php
                                             $formatted_amount = currencyFormat($sponsor['Amount']);
                                             ?>
-                                            LKR <?php echo $formatted_amount ?>
+                                            Rs. <?php echo $formatted_amount ?>
                                         </p>
                                     </div>
                                 </a>
@@ -250,14 +235,14 @@
                         if (count($this->other_sponsors) > 0) {
                             foreach ($this->other_sponsors as $sponsor) { ?>
                                 <a href="" class="sponsor">
-                                    <img src="<?php echo BASE_URL ?>public/images/profile_images/<?php echo $sponsor['Photo'] ?: 'user-icon.png' ?>" alt="">
+                                    <img src="<?php echo BASE_URL ?>public/images/<?php echo $sponsor['Photo'] ?: 'profile.jpg' ?>" alt="">
                                     <div>
                                         <label><?php echo $sponsor['Name'] ?></label>
                                         <p class="amount">
                                             <?php
                                             $formatted_amount = currencyFormat($sponsor['Amount']);
                                             ?>
-                                            LKR <?php echo $formatted_amount ?>
+                                            Rs. <?php echo $formatted_amount ?>
                                         </p>
                                     </div>
                                 </a>
@@ -323,7 +308,7 @@
                     foreach ($this->joined_volunteers as $volunteer) { ?>
                         <a class="volunteer">
                             <div>
-                                <img src="<?php echo BASE_URL ?>public/images/profile_images/<?php echo $volunteer['Photo'] ?: '' ?>" alt="" class="float-left">
+                                <img src="<?php echo BASE_URL ?>public/images/<?php echo $volunteer['Photo'] ?: 'profile.jpg' ?>" alt="" class="float-left">
                                 <label><?php echo $volunteer['Name'] ?></label>
 
                             </div>

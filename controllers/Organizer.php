@@ -441,11 +441,49 @@ class Organizer extends User
     {
         session_start();
         $uid = $_SESSION['uid'];
+
+        $this->loadModel('Organizer');
+        $this->organizer = $this->model->getOrganizerById($uid);
+
+        $currentDate = date('Y-m-d');
+        $startDate = date('Y-m-01');
+        $daysDiff = floor((strtotime($currentDate) - strtotime($startDate)) / (60 * 60 * 24));
+
+        if ($daysDiff >= 7) {
+            $this->days_remaining = $daysDiff;
+        } else {
+            $this->days_remaining = 7 - $daysDiff;
+        }
+
         $this->loadModel('Payment');
+        $this->payment_details = $this->model->getPaymentDetails($uid);
+        $this->paid = !empty($this->model->getThisMonthSubFee($uid));
 
         $this->render('Organizer/Payments');
     }
 
+    function set_payment_details($uid) {
+        $first_name = $_POST['first-name'];
+        $last_name = $_POST['last-name'];
+        $contact = $_POST['contact'];
+        $email = $_POST['email'];
+        $address = $_POST['address'];
+        $city = $_POST['city'];
+
+        $this->loadModel('Payment');
+        if($this->model->setPaymentDetails($uid, $first_name, $last_name, $contact, $email, $address, $city)) {
+            echo json_encode(['success' => true]);
+        } else {
+            echo json_encode(['success' => false]);
+        }
+    }
+
+    function payment_successful($type, $uid, $amount) {
+        if($type == 'sub-fee') {
+        $this->loadModel('Payment');
+        $this->model->setSubFee($amount, $uid);
+        }
+    }
     function blog()
     {
         session_start();
@@ -454,8 +492,34 @@ class Organizer extends User
         $this->organizer = $this->model->getOrganizerById($uid);
 
         $this->loadModel('Project');
-        $this->no_of_projects = count($this->model->getProjects($uid));
+//        $this->no_of_projects = count($this->model->getProjects($uid));
         $this->no_of_completed_projects = 0;
+        $this->projects = $this->model->getProjectsOrganizer($uid);
+
+        $this->loadModel('Post');
+        foreach ($this->projects as $project) {
+            $pid = $project['P_ID'];
+            $this->prImage[$pid] = $this->model->getPostImages($pid);
+            $this->description[$pid] = $this->model->getPostDescription($pid);
+        }
+
+        $total_rating[] = 0;
+        foreach ($this->projects as $project) {
+            $this->loadModel('Feedback');
+            $pid = $project['P_ID'];
+            $this->feedbacks[$pid] = $this->model->getFeedbacks($pid);
+            $this->feedbackCount[$pid] = sizeof($this->feedbacks[$pid]);
+
+            foreach ($this->feedbacks[$pid] as $feedback) {
+                $total_rating[$pid] += $feedback['Rating'];
+                $uid = $feedback['U_ID'];
+                $this->loadModel('Volunteer');
+                $this->names[$uid] = $this->model->getName($uid);
+                $this->loadModel('User');
+                $this->profilePics[$uid] = $this->model->getProfilePic($uid);
+            }
+            $this->avg_rating[$pid] = $total_rating[$pid]/$this->feedbackCount[$pid];
+        }
 
         $this->render('Organizer/Blog');
     }
@@ -487,8 +551,7 @@ class Organizer extends User
         // if project is a sponsored project
         if ($this->project['Sponsor'] == 1) {
             $this->loadModel('SponsorNotice');
-            // TODO: get sn amount
-            $this->sn_amount = 100000;
+            $this->sn_amount = $this->model->getSPAmount($pid)['Amount'];
             // TODO: get package ranges
             $this->package_range = ["silver" => 10000, "gold" => 20000, "platinum" => 30000];
 

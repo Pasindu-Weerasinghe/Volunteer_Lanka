@@ -1,5 +1,5 @@
 import {BASE_URL} from "../../configs/config.js";
-
+const uid = document.querySelector("#uid").value;
 
 const cp1 = document.querySelector("#create-project");
 const cp2 = document.querySelector("#add-org-to-collab");
@@ -88,6 +88,11 @@ form1.addEventListener("submit", (e) => {
 //? form 2 actions ************************************************************************************************
 
 const removeAddedCollabs = () => {
+    // remove current user from search data
+    if (uid in searchData) {
+        delete searchData[uid];
+    }
+    // remove added collaborators from search data
     for (let key in collaborators) {
         if (key in searchData) {
             delete searchData[key];

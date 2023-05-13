@@ -25,14 +25,19 @@ session_start();
                 <h1>Signup as an Organizer</h1><br />
 
                 <label><b>Name</b></label>
+                <label id="require"><strong>*</strong></label>
                 <input type="text" name="name" required>
                 <label><b>Contact Number</b></label>
+                <label id="require"><strong>*</strong></label>
                 <input type="text" name="contact" minlength="10" maxlength="10" required>
                 <label><b>Address</b></label>
+                <label id="require"><strong>*</strong></label>
                 <input type="text" name="address" required><br />
                 <label><b>Branch</b></label>
+                <label id="require"><strong>*</strong></label>
                 <input type="text" name="branch" required><br />
                 <label><b>Number of members</b></label>
+                <label id="require"><strong>*</strong></label>
                 <input type="number" name="no-of-members" id="no-of-members" min="1" required><br />
 
                 <input type="checkbox" name="agree" id="chkbox" required>

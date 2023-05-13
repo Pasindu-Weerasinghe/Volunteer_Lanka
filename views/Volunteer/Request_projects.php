@@ -22,21 +22,27 @@
             <div class="container">
                 <p>Let us know of the opportunities</p>
                 <hr>
-                <p id="error">
-                <?php if ($this->statusMsg != NULL) {
-                    echo $this->statusMsg;
-                } ?>
+                
+                <?php if ($this->statusMsg != NULL) { ?>
+                    <p id="error">
+                   <?php echo $this->statusMsg; ?>
+                </p>
+                <?php } ?>
                 </p><br>
                 <label for="uname"><b>Username</b></label>
+                <label id="require"><strong>*</strong></label>
                 <input type="text" name="uname" value=<?php echo ($_SESSION['uname']) ?> readonly>
 
                 <label for="location"><b>Location</b></label>
+                <label id="require"><strong>*</strong></label>
                 <input type="text" name="location" required>
 
                 <label for="des"><b>Description</b></label>
+                <label id="require"><strong>*</strong></label>
                 <textarea name="des" class="des" required></textarea><br /><br />
 
                 <label for="photo"><b>Add Photos</b></label>
+                <label id="require"><strong>*</strong></label>
                 <input type="file" name="file[]" multiple="multiple"><br /><br />
 
                 <button class="btn" onclick="history.back()">Back</button>

@@ -28,7 +28,7 @@
             </tr>
             <?php foreach ($this->organizers as $organizer) { ?>
                 <tr>
-                    <td><a class="profile" href="<?php echo BASE_URL ?>volunteer/viewOrganizerBlog/<?php echo $organizer['U_ID'] ?>"><?php echo ($organizer["Name"]); ?></a></td>
+                    <td><a class="profile" href="<?php echo BASE_URL ?>volunteer/viewOrganizerProfile/<?php echo $organizer['U_ID'] ?>"><?php echo ($organizer["Name"]); ?></a></td>
                     <td><?php echo ($organizer["Branch"]); ?></td>
                     <td><?php echo ($organizer["Contact"]); ?></td>
                 </tr>

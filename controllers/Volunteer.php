@@ -173,7 +173,7 @@ class Volunteer extends User
     function feedback($isGiven, $pid, $uid)
     {
         if ($isGiven == 1) {
-            header("Location: " . BASE_URL . "$this->role/viewOrganizerBlog/$uid");
+            header("Location: " . BASE_URL . "Volunteer/viewOrganizerProfile/$uid");
         } else {
             $this->pid = $pid;
             $this->render('Volunteer/Feedback_form');

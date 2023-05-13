@@ -44,7 +44,7 @@ function getNotifications() {
 }
 
 function acceptCollabReq(eventID, notificationID) {
-    fetch(`${BASE_URL}${role}/notifications/collab_req/accept/${eventID}/${uid}/${notificationID}`)
+    fetch(`${BASE_URL}${role}/collab_req/accept/${eventID}/${uid}/${notificationID}`)
         .then(response => response.json())
         .then(result => {
             if (result) {
@@ -55,7 +55,7 @@ function acceptCollabReq(eventID, notificationID) {
 }
 
 function rejectCollabReq(eventID, notificationID) {
-    fetch(`${BASE_URL}${role}/notifications/collab_req/reject/${eventID}/${uid}/${notificationID}`)
+    fetch(`${BASE_URL}${role}/collab_req/reject/${eventID}/${uid}/${notificationID}`)
         .then(response => response.json())
         .then(result => {
             if (result) {

@@ -87,6 +87,32 @@
 	margin-right: 10px;
 }
 
+.currency {
+	width: 100%;
+    position: relative;
+}
+
+.currency:before {
+    content: "LKR ";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+}
+
+.currency input::-webkit-outer-spin-button,
+.currency input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.currency input[type=number] {
+	width: 100%;
+	text-align: right;
+	padding-left: 40px;
+	-moz-appearance: textfield;
+}
+
 #gal {
 	width: 100%;
 	margin-top: 10px;

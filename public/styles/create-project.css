@@ -77,7 +77,7 @@
 }
 
 .currency:before {
-    content: "Rs. ";
+    content: "LKR ";
     position: absolute;
     top: 50%;
     transform: translateY(-50%);

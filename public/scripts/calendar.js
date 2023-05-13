@@ -72,6 +72,7 @@ prevNextIcon.forEach(icon => {
         } else {
             renderCalender();
         }
+        test2 =[];
         renderCalender();
     });
 })

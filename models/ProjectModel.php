@@ -104,7 +104,7 @@ class ProjectModel extends Model
 
     function setSNPackage($pid, $package, $amount)
     {
-        $query = "INSERT INTO `sn_package` (P_ID, Package, Range) VALUES (:pid, :package, :amount)";
+        $query = "INSERT INTO `sn_packages` (P_ID, `Package`, `Range`) VALUES (:pid, :package, :amount)";
         $statement = $this->db->prepare($query);
         $statement->bindParam(':pid', $pid);
         $statement->bindParam(':package', $package);

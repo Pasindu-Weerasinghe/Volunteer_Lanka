@@ -40,12 +40,15 @@
             </div>
 
             <label for="email"><b>Email</b></label>
+            <label id="require"><strong>*</strong></label>
             <input id="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" required>
 
             <label for="psw"><b>Password</b></label>
+            <label id="require"><strong>*</strong></label>
             <input id="psw" type="password" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" required>
 
             <label for="confirm-psw"><b>Confirm Password</b></label>
+            <label id="require"><strong>*</strong></label>
             <input id="confirm-psw" type="password" name="confirm-psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" required>
             <!-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" -->
             <div class="clearfix">

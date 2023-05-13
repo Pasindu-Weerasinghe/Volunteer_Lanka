@@ -24,15 +24,19 @@ session_start();
                     <hr>
 
                     <label for="name"><b>Name</b></label>
+                    <label id="require"><strong>*</strong></label>
                     <input type="text" name="name" required>
 
                     <label for="contact"><b>Contact Number</b></label>
+                    <label id="require"><strong>*</strong></label>
                     <input type="text" name="contact" minlength="10" maxlength="10" required>
 
                     <label for="address"><b>Address</b></label>
+                    <label id="require"><strong>*</strong></label>
                     <input type="text" name="address" required><br />
 
-                    <label for="type"><b>Select Your Type</b></label><br>
+                    <label for="type"><b>Select Your Type</b></label>
+                    <label id="require"><strong>*</strong></label><br>
 
 
                     <input type="radio" name="type" value="individual">

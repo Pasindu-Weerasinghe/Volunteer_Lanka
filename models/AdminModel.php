@@ -34,7 +34,7 @@ class AdminModel extends Model{
         return $statement->execute();
     } 
     function restrictUser($uid){
-        $query = "UPDATE user SET Status = 'restrict' WHERE U_ID = :uid";
+        $query = "UPDATE user SET Status = 'restricted' WHERE U_ID = :uid";
         $statement = $this->db->prepare($query);
         $statement->bindParam(':uid', $uid);
         return $statement->execute();

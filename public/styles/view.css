@@ -11,14 +11,6 @@
     justify-content: center;
 }
 
-.wrapper {
-    /* border: 1px solid black; */
-    width: 50%;
-    margin: auto;
-    padding-left: 100px;
-    display: flex;
-}
-
 .container-image {
     display: flex;
     justify-content: center;
@@ -63,20 +55,6 @@
 }
 
 
-.left-div {
-    float: left;
-    padding-left: 20px;
-    font-size: 18px;
-    font-weight: bold;
-    /* border: 1px solid black; */
-}
-
-.right-div {
-    float: right;
-    margin-left: 50px;
-    font-size: 18px;
-    /* border: 1px solid black; */
-}
 
 a {
     text-decoration: none;
@@ -109,22 +87,6 @@ h3, h4 {
 	margin-left: 18%;
 }
 
-.btn4{
-	background-color: #84b464;
-	color: black;
-	font-weight: bold;
-	border: none;
-	border-radius: 10px;
-	padding: 5px 10px;
-	text-align: center;
-	display: inline-block;
-	font-family: "Poppins", sans-serif;
-	font-size: 14px;
-	margin: auto;
-	width: 155px;
-	height: 45px;
-}
-
 form{
 	border: solid;
 	border-radius: 30px;
@@ -134,17 +96,17 @@ form{
 	background-color: rgba(157, 156, 156, 0.709);
 }
 
-.details-container {
+.details-container-vol {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     max-width: 600px;
     margin: 10px;
-    margin-left: 25%;
+    margin-left: 17%;
 }
 
-.details-container .row {
+.details-container-vol .row {
     padding: 0;
     height: 30px;
     display: flex;
@@ -157,7 +119,7 @@ form{
     overflow: hidden;
 }
 
-.details-container .row label {
+.details-container-vol .row label {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -171,7 +133,7 @@ form{
     background-color: darkblue;
 }
 
-.details-container .row p {
+.details-container-vol .row p {
     display: flex;
     justify-content: center;
     align-items: center;

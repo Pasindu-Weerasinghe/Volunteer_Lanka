@@ -52,19 +52,19 @@
                         <td class="top-td">Interest Areas</td>
                         <td class="top-td">:</td>
                         <td class="top-td"><?php foreach ($this->interests as $interest) {
-                            if ($interest['Interest'] == 'Beach'){
-                                $text = 'Beach Cleaning ';
-                            } else if ($interest['Interest'] == 'Donation') {
-                                $text = 'Providing facilities to rural areas ';
-                            } else if ($interest['Interest'] == 'Environement') {
-                                $text = 'Tree Planting ';
-                            } else if ($interest['Interest'] == 'Orphan') {
-                                $text = 'Helping child/adult orphanages ';
-                            } else if ($interest['Interest'] == 'Animal') {
-                                $text = 'Animal rescuing/rehabilitation ';
-                            }
-                            echo $text?> <br><?php
-                            } ?>
+                                                if ($interest['Interest'] == 'Beach') {
+                                                    $text = 'Beach Cleaning ';
+                                                } else if ($interest['Interest'] == 'Donation') {
+                                                    $text = 'Providing facilities to rural areas ';
+                                                } else if ($interest['Interest'] == 'Environement') {
+                                                    $text = 'Tree Planting ';
+                                                } else if ($interest['Interest'] == 'Orphan') {
+                                                    $text = 'Helping child/adult orphanages ';
+                                                } else if ($interest['Interest'] == 'Animal') {
+                                                    $text = 'Animal rescuing/rehabilitation ';
+                                                }
+                                                echo $text ?> <br><?php
+                                            } ?>
                         </td>
                     </tr>
                     <tr>
@@ -82,6 +82,21 @@
             <div class="cont1">
                 <label class="head">Details of Projects Volunteered</label><br><br>
                 <label>Total projects volunteered : <?php echo $this->projectCount ?></label><br>
+                <!-- <div class="projects">
+
+
+                    <label>Name</label>
+                    <label>Location</label><br>
+                    <div class="name">
+                        <?php foreach ($this->projects as $project) { ?>
+                            <?php echo ($project['Name']) ?>
+                            <?php echo ($project['Venue']) ?><br>
+                        <?php } ?>
+                    </div>
+
+
+                </div> -->
+
             </div>
 
             <div class="cont1">

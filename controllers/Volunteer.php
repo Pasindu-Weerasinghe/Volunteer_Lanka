@@ -278,7 +278,6 @@ class Volunteer extends User
 
         $this->loadModel('ProjectIdea');
         $ideaCount = $this->model->getMyIdeas($uid)['Count'];
-        $this->totalCount = $this->projectCount + $ideaCount;
 
         $this->ideaBadgeCount = 0;
         for($i=1; $i<=$ideaCount; $i++){
@@ -286,6 +285,7 @@ class Volunteer extends User
                 $this->ideaBadgeCount += 1;
             }
         }
+        $this->totalCount = $this->projectCount + $this->ideaBadgeCount;
         
         if ($this->totalCount <5){
             $this->badge = "Beginner";

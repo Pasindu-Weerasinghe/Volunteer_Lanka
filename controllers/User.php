@@ -221,7 +221,7 @@ class User extends Controller
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            $target_dir = "public/images/";
+            $target_dir = "public/images/profile_images/";
             $image_name = basename($_FILES["profilepic"]["name"]);
             $target_file = $target_dir . $image_name;
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -427,5 +427,19 @@ class User extends Controller
         }
 
         $this->render('OrganizerBlog');
+    }
+
+    function indexSearch()
+    {
+        if (isset($_POST['search'])) {
+            $key = trim($_POST['key']);
+            $this->loadModel('Project');
+            $this->projects = $this->model->getProjectsByName($key);
+        }
+        foreach ($this->projects as $project) {
+            $pid = $project['P_ID'];
+            $this->prImage[$pid] = $this->model->getProjectImage($pid);
+        }
+        $this->render('Index');
     }
 }

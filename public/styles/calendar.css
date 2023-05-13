@@ -101,7 +101,7 @@
     
 }
 
-.eventDate li{
-    background-color: green;
+.days li.eventDate {
+    background-color: red;
     color: white;
 }

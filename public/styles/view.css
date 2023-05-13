@@ -247,24 +247,24 @@ form{
     background-color: rgb(83, 2, 144);
   }
  
-  /* .details-container {
+   .details-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     max-width: 400px;
     margin: 10px;
-} */
+    margin-left: 28%;
+    margin-top: 350px;
+} 
 
 .details-container .row {
-    padding: 0;
     height: 30px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    margin: 10px;
+    width: 120%;
     border-radius: 10px;
     overflow: hidden;
 }

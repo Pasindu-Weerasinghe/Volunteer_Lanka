@@ -55,42 +55,29 @@ class Sponsor extends User
             $this->packages = $this->model->getSponsorPackage($pid, $uid);
 
             $this->budjet = $this->model->getSPAmount($pid);
+            $this->totalAmount = $this->model->getTotalAmount($pid);
+
+            $this->remainingAmount = $this->budjet['Amount'] - $this->totalAmount['totalAmount'];
+
+            $this->packageAmount = $this->model->getPackageAmount($pid);
 
 
             $this->render('Sponsor/view_sponsor_notices');
         } else if ($action == 'confirm') {
 
-            session_start();
-            $uid = $_SESSION['uid'];
 
-            // Check if the user has already sponsored the project
-            $this->loadModel('SponsorNotice');
-            $sponsorPackage = $this->model->getSponsorPackage($uid, $pid);
-
-            // if (empty($sponsorPackage)) {
-            //     echo "<script>alert('Please select your sponsor package.'); window.location.href='" . BASE_URL . "Sponsor/view_sponsor_notice/$pid';</script>";
-            // }
-            if (!empty($sponsorPackage)) {
-                // User has already sponsored the project
-                echo "<script>alert('You cannot add another sponsor package because you have already selected a package.'); window.location.href='" . BASE_URL . "Sponsor/index';</script>";
-            } else {
-                // User has not sponsored the project before
-                if (isset($_POST['confirm'])) {
-                    $amount = $_POST['selectAmount'];
-                    if ($amount >= 10000) {
-                        $package = "platinum";
-                    } else if ($amount >= 7500) {
-                        $package = "gold";
-                    } else if ($amount >= 5000) {
-                        $package = "silver";
-                    } else {
-                        $package = "other";
-                    }
-                }
+            // User has not sponsored the project before
+            if (isset($_POST['confirm'])) {
+                session_start();
+                $uid = $_SESSION['uid'];
+                $this->loadModel('SponsorNotice');
+                $package = $_POST['package-value'];
+                $amount = $_POST['selectAmount'];
                 $this->model->saveSponsorPackage($uid, $pid, $amount, $package);
+                header('Location: '.BASE_URL.'sponsor');
             }
 
-            echo "<script>alert('Succesfully added your sponsor package.');window.location.href='" . BASE_URL . "Sponsor/index';</script>";
+           
         }
     }
 
@@ -229,4 +216,6 @@ class Sponsor extends User
             }
         }
     }
+
+    
 }

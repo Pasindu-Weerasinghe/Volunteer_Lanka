@@ -82,7 +82,7 @@ $pid = $this->project['P_ID'];
 
                 <div class="row">
                     <label for="amount">Amount</label>
-                    <p id="amount">Rs <?php echo ucfirst($this->sPackage['Amount']) ?>.00</p>
+                    <p id="amount">Rs <?php echo $this->sPackage['Amount'] ?>.00</p>
                 </div>
             </div>
 

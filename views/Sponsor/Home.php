@@ -21,7 +21,6 @@
             <button name="search"><b>Search<b></button>
         </div><br>
         <h2>My sponsored Project</h2><br><br>
-
         <section class="container">
             <?php foreach ($this->sponsored_projects as $spProject) {
                 $pid = $spProject['P_ID'];

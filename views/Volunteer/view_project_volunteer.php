@@ -37,7 +37,7 @@ $pid = $this->project['P_ID'];
                 <?php } ?>
             </div>
             
-            <div class="details-container">
+            <div class="details-container-vol">
                     <div class="row">
                         <label for="date">Date</label>
                         <p id="date"><?php echo $this->project['Date'] ?></p>

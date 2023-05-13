@@ -25,7 +25,7 @@
                     <option value="organizer">Organizer</option>
                 </select>
                 <label>Enter your keyword</label><input type="text" name="key">
-                <button name="search"><b>Search<b></button>
+                <button name="search" id="search-bar"><b>Search<b></button>
             </form>
         </div><br>
         <hr><br>

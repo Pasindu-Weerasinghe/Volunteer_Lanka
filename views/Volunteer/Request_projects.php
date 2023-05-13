@@ -17,10 +17,16 @@
         <p>As a volunteer you are able to inform the organizers about your ideas to arrange new volunteering projects. You can send a request to all the organizers by submitting this form.
             <br /><br />Please provide reliable information.
         </p>
+
         <form action="<?php echo BASE_URL; ?>volunteer/insert_Ideas" method="post" enctype="multipart/form-data" id="form2">
             <div class="container">
                 <p>Let us know of the opportunities</p>
                 <hr>
+                <p id="error">
+                <?php if ($this->statusMsg != NULL) {
+                    echo $this->statusMsg;
+                } ?>
+                </p><br>
                 <label for="uname"><b>Username</b></label>
                 <input type="text" name="uname" value=<?php echo ($_SESSION['uname']) ?> readonly>
 

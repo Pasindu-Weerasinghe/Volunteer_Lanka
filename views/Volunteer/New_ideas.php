@@ -15,6 +15,7 @@
     <?php include 'views/includes/navbar_log.php'; ?>
     <div id="main" class="main">
         <h2>Requests sent by you to organize projects</h2>
+        
         <a href="<?php echo BASE_URL ?>volunteer/request_projects"><button class="new"><b>New Request</b></button></a>
         <br /><br /><br /><br />
         <table>

@@ -237,6 +237,13 @@ input[type="radio"] {
 	font-size: large;
 }
 
+#error {
+	background: rgb(219, 140, 140);
+	padding: 10px;
+	border-radius: 10px;
+	text-align: center;
+}
+
 .image {
 	border-radius: 50%;
 	height: 200px;

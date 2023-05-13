@@ -12,17 +12,6 @@
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/popup.css">
 
     <title><?php echo $this->project['Name'] ?></title>
-    <script type="text/javascript">
-        function button2() {
-            var isJoined = <?php echo $this->isJoined ?>;
-            if (isJoined) {
-                document.getElementById("right").innerHTML = "Leave Project";
-            } else {
-                document.getElementById("right").innerHTML = "Join Project";
-            }
-        }
-        window.onload = button2;
-    </script>
 </head>
 
 <body>
@@ -31,6 +20,7 @@
     <?php
     $uid = $_SESSION['uid'];
     $pid = $this->project['P_ID'];
+    $creator_check = $this->project['U_ID'] == $uid;
     function currencyFormat($number): string
     {
         return number_format($number, 2, '.', ' ');
@@ -40,14 +30,28 @@
 
     <div class="main" id="main">
         <h1><?php echo $this->project['Name'] ?></h1><br /><br />
+        <!---->
+        <!--    --><?php
+                    //    print_r($this->sn_amount);
+                    //    echo "<br/>";
+                    //    print_r($this->package_range);
+                    //    echo "<br/>";
+                    //    
+                    ?>
+
 
         <div class="container">
+            <?php
+            if ($creator_check) { ?>
+                <button id="edit-btn"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+            <?php }
+            ?>
             <div class="wrapper">
                 <div class="slideshow-container">
                     <div class="slideshow">
-                    <?php foreach ($this->images as $image) { ?>
+                        <?php foreach ($this->images as $image) { ?>
                             <div class="slide fade">
-                            <img src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $image['Image']; ?>">
+                                <img src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $image; ?>" alt="">
                             </div>
                         <?php } ?>
                     </div>
@@ -79,7 +83,8 @@
 
                     <div class="row">
                         <label for="volunteers" style="height: fit-content">Volunteers</label>
-                        <?php echo $this->project['No_of_volunteers'] ?></p>
+                        <p id="volunteers"><?php echo count($this->joined_volunteers) ?>
+                            / <?php echo $this->project['No_of_volunteers'] ?></p>
                     </div>
 
                     <div class="row">
@@ -87,6 +92,11 @@
                         <p id="description"><?php echo $this->project['Description'] ?></p>
                     </div>
                 </div>
+            </div>
+
+            <!-- joined volunteers popup button -->
+            <div class="btn-area">
+                <button id="joined-volunteers-btn"><i class="fa-solid fa-user-group"></i> Joined Volunteers</button>
             </div>
 
             <?php
@@ -97,7 +107,16 @@
                     if ($collaborator['U_ID'] == $uid) {
                         unset($this->collaborators[$key]);
                     }
-                }            ?>
+                }
+
+                $accepted_collaborators = array_filter($this->collaborators, function ($collaborator) {
+                    return $collaborator['Status'] == 'accepted';
+                });
+
+                $pending_collaborators = array_filter($this->collaborators, function ($collaborator) {
+                    return $collaborator['Status'] == 'pending';
+                });
+            ?>
                 <div class="collab-area">
                     <h2>Collaborators</h2>
                     <div class="collabs">

@@ -758,4 +758,28 @@ class Organizer extends User
             return $sponsor["Package"] == $package;
         });
     }
+
+    function get_events($date)
+    {
+        if(!isset($_SESSION)) {
+            session_start();
+        }
+        $uid = $_SESSION['uid'];
+        $this->loadModel('Calendar');
+        $events = $this->model->getEventsOrganizer($uid, $date);
+
+        echo json_encode($events);
+    }
+
+    function get_all_events($date)
+    {
+        if(!isset($_SESSION)) {
+            session_start();
+        }
+        $uid = $_SESSION['uid'];
+        $this->loadModel('Calendar');
+        $events = $this->model->getAllEventsOrganizer($uid, $date);
+
+        echo json_encode($events);
+    }
 }

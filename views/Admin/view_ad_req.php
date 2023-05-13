@@ -12,11 +12,13 @@ if (!isset($_SESSION['uid'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Advertisement Requests</title>
+    <?php include 'views/includes/head-includes-log.php'; ?>
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/popup.css">
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/view_ad_req.css">
 </head>
 
 <body>
-<?php include 'views/includes/navbar_log.php'; ?>
+    <?php include 'views/includes/navbar_log.php'; ?>
     <div class="main" id="main">
         <h2>View Advertisement Requests</h2>
         <div id="ad-req-box">
@@ -30,8 +32,15 @@ if (!isset($_SESSION['uid'])) {
                     <img id="ad-box-img" src="<?php echo BASE_URL ?>public/images/<?php echo  $this->image ?>" alt="">
                 </div>
             </div>
+            <div class="name">
+                <h3 class="name-item">Description:</h3>
+                <div id="ad-box-item">
+                    <p><?php echo $this->ad['Description'] ?></p>
+                </div>
+            </div>
+            <br><br>
             <div id="btn-area">
-                <button class="btn">Reject</button>
+                <button class="btn" id="reject-btn">Reject</button>
                 <button onclick="window.location.href='<?php echo BASE_URL . 'admin/accept_ad_req/' . $this->ad['AD_ID']; ?>'" class="btn">Accept</button>
             </div>
 
@@ -40,9 +49,32 @@ if (!isset($_SESSION['uid'])) {
 
         <br>
     </div>
-    <?php 
-    print_r($this->ad)
-    ?>
+    <div class="popup-bg" style="display:none;">
+        <div class="popup">
+            <!--close button-->
+            <div class="popup-close"><i class="fa-solid fa-xmark"></i></div>
+            <h2>Reason you are rejecting this advertisement</h2>
+            <form id="edit-pr-form" method="post" action="<?php echo BASE_URL ?>admin/setAdReason/<?php echo $this->ad['AD_ID']; ?>">
+                <textarea name="reason" id="raeson" required></textarea>
+                <button class="btn" type="submit">Send</button>
+            </form>
+
+        </div>
+    </div>
+
 </body>
+<script>
+    const popupbg = document.querySelector(".popup-bg");
+    const popup = document.querySelector(".popup");
+    const popupCloseBtn = document.querySelector(".popup-close");
+    const rejectBtn = document.querySelector("#reject-btn");
+
+    rejectBtn.addEventListener("click", () => {
+        popupbg.style.display = "flex";
+    });
+    popupCloseBtn.addEventListener("click", () => {
+        popupbg.style.display = "none";
+    });
+</script>
 
 </html>

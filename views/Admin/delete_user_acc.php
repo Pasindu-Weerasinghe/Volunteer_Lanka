@@ -12,6 +12,7 @@ if (!isset($_SESSION['uid'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delete User Account</title>
+    <?php include 'views/includes/head-includes-log.php'; ?>
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/delete_user_acc.css">
     <script src="<?php echo BASE_URL; ?>public/scripts/user_in_admin.js" defer></script>
 </head>
@@ -33,14 +34,14 @@ if (!isset($_SESSION['uid'])) {
                     </tr>
                 </thead>
                 <tbody class="users-list">
-                    <?php foreach($this->userDetails as $userDetail) {?>
-                    <tr>
-                        <td><?php echo $userDetail['Name'] ?></td>
-                        <td><?php echo ucfirst($userDetail['Role']) ?></td>
-                        <td><?php echo ucfirst($userDetail['Status']) ?></td>
-                    </tr>
+                    <?php foreach ($this->userDetails as $userDetail) { ?>
+                        <tr onclick="window.location.href='<?php echo BASE_URL . 'Admin/view'.ucfirst($userDetail['Role']).'Profile/' . $userDetail['U_ID']; ?>'">
+                            <td><?php echo $userDetail['Name'] ?></td>
+                            <td><?php echo ucfirst($userDetail['Role']) ?></td>
+                            <td><?php echo ucfirst($userDetail['Status']) ?></td>
+                        </tr>
                     <?php } ?>
-                    
+
                 </tbody>
             </table>
         </div>

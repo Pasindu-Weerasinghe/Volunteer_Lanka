@@ -1,87 +1,133 @@
-
-
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-/* .main {
-    background-color: #89AFD6;
-    margin: 50px;
-    border-radius: 4px;
-} */
-.main {
-    padding: 100px 150px 0 150px;   
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
 
-h2 {
-    padding: 30px 50px;
+body {
+	
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: center;
 }
 
-#com-box {
-    background-color: #89AFD6;
-    margin: 10px 100px;
-    border-radius: 4px;
-    margin-bottom: 15px;
+form { 
+	width: 1000px;
+	margin: auto;
+	margin-top: 20px;
+	padding: 20px 50px 10px 50px;
+	background: rgba(255, 255, 255, 0.75);
+	backdrop-filter: blur(16px);
+	border-radius: 15px;
 }
 
-#box-item {
-    padding: 50px;
-
-}
-
-.box-item-cus {
-    display: flex;
-}
-
-#box-item input,
 select {
-    height: 30px;
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    outline: none;
-    border-radius: 4px;
-    box-shadow: none;
-    border: none;
-    padding: 3px;
-    padding-left: 10px;
+	background: white;
+	padding: 10px;
+	margin: 5px 0 15px 0;
+	display: inline-block;
+	width: 100%;
+	cursor: pointer;
+	border: 2px solid rgb(169, 216, 250);
+	border-radius: 10px;
 }
 
-#box-item label {
-    width: 200px;
-    font-weight: bold;
-
+/* Full-width input fields */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea {
+	width: 100%;
+	padding: 10px;
+	margin: 5px 0 15px 0;
+	/* display: inline-block; */
+	border: 2px solid rgb(169, 216, 250);
+	border-radius: 10px;
+	background: white;
 }
 
-#box-item input,
-label,
-select {
-    margin: 20px;
+select:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+	box-shadow: 0 0 0 3px rgb(169, 216, 250);
+	outline: none;
+	transition: all 0.2s ease;
 }
 
-#btn-area{
-    display: flex;
-    justify-content: space-between;
-    margin: 0 100px 0 100px;
-    padding-bottom: 20px;
+hr {
+	background-color: gray;
+	margin-bottom: 25px;
+	width: 100%;
 }
 
-.btn{
-    padding: 15px 20px;
-    text-align: center;
-    background-color: #6AA438;
-    border: none;
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 4px;
-    width: 100px;
-    cursor: pointer;
-    color: white;
+/* Set a style for all buttons */
+button {
+	background-color: #6aa438;
+	color: white;
+	padding: 10px 15px;
+	margin: 20px 0;
+	border: none;
+	border-radius: 10px;
+	font-size: 18px;
+	font-weight: bold;
+	cursor: pointer;
+	width: 40%;
+	opacity: 0.9;
 }
 
-.btn:hover{
-    transform: scale(1.1);
-    transition: 00.3s;
+button:hover {
+	opacity: 1;
 }
+
+h1 {
+	text-align: center;
+}
+
+p {
+	text-align: center;
+	font-size: 18px;
+	margin-bottom: 15px;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancel {
+	float: left;
+	/* width: 40%; */
+}
+
+.next {
+	float: right;
+}
+
+/* Add padding to container elements */
+.container {
+	padding: 25px;
+	height: auto;
+	background-color: #96C7D6; 
+	border-radius: 10px;
+	width: 500px;
+}
+
+/* Clear floats */
+.clearfix::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+#require{
+	color: red;
+	font-size: large;
+}
+
+#error {
+	background: rgb(219, 140, 140);
+	padding: 10px;
+	border-radius: 10px;
+	text-align: center;
+}
+

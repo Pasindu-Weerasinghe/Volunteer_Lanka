@@ -13,28 +13,31 @@ if (!isset($_SESSION['uid'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Complaints</title>
+    <?php include 'views/includes/head-includes-log.php'; ?>
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/complaints.css">
 </head>
 
 <body>
-<?php include 'views/includes/navbar_log.php'; ?>
+    <?php include 'views/includes/navbar_log.php'; ?>
     <br><br><br>
     <div class="main" id="main">
         <h2>Complaints</h2>
         <?php
-        foreach ($this->complaints as $complaint){
+        foreach ($this->complaints as $complaint) {
+            if ($complaint['Response'] == null) {
         ?>
-            <div id="c-box">
-                <div id="c-box-item" >
-                    <h3 id="uname"><?php echo  $this->complain_userName[$complaint['C_ID']] ?></h3>
-                    <button onclick="window.location.href='<?php echo BASE_URL . 'admin/view_complaints/' . $complaint['C_ID']; ?>'" id="c-view-btn">View</button>
+                <div id="c-box">
+                    <div id="c-box-item">
+                        <h3 id="uname"><?php echo  $this->complain_userName[$complaint['C_ID']] ?></h3>
+                        <button onclick="window.location.href='<?php echo BASE_URL . 'admin/view_complaints/' . $complaint['C_ID']; ?>'" id="c-view-btn">View</button>
+                    </div>
+                    <h4 id="c-box-des"><?php echo $this->complain_about[$complaint['C_ID']]  ?></h4>
                 </div>
-                <h4 id="c-box-des"><?php echo $this->complain_about[$complaint['C_ID']]  ?></h4>
-            </div>
         <?php
+            }
         }
         ?>
-       
+
         <br>
         <button onclick="history.back()" id="back-btn">Back</button>
         <br><br>

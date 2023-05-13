@@ -48,7 +48,7 @@ header {
 	margin-left: 10px;
 }
 
-ul a {
+header ul a {
 	color: black;
 	/* font-weight: bold; */
 }
@@ -116,7 +116,7 @@ ul li:hover {
     background-color: white;
     border: 2px solid #7d7d7d;
     border-radius: 3px;
-    padding: 5px 0;
+    padding: 5px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     display: none;
 	width: 160px;
@@ -127,6 +127,7 @@ ul li:hover {
     padding: 5px 10px;
     text-decoration: none;
     color: #333;
+
 
 }
 
@@ -149,3 +150,13 @@ ul li:hover {
 	}
 
 }
+
+/* #bell-econ{
+	padding-left: -50px;
+	width: 10px;
+}
+
+#profile-icon{
+	padding-left: -90px;
+	width: 90px;
+} */

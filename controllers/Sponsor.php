@@ -45,9 +45,16 @@ class Sponsor extends User
         if ($action == null) {
             $this->loadModel('Project');
             $this->projects = $this->model->getProject($pid);
+            $this->prImage = $this->model->getProjectImage($pid);
+
             $uid = $this->projects['U_ID'];
-            $this->organizer = $this->model->getOrganizer($uid);
-            $this->packages = $this->model->getAmounts($pid, $uid);
+
+            $this->loadModel('Organizer');
+            $this->organizer = $this->model->getOrganizerByID($uid);
+            $this->loadModel('SponsorNotice');
+            $this->packages = $this->model->getSponsorPackage($pid, $uid);
+
+            $this->budjet = $this->model->getSPAmount($pid);
 
 
             $this->render('Sponsor/view_sponsor_notices');
@@ -75,7 +82,7 @@ class Sponsor extends User
                     } else if ($amount >= 7500) {
                         $package = "gold";
                     } else if ($amount >= 5000) {
-                        $package="silver";
+                        $package = "silver";
                     } else {
                         $package = "other";
                     }
@@ -95,7 +102,6 @@ class Sponsor extends User
         $this->loadModel('SponsorNotice');
         $this->sponsored_projects = $this->model->getSponsoredProjects($uid);
 
-
         $this->loadModel('Project');
         foreach ($this->sponsored_projects as $project) {
             $pid = $project['P_ID'];
@@ -105,8 +111,9 @@ class Sponsor extends User
         $this->render('Sponsor/sponsored_projects');
     }
 
-    function publish_advertisement()
+    function publish_advertisement($pid)
     {
+        $this->pid = $pid;
         $this->render('Sponsor/publish_advertisement');
     }
 
@@ -126,7 +133,7 @@ class Sponsor extends User
 
         $this->aSponsored_projects = $this->model->getSponsoredProjects($uid, 'active');
 
-        
+
         $this->loadModel('Project');
         foreach ($this->cSponsored_projects as $project) {
             $pid = $project['P_ID'];
@@ -136,12 +143,11 @@ class Sponsor extends User
             $pid = $project['P_ID'];
             $this->prImage[$pid] = $this->model->getProjectImage($pid);
         }
-                
+
         $this->loadModel('Sponsor');
-        $this->sAmount= $this->model->getTotalAmount($uid);
+        $this->sAmount = $this->model->getTotalAmount($uid);
 
         $this->render('Sponsor/profile_sponsor');
-
     }
 
     function profilepic()
@@ -161,20 +167,39 @@ class Sponsor extends User
 
     function view_sponsor_project($pid)
     {
-        $this->loadModel('project');
+        if (session_status() == PHP_SESSION_NONE) {
+            // if session is not started, start the session
+            session_start();
+        }
+        $uid = $_SESSION['uid'];
+        $this->loadModel('Project');
         $this->project = $this->model->getProject($pid);
         $this->images = $this->model->getProjectImage($pid);
+        $this->loadModel('Ad');
+        $this->ad_published = !empty($this->model->getAdSponsor($pid, $uid));
+
+        $this->loadModel('Sponsor');
+        $this->user = $this->model->getSponsorData($uid);
+
+        $this->loadModel('SponsorNotice');
+
+        $this->sPackage = $this->model->getSponsorPackage($uid, $pid);
+
         $this->render('Sponsor/view_projects_sponsor');
     }
 
-    function uploadAdvertisement()
+    function uploadAdvertisement($pid)
     {
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            // if session is not started, start the session
+            session_start();
+        }
         $description = $_POST['des'];
         $uid = $_SESSION['uid'];
 
         $this->loadModel('Ad');
-        $this->model->setAd($description, $uid);
+        $this->model->beginTransaction();
+        $this->model->setAd($description, $pid, $uid);
 
         $ad_id = $this->model->getAdId($uid, $description);
 
@@ -192,12 +217,40 @@ class Sponsor extends User
                 if (in_array($fileType, $allowTypes)) {
                     if (move_uploaded_file($_FILES["file"]["tmp_name"][$i], $targetFilePath)) {
                         $this->model->setAdImage($ad_id, $fileName);
-                        echo "<script>alert('Successfully published your advertiesment.'); window.location.href='" . BASE_URL . "sponsor/publish_advertisement';</script>";
+                        $this->model->commit();
+                        $message['success'] = true;
+                        echo json_encode($message);
                     }
                 } else {
-                    echo "<script>alert('Sorry! This file cannot be uploded');location.href='http://localhost/Volunteer_Lanka/sponsor/publish_advertisement';</script>";
+                    $this->model->rollBack();
+                    $message['success'] = false;
+                    echo json_encode($message);
                 }
             }
         }
+    }
+
+    function get_events($date)
+    {
+        if(!isset($_SESSION)) {
+            session_start();
+        }
+        $uid = $_SESSION['uid'];
+        $this->loadModel('Calendar');
+        $events = $this->model->getEventsSponsor($uid, $date);
+
+        echo json_encode($events);
+    }
+
+    function get_all_events($date)
+    {
+        if(!isset($_SESSION)) {
+            session_start();
+        }
+        $uid = $_SESSION['uid'];
+        $this->loadModel('Calendar');
+        $events = $this->model->getAllEventsSponsor($uid, $date);
+
+        echo json_encode($events);
     }
 }

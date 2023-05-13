@@ -215,7 +215,8 @@ class User extends Controller
     {
         session_start();
         $uid = $_SESSION['uid'];
-        $this->loadModel('Sponsor');
+        $role = $_SESSION['role'];
+        $this->loadModel($role);
         $this->profile = $this->model->getUserData($uid);
         $this->user = $this->model->getSponsorData($uid);
 
@@ -239,6 +240,7 @@ class User extends Controller
                 $profilepic = $target_file;
                 // Update user's record in the database with new profile picture
                 $this->model->updateProfilePic($uid, $profilepic);
+                $_SESSION['photo']=$profilepic;
                 header('Location: ' . BASE_URL . 'Sponsor/profile');
             } else {
                 echo "Sorry, there was an error uploading your file.";
@@ -391,7 +393,7 @@ class User extends Controller
         $this->render('ProfileSponsor');
     }
 
-    function viewOrganizerBlog($uid)
+    function viewOrganizerProfile($uid)
     {
         $this->loadModel('Organizer');
         $this->organizer = $this->model->getOrganizerById($uid);

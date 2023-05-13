@@ -22,6 +22,7 @@
                 <label class="sub2"> <?php echo $this->user['Name']; ?></label><br><br>
                 <div class="badge"><i class="fas fa-medal <?php echo $this->color ?>-color fa-4x"></i></div><br>
                 <label class="sub3"><?php echo $this->badge ?></label>
+                <?php echo $_SESSION['photo']?>
 
             </div>
             <div class="column2"><br />

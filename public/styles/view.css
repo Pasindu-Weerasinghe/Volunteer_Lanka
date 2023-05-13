@@ -6,6 +6,9 @@
 .container {
     background-color: #96c7d6;
     border-radius: 20px;
+    margin-left: 130px;
+    width: 900px;
+    justify-content: center;
 }
 
 .wrapper {
@@ -53,11 +56,10 @@
 }
 
 .btn-area {
-    width: auto;
-    margin: auto;
+    width: 800px;
     display: flex;
     justify-content: space-between;
-    margin: 0px 200px;
+    margin: 0px 100px 0px 60px;
 }
 
 
@@ -180,4 +182,126 @@ form{
     font-size: 18px;
     background-color: white;
     /* padding: 10px; */
+}
+
+.slider {
+    width: 330px;
+    height: 250px;
+    background-color: yellow;
+    margin-left: 40px;
+    text-align: center;
+    overflow: hidden;
+    display: inline-block;
+    margin-bottom: -300px;
+    margin-top: 40px;
+    margin-left: 280px;
+  }
+  
+  .image-container {
+    width: 1500px;
+    background-color: pink;
+    height: 250px;
+    clear: both;
+    position: relative;
+    -webkit-transition: left 2s;
+    -moz-transition: left 2s;
+    -o-transition: left 2s;
+    transition: left 2s;
+    margin-left: 0;
+  }
+  .slide {
+    float: left;
+    padding: 0px;
+    position: relative;
+    width: 500px;
+    height: 250px;
+  }
+  #slide-1:target ~ .image-container {
+    left: 0px;
+  }
+  #slide-2:target ~ .image-container {
+    left: -500px;
+  }
+  #slide-3:target ~ .image-container {
+    left: -1000px;
+  }
+  #slide-4:target ~ .image-container {
+    left: -1500px;
+  }
+  #slide-5:target ~ .image-container {
+    left: -2000px;
+  }
+  #slide-6:target ~ .image-container {
+    left: -3000px;
+  }
+
+  .buttons {
+    position: relative;
+    top: -20px;
+  }
+  .buttons a {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    border-radius: 50px;
+    background-color: rgb(83, 2, 144);
+  }
+ 
+  /* .details-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px;
+    margin: 10px;
+} */
+
+.details-container .row {
+    padding: 0;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.details-container .row label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 50px;
+    width: 40%;
+    min-height: 30px;
+    height: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: darkblue;
+}
+
+.details-container .row p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 50px;
+    width: 60%;
+    min-height: 30px;
+    height: 100%;
+    font-size: 18px;
+    background-color: white;
+}
+
+#description {
+    height: auto;
+    font-size: 16px;
+    padding: 0 5px;
+}
+#packages {
+  height: auto;
+  font-size: 16px;
+  padding: 0 5px;
 }

@@ -261,21 +261,32 @@ class User extends Controller
     public function updateProfile()
     {
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $name = $_POST['uname'];
             $contact = $_POST['cNumber'];
             $address = $_POST['address'];
             $uid = $_POST['uid'];
 
             $this->loadModel('User');
-            $this->model->updateUserProfile($name, $contact, $address, $uid);
 
-            // Redirect to profile page
-            //$this->view->render('sponsor/profile_sponsor');
-            header('Location: ' . BASE_URL . 'Sponsor/profile');
-        } else {
-            // Render the view page
-            $this->view->render('sponsor/profile_sponsor');
+            //     // Redirect to profile page
+            //     //$this->view->render('sponsor/profile_sponsor');
+            //     header('Location: ' . BASE_URL . 'Sponsor/profile');
+            // } else {
+            //     // Render the view page
+            //     $this->view->render('sponsor/profile_sponsor');
+            // }
+
+            $this->model->beginTransaction();
+            if ($this->model->updateUserProfile($name, $contact, $address, $uid)) {
+                $this->model->commit();
+                $message['success'] = true;
+                echo json_encode($message);
+            } else {
+                $this->model->rollBack();
+                $message['success'] = false;
+                echo json_encode($message);
+            }
         }
     }
 

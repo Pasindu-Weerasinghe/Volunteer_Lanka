@@ -65,20 +65,69 @@ h2{
 }
 
 #ad-box-item{
-    display: flex;
+    display: inline;
     margin-left: 10px;
     margin-top: 30px;
     margin-bottom: 30px;
     width: 100%;
 }
 #ad-box-item p{
-    display: flex;
+    display: inline;
     margin-left: 10px;
     margin-bottom: 30px;
     width: 100%;
+    
 }
-
-#ad-box-item p{
+p{
+    text-align: justify;
+}
+/* #ad-box-item p{
     width: 100%;
     margin: 40px;
+} */
+.popup {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: auto;
+}
+.popup form {
+    display: block;
+    align-items: center;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+}
+
+.popup form label {
+    float: left;
+    font-size: 18px;
+    font-weight: bold;
+
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px 0;
+    border: 2px solid rgb(169, 216, 250);
+    border-radius: 10px;
+    background: white;
+    transition: all 0.2s ease;
+}
+
+textarea {
+    max-height: 100px;
+    resize: none;
+}
+
+input:focus,
+textarea:focus {
+    box-shadow: 0 0 0 3px rgb(169, 216, 250);
+    outline: none;
+}
+
+.popup .btn {
+    margin: 0 auto;
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <?php include 'views/includes/head-includes-log.php'; ?>
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/password.css" text="text/css">
     <title>Changed Password</title>
@@ -29,8 +29,10 @@
                 <input type="password" name="confirm" required />
             </p>
 
-            <button onclick="history.back()"><a class="same">Back</a></button>
-            <button name="submit" type="submit">Confirm</button>
+            <div class="btn-area">
+                <button onclick="history.back()"><a class="same">Back</a></button>
+                <button name="submit" type="submit" id="confirm">Confirm</button>
+            </div>
 
             <?php
             if (isset($this->error)) {

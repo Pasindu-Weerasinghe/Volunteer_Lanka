@@ -25,12 +25,13 @@ class AdModel extends Model
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    function setAd($description,$uid)
+    function setAd($description,$pid, $uid)
     {
-        $query = "INSERT INTO advertisement (Description,Status,Sponsor) VALUES (:description,'pending',:uid)";
+        $query = "INSERT INTO advertisement (Description,P_ID, Status,Sponsor) VALUES (:description, :pid, 'pending',:uid)";
         $statement = $this->db->prepare($query);
         $statement->bindParam(':description', $description);
         $statement->bindParam(':uid', $uid);
+        $statement->bindParam(':pid', $pid);
         return $statement->execute();
     }
 
@@ -41,12 +42,7 @@ class AdModel extends Model
         $statement = $this->db->prepare($query);
         $statement->bindParam(':adid', $adid[0]);
         $statement->bindParam(':image', $image);
-        if($statement->execute()){
-            //header('Location: ' . BASE_URL . "Sponsor/index");
-            //echo "<script>alert('Successfully upload the advertisement');location.href='http://localhost/Volunteer_Lanka/sponsor/publish_advertisement';</script>";
-           // echo "<script>alert('Successfully published your advertiesment.'); window.location.href='" . BASE_URL . "sponsor/publish_advertisement';</script>";
-
-        }
+        return $statement->execute();
     }
 
     function getAdId($uid, $description)
@@ -55,6 +51,15 @@ class AdModel extends Model
         $statement = $this->db->prepare($query);
         $statement->bindParam(':uid', $uid);
         $statement->bindParam(':description', $description);
+        $statement->execute();
+        return $statement->fetch();
+    }
+
+    function getAdSponsor($pid, $uid) {
+        $query = "SELECT * FROM advertisement WHERE Sponsor = :uid AND P_ID = :pid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':uid', $uid);
+        $statement->bindParam(':pid', $pid);
         $statement->execute();
         return $statement->fetch();
     }

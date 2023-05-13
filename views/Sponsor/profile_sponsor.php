@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
+    <?php include 'views/includes/head-includes-log.php'; ?>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php include 'views/includes/head-includes-log.php'; ?>
-    <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/profile.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/profile.css" text="text/css">
     <script src="https://kit.fontawesome.com/18409fd0c0.js" crossorigin="anonymous"></script>
     <title>User Profile</title>
 </head>
@@ -15,56 +15,53 @@
     <?php include 'views/includes/navbar_log.php'; ?>
     <div class="main" id="main">
         <div class="form1">
-            <!-- <h2><i class="fa-solid fa-caret-right fa-lg" style="color: #000000;"></i> Achivemenbjjjjjhjnts</h2><br>
-            <h2><i class="fa-solid fa-caret-right fa-lg" style="color: #000000;"></i> Profile Details</h2><br> -->
+            <div class="left-container">
 
-            <div class="row1">
-                <div class="col">
-                    <table>
-                        <tr>
-                            <td><?php echo $this->user['Name']; ?></td>
-                        </tr>
-                    </table>
-                    <img class="image" src="<?php echo BASE_URL ?>public/images/<?php echo $this->profile['Photo'] ?>" alt="">
-                    <br><br>
-                    <div class="btn">
-                        <button class="prbtn1"> <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePic">Edit Profile</a></button>
-                        <button class="prbtn1" id="cp"> <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePsw">Change Password</a></button>
-                    </div>
+                <h2><?php echo $this->user['Name']; ?></h2>
+
+
+
+                <img class="image" src="<?php echo BASE_URL ?>public/images/profile_images/<?php echo $this->profile['Photo'] ?>" alt="">
+
+
+                <div class="btn-area">
+                    <button class="btn"> <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePic"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</a></button>
+                    <button class="btn"> <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePsw"><i class="fa-solid fa-key"></i> Change Password</a></button>
                 </div>
             </div>
 
 
-            <table class="T1">
+
+            <table class="right-container">
                 <tr>
                     <td>User ID</td>
                     <td>:</td>
-                    <td><?php echo $this->profile['U_ID']; ?></td>
+                    <td id="data"><?php echo $this->profile['U_ID']; ?></td>
                 </tr>
                 <tr>
                     <td>Role</td>
                     <td>:</td>
-                    <td><?php echo $this->profile['Role']; ?></td>
+                    <td id="data"><?php echo $this->profile['Role']; ?></td>
                 </tr>
                 <tr>
                     <td>Name</td>
                     <td>:</td>
-                    <td><?php echo $this->user['Name']; ?></td>
+                    <td id="data"><?php echo $this->user['Name']; ?></td>
                 </tr>
                 <tr>
                     <td>Email</td>
                     <td>:</td>
-                    <td><?php echo $this->profile['Email'] ?></td>
+                    <td id="data"><?php echo $this->profile['Email'] ?></td>
                 </tr>
                 <tr>
                     <td>Address</td>
                     <td>:</td>
-                    <td><?php echo $this->user['Address']; ?></td>
+                    <td id="data"><?php echo $this->user['Address']; ?></td>
                 </tr>
                 <tr>
                     <td>Contact Number</td>
                     <td>:</td>
-                    <td><?php echo $this->user['Contact']; ?></td>
+                    <td id="data"><?php echo $this->user['Contact']; ?></td>
                 </tr>
             </table>
 
@@ -74,7 +71,7 @@
         <div class="form2">
             <h2><i class="fa-solid fa-caret-right fa-lg" style="color: #000000;"></i> Achivements</h2><br>
             <div>
-                <h3 class="pack">Number of Sponsored Projects : <?php echo $this->sPackages['total']; ?></h3>
+                <h3 class="pack"><i class="fa-solid fa-circle fa-2xs"></i> Number of Sponsored Projects : <?php echo $this->sPackages['total']; ?></h3>
                 <br>
             </div><br>
             <div class="pack">
@@ -127,36 +124,60 @@
             </div>
 
             <div class="pack">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>
-                                <h3>Description</h3>
-                            </th>
-                            <th>
-                                <h3>Image</h3>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($this->sAdvertisements as $advertisement) : ?>
-                            <tr>
-                                <td><?php echo $advertisement['Description']; ?></td>
-                                <td><img class="img" src="<?php echo BASE_URL ?>public/images/ad_images/<?php echo $advertisement['Image']; ?>" alt=""></td>
+                <table class="T3">
 
+                    <?php if ($this->sAdvertisements) : ?>
+                        <thead>
+                            <tr>
+                                <th>
+                                    <h3>Description</h3>
+                                </th>
+                                <th>
+                                    <h3>Image</h3>
+                                </th>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
+                        </thead>
+                        <?php foreach ($this->sAdvertisements as $advertisement) : ?>
+                            <tbody>
+                                <tr>
+                                    <td><?php echo $advertisement['Description']; ?></td>
+                                    <td><img class="img" src="<?php echo BASE_URL ?>public/images/ad_images/<?php echo $advertisement['Image']; ?>" alt=""></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <tr>
+                                <td colspan="2">There are no uploaded advertisements.</td>
+                            </tr>
+                        <?php endif; ?>
+                            </tbody>
+
                 </table>
             </div><br>
         </div><br>
-        <div class="form2">
+        <div class="form2" id="projects">
             <div>
                 <h2><i class="fa-solid fa-caret-right fa-lg" style="color: #000000;"></i> My Sponserd Projects</h2>
                 <br>
             </div>
 
-            <h3 class="pack">Aready Completed</h3>
+            <h3 class="pack"><i class="fa-solid fa-circle fa-2xs"></i> Active Projects</h3><br>
+            <section class="container2">
+                <?php
+                foreach ($this->aSponsored_projects as $spProject) {
+                    $pid = $spProject['P_ID'];
+                ?>
+                    <div class="card">
+                        <div class="card-image">
+                            <img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image'] ?>">
+                        </div>
+
+                        <h2><?php echo ($spProject["Name"]); ?></h2>
+                        <p>Date: <?php echo ($spProject["Date"]); ?></p>
+                        <p><?php echo ucfirst($spProject['Package']) ?>: <?php echo ($spProject['Amount']); ?></p>
+                    </div>
+                <?php } ?>
+            </section>
+            <h3 class="pack"><i class="fa-solid fa-circle fa-2xs"></i> Aready Completed</h3>
             <section class="container2">
                 <?php
                 foreach ($this->cSponsored_projects as $spProject) {
@@ -174,26 +195,10 @@
                 <?php } ?>
             </section><br>
 
-            <h3 class="pack">Active Projects</h3><br>
-            <section class="container2">
-                <?php
-                foreach ($this->aSponsored_projects as $spProject) {
-                    $pid = $spProject['P_ID'];
-                ?>
-                    <div class="card">
-                        <div class="card-image">
-                            <img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image'] ?>">
-                        </div>
 
-                        <h2><?php echo ($spProject["Name"]); ?></h2>
-                        <p>Date: <?php echo ($spProject["Date"]); ?></p>
-                        <p><?php echo ucfirst($spProject['Package']) ?>: <?php echo ($spProject['Amount']); ?></p>
-                    </div>
-                <?php } ?>
-            </section>
         </div>
-    </div><br><br><br>
-    <?php include 'views/includes/footer.php'; ?>
+        <!-- </div><br><br><br>
+    <?php include 'views/includes/footer.php'; ?> -->
 </body>
 
 </html>

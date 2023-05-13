@@ -188,6 +188,7 @@
             </section>
         </div>
         <?php if(isset($_SESSION['role']) && $_SESSION['role']=='admin'){ 
+            $u_id = $this->profile['U_ID'];
         include 'views/includes/only_admin.php';
     }
     

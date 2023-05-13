@@ -11,8 +11,8 @@
 <body>
     <div class="only-admin">
         <div class="btn-area">
-            <button o class="btn btn1">Restrict</button>
-            <button class="btn btn2">Delete</button>
+            <button onclick="window.location.href='<?php echo BASE_URL . 'admin/restrictUser/' . $u_id; ?>'" class="btn btn1">Restrict</button>
+            <button onclick="window.location.href='<?php echo BASE_URL . 'admin/deleteUser/' . $u_id; ?>'" class="btn btn2">Delete</button>
         </div>
 
     </div>

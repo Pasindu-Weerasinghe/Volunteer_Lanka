@@ -26,5 +26,17 @@ class AdminModel extends Model{
         $statement->bindParam(':response', $response);
         $statement->bindParam(':cid', $cid);
         return $statement->execute();
-    }   
+    }  
+    function deleteUser($uid){
+        $query = "UPDATE user SET Status = 'delete' WHERE U_ID = :uid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':uid', $uid);
+        return $statement->execute();
+    } 
+    function restrictUser($uid){
+        $query = "UPDATE user SET Status = 'restrict' WHERE U_ID = :uid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':uid', $uid);
+        return $statement->execute();
+    }
 }

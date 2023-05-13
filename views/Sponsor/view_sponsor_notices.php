@@ -81,20 +81,20 @@
                 <div>
                     <div class="package" id="silverPackage1">
                         <label name="package1" value="silver">
-                            <strong>Silver Package<br>Up to Rs 5000</strong><br>
+                            <strong>Silver Package<br>Moew than Rs 5000</strong><br>
                         </label>
                     </div>
 
                     <div class="package" id="goldPackage2">
                         <label name="package2" value="gold">
                             <input type="hidden" name="goldPrice" value="<?php echo $this->goldPrice; ?>">
-                            <strong>Gold Package <br>Up to Rs 7500</strong><br>
+                            <strong>Gold Package <br>Moew than Rs 7500</strong><br>
                         </label>
                     </div>
 
                     <div class="package" id="platinumPackage3">
                         <label name="package3" value="platinum">
-                            <strong>Platinum Package<br>Up to Rs 10000</strong>
+                            <strong>Platinum Package<br>More than Rs 10000</strong>
                         </label>
                     </div>
                 </div>
@@ -194,42 +194,6 @@
     <?php include 'views/includes/footer.php'; ?>
 
 </body>
-<script>
-    const BASE_URL = "<?php echo BASE_URL ?>";
 
-    const sendRequestBtn = document.getElementById('confirm');
-    const requestForm = document.getElementById('form');
-
-    // popup elements
-    const popupBg = document.querySelector('.popup-bg');
-    const popup = document.querySelector('.popup');
-    const popupClose = document.querySelector('.popup-close');
-    const popupMessage = document.querySelector('#message');
-
-    sendRequestBtn.addEventListener('click', function() {
-        return requestForm.reportValidity();
-    });
-
-    requestForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const formData = new FormData(requestForm);
-        const url = BASE_URL + `Sponsor/view_sponsor_notice/${<?php echo $this->pid ?>}/confirm`
-        fetch(url, {
-                method: "post",
-                body: formData
-            }).then(res => res.json())
-            .then(reply => {
-                console.log(reply);
-                popupBg.style.display = 'flex';
-                popup.style.display = 'flex';
-                if (reply.success) {
-                    popupMessage.innerHTML = "Published successfully";
-                } else {
-                    popupMessage.innerHTML = "Error occured";
-                }
-            })
-    });
-
-</script>
 
 </html>

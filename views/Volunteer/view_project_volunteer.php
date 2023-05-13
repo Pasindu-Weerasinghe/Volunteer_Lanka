@@ -17,6 +17,7 @@ $pid = $this->project['P_ID'];
             var isJoined = <?php echo $this->isJoined ?>;
             if (isJoined) {
                 document.getElementById("right").innerHTML = "Leave Project";
+                document.getElementById("right").onclick= function() {return confirm('Are you sure you want to leave this Project?');};
             } else {
                 document.getElementById("right").innerHTML = "Join Project";
             }
@@ -70,7 +71,7 @@ $pid = $this->project['P_ID'];
 
             <div class="btn-area">
                 <button class="btn" onclick="history.back()">Back</button>
-                <a onclick="return confirm('Are you sure you want to leave this Project?')" href="<?php echo BASE_URL ?>volunteer/join_leave_project/<?php echo $this->project['P_ID'] ?>/<?php echo $this->isJoined ?>/<?php echo $this->project['No_of_volunteers'] ?>/<?php echo $this->project['Date'] ?>"><button class="btn" id="right"></button></a>
+                <a href="<?php echo BASE_URL ?>volunteer/join_leave_project/<?php echo $this->project['P_ID'] ?>/<?php echo $this->isJoined ?>/<?php echo $this->project['No_of_volunteers'] ?>/<?php echo $this->project['Date'] ?>"><button class="btn" id="right"></button></a>
             </div>
         </div>
     </div>

@@ -16,10 +16,11 @@
     <?php include 'views/includes/navbar_log.php'; ?>
 
     <div class="main" id="main">
+
         <!-- organization start -->
         <div class="organization">
             <div id="left">
-                <img src="<?php echo BASE_URL; ?>public/images/org_image.jpg" alt="">
+                <img src="<?php echo BASE_URL; ?>public/images/profile_images/<?php echo $this->organizer['Photo'] ?>" alt="">
                 <h3><?php echo $this->organizer['Name']; ?></h3>
             </div>
             <div id="right">
@@ -27,7 +28,7 @@
                 <p><b>No of members:</b> <?php echo $this->organizer['No_of_members']; ?></p>
                 <p><b>Branch:</b> <?php echo $this->organizer['Branch']; ?></p>
                 <p><b>Contact:</b> <?php echo $this->organizer['Contact']; ?></p>
-                <p><b>No of projects organized:</b> <?php echo $this->no_of_projects; ?></p>
+                <p><b>No of projects organized:</b> <?php echo $this->no_of_projects = 5; ?></p>
                 <P><b>No of completed projects:</b> <?php echo $this->no_of_completed_projects; ?></p>
             </div>
         </div>

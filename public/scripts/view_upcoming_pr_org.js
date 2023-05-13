@@ -156,35 +156,39 @@ postponePrForm.addEventListener("submit", (e) => {
 });
 
 //? leave button for collaborators *********************************
-leaveBtn.addEventListener('click', () => {
-    popUpBG.style.display = "flex";
-    leavePopup.style.display = "flex";
-});
+if (leaveBtn) {
+    leaveBtn.addEventListener('click', () => {
+        popUpBG.style.display = "flex";
+        leavePopup.style.display = "flex";
+    });
+}
 
 const leavePR = document.querySelector('#leave-project');
 const leaveMsg = document.querySelector('#leave-msg');
 
-leavePR.addEventListener('click', ((e) => {
-    e.preventDefault();
-    const url = `${BASE_URL}organizer/leave_project/${pid}/${uid}`;
-    fetch(url)
-        .then(res => res.json())
-        .then(data => {
-            if (data.status === 'success') {
-                console.log(data);
-                leavePR.style.backgroundColor = '#6aa438';
-                leavePR.innerHTML = 'Ok';
-                leaveMsg.innerHTML = 'You have left the project';
-                leavePR.addEventListener('click', () => {
-                    window.location.href = `${BASE_URL}organizer/`;
-                });
-            } else {
-                console.log(data);
-            }
-        })
-        .catch(err => console.log(err));
-}));
 
+if (leavePR) {
+    leavePR.addEventListener('click', ((e) => {
+        e.preventDefault();
+        const url = `${BASE_URL}organizer/leave_project/${pid}/${uid}`;
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    console.log(data);
+                    leavePR.style.backgroundColor = '#6aa438';
+                    leavePR.innerHTML = 'Ok';
+                    leaveMsg.innerHTML = 'You have left the project';
+                    leavePR.addEventListener('click', () => {
+                        window.location.href = `${BASE_URL}organizer/`;
+                    });
+                } else {
+                    console.log(data);
+                }
+            })
+            .catch(err => console.log(err));
+    }));
+}
 
 
 

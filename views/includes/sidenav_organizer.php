@@ -6,7 +6,7 @@
 </span>
 
 <div id="side-menu" class="side-nav">
-    <a class="btn-close" onclick="closeSideMenu()">&times;</a>
+    <a class="btn-close" onclick="closeSideMenu()">&times</a>
     <a href="<?php echo BASE_URL; ?>organizer">Home</a>
     <a href="<?php echo BASE_URL; ?>organizer/create_project">Create New Projects</a>
     <a href="<?php echo BASE_URL; ?>organizer/upcoming_projects">Upcoming Projects</a>

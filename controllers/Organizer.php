@@ -82,7 +82,7 @@ class Organizer extends User
                     $uid = $_SESSION['uid'];
 
                     $this->loadModel('Project');
-                    $this->model->beginTransaction();
+//                    $this->model->beginTransaction();
                     // creating the project
                     if ($pid = $this->model->setProject($pname, $date, $time, $venue, $description, $no_of_volunteers, $category, $sponsorship, $partnership, $uid)) {
                         $email = isset($_POST['email']) ? 1 : 0;
@@ -144,6 +144,7 @@ class Organizer extends User
                         }
                         // set project complete event
                         $this->model->setProjectCompleteEvent($pid, $date);
+//                        $this->model->commit();
 
                         // if project is a collaboration set notifications for collaborators
                         if ($partnership) {
@@ -155,12 +156,9 @@ class Organizer extends User
                                 $this->model->setNotification($collaborator, $message, 'collab-req', $pid);
                             }
                         }
-
                         // set reminder for project
                         $message = "You have an upcoming project named " . $pname . " on " . $date; //TODO: change message
-                        $this->setUpcomingProjectReminder($uid, $message, $pid, $date);
-
-                        $this->model->commit();
+                        $this->model->setUpcomingProjectReminder($uid, $message, $pid, $date);
                         header("Content-Type: application/json");
                         $response['message'] = "Project created successfully";
                         echo json_encode($response);
@@ -197,7 +195,7 @@ class Organizer extends User
 
         // send notification to the organizer
         $this->loadModel('Organizer');
-        $collaborator = $this->model->getOrganizer($uid);
+        $collaborator = $this->model->getOrganizerByID($uid);
         $this->loadModel('Project');
         $project = $this->model->getProject($pid);
         $organizer_id = $project['U_ID'];
@@ -213,10 +211,8 @@ class Organizer extends User
         $notification_set = $this->model->setNotification($organizer_id, $message);
 
         if ($collab_action && $notification_set) {
-            header("Content-Type: application/json");
             echo json_encode(true);
         } else {
-            header("Content-Type: application/json");
             echo json_encode(false);
         }
     }
@@ -460,6 +456,53 @@ class Organizer extends User
         $this->paid = !empty($this->model->getThisMonthSubFee($uid));
 
         $this->render('Organizer/Payments');
+    }
+
+    function add_extra_projects($action = null) {
+        switch ($action) {
+            case null:
+                session_start();
+                $uid = $_SESSION['uid'];
+
+                $this->loadModel('Organizer');
+                $this->organizer = $this->model->getOrganizerById($uid);
+
+                $this->loadModel('Payment');
+                $this->payment_details = $this->model->getPaymentDetails($uid);
+                $this->hash = null;
+                $this->render('Organizer/AddExtraProjects');
+                break;
+            case 'next':
+                if(isset($_POST['next'])) {
+                    session_start();
+                    $uid = $_SESSION['uid'];
+                    $this->loadModel('Payment');
+                    $this->model->setPaymentDetails($uid, $_POST['first-name'], $_POST['last-name'], $_POST['contact'],
+                                                        $_POST['email'], $_POST['address'], $_POST['city']);
+                    $this->payment_details = $this->model->getPaymentDetails($uid);
+
+                    $this->quantity = $_POST['quantity'];
+
+                    $this->order_id = "extra-pr-fee_" . $_SESSION['uid'] . "_" . date("Y-m-d");
+                    $this->amount = $_POST['amount'];
+                    $this->currency = "LKR";
+                    $merchant_id = $_ENV['MERCHANT_ID'];
+                    $merchant_secret = $_ENV['MERCHANT_SECRET'];
+
+                    $this->hash = strtoupper(
+                        md5(
+                            $merchant_id .
+                            $this->order_id .
+                            number_format($this->amount, 2, '.', '') .
+                            $this->currency .
+                            strtoupper(md5($merchant_secret))
+                        )
+                    );
+
+                    $this->render('Organizer/AddExtraProjects');
+                }
+        }
+
     }
 
     function set_payment_details($uid) {

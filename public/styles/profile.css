@@ -256,7 +256,6 @@ button:hover {
 	height: 350px;
     margin: 20px;
     border-radius: 20px;
-    transition: all 0.4s ease;
 }
 
 h2,
@@ -305,13 +304,12 @@ h4 {
 }
 
 
-.card:hover {
+/* .card:hover {
     background-color: white;
     color: black;
-    /* border: 4px outset rgba(0, 0, 255, 0.253); */
     cursor: pointer;
     transform: scale(1.05);
-}
+} */
 
 #save{
 	background-color:#6aa438 ;

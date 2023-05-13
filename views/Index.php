@@ -6,6 +6,8 @@ if (session_status() == PHP_SESSION_NONE) {
 if (isset($_SESSION['uid'])) {
   header('Location: ' . BASE_URL . $_SESSION['role']);
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -51,11 +53,29 @@ if (isset($_SESSION['uid'])) {
       <br>
     </div>
     <div class="item item-3">
-      <input type="text">
-      <button id="search">Search</button>
-      <p>Search projects related to your interests</p>
+      <form action="<?php echo BASE_URL ?>volunteer/indexSearch" method="post">
+        <input type="text" name="key">
+        <button id="search" name="search">Search</button>
+        <p>Search projects related to your interests</p>
+
+      </form>
     </div>
-  </div>
+  </div><br><br><br>
+
+  <?php if($this->projects != NULL) { ?>
+    <section class="card-container">
+            <?php foreach ($this->projects as $project) {
+                $pid = $project['P_ID'] ?>
+                <div class="card">
+                    <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image'] ?>"></div>
+                    <h2><?php echo ($project["Name"]); ?></h2>
+                    <p><?php echo ($project["Date"]); ?></p>
+                    <a class="btn" href="<?php echo BASE_URL ?>index/login">View</a>
+                </div>
+            <?php } ?>
+        </section>
+  <?php }; ?>
+
   <!-- <marquee direction="right"> -->
   <h3>#1 Platform for volunteering communities. Come join hands with us</h3>
   <!-- </marquee> -->

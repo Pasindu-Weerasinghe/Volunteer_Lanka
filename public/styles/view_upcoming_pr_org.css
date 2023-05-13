@@ -222,6 +222,8 @@
 .collaborator img,
 .sponsor img {
     width: 40px;
+    height: 40px;
+    object-fit: cover;
     margin: 10px;
     border-radius: 50%;
     box-shadow: 0 0 5px 3px rgb(195, 195, 195);
@@ -315,7 +317,6 @@
     float: left;
     font-size: 18px;
     font-weight: bold;
-
 }
 
 input,

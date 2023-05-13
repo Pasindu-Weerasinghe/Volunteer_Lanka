@@ -100,3 +100,8 @@
     border: 1px solid green;
     
 }
+
+.days li.eventDate {
+    background-color: red;
+    color: white;
+}

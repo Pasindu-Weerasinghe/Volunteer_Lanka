@@ -1,4 +1,5 @@
 
+
 * {
     padding: 0;
     margin: 0;
@@ -13,11 +14,12 @@ h2{
     padding: 30px 50px;
 }
 
-#com-box{
+#ad-req-box{
     background-color: #B3CCE1;
-    margin: 10px 100px;
+    margin: auto;
     border-radius: 4px;
     margin-bottom: 15px;
+    width: 100%;
 }
 
 .name{
@@ -29,17 +31,19 @@ h2{
     /* width: 100%; */
 }
 
+
 #btn-area{
     display: flex;
     justify-content: space-between;
-    margin: 0 100px 30px 100px;
-    padding-bottom: 30px;
+    margin: 0 100px 0 100px;
+    padding-bottom: 20px;
 }
 
 .btn{
     padding: 15px 20px;
     text-align: center;
-    background-color: #6AA438;
+    background-color: #84B464;
+    border: 1px solid;
     font-size: 16px;
     font-weight: bold;
     text-decoration: none;
@@ -55,7 +59,66 @@ h2{
     transition: 00.3s;
 }
 
-#com{
-    padding-top: 30px;
-    width: 75%;
+#ad-box-img{
+    width: 300px;
+    height: 200px;
+}
+
+#ad-box-item{
+    display: inline;
+    margin-left: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+#ad-box-item p{
+    display: inline;
+    
+}
+
+.popup {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: auto;
+}
+.popup form {
+    display: block;
+    align-items: center;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+}
+
+.popup form label {
+    float: left;
+    font-size: 18px;
+    font-weight: bold;
+
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px 0;
+    border: 2px solid rgb(169, 216, 250);
+    border-radius: 10px;
+    background: white;
+    transition: all 0.2s ease;
+}
+
+textarea {
+    max-height: 100px;
+    resize: none;
+}
+
+input:focus,
+textarea:focus {
+    box-shadow: 0 0 0 3px rgb(169, 216, 250);
+    outline: none;
+}
+
+.popup .btn {
+    margin: 0 auto;
 }

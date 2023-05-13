@@ -183,6 +183,87 @@ p {
   font-size: 18px;
 }
 
+.card-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  
+}
+
+.card {
+  background-color: rgb(13, 16, 66);
+  color: white;
+  width: 270px;
+  margin: 20px;
+  border-radius: 20px;
+  transition: all 0.4s ease;
+}
+
+.card a {
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  margin: 15px 20px;
+  background-color: #6aa438;
+  color: white;
+  padding: 10px 10px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.card-image {
+  height: 170px;
+  width: 100px;
+  display: inline-block;
+  margin-bottom: 15px;
+  background-size: cover;
+  border-radius: 20px;
+  position: relative;
+}
+
+#card-img {
+  position: absolute;
+  object-fit: cover;
+  width: 270px;
+  height: 210px;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+h2,
+p {
+    margin: 20px 10px 0 10px;
+}
+
+h3,
+h4 {
+    margin: 0 0 10px 10px;
+}
+
+.card #volunteer {
+  margin: 10px 10px 0 10px;
+}
+
+
+.card #volunteer {
+  display: flex;
+}
+
+.card #volunteer img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 0 1px 1px #888888;
+}
+
+.card #volunteer div {
+  display: grid;
+  align-items: center;
+  padding-left: 20px;
+}
+
+
 @keyframes fade {
   from {
     opacity: .4

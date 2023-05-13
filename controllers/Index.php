@@ -10,6 +10,7 @@ class Index extends Controller
 
     function index()
     {
+        $this->projects = NULL;
         $this->render('Index');
     }
 

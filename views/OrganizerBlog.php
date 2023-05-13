@@ -94,6 +94,9 @@
                 <?php } ?>
             </div><br /><br />
         <?php } ?>
+        <?php if(isset($_SESSION['role']) && $_SESSION['role']=='admin'){ 
+        include 'views/includes/only_admin.php';
+    }?>
     </div>
 
 </body>

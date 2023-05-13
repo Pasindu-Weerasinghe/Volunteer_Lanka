@@ -187,6 +187,12 @@
                 <?php } ?>
             </section>
         </div>
+        <?php if(isset($_SESSION['role']) && $_SESSION['role']=='admin'){ 
+        include 'views/includes/only_admin.php';
+    }
+    
+    
+    ?>
     </div><br><br><br>
     <?php include 'views/includes/footer.php'; ?>
 </body>

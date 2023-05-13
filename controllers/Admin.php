@@ -216,4 +216,9 @@ class Admin extends User
         $this->model->restrictUser($uid);
         header('Location: ' . BASE_URL . 'Admin/delete_user_acc');
     }
+    function activeUser($uid){
+        $this->loadModel('Admin');
+        $this->model->activeUser($uid);
+        header('Location: ' . BASE_URL . 'Admin/delete_user_acc');
+    }
 }

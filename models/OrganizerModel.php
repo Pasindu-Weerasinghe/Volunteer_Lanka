@@ -22,7 +22,12 @@ class OrganizerModel extends Model
         return $statement->execute();
     }
 
-
+    function getOrganizerDatafromuser($uid){
+        $query = "SELECT * FROM user WHERE U_ID = $uid";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
     function getOrganizerData()
     {
         $query = "SELECT * FROM organizer";

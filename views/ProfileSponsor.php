@@ -189,6 +189,7 @@
         </div>
         <?php if(isset($_SESSION['role']) && $_SESSION['role']=='admin'){ 
             $u_id = $this->profile['U_ID'];
+            $status= $this->profile['Status'];
         include 'views/includes/only_admin.php';
     }
     

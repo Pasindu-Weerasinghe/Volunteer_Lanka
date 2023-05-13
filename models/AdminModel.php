@@ -39,4 +39,10 @@ class AdminModel extends Model{
         $statement->bindParam(':uid', $uid);
         return $statement->execute();
     }
+    function activeUser($uid){
+        $query = "UPDATE user SET Status = 'active' WHERE U_ID = :uid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':uid', $uid);
+        return $statement->execute();
+    }
 }

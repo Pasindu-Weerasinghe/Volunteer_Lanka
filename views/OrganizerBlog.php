@@ -95,7 +95,8 @@
             </div><br /><br />
         <?php } ?>
         <?php if(isset($_SESSION['role']) && $_SESSION['role']=='admin'){ 
-            $u_id = $this->organizer['U_ID'];
+            $u_id = $this->profile['U_ID'];
+            $status= $this->profile['Status'];
         include 'views/includes/only_admin.php';
     }?>
     </div>

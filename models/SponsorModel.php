@@ -79,7 +79,8 @@ class SponsorModel extends Model
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    function getPackages($uid){
+    function getPackages($uid)
+    {
         $query = "SELECT COUNT(*) AS total, 
                     SUM(CASE WHEN Package = 'silver' THEN 1 ELSE 0 END) AS silver, 
                     SUM(CASE WHEN Package = 'gold' THEN 1 ELSE 0 END) AS gold, 
@@ -92,34 +93,43 @@ class SponsorModel extends Model
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
-    function getAdvertisements($uid){
+    function getAdvertisements($uid)
+    {
         $query = "SELECT advertisement.Description, ad_image.Image FROM advertisement 
                     INNER JOIN ad_image on advertisement.AD_ID = ad_image.AD_ID
                     WHERE advertisement.Sponsor= :uid";
         $statement = $this->db->prepare($query);
         $statement->bindParam(':uid', $uid);
         $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        if (count($result) > 0) {
+            return $result;
+        } else {
+            return false;
+        }
     }
 
-    public function getTotalAmount($uid){
+
+
+    public function getTotalAmount($uid)
+    {
         $query = "SELECT Package, SUM(Amount) as totalAmount FROM sponsor_pr WHERE U_ID = :uid GROUP BY Package";
         $statement = $this->db->prepare($query);
         $statement->bindParam(':uid', $uid);
         $statement->execute();
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-        
+
         $package_amounts = array(
             'silver' => 0,
             'gold' => 0,
             'platinum' => 0,
             'other' => 0
         );
-        
+
         foreach ($result as $row) {
             $package_amounts[strtolower($row['Package'])] = $row['totalAmount'];
         }
-        
+
         return $package_amounts;
     }
 }

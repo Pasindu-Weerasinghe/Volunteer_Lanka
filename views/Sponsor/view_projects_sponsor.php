@@ -11,11 +11,13 @@ $pid = $this->project['P_ID'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include 'views/includes/head-includes-log.php'; ?>
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/view.css">
+
     <title><?php echo $this->project['Name'] ?></title>
 </head>
 
 <body>
     <?php include 'views/includes/navbar_log.php'; ?>
+
     <div class="main" id="main">
         <h2><?php echo $this->project['Name'] ?></h2><br /><br />
         <div class="container">
@@ -25,7 +27,7 @@ $pid = $this->project['P_ID'];
                         <span id="slide-<?php echo $index + 1 ?>"></span>
                     <?php endforeach; ?>
                 <?php } ?>
-                
+
                 <div class="image-container">
                     <?php foreach ($this->images as  $index => $image) : ?>
                         <img src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $image['Image'] ?>" class="slide" width="500" height="300" />
@@ -68,6 +70,20 @@ $pid = $this->project['P_ID'];
                     <label for="description">Description</label>
                     <p id="description"><?php echo $this->project['Description'] ?></p>
                 </div>
+                <div class="row">
+                    <label for="description">Sponsor</label>
+                    <p id="description"><?php echo $this->user['Name'] ?></p>
+                </div>
+
+                <div class="row">
+                    <label for="package">Package</label>
+                    <p id="package"><?php echo ucfirst($this->sPackage['Package']) ?></p>
+                </div>
+
+                <div class="row">
+                    <label for="amount">Amount</label>
+                    <p id="amount">Rs <?php echo ucfirst($this->sPackage['Amount']) ?>.00</p>
+                </div>
             </div>
 
             <div class="btn-area">
@@ -77,6 +93,7 @@ $pid = $this->project['P_ID'];
         </div>
     </div>
     <input type="hidden" name="ad-published" id="ad-published" value="<?php echo json_encode($this->ad_published) ?>">
+    
 </body>
 
 <script>

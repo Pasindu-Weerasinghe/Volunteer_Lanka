@@ -102,7 +102,6 @@ class Sponsor extends User
         $this->loadModel('SponsorNotice');
         $this->sponsored_projects = $this->model->getSponsoredProjects($uid);
 
-
         $this->loadModel('Project');
         foreach ($this->sponsored_projects as $project) {
             $pid = $project['P_ID'];
@@ -178,6 +177,14 @@ class Sponsor extends User
         $this->images = $this->model->getProjectImage($pid);
         $this->loadModel('Ad');
         $this->ad_published = !empty($this->model->getAdSponsor($pid, $uid));
+
+        $this->loadModel('Sponsor');
+        $this->user = $this->model->getSponsorData($uid);
+
+        $this->loadModel('SponsorNotice');
+
+        $this->sPackage = $this->model->getSponsorPackage($uid, $pid);
+
         $this->render('Sponsor/view_projects_sponsor');
     }
 

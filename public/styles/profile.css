@@ -25,6 +25,11 @@
 	background: #89afd6;
 	border-radius: 15px;
 }
+#projects{
+	width: 100%;
+	min-width: 580px;
+	max-width: 1200px;
+}
 
 .left-container{
 	display: flex;
@@ -47,6 +52,49 @@
 }
 .right-container{
 	width: 60%;
+	border-collapse: collapse;
+	border-radius: 10px;
+	overflow: hidden;
+}
+.right-container tr{
+    background-color: darkblue;
+	color: white;
+	border: none;
+}
+td#data{
+	background-color: white;
+	color: black;
+}
+.T2{
+	border-radius: 10px;
+	overflow: hidden;
+	border-collapse: collapse;
+	width: auto;
+}
+.T2 th{
+	background-color: darkblue;
+	color: white;
+	border: none;
+}
+.T2 td{
+	background-color: white;
+	color: black;
+	border: none;
+}
+.T3{
+	border-radius: 10px;
+	overflow: hidden;
+	border-collapse: collapse;
+}
+.T3 th{
+	background-color: darkblue;
+	color: white;
+	border: none;
+}
+.T3 td{
+	background-color: white;
+	color: black;
+	border: none;
 }
 
 /* Create two equal columns that sits next to each other */

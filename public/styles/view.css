@@ -248,3 +248,61 @@ form{
     background-color: rgb(83, 2, 144);
   }
  
+  /* .details-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px;
+    margin: 10px;
+} */
+
+.details-container .row {
+    padding: 0;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.details-container .row label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 50px;
+    width: 40%;
+    min-height: 30px;
+    height: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: darkblue;
+}
+
+.details-container .row p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 50px;
+    width: 60%;
+    min-height: 30px;
+    height: 100%;
+    font-size: 18px;
+    background-color: white;
+}
+
+#description {
+    height: auto;
+    font-size: 16px;
+    padding: 0 5px;
+}
+#packages {
+  height: auto;
+  font-size: 16px;
+  padding: 0 5px;
+}

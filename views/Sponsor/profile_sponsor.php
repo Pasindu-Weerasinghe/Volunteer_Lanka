@@ -25,8 +25,8 @@
 
 
                 <div class="btn-area">
-                    <button  class="btn"> <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePic"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</a></button>
-                    <button  class="btn"> <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePsw"><i class="fa-solid fa-key"></i> Change Password</a></button>
+                    <button class="btn"> <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePic"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</a></button>
+                    <button class="btn"> <a href="<?php echo BASE_URL; ?>Sponsor/ChangeProfilePsw"><i class="fa-solid fa-key"></i> Change Password</a></button>
                 </div>
             </div>
 
@@ -36,32 +36,32 @@
                 <tr>
                     <td>User ID</td>
                     <td>:</td>
-                    <td><?php echo $this->profile['U_ID']; ?></td>
+                    <td id="data"><?php echo $this->profile['U_ID']; ?></td>
                 </tr>
                 <tr>
                     <td>Role</td>
                     <td>:</td>
-                    <td><?php echo $this->profile['Role']; ?></td>
+                    <td id="data"><?php echo $this->profile['Role']; ?></td>
                 </tr>
                 <tr>
                     <td>Name</td>
                     <td>:</td>
-                    <td><?php echo $this->user['Name']; ?></td>
+                    <td id="data"><?php echo $this->user['Name']; ?></td>
                 </tr>
                 <tr>
                     <td>Email</td>
                     <td>:</td>
-                    <td><?php echo $this->profile['Email'] ?></td>
+                    <td id="data"><?php echo $this->profile['Email'] ?></td>
                 </tr>
                 <tr>
                     <td>Address</td>
                     <td>:</td>
-                    <td><?php echo $this->user['Address']; ?></td>
+                    <td id="data"><?php echo $this->user['Address']; ?></td>
                 </tr>
                 <tr>
                     <td>Contact Number</td>
                     <td>:</td>
-                    <td><?php echo $this->user['Contact']; ?></td>
+                    <td id="data"><?php echo $this->user['Contact']; ?></td>
                 </tr>
             </table>
 
@@ -124,30 +124,37 @@
             </div>
 
             <div class="pack">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>
-                                <h3>Description</h3>
-                            </th>
-                            <th>
-                                <h3>Image</h3>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($this->sAdvertisements as $advertisement) : ?>
-                            <tr>
-                                <td><?php echo $advertisement['Description']; ?></td>
-                                <td><img class="img" src="<?php echo BASE_URL ?>public/images/ad_images/<?php echo $advertisement['Image']; ?>" alt=""></td>
+                <table class="T3">
 
+                    <?php if ($this->sAdvertisements) : ?>
+                        <thead>
+                            <tr>
+                                <th>
+                                    <h3>Description</h3>
+                                </th>
+                                <th>
+                                    <h3>Image</h3>
+                                </th>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
+                        </thead>
+                        <?php foreach ($this->sAdvertisements as $advertisement) : ?>
+                            <tbody>
+                                <tr>
+                                    <td><?php echo $advertisement['Description']; ?></td>
+                                    <td><img class="img" src="<?php echo BASE_URL ?>public/images/ad_images/<?php echo $advertisement['Image']; ?>" alt=""></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <tr>
+                                <td colspan="2">There are no uploaded advertisements.</td>
+                            </tr>
+                        <?php endif; ?>
+                            </tbody>
+
                 </table>
             </div><br>
         </div><br>
-        <div class="form2">
+        <div class="form2" id="projects">
             <div>
                 <h2><i class="fa-solid fa-caret-right fa-lg" style="color: #000000;"></i> My Sponserd Projects</h2>
                 <br>
@@ -190,7 +197,7 @@
 
 
         </div>
-    <!-- </div><br><br><br>
+        <!-- </div><br><br><br>
     <?php include 'views/includes/footer.php'; ?> -->
 </body>
 

@@ -13,23 +13,26 @@
 
         <div class="container">
             <div>
-                <div class="slider">
+            <div class="slider">
+                <?php if (count($this->prImage) > 1) { ?>
                     <?php foreach ($this->prImage as $index => $image) : ?>
                         <span id="slide-<?php echo $index + 1 ?>"></span>
                     <?php endforeach; ?>
-                    <div class="image-container">
-                        <?php foreach ($this->prImage as $index => $image) : ?>
-                            <img src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $image['Image'] ?>" class="slide" width="500" height="300" />
-                        <?php endforeach; ?>
-                    </div>
+                <?php } ?>
 
+                <div class="image-container">
+                    <?php foreach ($this->prImage as  $index => $image) : ?>
+                        <img src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $image['Image'] ?>" class="slide" width="500" height="300" />
+                    <?php endforeach; ?>
+                </div>
+                <?php if (count($this->prImage) > 1) { ?>
                     <div class="buttons">
                         <?php foreach ($this->prImage as $index => $image) : ?>
                             <a href="#slide-<?php echo $index + 1 ?>"></a>
                         <?php endforeach; ?>
                     </div>
-                    </slider>
-                </div>
+                <?php } ?>
+            </div>
 
 
 
@@ -65,7 +68,7 @@
                         <td><?php echo $this->projects['Description'] ?></td><br>
                     </tr>
                     <tr>
-                        <td>Total Bujet</td>
+                        <td>Total Budjet</td>
                         <td>: </td>
                         <td>Rs <?php echo $this->budjet['Amount'] ?>.00</td><br>
                     </tr>
@@ -74,24 +77,24 @@
 
             <p class="para">Sponsor Packages</p><br>
 
-            <form action="<?php echo BASE_URL; ?>Sponsor/view_sponsor_notice/<?php echo $this->pid ?>/confirm" method="post">
+            <form action="<?php echo BASE_URL; ?>Sponsor/view_sponsor_notice/<?php echo $this->pid ?>/confirm" method="post" id="form">
                 <div>
                     <div class="package" id="silverPackage1">
                         <label name="package1" value="silver">
-                            <strong>Silver Package<br>More than Rs 5000</strong><br>
+                            <strong>Silver Package<br>Up to Rs 5000</strong><br>
                         </label>
                     </div>
 
                     <div class="package" id="goldPackage2">
                         <label name="package2" value="gold">
                             <input type="hidden" name="goldPrice" value="<?php echo $this->goldPrice; ?>">
-                            <strong>Gold Package <br>More than Rs 7500</strong><br>
+                            <strong>Gold Package <br>Up to Rs 7500</strong><br>
                         </label>
                     </div>
 
                     <div class="package" id="platinumPackage3">
                         <label name="package3" value="platinum">
-                            <strong>Platinum Package<br>More than Rs 10000</strong>
+                            <strong>Platinum Package<br>Up to Rs 10000</strong>
                         </label>
                     </div>
                 </div>
@@ -147,7 +150,7 @@
                 </div><br><br>
 
                 <div class="btn-area1">
-                    <button type="submit" name="confirm" class="btn2">Confirm</button>
+                    <button type="submit" name="confirm" id="confirm" class="btn2">Confirm</button>
                 </div>
             </form>
 
@@ -191,5 +194,42 @@
     <?php include 'views/includes/footer.php'; ?>
 
 </body>
+<script>
+    const BASE_URL = "<?php echo BASE_URL ?>";
+
+    const sendRequestBtn = document.getElementById('confirm');
+    const requestForm = document.getElementById('form');
+
+    // popup elements
+    const popupBg = document.querySelector('.popup-bg');
+    const popup = document.querySelector('.popup');
+    const popupClose = document.querySelector('.popup-close');
+    const popupMessage = document.querySelector('#message');
+
+    sendRequestBtn.addEventListener('click', function() {
+        return requestForm.reportValidity();
+    });
+
+    requestForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(requestForm);
+        const url = BASE_URL + `Sponsor/view_sponsor_notice/${<?php echo $this->pid ?>}/confirm`
+        fetch(url, {
+                method: "post",
+                body: formData
+            }).then(res => res.json())
+            .then(reply => {
+                console.log(reply);
+                popupBg.style.display = 'flex';
+                popup.style.display = 'flex';
+                if (reply.success) {
+                    popupMessage.innerHTML = "Published successfully";
+                } else {
+                    popupMessage.innerHTML = "Error occured";
+                }
+            })
+    });
+
+</script>
 
 </html>

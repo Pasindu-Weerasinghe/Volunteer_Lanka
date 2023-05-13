@@ -215,7 +215,8 @@ class User extends Controller
     {
         session_start();
         $uid = $_SESSION['uid'];
-        $this->loadModel('Sponsor');
+        $role = $_SESSION['role'];
+        $this->loadModel($role);
         $this->profile = $this->model->getUserData($uid);
         $this->user = $this->model->getSponsorData($uid);
 

@@ -250,3 +250,11 @@ input[type="radio"] {
 	font-size: 25px;
 	font-weight: bold;
 }
+
+#paid-notice {
+	font-weight: normal;
+	background-color: white;
+	border: rgb(169, 216, 250) 2px solid;
+	padding: 10px;
+	border-radius: 10px;
+}

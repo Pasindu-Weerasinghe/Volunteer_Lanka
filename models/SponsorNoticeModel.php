@@ -42,6 +42,31 @@ class SponsorNoticeModel extends Model
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
+    function getTotalAmount($pid){
+        $query = "SELECT SUM(Amount) as totalAmount FROM sponsor_pr WHERE P_ID = :pid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':pid', $pid);
+        $statement->execute();
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
+    function getPackageAmount($pid){
+        $query = "SELECT Package , `Range` FROM sn_packages WHERE P_ID = :pid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':pid', $pid);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        $package_Amount = array(
+            'silver' => 0,
+            'gold' => 0,
+            'platinum' => 0,
+        );
+        foreach ($result as $row) {
+            $package_Amount[strtolower($row['Package'])] = $row['Range'];
+        }
+        return $package_Amount;
+    }
 
     function saveSponsorPackage($uid, $pid, $amount, $package)
     {

@@ -72,6 +72,11 @@
                         <td>: </td>
                         <td>Rs <?php echo $this->budjet['Amount'] ?>.00</td><br>
                     </tr>
+                    <tr>
+                        <td>Remaining Amount</td>
+                        <td>: </td> 
+                        <td>Rs  <?php echo $this->remainingAmount ?>.00</td><br>
+                    </tr>
                 </table>
             </div>
 
@@ -81,20 +86,18 @@
                 <div>
                     <div class="package" id="silverPackage1">
                         <label name="package1" value="silver">
-                            <strong>Silver Package<br>Moew than Rs 5000</strong><br>
+                            <strong>Silver Package<br>More than RS <?php echo $this->packageAmount['silver'] ?></strong><br>
                         </label>
                     </div>
-
                     <div class="package" id="goldPackage2">
                         <label name="package2" value="gold">
-                            <input type="hidden" name="goldPrice" value="<?php echo $this->goldPrice; ?>">
-                            <strong>Gold Package <br>Moew than Rs 7500</strong><br>
+                            <strong>Gold Package <br>More than Rs <?php echo $this->packageAmount['gold'] ?></strong><br>
                         </label>
                     </div>
 
                     <div class="package" id="platinumPackage3">
                         <label name="package3" value="platinum">
-                            <strong>Platinum Package<br>More than Rs 10000</strong>
+                            <strong>Platinum Package<br>More than Rs <?php echo $this->packageAmount['platinum'] ?></strong>
                         </label>
                     </div>
                 </div>
@@ -103,10 +106,11 @@
                         <p class="para">Select Your Sponsor Package Amount
                     </td>
                     <td>:
-                        <input class="input-container" type="number" id="selectAmount" name="selectAmount" placeholder="Rs 0.00" required>
+                        <input class="input-container" type="number" id="selectAmount" name="selectAmount" placeholder="Rs 0.00" required min="0" max="<?php echo $this->remainingAmount ?>">
                     </td>
+                    
                 </tr>
-
+                <input  type="hidden" id ="package-value" name="package-value"  >
 
                 <div><br>
                     <div class="a12">
@@ -154,30 +158,35 @@
                 </div>
             </form>
 
+            
             <script>
+                const packageValue = document.getElementById("package-value");
                 function showPackage() {
                     var amount = parseInt(document.getElementById("selectAmount").value);
-                    if (amount >= 10000) {
+                    if (amount >= <?php echo $this->packageAmount['platinum']?>) {
+                        packageValue.value="platinum";
                         document.getElementById("platinumPackage").style.display = "block";
                         document.getElementById("goldPackage").style.display = "none";
                         document.getElementById("silverPackage").style.display = "none";
                         document.getElementById("otherPackage").style.display = "none";
-                    } else if (amount >= 7500) {
+                    } else if (amount >= <?php echo $this->packageAmount['gold'] ?>) {
+                        packageValue.value="gold";
                         document.getElementById("platinumPackage").style.display = "none";
                         document.getElementById("goldPackage").style.display = "block";
                         document.getElementById("silverPackage").style.display = "none";
                         document.getElementById("otherPackage").style.display = "none";
-                    } else if (amount >= 5000) {
+                    } else if (amount >= <?php echo $this->packageAmount['silver'] ?>) {
+                        packageValue.value="silver";
                         document.getElementById("platinumPackage").style.display = "none";
                         document.getElementById("goldPackage").style.display = "none";
                         document.getElementById("silverPackage").style.display = "block";
                         document.getElementById("otherPackage").style.display = "none";
-                    } else if (amount < 5000) {
+                    } else {
+                        packageValue.value="other";
                         document.getElementById("platinumPackage").style.display = "none";
                         document.getElementById("goldPackage").style.display = "none";
                         document.getElementById("silverPackage").style.display = "none";
                         document.getElementById("otherPackage").style.display = "block";
-
                     }
                 }
 

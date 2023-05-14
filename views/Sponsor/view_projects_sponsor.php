@@ -47,43 +47,44 @@ $pid = $this->project['P_ID'];
                 <div class="row">
                     <label for="date">Date</label>
                     <p id="date"><?php echo $this->project['Date'] ?></p>
-                </div>
+                </div><br>
 
                 <div class="row">
                     <label for="time">Time</label>
                     <p id="time"><?php echo $this->project['Time'] ?></p>
-                </div>
+                </div><br>
 
 
 
                 <div class="row">
                     <label for="venue">Venue</label>
                     <p id="venue"><?php echo $this->project['Venue'] ?></p>
-                </div>
+                </div><br>
 
                 <div class="row">
                     <label for="volunteers">Volunteers</label>
                     <p id="volunteers"><?php echo $this->project['No_of_volunteers'] ?></p>
-                </div>
+                </div><br>
 
                 <div class="row">
                     <label for="description">Description</label>
                     <p id="description"><?php echo $this->project['Description'] ?></p>
-                </div>
+                </div><br>
+
                 <div class="row">
                     <label for="description">Sponsor</label>
                     <p id="description"><?php echo $this->user['Name'] ?></p>
-                </div>
+                </div><br>
 
                 <div class="row">
                     <label for="package">Package</label>
                     <p id="package"><?php echo ucfirst($this->sPackage['Package']) ?></p>
-                </div>
+                </div><br>
 
                 <div class="row">
                     <label for="amount">Amount</label>
-                    <p id="amount">Rs <?php echo ucfirst($this->sPackage['Amount']) ?>.00</p>
-                </div>
+                    <p id="amount">Rs <?php echo $this->sPackage['Amount'] ?>.00</p>
+                </div><br>
             </div>
 
             <div class="btn-area">

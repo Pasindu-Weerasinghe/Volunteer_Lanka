@@ -48,9 +48,15 @@ class User extends Controller
         $uid = $_SESSION['uid'];
 
         $this->loadModel('User');
+        $this->model->beginTransaction();
         if ($this->model->setComplain($about, $des, $uid)) {
-            // header('Location: ' .BASE_URL. 'volunteer/complain');
-            echo "<script>alert('Complaint sent to admin');location.href='http://localhost/Volunteer_Lanka/" . $this->role . "/complain';</script>";
+            $this->model->commit();
+            $message['success'] = true;
+            echo json_encode($message);
+        } else {
+            $this->model->rollBack();
+            $message['success'] = false;
+            echo json_encode($message);
         }
     }
 
@@ -81,7 +87,7 @@ class User extends Controller
         }
         $this->render('Sponsor/changePasswordProfile');
     }
-    
+
     //chat
     function chat()
     {
@@ -102,10 +108,10 @@ class User extends Controller
         $output = "";
         if (count($usernames) > 0) {
             foreach ($usernames as $username) {
-                $lastmessages = $this->model->getLastmsg($uid,$username['U_ID']);
-                if(is_countable($lastmessages) && count($lastmessages) > 0){
+                $lastmessages = $this->model->getLastmsg($uid, $username['U_ID']);
+                if (is_countable($lastmessages) && count($lastmessages) > 0) {
                     $result = $lastmessages['msg'];
-                }else{
+                } else {
                     $result = "No message available";
                 }
                 (strlen($result) > 28) ? $msg =  substr($result, 0, 28) . '...' : $msg = $result;
@@ -139,10 +145,10 @@ class User extends Controller
             $output .= "No users are available to chat";
         } else if (count($usernames) > 0) {
             foreach ($usernames as $username) {
-                $lastmessages = $this->model->getLastmsg($uid,$username['U_ID']);
-                if(is_countable($lastmessages) && count($lastmessages) > 0){
+                $lastmessages = $this->model->getLastmsg($uid, $username['U_ID']);
+                if (is_countable($lastmessages) && count($lastmessages) > 0) {
                     $result = $lastmessages['msg'];
-                }else{
+                } else {
                     $result = "No message available";
                 }
                 (strlen($result) > 28) ? $msg =  substr($result, 0, 28) . '...' : $msg = $result;
@@ -184,25 +190,26 @@ class User extends Controller
             $this->setmessge = $this->model->sendMessage($outgoing_id, $incoming_id, $message) or die();
         }
     }
-    function getChat(){
+    function getChat()
+    {
         $outgoing_id = $_POST['outgoing_id'];
         $incoming_id = $_POST['incoming_id'];
         $output = "";
         $this->loadModel('Chat');
-        $getmessages = $this->model->getMessage($outgoing_id,$incoming_id);
-        if(count($getmessages)){
-            foreach($getmessages as $getmessage){
-                if($getmessage['outgoing_msg_id'] == $outgoing_id){
-                    $output .=' <div class="chat outgoing">
+        $getmessages = $this->model->getMessage($outgoing_id, $incoming_id);
+        if (count($getmessages)) {
+            foreach ($getmessages as $getmessage) {
+                if ($getmessage['outgoing_msg_id'] == $outgoing_id) {
+                    $output .= ' <div class="chat outgoing">
                                 <div class="details">
-                                    <p>'. $getmessage['msg'] .'</p>
+                                    <p>' . $getmessage['msg'] . '</p>
                                  </div>
                             </div>';
-                }else{
-                    $output .='<div class="chat incoming">
+                } else {
+                    $output .= '<div class="chat incoming">
                             <img src="http://localhost/Volunteer_Lanka//public/images/profile.jpg" alt="">
                             <div class="details">
-                                <p>'. $getmessage['msg'] .'</p>
+                                <p>' . $getmessage['msg'] . '</p>
                             </div>
                         </div>';
                 }
@@ -240,8 +247,8 @@ class User extends Controller
                 $profilepic = $target_file;
                 // Update user's record in the database with new profile picture
                 $this->model->updateProfilePic($uid, $profilepic);
-                $_SESSION['photo']=$profilepic;
-                header('Location: ' . BASE_URL . 'Sponsor/profile');
+                $_SESSION['photo'] = $image_name;
+                header('Location: ' . BASE_URL . $_SESSION['role'] . '/profile');
             } else {
                 echo "Sorry, there was an error uploading your file.";
             }
@@ -253,22 +260,33 @@ class User extends Controller
 
     public function updateProfile()
     {
-        
-        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $name = $_POST['uname'];
             $contact = $_POST['cNumber'];
             $address = $_POST['address'];
-            $uid= $_POST['uid'];
+            $uid = $_POST['uid'];
 
             $this->loadModel('User');
-            $this->model->updateUserProfile($name, $contact, $address, $uid);
 
-            // Redirect to profile page
-            //$this->view->render('sponsor/profile_sponsor');
-            header('Location: ' . BASE_URL . 'Sponsor/profile');
-        } else {
-            // Render the view page
-            $this->view->render('sponsor/profile_sponsor');
+            //     // Redirect to profile page
+            //     //$this->view->render('sponsor/profile_sponsor');
+            //     header('Location: ' . BASE_URL . 'Sponsor/profile');
+            // } else {
+            //     // Render the view page
+            //     $this->view->render('sponsor/profile_sponsor');
+            // }
+
+            $this->model->beginTransaction();
+            if ($this->model->updateUserProfile($name, $contact, $address, $uid)) {
+                $this->model->commit();
+                $message['success'] = true;
+                echo json_encode($message);
+            } else {
+                $this->model->rollBack();
+                $message['success'] = false;
+                echo json_encode($message);
+            }
         }
     }
 
@@ -332,36 +350,32 @@ class User extends Controller
         $this->totalCount = $this->projectCount + $ideaCount;
 
         $this->ideaBadgeCount = 0;
-        for($i=1; $i<=$ideaCount; $i++){
-            if($i % 3 == 0){
+        for ($i = 1; $i <= $ideaCount; $i++) {
+            if ($i % 3 == 0) {
                 $this->ideaBadgeCount += 1;
             }
         }
-        
-        if ($this->totalCount <5){
+
+        if ($this->totalCount < 5) {
             $this->badge = "Beginner";
             $this->more = 5 - $this->totalCount;
             $this->next = "Bronze";
             $this->color = "white";
-
-        } else if($this->totalCount  <10) {
+        } else if ($this->totalCount  < 10) {
             $this->badge = "Bronze Member";
             $this->more = 10 - $this->totalCount;
             $this->next = "Silver";
             $this->color = "bronze";
-
-        } else if($this->totalCount <20) {
+        } else if ($this->totalCount < 20) {
             $this->badge = "Silver Member";
             $this->more = 20 - $this->totalCount;
             $this->next = "Gold";
             $this->color = "silver";
-
-        } else if($this->totalCount <50) {
+        } else if ($this->totalCount < 50) {
             $this->badge = "Gold Member";
             $this->more = 50 - $this->totalCount;
             $this->next = "Platinum";
             $this->color = "gold";
-
         } else {
             $this->badge = "Platinum Member";
             $this->color = "platinum";
@@ -384,7 +398,7 @@ class User extends Controller
 
         $this->aSponsored_projects = $this->model->getSponsoredProjects($uid, 'active');
 
-        
+
         $this->loadModel('Project');
         foreach ($this->cSponsored_projects as $project) {
             $pid = $project['P_ID'];
@@ -394,9 +408,9 @@ class User extends Controller
             $pid = $project['P_ID'];
             $this->prImage[$pid] = $this->model->getProjectImage($pid);
         }
-                
+
         $this->loadModel('Sponsor');
-        $this->sAmount= $this->model->getTotalAmount($uid);
+        $this->sAmount = $this->model->getTotalAmount($uid);
 
         $this->render('ProfileSponsor');
     }
@@ -407,7 +421,7 @@ class User extends Controller
         $this->organizer = $this->model->getOrganizerById($uid);
 
         $this->loadModel('Project');
-//        $this->no_of_projects = count($this->model->getProjects($uid));
+        //        $this->no_of_projects = count($this->model->getProjects($uid));
         $this->no_of_completed_projects = 0;
         $this->projects = $this->model->getProjectsOrganizer($uid);
 
@@ -433,7 +447,7 @@ class User extends Controller
                 $this->loadModel('User');
                 $this->profilePics[$uid] = $this->model->getProfilePic($uid);
             }
-            $this->avg_rating[$pid] = $total_rating[$pid]/$this->feedbackCount[$pid];
+            $this->avg_rating[$pid] = $total_rating[$pid] / $this->feedbackCount[$pid];
         }
 
         $this->render('OrganizerBlog');

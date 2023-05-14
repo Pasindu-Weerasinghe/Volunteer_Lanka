@@ -17,20 +17,32 @@
         <p>As a volunteer you are able to inform the organizers about your ideas to arrange new volunteering projects. You can send a request to all the organizers by submitting this form.
             <br /><br />Please provide reliable information.
         </p>
+
         <form action="<?php echo BASE_URL; ?>volunteer/insert_Ideas" method="post" enctype="multipart/form-data" id="form2">
             <div class="container">
                 <p>Let us know of the opportunities</p>
                 <hr>
+                
+                <?php if ($this->statusMsg != NULL) { ?>
+                    <p id="error">
+                   <?php echo $this->statusMsg; ?>
+                </p>
+                <?php } ?>
+                </p><br>
                 <label for="uname"><b>Username</b></label>
+                <label id="require"><strong>*</strong></label>
                 <input type="text" name="uname" value=<?php echo ($_SESSION['uname']) ?> readonly>
 
                 <label for="location"><b>Location</b></label>
+                <label id="require"><strong>*</strong></label>
                 <input type="text" name="location" required>
 
                 <label for="des"><b>Description</b></label>
+                <label id="require"><strong>*</strong></label>
                 <textarea name="des" class="des" required></textarea><br /><br />
 
                 <label for="photo"><b>Add Photos</b></label>
+                <label id="require"><strong>*</strong></label>
                 <input type="file" name="file[]" multiple="multiple"><br /><br />
 
                 <button class="btn" onclick="history.back()">Back</button>

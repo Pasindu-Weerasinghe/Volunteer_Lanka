@@ -128,29 +128,6 @@
         </form>
     </div>
 
-    <!-- Organizer adding popup -->
-    <div class="popup-bg">
-        <div class="popup popup-add-org">
-            <div class="popup-close"><i class="fa-solid fa-xmark"></i></div>
-
-            <h2>Add Organizer</h2>
-
-            <div action="" class="search-container">
-                <input type="text" name="search-org" id="search-org" placeholder="Search by name">
-                <button type="submit" class="btn" id="search-org-btn"><i class="fa-solid fa-search"></i> Search</button>
-            </div>
-
-            <div class="search-results">
-                <!-- <div class="row">
-                        <img src="<?php // echo BASE_URL 
-                ?>public/images/profile.jpg" alt="">
-                        <h3>John Doe</h3>
-                        <a class="add-btn"><i class="fa-solid fa-circle-plus"></i></a>
-                    </div> -->
-            </div>
-        </div>
-    </div>
-
     <!-- //? Publish sponsor notice form -->
     <div class="wrapper" id="publish-sponsor-notice" style="display: none">
         <h2>Publish Sponsor Notice</h2><br/>
@@ -221,8 +198,36 @@
             </div>
         </form>
     </div>
+</div>
 
 
+<div class="popup-bg">
+    <!-- Organizer adding popup -->
+    <div class="popup popup-add-org" style="display: none">
+        <div class="popup-close"><i class="fa-solid fa-xmark"></i></div>
+
+        <h2>Add Organizer</h2>
+
+        <div action="" class="search-container">
+            <input type="text" name="search-org" id="search-org" placeholder="Search by name">
+            <button type="submit" class="btn" id="search-org-btn"><i class="fa-solid fa-search"></i> Search</button>
+        </div>
+
+        <div class="search-results">
+            <!-- <div class="row">
+                        <img src="<?php // echo BASE_URL
+            ?>public/images/profile.jpg" alt="">
+                        <h3>John Doe</h3>
+                        <a class="add-btn"><i class="fa-solid fa-circle-plus"></i></a>
+                    </div> -->
+        </div>
+    </div>
+
+    <!--message popup-->
+    <div class="popup popup-message" style="min-height: auto; height: auto; display: flex;flex-direction: column">
+        <h2 class="msg" style="text-align: center; font-weight: normal; margin-bottom: 10px"></h2>
+        <button class="btn" style="margin: auto">OK</button>
+    </div>
 </div>
 
 <input type="hidden" name="uid" id="uid" value="<?php echo $_SESSION['uid'] ?>">

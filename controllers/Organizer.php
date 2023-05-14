@@ -73,7 +73,7 @@ class Organizer extends User
                 }
 
                 // check if user reached cancel and postpone limit
-                $this->cancel_limit_reached = $canceled_pr_count >= PROJECT_CANCEL_LIMIT;
+                $this->cancel_limit_reached = $cancelled_pr_count >= PROJECT_CANCEL_LIMIT;
                 $this->postpone_limit_reached = $postponed_pr_count >= PROJECT_POSTPONE_LIMIT;
 
                 $this->render('Organizer/CreateProject');
@@ -753,6 +753,7 @@ class Organizer extends User
                 }
 
                 // TODO: set project status to blogged
+                $this->loadModel('Project');
                 $this->model->setProjectStatus($pid, 'blogged');
 
                 // send notification to all collaborators
@@ -764,8 +765,8 @@ class Organizer extends User
 
 //                $this->model->commit();
             } catch (Exception $e) {
-                $this->model->rollback();
-//                echo $e->getMessage();
+//                $this->model->rollback();
+                echo $e->getMessage();
             }
         }
     }

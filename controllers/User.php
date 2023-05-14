@@ -300,7 +300,15 @@ class User extends Controller
                 $this->loadModel('Notification');
                 echo json_encode($this->model->deleteAllNotifications($uid));
                 break;
-
+            case 'count':
+                if (session_status() == PHP_SESSION_NONE) {
+                    // if session is not started, start the session
+                    session_start();
+                }
+                $uid = $_SESSION['uid'];
+                $this->loadModel('Notification');
+                echo json_encode($this->model->getNotificationCount($uid));
+                break;
             default:
                 $this->render('Notifications');
                 break;

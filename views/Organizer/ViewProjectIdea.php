@@ -80,7 +80,8 @@ function currencyFormat($number)
     const reply = document.getElementById("reply");
     if (<?php echo json_encode(isset($this->pr_idea['reply'])); ?>) {
         reply.readOnly = true;
-        reply.value = "<?php echo $this->pr_idea['reply']; ?>";
+        reply.value = "<?php echo rtrim($this->pr_idea['reply']); ?>";
+        console.log(reply.value);
         replyHeader.innerHTML = "Your reply";
     }
 </script>

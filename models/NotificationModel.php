@@ -18,9 +18,18 @@ class NotificationModel extends Model
         return $statement->execute();
     }
 
+    function getNotificationCount($uid)
+    {
+        $query = "SELECT COUNT(Notify_ID) AS `count` FROM `notification` WHERE U_ID = :uid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':uid', $uid);
+        $statement->execute();
+        return $statement->fetch(PDO::FETCH_ASSOC)['count'];
+    }
+
     function getNotifications($uid)
     {
-        $query = "SELECT * FROM `notification` WHERE U_ID = :uid";
+        $query = "SELECT * FROM `notification` WHERE U_ID = :uid ORDER BY Notify_ID DESC";
         $statement = $this->db->prepare($query);
         $statement->bindParam(':uid', $uid);
         if ($statement->execute()) {

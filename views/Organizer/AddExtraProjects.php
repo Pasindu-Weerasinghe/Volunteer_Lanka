@@ -18,10 +18,11 @@
 
 <div class="main" id="main">
     <div class="wrapper">
+        <h2 class="title">Add extra project creation</h2>
         <?php if ($this->hash == null) { ?>
-            <h2 class="title">Add extra project creation</h2>
             <p>Your project creation limit reached.</p>
-            <form class="form" id="payment-form" method="post">
+            <form class="form" id="payment-form" action="<?php echo BASE_URL ?>organizer/add_extra_projects/next"
+                  method="post">
                 <div class="row">
                     <label for="">First name</label>
                     <input type="text" name="first-name" class="input"
@@ -54,12 +55,12 @@
                 </div>
                 <div class=" row">
                     <label for="">Quantity</label>
-                    <input type="text" name="city" class="input" value="0">
+                    <input type="number" name="quantity" class="input">
                 </div>
                 <div class=" row" style="margin-bottom: 20px">
                     <label for="amount">Amount</label>
                     <div class="currency">
-                        <input type="number" name="amount" class="input" readonly>
+                        <input type="number" name="amount" id="amount" class="input" readonly>
                     </div>
                 </div>
 
@@ -70,12 +71,16 @@
             </form>
         <?php } else { ?>
             <p>Go to payment gateway to get <?php echo $this->quantity ?> project creations</p>
-            <div class=" row" style="margin-bottom: 20px">
-                <label for="amount">Amount</label>
-                <div class="currency">
-                    <input type="number" name="amount" class="input" value="<?php echo $this->amount ?>" readonly>
+            <div class="form">
+                    <div class="row">
+                        <label for="amount">Amount</label>
+                        <input type="text" class="input" value="<?php echo "LKR ".$this->amount ?>" readonly
+                            style="font-size: 20px; text-align: center">
+                    </div>
+
                     <div class="btn-area">
-                        <button onclick="window.location.href = '<?php echo BASE_URL . 'organizer/' ?>'" class="btn">
+                        <button onclick="window.location.href = '<?php echo BASE_URL . 'organizer' ?>'"
+                                class="btn">
                             Cancel
                         </button>
                         <button type="submit" id="payhere-payment" name="pay" class="btn">Next</button>
@@ -86,13 +91,10 @@
     </div>
 </div>
 </body>
-<script>
-
-</script>
-<?php if ($this->hash == null) { ?>
+<?php if ($this->hash != null) { ?>
     <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
     <script type="module">
-        import {BASE_URL, LOCALHOST} from "../configs/config.js";
+        import {BASE_URL, LOCALHOST} from "../../configs/config.js";
 
         console.log(LOCALHOST);
 
@@ -103,6 +105,8 @@
         const hash = "<?php echo $this->hash; ?>";
         const merchant_id = "<?php echo $_ENV['MERCHANT_ID']; ?>";
 
+        const quantity = "<?php echo $this->quantity ?>";
+
         const first_name = "<?php echo $this->payment_details['First_name'] ?>";
         const last_name = "<?php echo $this->payment_details['Last_name'] ?>";
         const contact = "<?php echo $this->payment_details['Contact'] ?>";
@@ -111,7 +115,7 @@
         const city = "<?php echo $this->payment_details['City'] ?>";
 
         // notify url
-        const notify_url = LOCALHOST + "/Volunteer_Lanka/organizer/payment_successful/sub-fee/" + uid + "/" + amount;
+        const notify_url = LOCALHOST + "/Volunteer_Lanka/organizer/payment_successful/project-fee/" + uid + "/" + amount + "/" + quantity;
 
 
         // Put the payment variables here
@@ -130,7 +134,7 @@
             last_name: last_name,
             email: email,
             phone: contact,
-            address: address
+            address: address,
             city: city,
             country: "Sri Lanka",
             custom_1: "",
@@ -162,6 +166,15 @@
             payhere.startPayment(payment);
         };
     </script>
-<?php } ?>
+<?php } else { ?>
+    <script>
+        document.querySelector('input[name="quantity"]').addEventListener('input', (e) => {
+            const quantity = e.target.value;
+            console.log(quantity);
+            const amount = quantity * <?php echo EXTRA_PR_FEE; ?>;
+            document.getElementById('amount').value = amount;
+        });
+    </script>
+<?php }?>
 
 </html>

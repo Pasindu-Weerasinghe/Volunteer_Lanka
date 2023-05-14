@@ -18,6 +18,13 @@
 <?php include 'views/includes/navbar_log.php'; ?>
 
 <div class="main" id="main">
+
+    <div class="wrapper" id="limit-wrapper" style="display: none">
+        <h2 class="title" id="limit-title" style="font-weight: normal"></h2>
+    </div>
+
+
+
     <!-- //? 1st form -->
     <div class="wrapper" id="create-project" style="display: block">
         <h2 class="title">Create a new project</h2>
@@ -219,7 +226,9 @@
 </div>
 
 <input type="hidden" name="uid" id="uid" value="<?php echo $_SESSION['uid'] ?>">
-<input type="hidden" id="can_create" value="<?php echo json_encode($this->can_create_pr) ?>">
+<input type="hidden" id="cancel_limit_reached" value="<?php echo json_encode($this->cancel_limit_reached) ?>">
+<input type="hidden" id="postpone_limit_reached" value="<?php echo json_encode($this->postpone_limit_reached) ?>">
+
 </body>
 <script type="module" src="<?php echo BASE_URL ?>public/scripts/create_project.js"></script>
 

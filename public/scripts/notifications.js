@@ -29,7 +29,7 @@ function getNotifications() {
                                           
                                           </div> </section>`;
                 }
-                if (notification.Type === null) {
+                else {
                     content += `<div class="btn-area">
                                                    <button class="delete" onclick="deleteNotification(${notification.Notify_ID})">
                                                         <i class="fa-solid fa-trash"></i>

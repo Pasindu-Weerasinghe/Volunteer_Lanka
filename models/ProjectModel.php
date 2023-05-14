@@ -102,6 +102,15 @@ class ProjectModel extends Model
         return $statement->execute();
     }
 
+    function setProjectStatus($pid, $status)
+    {
+        $query = "UPDATE `project` SET Status = :status WHERE P_ID = :pid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':pid', $pid);
+        $statement->bindParam(':status', $status);
+        return $statement->execute();
+    }
+
     function setSNPackage($pid, $package, $amount)
     {
         $query = "INSERT INTO `sn_packages` (P_ID, `Package`, `Range`) VALUES (:pid, :package, :amount)";

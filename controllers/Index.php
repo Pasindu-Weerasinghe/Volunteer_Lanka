@@ -14,6 +14,11 @@ class Index extends Controller
         $this->render('Index');
     }
 
+    function condition(){
+        session_start();
+        $this->render('Conditions');
+    }
+
     function login()
     {
         $this->render('Login');

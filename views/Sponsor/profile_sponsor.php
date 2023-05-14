@@ -18,9 +18,7 @@
             <div class="left-container">
 
                 <h2><?php echo $this->user['Name']; ?></h2>
-
-
-
+                
                 <img class="image" src="<?php echo BASE_URL ?>public/images/profile_images/<?php echo $this->profile['Photo'] ?>" alt="">
 
 
@@ -151,6 +149,7 @@
                         <?php endif; ?>
                             </tbody>
 
+
                 </table>
             </div><br>
         </div><br>
@@ -163,42 +162,53 @@
             <h3 class="pack"><i class="fa-solid fa-circle fa-2xs"></i> Active Projects</h3><br>
             <section class="container2">
                 <?php
-                foreach ($this->aSponsored_projects as $spProject) {
-                    $pid = $spProject['P_ID'];
+                if (empty($this->aSponsored_projects)) {
+                    echo "<p><h2>There are no active sponsored projects yet.</h2></p>";
+                } else {
+                    foreach ($this->aSponsored_projects as $spProject) {
+                        $pid = $spProject['P_ID'];
                 ?>
-                    <div class="card">
-                        <div class="card-image">
-                            <img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image'] ?>">
-                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image'] ?>">
+                            </div>
 
-                        <h2><?php echo ($spProject["Name"]); ?></h2>
-                        <p>Date: <?php echo ($spProject["Date"]); ?></p>
-                        <p><?php echo ucfirst($spProject['Package']) ?>: <?php echo ($spProject['Amount']); ?></p>
-                    </div>
-                <?php } ?>
-            </section>
-            <h3 class="pack"><i class="fa-solid fa-circle fa-2xs"></i> Aready Completed</h3>
-            <section class="container2">
+                            <h2><?php echo ($spProject["Name"]); ?></h2>
+                            <p>Date: <?php echo ($spProject["Date"]); ?></p>
+                            <p><?php echo ucfirst($spProject['Package']) ?>: <?php echo ($spProject['Amount']); ?></p>
+                        </div>
                 <?php
-                foreach ($this->cSponsored_projects as $spProject) {
-                    $pid = $spProject['P_ID'];
+                    }
+                }
                 ?>
-                    <div class="card">
-                        <div class="card-image">
-                            <img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image'] ?>">
-                        </div>
-
-                        <h2><?php echo ($spProject["Name"]); ?></h2>
-                        <p>Date: <?php echo ($spProject["Date"]); ?></p>
-                        <p><?php echo ucfirst($spProject['Package']) ?>: <?php echo ($spProject['Amount']); ?></p>
-                    </div>
-                <?php } ?>
             </section><br>
 
 
+            <h3 class="pack"><i class="fa-solid fa-circle fa-2xs"></i> Aready Completed</h3>
+
+            <section class="container2">
+                <?php
+                if (empty($this->cSponsored_projects)) {
+                    echo "<p><h2>There are no complete sponsored projects yet.</h2></p>";
+                } else {
+                    foreach ($this->cSponsored_projects as $spProject) {
+                        $pid = $spProject['P_ID'];
+                ?>
+                        <div class="card">
+                            <div class="card-image">
+                                <img id="card-img" src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid][0]['Image'] ?>">
+                            </div>
+
+                            <h2><?php echo ($spProject["Name"]); ?></h2>
+                            <p>Date: <?php echo ($spProject["Date"]); ?></p>
+                            <p><?php echo ucfirst($spProject['Package']) ?>: <?php echo ($spProject['Amount']); ?></p>
+                        </div>
+                <?php
+                    }
+                }
+                ?>
+            </section><br>
         </div>
-        <!-- </div><br><br><br>
-    <?php include 'views/includes/footer.php'; ?> -->
 </body>
 
 </html>

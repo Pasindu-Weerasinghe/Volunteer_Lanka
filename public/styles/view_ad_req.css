@@ -85,6 +85,7 @@ h2{
 }
 p{
     text-align: justify;
+    font-weight: bold;
 }
 /* #ad-box-item p{
     width: 100%;

@@ -419,6 +419,7 @@ class User extends Controller
     {
         $this->loadModel('Organizer');
         $this->organizer = $this->model->getOrganizerById($uid);
+        $this->profile = $this->model->getOrganizerDatafromuser($uid);
 
         $this->loadModel('Project');
         //        $this->no_of_projects = count($this->model->getProjects($uid));
@@ -451,6 +452,11 @@ class User extends Controller
         }
 
         $this->render('OrganizerBlog');
+    }
+    function viewAdminProfile($uid){
+        $this->loadModel('Admin');
+        $this->profile= $this->model->getUserData($uid);
+        $this->render('ProfileAdmin');
     }
 
     function indexSearch()

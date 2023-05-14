@@ -82,11 +82,16 @@
                 <label class="details">Total badges : <?php echo $this->totalCount ?></label><br><br>
                 <div class="more"><?php echo $this->more ?> more badges to earn <?php echo $this->next ?> medal</div><br>
             </div>
-
         </div>
-        <br><br>
+        <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
+            $u_id = $this->profile['U_ID'];
+            $status = $this->profile['Status'];
+            include 'views/includes/only_admin.php';
+        }
+        ?>
     </div>
 
+    <br><br>
 </body>
 
 </html>

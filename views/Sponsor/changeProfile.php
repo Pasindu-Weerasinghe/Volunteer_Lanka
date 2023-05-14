@@ -148,7 +148,7 @@
     popupClose.addEventListener('click', function() {
         popupBg.style.display = 'none';
         popup.style.display = 'none';
-        window.location.href = BASE_URL + 'Sponsor/profile';
+        window.location.href = BASE_URL + 'sponsor/profile';
     });
 </script>
 

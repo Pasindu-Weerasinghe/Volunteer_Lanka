@@ -15,51 +15,56 @@
     <?php include 'views/includes/navbar_log.php'; ?>
     <div class="main" id="main">
         <div class="form1">
-            <!-- <h2><i class="fa-solid fa-caret-right fa-lg" style="color: #000000;"></i> Achivemenbjjjjjhjnts</h2><br>
-            <h2><i class="fa-solid fa-caret-right fa-lg" style="color: #000000;"></i> Profile Details</h2><br> -->
+            <div class="left-container">
 
-            <div class="row1">
-                <div class="col">
-                    <table>
-                        <tr>
-                            <td><?php echo $this->user['Name']; ?></td>
-                        </tr>
-                    </table>
-                    <img class="image" src="<?php echo BASE_URL ?>public/images/<?php echo $this->profile['Photo'] ?>" alt="">
-                </div>
+                <h2><?php echo $this->user['Name']; ?></h2>
+
+
+                <?php if ($this->profile['Photo'] == null) { ?>
+                        <img class="image" src="<?php echo BASE_URL ?>public/images/profile.jpg" alt="">
+                                                                                    
+                    <?php } else { ?>
+                        <img class="image" src="<?php echo BASE_URL ?>public/images/<?php echo $this->profile['Photo'] ?>" alt="">
+                                                                                    
+                    <?php  } ?>
+                
+
+
+                
             </div>
 
 
-            <table class="T1">
+
+            <table class="right-container">
                 <tr>
                     <td>User ID</td>
                     <td>:</td>
-                    <td><?php echo $this->profile['U_ID']; ?></td>
+                    <td id="data"><?php echo $this->profile['U_ID']; ?></td>
                 </tr>
                 <tr>
                     <td>Role</td>
                     <td>:</td>
-                    <td><?php echo $this->profile['Role']; ?></td>
+                    <td id="data"><?php echo $this->profile['Role']; ?></td>
                 </tr>
                 <tr>
                     <td>Name</td>
                     <td>:</td>
-                    <td><?php echo $this->user['Name']; ?></td>
+                    <td id="data"><?php echo $this->user['Name']; ?></td>
                 </tr>
                 <tr>
                     <td>Email</td>
                     <td>:</td>
-                    <td><?php echo $this->profile['Email'] ?></td>
+                    <td id="data"><?php echo $this->profile['Email'] ?></td>
                 </tr>
                 <tr>
                     <td>Address</td>
                     <td>:</td>
-                    <td><?php echo $this->user['Address']; ?></td>
+                    <td id="data"><?php echo $this->user['Address']; ?></td>
                 </tr>
                 <tr>
                     <td>Contact Number</td>
                     <td>:</td>
-                    <td><?php echo $this->user['Contact']; ?></td>
+                    <td id="data"><?php echo $this->user['Contact']; ?></td>
                 </tr>
             </table>
 

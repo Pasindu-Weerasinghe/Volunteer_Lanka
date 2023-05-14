@@ -102,6 +102,15 @@ class ProjectModel extends Model
         return $statement->execute();
     }
 
+    function setProjectStatus($pid, $status)
+    {
+        $query = "UPDATE `project` SET Status = :status WHERE P_ID = :pid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':pid', $pid);
+        $statement->bindParam(':status', $status);
+        return $statement->execute();
+    }
+
     function setSNPackage($pid, $package, $amount)
     {
         $query = "INSERT INTO `sn_packages` (P_ID, `Package`, `Range`) VALUES (:pid, :package, :amount)";
@@ -135,6 +144,20 @@ class ProjectModel extends Model
         if ($statement->execute()) {
             // if query successful
             return $statement->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            // if query failed
+            return 'query failed';
+        }
+    }
+
+    function getNoOfPrOrganized($uid)
+    {
+        $query = "SELECT COUNT(*) FROM project WHERE U_ID = :uid AND (Status = 'completed' OR Status = 'blogged')";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':uid', $uid);
+        if ($statement->execute()) {
+            // if query successful
+            return $statement->fetchColumn();
         } else {
             // if query failed
             return 'query failed';

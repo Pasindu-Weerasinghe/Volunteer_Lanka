@@ -108,7 +108,7 @@
     const merchant_id = "<?php echo $_ENV['MERCHANT_ID']; ?>";
 
     // notify url
-    const notify_url = LOCALHOST + "/Volunteer_Lanka/organizer/payment_successful/sub-fee/" + uid + "/" + amount;
+    // const notify_url = LOCALHOST + "/Volunteer_Lanka/organizer/payment_successful/sub-fee/" + uid + "/" + amount;
 
 
     // Put the payment variables here
@@ -130,7 +130,16 @@
     // Payment completed. It can be a successful failure.
     payhere.onCompleted = function onCompleted(orderId) {
         console.log("Payment completed. OrderID:" + orderId);
-        window.location.href = '<?php echo BASE_URL ?>' + 'organizer/payments';
+        fetch(BASE_URL+"organizer/payment_successful/sub-fee/" + uid + "/" + amount)
+            .then(res => res.json())
+            .then(data => {
+            console.log(data);
+            if (data.success) {
+                window.location.href = '<?php echo BASE_URL ?>' + 'organizer/payments';
+            }
+        }).catch(err => {
+            console.log(err);
+        });
         // Note: validate the payment and show success or failure page to the customer
     };
 
@@ -158,7 +167,7 @@
             merchant_id: merchant_id, // Replace your Merchant ID
             return_url: undefined, // Important
             cancel_url: undefined, // Important
-            notify_url: notify_url,
+            notify_url: undefined, // Important
             order_id: order_id,
             items: "Subscription Fee",
             amount: amount,

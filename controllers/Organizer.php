@@ -54,6 +54,12 @@ class Organizer extends User
                 $cancelled_pr_count = $this->model->canceledProjectCount($uid);
                 $postponed_pr_count = $this->model->postponedProjectCount($uid);
                 $this->loadModel('Payment');
+
+                if (empty($this->model->getThisMonthSubFee($uid))) {
+                    header('Location: ' . BASE_URL . 'organizer/payments');
+                }
+
+
                 $extra_pr_arr = $this->model->getExtraProjectCount($uid);
                 $extra_pr_count = 0;
                 foreach ($extra_pr_arr as $extra_pr) {
@@ -62,7 +68,14 @@ class Organizer extends User
                 $create_pr_limit = PROJECT_CREATE_LIMIT + $extra_pr_count;
 
                 // check if user can create project
-                $this->can_create_pr = $create_pr_limit >= $created_pr_count;
+                if ($create_pr_limit <= $created_pr_count) {
+                    header('Location: ' . BASE_URL . 'organizer/add_extra_projects');
+                }
+
+                // check if user reached cancel and postpone limit
+                $this->cancel_limit_reached = $canceled_pr_count >= PROJECT_CANCEL_LIMIT;
+                $this->postpone_limit_reached = $postponed_pr_count >= PROJECT_POSTPONE_LIMIT;
+
                 $this->render('Organizer/CreateProject');
                 break;
             case 'create':
@@ -458,7 +471,8 @@ class Organizer extends User
         $this->render('Organizer/Payments');
     }
 
-    function add_extra_projects($action = null) {
+    function add_extra_projects($action = null)
+    {
         switch ($action) {
             case null:
                 session_start();
@@ -473,12 +487,12 @@ class Organizer extends User
                 $this->render('Organizer/AddExtraProjects');
                 break;
             case 'next':
-                if(isset($_POST['next'])) {
+                if (isset($_POST['next'])) {
                     session_start();
                     $uid = $_SESSION['uid'];
                     $this->loadModel('Payment');
                     $this->model->setPaymentDetails($uid, $_POST['first-name'], $_POST['last-name'], $_POST['contact'],
-                                                        $_POST['email'], $_POST['address'], $_POST['city']);
+                        $_POST['email'], $_POST['address'], $_POST['city']);
                     $this->payment_details = $this->model->getPaymentDetails($uid);
 
                     $this->quantity = $_POST['quantity'];
@@ -505,7 +519,8 @@ class Organizer extends User
 
     }
 
-    function set_payment_details($uid) {
+    function set_payment_details($uid)
+    {
         $first_name = $_POST['first-name'];
         $last_name = $_POST['last-name'];
         $contact = $_POST['contact'];
@@ -514,19 +529,26 @@ class Organizer extends User
         $city = $_POST['city'];
 
         $this->loadModel('Payment');
-        if($this->model->setPaymentDetails($uid, $first_name, $last_name, $contact, $email, $address, $city)) {
+        if ($this->model->setPaymentDetails($uid, $first_name, $last_name, $contact, $email, $address, $city)) {
             echo json_encode(['success' => true]);
         } else {
             echo json_encode(['success' => false]);
         }
     }
 
-    function payment_successful($type, $uid, $amount) {
-        if($type == 'sub-fee') {
-        $this->loadModel('Payment');
-        $this->model->setSubFee($amount, $uid);
+    function payment_successful($type, $uid, $amount, $quantity = null)
+    {
+        if ($type == 'sub-fee') {
+            $this->loadModel('Payment');
+            $this->model->setSubFee($amount, $uid);
+            echo json_encode(['success' => true]);
+        }
+        if ($type == 'project-fee') {
+            $this->loadModel('Payment');
+            $this->model->setExtraPrFee($amount, $quantity, $uid);
         }
     }
+
     function blog()
     {
         session_start();
@@ -535,11 +557,12 @@ class Organizer extends User
         $this->organizer = $this->model->getOrganizerById($uid);
 
         $this->loadModel('Project');
-//        $this->no_of_projects = count($this->model->getProjects($uid));
-        $this->no_of_completed_projects = 0;
+        $this->no_of_projects_organized = $this->model->getNoOfPrOrganized($uid);
+        $this->no_of_upcoming_projects = count($this->model->getUpcomingProjects($uid));
         $this->projects = $this->model->getProjectsOrganizer($uid);
 
         $this->loadModel('Post');
+
         foreach ($this->projects as $project) {
             $pid = $project['P_ID'];
             $this->prImage[$pid] = $this->model->getPostImages($pid);
@@ -561,7 +584,11 @@ class Organizer extends User
                 $this->loadModel('User');
                 $this->profilePics[$uid] = $this->model->getProfilePic($uid);
             }
-            $this->avg_rating[$pid] = $total_rating[$pid]/$this->feedbackCount[$pid];
+            if ($this->feedbackCount[$pid] > 0) {
+                $this->avg_rating[$pid] += $total_rating[$pid] / $this->feedbackCount[$pid];
+            } else {
+                $this->avg_rating[$pid] = 0;
+            }
         }
 
         $this->render('Organizer/Blog');
@@ -688,7 +715,7 @@ class Organizer extends User
             }
 
             $this->loadModel('Blog');
-            $this->model->beginTransaction();
+//            $this->model->beginTransaction();
             try {
                 $this->model->setPost($pid, $description);
 
@@ -726,6 +753,7 @@ class Organizer extends User
                 }
 
                 // TODO: set project status to blogged
+                $this->model->setProjectStatus($pid, 'blogged');
 
                 // send notification to all collaborators
                 $this->loadModel('Notification');
@@ -734,14 +762,21 @@ class Organizer extends User
                     $this->model->setNotification($collaborator['U_ID'], $message, 'add-to-blog', $pid);
                 }
 
-                $this->model->commit();
+//                $this->model->commit();
             } catch (Exception $e) {
                 $this->model->rollback();
-                echo $e->getMessage();
+//                echo $e->getMessage();
             }
         }
     }
 
+    function profile()
+    {
+        $this->loadModel('Organizer');
+        session_start();
+        $this->organizer = $this->model->getOrganizerById($_SESSION['uid']);
+        $this->render('Organizer/Profile');
+    }
 
     private function _getSponsoredAmount($sponsors)
     {
@@ -761,7 +796,7 @@ class Organizer extends User
 
     function get_events($date)
     {
-        if(!isset($_SESSION)) {
+        if (!isset($_SESSION)) {
             session_start();
         }
         $uid = $_SESSION['uid'];
@@ -773,7 +808,7 @@ class Organizer extends User
 
     function get_all_events($date)
     {
-        if(!isset($_SESSION)) {
+        if (!isset($_SESSION)) {
             session_start();
         }
         $uid = $_SESSION['uid'];

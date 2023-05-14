@@ -261,21 +261,32 @@ class User extends Controller
     public function updateProfile()
     {
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $name = $_POST['uname'];
             $contact = $_POST['cNumber'];
             $address = $_POST['address'];
             $uid = $_POST['uid'];
 
             $this->loadModel('User');
-            $this->model->updateUserProfile($name, $contact, $address, $uid);
 
-            // Redirect to profile page
-            //$this->view->render('sponsor/profile_sponsor');
-            header('Location: ' . BASE_URL . 'Sponsor/profile');
-        } else {
-            // Render the view page
-            $this->view->render('sponsor/profile_sponsor');
+            //     // Redirect to profile page
+            //     //$this->view->render('sponsor/profile_sponsor');
+            //     header('Location: ' . BASE_URL . 'Sponsor/profile');
+            // } else {
+            //     // Render the view page
+            //     $this->view->render('sponsor/profile_sponsor');
+            // }
+
+            $this->model->beginTransaction();
+            if ($this->model->updateUserProfile($name, $contact, $address, $uid)) {
+                $this->model->commit();
+                $message['success'] = true;
+                echo json_encode($message);
+            } else {
+                $this->model->rollBack();
+                $message['success'] = false;
+                echo json_encode($message);
+            }
         }
     }
 
@@ -307,7 +318,15 @@ class User extends Controller
                 $this->loadModel('Notification');
                 echo json_encode($this->model->deleteAllNotifications($uid));
                 break;
-
+            case 'count':
+                if (session_status() == PHP_SESSION_NONE) {
+                    // if session is not started, start the session
+                    session_start();
+                }
+                $uid = $_SESSION['uid'];
+                $this->loadModel('Notification');
+                echo json_encode($this->model->getNotificationCount($uid));
+                break;
             default:
                 $this->render('Notifications');
                 break;
@@ -400,10 +419,11 @@ class User extends Controller
     {
         $this->loadModel('Organizer');
         $this->organizer = $this->model->getOrganizerById($uid);
+        $this->profile = $this->model->getOrganizerDatafromuser($uid);
 
         $this->loadModel('Project');
-        //        $this->no_of_projects = count($this->model->getProjects($uid));
-        $this->no_of_completed_projects = 0;
+        $this->no_of_projects_organized = $this->model->getNoOfPrOrganized($uid);
+        $this->no_of_upcoming_projects = count($this->model->getUpcomingProjects($uid));
         $this->projects = $this->model->getProjectsOrganizer($uid);
 
         $this->loadModel('Post');
@@ -432,6 +452,11 @@ class User extends Controller
         }
 
         $this->render('OrganizerBlog');
+    }
+    function viewAdminProfile($uid){
+        $this->loadModel('Admin');
+        $this->profile= $this->model->getUserData($uid);
+        $this->render('ProfileAdmin');
     }
 
     function indexSearch()

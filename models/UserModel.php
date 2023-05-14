@@ -142,17 +142,19 @@ class UserModel extends Model
         return $statement->fetch(PDO::FETCH_ASSOC);   
     }
     function getAllUserDetails($uid){
-        $query = "SELECT organizer.U_ID,organizer.Name, user.Role, user.Status FROM organizer INNER JOIN user 
-        ON organizer.U_ID=user.U_ID WHERE NOT user.U_ID = {$uid} 
+        $query = "SELECT * FROM (SELECT organizer.U_ID,organizer.Name, user.Role, user.Status FROM organizer INNER JOIN user 
+        ON organizer.U_ID=user.U_ID
         UNION 
         SELECT sponsor.U_ID,sponsor.Name, user.Role, user.Status FROM sponsor INNER JOIN user 
-        ON sponsor.U_ID=user.U_ID WHERE NOT user.U_ID = {$uid} 
+        ON sponsor.U_ID=user.U_ID
         UNION 
         SELECT volunteer.U_ID,volunteer.Name, user.Role, user.Status FROM volunteer INNER JOIN user 
-        ON volunteer.U_ID=user.U_ID WHERE NOT user.U_ID = {$uid} 
+        ON volunteer.U_ID=user.U_ID
         UNION 
         SELECT admin.U_ID,admin.Name, user.Role, user.Status FROM admin INNER JOIN user 
-        ON admin.U_ID=user.U_ID WHERE NOT user.U_ID = {$uid};";
+        ON admin.U_ID=user.U_ID WHERE NOT admin.U_ID = 1)
+        AS results
+        WHERE NOT results.U_ID = {$uid};";
         $statement = $this->db->prepare($query);
         if ($statement->execute()) {
             // if query successful
@@ -173,7 +175,7 @@ class UserModel extends Model
         ON volunteer.U_ID=user.U_ID 
         UNION 
         SELECT admin.U_ID,admin.Name, user.Role, user.Status FROM admin INNER JOIN user 
-        ON admin.U_ID=user.U_ID)
+        ON admin.U_ID=user.U_ID WHERE NOT admin.U_ID = 1)
         AS results 
         WHERE NOT results.U_ID = {$uid} AND 
         ((results.Name LIKE '%{$searchTerm}%') OR (results.Role LIKE '{$searchTerm}%') OR (results.Status Like '{$searchTerm}%'))";

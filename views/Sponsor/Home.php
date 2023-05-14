@@ -16,10 +16,6 @@
     ?>
 
     <div class="main" id="main">
-        <div class="search-container">
-            <br /><input type="text" name="search">
-            <button name="search"><b>Search<b></button>
-        </div><br>
         <h2>My sponsored Project</h2><br><br>
         <section class="container">
             <?php foreach ($this->sponsored_projects as $spProject) {

@@ -369,7 +369,7 @@
             <h2>Postpone Project</h2>
             <form id="postpone-pr-form">
                 <label for="postpone-date">Date <b style="color: red">*</b></label>
-                <input type="date" name="postpone-date" id="postpone-date" required>
+                <input type="date" name="postpone-date" id="postpone-date" min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>" required>
                 <label for="postpone-time">Time <b style="color: red">*</b></label>
                 <input type="time" name="postpone-time" id="postpone-time" required>
                 <label for="postpone-reason">Reason <b style="color: red">*</b></label>

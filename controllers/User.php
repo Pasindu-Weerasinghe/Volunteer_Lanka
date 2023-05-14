@@ -437,6 +437,7 @@ class User extends Controller
         }
 
         $total_rating[] = 0;
+        $this->avg_rating[] = 0;
         foreach ($this->projects as $project) {
             $this->loadModel('Feedback');
             $pid = $project['P_ID'];
@@ -451,7 +452,11 @@ class User extends Controller
                 $this->loadModel('User');
                 $this->profilePics[$uid] = $this->model->getProfilePic($uid);
             }
-            $this->avg_rating[$pid] = $total_rating[$pid] / $this->feedbackCount[$pid];
+            if ($this->feedbackCount[$pid] > 0) {
+                $this->avg_rating[$pid] += $total_rating[$pid] / $this->feedbackCount[$pid];
+            } else {
+                $this->avg_rating[$pid] = 0;
+            }
         }
 
         $this->render('OrganizerBlog');

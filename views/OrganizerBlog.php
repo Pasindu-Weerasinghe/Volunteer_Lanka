@@ -80,11 +80,11 @@
                         <img class="user" src="<?php echo BASE_URL ?>public/images/icon.jpg"/>
                     <?php } else { ?>
                         <img class="user"
-                             src="<?php echo BASE_URL ?>public/images/<?php echo $this->profilePics[$uid]['Photo'] ?>"/>
+                             src="<?php echo BASE_URL ?>public/images/profile_images/<?php echo $this->profilePics[$uid]['Photo'] ?>"/>
                     <?php } ?>
                     <div class="item-name"><?php echo $this->names[$uid]['Name'] ?></div>
-                    <div class="item"><?php echo $feedback['Description'] ?></div>
-                    <div class="item"><?php echo $feedback['Rating'] ?>
+                    <div class="item"><?php echo $feedback['Description'] ?>&nbsp;</div>
+                    
                         <?php for ($i = 0; $i < 5; $i++) {
                             if ($i < $feedback['Rating']) { ?>
                                 <i class="fa fa-star checked star"></i>

@@ -303,6 +303,22 @@ form4back.addEventListener("click", (e) => {
 });
 
 imgs.addEventListener("change", () => {
+    const files = imgs.files;
+
+    // Loop through each file and check if it's an image
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const fileType = file.type.split('/')[0];
+
+        if (fileType !== 'image') {
+            document.querySelector('.popup-bg').style.display = "flex";
+            document.querySelector('.popup-message').style.display = "flex";
+            document.querySelector('.popup .msg').innerHTML = "Please upload only images";
+            imgs.value = '';
+            return;
+        }
+    }
+
     let images = imgs.files;
     if (images.length !== 0) {
         gal.style.display = "block";
@@ -318,12 +334,20 @@ imgs.addEventListener("change", () => {
     } else {
         resetImgs.style.display = "none";
     }
+
+});
+
+// close after clicking ok
+document.querySelector('.popup-message button').addEventListener("click", () => {
+    document.querySelector('.popup-bg').style.display = 'none';
+    document.querySelector('.popup-message').style.display = 'none';
 });
 
 resetImgs.addEventListener("click", () => {
     imgs.value = "";
     imageReaders = [];
     gal.innerHTML = "";
+    gal.style.display = "none";
     resetImgs.style.display = "none";
 });
 
@@ -331,17 +355,22 @@ resetImgs.addEventListener("click", () => {
 const cancel_limit_reached = JSON.parse(document.getElementById('cancel_limit_reached').value);
 const postpone_limit_reached = JSON.parse(document.getElementById('postpone_limit_reached').value);
 
+console.log(cancel_limit_reached);
+console.log(postpone_limit_reached);
+
 const limitWrapper = document.getElementById('limit-wrapper');
 const limitMessage = document.getElementById('limit-title');
 if(cancel_limit_reached){
     cp1.style.display = "none";
     limitWrapper.style.display = "block";
-    limitMessage.innerHTML = "You have reached your limit for cancelling projects.";
+    limitMessage.style.textAlign = 'justify';
+    limitMessage.innerHTML = "You have exceeded your limit for cancelling projects. Your project creating facility will be restored in next month";
 
 } else if (postpone_limit_reached){
     cp1.style.display = "none";
     limitWrapper.style.display = "block";
-    limitMessage.innerHTML = "You have reached your limit for postponing projects.";
+    limitMessage.style.textAlign = 'justify';
+    limitMessage.innerHTML = "You have exceeded your limit for postponing projects. Your project creating facility will be restored in next month";
 }
 
 window.addCollaborator = addCollaborator; // for adding collaborator

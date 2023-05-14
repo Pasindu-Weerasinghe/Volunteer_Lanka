@@ -157,7 +157,13 @@
     opacity: 1;
 }
 
-
+#limit-title {
+    background-color: white;
+    border-radius: 10px;
+    color: #0B2273;
+    font-weight: bold;
+    padding: 10px;
+}
 
 /* popups styles */
 #add-org-srch-btn {

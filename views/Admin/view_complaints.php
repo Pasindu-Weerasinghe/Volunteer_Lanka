@@ -40,7 +40,7 @@ if (!isset($_SESSION['uid'])) {
             </div>
             <div id="btn-area">
                 <button class="btn">Cancel</button>
-                <button class="btn" id="response-btn">Response</button>
+                <button class="btn" id="response-btn">Respond</button>
             </div><br>
 
         </div>

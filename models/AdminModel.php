@@ -46,7 +46,7 @@ class AdminModel extends Model{
         return $statement->execute();
     }
     function getUserData($uid){
-        $query="SELECT admin.U_ID,admin.Name, user.Role, user.Status FROM admin INNER JOIN user 
+        $query="SELECT admin.U_ID,admin.Name, user.Email, user.Role, user.Status,user.Photo FROM admin INNER JOIN user 
         ON admin.U_ID=user.U_ID WHERE admin.U_ID= :uid";
         $statement = $this->db->prepare($query);
         $statement->bindParam(':uid', $uid);

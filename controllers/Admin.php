@@ -221,4 +221,11 @@ class Admin extends User
         $this->model->activeUser($uid);
         header('Location: ' . BASE_URL . 'Admin/delete_user_acc');
     }
+    function profile(){
+        session_start();
+        $uid = $_SESSION['uid'];
+        $this->loadModel('Admin');
+        $this->profile = $this->model->getUserData($uid);
+        $this->render('Admin/profile_admin'); 
+    }
 }

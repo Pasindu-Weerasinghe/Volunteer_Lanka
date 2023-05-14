@@ -26,11 +26,11 @@ $role = $_SESSION['role'];
 
 <!--notifications--->
 <script defer >
-    const BASE_URL = "<?php echo BASE_URL; ?>";
-    const role = "<?php echo $_SESSION['role'] ?>";
+    const base_url = "<?php echo BASE_URL; ?>";
+    const ROLE = "<?php echo $_SESSION['role'] ?>";
 
     function getNotificationCount() {
-        fetch(`${BASE_URL}${role}/notifications/count`)
+        fetch(`${base_url}${ROLE}/notifications/count`)
             .then(response => response.json())
             .then(data => {
                 if (data > 0) {

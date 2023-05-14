@@ -342,7 +342,7 @@ class Organizer extends User
                 $this->loadModel('Notification');
                 $this->model->updateUpcomingProjectReminder($uid, $pid, $postponeDate);
 
-                // TODO: send notifications to volunteers, sponsors, collaborators
+                // send notifications to volunteers, sponsors, collaborators
                 foreach ($volunteers as $volunteer) {
                     $message = "The project " . $project_name . " has been postponed by the organizer.\nReason:\n" . $postponeReason;
                     $this->model->setNotification($volunteer['U_ID'], $message);

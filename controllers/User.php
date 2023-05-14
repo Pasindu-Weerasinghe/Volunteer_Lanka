@@ -422,8 +422,8 @@ class User extends Controller
         $this->profile = $this->model->getOrganizerDatafromuser($uid);
 
         $this->loadModel('Project');
-        //        $this->no_of_projects = count($this->model->getProjects($uid));
-        $this->no_of_completed_projects = 0;
+        $this->no_of_projects_organized = $this->model->getNoOfPrOrganized($uid);
+        $this->no_of_upcoming_projects = count($this->model->getUpcomingProjects($uid));
         $this->projects = $this->model->getProjectsOrganizer($uid);
 
         $this->loadModel('Post');

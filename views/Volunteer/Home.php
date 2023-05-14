@@ -14,7 +14,7 @@
     <?php include 'views/includes/navbar_log.php'; ?>
     <div id="main" class="main">
         <div class="search-container">
-            <form action="<?php echo BASE_URL; ?>volunteer/search_project" method="post">
+            <form action="<?php echo BASE_URL; ?>volunteer/search_project" method="post" id="search">
                 <label>Filter By</label>
                 <select id="filter" name="filter">
                     <option disabled selected value> -- select a filter -- </option>
@@ -79,8 +79,7 @@
                 <div class="card">
                     <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/<?php echo $this->adImage[$adid][0]['Image'] ?>"></div>
                     <h2><?php echo ($this->sponsor[$adid]['Name']); ?></h2>
-                    <p><?php echo ($ad["Description"]); ?></p>
-                    <a class="btn" href="volunteer/view_projects/<?php echo $project['P_ID'] ?>">View</a>
+                    <p><?php echo ($ad["Description"]); ?></p><br>
                 </div>
             <?php } ?>
         </section>

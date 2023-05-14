@@ -10,8 +10,16 @@ class AdModel extends Model
 
     function getAds()
     {
-        $query = "SELECT * FROM advertisement";
+        $query = "SELECT * FROM advertisement WHERE Status = 'accepted'";
         $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function getAd($adid){
+        $query = "SELECT * FROM advertisement WHERE AD_ID = :adid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':adid', $adid);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }

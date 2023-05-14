@@ -150,6 +150,20 @@ class ProjectModel extends Model
         }
     }
 
+    function getNoOfPrOrganized($uid)
+    {
+        $query = "SELECT COUNT(*) FROM project WHERE U_ID = :uid AND (Status = 'completed' OR Status = 'blogged')";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':uid', $uid);
+        if ($statement->execute()) {
+            // if query successful
+            return $statement->fetchColumn();
+        } else {
+            // if query failed
+            return 'query failed';
+        }
+    }
+
     function getCompletedProjects($uid)
     {
         $query = "SELECT * FROM project WHERE U_ID = :uid AND Status = 'completed'";

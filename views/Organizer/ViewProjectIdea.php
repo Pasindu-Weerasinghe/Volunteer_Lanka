@@ -48,7 +48,7 @@ function currencyFormat($number)
                 <section>
                     <a href="<?php echo BASE_URL . $_SESSION['role'] . '/view_profile/' . $this->volunteer['U_ID'] ?>""
                 class=" volunteer">
-                        <img src="<?php echo BASE_URL ?>public/images/<?php echo $this->volunteer['Photo'] ?: 'icon.jpg' ?>" alt="Profile picture">
+                        <img src="<?php echo BASE_URL ?>public/images/profile_images/<?php echo $this->volunteer['Photo'] ?: 'user-icon.png' ?>" alt="Profile picture">
                         <h3><?php echo $this->volunteer['Name'] ?></h3>
                     </a>
                     <div class="location">

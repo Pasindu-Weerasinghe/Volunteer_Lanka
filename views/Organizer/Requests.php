@@ -23,7 +23,7 @@
                     $pi_id = $idea['PI_ID'];
                     ?>
                     <div id="volunteer">
-                        <img src="<?php echo BASE_URL; ?>public/images/<?php echo $this->volunteer[$pi_id]['Photo'] ?: 'icon.jpg' ?>">
+                        <img src="<?php echo BASE_URL; ?>public/images/profile_images/<?php echo $this->volunteer[$pi_id]['Photo'] ?: 'user-icon.png' ?>">
                         <div>
                             <h3><?php echo $this->volunteer[$pi_id]['Name']; ?></h3>
                         </div>
@@ -48,7 +48,7 @@
                     $pi_id = $idea['PI_ID'];
                     ?>
                     <div id="volunteer">
-                        <img src="<?php echo BASE_URL; ?>public/images/<?php echo $this->volunteer[$pi_id]['Photo'] ?: 'icon.jpg' ?>">
+                        <img src="<?php echo BASE_URL; ?>public/images/profile_images/<?php echo $this->volunteer[$pi_id]['Photo'] ?: 'user-icon.png' ?>">
                         <div>
                             <h3><?php echo $this->volunteer[$pi_id]['Name']; ?></h3>
                         </div>

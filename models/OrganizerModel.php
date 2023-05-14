@@ -28,6 +28,7 @@ class OrganizerModel extends Model
         $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
+
     function getOrganizerData()
     {
         $query = "SELECT * FROM organizer";

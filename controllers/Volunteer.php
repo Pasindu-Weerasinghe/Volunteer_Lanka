@@ -115,6 +115,14 @@ class Volunteer extends User
         $this->render('Volunteer/View_project_volunteer');
     }
 
+    function view_ads($adid)
+    {
+        $this->loadModel('Ad');
+        $this->ad = $this->model->getAd($adid);
+        $this->adImage = $this->model->getAdImage($adid);
+        $this->render('Volunteer/View_ads');
+    }
+
 
     function join_leave_project($pid, $isJoined, $nuVolunteers, $date)
     {
@@ -138,6 +146,7 @@ class Volunteer extends User
             if ($count < $nuVolunteers) {
                 $this->render('Volunteer/Join_form');
             } else {
+                echo '<script>alert("Sorry. Volunteer count reached!")</script>';
             }
         }
     }

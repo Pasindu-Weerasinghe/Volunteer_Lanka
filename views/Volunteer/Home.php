@@ -77,9 +77,9 @@
             <?php foreach ($this->ads as $ad) {
                 $adid = $ad['AD_ID'] ?>
                 <div class="card">
-                    <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/<?php echo $this->adImage[$adid][0]['Image'] ?>"></div>
+                    <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/sp_images/<?php echo $this->adImage[$adid][0]['Image'] ?>"></div>
                     <h2><?php echo ($this->sponsor[$adid]['Name']); ?></h2>
-                    <p><?php echo ($ad["Description"]); ?></p><br>
+                    <a class="btn" href="volunteer/view_ads/<?php echo $adid ?>">View</a>
                 </div>
             <?php } ?>
         </section>

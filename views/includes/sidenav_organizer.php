@@ -1,7 +1,7 @@
 <!-- sidenav start -->
 <span class="open-slide">
-    <a id ="bars" onclick="openSideMenu()">
-    <i class="fa-solid fa-bars fa-2xl"></i>
+    <a id="bars" onclick="openSideMenu()">
+        <i class="fa-solid fa-bars fa-2xl"></i>
     </a>
 </span>
 
@@ -12,6 +12,7 @@
     <a href="<?php echo BASE_URL; ?>organizer/upcoming_projects">Upcoming Projects</a>
     <a href="<?php echo BASE_URL; ?>organizer/completed_projects">Completed Projects</a>
     <a href="<?php echo BASE_URL; ?>organizer/requests">Requests from Volunteers</a>
+    <?php include 'views/includes/chat_icon.php'; ?>
     <a href="<?php echo BASE_URL; ?>organizer/payments">Payments</a>
     <a href="<?php echo BASE_URL; ?>organizer/calendar">Calendar</a>
     <a href="<?php echo BASE_URL; ?>organizer/blog">My Blog</a>

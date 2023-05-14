@@ -24,3 +24,6 @@
     align-items: start;
     padding-left: 50px;
 }
+.ul1 li{
+    text-align: justify;
+}

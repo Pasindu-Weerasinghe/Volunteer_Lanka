@@ -421,8 +421,7 @@ class User extends Controller
     function viewOrganizerProfile($uid)
     {
         $this->loadModel('Organizer');
-        $this->organizer = $this->model->getOrganizerById($uid);
-        $this->profile = $this->model->getOrganizerDatafromuser($uid);
+        $this->organizer = $this->model->getOrganizerByID($uid);
 
         $this->loadModel('Project');
         $this->no_of_projects_organized = $this->model->getNoOfPrOrganized($uid);
@@ -436,14 +435,15 @@ class User extends Controller
             $this->description[$pid] = $this->model->getPostDescription($pid);
         }
 
-        $total_rating[] = 0;
-        $this->avg_rating[] = 0;
+        $total_rating = [];
+        $this->avg_rating = [];
         foreach ($this->projects as $project) {
             $this->loadModel('Feedback');
             $pid = $project['P_ID'];
             $this->feedbacks[$pid] = $this->model->getFeedbacks($pid);
             $this->feedbackCount[$pid] = sizeof($this->feedbacks[$pid]);
 
+            $total_rating[$pid] = 0;
             foreach ($this->feedbacks[$pid] as $feedback) {
                 $total_rating[$pid] += $feedback['Rating'];
                 $uid = $feedback['U_ID'];
@@ -452,6 +452,7 @@ class User extends Controller
                 $this->loadModel('User');
                 $this->profilePics[$uid] = $this->model->getProfilePic($uid);
             }
+            $this->avg_rating[$pid] = 0;
             if ($this->feedbackCount[$pid] > 0) {
                 $this->avg_rating[$pid] += $total_rating[$pid] / $this->feedbackCount[$pid];
             } else {

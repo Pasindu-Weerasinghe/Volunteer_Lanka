@@ -31,6 +31,7 @@
 }
 
 .volunteer {
+    display: flex;
     max-width: 300px;
     text-decoration: none;
     flex-direction: row;
@@ -48,7 +49,6 @@
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
-    object-position: center center;
     margin: 5px;
 }
 

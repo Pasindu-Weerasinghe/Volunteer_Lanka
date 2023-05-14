@@ -47,9 +47,11 @@
     border: none;
     border-radius: 10px;
     background-color:#96c7d6;
-	width: 80%;
+    min-width: 500px;
+    max-width: 1200px;
+	width: 100%;
 	margin: auto;
-    height: 700px;
+    height: auto;
     padding-bottom: 10px;
     overflow: none;
 }
@@ -84,7 +86,7 @@
     /* border: 1px solid black; */
     width: 100%;
     margin: auto;
-    padding-left: 100px;
+    padding: 0 100px;
     font-size: 20px;
 }
 
@@ -116,6 +118,10 @@ hr {
 }
 
 .container-image {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
     padding: 30px 50px 30px 50px;
     width: 100%;
 }

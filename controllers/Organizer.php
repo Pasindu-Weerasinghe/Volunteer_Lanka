@@ -557,11 +557,12 @@ class Organizer extends User
         $this->organizer = $this->model->getOrganizerById($uid);
 
         $this->loadModel('Project');
-//        $this->no_of_projects = count($this->model->getProjects($uid));
-        $this->no_of_completed_projects = 0;
+        $this->no_of_projects_organized = $this->model->getNoOfPrOrganized($uid);
+        $this->no_of_upcoming_projects = count($this->model->getUpcomingProjects($uid));
         $this->projects = $this->model->getProjectsOrganizer($uid);
 
         $this->loadModel('Post');
+
         foreach ($this->projects as $project) {
             $pid = $project['P_ID'];
             $this->prImage[$pid] = $this->model->getPostImages($pid);
@@ -771,8 +772,8 @@ class Organizer extends User
 
     function profile()
     {
-        session_start();
         $this->loadModel('Organizer');
+        session_start();
         $this->organizer = $this->model->getOrganizerById($_SESSION['uid']);
         $this->render('Organizer/Profile');
     }

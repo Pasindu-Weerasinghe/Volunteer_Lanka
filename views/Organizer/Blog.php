@@ -28,8 +28,8 @@
                 <p><b>No of members:</b> <?php echo $this->organizer['No_of_members']; ?></p>
                 <p><b>Branch:</b> <?php echo $this->organizer['Branch']; ?></p>
                 <p><b>Contact:</b> <?php echo $this->organizer['Contact']; ?></p>
-                <p><b>No of projects organized:</b> <?php echo $this->no_of_projects = 5; ?></p>
-                <P><b>No of completed projects:</b> <?php echo $this->no_of_completed_projects; ?></p>
+                <p><b>No of upcoming projects:</b> <?php echo $this->no_of_upcoming_projects; ?></p>
+                <p><b>No of projects organized:</b> <?php echo $this->no_of_projects_organized; ?></p>
             </div>
         </div>
         <!-- organization end -->

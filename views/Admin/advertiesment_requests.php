@@ -27,7 +27,7 @@ if (!isset($_SESSION['uid'])) {
         <h2 style="margin-bottom: 50px;">Advertisement Request</h2>
         <section class="container">
             <?php foreach ($this->ads as $ad) {
-                if ($ad['Status'] == null && $ad['Reason'] == null) {
+                if ($ad['Status'] == 'pending' && $ad['Reason'] == null) {
 
             ?>
                     <div class="card">

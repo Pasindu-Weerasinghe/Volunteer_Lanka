@@ -10,6 +10,7 @@ class User extends Controller
         $this->role = null;
     }
 
+   
     function calendar()
     {
         $this->render('Calendar');
@@ -77,7 +78,12 @@ class User extends Controller
                 if ($new == $confirm) {
                     $new1 = password_hash($new, PASSWORD_BCRYPT);
                     $this->model->changeUserPsw($uid, $new1);
-                    $this->error = "Password Updated Successfully";
+                    $this->model->commit();
+                    $message['success'] = true;
+                    echo json_encode($message);
+
+                    // $this->error = "Password Updated Successfully";
+                    // header('Location: '.BASE_URL.'sponsor/profile');
                 } else {
                     $this->error = "Passwords did not match";
                 }
@@ -224,6 +230,8 @@ class User extends Controller
         $uid = $_SESSION['uid'];
         $role = $_SESSION['role'];
         $this->loadModel($role);
+
+        $this->model->beginTransaction();
         $this->profile = $this->model->getUserData($uid);
         $this->user = $this->model->getSponsorData($uid);
 
@@ -236,21 +244,24 @@ class User extends Controller
             $extensions_arr = array("jpg", "jpeg", "png", "gif");
 
             // Check if file is a valid image
-            if (!in_array($imageFileType, $extensions_arr)) {
-                echo "Invalid image file type. Only JPG, JPEG, PNG, and GIF files are allowed.";
-                return;
-            }
-
-            // Move uploaded file to uploads directory
-            if (move_uploaded_file($_FILES["profilepic"]["tmp_name"], $target_file)) {
-                $uid = $_SESSION['uid'];
-                $profilepic = $target_file;
-                // Update user's record in the database with new profile picture
-                $this->model->updateProfilePic($uid, $profilepic);
-                $_SESSION['photo'] = $image_name;
-                header('Location: ' . BASE_URL . $_SESSION['role'] . '/profile');
+            if (in_array($imageFileType, $extensions_arr)) {
+                if (move_uploaded_file($_FILES["profilepic"]["tmp_name"], $target_file)) {
+                    $uid = $_SESSION['uid'];
+                    $profilepic = $target_file;
+                    $this->model->updateProfilePic($uid, $profilepic);
+                    $_SESSION['photo'] = $image_name;
+                    $this->model->commit();
+                    $message['success'] = true;
+                    echo json_encode($message);
+                } else {
+                    $this->model->rollBack();
+                    $message['success'] = false;
+                    echo json_encode($message);
+                }
             } else {
-                echo "Sorry, there was an error uploading your file.";
+                $this->model->rollBack();
+                $message['success'] = false;
+                echo json_encode($message);
             }
         } else {
             //$this->render('Sponsor/profile_sponsor');
@@ -268,14 +279,6 @@ class User extends Controller
             $uid = $_POST['uid'];
 
             $this->loadModel('User');
-
-            //     // Redirect to profile page
-            //     //$this->view->render('sponsor/profile_sponsor');
-            //     header('Location: ' . BASE_URL . 'Sponsor/profile');
-            // } else {
-            //     // Render the view page
-            //     $this->view->render('sponsor/profile_sponsor');
-            // }
 
             $this->model->beginTransaction();
             if ($this->model->updateUserProfile($name, $contact, $address, $uid)) {
@@ -434,6 +437,7 @@ class User extends Controller
         }
 
         $total_rating[] = 0;
+        $this->avg_rating[] = 0;
         foreach ($this->projects as $project) {
             $this->loadModel('Feedback');
             $pid = $project['P_ID'];
@@ -448,7 +452,11 @@ class User extends Controller
                 $this->loadModel('User');
                 $this->profilePics[$uid] = $this->model->getProfilePic($uid);
             }
-            $this->avg_rating[$pid] = $total_rating[$pid] / $this->feedbackCount[$pid];
+            if ($this->feedbackCount[$pid] > 0) {
+                $this->avg_rating[$pid] += $total_rating[$pid] / $this->feedbackCount[$pid];
+            } else {
+                $this->avg_rating[$pid] = 0;
+            }
         }
 
         $this->render('OrganizerBlog');

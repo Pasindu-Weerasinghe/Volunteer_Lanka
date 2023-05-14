@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include 'views/includes/head-includes-log.php'; ?>
     <link rel="stylesheet" href="<?php echo BASE_URL ?>public/styles/view_sponsor_notices.css">
+    <title><?php echo $this->projects['Name'] ?></title>
 </head>
 
 <body>
@@ -106,7 +107,17 @@
                         <p class="para">Select Your Sponsor Package Amount
                     </td>
                     <td>:
-                        <input class="input-container" type="number" id="selectAmount" name="selectAmount" placeholder="Rs 0.00" required min="0" max="<?php echo $this->remainingAmount ?>">
+                        <?php 
+                            if($this->packageAmount['silver'] >1000){
+                                $min=1000;
+                            }else{
+                                $min=$this->packageAmount['silver']-200;;
+                            } 
+                            if($min<=0){
+                                $min=10;
+                            }           
+                        ?>
+                        <input class="input-container" type="number" id="selectAmount" name="selectAmount" placeholder="Rs 0.00" required min="<?php echo $min?>" max="<?php echo $this->remainingAmount ?>">
                     </td>
                     
                 </tr>

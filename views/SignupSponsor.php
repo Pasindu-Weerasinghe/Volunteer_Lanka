@@ -49,7 +49,7 @@ session_start();
 
                     <br>
                     <input type="checkbox" name="area5">
-                    <label for="area1">I have read and understand the <a href="#">terms and conditions</a> and will add here to them</label><br /><br />
+                    <label for="area1">I have read and understand the <a href="<?php echo BASE_URL . 'index/condition/';?>">terms and conditions</a> and will add here to them</label><br /><br />
 
                     <div class=" clearfix">
                         <button class="cancel"><b>Cancel</b></button>

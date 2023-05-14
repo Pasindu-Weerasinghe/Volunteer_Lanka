@@ -44,7 +44,7 @@
                 <!-- <p><strong>Description</strong><textarea rows="10" cols="70" name="comment" placeholder="Enter here!"></textarea> </p2><br /> -->
                 <br><br><br>
                 <button onclick="history.back()" class="btn">Cancel</button>
-                <button class="btn" name="request" id="request">Send Request</button>
+                <button class="btn" name="request" id="request">Publish</button>
             </form>
         </div>
     </div>
@@ -89,9 +89,9 @@
                 popupBg.style.display = 'flex';
                 popup.style.display = 'flex';
                 if (reply.success) {
-                    popupMessage.innerHTML = "Published successfully";
+                    popupMessage.innerHTML = "Advertisement Published successfully.";
                 } else {
-                    popupMessage.innerHTML = "Error occured";
+                    popupMessage.innerHTML = "You cannot upload these type files.";
                 }
             })
     });

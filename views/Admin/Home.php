@@ -28,7 +28,7 @@ if (!isset($_SESSION['uid'])) {
         <h2>Advertisement Requests</h2><br><br>
         <section class="container">
             <?php foreach ($this->ads as $ad) {
-                if ($ad['Status'] == null && $ad['Reason'] == null) {
+                if ($ad['Status'] == 'pending' && $ad['Reason'] == null) {
             ?>
                     <div class="card">
                         <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/<?php echo  $this->adimages[$ad['AD_ID']] ?>"></div>

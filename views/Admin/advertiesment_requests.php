@@ -31,7 +31,7 @@ if (!isset($_SESSION['uid'])) {
 
             ?>
                     <div class="card">
-                        <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/<?php echo  $this->adimages[$ad['AD_ID']] ?>"></div>
+                        <div class="card-image"><img id="card-img" src="<?php echo BASE_URL ?>public/images/<?php echo  $ad['Image'] ?>"></div>
                         <h2><?php echo $this->ad_sponsor_name[$ad['AD_ID']] ?></h2>
                         <a class="btn" href="<?php echo BASE_URL . 'admin/view_ad_req/' . $ad['AD_ID']; ?>">View</a>
                     </div>

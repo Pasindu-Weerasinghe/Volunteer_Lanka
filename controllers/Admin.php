@@ -11,10 +11,6 @@ class Admin extends User
         //view advertisement req in home page
         $this->loadModel('Advertisement');
         $this->ads = $this->model->getAdvertisementRequests();
-        foreach ($this->ads as $ad) {
-            $image = $this->model->getAdImage($ad['AD_ID']);
-            $this->adimages[$ad['AD_ID']] = $image['Image'];
-        }
         $this->loadModel('Sponsor');
         foreach ($this->ads as $ad) {
             $adid = $ad['AD_ID'];
@@ -39,10 +35,6 @@ class Admin extends User
     {
         $this->loadModel('Advertisement');
         $this->ads = $this->model->getAdvertisementRequests();
-        foreach ($this->ads as $ad) {
-            $image = $this->model->getAdImage($ad['AD_ID']);
-            $this->adimages[$ad['AD_ID']] = $image['Image'];
-        }
         $this->loadModel('Sponsor');
         foreach ($this->ads as $ad) {
             $adid = $ad['AD_ID'];

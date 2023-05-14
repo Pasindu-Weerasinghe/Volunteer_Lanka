@@ -190,7 +190,7 @@ class Sponsor extends User
 
         $ad_id = $this->model->getAdId($uid, $description);
 
-        $targetDir = "public/images/ad_images/";
+        $targetDir = "public/images/sp_images/";
         $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
 
         if (!empty($_FILES["file"]["name"])) {

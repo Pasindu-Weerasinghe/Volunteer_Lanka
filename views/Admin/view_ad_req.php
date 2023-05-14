@@ -29,7 +29,7 @@ if (!isset($_SESSION['uid'])) {
             <div class="name">
                 <h3 class="name-item">Advertisement:</h3>
                 <div id="ad-box-item">
-                    <img id="ad-box-img" src="<?php echo BASE_URL ?>public/images/<?php echo  $this->image ?>" alt="">
+                    <img id="ad-box-img" src="<?php echo BASE_URL ?>public/images/ad_images/<?php echo  $this->image ?>" alt="">
                 </div>
             </div>
             <div class="name">

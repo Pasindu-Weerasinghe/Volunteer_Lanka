@@ -40,7 +40,7 @@
             <button type="submit" name="login" id="login-btn">Login</button>
         </div>
 
-        <p class="signup">Don't have an account? <a href="#">Sign up</a></p>
+        <p class="signup">Don't have an account? <a href="<?php echo BASE_URL; ?>index/signup">Sign up</a></p>
     </form>
 </body>
 

@@ -31,16 +31,18 @@ class ProjectModel extends Model
         }
     }
 
-    function setProjectCompleteEvent($pid, $date, $type = 'create') {
-        if($type == 'create') {
+    function setProjectCompleteEvent($pid, $date, $type = 'create')
+    {
+        if ($type == 'create') {
             $query = "CREATE EVENT IF NOT EXISTS `complete_pr_$pid` 
                         ON SCHEDULE AT :date + INTERVAL 2 DAY
                         DO
                             UPDATE `project` SET Status = 'completed' WHERE P_ID = :pid";
-        } else if($type == 'update') {
-            $query = "ALTER EVENT IF NOT EXISTS `complete_pr_$pid` 
-                        ON SCHEDULE AT :date + INTERVAL 2 DAY
-                        DO
+        } else if ($type == 'update') {
+            $query = "DROP EVENT IF EXISTS `complete_pr_$pid`;
+                      CREATE EVENT `complete_pr_$pid`
+                      ON SCHEDULE AT CONCAT(:date, ' 00:00:00') + INTERVAL 2 DAY
+                      DO
                             UPDATE `project` SET Status = 'completed' WHERE P_ID = :pid";
         }
         $statement = $this->db->prepare($query);
@@ -49,7 +51,8 @@ class ProjectModel extends Model
         return $statement->execute();
     }
 
-    function dropProjectCompleteEvent($pid) {
+    function dropProjectCompleteEvent($pid)
+    {
         $query = "DROP EVENT IF EXISTS `complete_pr_$pid`";
         $statement = $this->db->prepare($query);
         return $statement->execute();
@@ -177,7 +180,7 @@ class ProjectModel extends Model
             return 'query failed';
         }
     }
-  
+
     function setVolunteerForm($pid, $email, $contact, $meal_pref, $prior_part)
     {
         $query = "INSERT INTO form_for_volunteers (P_ID, Email, Contact, Meal_pref, Prior_participation) 
@@ -255,7 +258,7 @@ class ProjectModel extends Model
 
     function joinProject($uid, $pid, $contact, $meal, $prior)
     {
-        $query  =  "INSERT INTO  joins (U_ID, P_ID, Contact, Meal, Prior_part) VALUES ('$uid', '$pid', '$contact', '$meal', '$prior')";
+        $query = "INSERT INTO  joins (U_ID, P_ID, Contact, Meal, Prior_part) VALUES ('$uid', '$pid', '$contact', '$meal', '$prior')";
         $statement = $this->db->prepare($query);
         return $statement->execute();
     }
@@ -383,9 +386,10 @@ class ProjectModel extends Model
             return false;
         }
     }
-  
-    function getAllProjectfeeDetails(){
-        $query="SELECT * FROM (SELECT sub_fee.PAY_ID, sub_fee.Date, sub_fee.Amount, organizer.U_ID, organizer.Name,
+
+    function getAllProjectfeeDetails()
+    {
+        $query = "SELECT * FROM (SELECT sub_fee.PAY_ID, sub_fee.Date, sub_fee.Amount, organizer.U_ID, organizer.Name,
         'Monthly Subscription' AS PaymentType FROM sub_fee 
         INNER JOIN organizer ON sub_fee.U_ID = organizer.U_ID 
         UNION 
@@ -402,8 +406,10 @@ class ProjectModel extends Model
             return 'query failed';
         }
     }
-    function searchPayement($searchTerm){
-        $query="SELECT * FROM (SELECT sub_fee.PAY_ID, sub_fee.Date, sub_fee.Amount, organizer.U_ID, organizer.Name,
+
+    function searchPayement($searchTerm)
+    {
+        $query = "SELECT * FROM (SELECT sub_fee.PAY_ID, sub_fee.Date, sub_fee.Amount, organizer.U_ID, organizer.Name,
         'Monthly Subscription' AS PaymentType FROM sub_fee 
         INNER JOIN organizer ON sub_fee.U_ID = organizer.U_ID 
         UNION 

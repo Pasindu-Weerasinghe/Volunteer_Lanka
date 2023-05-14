@@ -11,7 +11,7 @@ const DB_USER = 'root';
 const DB_PASSWORD = '';
 
 // project configures
-const PROJECT_CREATE_LIMIT = 5;
+const PROJECT_CREATE_LIMIT = 10;
 const PROJECT_POSTPONE_LIMIT = 3;
 const PROJECT_CANCEL_LIMIT = 2;
 const SUB_FEE = 800;

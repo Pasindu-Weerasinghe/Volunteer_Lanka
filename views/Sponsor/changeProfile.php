@@ -34,18 +34,26 @@
             <div class="left-container">
                 <h2 id="lc"><?php echo $this->user['Name']; ?></h2>
                 <img class="image" src="<?php echo BASE_URL ?>public/images/profile_images/<?php echo $this->profile['Photo'] ?>" alt=""><br><br>
-                <form class="column1" action="<?php echo BASE_URL; ?>Sponsor/changeProfilePic" method="post" enctype="multipart/form-data">
+                <form class="column1" id="updatePic">
 
                     <h3><i class="fa-solid fa-pen-to-square fa-lg"></i> Add Image</h3>
                     <div class="btn-area">
                         <input type="file" name="profilepic" class="btn" style="font-size: small">
-                        <input type="submit" value="Save" class="btn">
+                        <input type="submit" value="Save" class="btn" name="save">
                     </div>
 
                 </form>
             </div>
 
-            <form id="lc2"  class="right-container">
+            <div class="popup-bg">
+                <div class="popup popup-message">
+                    <!--close button-->
+                    <div class="popup-close"><i class="fa-solid fa-xmark"></i></div>
+                    <h2 id="message"></h2>
+                </div>
+            </div>
+
+            <form id="lc2" class="right-container">
 
                 <input type="hidden" name="uid" value="<?php echo $_SESSION['uid'] ?>">
 
@@ -82,6 +90,9 @@
 <script>
     const BASE_URL = "<?php echo BASE_URL ?>";
 
+    const sendRequestBtn1 = document.getElementById('name');
+    const requestForm1 = document.getElementById('updatePic');
+
     const sendRequestBtn = document.getElementById('update');
     const requestForm = document.getElementById('lc2');
 
@@ -90,6 +101,30 @@
     const popupClose = document.querySelector('.popup-close');
     const popupMessage = document.querySelector('#message');
 
+
+    requestForm1.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(requestForm1);
+        const role = "<?php echo $_SESSION['role'] ?>"
+        const url = BASE_URL + `${role}/changeProfilePic`
+        fetch(url, {
+                method: "post",
+                body: formData
+            }).then(res => res.json())
+            .then(reply => {
+                console.log(reply);
+                popupBg.style.display = 'flex';
+                popup.style.display = 'flex';
+                if (reply.success) {
+                    popupMessage.innerHTML = "Successfully updated your profile picture";
+                }else if (reply.success==2) {
+
+                } 
+                else {
+                    popupMessage.innerHTML = "Uploaded unsuccessfully. Please try again";
+                }
+            })
+    });
 
     requestForm.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -106,7 +141,8 @@
                 popup.style.display = 'flex';
                 if (reply.success) {
                     popupMessage.innerHTML = "Successfully updated your profile details";
-                } else {
+                }
+                else {
                     popupMessage.innerHTML = "Error occured";
                 }
             })

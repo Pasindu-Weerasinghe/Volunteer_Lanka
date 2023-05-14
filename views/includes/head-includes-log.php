@@ -1,3 +1,15 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    // if session is not started, start the session
+    session_start();
+}
+if (!isset($_SESSION['uid'])) {
+    // if user is not logged in, redirect to login page
+    header('Location: ' . BASE_URL . 'index/login');
+}
+$role = $_SESSION['role'];
+?>
+
 <!--navbar links--->
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>public/styles/navbar_log.css">
 <script defer src="<?php echo BASE_URL; ?>public/scripts/navbarlog.js"></script>
@@ -21,7 +33,6 @@
         fetch(`${BASE_URL}${role}/notifications/count`)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
                 if (data > 0) {
                     document.getElementById('notification-badge').style.display = 'flex';
                     document.getElementById('notification-badge').innerHTML = data;
@@ -32,7 +43,7 @@
     }
 
     getNotificationCount();
-    setInterval(getNotificationCount, 1000);
+    // setInterval(getNotificationCount, 1000);
 </script>
 
 <!-- font awesome library -->

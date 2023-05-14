@@ -16,7 +16,7 @@
     ?>
 
     <div class="main" id="main">
-        <h2>My sponsored Project</h2><br><br>
+        <h2>My Sponsored Project</h2><br><br>
         <section class="container">
             <?php foreach ($this->sponsored_projects as $spProject) {
                 $pid = $spProject['P_ID'];
@@ -62,7 +62,7 @@
                 echo "0";
             }
             ?> -->
-    <?php include 'views/includes/chat_icon.php'; ?>
+    
     <?php include 'views/includes/footer.php'; ?>
 </body>
 

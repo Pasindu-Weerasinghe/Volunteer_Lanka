@@ -44,7 +44,6 @@
 
                 </form>
             </div>
-
             <div class="popup-bg">
                 <div class="popup popup-message">
                     <!--close button-->
@@ -117,9 +116,7 @@
                 popup.style.display = 'flex';
                 if (reply.success) {
                     popupMessage.innerHTML = "Successfully updated your profile picture";
-                }else if (reply.success==2) {
-
-                } 
+                }
                 else {
                     popupMessage.innerHTML = "Uploaded unsuccessfully. Please try again";
                 }

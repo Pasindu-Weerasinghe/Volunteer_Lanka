@@ -14,7 +14,7 @@
     <?php include 'views/includes/navbar_log.php'; ?>
     <div id="main" class="main">
         <div class="search-container">
-            <form action="<?php echo BASE_URL; ?>volunteer/search_project" method="post">
+            <form action="<?php echo BASE_URL; ?>volunteer/search_project" method="post" id="search">
                 <label>Filter By</label>
                 <select id="filter" name="filter">
                     <option disabled selected value> -- select a filter -- </option>

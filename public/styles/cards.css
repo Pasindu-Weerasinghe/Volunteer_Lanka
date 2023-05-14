@@ -159,3 +159,7 @@ label {
     font-size: 18px;
     font-weight: bold;
 }
+
+#search {
+    width: 1000px;
+}

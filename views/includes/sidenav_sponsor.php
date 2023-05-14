@@ -12,5 +12,6 @@
     <a href="<?php echo BASE_URL; ?>sponsor/calendar"></i>  Calendar</a>
     <a href="<?php echo BASE_URL; ?>sponsor/profile"> My Profile</a>
     <a href="<?php echo BASE_URL; ?>sponsor/complain"></i>Complain</a>
+    <?php include 'views/includes/chat_icon.php'; ?>
 
   </div>

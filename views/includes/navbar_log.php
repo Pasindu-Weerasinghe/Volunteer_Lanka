@@ -23,8 +23,9 @@ $role = $_SESSION['role'];
     <nav>
         <ul>
             <li id="bell-econ">
-                <a href="<?php echo BASE_URL . $_SESSION['role']; ?>/notifications">
+                <a href="<?php echo BASE_URL . $_SESSION['role']; ?>/notifications" id="notification-a">
                     <i class="fa-solid fa-bell fa-2xl" ></i>
+                    <span id="notification-badge"></span>
                 </a>
             </li>
             <li id="profile-icon">

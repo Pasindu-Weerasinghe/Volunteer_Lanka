@@ -18,7 +18,7 @@ class PaymentModel extends Model
         return $statement->execute();
     }
 
-    function setExtraProjectFee($amount, $quantity, $uid)
+    function setExtraPrFee($amount, $quantity, $uid)
     {
         $query = "INSERT INTO `project_fee` (Amount, Quantity, U_ID) VALUE (:amount, :quantity, :uid)";
         $statement = $this->db->prepare($query);

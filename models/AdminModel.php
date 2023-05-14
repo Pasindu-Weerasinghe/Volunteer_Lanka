@@ -26,5 +26,32 @@ class AdminModel extends Model{
         $statement->bindParam(':response', $response);
         $statement->bindParam(':cid', $cid);
         return $statement->execute();
-    }   
+    }  
+    function deleteUser($uid){
+        $query = "UPDATE user SET Status = 'delete' WHERE U_ID = :uid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':uid', $uid);
+        return $statement->execute();
+    } 
+    function restrictUser($uid){
+        $query = "UPDATE user SET Status = 'restricted' WHERE U_ID = :uid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':uid', $uid);
+        return $statement->execute();
+    }
+    function activeUser($uid){
+        $query = "UPDATE user SET Status = 'active' WHERE U_ID = :uid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':uid', $uid);
+        return $statement->execute();
+    }
+    function getUserData($uid){
+        $query="SELECT admin.U_ID,admin.Name, user.Email, user.Role, user.Status,user.Photo FROM admin INNER JOIN user 
+        ON admin.U_ID=user.U_ID WHERE admin.U_ID= :uid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':uid', $uid);
+        $statement->execute();
+        return $statement->fetch(PDO::FETCH_ASSOC);  
+        
+    }
 }

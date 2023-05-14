@@ -177,10 +177,10 @@ popUpClose.addEventListener("click", (e) => {
     popUp.style.display = "none";
 });
 
-// TODO: for input, searching for organizers
+// for input, searching for organizers
 searchOrg.addEventListener("input", searchAndView);
 
-// TODO: for button, searching for organizers
+// for button, searching for organizers
 searchOrgBtn.addEventListener("click", (e) => {
     e.preventDefault();
     searchAndView();
@@ -328,9 +328,20 @@ resetImgs.addEventListener("click", () => {
 });
 
 //? check project create limit
-const can_create = JSON.parse(document.getElementById('can_create').value);
-if(!can_create){
+const cancel_limit_reached = JSON.parse(document.getElementById('cancel_limit_reached').value);
+const postpone_limit_reached = JSON.parse(document.getElementById('postpone_limit_reached').value);
 
+const limitWrapper = document.getElementById('limit-wrapper');
+const limitMessage = document.getElementById('limit-title');
+if(cancel_limit_reached){
+    cp1.style.display = "none";
+    limitWrapper.style.display = "block";
+    limitMessage.innerHTML = "You have reached your limit for cancelling projects.";
+
+} else if (postpone_limit_reached){
+    cp1.style.display = "none";
+    limitWrapper.style.display = "block";
+    limitMessage.innerHTML = "You have reached your limit for postponing projects.";
 }
 
 window.addCollaborator = addCollaborator; // for adding collaborator

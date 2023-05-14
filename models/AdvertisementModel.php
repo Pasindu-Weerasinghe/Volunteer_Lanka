@@ -7,7 +7,7 @@ class AdvertisementModel extends Model
     }
     function getAdvertisementRequests()
     {
-        $query = "SELECT AD_ID,Status,Sponsor,Reason FROM advertisement";
+        $query = "SELECT advertisement.AD_ID,advertisement.Status,advertisement.Reason,advertisement.Sponsor,ad_image.Image FROM advertisement INNER JOIN ad_image ON advertisement.AD_ID=ad_image.AD_ID";
         $statement = $this->db->prepare($query);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);

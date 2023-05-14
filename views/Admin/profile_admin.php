@@ -23,7 +23,7 @@
                         <img class="image" src="<?php echo BASE_URL ?>public/images/profile.jpg" alt="">
                                                                                     
                     <?php } else { ?>
-                        <img class="image" src="<?php echo BASE_URL ?>public/images/<?php echo $this->profile['Photo'] ?>" alt="">
+                        <img class="image" src="<?php echo BASE_URL ?>public/images/profile_images/<?php echo $this->profile['Photo'] ?>" alt="">
                                                                                     
                     <?php  } ?>
 

@@ -100,6 +100,14 @@ class Admin extends User
         $this->model->setComplainResponse($cid, $response);
         header('Location: ' . BASE_URL . 'Admin/complaints');
     }
+    function setComplainCancel($cid)
+    {
+        $response = $_POST['cancel'];
+        $this->loadModel('Admin');
+        $this->model->setComplainCancel($cid,$response);
+        header('Location: ' . BASE_URL . 'Admin/complaints');
+    }
+
     function create_acc_auth()
     {
         if (isset($_POST['create'])) {

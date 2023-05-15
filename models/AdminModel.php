@@ -27,6 +27,13 @@ class AdminModel extends Model{
         $statement->bindParam(':cid', $cid);
         return $statement->execute();
     }  
+    function setComplainCancel($cid,$response) {
+        $query = "UPDATE complaints SET Response = :response WHERE C_ID = :cid";
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':response', $response);
+        $statement->bindParam(':cid', $cid);
+        return $statement->execute();
+    }  
     function deleteUser($uid){
         $query = "UPDATE user SET Status = 'delete' WHERE U_ID = :uid";
         $statement = $this->db->prepare($query);

@@ -172,12 +172,10 @@ class Organizer extends User
                         // set reminder for project
                         $message = "You have an upcoming project named " . $pname . " on " . $date; //TODO: change message
                         $this->model->setUpcomingProjectReminder($uid, $message, $pid, $date);
-                        header("Content-Type: application/json");
                         $response['message'] = "Project created successfully";
                         echo json_encode($response);
                     } else {
                         //! project didn't get created
-                        $this->model->rollBack();
                         $response['message'] = "Project creation failed";
                         echo json_encode($response);
                     }
@@ -763,6 +761,8 @@ class Organizer extends User
                 foreach ($collaborators as $collaborator) {
                     $this->model->setNotification($collaborator['U_ID'], $message, 'add-to-blog', $pid);
                 }
+
+                header('Location:' . BASE_URL . 'organizer/blog');
 
 //                $this->model->commit();
             } catch (Exception $e) {

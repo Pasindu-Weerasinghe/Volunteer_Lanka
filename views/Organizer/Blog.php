@@ -20,7 +20,7 @@
         <!-- organization start -->
         <div class="organization">
             <div id="left">
-                <img src="<?php echo BASE_URL; ?>public/images/profile_images/<?php echo $this->organizer['photo']?:'user-icon.png' ?>" alt="">
+                <img src="<?php echo BASE_URL; ?>public/images/profile_images/<?php echo $this->organizer['Photo']?:'user-icon.png' ?>" alt="">
                 <h3><?php echo $this->organizer['Name']; ?></h3>
             </div>
             <div id="right">

@@ -576,6 +576,7 @@ class Organizer extends User
             $this->feedbacks[$pid] = $this->model->getFeedbacks($pid);
             $this->feedbackCount[$pid] = sizeof($this->feedbacks[$pid]);
 
+            $total_rating[$pid] = 0;
             foreach ($this->feedbacks[$pid] as $feedback) {
                 $total_rating[$pid] += $feedback['Rating'];
                 $uid = $feedback['U_ID'];
@@ -584,6 +585,7 @@ class Organizer extends User
                 $this->loadModel('User');
                 $this->profilePics[$uid] = $this->model->getProfilePic($uid);
             }
+            $this->avg_rating[$pid] = 0;
             if ($this->feedbackCount[$pid] > 0) {
                 $this->avg_rating[$pid] += $total_rating[$pid] / $this->feedbackCount[$pid];
             } else {

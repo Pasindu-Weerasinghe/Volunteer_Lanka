@@ -48,7 +48,7 @@
                     </div>
                     <h2><?php echo ($sn["Name"]); ?></h2>
                     <p>Date: <?php echo ($sn["Date"]); ?></p>
-                    <p>Total Bujet: <?php echo ($sn['Amount']); ?></p>
+                    <p>Total Budget: <?php echo ($sn['Amount']); ?></p>
                     <a class="btn" href="<?php echo BASE_URL ?>Sponsor/view_sponsor_notice/<?php echo $sn['P_ID'] ?>">View</a>
                 </div>
             <?php } ?>

@@ -39,7 +39,7 @@ if (!isset($_SESSION['uid'])) {
                 </div>
             </div>
             <div id="btn-area">
-                <button class="btn">Cancel</button>
+                <button class="btn" onclick="history.back()">Back</button>
                 <button class="btn" id="response-btn">Response</button>
             </div><br>
 

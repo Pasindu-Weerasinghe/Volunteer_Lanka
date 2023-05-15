@@ -139,7 +139,7 @@
                             <tbody>
                                 <tr>
                                     <td><?php echo $advertisement['Description']; ?></td>
-                                    <td><img class="img" src="<?php echo BASE_URL ?>public/images/ad_images/<?php echo $advertisement['Image']; ?>" alt=""></td>
+                                    <td><img class="img" src="<?php echo BASE_URL ?>public/images/sp_images/<?php echo $advertisement['Image']; ?>" alt=""></td>
                                 </tr>
                             <?php endforeach; ?>
                         <?php else : ?>
@@ -155,7 +155,7 @@
         </div><br>
         <div class="form2" id="projects">
             <div>
-                <h2><i class="fa-solid fa-caret-right fa-lg" style="color: #000000;"></i> My Sponserd Projects</h2>
+                <h2><i class="fa-solid fa-caret-right fa-lg" style="color: #000000;"></i> My Sponsored Projects</h2>
                 <br>
             </div>
 
@@ -184,7 +184,7 @@
             </section><br>
 
 
-            <h3 class="pack"><i class="fa-solid fa-circle fa-2xs"></i> Aready Completed</h3>
+            <h3 class="pack"><i class="fa-solid fa-circle fa-2xs"></i> Already Completed</h3>
 
             <section class="container2">
                 <?php

@@ -89,7 +89,7 @@ $pid = $this->project['P_ID'];
 
             <div class="btn-area">
                 <button onclick="history.back()" class="btn">Back</button>
-                <a href=" <?php echo BASE_URL ?> sponsor/publish_advertisement/<?php echo $this->project['P_ID'] ?>"> <button class="btn" id="publish-btn"> Publish Advertiesment</button>
+                <a href=" <?php echo BASE_URL ?>sponsor/publish_advertisement/<?php echo $this->project['P_ID'] ?>"> <button class="btn" id="publish-btn"> Publish Advertiesment</button>
             </div>
         </div>
     </div>

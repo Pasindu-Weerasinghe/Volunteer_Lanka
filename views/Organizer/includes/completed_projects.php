@@ -3,7 +3,7 @@
     <div class="card">
         <div class="card-image">
             <img id="card-img"
-                 src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid]?:'default.jpg' ?>">
+                 src="<?php echo BASE_URL ?>public/images/pr_images/<?php echo $this->prImage[$pid]?:'default.png' ?>">
         </div>
         <h2><?php echo($project["Name"]); ?></h2>
         <p><?php echo($project["Date"]); ?></p>

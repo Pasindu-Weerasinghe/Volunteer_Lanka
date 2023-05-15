@@ -69,7 +69,7 @@
                         <td><?php echo $this->projects['Description'] ?></td><br>
                     </tr>
                     <tr>
-                        <td>Total Budjet</td>
+                        <td>Total Budget</td>
                         <td>: </td>
                         <td>Rs <?php echo $this->budjet['Amount'] ?>.00</td><br>
                     </tr>

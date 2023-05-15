@@ -61,7 +61,7 @@
                        value="<?php echo date('Y F'); ?>"
                        readonly>
             </div>
-            <div class="notice">
+            <div class="notice" style="display: none">
                 <label for="">Days remaining to pay: <?php echo $this->days_remaining; ?></label>
             </div>
 

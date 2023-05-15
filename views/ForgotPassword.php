@@ -11,7 +11,6 @@
 </head>
 
 <body class="navbarless">
-
     <div class="wrapper">
         <h1 class="title">Enter email</h1>
         <form action="<?php echo BASE_URL; ?>index/forgot_password/send-otp" method="post" class="form">

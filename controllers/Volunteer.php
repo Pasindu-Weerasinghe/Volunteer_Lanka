@@ -175,7 +175,7 @@ class Volunteer extends User
         }
 
         $this->loadmodel('Project');
-        $this->model->joinProject($uid, $pid, $contact, $meal, $prior);
+        $this->model->joinProject($uid, $pid, $meal, $prior);
         header("Location: " . BASE_URL . "volunteer/view_projects/$pid");
     }
 

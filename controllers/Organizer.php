@@ -130,7 +130,7 @@ class Organizer extends User
                         }
 
                         // if there are images to upload
-                        $targetDir = "public/images/pi_images/";
+                        $targetDir = "public/images/pr_images/";
                         $allowTypes = array('jpg', 'png', 'jpeg', 'gif', '');
 
                         if (!empty($_FILES["files"]["name"])) {
@@ -172,12 +172,10 @@ class Organizer extends User
                         // set reminder for project
                         $message = "You have an upcoming project named " . $pname . " on " . $date; //TODO: change message
                         $this->model->setUpcomingProjectReminder($uid, $message, $pid, $date);
-                        header("Content-Type: application/json");
                         $response['message'] = "Project created successfully";
                         echo json_encode($response);
                     } else {
                         //! project didn't get created
-                        $this->model->rollBack();
                         $response['message'] = "Project creation failed";
                         echo json_encode($response);
                     }
@@ -576,6 +574,7 @@ class Organizer extends User
             $this->feedbacks[$pid] = $this->model->getFeedbacks($pid);
             $this->feedbackCount[$pid] = sizeof($this->feedbacks[$pid]);
 
+            $total_rating[$pid] = 0;
             foreach ($this->feedbacks[$pid] as $feedback) {
                 $total_rating[$pid] += $feedback['Rating'];
                 $uid = $feedback['U_ID'];
@@ -584,13 +583,13 @@ class Organizer extends User
                 $this->loadModel('User');
                 $this->profilePics[$uid] = $this->model->getProfilePic($uid);
             }
+            $this->avg_rating[$pid] = 0;
             if ($this->feedbackCount[$pid] > 0) {
                 $this->avg_rating[$pid] += $total_rating[$pid] / $this->feedbackCount[$pid];
             } else {
                 $this->avg_rating[$pid] = 0;
             }
         }
-
         $this->render('Organizer/Blog');
     }
 
@@ -762,6 +761,8 @@ class Organizer extends User
                 foreach ($collaborators as $collaborator) {
                     $this->model->setNotification($collaborator['U_ID'], $message, 'add-to-blog', $pid);
                 }
+
+                header('Location:' . BASE_URL . 'organizer/blog');
 
 //                $this->model->commit();
             } catch (Exception $e) {

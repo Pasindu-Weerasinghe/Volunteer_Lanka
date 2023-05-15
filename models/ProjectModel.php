@@ -242,7 +242,7 @@ class ProjectModel extends Model
 
     function getMyCompletedProjects($uid) //Details of the completed projects by the volunteer
     {
-        $query = "SELECT * FROM joins INNER JOIN project ON joins.P_ID = project.P_ID WHERE joins.U_ID = $uid AND (project.Status='completed' OR project.Status = 'blogged')";
+        $query = "SELECT * FROM joins INNER JOIN project ON joins.P_ID = project.P_ID WHERE joins.U_ID = $uid AND project.Status = 'blogged'";
         $statement = $this->db->prepare($query);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -256,9 +256,9 @@ class ProjectModel extends Model
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    function joinProject($uid, $pid, $contact, $meal, $prior)
+    function joinProject($uid, $pid, $meal, $prior)
     {
-        $query = "INSERT INTO  joins (U_ID, P_ID, Contact, Meal, Prior_part) VALUES ('$uid', '$pid', '$contact', '$meal', '$prior')";
+        $query = "INSERT INTO  joins (U_ID, P_ID, Meal, Prior_part) VALUES ('$uid', '$pid', '$meal', '$prior')";
         $statement = $this->db->prepare($query);
         return $statement->execute();
     }

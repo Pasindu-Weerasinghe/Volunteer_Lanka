@@ -76,9 +76,9 @@
                     $uid = $feedback['U_ID'] ?>
                     <div class="feedback">
                         <?php if ($this->profilePics[$uid]['Photo'] == null) { ?>
-                            <img class="user" src="<?php echo BASE_URL ?>public/images/icon.jpg" />
+                            <img class="user" src="<?php echo BASE_URL ?>public/images/profile_images/user-icon.png" />
                         <?php } else { ?>
-                            <img class="user" src="<?php echo BASE_URL ?>public/images/<?php echo $this->profilePics[$uid]['Photo'] ?>" />
+                            <img class="user" src="<?php echo BASE_URL ?>public/images/profile_images/<?php echo $this->profilePics[$uid]['Photo'] ?>" />
                         <?php } ?>
                         <div class="item-name"><?php echo $this->names[$uid]['Name'] ?></div>
                         <div class="item"><?php echo $feedback['Description'] ?></div>

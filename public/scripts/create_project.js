@@ -23,7 +23,8 @@ const searchOrgResult = document.querySelector(".search-results");
 const collabContainer = document.querySelector(".collaborators-container");
 
 const addOrgSearch = document.querySelector("#add-org-srch-btn");
-const popUp = document.querySelector(".popup-bg");
+const popUpBg = document.querySelector(".popup-bg");
+const popUpOrg = document.querySelector(".popup-add-org");
 const popUpClose = document.querySelector(".popup-close");
 
 let searchData = {};
@@ -167,14 +168,16 @@ const searchAndView = () => {
 // opening popup
 addOrgSearch.addEventListener("click", (e) => {
     e.preventDefault();
-    popUp.style.display = "flex";
+    popUpBg.style.display = "flex";
+    popUpOrg.style.display = "flex";
     searchAndView();
 });
 
 // closing popup
 popUpClose.addEventListener("click", (e) => {
     e.preventDefault();
-    popUp.style.display = "none";
+    popUpBg.style.display = "none";
+    popUpOrg.style.display = "none";
 });
 
 // for input, searching for organizers

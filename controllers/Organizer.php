@@ -130,7 +130,7 @@ class Organizer extends User
                         }
 
                         // if there are images to upload
-                        $targetDir = "public/images/pi_images/";
+                        $targetDir = "public/images/pr_images/";
                         $allowTypes = array('jpg', 'png', 'jpeg', 'gif', '');
 
                         if (!empty($_FILES["files"]["name"])) {
@@ -592,7 +592,6 @@ class Organizer extends User
                 $this->avg_rating[$pid] = 0;
             }
         }
-
         $this->render('Organizer/Blog');
     }
 

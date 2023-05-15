@@ -224,7 +224,7 @@
     </div>
 
     <!--message popup-->
-    <div class="popup popup-message" style="min-height: auto; height: auto; display: flex;flex-direction: column">
+    <div class="popup popup-message" style="min-height: auto; height: auto; display: none ;flex-direction: column">
         <h2 class="msg" style="text-align: center; font-weight: normal; margin-bottom: 10px"></h2>
         <button class="btn" style="margin: auto">OK</button>
     </div>
